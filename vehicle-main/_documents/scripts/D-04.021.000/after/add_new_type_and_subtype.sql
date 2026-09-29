@@ -1,0 +1,3 @@
+insert into vehicle."type" (id, title) values ('8bc1f1ff-6e62-4e0d-a7cc-abb84a7b0bf9', 'Автомобиль автопарка');
+insert into vehicle.subtype (id, title, type_id) values ('f40bb6b0-744d-4f72-9301-b91f5629e3f5', 'Легковой', '8bc1f1ff-6e62-4e0d-a7cc-abb84a7b0bf9');
+insert into vehicle.subtype (id, title, type_id) values ('bf30c674-9b1e-4f42-b892-774c52a04a31', 'Грузовой', '8bc1f1ff-6e62-4e0d-a7cc-abb84a7b0bf9');

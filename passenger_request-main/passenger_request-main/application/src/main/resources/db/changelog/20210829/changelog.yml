@@ -1,0 +1,58 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20210829"
+            author: medvedev-ad
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: changes/add_compacted_migration.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sql:
+                        sql: select 1; #no need migration
+    -   changeSet:
+            id: "20210829-1"
+            author: medvedev-ad
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: changes/init_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: rollback/init_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: "20210829-2"
+            author: medvedev-ad
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: changes/change_rev_type.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: rollback/change_rev_type.sql
+                        relativeToChangelogFile: true
+    -   changeSet:
+            id: "20210829-3"
+            author: medvedev-ad
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: changes/change_rev_info_type.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: rollback/change_rev_info_type.sql
+                        relativeToChangelogFile: true

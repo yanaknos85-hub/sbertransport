@@ -1,0 +1,136 @@
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers:
+            - ${KAFKA_BROKERS:@kafka.default.broker@}
+          producerProperties:
+            key.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+          consumerProperties:
+            max.poll.records: ${BATCH_MAX_POLL_RECORDS:100}
+            fetch.min.bytes: ${BATCH_FETCH_MIN_BYTES:40000}
+            fetch.max.wait.ms: ${BATCH_FETCH_MAX_WAIT_MS:10000}
+            key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      default-binder: kafka
+      bindings:
+        departmentsInput-in-0:
+          group: ${spring.application.name}
+          destination: service.organization.department
+          consumer:
+            enableDlq: true
+            autoCommitOnError: true
+            autoCommitOffset: true
+            ackEachRecord: true
+        employeesInput-in-0:
+          group: ${spring.application.name}
+          destination: service.organization.employee
+          consumer:
+            enableDlq: true
+            autoCommitOnError: true
+            autoCommitOffset: true
+            ackEachRecord: true
+        organizationsInput-in-0:
+          group: ${spring.application.name}
+          destination: service.organization
+          consumer:
+            enableDlq: true
+            autoCommitOnError: true
+            autoCommitOffset: true
+            ackEachRecord: true
+        positionsInput-in-0:
+          group: ${spring.application.name}
+          destination: service.organization.position
+          consumer:
+            enableDlq: true
+            autoCommitOnError: true
+            autoCommitOffset: true
+            ackEachRecord: true
+        tariffInput-in-0:
+          group: ${spring.application.name}
+          destination: service.tariff
+          consumer:
+            enableDlq: true
+            autoCommitOnError: true
+            autoCommitOffset: true
+            ackEachRecord: true
+        contractorInput-in-0:
+          group: ${spring.application.name}
+          destination: service.contractor
+          consumer:
+            enableDlq: true
+            autoCommitOnError: true
+            autoCommitOffset: true
+            ackEachRecord: true
+        contractInput-in-0:
+          group: ${spring.application.name}
+          destination: service.contract
+          consumer:
+            enableDlq: true
+            autoCommitOnError: true
+            autoCommitOffset: true
+            ackEachRecord: true
+        requestRatingInput-in-0:
+          group: ${spring.application.name}
+          destination: service.request.rating
+          consumer:
+            enableDlq: true
+            autoCommitOnError: true
+            autoCommitOffset: true
+            ackEachRecord: true
+        requestStatusOverdueInput-in-0:
+          group: ${spring.application.name}
+          destination: service.request.statusOverdue
+          consumer:
+            enableDlq: true
+            autoCommitOnError: true
+            autoCommitOffset: true
+            ackEachRecord: true
+        deadlineStateUpdateInput-in-0:
+          group: ${spring.application.name}
+          destination: service.request.deadlineStateUpdate
+          consumer:
+            enableDlq: true
+            autoCommitOnError: true
+            autoCommitOffset: true
+            ackEachRecord: true
+        tripCargoRequestInput-in-0:
+          group: ${spring.application.name}
+          destination: service.request.cargo
+          consumer:
+            enableDlq: true
+            autoCommitOnError: true
+            autoCommitOffset: true
+            ackEachRecord: true
+        tripCargoRequestMultiInput-in-0:
+          group: ${spring.application.name}
+          destination: service.request.cargo2
+          consumer:
+            enableDlq: true
+            autoCommitOnError: true
+            autoCommitOffset: true
+            ackEachRecord: true
+        templateForCargoInput-in-0:
+          group: ${spring.application.name}
+          destination: service.request.cargo2.template
+          consumer:
+            enableDlq: true
+            autoCommitOnError: true
+            autoCommitOffset: true
+            ackEachRecord: true
+        evaluationInput-in-0:
+          group: ${spring.application.name}
+          destination: service.request.cargo.evaluation
+          consumer:
+            enableDlq: true
+            autoCommitOnError: true
+            autoCommitOffset: true
+            ackEachRecord: true
+        routeInput-in-0:
+          group: ${spring.application.name}
+          destination: service.route.cargo
+          consumer:
+            enableDlq: true
+            autoCommitOnError: true
+            autoCommitOffset: true
+            ackEachRecord: true

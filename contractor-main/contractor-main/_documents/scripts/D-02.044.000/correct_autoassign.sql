@@ -1,0 +1,1 @@
+update contractors.contractor set autoassign = false where integration_type <> 'DISPATCHER' or integration_type is null;

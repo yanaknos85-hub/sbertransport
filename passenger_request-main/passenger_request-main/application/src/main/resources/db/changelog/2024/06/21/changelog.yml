@@ -1,0 +1,46 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "240621-1"
+            author: shabrov-ie
+            changes:
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    type: uuid
+                                    name: pay_request_id
+                                    remarks: id заявки с оплатой платных сервисов
+                -   addColumn:
+                        schemaName: request_audit
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    type: uuid
+                                    name: pay_request_id
+                                    remarks: id заявки с оплатой платных сервисов
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        columnName: pay_request_id
+                -   dropColumn:
+                        schemaName: request_audit
+                        tableName: request_for_public
+                        columnName: pay_request_id
+    -   changeSet:
+            id: "240627-1"
+            author: shabrov-ie
+            changes:
+                -   createIndex:
+                        schemaName: request
+                        tableName: request_for_public
+                        indexName: request_for_public_pay_request_id_idx
+                        columns:
+                            -   column:
+                                    name: pay_request_id
+            rollback:
+                -   dropIndex:
+                        schemaName: request
+                        tableName: request_for_public
+                        indexName: request_for_public_pay_request_id_idx

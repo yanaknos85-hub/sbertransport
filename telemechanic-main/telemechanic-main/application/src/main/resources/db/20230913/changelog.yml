@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: telemechanic/20230913-1
+      author: klyunkov-va
+      dbms: postgresql
+      changes:
+        - sqlFile:
+            path: change/add_role.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - sqlFile:
+            path: change/alter_table.sql
+            relativeToChangelogFile: true
+            splitStatements: false

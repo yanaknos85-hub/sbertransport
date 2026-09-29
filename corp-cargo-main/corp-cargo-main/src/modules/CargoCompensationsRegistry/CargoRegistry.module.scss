@@ -1,0 +1,8 @@
+.eyeIcon {
+  color: var(--jade) !important;
+  transform: scale(1.2);
+  &:hover {
+    transform: scale(1.5);
+    transition: transform 0.5s;
+  }
+}

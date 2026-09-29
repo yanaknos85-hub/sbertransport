@@ -1,0 +1,56 @@
+application: request-aggregation
+repo: app_passenger_request_aggregation
+resources:
+  limits:
+    cpu: 500mi
+    memory: 1G
+  requests:
+    cpu: 500mi
+    memory: 1G
+port:
+  http:
+    number: 8080 #установи свой порт
+    name: request-aggregation
+    target: 8080
+  grpc:
+    number: 6565
+    name: request-aggregation
+routing:
+  match:
+    prefix: /api #установи свой префикс. Если не будет использоваться извне, удали всю секцию routing
+  rewrite:
+    uri: ' '
+profiles: kafka,kafka-ssl #установи нужные профили
+secman:
+  type: built_in
+additional:
+  envs:
+    - name: SPRING_CLOUD_CONFIG_URI
+      value: http://http-config-server:8080
+  configMap:
+    - name: kafka-ssl
+      data:
+        application-kafka-ssl.yml: |-
+          spring:
+            cloud:
+              vault:
+                namespace: CI02351878_CI02671580
+                authentication: kubernetes
+                kubernetes:
+                  role: ci02351878-edevgen-sbertransport-dev
+                  kubernetes-path: os/dev-terra000003-ids.ocp.delta.sbrf.ru
+                enabled: true
+                port: 443
+                host: t.secrets.delta.sbrf.ru
+            config:
+              import: 
+                - optional:vault://A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/application,kafka-ssl
+  volumes:
+    - name: kafka-ssl
+      configMap:
+        name: kafka-ssl
+        defaultMode: 420
+  mounts:
+    - name: kafka-ssl
+      mountPath: /app/resources/application-kafka-ssl.yml
+      subPath: application-kafka-ssl.yml

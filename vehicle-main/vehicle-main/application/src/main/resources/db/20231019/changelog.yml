@@ -1,0 +1,44 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20231019-1
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/create_fuel_type_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/20231019-2
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_access_to_model_operations.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/20231019-3
+            author: skakun-a
+            dbms: postgresql
+            context: "!test"
+            changes:
+                -   loadData:
+                        catalogName: vehicle
+                        columns:
+                            - column:
+                                  header: id
+                                  name: id
+                                  type: uuid
+                            - columm:
+                                  header: title
+                                  name: title
+                                  type: varchar
+                            - columm:
+                                  header: engine_type_id
+                                  name: engine_type_id
+                                  type: varchar
+                        file: dml/fuel_types.csv
+                        relativeToChangelogFile: true
+                        schemaName: vehicle
+                        tableName: fuel_type

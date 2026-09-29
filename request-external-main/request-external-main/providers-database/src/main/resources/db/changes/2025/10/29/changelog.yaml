@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: calculate-level-field-in-department
+      author: farkhutdinov
+      dbms: postgresql
+      comment: Вычисляет поле "level" для подразделений с использованием рекурсивного CTE
+      changes:
+        - sql:
+            sql: |
+              WITH RECURSIVE department_level AS (
+                SELECT
+                  id,
+                  parent_id,
+                  1 AS dept_level_temp
+                FROM
+                  external_request.department
+                WHERE
+                  parent_id IS NULL
+                UNION ALL
+                SELECT
+                  d.id,
+                  d.parent_id,
+                  dl.dept_level_temp + 1
+                FROM
+                  external_request.department d
+                INNER JOIN department_level dl ON d.parent_id = dl.id
+              )
+              UPDATE external_request.department
+              SET level = dl.dept_level_temp
+              FROM department_level dl
+              WHERE external_request.department.id = dl.id;
+      rollback:
+        - sql:
+            sql: UPDATE external_request.department SET level = NULL;

@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230322"
+      author: blandin-ad
+      changes:
+          - tagDatabase:
+              tag: "20230322"
+          - addColumn:
+              schemaName: geo_zones
+              tableName: geo_zone
+              columns:
+                  - column:
+                      name: time_zone
+                      type: text
+                      remarks: Временная зона
+      rollback:
+          - dropColumn:
+              schemaName: geo_zones
+              tableName: geo_zone
+              columns:
+                  - column:
+                      name: time_zone

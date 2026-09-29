@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: request_aggregation/20250901-1
+      author: novikova-km
+      dbms: postgresql
+      changes:
+        - sqlFile:
+            path: changes/change_file_url_name.sql
+            relativeToChangelogFile: true
+            splitStatements: false

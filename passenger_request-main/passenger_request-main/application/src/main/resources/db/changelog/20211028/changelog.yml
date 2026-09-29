@@ -1,0 +1,13 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211028"
+            author: nikulinsa
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_timezone_in_requests.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: rollback/add_timezone_in_requests.sql
+                        relativeToChangelogFile: true

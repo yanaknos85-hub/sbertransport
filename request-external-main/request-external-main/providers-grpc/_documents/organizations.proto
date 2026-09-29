@@ -1,0 +1,608 @@
+syntax = "proto3";
+
+package ru.sber.transport.corporate.grpc.service;
+
+import "google/protobuf/struct.proto";
+import "google/protobuf/empty.proto";
+
+/*
+ * Сервис для получения данных об организациях.
+ */
+service Organizations {
+
+  /*
+   * Получить данные обо всех организациях
+   */
+  rpc All(google.protobuf.Empty) returns (stream Organization);
+
+  /*
+   * Получить данные об одной организации.
+   */
+  rpc One(Request) returns (Organization);
+
+  /*
+   * Повторный запуск отправки данных в брокер
+   */
+  rpc Refresh(google.protobuf.Empty) returns(google.protobuf.Empty);
+}
+
+/*
+ * Сервис для получения данных о подразделениях.
+ */
+service Departments {
+
+  /*
+   * Получить данные обо всех подразделениях
+   */
+  rpc All(google.protobuf.Empty) returns (stream Department);
+
+  /*
+   * Получить данные об одном подразделении.
+   */
+  rpc One(Request) returns (Department);
+
+  /*
+   * Повторный запуск отправки данных в брокер
+   */
+  rpc Refresh(google.protobuf.Empty) returns(google.protobuf.Empty);
+}
+
+/*
+ * Сервис для получения данных о сотрудниках.
+ */
+service Employees {
+
+  /*
+   * Получить данные обо всех сотрудниках
+   */
+  rpc All(google.protobuf.Empty) returns (stream Employee);
+
+  /*
+   * Получить данные об одном сотруднике.
+   */
+  rpc One(Request) returns (Employee);
+
+  /*
+   * Повторный запуск отправки данных в брокер
+   */
+  rpc Refresh(google.protobuf.Empty) returns(google.protobuf.Empty);
+}
+
+service Delegates {
+
+  /*
+   * Получить данные обо всех сотрудниках
+   */
+  rpc All(google.protobuf.Empty) returns (stream Delegate);
+
+  /*
+   * Получить данные об одном сотруднике.
+   */
+  rpc One(Request) returns (Delegate);
+
+  /*
+   * Повторный запуск отправки данных в брокер
+   */
+  rpc Refresh(google.protobuf.Empty) returns(google.protobuf.Empty);
+
+}
+
+/*
+ * Сервис для получения данных о должностях.
+ */
+service Positions {
+
+  /*
+   * Получить данные обо всех должностях
+   */
+  rpc All(google.protobuf.Empty) returns (stream Position);
+
+  /*
+   * Получить данные об одной должности.
+   */
+  rpc One(Request) returns (Position);
+
+  /*
+   * Повторный запуск отправки данных в брокер
+   */
+  rpc Refresh(google.protobuf.Empty) returns(google.protobuf.Empty);
+}
+
+/*
+ * Запрос данных.
+ */
+message Request {
+
+  /*
+  * Идентификатор.
+  */
+  string id = 1;
+}
+
+/**
+ * Описание организации.
+  */
+message Organization {
+
+  /**
+  * Идентификатор.
+  */
+  string id = 1;
+
+  /**
+  * Порядковый номер.
+  */
+  uint32 digitId = 2;
+
+  /**
+  * Название.
+  */
+  string name = 3;
+
+  /**
+  * Адрес.
+  */
+  string address = 4;
+
+  /**
+  * ОГРН.
+  */
+  string msrn = 5;
+
+  /**
+  * ИНН.
+  */
+  string tid = 6;
+
+  /**
+  * Код.
+  */
+  NullableInt code = 7;
+
+  /**
+  * Признак удаления.
+  */
+  bool deleted = 8;
+
+  /**
+  * Группа.
+  */
+  NullableString group = 9;
+
+  /**
+  * Список контактов.
+  */
+  repeated Contact contacts = 10;
+
+  /**
+  * Тип оргструктуры.
+  */
+  StructureType type = 11;
+
+  /**
+   * Допустимые виды транспорта
+   */
+  repeated string classes = 12;
+}
+
+/**
+* Данные подразделения.
+*/
+message Department {
+
+  /**
+  * Идентификатор.
+  */
+  string id = 1;
+
+  /**
+  * Человекочитаемый идентификатор.
+  */
+  string humanReadableId = 2;
+
+  /**
+  * Организация.
+  */
+  string organizationId = 3;
+
+  /**
+  * Код.
+  */
+  string code = 4;
+
+  /**
+  * Название.
+  */
+  string name = 5;
+
+  /**
+  * Местоположение.
+  */
+  NullableString location = 6;
+
+  /**
+  * Признак удаления.
+  */
+  bool deleted = 7;
+
+  /**
+  * Родитель.
+  */
+  NullableString parentId = 8;
+
+  /**
+  * Руководитель.
+  */
+  NullableString headId = 9;
+}
+
+/**
+* Данные сотрудника.
+*/
+message Employee {
+
+  /**
+  * Идентификатор.
+  */
+  string id = 1;
+
+  /**
+  * Человекочитаемый идентификатор.
+  */
+  string humanReadableId = 2;
+
+  /**
+  * Имя.
+  */
+  string firstName = 3;
+
+  /**
+  * Фамилия.
+  */
+  string lastName = 4;
+
+  /**
+  * Отчество.
+  */
+  NullableString patronymic = 5;
+
+  /**
+  * Табельный номер.
+  */
+  string personnelNumber = 6;
+
+  /**
+  * Идентфиикатор подразделения.
+  */
+  string departmentId = 7;
+
+  /**
+  * МВЗ.
+  */
+  NullableString costCenter = 8;
+
+  /**
+  * Разъездной характер.
+  */
+  ItinerantType ItinerantType = 9;
+
+  /**
+  * Идентификатор организации.
+  */
+  string organizationId = 10;
+
+  /**
+  * Информация о делегировании.
+  */
+  NullableDelegation delegation = 11;
+
+  /**
+  * Список контактов.
+  */
+  repeated Contact contacts = 12;
+
+  /**
+  * Руководитель.
+  */
+  NullableString supervisorId = 13;
+
+  /**
+  * Тип сотрудника.
+  */
+  StructureType employeeType = 14;
+
+  /**
+  * Пол.
+  */
+  NullableGender gender = 15;
+
+  /**
+  * Признак подписания ПДн.
+  */
+  bool consent = 16;
+
+  /**
+  * Признак удаления.
+  */
+  bool deleted = 17;
+
+  /**
+  * Список атрибутов.
+  */
+  repeated string attributes = 18;
+
+  /**
+  * Идентификатор должности.
+  */
+  string positionId = 19;
+}
+
+/**
+* Данные должности.
+*/
+message Position {
+
+  /**
+  * Идентификатор.
+  */
+  string id = 1;
+
+  /**
+  * Человекочитаемый идентификатор.
+  */
+  string humanReadableId = 2;
+
+  /**
+  * Идентификатор организации.
+  */
+  string organizationId = 3;
+
+  /**
+  * Название.
+  */
+  string name = 4;
+
+  /**
+  * Признак удаления.
+  */
+  bool deleted = 5;
+
+  /**
+  * Признак того, что согласование не требуется.
+  */
+  bool noApproveRequired = 6;
+
+  /**
+   * Доступные классы
+   */
+  repeated string availableClass = 7;
+}
+
+/**
+* Обнеляемое значение пола.
+*/
+message NullableGender {
+  oneof Kind {
+    google.protobuf.NullValue null = 1;
+    Gender value = 2;
+  }
+}
+
+/**
+* Пол.
+*/
+enum Gender {
+
+  /**
+  * Мужской.
+  */
+  MALE = 0;
+
+  /**
+  * Женский.
+  */
+  FEMALE = 1;
+}
+
+/**
+* Тип структуры.
+*/
+enum StructureType {
+
+  /**
+  * Внутренняя.
+  */
+  INTERNAL = 0;
+
+  /**
+  * Внешняя.
+  */
+  EXTERNAL = 1;
+}
+
+/**
+* Тип характера работы.
+*/
+enum ItinerantType {
+
+  /**
+  * Стационарный.
+  */
+  NONE = 0;
+
+  /**
+  * Частично разъездной.
+  */
+  PARTIAL = 1;
+
+  /**
+  * Разъездной.
+  */
+  FULL = 2;
+}
+
+/**
+* Данные о делегировании.
+*/
+message Delegation {
+
+  /**
+  * Делегат.
+  */
+  string delegatedById = 1;
+
+  /**
+  * ???
+  */
+  bool trait = 2;
+
+  /**
+  * Типы транспорта.
+  */
+  repeated string transportTypes = 3;
+}
+
+/**
+* Обнуляемые данные о делегировании.
+*/
+message NullableDelegation {
+  oneof Kind {
+    google.protobuf.NullValue null = 1;
+    Delegation value = 2;
+  }
+}
+
+/**
+* Контактные данные.
+*/
+message Contact {
+
+  /**
+  * Тип контакта.
+  */
+  ContactType type = 1;
+
+  /**
+  * Значение.
+  */
+  string value = 2;
+
+  /**
+  * Идентификатор.
+  */
+  string id = 3;
+
+  /**
+  * Признак корпоративного.
+  */
+  bool internal = 4;
+}
+
+/**
+ * Модель делегирования
+ */
+message Delegate {
+
+  /**
+  * Идентификатор руководителя
+  */
+  string supervisorId = 1;
+
+  /**
+  * Идентификатор делегата
+  */
+  string delegateId = 2;
+
+  /**
+  * Дата начала делегирования
+  */
+  Date startDate = 3;
+
+  /**
+  * Дата окончания делегирования
+  */
+  NullableDate endDate = 4;
+
+  /**
+   * Тип делегата
+   */
+  string type = 5;
+
+  /**
+   * Признак активности
+   */
+  bool active = 6;
+
+}
+
+/**
+* Тип контакта.
+*/
+enum ContactType {
+
+  /**
+  * Телефон.
+  */
+  PHONE = 0;
+
+  /**
+  * Электронная почта.
+  */
+  EMAIL = 1;
+
+  /**
+  * Сайт.
+  */
+  SITE = 2;
+}
+
+/**
+ * Модель даты
+ */
+message Date {
+
+  /**
+  * Год
+  */
+  int32 year = 1;
+
+  /**
+  * Месяц
+  */
+  int32 month = 2;
+
+  /**
+  * День
+  */
+  int32 day = 3;
+}
+
+/**
+ * Модель обнуляемой даты
+ */
+message NullableDate {
+  oneof Kind {
+    google.protobuf.NullValue null = 1;
+    Date value = 2;
+  }
+}
+
+/**
+* Обнуляемая строка.
+*/
+message NullableString {
+  oneof Kind {
+    google.protobuf.NullValue null = 1;
+    string value = 2;
+  }
+}
+
+/**
+* Обнуляемое число.
+*/
+message NullableInt {
+  oneof Kind {
+    google.protobuf.NullValue null = 1;
+    int32 value = 2;
+  }
+}

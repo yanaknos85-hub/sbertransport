@@ -1,0 +1,26 @@
+[
+  {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "active": true,
+    "name": "Планшет",
+    "type": "TECHNIQUE",
+    "category": "OTHER",
+    "length": 7,
+    "width": 7,
+    "height": 7,
+    "volume": 20,
+    "weight": 20000
+  },
+  {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa3",
+    "active": true,
+    "name": "Стул",
+    "type": "FURNITURE",
+    "category": "OTHER",
+    "length": 1,
+    "width": 3,
+    "height": 4,
+    "volume": 5,
+    "weight": 10
+  }
+]

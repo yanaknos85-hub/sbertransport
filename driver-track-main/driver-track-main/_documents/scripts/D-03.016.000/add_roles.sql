@@ -1,0 +1,1 @@
+call migrations.fill_roles('driver_track', 'GET /', 'ROLE_DISPATCHER_CONTRACTOR', true);

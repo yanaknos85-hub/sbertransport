@@ -1,0 +1,28 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230317"
+            author: blandin-ad
+            changes:
+                -   tagDatabase:
+                        tag: "20230317"
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            -   column:
+                                    name: fact_waiting_time
+                                    type: bigint
+                                    remarks: Время ожидания пассажира водителем
+                            -   column:
+                                    name: fact_distance
+                                    type: double precision
+                                    remarks: Фактическая дистанция поездки (км)
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            -   column:
+                                    name: fact_waiting_time
+                            -   column:
+                                    name: fact_distance

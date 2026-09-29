@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: contractor/20210401
+      context: "20210401"
+      author: kirillov
+      dbms: postgresql
+      changes:
+        - sqlFile:
+            path: changes/create_driver_license_class_table.sql
+            relativeToChangelogFile: true
+            endDelimiter: ;
+        - sqlFile:
+            path: changes/alter_driver_table.sql
+            relativeToChangelogFile: true
+            endDelimiter: ;
+      rollback:
+        - sqlFile:
+            path: rollback/alter_driver_table.sql
+            relativeToChangelogFile: true
+            endDelimiter: ;
+        - sqlFile:
+            path: rollback/drop_driver_license_class_table.sql
+            relativeToChangelogFile: true
+            endDelimiter: ;

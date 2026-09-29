@@ -1,0 +1,63 @@
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 13px 0;
+
+  .search {
+    min-width: 286px;
+  }
+}
+
+
+.table {
+  :global {
+    .ant-table-thead {
+      .ant-table-cell {
+        /* Caption 1/12/Regular */
+        color: rgb(115, 115, 115);
+        font-family: SB Sans Interface;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 16px;
+        letter-spacing: 0.2px;
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+    }
+  }
+
+  .error {
+    background: #FFEEEC;
+    color: #FF5743;
+    padding: 0;
+  }
+
+  .errorIcon {
+    cursor: pointer;
+  }
+
+  .deleteIcon {
+    cursor: pointer;
+
+    &:hover {
+      path {
+        fill: #FF5743;
+      }
+    }
+  }
+
+  .editIcon {
+    cursor: pointer;
+
+    &:hover {
+      path {
+        fill: #0065D3;
+      }
+    }
+  }
+}
+
+.pagination {
+  margin-top: 20px;
+}

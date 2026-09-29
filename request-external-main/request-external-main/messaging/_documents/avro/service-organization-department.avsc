@@ -1,0 +1,77 @@
+{
+  "namespace": "ru.sber.transport.messages.corporate.avro",
+  "name": "DepartmentMessage",
+  "type": "record",
+  "doc": "Информация о подразделении",
+  "fields": [
+    {
+      "name": "id",
+      "doc": "Идентификатор",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      },
+      "aliases": [
+        "headerId"
+      ]
+    },
+    {
+      "doc": "Человекочитаемый идентификатор",
+      "name": "humanReadableId",
+      "type": "string"
+    },
+    {
+      "doc": "Идентификатор организации",
+      "name": "organizationId",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "doc": "Код подразделения",
+      "name": "code",
+      "type": "string"
+    },
+    {
+      "doc": "Наименование подразделения",
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "doc": "Местоположение подразделения",
+      "name": "location",
+      "type": [ "null", "string" ],
+      "default": null
+    },
+    {
+      "doc": "Идентификатор ЕАСУП",
+      "name": "easupId",
+      "type": [ "null", "string" ],
+      "default": null
+    },
+    {
+      "doc": "Признак удаления",
+      "name": "deleted",
+      "type": "boolean"
+    },
+    {
+      "doc": "Идентификатор родителя",
+      "name": "parentId",
+      "type": [ "null", {
+        "type": "string",
+        "logicalType": "uuid"
+      } ],
+      "default": null
+    },
+    {
+      "doc": "Идентификатор руководителя",
+      "name": "headId",
+      "type": [ "null", {
+        "type": "string",
+        "logicalType": "uuid"
+      } ],
+      "default": null
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240426-1459"
+      author: blandin-ad
+      context: "TRANSPORT-18380"
+      changes:
+        - tagDatabase:
+            tag: "D-03.010.000"
+        - addUniqueConstraint:
+            schemaName: dispatcher
+            tableName: contractor
+            columnNames: name
+            constraintName: dispatcher_contractor_name_uc
+      rollback:
+        - dropUniqueConstraint:
+            schemaName: dispatcher
+            tableName: contractor
+            constraintName: dispatcher_contractor_name_uc

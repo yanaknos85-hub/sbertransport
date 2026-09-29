@@ -1,0 +1,62 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221110"
+            context: "20221110"
+            author: sigalovaa
+            changes:
+                -   tagDatabase:
+                        tag: "20221110"
+                -   addColumn:
+                        schemaName: contractors
+                        tableName: driver
+                        columns:
+                            -   column:
+                                    name: latitude
+                                    type: double precision
+                                    remarks: широта
+                            -   column:
+                                    name: longitude
+                                    type: double precision
+                                    remarks: долгота
+                            -   column:
+                                    name: point_time
+                                    type: timestamp
+                                    remarks: временная метка
+                            -   column:
+                                    name: time_zone
+                                    type: text
+                                    remarks: временная зона
+                            -   column:
+                                    name: serving
+                                    type: boolean
+                                    defaultValueBoolean: false
+                                    remarks: флаг обслуживания заявки
+                            -   column:
+                                    name: online
+                                    type: boolean
+                                    defaultValueBoolean: false
+                                    remarks: флаг онлайн
+                            -   column:
+                                    name: active_request_id
+                                    type: uuid
+                                    remarks: идентификатор заявки
+            rollback:
+              -   dropColumn:
+                      schemaName: contractors
+                      tableName: driver
+                      columns:
+                        - column:
+                            name: latitude
+                        - column:
+                            name: longitude
+                        - column:
+                            name: point_time
+                        - column:
+                            name: serving
+                        - column:
+                            name: online
+                        - column:
+                            name: active_request_id
+                        - column:
+                            name: time_zone
+

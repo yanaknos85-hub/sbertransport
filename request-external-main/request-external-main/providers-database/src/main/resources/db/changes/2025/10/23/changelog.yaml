@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-department-status-enum
+      author: farkhutdinov.ed
+      changes:
+        - sql:
+            sql: CREATE TYPE external_request.department_status AS ENUM ('ACTIVE', 'INACTIVE')
+  - changeSet:
+      id: add-missing-columns-to-external-request-department
+      author: farkhutdinov.ed
+      changes:
+        - addColumn:
+            tableName: department
+            schemaName: external_request
+            columns:
+              - column:
+                  name: organization_id
+                  type: uuid
+                  constraints:
+                    nullable: true
+              - column:
+                  name: status
+                  type: external_request.department_status
+                  defaultValue: "ACTIVE"
+                  constraints:
+                    nullable: true

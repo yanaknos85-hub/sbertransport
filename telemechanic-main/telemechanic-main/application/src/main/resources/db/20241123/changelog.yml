@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20241123-1
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_roles_decline_request_with_ewb.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

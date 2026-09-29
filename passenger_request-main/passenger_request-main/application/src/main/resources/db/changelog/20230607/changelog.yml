@@ -1,0 +1,16 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230607"
+            author: sigalovaa
+            changes:
+                -   modifyDataType:
+                        schemaName: request
+                        tableName: taxi_trip
+                        columnName: driver
+                        newDataType: text
+            rollback:
+                -   modifyDataType:
+                        schemaName: request
+                        tableName: taxi_trip
+                        columnName: driver
+                        newDataType: jsonb

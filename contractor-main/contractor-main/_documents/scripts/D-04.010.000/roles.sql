@@ -1,0 +1,2 @@
+call migrations.fill_roles('contractors', 'GET /services', 'ROLE_ENGINEER_CORP_CLIENT', true);
+call migrations.fill_roles('contractors', 'GET /services/{serviceType}/', 'ROLE_ENGINEER_CORP_CLIENT', true);

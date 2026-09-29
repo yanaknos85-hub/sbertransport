@@ -1,0 +1,37 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20260805-1
+            author: savchenko-ya
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        relativeToChangelogFile: true
+                        path: change/add_transportation_type.sql
+                        splitStatements: false
+                -   sqlFile:
+                        relativeToChangelogFile: true
+                        path: change/fill_transportation_type.sql
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        relativeToChangelogFile: true
+                        path: rollback/transportation_type_rollback.sql
+                        splitStatements: false
+    -   changeSet:
+          id: telemechanic/20260805-2
+          author: savchenko-ya
+          dbms: postgresql
+          changes:
+            -   sqlFile:
+                  relativeToChangelogFile: true
+                  path: change/add_transportation_subtype.sql
+                  splitStatements: false
+            -   sqlFile:
+                  relativeToChangelogFile: true
+                  path: change/fill_transportation_subtype.sql
+                  splitStatements: false
+          rollback:
+            -   sqlFile:
+                  relativeToChangelogFile: true
+                  path: rollback/transportation_subtype_rollback.sql
+                  splitStatements: false

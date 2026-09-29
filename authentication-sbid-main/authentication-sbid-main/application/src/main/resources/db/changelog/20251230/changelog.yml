@@ -1,0 +1,9 @@
+databaseChangeLog:
+  -   changeSet:
+        id: 20251230-1
+        author: smirnova
+        dbms: postgresql
+        changes:
+          -   sqlFile:
+                path: add_new_column_session.sql
+                relativeToChangelogFile: true

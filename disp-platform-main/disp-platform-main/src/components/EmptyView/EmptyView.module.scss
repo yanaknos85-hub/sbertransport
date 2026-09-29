@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+
+  .image {
+    width: 260px;
+    height: auto;
+  }
+
+  .textSide {
+    text-align: center;
+    width: 60%;
+    margin-top: 6px;
+
+    .title {
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 600;
+    }
+
+    .description {
+      font-size: 14px;
+      line-height: 22px;
+      color: #a1a2a6;
+      font-weight: 400;
+    }
+  }
+}

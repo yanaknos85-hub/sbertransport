@@ -1,0 +1,91 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    font-family: 'SB Sans Text';
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: -0.3px;
+    color: #000000;
+    margin-bottom: 16px;
+
+    &_big {
+      font-size: 16px;
+    }
+  }
+
+  .block {
+    padding: 12px 24px 1px 24px;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  :global(.ant-input-affix-wrapper) {
+    border-radius: initial;
+  }
+
+  .formItem {
+    display: flex;
+    flex-direction: column;
+
+    :global(.ant-form-item-control) {
+      min-height: fit-content;
+    }
+
+    :global(.ant-form-item-label) {
+      text-align: left;
+      width: 100%;
+
+      label {
+        height: min-content;
+        margin-bottom: 8px;
+        font-size: 12px;
+        line-height: 16px;
+        color: var(--dark-grey);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        display: block;
+
+        &::after {
+          content: '';
+        }
+      }
+    }
+
+    .input {
+      height: 48px;
+      border-radius: 8px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      :global(.ant-input-number-input-wrap) {
+        width: 100%;
+      }
+    }
+
+    :global(.ant-picker) {
+      width: 100%;
+      height: 48px;
+    }
+  }
+
+  .select {
+    height: 48px;
+
+    :global(.ant-select-arrow) {
+      color: #000;
+    }
+
+    :global(.ant-select-selector),
+    :global(input.ant-select-selection-search-input) {
+      height: 48px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

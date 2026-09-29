@@ -1,0 +1,64 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221214"
+            author: medvedev-ad
+            context: "20221214"
+            changes:
+                -   tagDatabase:
+                        tag: "20221214"
+                -   addColumn:
+                        schemaName: contractors
+                        tableName: trips
+                        columns:
+                            -   column:
+                                    name: human_readable_id
+                                    type: text
+                                    remarks: Человекочитаемый идентификатор
+                -   sqlFile:
+                        path: changes/fill_human_readable_id.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+                -   addNotNullConstraint:
+                        schemaName: contractors
+                        tableName: trips
+                        columnName: human_readable_id
+                -   addUniqueConstraint:
+                        schemaName: contractors
+                        tableName: trips
+                        columnNames: human_readable_id
+                        constraintName: contractors_trips_human_readable_id_uk
+                -   update:
+                        schemaName: contractors
+                        tableName: driver
+                        columns:
+                            -   column:
+                                    name: online
+                                    valueBoolean: false
+                        where: online is null
+                -   update:
+                        schemaName: contractors
+                        tableName: driver
+                        columns:
+                            -   column:
+                                    name: serving
+                                    valueBoolean: false
+                        where: online is null
+                -   addNotNullConstraint:
+                        schemaName: contractors
+                        tableName: driver
+                        columnName: online
+                        defaultNullValue: "false"
+                -   addNotNullConstraint:
+                        schemaName: contractors
+                        tableName: driver
+                        columnName: serving
+                        defaultNullValue: "false"
+            rollback:
+                -   dropUniqueConstraint:
+                        schemaName: contractors
+                        tableName: trips
+                        constraintName: contractors_trips_human_readable_id_uk
+                -   dropColumn:
+                        schemaName: contractors
+                        tableName: trips
+                        columnName: human_readable_id

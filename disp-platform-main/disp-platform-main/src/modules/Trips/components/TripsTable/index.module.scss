@@ -1,0 +1,158 @@
+.tableWrapper {
+  width: calc(50% - 10px);
+
+  &.fullWidth {
+    width: 100%;
+  }
+
+  .requestTable {
+    :global(.ant-table-header) {
+      :global(table) {
+        border-spacing: 0;
+      }
+    }
+
+    :global(.ant-table-thead) {
+      position: sticky;
+    }
+
+    :global(.ant-table-thead),
+    :global(.ant-table-tbody) {
+      :global(tr) {
+        :global(.ant-table-cell:first-of-type) {
+          padding-right: 0 !important;
+
+          &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 80%;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+
+    :global(.ant-table-thead tr th) {
+      padding: 10px;
+    }
+
+    :global(td.ant-table-column-sort) {
+      background: transparent;
+    }
+
+    .expectedTime {
+      max-height: 44px;
+      white-space: pre-line;
+    }
+  }
+
+  .active {
+    :global(td.ant-table-cell) {
+      border-top: 2px solid #10bf6a !important;
+      border-bottom: 2px solid #10bf6a !important;
+
+      &:first-of-type {
+        border-left: 2px solid #10bf6a !important;
+      }
+
+      &:last-of-type {
+        border-right: 2px solid #10bf6a !important;
+      }
+    }
+
+    &.deadline {
+      :global(td.ant-table-cell) {
+        border-color: #ff5743 !important;
+      }
+    }
+
+    &.booked {
+      :global(td.ant-table-cell) {
+        border-color: #ff9a32 !important;
+      }
+    }
+  }
+
+  .new {
+    position: relative;
+
+    :global(.ant-table-cell:first-of-type) {
+      &:before {
+        background-color: #0091ff;
+      }
+    }
+  }
+
+  .deadline {
+    background: #ffeeec !important;
+
+    :global(.ant-table-cell:first-of-type) {
+      &:before {
+        content: "";
+        background-color: #ff5743;
+      }
+    }
+  }
+
+  .booked {
+    background: #fff5eb !important;
+
+    :global(.ant-table-cell:first-of-type) {
+      &:before {
+        content: "";
+        background-color: #ff9a32;
+      }
+    }
+  }
+
+  .id {
+    cursor: pointer;
+    font-size: 12px;
+
+    &:hover {
+      color: #10bf6a;
+    }
+  }
+
+  .icon {
+    font-size: 130%;
+    cursor: pointer;
+
+    &:hover {
+      color: #10bf6a;
+    }
+  }
+
+  .eyeIcon {
+    cursor: pointer;
+  }
+
+  .date {
+    margin: 0;
+    font-size: 12px;
+  }
+
+  .dateLocal {
+    margin: 0 0 2px 0;
+  }
+
+  .tripClientDate {
+    margin-left: 24px;
+  }
+
+  .dispDate {
+    margin-left: 5px;
+  }
+
+  .statusSelect {
+    width: 100%;
+  }
+
+  .vehicleSelect {
+    width: 190px;
+  }
+}

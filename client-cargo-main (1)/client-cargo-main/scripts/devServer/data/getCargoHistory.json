@@ -1,0 +1,14 @@
+[
+  {
+    "date": 1651154505905,
+    "code": 0,
+    "status": "CARGO_AWAITING_APPROVAL",
+    "type": "PAST"
+  },
+  {
+    "date": 1651154605895,
+    "code": 0,
+    "status": "CARGO_APPROVED",
+    "type": "NOW"
+  }
+]

@@ -1,0 +1,72 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20260414-1400"
+      author: blandin-ad
+      changes:
+        - createTable:
+            schemaName: dispatcher
+            tableName: shift_conflict
+            columns:
+              - column:
+                  name: route_id
+                  type: varchar(255)
+                  remarks: "Идентификатор смены во внешней системе"
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: dispatcher_shift_conflict_pk
+                    nullable: false
+              - column:
+                  name: state_number
+                  type: varchar(255)
+                  remarks: "Госномер автомобиля"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: personnel_number
+                  type: varchar(255)
+                  remarks: "Табельный номер водителя"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: start_date
+                  type: timestamp
+                  remarks: "Дата начала смены"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: end_date
+                  type: timestamp
+                  remarks: "Дата окончания смены"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: conflict_reason
+                  type: text
+                  remarks: "Причина конфликта"
+                  constraints:
+                    nullable: false
+      rollback:
+        - dropTable:
+            schemaName: dispatcher
+            tableName: shift_conflict
+
+  - changeSet:
+      id: "20260414-1500"
+      author: blandin-ad
+      changes:
+        - addColumn:
+            schemaName: dispatcher
+            tableName: shift
+            columns:
+              - column:
+                  name: route_id
+                  type: varchar(255)
+                  remarks: "Идентификатор смены во внешней системе"
+                  constraints:
+                    unique: true
+                    uniqueConstraintName: dispatcher_shift_route_id_uk
+      rollback:
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: shift
+            columnName: route_id

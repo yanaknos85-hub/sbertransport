@@ -1,0 +1,39 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20241003-1
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   dropColumn:
+                        schemaName: telemechanic
+                        tableName: ewb
+                        columnName: odometer_in
+                -   dropColumn:
+                        schemaName: telemechanic
+                        tableName: ewb
+                        columnName: odometer_out
+                -   addColumn:
+                        schemaName: telemechanic
+                        tableName: ewb
+                        columns:
+                            -   column:
+                                    name: odometer_in
+                                    type: int
+                                    remarks: Показание одометра при возвращении в гараж
+                -   addColumn:
+                        schemaName: telemechanic
+                        tableName: ewb
+                        columns:
+                            -   column:
+                                    name: odometer_out
+                                    type: int
+                                    remarks: Показание одометра при выходе на линию
+    -   changeSet:
+            id: telemechanic/20241003-2
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_roles_to_ewb_odometer_and_close.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

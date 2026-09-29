@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20251021-1
+      author: burlakov-sv
+      changes:
+        - addColumn:
+            schemaName: dispatcher
+            tableName: vehicle
+            columns:
+              - column:
+                  name: transport_id
+                  type: uuid
+                  remarks: Идентификатор транспортного средства
+                  constraints:
+                    unique: true
+                    uniqueConstraintName: dispatcher_vehicle_transport_id_uc
+      rollback:
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: vehicle
+            columns:
+              - column:
+                  name: transport_id

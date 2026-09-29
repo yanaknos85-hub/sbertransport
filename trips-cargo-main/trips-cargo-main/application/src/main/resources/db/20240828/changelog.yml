@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240828"
+      author: chizhov-nd
+      changes:
+        - sql:
+            sql: alter table trips_cargo.trips alter column fact_cost type int4;
+      rollback:
+        - sql:
+            sql: alter table trips_cargo.trips alter column fact_cost type smallint;

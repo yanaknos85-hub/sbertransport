@@ -1,0 +1,131 @@
+.content {
+  padding: 10px 20px;
+
+  .title {
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .waypointContainer {
+    padding-bottom: 16px;
+
+    &:not(:last-of-type) {
+      border-bottom: 1px solid rgba(217, 217, 217, 0.4);
+    }
+  }
+
+  .waypoint {
+    margin-top: 16px;
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
+
+  .waypointIcon {
+    flex-shrink: 0;
+  }
+
+  .waypointTitle {
+    font-size: 12px;
+    color: #A8ABB3;
+  }
+
+  .address {
+    margin-top: 2px;
+    font-size: 16px;
+    letter-spacing: -0.32px;
+  }
+
+  .contact {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+
+    >* {
+      flex-shrink: 0;
+    }
+  }
+
+  .contactCenterBlock {
+    flex-grow: 1;
+  }
+
+  .waypointType {
+    padding: 3px 8px;
+    background-color: rgba(23, 211, 91, 0.15);
+    color: #19B150;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 11px;
+
+    &.unboarding {
+      background-color: rgba(105, 121, 247, 0.15);
+      color: #6979F7;
+    }
+  }
+
+  .name {
+    margin-top: 6px;
+    font-size: 14px;
+  }
+
+  .timeContainer {
+    margin-left: 52px;
+  }
+
+  .infoTitle {
+    font-size: 12px;
+    color: #A8ABB3;
+  }
+
+  .infoDesc {
+    margin-top: 4px;
+    font-size: 16px;
+  }
+
+  .actions {
+    margin-top: 32px;
+    display: flex;
+    gap: 8px;
+  }
+
+  .action {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ECECEC;
+    border-radius: 8px;
+  }
+
+  .startAction {
+    flex-grow: 1;
+    border-width: 2px;
+  }
+
+  .info {
+    --active-background-color: #F2F3F6;
+    --adm-color-background: #F2F3F6;
+    overflow: hidden;
+    border-radius: 16px;
+
+    :global(.adm-list) {
+      --active-background-color: #F2F3F6;
+      --adm-color-background: #F2F3F6;
+    }
+
+    :global(.adm-list-item-content-main) {
+      padding: 16px 18px;
+    }
+
+    :global(.adm-collapse-panel-content-inner .adm-list-item-content-main) {
+      padding: 0 18px 16px 18px;
+    }
+
+    :global(.adm-list-item-content-arrow) {
+      margin-right: 18px;
+    }
+  }
+}

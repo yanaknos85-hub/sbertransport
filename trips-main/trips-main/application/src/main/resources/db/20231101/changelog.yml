@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20231101"
+      author: blandin-ad
+      changes:
+        - addColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: autoassign_counter
+                  type: integer
+                  remarks: Номер итерации автоназначения водителя
+                  defaultOnNull: true
+                  defaultValue: 0
+      rollback:
+        - dropColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: autoassign_counter

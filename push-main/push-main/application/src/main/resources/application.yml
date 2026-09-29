@@ -1,0 +1,40 @@
+server:
+    port: @server.port@
+
+spring:
+    security:
+        oauth2:
+            resourceserver:
+                jwt:
+                    jws-algorithms: RS512
+                    jwk-set-uri: ${JWKS_URI}
+    config:
+      import: optional:configserver:${spring.cloud.config.uri}
+    application:
+        name: push
+        version: @project.version@
+    datasource:
+        driver-class-name: org.postgresql.Driver
+        username: postgres
+        password: root
+        type: com.zaxxer.hikari.HikariDataSource
+    liquibase:
+        enabled: true
+        change-log: db/changelog-master.yml
+        url: ${spring.datasource.url}
+        user: ${spring.datasource.username}
+        password: ${spring.datasource.password}
+        database-change-log-table: changelog_${spring.application.name}
+        database-change-log-lock-table: changelog_${spring.application.name}_lock
+        default-schema: ${spring.application.name}
+        liquibase-schema: ${MIGRATION_SCHEMA:public}
+android:
+    credentials:
+        path: ${ANDROID_CREDENTIALS_PATH:changeit}
+
+ios:
+    packageName: ${IOS_PACKAGE_NAME:ru.sberbank.transport}
+    development: ${IOS_DEVELOPMENT:false}
+    credentials:
+        password: ${IOS_CREDENTIALS_PASSWORD:changeit}
+        path: ${IOS_CREDENTIALS_PATH:changeit}

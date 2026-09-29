@@ -1,0 +1,27 @@
+application: geo
+repo: app_platform_geo
+serviceAccount: springboot-servicediscovery
+resources:
+  limits:
+    cpu: '1'
+    memory: 2G
+  requests:
+    cpu: 300m
+    memory: 1G
+port:
+  http:
+    number: 8006
+    name: geo
+    target: 8080
+routing:
+  match:
+    prefix: /api/geo/
+  rewrite:
+    uri: '/'
+secman:
+  type: built_in
+profiles: 2gis,kafka,kafka-ssl,kafka-avro,secman
+additional:
+  envs:
+    - name: SPRING_CLOUD_CONFIG_URI
+      value: http://http-config-server:8080

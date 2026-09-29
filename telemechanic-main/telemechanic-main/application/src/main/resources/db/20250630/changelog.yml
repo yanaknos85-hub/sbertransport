@@ -1,0 +1,29 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20250630-1
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/alter_ddl_ewb_contract_1.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250630-2
+            author: klyunkov-va
+            dbms: postgresql
+            context: "!test"
+            changes:
+                -   sqlFile:
+                        path: changes/alter_dml_ewb_contract.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250630-3
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/alter_ddl_ewb_contract_2.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

@@ -1,0 +1,71 @@
+server:
+  port: @server.port@
+  tomcat:
+    relaxed-query-chars:
+      - "["
+      - "]"
+
+spring:
+  config:
+    import: optional:configserver:${SPRING_CLOUD_CONFIG_URI}
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jws-algorithms: RS512
+          jwk-set-uri: ${JWKS_URI}
+  jackson:
+    serialization:
+      write_dates_as_timestamps: false
+  application:
+    name: oto-cargo
+  cloud:
+    vault:
+      enabled: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/transport
+    password: root
+    username: postgres
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 3
+      connection-test-query: SELECT 1
+      schema: oto_cargo
+  jpa:
+    properties:
+      hibernate:
+        search:
+          enabled: ${SEARCH_ENGINE_ENABLE:false}
+          automatic_indexing:
+            strategy: session
+          schema_management:
+            strategy: drop-and-create
+        jdbc:
+          batch_size: 25
+          lob:
+            non_contextual_creation: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: ${SHOW_SQL:false}
+    open-in-view: false
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog-master.yml
+    drop-first: false
+    test-rollback-on-update: false
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    database-change-log-table: changelog_${spring.application.name}
+    database-change-log-lock-table: changelog_${spring.application.name}_lock
+    liquibase-schema: ${MIGRATIONS_SCHEMA:public}
+  profiles:
+    active: prod
+  cache:
+    caffeine:
+      spec: expireAfterAccess=10m,expireAfterWrite=1h
+javamelody:
+  enabled: ${JAVAMELODY_ENABLED:false}
+  

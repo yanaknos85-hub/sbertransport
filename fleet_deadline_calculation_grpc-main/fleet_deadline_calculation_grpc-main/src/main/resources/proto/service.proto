@@ -1,0 +1,13 @@
+syntax = "proto3";
+option java_package = "ru.sber.transport.deadline.grpc.service";
+
+import "dto.proto";
+
+package ru.sber.transport.deadline.grpc.service;
+
+service DeadlineGrpcService {
+    rpc CalculateDeadline(ru.sber.transport.deadline.grpc.dto.DeadlineRequest)
+            returns (ru.sber.transport.deadline.grpc.dto.DeadlineResponse);
+    rpc ProlongateDeadline(ru.sber.transport.deadline.grpc.dto.ProlongationRequest)
+            returns (ru.sber.transport.deadline.grpc.dto.DeadlineResponse);
+}

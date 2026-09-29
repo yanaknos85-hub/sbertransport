@@ -1,0 +1,1 @@
+drop table request.request_integration_ext;

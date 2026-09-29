@@ -1,0 +1,31 @@
+.container {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.inner_cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+
+  :global(.ant-form-item) {
+    margin: 0;
+  }
+
+  :global(.ant-input-number) {
+    width: 100% !important;
+    max-width: 75px;
+    border-radius: 8px;
+  }
+
+  :global(.ant-input-number-handler-wrap) {
+    right: 4px;
+    border-right: solid 1px #d9d9d9;
+  }
+}
+
+.inner_span {
+  padding: 0;
+  margin: 0;
+}

@@ -1,0 +1,2 @@
+call migrations.fill_roles('contractors', 'PATCH /internal-auto-park/staff/{externalId}/', 'ROLE_DISPATCHER_ROOM_ADMIN', true);
+call migrations.fill_roles('contractors', 'PATCH /internal-auto-park/staff/{externalId}/', 'ROLE_MAIN_DISPATCHER_CONTRACTOR', true);

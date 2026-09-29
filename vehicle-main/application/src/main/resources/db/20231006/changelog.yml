@@ -1,0 +1,28 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20231006-1
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/create_type_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/20231006-2
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_access_to_type_operations.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/20231006-3
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_access_additional_operations.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

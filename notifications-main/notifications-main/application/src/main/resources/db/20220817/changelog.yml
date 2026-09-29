@@ -1,0 +1,12 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220817"
+            author: blandin-ad
+            changes:
+                -   sqlFile:
+                        path: changes/alter_column_type.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: rollback/alter_column_type.sql
+                        relativeToChangelogFile: true

@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20240222"
+            author: shabrov-ie
+            changes:
+                -   tagDatabase:
+                        tag: "20240222"
+                -   sqlFile:
+                        path: sql/create_group_transfer.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: sql/drop_group_transfer.sql
+                        relativeToChangelogFile: true

@@ -1,0 +1,18 @@
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-stacktrace: always
+    include-bindings: always
+spring:
+  config:
+    import: database.yml
+  cloud:
+    stream:
+      default-binder: integration
+  datasource:
+    username: postgres
+    url: jdbc:postgresql://localhost:${embedded.postgres.port}/testdb
+    password: postgres
+  liquibase:
+    contexts: test

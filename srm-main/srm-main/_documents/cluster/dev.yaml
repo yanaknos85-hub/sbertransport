@@ -1,0 +1,117 @@
+application: srm
+repo: app_passenger_srm
+resources:
+  limits:
+    cpu: 500m
+    memory: 1G
+  requests:
+    cpu: 500m
+    memory: 1G
+port:
+  http:
+    number: 8042
+    name: srm
+    target: 8080
+  grpc:
+    number: 6565
+    name: srm
+    target: 6565
+routing:
+  internal: true
+secman:
+  type: built_in
+profiles: kafka
+additional:
+  envs:
+    - name: DEADLINE_CHECK_PERIOD_CRON_LIMITS
+      valueFrom:
+        configMapKeyRef:
+          name: srm
+          key: deadline.check.period
+    - name: YANDEX_ROOT_URL
+      valueFrom:
+        configMapKeyRef:
+          name: srm
+          key: yandex.root.Url
+    - name: TWOGIS_ROOT_URL
+      valueFrom:
+        configMapKeyRef:
+          name: srm
+          key: twogis.root.Url
+    - name: TWOGIS_ROOT_URL_ASYNC
+      valueFrom:
+        configMapKeyRef:
+          name: srm
+          key: twogis.root.url.async
+    - name: TWOGIS_ROOT_URL_ASYNC_RESULT
+      valueFrom:
+        configMapKeyRef:
+          name: srm
+          key: twogis.root.url.async.result
+    - name: DRUG_UPDATEINFOURL
+      valueFrom:
+        configMapKeyRef:
+          name: srm
+          key: drug.UpdateInfo.Url
+    - name: DRUG_DELAYUPDATEINFOSEC
+      valueFrom:
+        configMapKeyRef:
+          name: srm
+          key: drug.UpdateInfo.DelaySec
+    - name: JWT_KEY_PUBLIC_PATH
+      value: /vault/secrets/jwt.public
+    - name: GIS_PROVIDER
+      value: twogis
+    - name: SHAREDRIDE_DEACTIVATE_CRON
+      value: '-'
+    - name: ASYNC_LEVEL
+      value: '24'
+    - name: SOWA_URL
+      value: 'https://tvlsg-mvp000192.sigma.sbrf.ru:6443'
+    - name: SPRING_CLOUD_CONFIG_URI
+      value: 'http://http-config-server:8080'
+  configMap:
+    - name: kafka-secman
+      data:
+        application-kafka-ssl.yml: |-
+          spring:
+            cloud:
+              vault:
+                namespace: CI02351878_CI02671580
+                authentication: kubernetes
+                kubernetes:
+                  role: ci02351878-edevgen-sbertransport-dev
+                  kubernetes-path: os/dev-terra000003-ids.ocp.delta.sbrf.ru
+                enabled: true
+                port: 443
+                host: t.secrets.delta.sbrf.ru
+            config:
+              import: 
+                - optional:vault://A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/application,kafka-ssl
+        application-kafka-avro.yml: |-
+          spring:
+            cloud:
+              vault:
+                namespace: CI02351878_CI02671580
+                authentication: kubernetes
+                kubernetes:
+                  role: ci02351878-edevgen-sbertransport-dev
+                  kubernetes-path: os/dev-terra000003-ids.ocp.delta.sbrf.ru
+                enabled: true
+                port: 443
+                host: t.secrets.delta.sbrf.ru
+            config:
+              import: 
+                - optional:vault://A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/application,kafka-avro
+  volumes:
+    - name: kafka-secman
+      configMap:
+        name: kafka-secman
+        defaultMode: 420
+  mounts:
+    - name: kafka-secman
+      mountPath: /app/resources/application-kafka-ssl.yml
+      subPath: application-kafka-ssl.yml
+    - name: kafka-secman
+      mountPath: /app/resources/application-kafka-avro.yml
+      subPath: application-kafka-avro.yml

@@ -1,0 +1,25 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20250226-1
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_table_driving_license.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: changes/rollback.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250226-2
+            author: makarovm-d
+            dbms: postgresql
+            context: "!test"
+            changes:
+                -   sqlFile:
+                        path: changes/fill_telemechanic_driving_license.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

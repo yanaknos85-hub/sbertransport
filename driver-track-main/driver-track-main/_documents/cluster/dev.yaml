@@ -1,0 +1,31 @@
+application: driver-track
+repo: app_platform_driver_track
+resources:
+  limits:
+    cpu: 200m
+    memory: 1G
+  requests:
+    cpu: 200m
+    memory: 1G
+port:
+  http:
+    number: 8080
+    name: driver-track
+    target: 8080
+  grpc:
+    number: 6565
+    name: driver-track
+routing:
+  match:
+    prefix: /api/track/driver
+  rewrite:
+    uri: ' '
+profiles: kafka,kafka-ssl
+secman:
+  type: built_in
+additional:
+  envs:
+    - name: SPRING_CLOUD_CONFIG_URI
+      value: http://http-config-server:8080
+    - name: CHECK_CONSENT
+      value: 'false'

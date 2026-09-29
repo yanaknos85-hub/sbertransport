@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250624-user-update
+      author: rakhimov-di
+      changes:
+        - sqlFile:
+            path: changes/user__drop_contact_info_and_add_fio_link.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            endDelimiter: ;
+  - changeSet:
+      id: 20250624-rules-update
+      author: matevosyan-aa
+      changes:
+        - sqlFile:
+            path: changes/rules__replace_point_fields_with_distance.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            endDelimiter: ;
+  - changeSet:
+      id: 20250624-contact-information-drop
+      author: matevosyan-aa
+      changes:
+        - sqlFile:
+            path: changes/contact_information__drop_table.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            endDelimiter: ;

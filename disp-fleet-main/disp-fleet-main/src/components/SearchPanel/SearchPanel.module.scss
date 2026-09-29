@@ -1,0 +1,70 @@
+.searchInput {
+  position: relative;
+  color: #adadad;
+  height: fit-content;
+  margin-right: 13px;
+
+  :global {
+
+    .ant-input-affix-wrapper .ant-input,
+    .ant-input {
+      height: 40px;
+      padding: 9px 0 9px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 22px;
+      background-color: var(--solitude);
+
+      &:hover {
+        background-color: var(--solitude);
+      }
+
+      &::placeholder {
+        font-size: 14px;
+      }
+    }
+
+    .ant-input-affix-wrapper:focus-within,
+    .ant-input-affix-wrapper .ant-input:focus,
+    .ant-input-affix-wrapper .ant-input:focus-visible {
+      outline: none;
+      box-shadow: none;
+      border-color: var(--solitude);
+    }
+
+    .ant-input-affix-wrapper {
+      border: none;
+    }
+
+    .ant-input-affix-wrapper:focus,
+    .ant-input-affix-wrapper:focus-within {
+      box-shadow: none;
+    }
+
+    .ant-input-group-addon {
+      background-color: var(--solitude);
+      border-color: var(--solitude);
+
+      svg {
+        color: #adadad;
+      }
+    }
+
+    .ant-input-group-addon .ant-input-search-button {
+      background-color: var(--solitude);
+      border-color: var(--solitude);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+    }
+
+    .ant-input-group-addon {
+      width: 40px;
+    }
+
+    .searchIcon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

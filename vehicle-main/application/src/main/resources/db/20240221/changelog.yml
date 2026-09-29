@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20240221-1
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_access_to_search_vehicle_operation.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

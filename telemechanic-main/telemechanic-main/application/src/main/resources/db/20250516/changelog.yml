@@ -1,0 +1,96 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20250516-1
+            author: makarov-md
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/ddl_category.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250516-2
+            author: makarov-md
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/ddl_driving_license.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250516-3
+            author: makarov-md
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/ddl_driving_license_category.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250516-4
+            author: makarov-md
+            dbms: postgresql
+            context: "!test"
+            changes:
+                -   sqlFile:
+                        path: changes/synchronization_category_data.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250516-5
+            author: makarov-md
+            dbms: postgresql
+            context: "!test"
+            changes:
+                -   sqlFile:
+                        path: changes/synchronization_driving_license_data.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250516-6
+            author: makarov-md
+            dbms: postgresql
+            context: "!test"
+            changes:
+                -   sqlFile:
+                        path: changes/synchronization_driving_license_category_date.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250516-7
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/alter_ddl_fleet_owner_organization.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250516-8
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/alter_ddl_ewb_tariff.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250516-9
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/alter_ddl_organization_medical_license.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250516-10
+            author: klyunkov-va
+            dbms: postgresql
+            context: "!test"
+            changes:
+                -   sqlFile:
+                        path: changes/add_dml_fleet_owner_organization.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    

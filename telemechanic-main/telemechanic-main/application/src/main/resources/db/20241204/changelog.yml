@@ -1,0 +1,19 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20241204-1
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_roles_form_title_telemech_out.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20241204-2
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_column_ewb_qr_code.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

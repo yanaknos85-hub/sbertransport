@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250625-1630"
+      author: khalikov-ma
+      context: "TRANSPORT-32834"
+      changes:
+        - tagDatabase:
+            tag: "D-04.010.000"
+        - addColumn:
+            schemaName: ${schema_name}
+            tableName: employee
+            columns:
+              - column:
+                  name: cost_center
+                  type: varchar(255)
+                  remarks: Место возникновения затрат (МВЗ)

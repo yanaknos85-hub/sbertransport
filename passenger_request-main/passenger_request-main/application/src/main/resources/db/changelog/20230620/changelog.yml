@@ -1,0 +1,142 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230620"
+            author: shabrov-ie
+            changes:
+                -   tagDatabase:
+                        tag: "20230620"
+                -   createTable:
+                        schemaName: request
+                        tableName: carsharing_external_data
+                        columns:
+                            -   column:
+                                    name: id
+                                    type: uuid
+                                    remarks: id
+                                    constraints:
+                                        primaryKey: true
+                            -   column:
+                                    name: organization_id
+                                    type: uuid
+                                    remarks: Ид организации
+                                    constraints:
+                                        nullable: false
+                            -   column:
+                                    name: contractor_id
+                                    type: uuid
+                                    remarks: Ид кортрагента
+                                    constraints:
+                                        nullable: false
+                            -   column:
+                                    name: ext_organization_id
+                                    type: integer
+                                    remarks: Внешний ид организации
+                                    constraints:
+                                        nullable: false
+                            -   column:
+                                    name: ext_group_id
+                                    type: integer
+                                    remarks: Внешний ид группы
+                                    constraints:
+                                        nullable: false
+            rollback:
+                -   dropTable:
+                        schemaName: request
+                        tableName: carsharing_external_data
+    -   changeSet:
+            id: "20230620-1"
+            author: shabrov-ie
+            changes:
+                -   tagDatabase:
+                        tag: "20230620-1"
+                -   addColumn:
+                        schemaName: request
+                        tableName: carsharing_info
+                        columns:
+                            -   column:
+                                    name: created
+                                    type: timestamp
+                                    remarks: Дата создания
+    -   changeSet:
+            id: "20230620-2"
+            author: shabrov-ie
+            changes:
+                -   tagDatabase:
+                        tag: "20230620-2"
+                -   createTable:
+                        schemaName: request
+                        tableName: carsharing_data
+                        columns:
+                            -   column:
+                                    type: uuid
+                                    name: id
+                                    constraints:
+                                        primaryKey: true
+                            -   column:
+                                    type: uuid
+                                    name: request_id
+                            -   column:
+                                    type: integer
+                                    name: rent_id
+                            -   column:
+                                    type: text
+                                    name: car_model
+                            -   column:
+                                    type: text
+                                    name: car_number
+                            -   column:
+                                    type: jsonb
+                                    name: start_point
+                            -   column:
+                                    type: timestamp
+                                    name: rent_created_at
+                            -   column:
+                                    type: double precision
+                                    name: total_cost
+                            -   column:
+                                    type: integer
+                                    name: driving_time
+                            -   column:
+                                    type: double precision
+                                    name: driving_time_cost
+                            -   column:
+                                    type: integer
+                                    name: driving_length
+                            -   column:
+                                    type: double precision
+                                    name: driving_length_cost
+                            -   column:
+                                    type: integer
+                                    name: parking_time
+                            -   column:
+                                    type: double precision
+                                    name: parking_time_cost
+                            -   column:
+                                    type: integer
+                                    name: reserve_time
+                            -   column:
+                                    type: double precision
+                                    name: reserve_time_cost
+                            -   column:
+                                    type: jsonb
+                                    name: finish_point
+                            -   column:
+                                    type: timestamp
+                                    name: rent_finished_at
+                            -   column:
+                                    type: timestamp
+                                    name: created
+                            -   column:
+                                    type: timestamp
+                                    name: updated
+                -   createIndex:
+                        columns:
+                            -   column:
+                                    name: rent_id
+                        schemaName: request
+                        tableName: carsharing_data
+                        indexName: carsharing_data_rent_id_idx
+            rollback:
+                -   dropTable:
+                        schemaName: request
+                        tableName: carsharing_data

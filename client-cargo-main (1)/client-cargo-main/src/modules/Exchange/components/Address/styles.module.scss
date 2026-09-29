@@ -1,0 +1,242 @@
+.addressMainDiv {
+  display: flex;
+}
+
+.addressTitle {
+  font-family: 'SB Sans Interface', serif, sans-serif;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.addressMainDivDetailed {
+  display: flex;
+  min-height: 52px;
+}
+
+.addressMainDivDetailedJournal {
+  display: flex;
+  //min-height: 52px;
+}
+
+.addressCircleSpacer1 {
+  margin-left: -10.5px;
+  margin-top: 18px;
+  min-height: 35px;
+  width: 3px;
+  position: relative;
+  top: 0;
+  background: linear-gradient(#10bf6a, #c2c2c2);
+  z-index: 2;
+}
+
+.addressCircleSpacer2 {
+  margin-left: -10.5px;
+  height: 50px;
+  width: 3px;
+  position: relative;
+  background: #c2c2c2;
+}
+
+.addressCircleSpacerLast{
+  margin-left: -10.5px;
+  margin-bottom: 0;
+  width: 3px;
+  position: relative;
+  background: linear-gradient(#c2c2c2, #6979f7);
+  height: 35px;
+  top: -35px;
+}
+
+.addressCircleSpacerDetailed {
+  height: 90px;
+  top: -80px;
+}
+
+.addressCircle {
+  background: #c2c2c2;
+  font-family: 'SB Sans Interface', serif, sans-serif;
+  font-style: normal;
+  width: 18px;
+  height: 18px;
+  text-align: center;
+  color: white;
+  font-size: 10px;
+  line-height: 12px;
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.addressCircleFirst {
+  background: #10bf6a;
+}
+
+.addressCircleLast {
+  background: #6979f7;
+}
+
+.addressCircleFirstMargin {
+  margin-top: 10px;
+}
+
+.addressCircleLastMargin {
+  margin-top: 34px;
+}
+
+.addressDiv {
+  display: grid;
+  position: relative;
+  left: 16px;
+  padding-right: 4px;
+}
+
+.addressDiv2 {
+  top: 20px;
+}
+
+.addressString1 {
+  font-family: 'SB Sans Interface', serif, sans-serif;
+  font-size: 12px;
+  line-height: 14px;
+  color: #adadad;
+  mix-blend-mode: normal;
+}
+
+.addressString2 {
+  font-family: 'SB Sans Interface', serif, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.32px;
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 12px;
+  color: rgb(115, 115, 115);
+  font-family: 'SB Sans Text', serif, sans-serif;
+}
+
+.addressStringCollapsed {
+  flex-direction: row;
+}
+
+/* TODO проверить на необходимость использования
+.buttonsBlock {
+  display: flex;
+  margin-left: auto;
+  margin-right: 0;
+  margin-top: auto;
+} */
+
+.address {
+  width: 100%;
+}
+
+.addressFullName {
+  margin-top: 9px;
+  font-family: 'SB Sans Text', serif, sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.3px;
+  color: #262626;
+}
+.addressContactName{
+  margin-top: 9px;
+  font-family: 'SB Sans Text', serif, sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.3px;
+  color: #262626;
+}
+
+.addressMobilePhone {
+  font-family: 'SB Sans Text', serif, sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.3px;
+  color: #737373;
+}
+
+.addressOrganization {
+  font-family: 'SB Sans Text', serif, sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+  color: #909090;
+}
+
+.additionalAddressesButton {
+  position: relative;
+  padding: 5px 15px;
+  top: -4px;
+  right: 4px;
+  font-family: 'SB Sans Text', serif, sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  align-items: center;
+  text-align: right;
+  letter-spacing: -0.243077px;
+  color: #10bf6a;
+  cursor: pointer;
+}
+
+.showAdditionalAddressesButton {
+  position: relative;
+  top: -4px;
+  right: 4px;
+  font-family: 'SB Sans Text', serif, sans-serif;
+  font-size: 12px;
+  line-height: 22px;
+  align-items: center;
+  text-align: right;
+  letter-spacing: -0.243077px;
+  color: #10bf6a;
+}
+.hideAdditionalAddressesButton {
+  position: relative;
+  top: -4px;
+  right: -70px;
+  font-family: 'SB Sans Text', serif, sans-serif;
+  font-size: 12px;
+  line-height: 22px;
+  align-items: center;
+  text-align: right;
+  letter-spacing: -0.243077px;
+  color: #10bf6a;
+}
+
+.addressTypePoint {
+  position: static;
+  width: 65px;
+  height: 22px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 4px;
+  background: rgb(242, 242, 242);
+  color: rgb(122, 122, 130);
+  font-family: 'SB Sans Interface', serif, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.contact {
+  display: block;
+  color: #8F9196;
+}

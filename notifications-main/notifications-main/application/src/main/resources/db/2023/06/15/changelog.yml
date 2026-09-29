@@ -1,0 +1,508 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230615-1007"
+      author: medvedev-ad
+      context: "20230615"
+      changes:
+        - tagDatabase:
+            tag: "20230615"
+        - modifyDataType:
+            schemaName: notifications_approve
+            tableName: trip
+            columnName: approve_status
+            newDataType: varchar(9)
+        - update:
+            schemaName: notifications_approve
+            tableName: trip
+            columns:
+              - column:
+                  name: approve_status
+                  value: NEW
+            where: approve_status = '0'
+        - update:
+            schemaName: notifications_approve
+            tableName: trip
+            columns:
+              - column:
+                  name: approve_status
+                  value: NEW
+            where: approve_status is null
+        - update:
+            schemaName: notifications_approve
+            tableName: trip
+            columns:
+              - column:
+                  name: approve_status
+                  value: EDIT
+            where: approve_status = '1'
+        - update:
+            schemaName: notifications_approve
+            tableName: trip
+            columns:
+              - column:
+                  name: approve_status
+                  value: APPROVED
+            where: approve_status = '2'
+        - update:
+            schemaName: notifications_approve
+            tableName: trip
+            columns:
+              - column:
+                  name: approve_status
+                  value: DECLINED
+            where: approve_status = '3'
+        - update:
+            schemaName: notifications_approve
+            tableName: trip
+            columns:
+              - column:
+                  name: approve_status
+                  value: CANCELLED
+            where: approve_status = '4'
+        - addDefaultValue:
+            schemaName: notifications_approve
+            tableName: trip
+            columnName: approve_status
+            defaultValue: NEW
+      rollback:
+        - dropDefaultValue:
+            schemaName: notifications_approve
+            tableName: trip
+            columnName: approve_status
+        - update:
+            schemaName: notifications_approve
+            tableName: trip
+            columns:
+              - column:
+                  name: approve_status
+                  valueNumeric: 0
+            where: approve_status = 'NEW'
+        - update:
+            schemaName: notifications_approve
+            tableName: trip
+            columns:
+              - column:
+                  name: approve_status
+                  valueNumeric: 1
+            where: approve_status = 'EDIT'
+        - update:
+            schemaName: notifications_approve
+            tableName: trip
+            columns:
+              - column:
+                  name: approve_status
+                  valueNumeric: 2
+            where: approve_status = 'APPROVED'
+        - update:
+            schemaName: notifications_approve
+            tableName: trip
+            columns:
+              - column:
+                  name: approve_status
+                  valueNumeric: 3
+            where: approve_status = 'DECLINED'
+        - update:
+            schemaName: notifications_approve
+            tableName: trip
+            columns:
+              - column:
+                  name: approve_status
+                  valueNumeric: 4
+            where: approve_status = 'CANCELLED'
+        - modifyDataType:
+            schemaName: notifications_approve
+            tableName: trip
+            columnName: approve_status
+            newDataType: smallint
+  - changeSet:
+      id: "20230615-1020"
+      author: medvedev-ad
+      context: "20230615"
+      changes:
+        - tagDatabase:
+            tag: "20230615"
+        - modifyDataType:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columnName: approval_state
+            newDataType: varchar(17)
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: approval_state
+                  value: AWAITING_APPROVAL
+            where: approval_state = '0'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: approval_state
+                  value: APPROVED
+            where: approval_state is null
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: approval_state
+                  value: DECLINED
+            where: approval_state = '1'
+        - addDefaultValue:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columnName: approval_state
+            defaultValue: AWAITING_APPROVAL
+      rollback:
+        - dropDefaultValue:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columnName: approval_state
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: approval_state
+                  valueNumeric: 0
+            where: approval_state = 'AWAITING_APPROVAL'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: approval_state
+                  valueNumeric: 1
+            where: approval_state = 'APPROVED'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: approval_state
+                  valueNumeric: 2
+            where: approval_state = 'DECLINED'
+        - modifyDataType:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columnName: approval_state
+            newDataType: smallint
+  - changeSet:
+      id: "20230615-1024"
+      author: medvedev-ad
+      context: "20230615"
+      changes:
+        - tagDatabase:
+            tag: "20230615"
+        - modifyDataType:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columnName: limit_type
+            newDataType: varchar(10)
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: limit_type
+                  value: DEPARTMENT
+            where: limit_type = '0'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: limit_type
+                  value: EMPLOYEE
+            where: limit_type = '1'
+      rollback:
+        - dropDefaultValue:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columnName: limit_type
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: limit_type
+                  valueNumeric: 0
+            where: limit_type = 'DEPARTMENT'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: limit_type
+                  valueNumeric: 1
+            where: limit_type = 'EMPLOYEE'
+        - modifyDataType:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columnName: limit_type
+            newDataType: smallint
+  - changeSet:
+      id: "20230615-1027"
+      author: medvedev-ad
+      context: "20230615"
+      changes:
+        - tagDatabase:
+            tag: "20230615"
+        - modifyDataType:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columnName: transport_type
+            newDataType: varchar(16)
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 0
+            where: transport_type = 'TAXI'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 1
+            where: transport_type = 'PERSONAL'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 2
+            where: transport_type = 'PUBLIC'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 3
+            where: transport_type = 'CARSHARING'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 4
+            where: transport_type = 'BICYCLE'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 5
+            where: transport_type = 'WALK'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 6
+            where: transport_type = 'SCOOTER'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 7
+            where: transport_type = 'DEDICATED'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 8
+            where: transport_type = 'COURIER'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  value: DOMESTIC_COURIER
+            where: transport_type = '9'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 10
+            where: transport_type = 'INTERREGIONAL'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 11
+            where: transport_type = 'OFFICIAL'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 12
+            where: transport_type = 'PRIVATE'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 13
+            where: transport_type = 'SPECIAL'
+      rollback:
+        - dropDefaultValue:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columnName: transport_type
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 0
+            where: transport_type = 'TAXI'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 1
+            where: transport_type = 'PERSONAL'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 2
+            where: transport_type = 'PUBLIC'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 3
+            where: transport_type = 'CARSHARING'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 4
+            where: transport_type = 'BICYCLE'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 5
+            where: transport_type = 'WALK'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 6
+            where: transport_type = 'SCOOTER'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 7
+            where: transport_type = 'DEDICATED'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 8
+            where: transport_type = 'COURIER'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 9
+            where: transport_type = 'DOMESTIC_COURIER'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 10
+            where: transport_type = 'INTERREGIONAL'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 11
+            where: transport_type = 'OFFICIAL'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 12
+            where: transport_type = 'PRIVATE'
+        - update:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columns:
+              - column:
+                  name: transport_type
+                  valueNumeric: 13
+            where: transport_type = 'SPECIAL'
+        - modifyDataType:
+            schemaName: notifications_limits
+            tableName: approve_limit_request
+            columnName: transport_type
+            newDataType: smallint
+  - changeSet:
+      id: "20230615-1309"
+      author: medvedev-ad
+      context: "20230615"
+      changes:
+        - tagDatabase:
+            tag: "20230615"
+        - renameColumn:
+            schemaName: notifications_request
+            tableName: driver
+            oldColumnName: firstname
+            newColumnName: first_name
+        - renameColumn:
+            schemaName: notifications_request
+            tableName: driver
+            oldColumnName: lastname
+            newColumnName: last_name

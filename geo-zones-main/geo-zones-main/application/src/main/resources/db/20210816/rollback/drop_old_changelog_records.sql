@@ -1,0 +1,1 @@
+create table public.databasechangelog as (select * from public.changelog_geo_zones);

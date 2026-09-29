@@ -1,0 +1,10 @@
+target
+.flattened-pom.xml
+.gigaide
+.idea
+allure-results
+application-local.yml
+.mvn
+/GIGACODE.md
+/.gigacode/settings.json
+/.gigacode/settings.json.orig

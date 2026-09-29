@@ -1,0 +1,51 @@
+@import 'styles/variables.scss';
+
+.vehicleConfirm {
+  padding: 20px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: $pale-grey;
+  margin-top: 8px;
+}
+
+.content {
+  text-align: center;
+  width: 100%;
+}
+
+.img {
+  margin-top: 18px;
+  width: 182px;
+}
+
+.name {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.number {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.textButton {
+  display: block;
+  padding: 7px;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: black;
+  text-decoration: none;
+}
+
+.confirmButton {
+  margin-top: 20px;
+  width: 100%;
+}

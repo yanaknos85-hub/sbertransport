@@ -1,0 +1,22 @@
+.actionsColumn {
+  min-width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .confirmEditingIcon,
+  .startEditingIcon {
+    display: inline-block;
+    cursor: pointer;
+    color: var(--jade);
+  }
+
+  & > * {
+    margin-right: 8px;
+  }
+
+  .delete,
+  .cancelEditing {
+    color: var(--error-color);
+  }
+}

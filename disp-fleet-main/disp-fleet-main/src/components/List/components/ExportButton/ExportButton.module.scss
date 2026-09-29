@@ -1,0 +1,13 @@
+.exportButton {
+  background-color: var(--solitude);
+  color: var(--dark-grey);
+  border: none;
+  font-weight: 600;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: var(--solitude);
+    color: var(--dark-grey);
+  }
+}

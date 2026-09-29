@@ -1,0 +1,21 @@
+databaseChangeLog:
+    -   changeSet:
+            id: request/20210831-1
+            author: palekseev
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/add_contractor_integration_fields.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+                -   sqlFile:
+                        path: change/add_taxi_tariff_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/rollback_add_contractor_integration_fields.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        path: rollback/rollback_add_taxi_tariff_table.sql
+                        relativeToChangelogFile: true

@@ -1,0 +1,42 @@
+.mainDiv {
+  display: flex;
+  flex-grow: 2;
+}
+
+.authorInfoDiv {
+  margin-left: 12px;
+}
+
+.fullNameString {
+  font-family: 'SB Sans Text', serif, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.3px;
+  color: #000000;
+}
+
+.position {
+  margin-top: 4px;
+  font-family: 'SB Sans Text', serif, sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.3px;
+  color: #909090;
+}
+
+.personnelNumber {
+  margin-top: 2px;
+  letter-spacing: -0.3px;
+  color: #a1a2a6;
+  font-family: SB Sans Text;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.buttonsDiv {
+  display: flex;
+  margin-left: auto;
+  margin-right: 0;
+}

@@ -1,0 +1,28 @@
+$heightInput: 40px;
+
+.select {
+  :global(.ant-select-arrow) {
+    color: #000;
+  }
+
+  :global(.ant-select-selector),
+  :global(input.ant-select-selection-search-input) {
+    min-height: $heightInput !important;
+    border-radius: 8px !important;
+  }
+
+  :global(.ant-select-selector) {
+    display: flex;
+    align-items: center;
+  }
+
+  :global(.ant-select-selection-item) {
+    padding-right: 22px !important;
+  }
+
+  :global(.ant-select-arrow) {
+    :global(svg) {
+      transform: scale(1.1, 0.75);
+    }
+  }
+}

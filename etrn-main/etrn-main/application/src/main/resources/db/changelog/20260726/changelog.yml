@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-etrn
+      author: mabatov-nv
+      changes:
+        - sqlFile:
+            path: change/001-create-etrn.sql
+            relativeToChangelogFile: true
+            splitStatements: false

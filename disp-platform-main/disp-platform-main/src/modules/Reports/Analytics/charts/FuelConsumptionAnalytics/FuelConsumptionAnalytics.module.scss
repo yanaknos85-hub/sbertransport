@@ -1,0 +1,33 @@
+.actions {
+  width: 135px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: var(--solitude);
+  border-radius: 8px;
+  padding: 4px;
+  margin: 0 auto;
+
+  .indicator {
+    width: 63px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: SB Sans Text;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+    color: var(--pale-grey);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &Active {
+      background-color: var(--white);
+      color: var(--dark-grey);
+    }
+  }
+}

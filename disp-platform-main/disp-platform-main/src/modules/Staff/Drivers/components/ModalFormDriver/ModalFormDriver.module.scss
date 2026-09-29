@@ -1,0 +1,116 @@
+$heightInput: 40px;
+
+.modal {
+  width: 80vw !important;
+  min-width: 600px;
+  border-radius: 12px;
+  overflow: hidden;
+
+  :global(.ant-modal-content) {
+    border-radius: 12px;
+  }
+
+  :global(.ant-modal-header),
+  :global(.ant-modal-footer) {
+    border: none;
+  }
+
+  :global(.ant-modal-title) {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+  }
+
+  .cancelButton {
+    border-color: transparent;
+  }
+
+  :global(.ant-btn) {
+    border-radius: 8px;
+    padding: 0 20px;
+    height: 40px;
+  }
+}
+
+.filtersForm {
+  display: grid;
+  row-gap: 20px;
+  column-gap: 20px;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 20px;
+  overflow-x: auto;
+  height: fit-content;
+  align-items: stretch;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .formItem {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    max-width: 250px;
+
+    :global(.ant-form-item-control) {
+      min-height: fit-content;
+    }
+
+    @media (max-width: 1100px) {
+      max-width: 200px;
+    }
+
+    .input {
+      height: $heightInput;
+      border-radius: 8px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      :global(.ant-input-number-input-wrap) {
+        width: 100%;
+      }
+    }
+
+    .select {
+      min-height: $heightInput;
+
+      :global(.ant-select-arrow) {
+        color: #000;
+      }
+
+      :global(.ant-select-selector),
+      :global(input.ant-select-selection-search-input) {
+        min-height: 38px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+      }
+
+      :global(.ant-select-selector) {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+
+      :global(.ant-select-selection-search) {
+        margin: 0;
+      }
+    }
+
+    :global(.ant-form-item-label) {
+      text-align: left;
+      width: 100%;
+
+      label {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        display: block;
+        &::after {
+          content: "";
+        }
+      }
+    }
+  }
+}

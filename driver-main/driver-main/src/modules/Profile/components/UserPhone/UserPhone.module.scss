@@ -1,0 +1,37 @@
+@import 'styles/variables.scss';
+
+.userPhone {
+  margin: 20px;
+
+  .phoneWrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .contactPhone {
+      display: flex;
+      flex-direction: column;
+      font-family: 'SB Sans Text';
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: -0.3px;
+      color: $dark-grey;
+    }
+
+    .phoneLabel {
+      font-family: SB Sans Interface;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: -0.2px;
+      color: $gray;
+    }
+
+    .editIcon {
+      margin-left: auto;
+    }
+  }
+
+  .btn {
+    margin-top: 20px;
+  }
+}

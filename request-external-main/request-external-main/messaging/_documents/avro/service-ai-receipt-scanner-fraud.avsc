@@ -1,0 +1,21 @@
+{
+  "type": "record",
+  "name": "FraudMessage",
+  "namespace": "ru.sber.transport.messages.ai_receipt_scanner.avro",
+  "doc": "Данные сообщения о потенциальном фроде",
+  "fields": [
+    {
+      "name": "id",
+      "aliases": [ "headerId" ],
+      "doc": "Идентификатор заявки",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    }, {
+      "name": "comment",
+      "doc": "Комментарий агента о подозрении на фрод",
+      "type": "string"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package ru.sber.transport.geo.grpc.service;
+option java_package = "ru.sber.transport.geo.grpc.service";
+
+import "proto/geo/dto/GeoDescriptor.proto";
+
+service GeoService {
+
+  rpc GetAddress(ru.sber.transport.geo.grpc.dto.AddressRequestString) returns (stream ru.sber.transport.geo.grpc.dto.AddressResponse);
+
+  rpc GetAddressCoords(ru.sber.transport.geo.grpc.dto.AddressRequestCoordinates) returns (stream ru.sber.transport.geo.grpc.dto.AddressResponse);
+
+  rpc GetRoute(ru.sber.transport.geo.grpc.dto.RouteRequest) returns (stream ru.sber.transport.geo.grpc.dto.RouteResponse);
+
+  rpc GetRouteByCoords(ru.sber.transport.geo.grpc.dto.RouteRecreationRequest) returns (ru.sber.transport.geo.grpc.dto.RouteResponse);
+}

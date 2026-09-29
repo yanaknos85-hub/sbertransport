@@ -1,0 +1,15 @@
+### Общие настройки
+CODEOWNERS.toplevel.auto_unapprove_on_change enable
+CODEOWNERS.toplevel.create_pull_request_comment disable
+
+### Группы пользователей
+@@@Developers AENikandrov@sberbank.ru MVySmirnova@sberbank.ru NVMabatov@sberbank.ru Belov.A.Vikt@sberbank.ru
+
+### Владение файлами
+**/*.* @@Developers
+*.* @@Developers
+
+CODEOWNERS AENikandrov@sberbank.ru MVySmirnova@sberbank.ru NVMabatov@sberbank.ru Belov.A.Vikt@sberbank.ru
+
+### Необходимые проверки
+AllGroupsCheck(1)

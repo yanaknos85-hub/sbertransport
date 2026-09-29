@@ -1,0 +1,78 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "240726-1"
+            author: shabrov-ie
+            changes:
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_personal
+                        columns:
+                            -   column:
+                                    type: text
+                                    name: comment_for_purpose
+                                    remarks: Комментарий к цели
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            -   column:
+                                    type: text
+                                    name: comment_for_purpose
+                                    remarks: Комментарий к цели
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columns:
+                            -   column:
+                                    type: text
+                                    name: comment_for_purpose
+                                    remarks: Комментарий к цели
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    type: text
+                                    name: comment_for_purpose
+                                    remarks: Комментарий к цели
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_group_transfer
+                        columns:
+                            -   column:
+                                    type: text
+                                    name: comment_for_purpose
+                                    remarks: Комментарий к цели
+                -   addColumn:
+                        schemaName: request_audit
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    type: text
+                                    name: comment_for_purpose
+                                    remarks: Комментарий к цели
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_personal
+                        columnName: comment_for_purpose
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columnName: comment_for_purpose
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columnName: comment_for_purpose
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        columnName: comment_for_purpose
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_group_transfer
+                        columnName: comment_for_purpose
+                -   dropColumn:
+                        schemaName: request_audit
+                        tableName: request_for_public
+                        columnName: comment_for_purpose

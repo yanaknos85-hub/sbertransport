@@ -1,0 +1,9 @@
+databaseChangeLog:
+  -   changeSet:
+        id: 20260402-1
+        author: belov-av
+        dbms: postgresql
+        changes:
+          -   sqlFile:
+                path: change/drop_constraints.sql
+                relativeToChangelogFile: true

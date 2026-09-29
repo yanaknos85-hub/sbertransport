@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20260128-1508
+      author: blandin-ad
+      changes:
+        - addColumn:
+            schemaName: dispatcher
+            tableName: vehicle
+            columns:
+              - column:
+                  name: type
+                  type: text
+                  remarks: Тип транспорта
+              - column:
+                  name: subtype
+                  type: text
+                  remarks: Подтип транспорта
+      rollback:
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: vehicle
+            columns:
+              - column:
+                  name: type
+              - column:
+                  name: subtype
+  - changeSet:
+      id: 20260129-1309
+      author: blandin-ad
+      changes:
+        - sql:
+            sql: comment on column dispatcher.vehicle.vehicle_type is 'Тип перевозки';
+      rollback:
+        - sql:
+            sql: comment on column dispatcher.vehicle.vehicle_type is 'Тип автомобиля';

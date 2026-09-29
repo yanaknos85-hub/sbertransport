@@ -1,0 +1,17 @@
+### Вход
+
+POST {{host}}/auth/login
+Accept: application/json
+Authorization: Basic {{user}}:{{password}} # Имя пользователя и пароль необходимо положить в файл http-client.private.env.json. Пример - http-client.private.env.json.example. Получившийся файл НЕ НАДО добавлять в гит
+
+> {%
+client.global.set("auth_token", response.body.token);
+client.global.set("refresh_token", response.body.refreshToken);
+%}
+
+### Запрос типов транспорта грузов
+
+GET {{host}}/cargo-transport-types/
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+Accept: application/json

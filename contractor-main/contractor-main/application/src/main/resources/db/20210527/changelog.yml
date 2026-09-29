@@ -1,0 +1,52 @@
+databaseChangeLog:
+    -   changeSet:
+            id: contractor/20210527
+            context: "20210527"
+            author: medvedev-ad
+            dbms: postgresql
+            changes:
+                - createTable:
+                      schemaName: contractors
+                      tableName: messages_geo_zone
+                      columns:
+                          - column:
+                                name: id
+                                type: uuid
+                                remarks: Идентификатор
+                                constraints:
+                                    primaryKey: true
+                                    primaryKeyName: geo_zone_pkey
+                          - column:
+                                name: code
+                                type: int8
+                                remarks: Код геозоны
+                                constraints:
+                                    nullable: false
+                          - column:
+                                name: name
+                                type: text
+                                remarks: Название геозоны
+                                constraints:
+                                    nullable: false
+                          - column:
+                                name: parent_id
+                                type: uuid
+                                remarks: Идентификатор родительской геозоны
+                - createTable:
+                      schemaName: contractors
+                      tableName: contractor_region
+                      columns:
+                          - column:
+                                name: contractor_id
+                                type: uuid
+                                constraints:
+                                    nullable: false
+                                    foreignKeyName: contractor_region_fkey
+                                    referencedTableSchemaName: contractors
+                                    referencedTableName: contractor
+                                    referencedColumnNames: id
+                          - column:
+                                name: region_id
+                                type: uuid
+                                constraints:
+                                    nullable: false

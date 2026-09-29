@@ -1,0 +1,55 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250703-rename-subtype
+      author: rakhimov-di
+      changes:
+        - sqlFile:
+            path: changes/rename_sub_type_to_class_names.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            endDelimiter: ;
+  - changeSet:
+      id: 20250703-alter-id-default
+      author: rakhimov-di
+      changes:
+        - sqlFile:
+            path: changes/alter_id_default.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            endDelimiter: ;
+  - changeSet:
+      id: 20250703-insert-transport-types
+      author: rakhimov-di
+      changes:
+        - sqlFile:
+            path: changes/insert_transport_types.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            endDelimiter: ;
+  - changeSet:
+      id: 20250703-alter-status-and-insert-statuses
+      author: rakhimov-di
+      changes:
+        - sqlFile:
+            path: changes/alter_status_table_and_insert_statuses.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            endDelimiter: ;
+  - changeSet:
+      id: 20250703-alter-trip-type-and-insert-trips
+      author: rakhimov-di
+      changes:
+        - sqlFile:
+            path: changes/alter_trip_type_table_and_insert_trips.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            endDelimiter: ;
+  - changeSet:
+      id: 20250703-alter-point-lead-remove-not-null
+      author: rakhimov-di
+      changes:
+        - sqlFile:
+            path: changes/alter_point_lead_remove_not_null.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            endDelimiter: ;

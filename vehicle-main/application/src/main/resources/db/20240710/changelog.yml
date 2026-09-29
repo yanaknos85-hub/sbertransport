@@ -1,0 +1,31 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20240710-1
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_roles.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/20240710-2
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   dropIndex:
+                        schemaName: vehicle
+                        tableName: attorney
+                        indexName: attorney_telemechanic_id_udx
+    -   changeSet:
+            id: vehicle/20240710-3
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   createIndex:
+                        schemaName: vehicle
+                        tableName: attorney
+                        column:
+                            name: attorney_id
+                        indexName: attorney_id_udx
+                        unique: true

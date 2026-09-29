@@ -1,0 +1,19 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20240929-1
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_roles_get_ewb_request.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20240929-2
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_column_mileage_vehicle.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

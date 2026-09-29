@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250715-drop_address_not_null_columns
+      author: rakhimov-di
+      changes:
+        - sqlFile:
+            path: changes/drop_address_not_null_columns.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            endDelimiter: ;

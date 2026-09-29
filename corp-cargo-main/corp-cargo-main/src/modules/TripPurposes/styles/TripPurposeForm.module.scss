@@ -1,0 +1,168 @@
+.labelColLayout {
+  span: 6;
+  offset: 0;
+}
+
+.nameField {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.conditionSelect {
+  width: 90%;
+  margin-right: 10px;
+}
+
+.customSelect {
+  &:global(.ant-select:not(.ant-select-customize-input) .ant-select-selector) {
+    border-radius: 8px;
+    height: 40px;
+    min-width: 250px;
+    display: flex;
+    font-size: 14px;
+    line-height: 22px;
+
+    & > * {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.formItem {
+  :global(.ant-form-item-control-input-content) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.datePicker {
+  width: 75%;
+  margin-bottom: 10px;
+}
+
+.addDatePicker {
+  margin-left: 10px;
+}
+
+.timePicker {
+  width: 75%;
+}
+
+.underline {
+  border-bottom: 1px solid #bdbdbd;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.mainWrapper {
+  padding: 16px 24px;
+}
+
+.formWrapper {
+  margin-top: 20px;
+}
+
+.formTitle {
+  color: #262626;
+  font-size: 20px;
+  font-family: 'SB Sans Interface';
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+.formSubtitle {
+  color: #909090;
+  font-family: 'SB Sans Text';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.3px;
+  margin-top: 16px;
+}
+
+.footer-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.popConfirmWidth {
+  width: 300px;
+}
+
+.mainButtonsWrapper {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+
+  .cancelButton {
+    color: #262626;
+    border: 1px solid #e0e0e0;
+    min-width: 116px;
+    background-color: #fff;
+
+    &:hover {
+      color: #10bf6a;
+      border-color: #10bf6a;
+    }
+  }
+
+  .saveButton {
+    border: none;
+    min-width: 116px;
+    background-color: #10bf6a;
+    color: #fff;
+
+    &:hover {
+      background-color: #31cc7c;
+      color: #fff;
+    }
+  }
+}
+
+.addButtonWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 10px 0;
+
+  .addButton {
+    background-color: #f2f3f6;
+    border: none;
+  }
+}
+
+.labelCol {
+  span: 6;
+  offset: 0;
+}
+
+.conditionSections {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.conditionSection {
+  position: relative;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  .removeSectionButton {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 100;
+  }
+}

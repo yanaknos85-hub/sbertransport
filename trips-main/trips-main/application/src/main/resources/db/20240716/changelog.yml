@@ -1,0 +1,63 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240716"
+      author: blandin-ad
+      changes:
+        - addColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: time_zone
+                  type: text
+                  remarks: Временная зона
+              - column:
+                  name: external_human_readable_id
+                  type: text
+                  remarks: Человекочитаемый идентификатор поездки на стороне клиента
+      rollback:
+        - dropColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: time_zone
+              - column:
+                  name: external_human_readable_id
+  - changeSet:
+      id: "20240719"
+      author: blandin-ad
+      changes:
+        - addColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: comment
+                  type: text
+                  remarks: Комментарий к заказу
+      rollback:
+        - dropColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: comment
+  - changeSet:
+      id: "20240721"
+      author: blandin-ad
+      changes:
+        - sql:
+            sql: alter table trips.trips alter column external_human_readable_id type varchar (255);
+        - addUniqueConstraint:
+            schemaName: trips
+            tableName: trips
+            columnNames: external_human_readable_id
+            constraintName: trips_trips_external_human_readable_id_uc
+      rollback:
+        - dropUniqueConstraint:
+            schemaName: trips
+            tableName: trips
+            constraintName: trips_trips_external_human_readable_id_uc
+        - sql:
+            sql: alter table trips.trips alter column external_human_readable_id type text;

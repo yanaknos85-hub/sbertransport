@@ -1,0 +1,226 @@
+.listItem {
+  width: 100%;
+  display: flex;
+  align-items: flex-start !important;
+  overflow: hidden;
+}
+
+.anotherDiv {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+
+  @media(max-width: 767px) {
+    flex-direction: column;
+  }
+}
+
+.cargoTariffDiv {
+  margin: 0 0 0 20px;
+  display: flex;
+  gap: 8px;
+  transform: translateY(-2px);
+
+  @media(max-width: 767px) {
+    margin: 4px 0 10px 0;
+  }
+}
+
+.cargoTariffDivFeedback {
+  margin: 0 0 16px 0;
+}
+
+.cargoAddressDiv {
+  flex: 1;
+}
+.cargoAddressBlockDiv {
+  margin-top: 0;
+  display: flex;
+  width: 100%;
+
+  @media(max-width: 767px) {
+    flex-direction: column;
+  }
+}
+
+.fire {
+  border-radius: 5px;
+  background-color: #f2f3f6;
+}
+
+.idDiv {
+  display: flex;
+  flex-direction: row;
+  font-family: 'SB Sans Text', serif, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.3px;
+  color: #262626;
+}
+
+.cargoTypeIcons {
+  display: flex;
+  gap: 5px;
+}
+
+.bage {
+  display: flex;
+  align-items: center;
+}
+
+.statusDiv {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 8px;
+}
+
+.addressLine {
+  margin-left: 9px;
+  height: 34px;
+  width: 3px;
+  content: '';
+  position: relative;
+  top: 0;
+  background: #c2c2c2;
+}
+
+.desiredDate {
+  font-family: 'SB Sans Interface', serif, sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  color: #909090;
+}
+
+.creationTime {
+  margin: 4px 0 0 12px;
+  font-family: 'SB Sans Interface', serif, sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  color: #909090;
+
+  @media(max-width: 767px) {
+    margin: 4px 0 0 0px;
+  }
+}
+
+.creationTimeDate {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+  font-family: 'SB Sans Interface', serif, sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  color: #909090;
+}
+
+.date {
+  margin-left: 4px;
+  color: #10BF6A;
+}
+
+.tariffDiv {
+  display: flex;
+  height: 32px;
+  width: fit-content;
+  border: 1px solid rgba(38, 38, 38, 0.08);
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+
+.tariffTextDiv {
+  margin: 5px 22px 5px 0;
+  font-family: 'SB Sans Text', serif, sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: -0.154px;
+  color: #000000;
+}
+
+.notification {
+  background-color: #262c31 !important;
+  opacity: 1 !important;
+  color: white !important;
+
+  :global(.ant-notification-notice-message) {
+    color: white;
+  }
+
+  :global(.ant-notification-notice-close-x) {
+    display: none;
+  }
+
+  :global(.ant-notification-notice-description) {
+    opacity: 0.8;
+  }
+}
+
+.userContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.userBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.userContainerDiv{
+  display: flex;
+}
+
+.userBlockDiv {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  color: #000000;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  cursor: pointer;
+  padding-left: 5px;
+  fill: #ccc;
+}
+
+.button {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+
+  @media(max-width: 767px) {
+    flex-wrap: nowrap;
+  }
+}
+
+.button > * {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.iconButton {
+  background-color: #F2F3F6;
+  color: #4D4D4D;
+  border-color: #F2F3F6;
+  margin-right: 8px;
+  border-radius: 2px;
+}
+
+.flexRowIcons {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  @media(max-width: 767px) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.emptyBlock {
+  height: 66px;
+}

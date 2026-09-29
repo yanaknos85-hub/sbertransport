@@ -1,0 +1,30 @@
+alter table request.request_for_cargo drop column cargo_type_id;
+alter table request.request_for_cargo drop column cargo_type_other;
+alter table request.request_for_cargo drop column cargo_nomenclature_id;
+alter table request.request_for_cargo drop column cargo_nomenclature_other;
+alter table request.request_for_cargo drop column fragile;
+alter table request.request_for_cargo drop column need_package;
+alter table request.request_for_cargo drop column package_id;
+alter table request.request_for_cargo drop column package_count;
+
+alter table request.cargo_detail add column position integer;
+alter table request.cargo_detail add column cargo_type_id uuid;
+alter table request.cargo_detail add column cargo_type_other varchar(50);
+alter table request.cargo_detail add column cargo_nomenclature_id uuid;
+alter table request.cargo_detail add column cargo_nomenclature_other varchar(50);
+alter table request.cargo_detail add column occupied_places_count integer;
+alter table request.cargo_detail add column fragile boolean;
+alter table request.cargo_detail add column need_package boolean;
+alter table request.cargo_detail add column package_id uuid;
+alter table request.cargo_detail add column package_count integer;
+
+comment on column request.cargo_detail.position is 'порядковый номер';
+comment on column request.cargo_detail.cargo_type_id is 'идентификатор типа груза';
+comment on column request.cargo_detail.cargo_type_other is 'тип груза - другое';
+comment on column request.cargo_detail.cargo_nomenclature_id is 'идентификатор номенклатуры груза';
+comment on column request.cargo_detail.cargo_nomenclature_other is 'номенклатура груза - другое';
+comment on column request.cargo_detail.occupied_places_count is 'колличество мест';
+comment on column request.cargo_detail.fragile is 'характер груза (хрупкий)';
+comment on column request.cargo_detail.need_package is 'требуется упаковка';
+comment on column request.cargo_detail.package_id is 'идентификатор упаковки';
+comment on column request.cargo_detail.package_count is 'колличество упаковок';

@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20251030-1
+      author: burlakov-sv
+      changes:
+        - addColumn:
+            schemaName: dispatcher
+            tableName: contractor
+            columns:
+              - column:
+                  name: vehicle_count_norm
+                  type: int4
+                  remarks: Нормативное количество автомобилей
+        - addColumn:
+            schemaName: dispatcher
+            tableName: autopark
+            columns:
+              - column:
+                  name: vehicle_count_norm
+                  type: int4
+                  remarks: Нормативное количество автомобилей
+
+      rollback:
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: contractor
+            columns:
+              - column:
+                  name: vehicle_count_norm
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: autopark
+            columns:
+              - column:
+                  name: vehicle_count_norm

@@ -1,0 +1,15 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20221109-1
+            author: dudyrev-av
+            dbms: postgresql
+            changes:
+                -   tagDatabase:
+                        tag: "20221109"
+                -   sqlFile:
+                        path: change/create_tables.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sql:
+                        sql: rollback/drop_tables.sql

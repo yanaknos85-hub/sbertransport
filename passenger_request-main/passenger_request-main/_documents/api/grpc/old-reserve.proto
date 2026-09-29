@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package ru.sber.transport.limits.grpc;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+
+service LimitReservationService {
+
+  rpc limitReservation(LimitReservationRequest) returns(LimitReservationResponse) {}
+}
+
+message LimitReservationRequestList{
+  repeated LimitReservationRequest listLimitReservations = 1;
+  string userId = 2;
+}
+
+message LimitReservationRequest {
+  string organizationId = 1;
+  string departmentId = 2;
+  string employeeId = 3;
+  string transportType = 4;
+  int64 sum = 5;
+  google.protobuf.Timestamp plannedDate = 6;
+  bool checkLimit = 7;
+  string requestId = 8;
+  Action action = 9;
+}
+
+enum Action {
+  RESERVE = 0;
+  SPEND = 1;
+  CANCEL = 2;
+}
+
+message LimitReservationResponseList {
+  repeated LimitReservationResponse limitReservationResponse = 1;
+}
+
+message LimitReservationResponse {
+  string tripRequestId = 1;
+  NullableString limitId = 2;
+  string limitReservationStatus = 3;
+  NullableString message = 4;
+}
+
+
+message NullableString {
+  oneof kind {
+    google.protobuf.NullValue null = 1;
+    string data = 2;
+  }
+}

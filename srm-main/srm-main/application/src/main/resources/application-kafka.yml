@@ -1,0 +1,20 @@
+spring.cloud:
+  stream:
+    kafka:
+      binder:
+        producerProperties:
+          key.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+        consumerProperties:
+          key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    bindings:
+      sharedRideOutput-out-0:
+        destination: service.sharedride
+        binder: kafka
+      taxiTariffInput-in-0:
+        group: ${spring.application.name}
+        destination: service.tariff.taxi
+        binder: kafka
+      personalTariffInput-in-0:
+        group: ${spring.application.name}
+        destination: service.tariff.personal
+        binder: kafka

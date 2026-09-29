@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>ru.sber.transport.request.external</groupId>
+        <artifactId>parent</artifactId>
+        <version>${release.version}</version>
+    </parent>
+
+    <artifactId>providers-database</artifactId>
+
+    <properties>
+        <java.version>21</java.version>
+        <jooq.root.path>${project.basedir}/src/main/resources/db/</jooq.root.path>
+
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>ru.sber.transport</groupId>
+            <artifactId>jooq-database</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ru.sber.transport.extensions</groupId>
+            <artifactId>jooq-postgres-extensions</artifactId>
+            <version>${jooq-postgres-extensions.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ru.sber.transport.request.external</groupId>
+            <artifactId>providers</artifactId>
+            <version>${parent.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ru.sber.transport.request.external</groupId>
+            <artifactId>model</artifactId>
+            <version>${parent.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>ru.sber.transport</groupId>
+            <artifactId>embedded-postgres</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test-autoconfigure</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>ru.sber.transport.request.external</groupId>
+            <artifactId>messaging</artifactId>
+            <version>${parent.version}</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq-codegen-maven</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

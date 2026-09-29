@@ -1,0 +1,62 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220901"
+            context: "20220901"
+            author: medvedev-ad
+            changes:
+                -   createIndex:
+                        schemaName: contractors
+                        tableName: attribute
+                        indexName: contractors_attributes_contractor_idx
+                        columns:
+                            - column:
+                                  name: contractor_id
+                -   createIndex:
+                        schemaName: contractors
+                        tableName: autopark
+                        indexName: contractors_autopark_contractor_idx
+                        columns:
+                            - column:
+                                  name: contractor_id
+                -   createIndex:
+                        schemaName: contractors
+                        tableName: cargo_package
+                        indexName: contractors_cargo_package_contractor_idx
+                        columns:
+                            - column:
+                                  name: contractor
+                -   createIndex:
+                        schemaName: contractors
+                        tableName: contractor_region
+                        indexName: contractors_contractor_region_contractor_idx
+                        columns:
+                            - column:
+                                  name: contractor_id
+                -   createIndex:
+                        schemaName: contractors
+                        tableName: dispatcher
+                        indexName: contractors_dispatcher_contractor_idx
+                        columns:
+                            - column:
+                                  name: contractor_id
+                -   createIndex:
+                        schemaName: contractors
+                        tableName: driver
+                        indexName: contractors_driver_contractor_idx
+                        columns:
+                            - column:
+                                  name: contractor_id
+                -   createIndex:
+                        schemaName: contractors
+                        tableName: vehicle
+                        indexName: contractors_vehicle_autopark_idx
+                        columns:
+                            - column:
+                                  name: autopark_id
+                -   createIndex:
+                        schemaName: contractors
+                        tableName: contractor_region
+                        indexName: contractors_contractor_region_region_idx
+                        columns:
+                            - column:
+                                  name: region_id

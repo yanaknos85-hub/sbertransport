@@ -1,0 +1,20 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20250331-1
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/create_tin_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250331-2
+            author: makarovm-d
+            dbms: postgresql
+            context: "!test"
+            changes:
+                -   sqlFile:
+                        path: changes/fill_employee_tin.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

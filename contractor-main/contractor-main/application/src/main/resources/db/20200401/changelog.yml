@@ -1,0 +1,16 @@
+databaseChangeLog:
+    -   changeSet:
+            id: contractor/20200401
+            context: "20200401"
+            author: mad
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: create_transport_table.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: rollback_transport_table.sql
+                        relativeToChangelogFile: true

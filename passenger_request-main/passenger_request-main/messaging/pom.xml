@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>ru.sber.transport.request</groupId>
+        <artifactId>request-parent</artifactId>
+        <version>5.15</version>
+    </parent>
+
+    <artifactId>messaging</artifactId>
+    <name>Messaging</name>
+    <description>Messaging</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ru.sber.transport</groupId>
+            <artifactId>kafka-functional</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ru.sber.transport</groupId>
+            <artifactId>enums</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ru.sber.transport</groupId>
+            <artifactId>transport-core</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

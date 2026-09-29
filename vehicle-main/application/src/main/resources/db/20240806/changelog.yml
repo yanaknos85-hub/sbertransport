@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20240806-1
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_access_to_get_odometer_history.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

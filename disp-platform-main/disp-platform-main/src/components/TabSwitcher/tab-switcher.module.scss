@@ -1,0 +1,22 @@
+.tabSwitcher {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+
+  .type {
+    background: rgb(242, 243, 246);
+    color: rgb(77, 77, 77);
+    border-radius: 8px;
+    text-align: center;
+    padding: 5px 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.selected {
+      background: rgb(231, 249, 240);
+      border: 2px solid rgb(16, 191, 106);
+    }
+  }
+}

@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240415-1138"
+      author: blandin-ad
+      context: "TRANSPORT-18380"
+      changes:
+        - tagDatabase:
+            tag: "release/D-03.008.000"
+        - sql:
+            sql: create schema dispatcher;
+        - sqlFile:
+            path: create_tables.sql
+            relativeToChangelogFile: true
+      rollback:
+        - sql:
+            sql: drop schema dispatcher cascade;
+
+
+
+

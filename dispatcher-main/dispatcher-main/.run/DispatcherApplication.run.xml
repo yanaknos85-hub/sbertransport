@@ -1,0 +1,29 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="DispatcherApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <module name="application" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="ru.sber.transport.dispatcher.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
+      <option name="credential" />
+      <option name="region" />
+      <option name="useCurrentConnection" value="false" />
+    </extension>
+    <option name="SPRING_BOOT_MAIN_CLASS" value="ru.sber.transport.dispatcher.DispatcherApplication" />
+    <option name="ACTIVE_PROFILES" value="consul,prod,logging" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <envs>
+      <env name="KAFKA_BROKERS" value="127.0.0.1:9092,127.0.0.1:9093" />
+      <env name="JWKS_URI" value="&#9; http://jwks.transport.apps.dev-terra000003-ids.ocp.delta.sbrf.ru" />
+      <env name="SCHEMA_REGISTRY_URL" value="http://localhost:8081" />
+      <env name="KAFKA_SECURITY_PROTOCOL" value="PLAINTEXT" />
+      <env name="SSL_KAFKA_BROKERS" value="KAFKA_BROKERS=127.0.0.1:9092,127.0.0.1:9093" />
+    </envs>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

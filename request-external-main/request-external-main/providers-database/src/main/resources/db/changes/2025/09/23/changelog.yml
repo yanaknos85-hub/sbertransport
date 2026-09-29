@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250923-1200"
+      author: khalikov-ma
+      context: "TRANSPORT-36183"
+      changes:
+        - tagDatabase:
+            tag: "D-04.018.000"
+        - createTable:
+            schemaName: ${schema_name}
+            tableName: fraud
+            remarks: "Информация о фроде заявок"
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор заявки
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: ${schema_name}_fraud_pk
+              - column:
+                  name: comment
+                  type: text
+                  remarks: Комментарий, описывающий подозрение на фронт

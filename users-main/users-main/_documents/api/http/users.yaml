@@ -1,0 +1,188 @@
+openapi: 3.0.3
+info:
+  title: Работа с пользователями
+  description: Сервис по работе с пользователями
+  version: 1.0.0
+servers:
+  - url: '{scheme}://{host}:{port}{api}'
+    description: Адрес для вызова
+    variables:
+      scheme:
+        default: http
+        enum:
+          - http
+          - https
+      host:
+        default: localhost
+      api:
+        default: /api/users
+      port:
+        default: "80"
+        enum:
+          - "80"
+          - "8080"
+          - "443"
+          - "8443"
+paths:
+  /avatar:
+    summary: Вошедший пользователь.
+    description: Набор операций для работы с вошедшим пользователем.
+    post:
+      operationId: avatarNew
+      summary: Выгрузка аватара
+      description: Выгрузка аватара вошедшего пользователя
+      security:
+        - BearerToken: []
+      tags:
+        - Сотрудник корп. клиента
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                avatar:
+                  $ref: 'https://confluence.sberbank.ru/download/attachments/13822297856/common.yaml#/components/schemas/File'
+      responses:
+        200:
+          description: Ok
+        400:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/BadRequest'
+        401:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/Unauthorized'
+        403:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/Forbidden'
+        404:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/NotFound'
+    get:
+      operationId: avatarGet
+      summary: Загрузка аватара
+      description: Загрузка аватара вошедшего пользователя.
+      security:
+        - BearerToken: []
+      tags:
+        - Сотрудник корп. клиента
+      responses:
+        200:
+          description: Ok
+          content:
+            image/*:
+              schema:
+                $ref: 'https://confluence.sberbank.ru/download/attachments/13822297856/common.yaml#/components/schemas/File'
+        400:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/BadRequest'
+        401:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/Unauthorized'
+        403:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/Forbidden'
+        404:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/NotFound'
+    delete:
+      operationId: avatarDelete
+      summary: Удаление аватара
+      description: Удаление аватара вошедшего пользователя.
+      security:
+        - BearerToken: []
+      tags:
+        - Сотрудник корп. клиента
+      responses:
+        200:
+          description: Ok
+        400:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/BadRequest'
+        401:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/Unauthorized'
+        403:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/Forbidden'
+        404:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/NotFound'
+  /avatar/{userId}:
+    summary: Пользователи
+    description: Набор операций для работы с пользователями
+    post:
+      operationId: userAvatarNew
+      summary: Выгрузка аватара
+      description: Выгрузка аватара вошедшего пользователя
+      security:
+        - BearerToken: []
+      tags:
+        - Сотрудник корп. клиента
+      parameters:
+        - in: query
+          name: userId
+          description: Идентификатор пользователя.
+          schema:
+            $ref: 'https://confluence.sberbank.ru/download/attachments/13811157229/system.yaml#/components/schemas/UUID'
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                avatar:
+                  $ref: 'https://confluence.sberbank.ru/download/attachments/13822297856/common.yaml#/common/schemas/File'
+      responses:
+        200:
+          description: Ok
+        400:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/BadRequest'
+        401:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/Unauthorized'
+        403:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/Forbidden'
+        404:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/NotFound'
+    get:
+      operationId: avatarGet
+      summary: Загрузка аватара
+      description: Загрузка аватара пользователя.
+      security:
+        - BearerToken: []
+      tags:
+        - Сотрудник корп. клиента
+      parameters:
+        - in: query
+          name: userId
+          description: Идентификатор пользователя.
+          schema:
+            $ref: 'https://confluence.sberbank.ru/download/attachments/13811157229/system.yaml#/components/schemas/UUID'
+      responses:
+        200:
+          description: Ok
+          content:
+            image/*:
+              schema:
+                  $ref: 'https://confluence.sberbank.ru/download/attachments/13822297856/common.yaml#/components/schemas/File'
+        400:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/BadRequest'
+        401:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/Unauthorized'
+        403:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/Forbidden'
+        404:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/NotFound'
+    delete:
+      operationId: avatarDelete
+      summary: Удаление аватара
+      description: Удаление аватара вошедшего пользователя.
+      security:
+        - BearerToken: []
+      parameters:
+        - in: query
+          name: userId
+          description: Идентификатор пользователя.
+          schema:
+            $ref: 'https://confluence.sberbank.ru/download/attachments/13811157229/system.yaml#/components/schemas/UUID'
+      tags:
+        - Сотрудник корп. клиента
+      responses:
+        200:
+          description: Ok
+        400:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/BadRequest'
+        401:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/Unauthorized'
+        403:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/Forbidden'
+        404:
+          $ref: 'https://confluence.sberbank.ru/download/attachments/13811157373/response.yaml#/components/schemas/NotFound'

@@ -1,0 +1,1 @@
+comment on column  notifications_settings.notification.text is 'Текст уведомления'

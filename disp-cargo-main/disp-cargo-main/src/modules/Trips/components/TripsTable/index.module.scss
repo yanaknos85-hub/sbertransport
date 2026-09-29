@@ -1,0 +1,118 @@
+.tableWrapper {
+  width: calc(50% - 10px);
+
+  &.fullWidth {
+    width: 100%;
+  }
+
+  .requestTable {
+    :global(.ant-table-header) {
+      :global(table) {
+        border-spacing: 0;
+      }
+    }
+
+    :global(.ant-table-thead) {
+      position: sticky;
+    }
+
+    :global(.ant-table-thead),
+    :global(.ant-table-tbody) {
+      :global(tr) {
+        :global(.ant-table-cell:first-of-type) {
+          padding-right: 0 !important;
+        }
+      }
+    }
+
+    :global(td.ant-table-column-sort) {
+      background: transparent;
+    } 
+  }
+
+  .active {
+    :global(td.ant-table-cell) {
+      border-top: 2px solid #10bf6a !important;
+      border-bottom: 2px solid #10bf6a !important;
+
+      &:first-of-type {
+        border-left: 2px solid #10bf6a !important;
+      }
+
+      &:last-of-type {
+        border-right: 2px solid #10bf6a !important;
+      }
+    }
+
+    &.deadline {
+      :global(td.ant-table-cell) {
+        border-color: #ff5743 !important;
+      }
+    }
+  }
+
+  .deadline {
+    background: #ffeeec !important;
+  }
+
+  .new {
+    position: relative;
+
+    :global(.ant-table-cell:first-of-type) {
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 80%;
+        background: #0091ff;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  .id {
+    cursor: pointer;
+    font-size: 12px;
+
+    &:hover {
+      color: #10bf6a;
+    }
+  }
+
+  .icon {
+    font-size: 130%;
+    cursor: pointer;
+
+    &:hover {
+      color: #10bf6a;
+    }
+  }
+
+  .eyeIcon {
+    cursor: pointer;
+  }
+
+  .date {
+    margin: 0;
+    font-size: 12px;
+  }
+
+  .dateLocal {
+    margin: 0 0 2px 0;
+  }
+
+  .clientDate {
+    margin-left: 5px;
+  }
+
+  .loadDate {
+    margin-left: 17px;
+  }
+
+  .statusSelect {
+    width: 100%;
+  }
+}

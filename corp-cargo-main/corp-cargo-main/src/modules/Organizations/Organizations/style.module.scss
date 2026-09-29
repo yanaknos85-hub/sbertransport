@@ -1,0 +1,13 @@
+.modal{
+  :global{
+    .ant-modal-body{
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+
+      input{
+        height: 38px;
+      }
+    }
+  }
+}

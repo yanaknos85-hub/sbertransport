@@ -1,0 +1,93 @@
+button.settingsDropdown {
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  height: 20px;
+
+  svg {
+    width: 20px;
+    height: auto;
+  }
+
+  span {
+    display: none;
+  }
+}
+
+.menuSetting {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba($color: #000, $alpha: 0.2);
+  padding: 8px;
+
+  & .listSetting {
+    max-height: 30vh;
+    overflow: scroll;
+    border: none;
+
+    & li {
+      padding: 0;
+      border: 0;
+      background-color: #fff;
+    }
+  }
+
+  & .menuButtons {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+
+    & :global(.ant-btn) {
+      padding: 16px 32px;
+      border-radius: 8px;
+      height: fit-content;
+      width: 100%;
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
+
+  & .menuHead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & .menuSettingTitle {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 24px;
+    }
+    & .resetButton {
+      border: none;
+      background: none;
+      color: #10bf6a;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      & svg {
+        margin-right: 4px;
+      }
+    }
+  }
+
+  & .itemHead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e0e0e0;
+    margin-top: 33px;
+    padding-bottom: 10px;
+
+    & .itemsHeader {
+      padding: 0;
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 24px;
+    }
+  }
+}

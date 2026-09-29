@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250616-1510"
+      author: medvedev-ad
+      context: "TRANSPORT-32978"
+      changes:
+        - tagDatabase:
+            tag: "D-04.011.000"
+        - dropColumn:
+            schemaName: ${schema_name}
+            tableName: delegates
+            columnName: id
+        - addPrimaryKey:
+            schemaName: ${schema_name}
+            tableName: delegates
+            columnNames: supervisor_id, delegate_id, start_date
+            primaryKeyName: ${schema_name}_delegates_pk
+      rollback:
+        - dropPrimaryKey:
+            schemaName: ${schema_name}
+            tableName: delegates
+            primaryKeyName: ${schema_name}_delegates_pk
+        - addColumn:
+            schemaName: ${schema_name}
+            tableName: delegates
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: 'Идентификатор записи'
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: ${schema_name}_delegates_pk

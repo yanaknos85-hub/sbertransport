@@ -1,0 +1,86 @@
+application: contractor
+repo: app_platform_contractor
+resources:
+  limits:
+    cpu: '1'
+    memory: 2G
+  requests:
+    cpu: '1'
+    memory: 2G
+port:
+  http:                                             # Не добавлять если нет. Если указано, добавит service с описанием http
+    number: 8004
+    name: contractor
+    target: 8080
+  grpc:                                            # Не добавлять если нет. Если указано, добавит service с описанием grpc
+    number: 6565
+    name: contractor
+routing:
+  match:
+    prefix: /api/contractors
+  rewrite:
+    uri: ' '
+secman:
+  type: built_in
+profiles: kafka,kafka-ssl
+additional:
+  envs:
+    - name: SPRING_DATASOURCE_URL
+      valueFrom:
+        configMapKeyRef:
+          name: database
+          key: url.jdbc
+    - name: KAFKA_BROKERS
+      valueFrom:
+        configMapKeyRef:
+          name: kafka
+          key: brokers
+    - name: FILE_MAX_SIZE
+      valueFrom:
+        configMapKeyRef:
+          name: files
+          key: image.size.max
+    - name: STAFF_LIMIT
+      valueFrom:
+        configMapKeyRef:
+          name: contractor
+          key: contractor.staff.limit
+    - name: JWT_KEY_PUBLIC_PATH
+      value: /vault/secrets/jwt.public
+    - name: SPRING_PROFILES_INCLUDE
+      value: 'logging,kafka,secman,kafka-avro'
+    - name: JWKS_URI
+      value: 'http://jwks:8080/'
+    - name: CHECK_CONSENT
+      value: 'false'
+    - name: SCHEMA_REGISTRY_URL
+      value: 'https://10.53.124.110:8081'
+    - name: SPRING_CLOUD_CONFIG_URI
+      value: 'http://http-config-server:8080'
+  configMap:
+    - name: kafka-ssl
+      data:
+        application-kafka-ssl.yml: |-
+          spring:
+            cloud:
+              vault:
+                namespace: CI02351878_CI02671580
+                authentication: kubernetes
+                kubernetes:
+                  role: ci02351878-edevgen-sbertransport-dev
+                  kubernetes-path: os/dev-terra000003-ids.ocp.delta.sbrf.ru
+                enabled: true
+                port: 443
+                host: t.secrets.delta.sbrf.ru
+            config:
+              import: 
+                - optional:vault://A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/application,kafka-ssl
+  volumes:
+    - name: kafka-ssl
+      configMap:
+        name: kafka-ssl
+        defaultMode: 420
+  mounts:
+    - name: kafka-ssl
+      mountPath: /app/resources/application-kafka-ssl.yml
+      subPath: application-kafka-ssl.yml

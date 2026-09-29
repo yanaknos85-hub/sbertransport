@@ -1,0 +1,19 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20250211-1
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_access_all_organizations_excel_export.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250211-2
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grand_access_self_organization_excel_export.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

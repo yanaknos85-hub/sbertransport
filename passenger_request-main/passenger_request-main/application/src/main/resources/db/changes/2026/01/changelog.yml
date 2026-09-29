@@ -1,0 +1,83 @@
+databaseChangeLog:
+    -   changeSet:
+            id: 20260113-1
+            author: klyunkov-va
+            dbms: postgresql
+            preConditions:
+                -   onFail: MARK_RAN
+                -   tableExists:
+                        schemaName: request
+                        tableName: address_catalog
+                -   tableExists:
+                        schemaName: request
+                        tableName: address_catalog_versions
+            changes:
+                -   dropTable:
+                        schemaName: request
+                        tableName: address_catalog
+                -   dropTable:
+                        schemaName: request
+                        tableName: address_catalog_versions
+    -   changeSet:
+            id: 20260113-2
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                - sqlFile:
+                      path: changes/create_fill_roles_procedure.sql
+                      relativeToChangelogFile: true
+                      splitStatements: false
+                - sqlFile:
+                      path: changes/grant_access.sql
+                      relativeToChangelogFile: true
+                      splitStatements: false
+    -   changeSet:
+            id: 20260113-3
+            author: klyunkov-va
+            dbms: postgresql
+            preConditions:
+                -   onFail: MARK_RAN
+                -   tableExists:
+                        schemaName: request
+                        tableName: cargo_detail
+                -   tableExists:
+                        schemaName: request
+                        tableName: request_for_cargo_history
+                -   tableExists:
+                        schemaName: request
+                        tableName: request_for_cargo
+                -   tableExists:
+                        schemaName: request
+                        tableName: calendar
+                -   tableExists:
+                        schemaName: request
+                        tableName: request_for_import
+            changes:
+                -   dropTable:
+                        schemaName: request
+                        tableName: cargo_detail
+                -   dropTable:
+                        schemaName: request
+                        tableName: request_for_cargo_history
+                -   dropTable:
+                        schemaName: request
+                        tableName: request_for_cargo
+                -   dropTable:
+                        schemaName: request
+                        tableName: calendar
+                -   dropTable:
+                        schemaName: request
+                        tableName: request_for_import
+    -   changeSet:
+            id: 20260113-4
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+            - addNotNullConstraint:
+                  schemaName: request
+                  tableName: request_for_taxi
+                  columnName: contractor_id
+            - addNotNullConstraint:
+                  schemaName: request
+                  tableName: request_for_group_transfer
+                  columnName: contractor_id

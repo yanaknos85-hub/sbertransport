@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package ru.sber.transport.tariff.grpc.service;
+option java_package = "ru.sber.transport.tariff.grpc.service";
+
+import "proto/tariff/dto/TariffDescriptor.proto";
+
+service TariffService{
+
+    rpc calculate(ru.sber.transport.tariff.grpc.dto.CalculateRequest) returns (ru.sber.transport.tariff.grpc.dto.CalculateResponse);
+
+}

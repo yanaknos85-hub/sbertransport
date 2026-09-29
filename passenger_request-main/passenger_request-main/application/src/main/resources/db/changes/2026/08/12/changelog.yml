@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20260812-add-single-trip-duration-to-fraud-type"
+      author: khalikovma
+      dbms: postgresql
+      changes:
+        - sql:
+            sql: ALTER TYPE request.fraud_type ADD VALUE IF NOT EXISTS 'SINGLE_TRIP_DURATION'

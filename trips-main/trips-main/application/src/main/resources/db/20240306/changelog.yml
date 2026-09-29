@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240306-0923"
+      author: ladeishchikov-aa
+      changes:
+        - addColumn:
+            schemaName: trips
+            tableName: driver
+            columns:
+              - column:
+                  name: consent
+                  type: boolean
+                  remarks: Признак подписания водителем ПДн
+        - addColumn:
+            schemaName: trips
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: consent
+                  type: boolean
+                  remarks: Признак подписания водителем ПДн
+      rollback:
+        - dropColumn:
+            schemaName: trips
+            tableName: driver
+            columns:
+              - column:
+                  name: consent
+        - dropColumn:
+            schemaName: trips
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: consent

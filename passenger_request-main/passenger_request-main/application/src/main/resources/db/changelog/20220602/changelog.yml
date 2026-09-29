@@ -1,0 +1,70 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220602"
+            author: medvedev-ad
+            changes:
+                -   update:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            - column:
+                                  name: deadline_state
+                                  valueNumeric: 0
+                        where: deadline_state is null
+                -   addNotNullConstraint:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columnName: deadline_state
+                -   sql:
+                        sql: alter table request.request_for_taxi alter column deadline_state type text;
+                -   update:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            - column:
+                                  name: deadline_state
+                                  value: NONE
+                        where: deadline_state = '0'
+                -   update:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            - column:
+                                  name: deadline_state
+                                  value: YELLOW
+                        where: deadline_state = '1'
+                -   update:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            - column:
+                                  name: deadline_state
+                                  value: RED
+                        where: deadline_state = '2'
+            rollback:
+                -   update:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            - column:
+                                  name: deadline_state
+                                  value: '0'
+                        where: deadline_state = 'NONE'
+                -   update:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            - column:
+                                  name: deadline_state
+                                  value: '1'
+                        where: deadline_state = 'YELLOW'
+                -   update:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            - column:
+                                  name: deadline_state
+                                  value: '2'
+                        where: deadline_state = 'RED'
+                -   sql:
+                        sql: alter table request.request_for_taxi alter column deadline_state type int8 using deadline_state::int8;

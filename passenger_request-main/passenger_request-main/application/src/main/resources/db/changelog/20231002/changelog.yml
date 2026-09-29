@@ -1,0 +1,79 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20231002"
+            author: shabrov-ie
+            changes:
+                -   tagDatabase:
+                        tag: "20231002"
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            -   column:
+                                    type: text
+                                    name: employee_device_time_zone
+                                    remarks: Временная зона устройства сотрудника
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    type: text
+                                    name: employee_device_time_zone
+                                    remarks: Временная зона устройства сотрудника
+                -   addColumn:
+                        schemaName: request_audit
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    type: text
+                                    name: employee_device_time_zone
+                                    remarks: Временная зона устройства сотрудника
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_personal
+                        columns:
+                            -   column:
+                                    type: text
+                                    name: employee_device_time_zone
+                                    remarks: Временная зона устройства сотрудника
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columns:
+                            -   column:
+                                    type: text
+                                    name: employee_device_time_zone
+                                    remarks: Временная зона устройства сотрудника
+        
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            -   column:
+                                    name: employee_device_time_zone
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    name: employee_device_time_zone
+                -   dropColumn:
+                        schemaName: request_audit
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    name: employee_device_time_zone
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_personal
+                        columns:
+                            -   column:
+                                    name: employee_device_time_zone
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columns:
+                            -   column:
+                                    name: employee_device_time_zone

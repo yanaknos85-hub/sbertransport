@@ -1,0 +1,82 @@
+works:
+    files:
+        -   url: /trips
+            fileType:
+                - xlsx
+                - xls
+            collections:
+                -   name: Поездки
+                    type: ru.sber.transport.trip.business.dto.TripsExportDto
+                    mappings:
+                        - from: №
+                          to: number
+                        - from: ID поездки
+                          to: id
+                        - from: ID заявки(-ок)
+                          to: requestIds
+                        - from: Дата создания заявки
+                          to: creationDate
+                        - from: Время создания заявки
+                          to: creationTime
+                        - from: Желаемая дата начала поездки
+                          to: expectedStartDate
+                        - from: Желаемое время начала поездки
+                          to: expectedStartTime
+                        - from: Фактическая дата начала поездки
+                          to: factStartDate
+                        - from: Фактическое время начала поездки
+                          to: factStartTime
+                        - from: Дата просмотра заявки диспетчером
+                          to: dispatcherTakeToWorkDate
+                        - from: Время просмотра заявки диспетчером
+                          to: dispatcherTakeToWorkTime
+                        - from: Дата изменения статуса заявки диспетчером
+                          to: statusChangedDate
+                        - from: Время изменения статуса заявки диспетчером
+                          to: statusChangedTime
+                        - from: Адрес подачи
+                          to: routeStart
+                        - from: Промежуточные адреса
+                          to: routePoints
+                        - from: Адрес завершения
+                          to: routeEnd
+                        - from: Плановое количество точек маршрута
+                          to: checkinQuantity
+                        - from: Хронология обработки статусов Водителем в приложении
+                          to: checkinStatus
+                        - from: Проверка геопозиции при прохождении точек маршрута водителем. Да - был на точке. Нет - не было на точке.
+                          to: checkinConfirmation
+                        - from: Статус поездки
+                          to: status
+                        - from: Комментарии для водителя
+                          to: comment
+                        - from: Пассажир поездки
+                          to: passenger
+                        - from: Номер автомобиля
+                          to: vehicleNumber
+                        - from: Водитель
+                          to: driver
+                        - from: Плановая протяженность (км)
+                          to: expectedDistance
+                        - from: Плановое время поездки (мин)
+                          to: expectedTime
+                        - from: Плановое ожидание на точках (мин)
+                          to: expectedWaitTime
+                        - from: Плановая стоимость (руб)
+                          to: expectedCost
+                        - from: Фактическая протяженность (км)
+                          to: factDistance
+                        - from: Фактическое время поездки (мин)
+                          to: factTime
+                        - from: Фактическое время ожидания (мин)
+                          to: factWaitTime
+                        - from: Тип поездки
+                          to: tripType
+                        - from: Диспетчер
+                          to: dispatcherName
+                        - from: Телефон диспетчера
+                          to: dispatcherPhone
+                        - from: Класс авто
+                          to: taxiClass
+                        - from: Кол-во пассажиров
+                          to: passengerCount

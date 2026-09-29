@@ -1,0 +1,1814 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20211222-1-remastered"
+      author: medvedev-ad
+      preConditions:
+        - not:
+            - tableExists:
+                schemaName: ${schema_name}
+                tableName: notification
+          onFail: MARK_RAN
+      changes:
+        - sql:
+            sql: create schema ${schema_name}
+        - sql:
+            sql: create schema ${schema_name}_approve
+        - sql:
+            sql: create schema ${schema_name}_contractor
+        - sql:
+            sql: create schema ${schema_name}_corporate
+        - sql:
+            sql: create schema ${schema_name}_limits
+        - sql:
+            sql: create schema ${schema_name}_request
+        - sql:
+            sql: create schema ${schema_name}_settings
+        - createTable:
+            schemaName: ${schema_name}_settings
+            tableName: notification
+            remarks: Настройки уведомлений
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKeyName: settings_pkey
+                    primaryKey: true
+              - column:
+                  name: class
+                  type: varchar(50)
+                  remarks: Тип уведомления (REQUEST_TAXI, REQUEST_PUBLIC, REQUEST_PERSONAL, REQUEST_CAR_SHARING, REQUEST_BICYCLE, REQUEST_SCOOTER, REQUEST_LIMIT_PERSON, REQUEST_LIMIT_DEPARTMENT, LIMIT_DEPARTMENT, LIMIT_PERSON, USER_DELEGATE, USER_OWNER_LIMIT, USER_ASSIGNMENT)
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_settings_notification_class_nn
+              - column:
+                  name: name
+                  type: varchar(255)
+                  remarks: Уникальное название уведомления
+                  constraints:
+                    nullable: false
+                    uniqueConstraintName: ${schema_name}_settings_notification_name_uq
+              - column:
+                  name: description
+                  type: varchar(4000)
+                  remarks: Описание уведомления
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_settings_description_nnc
+              - column:
+                  name: parent_id
+                  type: uuid
+                  remarks: Идентификатор родительского объекта
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_settings_notification_organization_id_nn
+              - column:
+                  name: owner_id
+                  type: uuid
+                  remarks: Идентификатор владельца настройки
+              - column:
+                  name: type
+                  type: varchar(30)
+                  remarks: Тип уведомления
+              - column:
+                  name: parent_type
+                  type: varchar(20)
+                  remarks: Тип родительского объекта
+                  defaultOnNull: true
+                  defaultValue: ORGANIZATION
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: notifications_settings_settings_parent_type_nn
+        - addUniqueConstraint:
+            schemaName: ${schema_name}_settings
+            tableName: notification
+            constraintName: ${schema_name}_settings_uk
+            columnNames: description,parent_id
+        - addUniqueConstraint:
+            schemaName: ${schema_name}_settings
+            tableName: notification
+            columnNames: parent_id, type, class, owner_id
+            constraintName: ${schema_name}_settings_notification_uk
+        - createTable:
+            schemaName: ${schema_name}_settings
+            tableName: channel
+            remarks: Каналы уведомлений
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: ${schema_name}_settings_channel_pk
+              - column:
+                  name: settings_id
+                  type: uuid
+                  remarks: Идентификатор настройки
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_settings_channel_settings_id_nn
+                    foreignKeyName: settings_channel_settings_fk
+                    referencedTableSchemaName: ${schema_name}_settings
+                    referencedTableName: notification
+                    referencedColumnNames: id
+              - column:
+                  name: channel
+                  type: varchar(20)
+                  remarks: Тип канала уведомлений (EMAIL, SMS, PUSH)
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_settings_channel_channel_nn
+              - column:
+                  name: text
+                  type: text
+                  remarks: Текст уведомления
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_settings_channel_text_nn
+              - column:
+                  name: active
+                  type: boolean
+                  remarks: Флаг активности канала уведомлений
+                  defaultOnNull: true
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_settings_channel_active_nn
+        - createTable:
+            schemaName: ${schema_name}_settings
+            tableName: restrictions
+            remarks: Ограничения для уведомлений
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: ${schema_name}_settings_restrictions_pk
+              - column:
+                  name: restrict_type
+                  type: varchar(30)
+                  remarks: Тип ограничений (ALLOW_ALL, ALLOW_BUT, DENY_BUT, DENY_ALL)
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_settings_restrictions_restrict_type_nn
+              - column:
+                  name: settings_id
+                  type: uuid
+                  remarks: Идентификатор настройки
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_settings_restrictions_settings_id_nn
+                    foreignKeyName: restrictions_settings_fk
+                    referencedTableSchemaName: ${schema_name}_settings
+                    referencedTableName: notification
+                    referencedColumnNames: id
+        - createTable:
+            schemaName: ${schema_name}_corporate
+            tableName: roles
+            remarks: Роли
+            columns:
+              - column:
+                  name: code
+                  type: varchar(255)
+                  remarks: Код роли
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: roles_pkey
+        - createTable:
+            schemaName: ${schema_name}_settings
+            tableName: restriction_roles
+            remarks: Связь ролей и ограничений
+            columns:
+              - column:
+                  name: restriction_id
+                  type: uuid
+                  remarks: Идентификатор ограничения
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_settings_restriction_roles_restriction_id_nn
+                    foreignKeyName: restrictions_settings_restriction_fk
+                    referencedTableSchemaName: ${schema_name}_settings
+                    referencedTableName: restrictions
+                    referencedColumnNames: id
+              - column:
+                  name: role_code
+                  type: varchar(20)
+                  remarks: Код роли
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_settings_restriction_roles_role_code_nn
+                    foreignKeyName: restriction_roles_fk
+                    referencedTableSchemaName: ${schema_name}_corporate
+                    referencedTableName: roles
+                    referencedColumnNames: code
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: restriction_roles_pkey
+        - addUniqueConstraint:
+            schemaName: ${schema_name}_settings
+            tableName: restriction_roles
+            columnNames: restriction_id, role_code
+            constraintName: restrictions_uk
+        - createTable:
+            schemaName: ${schema_name}_settings
+            tableName: send_time
+            remarks: Время отправки уведомлений
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: send_time_settings_pkey
+              - column:
+                  name: time_before
+                  type: bigint
+                  remarks: Время до отправки уведомлений
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: send_time_settings_time_before_nn
+              - column:
+                  name: type
+                  type: varchar(20)
+                  remarks: Тип тайминга (AT_EVENT, BEFORE_DEADLINE)
+              - column:
+                  name: settings_id
+                  type: uuid
+                  remarks: Идентификатор настройки
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: send_time_settings_settings_id_nn
+                    foreignKeyName: send_time_settings_fk
+                    referencedTableSchemaName: ${schema_name}_settings
+                    referencedTableName: notification
+                    referencedColumnNames: id
+              - column:
+                  name: field_name
+                  type: text
+                  remarks: Имя поля значения для тайминга
+              - column:
+                  name: deadline_field_name
+                  type: text
+                  remarks: Имя поля значения с дедлайном
+        - createTable:
+            schemaName: ${schema_name}_settings
+            tableName: send_count
+            remarks: Количественный триггер отправки уведомлений
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: send_count_settings_pkey
+              - column:
+                  name: count
+                  type: double precision
+                  remarks: Триггерное количество уведомлений
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: send_count_settings_count_nn
+              - column:
+                  name: type
+                  type: varchar(20)
+                  remarks: Тип количества (EXACT, PERCENT)
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: send_count_settings_type_nn
+              - column:
+                  name: property_name
+                  type: text
+                  remarks: Название свойства для подсчета
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: send_count_settings_property_name_nn
+              - column:
+                  name: settings_id
+                  type: uuid
+                  remarks: Идентификатор настройки
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: send_count_settings_settings_id_nn
+                    foreignKeyName: send_count_settings_fk
+                    referencedTableSchemaName: ${schema_name}_settings
+                    referencedTableName: notification
+                    referencedColumnNames: id
+              - column:
+                  name: initial_property_name
+                  type: text
+                  remarks: Название свойства для начала подсчета
+        - createTable:
+            schemaName: ${schema_name}
+            tableName: users
+            remarks: Пользователи системы
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор пользователя
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: users_pkey
+              - column:
+                  name: login
+                  type: varchar(255)
+                  remarks: Логин пользователя
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: users_login_nn
+        - createTable:
+            schemaName: ${schema_name}
+            tableName: message_trip_request
+            remarks: Таблица для хранения заявок для отправки сообщений
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: message_trip_request_pk
+              - column:
+                  name: human_readable_id
+                  type: text
+                  remarks: Человекочитаемый идентификатор
+              - column:
+                  name: author_id
+                  type: uuid
+                  remarks: Идентификатор автора
+              - column:
+                  name: passenger_id
+                  type: uuid
+                  remarks: Идентификатор пассажира
+              - column:
+                  name: creation_time
+                  type: timestamp
+                  remarks: Время создания
+              - column:
+                  name: finished_time
+                  type: timestamp
+                  remarks: Время завершения
+              - column:
+                  name: transport_type
+                  type: text
+                  remarks: Тип транспорта
+              - column:
+                  name: trip_class
+                  type: text
+                  remarks: Класс поездки
+              - column:
+                  name: waypoints
+                  type: json
+                  remarks: Промежуточные пункты
+              - column:
+                  name: approval_id
+                  type: uuid
+                  remarks: Идентификатор согласования
+              - column:
+                  name: limit_id
+                  type: uuid
+                  remarks: Идентификатор лимита
+              - column:
+                  name: tariff_id
+                  type: uuid
+                  remarks: Идентификатор тарифа
+              - column:
+                  name: approval_date
+                  type: timestamp
+                  remarks: Время согласования
+              - column:
+                  name: coop
+                  type: boolean
+                  remarks: Признак совместной поездки
+              - column:
+                  name: desired_date
+                  type: timestamp
+                  remarks: Желаемая дата поездки
+              - column:
+                  name: status
+                  type: text
+                  remarks: Статус заявки
+              - column:
+                  name: passenger_count
+                  type: integer
+                  remarks: Количество пассажиров
+              - column:
+                  name: approval_state
+                  type: text
+                  remarks: Статус согласования
+              - column:
+                  name: expected
+                  type: json
+                  remarks: Ожидаемые данные
+              - column:
+                  name: purpose
+                  type: text
+                  remarks: Цель поездки
+              - column:
+                  name: comment_for_driver
+                  type: text
+                  remarks: Комментарий для водителя
+        - createTable:
+            schemaName: ${schema_name}
+            tableName: tokens
+            remarks: Таблица для хранения токенов
+            columns:
+              - column:
+                  name: token
+                  type: varchar(4000)
+                  remarks: Токен
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: tokens_pkey
+              - column:
+                  name: employee_id
+                  type: uuid
+                  remarks: Идентификатор сотрудника
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: tokens_employee_id_nn
+              - column:
+                  name: platform_type
+                  type: varchar(7)
+                  remarks: Тип платформы (ANDROID | IOS)
+        - createTable:
+            schemaName: ${schema_name}_limits
+            tableName: limit
+            remarks: Таблица для хранения лимитов
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: limit_pk
+              - column:
+                  name: creation_time
+                  type: timestamp
+                  remarks: Время создания
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: limit_creation_time_nn
+              - column:
+                  name: sum
+                  type: int8
+                  remarks: Сумма лимита
+                  defaultOnNull: true
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: limit_sum_nn
+              - column:
+                  name: balance
+                  type: int8
+                  remarks: Баланс лимита
+                  defaultOnNull: true
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: limit_balance_nn
+              - column:
+                  name: year
+                  type: integer
+                  remarks: Год лимита
+                  defaultOnNull: true
+                  defaultValueNumeric: 0
+              - column:
+                  name: period_number
+                  type: integer
+                  remarks: Номер периода лимита
+                  defaultOnNull: true
+                  defaultValueNumeric: 0
+              - column:
+                  name: owner_id
+                  type: uuid
+                  remarks: Идентификатор владельца лимита
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: limit_owner_id_nn
+              - column:
+                  name: author_id
+                  type: uuid
+                  remarks: Идентификатор автора
+              - column:
+                  name: organization_id
+                  type: uuid
+                  remarks: Идентификатор организации
+              - column:
+                  name: limit_id
+                  type: uuid
+                  remarks: Идентификатор лимита
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: limit_limit_id_nn
+              - column:
+                  name: human_readable_id
+                  type: varchar(20)
+                  remarks: Человекочитаемый идентификатор
+              - column:
+                  name: transport_type
+                  type: varchar(20)
+                  remarks: Тип транспорта
+              - column:
+                  name: limit_sharing_type
+                  type: varchar(20)
+                  remarks: Тип распределения лимита
+              - column:
+                  name: limit_type
+                  type: varchar(20)
+                  remarks: Тип лимита
+              - column:
+                  name: distributed
+                  type: boolean
+                  remarks: Признак распределения лимита
+                  defaultOnNull: true
+                  defaultValueBoolean: true
+              - column:
+                  name: deleted
+                  type: boolean
+                  remarks: Признак удаления
+                  defaultOnNull: true
+                  defaultValueBoolean: false
+              - column:
+                  name: limit_status
+                  type: text
+                  remarks: Статус лимита
+              - column:
+                  name: notification_type
+                  type: integer
+                  remarks: Тип уведомления
+              - column:
+                  name: department_id
+                  type: uuid
+                  remarks: Идентификатор подразделения
+        - createTable:
+            schemaName: ${schema_name}
+            tableName: limit
+            remarks: Таблица для хранения лимитов
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: limit_pkey
+              - column:
+                  name: settings_id
+                  type: uuid
+                  remarks: Идентификатор настроек
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: limit_settings_id_nn
+                    foreignKeyName: limit_balance_notification_settings_fk
+                    referencedTableSchemaName: ${schema_name}_settings
+                    referencedTableName: notification
+                    referencedColumnName: id
+              - column:
+                  name: receiver_id
+                  type: uuid
+                  remarks: Идентификатор получателя
+              - column:
+                  name: sent
+                  type: boolean
+                  remarks: Признак отправки уведомления
+                  defaultOnNull: true
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: limit_sent_nn
+              - column:
+                  name: limit_json
+                  type: json
+                  remarks: Данные уведомления
+              - column:
+                  name: limit_id
+                  type: uuid
+                  remarks: Идентификатор лимита
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: limit_limit_id_nn
+                    foreignKeyName: limit_balance_limit_balance_notifications_limits_fk
+                    referencedTableSchemaName: ${schema_name}_limits
+                    referencedTableName: limit
+                    referencedColumnName: id
+        - createTable:
+            schemaName: ${schema_name}
+            tableName: delegate_notification
+            remarks: Таблица для хранения уведомлений о назначении делегатов
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор уведомления
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: delegate_notification_pkey
+              - column:
+                  name: settings_id
+                  type: uuid
+                  remarks: Идентификатор настроек
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: delegate_notification_settings_nn
+                    foreignKeyName: delegate_notification_settings_fk
+                    referencedTableSchemaName: ${schema_name}_settings
+                    referencedTableName: notification
+                    referencedColumnName: id
+              - column:
+                  name: receiver_id
+                  type: uuid
+                  remarks: Идентификатор получателя
+              - column:
+                  name: sent
+                  type: boolean
+                  remarks: Признак отправки уведомления
+                  defaultOnNull: true
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: delegate_notification_sent_nn
+              - column:
+                  name: delegate
+                  type: json
+                  remarks: Данные уведомления
+              - column:
+                  name: notification_id
+                  type: uuid
+                  remarks: Идентификатор уведомления
+        - createTable:
+            schemaName: ${schema_name}_corporate
+            tableName: department
+            remarks: Таблица для хранения подразделений
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор подразделения
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: messages_department_pkey
+              - column:
+                  name: organization_id
+                  type: uuid
+                  remarks: Идентификатор организации
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: department_organization_id_nn
+              - column:
+                  name: department_head_id
+                  type: uuid
+                  remarks: Идентификатор руководителя подразделения
+        - createTable:
+            schemaName: ${schema_name}_corporate
+            tableName: employee
+            remarks: Таблица для хранения сотрудников
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор сотрудника
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: messages_employee_pkey
+              - column:
+                  name: department_id
+                  type: uuid
+                  remarks: Идентификатор подразделения
+              - column:
+                  name: user_id
+                  type: uuid
+                  remarks: Идентификатор пользователя
+              - column:
+                  name: first_name
+                  type: text
+                  remarks: Имя
+              - column:
+                  name: last_name
+                  type: text
+                  remarks: Фамилия
+              - column:
+                  name: patronymic
+                  type: text
+                  remarks: Отчество
+              - column:
+                  name: phone
+                  type: text
+                  remarks: Телефон
+              - column:
+                  name: email
+                  type: text
+                  remarks: Электронная почта
+        - createTable:
+            schemaName: ${schema_name}
+            tableName: notification
+            remarks: Таблица для хранения уведомлений
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор уведомления
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: notification_pkey
+              - column:
+                  name: settings_id
+                  type: uuid
+                  remarks: Идентификатор настроек
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: notification_settings_nn
+                    foreignKeyName: notification_settings_fk
+                    referencedTableSchemaName: ${schema_name}_settings
+                    referencedTableName: notification
+                    referencedColumnName: id
+              - column:
+                  name: receiver_id
+                  type: uuid
+                  remarks: Идентификатор получателя
+              - column:
+                  name: sent
+                  type: boolean
+                  remarks: Признак отправки уведомления
+                  defaultOnNull: true
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: notification_sent_nn
+              - column:
+                  name: entity
+                  type: json
+                  remarks: Данные уведомления
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: notification_entity_nn
+              - column:
+                  name: entity_id
+                  type: uuid
+                  remarks: Идентификатор сущности по которой отправляется уведомление
+        - createIndex:
+            schemaName: notifications
+            tableName: notification
+            columns:
+              - column:
+                  name: entity_id
+            indexName: notifications_notification_entity_id_idx
+        - createTable:
+            schemaName: ${schema_name}
+            tableName: department_notification
+            remarks: Таблица для хранения уведомлений о назначении руководителя подразделения
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор уведомления
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: department_notification_pkey
+              - column:
+                  name: settings_id
+                  type: uuid
+                  remarks: Идентификатор настроек
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: department_notification_settings_fk
+                    foreignKeyName: department_notification_settings_fk
+                    referencedTableSchemaName: ${schema_name}_settings
+                    referencedTableName: notification
+                    referencedColumnName: id
+              - column:
+                  name: receiver_id
+                  type: uuid
+                  remarks: Идентификатор получателя
+              - column:
+                  name: sent
+                  type: boolean
+                  remarks: Признак отправки уведомления
+                  defaultOnNull: true
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: department_notification_sent_nn
+              - column:
+                  name: department
+                  type: json
+                  remarks: Данные уведомления
+              - column:
+                  name: notification_id
+                  type: uuid
+                  remarks: Идентификатор уведомления
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: department_notification_notification_id_nn
+                    foreignKeyName: department_notification_notifications_corporate_department_fk
+                    referencedTableSchemaName: ${schema_name}_corporate
+                    referencedTableName: department
+                    referencedColumnName: id
+        - createTable:
+            schemaName: ${schema_name}_approve
+            tableName: trip
+            remarks: Таблица для хранения заявок на подтверждение
+            columns:
+              - column:
+                  name: approver_id
+                  type: uuid
+                  remarks: Идентификатор сотрудника, который подтверждает
+              - column:
+                  name: request_id
+                  type: uuid
+                  remarks: Идентификатор заявки
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: trip_request_id_nn
+                    primaryKey: true
+                    primaryKeyName: trip_pkey
+              - column:
+                  name: deadline
+                  type: timestamp
+                  remarks: Контрольный срок
+              - column:
+                  name: status
+                  type: boolean
+                  remarks: Статус заявки
+              - column:
+                  name: approval_date
+                  type: date
+                  remarks: Дата подтверждения
+              - column:
+                  name: create_time
+                  type: timestamp
+                  remarks: Время создания заявки
+              - column:
+                  name: owner_request_id
+                  type: uuid
+                  remarks: Идентификатор сотрудника, который создал заявку
+              - column:
+                  name: passenger_id
+                  type: uuid
+                  remarks: Идентификатор сотрудника, который отправил заявку
+              - column:
+                  name: approve_status
+                  type: integer
+                  remarks: Статус подтверждения заявки
+              - column:
+                  name: desired_date
+                  type: timestamp
+                  remarks: Желаемая дата поездки
+              - column:
+                  name: message
+                  type: text
+                  remarks: Сообщение
+        - createTable:
+            schemaName: ${schema_name}_contractor
+            tableName: contractor
+            remarks: Таблица для хранения контрагентов
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор контрагента
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: contractor_pkey
+              - column:
+                  name: name
+                  type: varchar(255)
+                  remarks: Название контрагента
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: contractor_name_nn
+                    unique: true
+                    uniqueConstraintName: contractor_name_uk
+        - createTable:
+            schemaName: ${schema_name}_contractor
+            tableName: autopark
+            remarks: Таблица для хранения автопарков контрагентов
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор автопарка
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: autopark_pkey
+              - column:
+                  name: contractor_id
+                  type: uuid
+                  remarks: Идентификатор контрагента
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: autopark_contractor_id_nn
+              - column:
+                  name: autopark_name
+                  type: varchar
+                  remarks: Название автопарка
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: autopark_autopark_name_nn
+        - createTable:
+            schemaName: ${schema_name}_contractor
+            tableName: dispatcher
+            remarks: Таблица для хранения диспетчеров контрагентов
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор диспетчера
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: dispatcher_pkey
+              - column:
+                  name: contractor_id
+                  type: uuid
+                  remarks: Идентификатор контрагента
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: dispatcher_contractor_id_nn
+              - column:
+                  name: employee_id
+                  type: uuid
+                  remarks: Идентификатор сотрудника
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: dispatcher_employee_id_nn
+        - createTable:
+            schemaName: ${schema_name}_corporate
+            tableName: organization
+            remarks: Таблица для хранения организаций
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор организации
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: messages_organization_pkey
+        - createTable:
+            schemaName: ${schema_name}_corporate
+            tableName: contact
+            remarks: Таблица для хранения контактов
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор контакта
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: contact_pkey
+              - column:
+                  name: type
+                  type: varchar
+                  remarks: Тип контакта
+              - column:
+                  name: value
+                  type: text
+                  remarks: Значение контакта
+              - column:
+                  name: use
+                  type: boolean
+                  remarks: Признак использования контакта
+                  defaultOnNull: true
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: contact_use_nn
+              - column:
+                  name: employee_id
+                  type: uuid
+                  remarks: Идентификатор сотрудника
+        - createTable:
+            schemaName: ${schema_name}_corporate
+            tableName: deadline_settings
+            remarks: Таблица для хранения настроек контрольных сроков
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор настроек
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: deadline_settings_pkey
+              - column:
+                  name: organization_id
+                  type: uuid
+                  remarks: Идентификатор организации
+              - column:
+                  name: taxi_awaiting_approvals_deadline_id
+                  type: uuid
+                  remarks: Идентификатор настроек контрольных сроков для заявок на такси
+              - column:
+                  name: taxi_driver_search_deadline_id
+                  type: uuid
+                  remarks: Идентификатор настроек контрольных сроков для поиска водителя для такси
+              - column:
+                  name: taxi_trip_finished_deadline_id
+                  type: uuid
+                  remarks: Идентификатор настроек контрольных сроков для завершения поездки на такси
+              - column:
+                  name: personal_awaiting_approvals_deadline_id
+                  type: uuid
+                  remarks: Идентификатор настроек контрольных сроков для заявок на персональный транспорт
+              - column:
+                  name: personal_awaiting_shared_ride_approval_deadline_id
+                  type: uuid
+                  remarks: Идентификатор настроек контрольных сроков для заявок на совместный рейс
+              - column:
+                  name: personal_trip_in_progress_deadline_id
+                  type: uuid
+                  remarks: Идентификатор настроек контрольных сроков для заявок на персональный транспорт в процессе
+              - column:
+                   name: personal_awaiting_trip_approval_deadline_id
+                   type: uuid
+                   remarks: Идентификатор настроек контрольных сроков для ожидания согласования заявки на персональный транспорт
+              - column:
+                  name: public_awaiting_approval_deadline_id
+                  type: uuid
+                  remarks: Идентификатор настроек контрольных сроков для заявок на общественный транспорт
+              - column:
+                  name: public_trip_confirmation_deadline_id
+                  type: uuid
+                  remarks: Идентификатор настроек контрольных сроков для подтверждения заявки на общественный транспорт
+              - column:
+                  name: public_awaiting_affirmative_deadline_id
+                  type: uuid
+                  remarks: Идентификатор настроек контрольных сроков для согласования заявки на общественный транспорт
+              - column:
+                  name: employee_limit_deadline_id
+                  type: uuid
+                  remarks: Идентификатор настроек контрольных сроков для заявок на персональный лимит
+              - column:
+                  name: department_limit_deadline_id
+                  type: uuid
+                  remarks: Идентификатор настроек контрольных сроков для заявок на лимит подразделения
+              - column:
+                  name: carsharing_join_deadline_id
+                  type: uuid
+                  remarks: Идентификатор настроек контрольных сроков для заявок на присоединение к каршерингу
+        - createTable:
+            schemaName: ${schema_name}_corporate
+            tableName: deadline_settings_item
+            remarks: Таблица для хранения настроек контрольных сроков
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор настроек
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: deadline_settings_item_pkey
+              - column:
+                  name: item_type
+                  type: varchar(31)
+                  remarks: Тип настройки
+              - column:
+                  name: transport_type
+                  type: varchar(255)
+                  remarks: Тип транспорта
+              - column:
+                  name: request_status
+                  type: varchar(255)
+                  remarks: Статус заявки
+              - column:
+                  name: limit_type
+                  type: varchar(255)
+                  remarks: Тип лимита
+              - column:
+                  name: carsharing_join_status
+                  type: varchar(255)
+                  remarks: Статус присоединения к каршерингу
+              - column:
+                  name: unit
+                  type: varchar(255)
+                  remarks: Единица измерения
+              - column:
+                  name: value
+                  type: int4
+                  remarks: Значение
+        - createTable:
+            schemaName: ${schema_name}_corporate
+            tableName: delegate
+            remarks: Таблица для хранения делегированных сотрудников
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор записи
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: delegate_pkey
+              - column:
+                  name: supervisor_id
+                  type: uuid
+                  remarks: Идентификатор руководителя
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: delegate_supervisor_id_nn
+              - column:
+                  name: delegate_id
+                  type: uuid
+                  remarks: Идентификатор делегированного сотрудника
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: delegate_delegate_id_nn
+              - column:
+                  name: start_date
+                  type: date
+                  remarks: Дата начала действия делегирования
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: delegate_start_date_nn
+              - column:
+                  name: end_date
+                  type: date
+                  remarks: Дата окончания действия делегирования
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: delegate_end_date_nn
+              - column:
+                  name: transport_type
+                  type: text
+                  remarks: Тип транспорта
+        - createTable:
+            schemaName: ${schema_name}_limits
+            tableName: approve_limit_request
+            remarks: Таблица для хранения заявок на согласование лимита
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор заявки
+              - column:
+                  name: employee_id
+                  type: uuid
+                  remarks: Идентификатор сотрудника
+              - column:
+                  name: department_id
+                  type: uuid
+                  remarks: Идентификатор подразделения
+              - column:
+                  name: organization_id
+                  type: uuid
+                  remarks: Идентификатор организации
+              - column:
+                  name: limit_request_id
+                  type: uuid
+                  remarks: Идентификатор заявки на лимит
+              - column:
+                  name: human_readable_id
+                  type: text
+                  remarks: Читабельный идентификатор заявки
+              - column:
+                  name: author_id
+                  type: uuid
+                  remarks: Идентификатор автора заявки
+              - column:
+                  name: creation_time
+                  type: timestamp
+                  remarks: Время создания заявки
+              - column:
+                  name: transport_type
+                  type: integer
+                  remarks: Тип транспорта
+              - column:
+                  name: year
+                  type: integer
+                  remarks: Год
+              - column:
+                  name: period
+                  type: integer
+                  remarks: Период
+              - column:
+                  name: status
+                  type: varchar(20)
+              - column:
+                  name: limit_type
+                  type: integer
+                  remarks: Тип лимита
+              - column:
+                  name: sum
+                  type: bigint
+                  remarks: Сумма лимита
+              - column:
+                  name: description
+                  type: text
+                  remarks: Описание заявки
+              - column:
+                  name: sum_limit
+                  type: bigint
+                  remarks: Сумма лимита
+              - column:
+                  name: approval_state
+                  type: integer
+                  remarks: Статус согласования заявки
+              - column:
+                  name: approval_date
+                  type: timestamp
+                  remarks: Дата согласования заявки
+              - column:
+                  name: deleted
+                  type: boolean
+                  remarks: Признак удаления
+              - column:
+                  name: decline_reason
+                  type: text
+                  remarks: Причина отклонения
+        - createTable:
+            schemaName: ${schema_name}_request
+            tableName: trip
+            remarks: Таблица для хранения поездок
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор поездки
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: trip_pkey
+              - column:
+                  name: human_readable_id
+                  type: text
+                  remarks: Читабельный идентификатор поездки
+              - column:
+                  name: author_id
+                  type: uuid
+                  remarks: Идентификатор автора поездки
+              - column:
+                  name: passenger_id
+                  type: uuid
+                  remarks: Идентификатор пассажира поездки
+              - column:
+                  name: creation_time
+                  type: timestamp
+                  remarks: Время создания поездки
+              - column:
+                  name: finished_time
+                  type: timestamp
+                  remarks: Время окончания поездки
+              - column:
+                  name: transport_type
+                  type: text
+                  remarks: Тип транспорта
+              - column:
+                  name: trip_class
+                  type: text
+                  remarks: Класс поездки
+              - column:
+                  name: waypoints
+                  type: json
+                  remarks: Маршрут поездки
+              - column:
+                  name: tariff_id
+                  type: uuid
+                  remarks: Идентификатор тарифа
+              - column:
+                  name: coop
+                  type: boolean
+                  remarks: Признак корпоративной поездки
+              - column:
+                  name: desired_date
+                  type: timestamp
+                  remarks: Желаемая дата поездки
+              - column:
+                  name: status
+                  type: text
+                  remarks: Статус поездки
+              - column:
+                  name: passenger_count
+                  type: integer
+                  remarks: Количество пассажиров
+              - column:
+                  name: expected
+                  type: json
+                  remarks: Пассажиры поездки
+              - column:
+                  name: purpose
+                  type: uuid
+                  remarks: Назначение поездки
+              - column:
+                  name: comment_for_driver
+                  type: text
+                  remarks: Комментарий для водителя
+              - column:
+                  name: approval_id
+                  type: uuid
+                  remarks: Идентификатор согласования
+              - column:
+                  name: limit_id
+                  type: uuid
+                  remarks: Идентификатор лимита
+              - column:
+                  name: approval_state
+                  type: varchar(255)
+                  remarks: Статус согласования
+              - column:
+                  name: approval_date
+                  type: timestamp
+                  remarks: Дата согласования
+              - column:
+                  name: shared_ride_id
+                  type: uuid
+                  remarks: Идентификатор совместной поездки
+              - column:
+                  name: driver_id
+                  type: uuid
+                  remarks: Идентификатор водителя
+              - column:
+                  name: employee_driver_id
+                  type: uuid
+                  remarks: Идентификатор сотрудника водителя
+              - column:
+                  name: time_zone
+                  type: text
+                  remarks: Часовой пояс
+              - column:
+                  name: driver
+                  type: json
+                  remarks: Данные водителя
+              - column:
+                  name: vehicle
+                  type: json
+                  remarks: Данные транспорта
+        - createTable:
+            schemaName: ${schema_name}_request
+            tableName: trip_purpose
+            remarks: Таблица для хранения назначений поездок
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор назначения поездки
+              - column:
+                  name: purpose
+                  type: text
+                  remarks: Назначение поездки
+              - column:
+                  name: organization_id
+                  type: uuid
+                  remarks: Идентификатор организации
+        - createTable:
+            schemaName: ${schema_name}_request
+            tableName: shared_trip
+            remarks: Таблица для хранения совместных поездок
+            columns:
+              - column:
+                  name: magenta_id
+                  type: bigint
+                  remarks: Идентификатор Мадженты
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: shared_trip_pkey
+              - column:
+                  name: passengers
+                  type: integer
+                  remarks: Количество пассажиров
+                  constraints:
+                    check: passengers >= 1
+              - column:
+                  name: active
+                  type: boolean
+                  remarks: Признак активности
+                  defaultOnNull: true
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_shared_trip_active_nn
+              - column:
+                  name: tariff_id
+                  type: uuid
+                  remarks: Идентификатор тарифа
+        - createTable:
+            schemaName: ${schema_name}_request
+            tableName: driver
+            remarks: Таблица для хранения водителей
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор водителя
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: driver_pkey
+              - column:
+                  name: contractor_id
+                  type: uuid
+                  remarks: Идентификатор контрагента
+              - column:
+                  name: firstname
+                  type: varchar(255)
+                  remarks: Имя водителя
+              - column:
+                  name: lastname
+                  type: varchar(255)
+                  remarks: Фамилия водителя
+              - column:
+                  name: patronymic
+                  type: varchar(255)
+                  remarks: Отчество водителя
+              - column:
+                  name: autopark_id
+                  type: uuid
+                  remarks: Идентификатор автопарка
+              - column:
+                  name: rating
+                  type: integer
+                  remarks: Рейтинг водителя
+              - column:
+                  name: phone
+                  type: varchar(13)
+                  remarks: Номер телефона
+              - column:
+                  name: email
+                  type: text
+                  remarks: Адрес электронной почты
+        - createTable:
+            schemaName: ${schema_name}_request
+            tableName: taxi_trip
+            remarks: Таблица для хранения данных о поездках
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор поездки
+              - column:
+                  name: trip_type
+                  type: varchar(50)
+                  remarks: Тип поездки
+              - column:
+                  name: taxi_id
+                  type: varchar(50)
+                  remarks: Идентификатор такси
+              - column:
+                  name: organization_id
+                  type: uuid
+                  remarks: Идентификатор организации
+              - column:
+                  name: tariff_id
+                  type: uuid
+                  remarks: Идентификатор тарифа
+              - column:
+                  name: date_time_registered
+                  type: timestamp
+                  remarks: Дата и время регистрации
+              - column:
+                  name: trip_start_time
+                  type: timestamp
+                  remarks: Дата и время начала поездки
+              - column:
+                  name: trip_finish_time
+                  type: timestamp
+                  remarks: Дата и время окончания поездки
+              - column:
+                  name: status
+                  type: varchar(255)
+                  remarks: Статус поездки
+              - column:
+                  name: trip_fact_distance
+                  type: double precision
+                  remarks: Фактическая дистанция поездки
+              - column:
+                  name: trip_fact_duration
+                  type: bigint
+                  remarks: Фактическое время поездки
+              - column:
+                  name: trip_fact_wait_time
+                  type: bigint
+                  remarks: Фактическое время ожидания
+              - column:
+                  name: trip_fact_price
+                  type: integer
+                  remarks: Фактическая стоимость поездки
+              - column:
+                  name: request_id
+                  type: uuid
+                  remarks: Идентификатор заявки
+              - column:
+                  name: magenta_id
+                  type: integer
+                  remarks: Идентификатор Мадженты
+              - column:
+                  name: resolution
+                  type: varchar(255)
+                  remarks: Решение
+        - createTable:
+            schemaName: ${schema_name}_request
+            tableName: tariff
+            remarks: Таблица для хранения тарифов
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор тарифа
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: tariff_pkey
+              - column:
+                  name: humanreadableid
+                  type: varchar(100)
+                  remarks: Человекочитаемый идентификатор тарифа
+              - column:
+                  name: service_type
+                  type: varchar(255)
+                  remarks: Тип услуги
+              - column:
+                  name: region
+                  type: varchar(255)
+                  remarks: Регион
+              - column:
+                  name: organization_id
+                  type: uuid
+                  remarks: Идентификатор организации
+              - column:
+                  name: transport_type
+                  type: varchar(50)
+                  remarks: Тип транспорта
+              - column:
+                  name: contract_id
+                  type: uuid
+                  remarks: Идентификатор контракта
+              - column:
+                  name: active
+                  type: boolean
+                  remarks: Признак активности
+              - column:
+                  name: taxi_class
+                  type: varchar(255)
+                  remarks: Класс такси
+              - column:
+                  name: ride_cost_per_km
+                  type: integer
+                  remarks: Стоимость поездки за километр
+              - column:
+                  name: min_ride_distance_cost
+                  type: integer
+                  remarks: Стоимость поездки на минимальное расстояние
+              - column:
+                  name: ride_cost_per_min
+                  type: integer
+                  remarks: Стоимость поездки за минуту
+              - column:
+                  name: min_ride_time_cost
+                  type: integer
+                  remarks: Стоимость поездки на минимальное время
+              - column:
+                  name: wait_cost_per_min
+                  type: integer
+                  remarks: Стоимость ожидания за минуту
+              - column:
+                  name: car_service_cost
+                  type: integer
+                  remarks: Стоимость допуслуг
+              - column:
+                  name: wait_cost_per_min_intermediate
+                  type: integer
+                  remarks: Стоимость ожидания за минуту между промежуточными пунктами
+        - createIndex:
+            schemaName: ${schema_name}
+            tableName: notification
+            column:
+              name: settings_id
+            indexName: ${schema_name}_notification_settings_id_idx
+        - createIndex:
+            schemaName: ${schema_name}_settings
+            tableName: channel
+            indexName: channel_settings_id_index
+            columns:
+              - column:
+                  name: settings_id
+        - createIndex:
+            schemaName: ${schema_name}_settings
+            tableName: send_count
+            indexName: send_count_settings_id_index
+            columns:
+              - column:
+                  name: settings_id
+        - createIndex:
+            schemaName: ${schema_name}_settings
+            tableName: send_time
+            indexName: send_time_settings_id_index
+            columns:
+              - column:
+                  name: settings_id
+        - createIndex:
+            schemaName: ${schema_name}_settings
+            tableName: restrictions
+            indexName: restrictions_settings_id_index
+            columns:
+              - column:
+                  name: settings_id
+        - createIndex:
+            schemaName: ${schema_name}_request
+            tableName: taxi_trip
+            indexName: taxi_trip_tariff_id_index
+            columns:
+              - column:
+                  name: tariff_id
+        - createIndex:
+            schemaName: ${schema_name}_request
+            tableName: shared_trip
+            indexName: shared_trip_tariff_id_index
+            columns:
+              - column:
+                  name: tariff_id
+        - createIndex:
+            schemaName: ${schema_name}_request
+            tableName: trip
+            indexName: trip_tariff_id_index
+            columns:
+              - column:
+                  name: tariff_id
+        - createIndex:
+            schemaName: ${schema_name}_request
+            tableName: taxi_trip
+            indexName: taxi_trip_id_uindex
+            columns:
+              - column:
+                  name: id
+        - createIndex:
+            schemaName: ${schema_name}_limits
+            tableName: "limit"
+            indexName: limit_limit_id_index
+            columns:
+              - column:
+                  name: limit_id
+        - createIndex:
+            schemaName: ${schema_name}_corporate
+            tableName: delegate
+            indexName: delegate_delegate_id_index
+            columns:
+              - column:
+                  name: delegate_id
+        - createIndex:
+            schemaName: ${schema_name}_corporate
+            tableName: contact
+            indexName: contact_employee_id_index
+            columns:
+              - column:
+                  name: employee_id
+        - createIndex:
+            schemaName: ${schema_name}_corporate
+            tableName: employee
+            indexName: employee_department_id_index
+            columns:
+              - column:
+                  name: department_id
+        - createIndex:
+            schemaName: ${schema_name}_corporate
+            tableName: department
+            indexName: department_organization_id_index
+            columns:
+              - column:
+                  name: organization_id
+        - createIndex:
+            schemaName: ${schema_name}_corporate
+            tableName: deadline_settings
+            indexName: deadline_settings_organization_id_index
+            columns:
+              - column:
+                  name: organization_id
+        - createIndex:
+            schemaName: ${schema_name}
+            tableName: delegate_notification
+            indexName: delegate_notification_notification_id_index
+            columns:
+              - column:
+                  name: notification_id
+        - createIndex:
+            schemaName: ${schema_name}
+            tableName: delegate_notification
+            indexName: delegate_notification_settings_id_index
+            columns:
+              - column:
+                  name: settings_id
+
+        - createTable:
+            schemaName: notifications_settings
+            remarks: "Настройки пользовательских настроек уведомлений для личного кабинета"
+            tableName: user_notification_settings
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  remarks: "Идентификатор пользовательских настроек уведомлений для личного кабинета"
+              - column:
+                  name: user_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                  remarks: "Идентификатор пользователя"
+              - column:
+                  name: notification_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_notification_id
+                    references: notifications_settings.notification(id)
+                  remarks: "Идентификатор настроек уведомления"
+              - column:
+                  name: class
+                  type: varchar(4000)
+                  constraints:
+                    nullable: false
+                  remarks: "Класс уведомления"
+              - column:
+                  name: name
+                  type: text
+                  constraints:
+                    nullable: false
+                  remarks: "Название уведомления"
+              - column:
+                  name: push_active
+                  type: boolean
+                  constraints:
+                    nullable: false
+                  remarks: "Активность push-уведомлений в ЛК"
+              - column:
+                  name: push_enabled
+                  type: boolean
+                  constraints:
+                    nullable: false
+                  remarks: "Доступность push-уведомления для организации"
+              - column:
+                  name: email_active
+                  type: boolean
+                  constraints:
+                    nullable: false
+                  remarks: "Активность email-уведомлений в ЛК"
+              - column:
+                  name: email_enabled
+                  type: boolean
+                  constraints:
+                    nullable: false
+                  remarks: "Доступность email-уведомления для организации"
+              - column:
+                  name: sms_active
+                  type: boolean
+                  constraints:
+                    nullable: false
+                  remarks: "Активность sms-уведомлений в ЛК"
+              - column:
+                  name: sms_enabled
+                  type: boolean
+                  constraints:
+                    nullable: false
+                  remarks: "Доступность sms-уведомления для организации"
+              - column:
+                  name: parent_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                  remarks: "Организация или контрагент"
+        - createIndex:
+            schemaName: notifications_settings
+            tableName: user_notification_settings
+            columns:
+              - column:
+                  name: user_id
+            indexName: idx_user_id
+        - createIndex:
+            schemaName: notifications_settings
+            tableName: user_notification_settings
+            columns:
+              - column:
+                  name: notification_id
+            indexName: idx_notification_id
+        - createIndex:
+            schemaName: notifications_settings
+            tableName: user_notification_settings
+            columns:
+              - column:
+                  name: class
+            indexName: idx_class
+        - addUniqueConstraint:
+            schemaName: notifications_settings
+            tableName: user_notification_settings
+            columnNames: id, user_id, notification_id
+            constraintName: unique_id_user_id_notification_id
+      rollback:
+        - sql:
+            sql: drop schema ${schema_name} cascade;
+        - sql:
+            sql: drop schema ${schema_name}_approve cascade;
+        - sql:
+            sql: drop schema ${schema_name}_contractor cascade;
+        - sql:
+            sql: drop schema ${schema_name}_corporate cascade;
+        - sql:
+            sql: drop schema ${schema_name}_limits cascade;
+        - sql:
+            sql: drop schema ${schema_name}_request cascade;
+        - sql:
+            sql: drop schema ${schema_name}_settings cascade;

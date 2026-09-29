@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: 20220601
+            author: asigalov
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/alter_sql1.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/rollback_sql1.sql
+                        relativeToChangelogFile: true

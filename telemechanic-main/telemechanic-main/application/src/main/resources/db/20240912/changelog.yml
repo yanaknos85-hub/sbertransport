@@ -1,0 +1,23 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20240912-1
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: telemechanic
+                        tableName: title
+                        columns:
+                            -   column:
+                                    name: signature_s3_file_name
+                                    type: varchar(37)
+                                    remarks: Название файла в s3 с подписью
+    -   changeSet:
+            id: telemechanic/20240912-2
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        relativeToChangelogFile: true
+                        path: change/add_roles_for_corus_send_title.sql
+                        splitStatements: false

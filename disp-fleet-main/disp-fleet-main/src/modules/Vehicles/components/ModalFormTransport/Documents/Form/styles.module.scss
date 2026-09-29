@@ -1,0 +1,122 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    font-family: 'SB Sans Text';
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+    color: #000000;
+    margin-bottom: 16px;
+
+    &:not(:first-child) {
+      padding-top: 16px;
+      border-top: 1px solid rgba(38, 38, 38, 0.08);
+    }
+  }
+
+  :global {
+    .ant-col {
+      width: 208px;
+    }
+
+    .ant-input-affix-wrapper {
+      border-radius: initial;
+    }
+  }
+
+  .certificateRow {
+    margin-bottom: 52px;
+  }
+
+  .button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  .formItem {
+    display: flex;
+    flex-direction: column;
+
+    :global {
+      .ant-form-item-control {
+        min-height: fit-content;
+      }
+
+      .ant-form-item-label {
+        text-align: left;
+        width: 100%;
+
+        label {
+          width: 100%;
+          height: auto;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 0.2px;
+          color: var(--dark-grey);
+          margin-bottom: 8px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: block;
+
+          &::after {
+            content: '';
+          }
+        }
+      }
+    }
+
+    .input {
+      height: 48px;
+      border-radius: 8px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      &::placeholder {
+        font-size: 12px;
+        letter-spacing: -0.3px;
+      }
+
+      :global {
+        .ant-input {
+          font-family: 'SB Sans Text';
+          font-size: 14px;
+          letter-spacing: -0.3px;
+          padding: 4px 35px 4px 11px;
+
+          &::placeholder {
+            font-size: 12px;
+            letter-spacing: -0.3px;
+          }
+        }
+
+        .ant-input-number-input-wrap {
+          width: 100%;
+        }
+      }
+    }
+
+    :global {
+      .ant-picker,
+      .ant-select-selector {
+        height: 48px;
+      }
+    }
+  }
+
+  :global {
+    .ant-picker-input input::placeholder {
+      font-size: 12px;
+      letter-spacing: -0.3px;
+    }
+
+    .ant-select-selection-placeholder {
+      font-size: 12px;
+      letter-spacing: -0.3px;
+    }
+  }
+}

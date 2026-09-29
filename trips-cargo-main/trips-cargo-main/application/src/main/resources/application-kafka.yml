@@ -1,0 +1,78 @@
+spring:
+    cloud:
+        stream:
+            binders:
+                kafka:
+                    type: kafka
+                    environment:
+                        spring.cloud.stream.kafka:
+                            default:
+                                consumer:
+                                    enableDlq: true
+                                    autoCommitOnError: true
+                                    topic.properties:
+                                        cleanup.policy: compact,delete
+                                        retention.ms: 604800000
+                                producer:
+                                    topic.properties:
+                                        cleanup.policy: compact,delete
+                                        retention.ms: 604800000
+                            binder:
+                                brokers:
+                                    - ${KAFKA_BROKERS:@kafka.default.broker@}
+                                producerProperties:
+                                    key.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+                                consumerProperties:
+                                    key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+                                    dlqProducerProperties:
+                                        key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+                                    standardHeaders: both
+            bindings:
+                requestCargoInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.request.cargo.routes
+                    binder: kafka
+                contractorInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.dispatcher.contractor
+                    binder: kafka
+                dispatcherInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.dispatcher
+                    binder: kafka
+                autoparkInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.dispatcher.autopark
+                    binder: kafka
+                driverInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.dispatcher.driver
+                    binder: kafka
+                vehicleInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.dispatcher.vehicle
+                    binder: kafka
+                shiftInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.dispatcher.shift
+                    binder: kafka
+                integrationClientInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.dispatcher.integrationClient
+                    binder: kafka
+                ewbInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.fleet-registry.ewb_closed
+                    binder: kafka
+                tripOutput-out-0:
+                    destination: service.trip
+                    binder: kafka
+                shiftOutput-out-0:
+                    destination: service.trip.shift
+                    binder: kafka
+                driverOutput-out-0:
+                    destination: service.trip.driver
+                    binder: kafka
+                contractorTripUpdateOutput-out-0:
+                    destination: service.contractor.update.trip
+                    binder: kafka

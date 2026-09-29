@@ -1,0 +1,64 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230929"
+      author: blandin-ad
+      changes:
+        - createTable:
+            schemaName: trips
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: human_readable_id
+                  type: varchar(255)
+                  remarks: Человекочитаемый идентификатор
+                  constraints:
+                    nullable: false
+                    unique: true
+                    uniqueConstraintName: trips_dispatcher_human_readable_id_uk
+              - column:
+                  name: last_name
+                  type: text
+                  remarks: Фамилия
+                  constraints:
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: text
+                  remarks: Имя
+                  constraints:
+                    nullable: false
+              - column:
+                  name: patronymic
+                  type: text
+                  remarks: Отчество
+              - column:
+                  name: phone
+                  type: text
+                  remarks: Номер телефона
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: text
+                  remarks: E-Mail
+                  constraints:
+                    nullable: false
+              - column:
+                  name: contractor_id
+                  type: uuid
+                  remarks: Контрагент
+                  constraints:
+                    foreignKeyName: trips_dispatcher_contractor_fk
+                    referencedColumnNames: id
+                    referencedTableName: contractors
+                    referencedTableSchemaName: trips
+      rollback:
+        - dropTable:
+            schemaName: trips
+            tableName: dispatcher

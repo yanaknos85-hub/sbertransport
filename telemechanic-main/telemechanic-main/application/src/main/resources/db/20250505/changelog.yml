@@ -1,0 +1,56 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20250505-1
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_ddl_fleet_owner_organization.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250505-2
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_ddl_medic_organization.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250505-3
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_ddl_technic_organization.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250505-4
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_ddl_organization_medical_license.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250505-5
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_ddl_ewb_contract.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+                        
+    -   changeSet:
+            id: telemechanic/20250505-6
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_ddl_ewb_tariff.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

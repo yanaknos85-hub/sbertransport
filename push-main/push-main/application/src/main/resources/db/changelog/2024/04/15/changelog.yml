@@ -1,0 +1,61 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240415-1616"
+      author: ladeyshchikov-aa
+      context: "TRANSPORT-21411"
+      changes:
+        - tagDatabase:
+            tag: "20240415"
+        - sql:
+            sql: create schema push
+        - sql:
+            sql: comment on schema push is 'Сервис пушей'
+      rollback:
+        - sql:
+            sql: drop schema push cascade;
+
+  - changeSet:
+      id: "20240415-1629"
+      author: ladeyshchikov-aa
+      context: "TRANSPORT-21411"
+      changes:
+        - createTable:
+            schemaName: push
+            tableName: token
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: ID
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: push_token_id_notNullConstraint
+                    primaryKey: true
+                    primaryKeyName: push_token_pk
+              - column:
+                  name: recipient_id
+                  type: uuid
+                  remarks: Идентификатор получателя
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: push_token_recipientId_notNullConstraint
+              - column:
+                  name: platform_type
+                  type: varchar(7)
+                  remarks: Тип платформы
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: push_token_platformType_notNullConstraint
+              - column:
+                  name: value
+                  type: varchar(255)
+                  remarks: Значение токена
+                  constraints:
+                    nullable: false
+                    unique: true
+                    uniqueConstraintName: push_token_value_uniqueConstraint
+                    notNullConstraintName: push_token_value_notNullConstraint
+      rollback:
+        - dropTable:
+            schemaName: push
+            tableName: token

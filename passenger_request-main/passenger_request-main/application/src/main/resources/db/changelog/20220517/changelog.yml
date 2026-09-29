@@ -1,0 +1,51 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220517"
+            author: nikandrov-ae
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_cargo
+                        columns:
+                            -   column:
+                                    name: contractor_trip_id
+                                    type: varchar(50)
+                                    remarks: идентификатор перевозки в системе исполнителя
+                            -   column:
+                                    name: decision_code
+                                    type: varchar(255)
+                                    remarks: Код закрытия в системе исполнителя
+                            -   column:
+                                    name: resolution
+                                    type: varchar(2000)
+                                    remarks: Описание состояния поездки от исполнителя
+                            -   column:
+                                    name: time_work_start
+                                    type: timestamp
+                                    remarks: Время начала работ
+                            -   column:
+                                    name: time_work_finish
+                                    type: timestamp
+                                    remarks: Время завершения работ
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_cargo
+                        columnName: contractor_trip_id
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_cargo
+                        columnName: decision_code
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_cargo
+                        columnName: resolution
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_cargo
+                        columnName: time_work_start
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_cargo
+                        columnName: time_work_finish

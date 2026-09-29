@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    username: postgres
+  cloud.config.uri: http://localhost
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost
+grpc:
+  server:
+    port: -1

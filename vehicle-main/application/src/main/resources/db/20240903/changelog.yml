@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20240903-1
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_access.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

@@ -1,0 +1,32 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20250723-1
+            author: novikova-km
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: telemechanic
+                        tableName: request_history
+                        columns:
+                            column:
+                                -   name: old_status
+                                    type: varchar(50)
+                                    
+    -   changeSet:
+            id: telemechanic/20250723-2
+            author: novikova-km
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/create_medic_request_history.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250723-3
+            author: novikova-km
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/create_ewb_history.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

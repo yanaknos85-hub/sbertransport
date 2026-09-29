@@ -1,0 +1,19 @@
+call migrations.fill_roles('external_request', 'GET /', 'ROLE_EMPLOYEE_CORP_CLIENT', true);
+call migrations.fill_roles('external_request', 'POST /', 'ROLE_EMPLOYEE_CORP_CLIENT', true);
+call migrations.fill_roles('external_request', 'GET /{requestId}', 'ROLE_EMPLOYEE_CORP_CLIENT', true);
+call migrations.fill_roles('external_request', 'PUT /{requestId}', 'ROLE_EMPLOYEE_CORP_CLIENT', true);
+call migrations.fill_roles('external_request', 'PATCH /{requestId}', 'ROLE_EMPLOYEE_CORP_CLIENT', true);
+call migrations.fill_roles('external_request', 'DELETE /{requestId}', 'ROLE_EMPLOYEE_CORP_CLIENT', true);
+call migrations.fill_roles('external_request', 'HEAD /{requestId}', 'ROLE_EMPLOYEE_CORP_CLIENT', true);
+call migrations.fill_roles('external_request', 'GET /files/{url}', 'ROLE_EMPLOYEE_CORP_CLIENT', true);
+call migrations.fill_roles('external_request', 'GET /files/{url}/result/{fileName}', 'ROLE_EMPLOYEE_CORP_CLIENT', true);
+
+call migrations.fill_roles('external_request', 'GET /', 'ROLE_ADMIN_DATA_MASTER', true);
+call migrations.fill_roles('external_request', 'POST /', 'ROLE_ADMIN_DATA_MASTER', true);
+call migrations.fill_roles('external_request', 'GET /{requestId}', 'ROLE_ADMIN_DATA_MASTER', true);
+call migrations.fill_roles('external_request', 'PUT /{requestId}', 'ROLE_ADMIN_DATA_MASTER', true);
+call migrations.fill_roles('external_request', 'PATCH /{requestId}', 'ROLE_ADMIN_DATA_MASTER', true);
+call migrations.fill_roles('external_request', 'DELETE /{requestId}', 'ROLE_ADMIN_DATA_MASTER', true);
+call migrations.fill_roles('external_request', 'HEAD /{requestId}', 'ROLE_ADMIN_DATA_MASTER', true);
+call migrations.fill_roles('external_request', 'GET /files/{url}', 'ROLE_ADMIN_DATA_MASTER', true);
+call migrations.fill_roles('external_request', 'GET /files/{url}/result/{fileName}', 'ROLE_ADMIN_DATA_MASTER', true);

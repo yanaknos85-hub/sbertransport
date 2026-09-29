@@ -1,0 +1,25 @@
+spring:
+    datasource:
+        url: jdbc:postgresql://localhost:5432/transport
+        hikari:
+            schema: ${spring.application.name}
+            minimum-idle: 3                     #по умолчанию 10
+            idle-timeout: 10000                 #по умолчанию 600000
+            max-lifetime: 60000                 #по умолчанию 1800000
+    jpa:
+        properties:
+            hibernate:
+                default_schema: ${spring.application.name}
+                generate_statistics: ${HIBERNATE_GENERATE_STATISTICS:false}
+        hibernate:
+            ddl-auto: validate
+        show-sql: ${SHOW_SQL:false}
+        open-in-view: false
+    liquibase:
+        change-log: classpath:db/changelog-master.yml
+        url: ${spring.datasource.url}
+        user: ${spring.datasource.username}
+        password: ${spring.datasource.password}
+        database-change-log-table: changelog_${spring.application.name}
+        database-change-log-lock-table: changelog_${spring.application.name}_lock
+        liquibase-schema: ${MIGRATIONS_SCHEMA:public}

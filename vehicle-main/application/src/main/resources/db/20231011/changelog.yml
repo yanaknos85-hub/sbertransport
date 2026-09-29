@@ -1,0 +1,44 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20231011-1
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/create_category_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/20231011-2
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_access_to_category_operations.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/20231011-3
+            author: skakun-a
+            dbms: postgresql
+            context: "!test"
+            changes:
+                -   loadData:
+                        catalogName: vehicle
+                        columns:
+                            - column:
+                                header: id
+                                name: id
+                                type: uuid
+                            - column:
+                                header: catalog
+                                name: catalog
+                                type: varchar
+                            - columm:
+                                header: title
+                                name: title
+                                type: varchar
+                        file: dml/categories.csv
+                        relativeToChangelogFile: true
+                        schemaName: vehicle
+                        tableName: category

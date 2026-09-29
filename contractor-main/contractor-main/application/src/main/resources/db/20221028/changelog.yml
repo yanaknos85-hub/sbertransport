@@ -1,0 +1,51 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221028"
+            context: "20221028"
+            author: medvedev-ad
+            changes:
+                -   update:
+                        schemaName: contractors
+                        tableName: contractor
+                        where: integration_type = 'EMAIL_XML'
+                        columns:
+                            -   column:
+                                    name: integration_type
+                                    defaultValue: 'EMAIL_XML_API'
+                                    value: 'EMAIL_XML_API'
+            rollback:
+                -   update:
+                        schemaName: contractors
+                        tableName: contractor
+                        where: integration_type = 'EMAIL_XML_API'
+                        columns:
+                            -   column:
+                                    name: integration_type
+                                    value: 'EMAIL_XML'
+    -   changeSet:
+            id: "20221028-1"
+            context: "20221028"
+            author: medvedev-ad
+            changes:
+                -   dropDefaultValue:
+                        schemaName: contractors
+                        tableName: contractor
+                        columnName: integration_type
+                -   addDefaultValue:
+                        schemaName: contractors
+                        tableName: contractor
+                        columnName: integration_type
+                        defaultValue: EMAIL_XML_API
+                -   tagDatabase:
+                        tag: "20221028"
+            rollback:
+                -   dropDefaultValue:
+                        schemaName: contractors
+                        tableName: contractor
+                        columnName: integration_type
+                        defaultValue: EMAIL_XML_API
+                -   addDefaultValue:
+                        schemaName: contractors
+                        tableName: contractor
+                        columnName: integration_type
+                        defaultValue: EMAIL_XML

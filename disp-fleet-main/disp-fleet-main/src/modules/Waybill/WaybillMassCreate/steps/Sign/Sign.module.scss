@@ -1,0 +1,56 @@
+.divider {
+  margin: 16px 0;
+  color: #26262614;
+}
+
+.pageHeader {
+  padding: 0;
+}
+
+.helperText {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.3px;
+  color: rgb(38, 38, 38);
+  text-align: left;
+  margin-top: 8px;
+}
+
+.table {
+  margin-top: 16px;
+
+  :global {
+    .ant-table-thead {
+      .ant-table-cell {
+        /* Caption 1/12/Regular */
+        color: rgb(115, 115, 115);
+        font-family: SB Sans Interface;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 16px;
+        letter-spacing: 0.2px;
+        padding-top: 13px;
+        padding-bottom: 13px;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+    }
+
+    .ant-table-tbody > tr > td {
+      font-size: 14px;
+      line-height: 20px;
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+  }
+}
+
+.actions {
+  margin-top: 16px;
+}
+
+.backButton {
+  background: #F2F3F6;
+  color: black;
+}

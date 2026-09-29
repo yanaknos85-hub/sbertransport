@@ -1,0 +1,15 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211217"
+            author: nikulinsa
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_fact_parameters_setting_time.sql
+                        relativeToChangelogFile: true
+
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_fact_parameters_setting_time.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

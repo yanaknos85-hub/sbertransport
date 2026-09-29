@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250929-1528
+      author: blandin-ad
+      changes:
+        - dropUniqueConstraint:
+            schemaName: dispatcher
+            tableName: contractor
+            constraintName: dispatcher_contractor_name_tin_uc
+      rollback:
+        - addUniqueConstraint:
+            schemaName: dispatcher
+            tableName: contractor
+            constraintName: dispatcher_contractor_name_tin_uc
+            columnNames: name,tin

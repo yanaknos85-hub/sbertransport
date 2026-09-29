@@ -1,0 +1,184 @@
+.filters {
+  white-space: nowrap;
+  display: inline-block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding-top: var(--padding-half);
+  margin-top: 12px;
+}
+
+.headerDiv {
+  display: flex;
+  justify-content: space-between;
+
+  @media(max-width: 767px) {
+    flex-direction: column;
+    margin-left: 10px;
+  }
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.listWrapper {
+  width: 100%;
+  overflow-y: auto;
+  height: 75vh;
+
+  @media(max-width: 767px) {
+    height: calc(100vh - 245px);
+  }
+}
+
+
+.listWrapperJournal {
+  height: calc(75vh - 10px);
+
+  @media(max-width: 767px) {
+    height: calc(100vh - 380px);
+  }
+}
+
+.listWrapperRegular {
+  height: calc(75vh - 10px);
+
+  @media(max-width: 767px) {
+    height: calc(100vh - 260px);
+  }
+}
+
+.tabs {
+  :global(.ant-tabs-nav-more) {
+    display: none;
+  }
+
+  :global(.ant-tabs-tab) {
+    color: #000;
+    opacity: 0.2;
+  }
+
+  :global(.ant-tabs-tab-active) {
+    opacity: 1;
+    color: #000;
+  }
+
+  :global(.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn) {
+    color: #000;
+  }
+
+  :global(.ant-tabs-tab):hover {
+    color: #000;
+  }
+}
+
+// Миксин: общие стили для табов
+@mixin resetTabs() {
+  :global {
+    .ant-tabs-nav {
+      margin-bottom: 0 !important;
+    }
+
+    .ant-tabs-nav::before,
+    .ant-tabs-nav-list::after,
+    .ant-tabs-ink-bar {
+      display: none;
+    }
+  }
+}
+
+// Базовые стили для табов
+.Tabs, .MainTabs {
+  margin-top: 8px !important;
+  @include resetTabs();
+}
+
+// === СТИЛИ: .MainTabs (подчёркивание) ===
+.MainTabs {
+  margin-top: 8px !important;
+
+  :global {
+    .ant-tabs-tab {
+      padding: 6px 16px;
+      margin-right: 12px;
+      font-size: 16px;
+      color: #262626;
+      line-height: 20px;
+      font-weight: 400;
+      letter-spacing: -0.3px;
+      height: 36px;
+      position: relative;
+      transition: color 0.3s ease;
+      border-radius: 8px 8px 0 0; // скругляем только верхние углы у самого таба (не обязательно)
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: transparent;
+        border-radius: 0 0 8px 8px; // скругляем только нижние углы у "бордера"
+        transition: background-color 0.3s ease;
+      }
+
+      &:hover {
+        color: #262626;
+      }
+    }
+
+    .ant-tabs-tab-active {
+      color: #262626 !important;
+
+      &::after {
+        background-color: rgb(16, 191, 106) !important;
+      }
+    }
+  }
+}
+
+// === СТИЛИ: .Tabs (кнопки) ===
+.Tabs {
+  :global {
+    .ant-tabs-tab {
+      padding: 6px 16px;
+      font-size: 16px;
+      line-height: 20px;
+      font-weight: 400;
+      color: #262626;
+      letter-spacing: -0.3px;
+      height: 36px;
+      border-radius: 18px;
+
+      &:hover {
+        background-color: #f2f2f3;
+        color: #262626 !important;
+      }
+    }
+
+    .ant-tabs-tab-active {
+      border: 2px solid rgb(16, 191, 106) !important;
+      background-color: rgb(231, 249, 240) !important;
+      border-radius: 18px;
+      color: #262626 !important;
+
+      .ant-tabs-tab-btn {
+        color: #262626 !important;
+        font-weight: 600 !important;
+      }
+    }
+  }
+}
+
+.subTabsHidden {
+  display: none;
+}

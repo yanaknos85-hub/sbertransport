@@ -1,0 +1,82 @@
+@import 'styles/variables.scss';
+
+.input {
+  position: relative;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+
+  &:focus,
+  &:focus-within {
+    border-color: $jade;
+    box-shadow: 0 0 0 1px $jade;
+    outline: 0;
+
+    .eye {
+      path {
+        stroke: $jade;
+      }
+    }
+  }
+
+  .eye {
+    position: absolute;
+    top: 50%;
+    right: 17px;
+    transform: translateY(-50%);
+    padding: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+
+  :global(.adm-input-element) {
+    width: auto;
+    font-family: 'SB Sans Text';
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: -0.12px;
+    color: $dark-grey;
+    border-radius: inherit;
+
+    &:placeholder {
+      color: $pale-grey;
+    }
+  }
+
+  &.small {
+    :global(.adm-input-element) {
+      padding: 11px 12px;
+    }
+  }
+
+  &.middle {
+    :global(.adm-input-element) {
+      padding: 17px 16px;
+    }
+  }
+
+  &.large {
+    :global(.adm-input-element) {
+      padding: 19px 16px;
+    }
+  }
+
+  &.password {
+    :global(.adm-input-element) {
+      padding-right: 50px;
+    }
+  }
+}
+
+:global(.adm-form-item-has-error .input-ui) {
+  border-color: $pale-red;
+
+  &:focus,
+  &:focus-within {
+    box-shadow: none;
+  }
+
+  path {
+    stroke: $pale-red !important;
+  }
+}

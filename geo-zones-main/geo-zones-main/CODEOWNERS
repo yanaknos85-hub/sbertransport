@@ -1,0 +1,14 @@
+### Общие настройки
+CODEOWNERS.toplevel.auto_unapprove_on_change enable
+CODEOWNERS.toplevel.create_pull_request_comment disable
+CODEOWNERS.source_branch_exclusion_pattern release/D-*
+
+### Группы пользователей
+@@@Developers MVySmirnova@sberbank.ru AENikandrov@sberbank.ru NVMabatov@sberbank.ru Belov.A.Vikt@sberbank.ru
+
+### Владение файлами
+**/*.* @@Developers
+*.* @@Developers
+
+### Необходимые проверки
+AllGroupsCheck(1)

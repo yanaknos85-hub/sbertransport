@@ -1,0 +1,21 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20251015-1
+            author: MakarovM-D
+            dbms: postgresql
+            logicalFilePath: db/02025/10/15/changelog.yml
+            changes:
+                -   sqlFile:
+                        path: changes/ddl_medic_contractor.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20251015-2
+            author: MakarovM-D
+            dbms: postgresql
+            logicalFilePath: db/02025/10/15/changelog.yml
+            changes:
+                -   sqlFile:
+                        path: changes/add_ewb_medic_contractor_fk.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

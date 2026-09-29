@@ -1,0 +1,20 @@
+create index vehicle_model_idx
+    on vehicle.vehicle (model_id);
+create index model_brand_idx
+    on vehicle.model (brand_id);
+create index model_title_idx
+    on vehicle.model (title);
+create index brand_title_idx
+    on vehicle.brand (title);
+create index vehicle_category_idx
+    on vehicle.vehicle (category_id);
+create index vehicle_fuel_type_idx
+    on vehicle.vehicle (fuel_type_id);
+create index vehicle_drive_idx
+    on vehicle.vehicle (drive_id);
+create index transport_vehicle_idx
+    on vehicle.transport (vehicle_id);
+create index transport_organization_idx
+    on vehicle.transport (organization_id);
+create index transport_department_idx
+    on vehicle.transport (department_id);

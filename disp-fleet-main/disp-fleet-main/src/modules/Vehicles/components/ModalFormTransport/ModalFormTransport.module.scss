@@ -1,0 +1,44 @@
+.modal {
+  width: 85vw !important;
+  top: 20px;
+
+  :global {
+    .ant-modal-header {
+      border: none;
+    }
+
+    .ant-modal-title {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 28px;
+    }
+
+    .ant-modal-close-x {
+      display: flex;
+      justify-content: center;
+
+      .modalIcon {
+        width: 24px;
+      }
+    }
+
+    .ant-modal-body {
+      padding: 0 20px 20px;
+    }
+  }
+
+  .content {
+    position: relative;
+    min-height: 40vh;
+
+    .stepper {
+      margin-bottom: 12px;
+    }
+
+    .cancelBtn {
+      position: absolute;
+      bottom: 0;
+      right: 110px;
+    }
+  }
+}

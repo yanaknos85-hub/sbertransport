@@ -1,0 +1,55 @@
+spring:
+    cloud:
+        stream:
+            kafka:
+                default:
+                    consumer:
+                        enableDlq: true
+                binder:
+                    brokers:
+                        - ${KAFKA_BROKERS:@kafka.default.broker@}
+                    producerProperties:
+                        key.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+                    consumerProperties:
+                        key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+            default-binder: kafka-ssl
+            bindings:
+                organizationInputSsl-in-0:
+                    group: ${spring.application.name}-ssl
+                    destination: service.organization
+                    binder: kafka-ssl
+                departmentInputSsl-in-0:
+                    group: ${spring.application.name}-ssl
+                    destination: service.organization.department
+                    binder: kafka-ssl
+                employeeInputSsl-in-0:
+                    group: ${spring.application.name}-ssl
+                    destination: service.organization.employee
+                    binder: kafka-ssl
+                delegateInputSsl-in-0:
+                    group: ${spring.application.name}-ssl
+                    destination: service.organization.employee.delegate
+                    binder: kafka-ssl
+                fraudInputSsl-in-0:
+                    group: ${spring.application.name}-ssl
+                    destination: service.ai.receipt.scanner.fraud
+                    binder: kafka-ssl
+                updateStatusInputSsl-in-0:
+                    group: ${spring.application.name}-ssl
+                    destination: service.request-external.update.status
+                    binder: kafka-ssl
+                notificationsOutputSsl-out-0:
+                    destination: service.notification
+                    binder: kafka-ssl
+                requestExternalSsl-out-0:
+                    destination: service.request.external
+                    binder: kafka-ssl
+                requestPayoutOutputSsl-out-0:
+                    destination: payout.create.request-payout
+                    binder: kafka-ssl
+                fraudMonitoringOutput-out-0:
+                    destination: service.fraud-monitoring.listen.fraud
+                    binder: kafka-ssl
+                receiptScannerOutputSsl-out-0:
+                    destination: service.ai.receipt.scanner.listen.document
+                    binder: kafka-ssl

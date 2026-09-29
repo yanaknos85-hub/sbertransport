@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250821-1343
+      author: blandin-ad
+      changes:
+        - addColumn:
+            schemaName: dispatcher
+            tableName: driver
+            columns:
+              - column:
+                  name: oauth_id
+                  type: uuid
+                  remarks: Идентификатор пользователя во внешней системе
+                  constraints:
+                    unique: true
+                    uniqueConstraintName: dispatcher_driver_oauth_id_uc
+      rollback:
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: driver
+            columns:
+              - column:
+                  name: oauth_id

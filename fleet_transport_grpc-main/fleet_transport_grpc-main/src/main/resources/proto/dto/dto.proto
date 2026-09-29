@@ -1,0 +1,55 @@
+syntax = "proto3";
+option java_package = "ru.sber.transport.transport.grpc.dto";
+import "google/protobuf/timestamp.proto";
+
+package ru.sber.transport.transport.grpc.dto;
+
+message EwbData {
+    string stateNumber = 1;
+    string driverId = 2;
+    string drivingLicenseId = 3;
+    string authorId = 4;
+    string odometerOutId = 5;
+    string odometerInId = 6;
+}
+
+message EnrichedEwbInfo {
+    string transportType = 1;
+    string driverTin = 2;
+    DrivingLicense drivingLicense = 3;
+    Attorney attorney = 4;
+    int32 mileageOut = 5;
+    int32 mileageIn = 6;
+}
+
+message DriverInfoRequest {
+    string driverId = 1;
+    string drivingLicenseId = 2;
+}
+
+message DriverInfoResponse {
+    string tin = 1;
+    DrivingLicense drivingLicense = 2;
+}
+
+message DrivingLicense {
+    string id = 1;
+    string series = 2;
+    int32 number = 3;
+    google.protobuf.Timestamp issueDate = 4;
+}
+
+message Attorney {
+    string attorneyNumber = 1;
+    google.protobuf.Timestamp issueDate = 2;
+    google.protobuf.Timestamp expiryDate = 3;
+    string creationSystem = 4;
+}
+
+message AttorneyInfoRequest {
+    string telemechanicId = 1;
+}
+
+message AttorneyInfoResponse {
+    string attorneyId = 1;
+}

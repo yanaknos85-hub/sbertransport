@@ -1,0 +1,10 @@
+.textButton {
+  color: rgb(16, 191, 106);
+  cursor: pointer;
+  padding: 0 7px;
+  font-size: 12px;
+
+  &:hover {
+    color: rgb(144, 144, 144);
+  }
+}

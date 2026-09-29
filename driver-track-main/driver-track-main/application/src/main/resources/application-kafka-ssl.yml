@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        driverInputSsl-in-0:
+          group: ${spring.application.name}-ssl
+          destination: service.trip.driver
+          binder: kafka-ssl
+        factDistanceOutputSsl-out-0:
+          group: ${spring.application.name}-ssl
+          destination: service.distance.fact
+          binder: kafka-ssl
+        tripInputSsl-in-0:
+          group: ${spring.application.name}-ssl
+          destination: service.trip
+          binder: kafka-ssl

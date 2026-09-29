@@ -1,0 +1,1 @@
+alter table request_audit.request_for_public add column organization_id UUID;

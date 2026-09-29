@@ -1,0 +1,101 @@
+.numberRange {
+  :global(.ant-input-group) {
+    display: flex;
+    align-items: flex-start;
+
+    & > .dash {
+      padding: 0 10px;
+      line-height: 48px;
+    }
+  }
+
+  :global {
+    .ant-checkbox {
+      &-checked {
+        &:after {
+          border-radius: 4px;
+        }
+
+        .ant-checkbox-inner {
+          border: none;
+
+          &::after {
+            top: 45%;
+            left: 30%;
+          }
+        }
+      }
+
+      &-inner {
+        width: 18px;
+        height: 18px;
+        border: 1px solid #d6d6d6;
+        border-radius: 4px;
+      }
+
+      &-wrapper {
+        color: var(--dark-grey);
+        font-family: SB Sans Text;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: -0.3px;
+      }
+    }
+
+    .ant-input-number {
+      width: min-content;
+      min-width: 104px;
+      height: 48px;
+      border: 1px solid var(--silver);
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+
+      &-input {
+        padding: 0 16px;
+        color: var(--dark-grey);
+        font-family: SB Sans Text;
+      }
+
+      &-handler-wrap {
+        display: none;
+      }
+    }
+
+    .ant-form-item-control {
+      justify-content: center;
+
+      &-input-content {
+        display: flex;
+        flex-direction: row;
+        white-space: nowrap;
+      }
+    }
+
+    .ant-form-item-has-error .ant-input-number {
+      width: 100%;
+    }
+
+    .ant-form-item-explain-error {
+      font-size: 12px;
+    }
+  }
+
+  input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+  }
+
+  .checkbox {
+    height: 48px;
+  }
+
+  .inputLarge {
+    width: 100% !important;
+
+    :global(.ant-input-number) {
+      width: 100%;
+    }
+  }
+}

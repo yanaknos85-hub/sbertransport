@@ -1,0 +1,30 @@
+import React from 'react';
+
+import './styles.scss';
+
+interface FeedTableHeadProps {
+  title?: string | JSX.Element;
+  className?: string;
+  children: any;
+}
+
+const ItemContainer: React.FC<FeedTableHeadProps> = props => {
+  const {
+    children, className, title,
+  } = props;
+  const mainClass = 'orderExecutionContainer-subsection';
+  const classes = [mainClass];
+
+  if (className) {
+    classes.push(className);
+  }
+
+  return (
+    <div className={classes.join(' ')}>
+      {title && <div className={`${mainClass}__title`}>{title}</div>}
+      <div className={`${mainClass}__content`}>{children}</div>
+    </div>
+  );
+};
+
+export default ItemContainer;

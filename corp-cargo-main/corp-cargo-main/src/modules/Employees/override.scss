@@ -1,0 +1,40 @@
+.model_detailed {
+  .ant-list-item {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .ant-table-footer {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .ant-btn {
+    width: 100%;
+    margin-top: var(--margin-half);
+  }
+
+  .anticon-edit {
+    // color: var(--primary-color);
+    color: red;
+  }
+
+  .anticon-close {
+    color: var(--error-color);
+  }
+
+  .ant-list-item-action-split {
+    display: none;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+}

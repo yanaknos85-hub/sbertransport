@@ -1,0 +1,33 @@
+name: app_platform_driver_track
+version: 1.0.0
+
+schema:
+  - specs/
+  - changes/
+
+context:
+  stack:
+    - Java 21
+    - Spring Boot 3
+    - Maven
+    - PostgreSQL
+    - Liquibase
+    - Kafka
+    - Spring Security (JWT)
+    - OpenAPI (Swagger)
+
+  modules:
+    - application: основной модуль (controllers, services, repositories, scheduler, messaging sender)
+    - messaging: модуль с Kafka DTO
+
+  architecture: Hexagonal Architecture
+
+rules:
+  - Follow Hexagonal Architecture
+  - Respect module boundaries
+  - Keep business logic out of controllers
+  - Keep business logic out of repositories
+  - Prefer immutable objects
+  - Prefer records for DTOs
+  - Constructor injection only
+  - Avoid premature abstractions

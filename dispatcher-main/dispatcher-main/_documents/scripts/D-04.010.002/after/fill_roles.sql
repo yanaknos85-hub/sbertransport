@@ -1,0 +1,1 @@
+call migrations.fill_roles('dispatcher', 'GET /transport/', 'ROLE_DISPATCHER_CONTRACTOR', true);

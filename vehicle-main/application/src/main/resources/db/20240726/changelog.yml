@@ -1,0 +1,19 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20240726-1
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_ddl.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/20240726-2
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/edit_constraints.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20241028-1
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/delete_ewb_title_status.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

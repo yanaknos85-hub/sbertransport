@@ -1,0 +1,59 @@
+.modal {
+  width: 100% !important;
+  height: 90%;
+  min-width: 600px;
+  border-radius: 12px;
+  overflow: hidden;
+
+  :global(.ant-modal-content) {
+    border-radius: 12px;
+  }
+
+  :global(.ant-modal-header) {
+    padding: 24px 16px 0;
+  }
+
+  :global(.ant-modal-body) {
+    padding: 0 16px 16px;
+    margin-top: 40px;
+  }
+
+  :global(.ant-modal-header),
+  :global(.ant-modal-footer) {
+    border: none;
+  }
+
+  :global(.ant-modal-close-x) {
+    display: flex;
+    justify-content: center;
+
+    .ModalIcon {
+      width: 24px;
+    }
+  }
+
+  :global(.ant-modal-title) {
+    font-family: 'SB Sans Text';
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: var(--dark-grey);
+  }
+
+  .error {
+    color: var(--light-red);
+  }
+
+  .content {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow: auto;
+  }
+
+  .refetchBtn {
+    margin-left: auto;
+  }
+}

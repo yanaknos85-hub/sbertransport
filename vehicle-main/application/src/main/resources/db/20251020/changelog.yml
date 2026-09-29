@@ -1,0 +1,36 @@
+databaseChangeLog:
+    - changeSet:
+        id: vehicle/20251020-1
+        author: blandin-ad
+        dbms: postgresql
+        preConditions:
+          - not:
+              - columnExists:
+                  tableName: transport
+                  columnName: contractor_id
+              - columnExists:
+                  tableName: transport
+                  columnName: autopark_id
+          - onFail: MARK_RAN
+        changes:
+          - addColumn:
+              schemaName: vehicle
+              tableName: transport
+              columns:
+                - column:
+                    name: contractor_id
+                    remarks: Идентификатор контрагента (автопарка)
+                    type: uuid
+                - column:
+                    name: autopark_id
+                    remarks: Идентификатор филиала автопарка
+                    type: uuid
+        rollback:
+          - dropColumn:
+              schemaName: vehicle
+              tableName: transport
+              columns:
+                - column:
+                    name: contractor_id
+                - column:
+                    name: autopark_id

@@ -1,0 +1,1 @@
+drop index request_for_taxi_request_closed_datetime_active_index;

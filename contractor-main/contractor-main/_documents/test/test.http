@@ -1,0 +1,52 @@
+### Вход
+POST {{auth}}/login
+Accept: application/json
+Authorization: Basic {{user}}:{{password}} # Имя пользователя и пароль необходимо положить в файл http-client.private.env.json. Пример - http-client.private.env.json.example. Получившийся файл НЕ НАДО добавлять в гит
+
+> {%
+client.global.set("auth_token", response.body.token);
+client.global.set("refresh_token", response.body.refreshToken);
+%}
+
+### Получение ODS
+GET {{host}}/files/contractor/empty?format=ODS
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+Accept: application/json
+
+> {%
+client.global.set("result_url", response.body.result_url);
+%}
+
+### Получение ODS файла
+GET {{host}}/{{result_url}}
+Authorization: Bearer {{auth_token}}
+
+
+### Выгрузка ODS
+POST {{host}}/files/contractor
+Authorization: Bearer {{auth_token}}
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Type: application/octet-stream
+Content-Disposition: form-data; name="file"; filename="contractor.ods"
+
+< contractor-1700813335156.ODS
+--boundary--
+
+> {%
+client.global.set("result_url", response.body.result_url);
+%}
+
+### Создание контрагента
+POST {{host}}/
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "name": "Новый контрагент15",
+  "msrn": "0123456789015",
+  "tin": "012345678904",
+  "integrationType": "NONE"
+}

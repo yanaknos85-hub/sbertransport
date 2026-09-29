@@ -1,0 +1,72 @@
+server:
+    port: -1
+
+spring:
+    config:
+        import: database.yml, kafka-test.yml, optional:configserver:${spring.cloud.config.uri}
+    jackson:
+        default-property-inclusion: non_null
+    application:
+        name: request-aggregation
+    datasource:
+        username: postgres
+    jpa:
+        properties:
+            hibernate:
+                default_schema: ${spring.datasource.db-name}
+                generate_statistics: ${HIBERNATE_GENERATE_STATISTICS:false}
+        hibernate:
+            ddl-auto: validate
+        show-sql: ${SHOW_SQL:false}
+        open-in-view: false
+    liquibase:
+        contexts: test
+    cloud:
+        discovery:
+            enabled: false
+            client:
+                simple:
+                    instances:
+                        grpc-geo:
+                            - uri: http://localhost:9999
+        vault:
+            enabled: false
+        openfeign:
+            client:
+                config:
+                    main-lead-service:
+                        url: ${main-lead-service.url}
+                        connectTimeout: 10000
+                        readTimeout: 600000
+    security:
+        user: #убираем запись в логах, по которой есть вопросы у безопасности
+            name: anonymous
+            password: ${random.uuid}
+            roles: anonymous
+        oauth2:
+            resourceserver:
+                jwt:
+                    jws-algorithms: RS512
+                    public-key-location: classpath:/key/jwt.key.pub
+    main:
+        banner-mode: off
+        lazy-initialization: true
+        cloud-platform: none
+        allow-bean-definition-overriding: true
+grpc:
+    client:
+        GLOBAL:
+            negotiation-type: plaintext
+        tariff:
+            address: discovery:///${grpc.tariff:grpc-tariff}
+        geo:
+            address: discovery:///${grpc.geo:grpc-geo}
+main-lead-service:
+    url: https://localhwost:31137
+    store: ${MEF_STORE:mef/keystore.jks}
+    password: ${MEF_PASSWORD:Init1234_}
+lead:
+    config:
+        max-file-size: ${LEAD_CONFIG_MAX_FILE_SIZE:1MB}
+        max-row-count: ${LEAD_CONFIG_MAX_ROW_COUNT:800}
+        departure-delay: ${LEAD_CONFIG_DEPARTURE_DELAY:3}

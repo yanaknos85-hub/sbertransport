@@ -1,0 +1,23 @@
+databaseChangeLog:
+    -   changeSet:
+            id: contractors/20211005
+            context: "20211005"
+            author: nikandrov-ae
+            dbms: postgresql
+            preConditions:
+                -   not:
+                        -   tableExists:
+                                schemaName: contractors
+                                tableName: cargo_package
+                        -   onFail: MARK_RAN
+                        -   onFailMessage: table cargo_package already exists
+            changes:
+                -   sqlFile:
+                        path: add_cargo_package.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback_cargo_package.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

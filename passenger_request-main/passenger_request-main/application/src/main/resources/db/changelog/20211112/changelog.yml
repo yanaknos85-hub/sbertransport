@@ -1,0 +1,90 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211112"
+            author: bisenov-vb
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    name: is_sla_expired
+                                    type: boolean
+                                    defaultValueBoolean: false
+                                    remarks: Флаг просрочки SLA
+                            -   column:
+                                    name: order_payment_formation_start_date
+                                    type: timestamp
+                                    remarks: Дата и время начала формирования приказа на выплату
+                            -   column:
+                                    name: order_payment_formation_finishing_date
+                                    type: timestamp
+                                    remarks: Дата и время окончания формирования приказа на выплату
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_personal
+                        columns:
+                            -   column:
+                                    name: is_sla_expired
+                                    type: boolean
+                                    defaultValueBoolean: false
+                                    remarks: Флаг просрочки SLA
+                            -   column:
+                                    name: order_payment_formation_start_date
+                                    type: timestamp
+                                    remarks: Дата и время начала формирования приказа на выплату
+                            -   column:
+                                    name: order_payment_formation_finishing_date
+                                    type: timestamp
+                                    remarks: Дата и время окончания формирования приказа на выплату
+                -   addColumn:
+                        schemaName: request_audit
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    name: is_sla_expired
+                                    type: boolean
+                                    defaultValueBoolean: false
+                                    remarks: Флаг просрочки SLA
+                            -   column:
+                                    name: order_payment_formation_start_date
+                                    type: timestamp
+                                    remarks: Дата и время начала формирования приказа на выплату
+                            -   column:
+                                    name: order_payment_formation_finishing_date
+                                    type: timestamp
+                                    remarks: Дата и время окончания формирования приказа на выплату
+                -   addColumn:
+                        schemaName: request
+                        tableName: deadline_settings_message
+                        columns:
+                            -   column:
+                                    name: personal_order_payment_formation_deadline_id
+                                    type: uuid
+                                    remarks: Контрольный срок - личный а/м - формирование приказа на выплату
+                            -   column:
+                                    name: personal_payment_awaiting_deadline_id
+                                    type: uuid
+                                    remarks: Контрольный срок - личный а/м - ожидание выплаты
+                            -   column:
+                                    name: public_order_payment_formation_deadline_id
+                                    type: uuid
+                                    remarks: Контрольный срок - общественный тр-т - формирование приказа на выплату
+                            -   column:
+                                    name: public_payment_awaiting_deadline_id
+                                    type: uuid
+                                    remarks: Контрольный срок - общественный тр-т - ожидание выплаты
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            -   column:
+                                    name: taxi_awaiting_search_start_date
+                                    type: timestamp
+                                    remarks: Дата и время старта поиска водителя на такси
+                -   renameColumn:
+                        schemaName: request
+                        tableName: deadline_settings_message
+                        oldColumnName: taxi_driver_search_deadline_id
+                        newColumnName: taxi_awaiting_search_deadline_id

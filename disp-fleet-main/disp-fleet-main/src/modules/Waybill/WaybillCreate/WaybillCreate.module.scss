@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  label {
+    color: #737373;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: .2px;
+  }
+
+  .divider {
+    margin: 16px 0;
+    color: #26262614;
+  }
+
+  .datepicker {
+    width: 100%;
+  }
+
+  .header {
+    overflow: hidden;
+
+    &__container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 28px;
+      }
+    }
+  }
+}

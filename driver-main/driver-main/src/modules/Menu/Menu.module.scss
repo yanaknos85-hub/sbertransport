@@ -1,0 +1,99 @@
+@import 'styles/variables.scss';
+
+.profile {
+  background-color: $solitude;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 12px 12px 20px;
+
+  .info {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    .user {
+      width: 100%;
+      position: relative;
+      font-family: 'SB Sans Text';
+      padding-right: 5px;
+
+      &Name {
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 600;
+        letter-spacing: -0.3px;
+        color: $black;
+        display: block;
+      }
+
+      &Role {
+        font-size: 14px;
+        line-height: 22px;
+        letter-spacing: -0.3px;
+        color: $shading-grey;
+        margin-top: 8px;
+      }
+
+      .icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+
+  .warning {
+    margin-top: 24px;
+  }
+}
+
+.items {
+  :global(.adm-list) {
+    border-bottom: 1px solid $silver;
+    padding-bottom: 20px;
+
+    &:not(:first-of-type) {
+      margin-top: 20px;
+    }
+  }
+
+  :global(.adm-list-header) {
+    font-family: 'SB Sans Text';
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: -0.15px;
+    color: $dark-violet;
+    padding: 0 20px;
+  }
+
+  :global(.adm-list-body) {
+    margin-top: 28px;
+    padding: 0 20px;
+
+    :global(.adm-list-body-inner) {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    :global(.adm-list-item-content-prefix) {
+      display: flex;
+      padding-right: 20px;
+    }
+
+    :global(.adm-list-item:active) {
+      background: none;
+    }
+
+    :global(.adm-list-item-title),
+    a {
+      font-family: 'SB Sans Text';
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: -0.3px;
+      color: $dark-grey;
+      text-decoration: none;
+    }
+  }
+}

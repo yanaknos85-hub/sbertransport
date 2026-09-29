@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250609-0937"
+      author: medvedev-ad
+      context: "TRANSPORT-32978"
+      changes:
+        - tagDatabase:
+            tag: "D-04.011.000"
+        - createTable:
+            schemaName: ${schema_name}
+            tableName: delegates
+            remarks: "Таблица с делегатами"
+            columns:
+              - column:
+                  name: "id"
+                  type: uuid
+                  remarks: "Идентификатор записи"
+                  constraints:
+                    primarykey: true
+                    primaryKeyName: ${schema_name}_delegates_pk
+              - column:
+                  name: supervisor_id
+                  type: uuid
+                  remarks: "Идентификатор руководителя"
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_delegates_supervisor_id_nn
+                    referencedTableSchemaName: ${schema_name}
+                    referencedTableName: employee
+                    referencedColumnNames: id
+                    foreignKeyName: ${schema_name}_delegates_supervisor_id_fk
+              - column:
+                  name: delegate_id
+                  type: uuid
+                  remarks: "Идентификатор делегата"
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_delegates_delegate_id_nn
+                    referencedTableSchemaName: ${schema_name}
+                    referencedTableName: employee
+                    referencedColumnNames: id
+                    foreignKeyName: ${schema_name}_delegates_delegate_id_fk
+              - column:
+                  name: start_date
+                  type: date
+                  remarks: "Дата начала действия делегирования"
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_delegates_start_date_nn
+              - column:
+                  name: end_date
+                  type: date
+                  remarks: "Дата окончания действия делегирования"

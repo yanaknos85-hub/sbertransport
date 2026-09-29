@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        pushInputSsl-in-0:
+          group: ${spring.application.name}-ssl
+          destination: service.push
+          binder: kafka-ssl

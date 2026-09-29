@@ -1,0 +1,70 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "/v1/login",
+        "bodyPatterns": [
+          {
+            "equalToJson": {
+              "login": "mock_login",
+              "password": "mock_password"
+            }
+          }
+        ]
+      },
+      "response": {
+        "status": "200",
+        "jsonBody": {
+          "token": "successfully-received-token-123"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+
+    {
+      "request": {
+        "method": "POST",
+        "url": "/v1/client/gis/uuid/external",
+        "headers" : {
+          "Authorization": {
+            "equalTo": "some_correct_token"
+          }
+        }
+      },
+      "response": {
+        "status": "200",
+        "jsonBody": {
+          "uuid": "F7AEC7E7-0BF4-4924-A637-A7572AFA506F"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+
+    {
+      "request": {
+        "method": "POST",
+        "url": "/v1/doc/send",
+        "headers" : {
+          "Authorization": {
+            "equalTo": "some_correct_token"
+          }
+        }
+      },
+      "response": {
+        "status": "200",
+        "jsonBody": {
+          "id": "64D99778-B3C8-4D7F-A2F6-FB7BF1304B56",
+          "chainId": "99DFD1EB-64B1-4560-B3BA-A0C3A31314B7"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}

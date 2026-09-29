@@ -1,0 +1,56 @@
+server:
+  port: 0
+spring:
+  application:
+    name: etrn-cargo
+  config:
+    import: database.yml
+# todo remove
+#  autoconfigure:
+#    exclude:
+#      - ru.sber.transport.roles.check.data.migrations.DatabaseRolesMigrationAutoConfiguration
+  cloud:
+    discovery.enabled: false
+    vault.enabled: false
+  security:
+    enabled: false
+    user: #убираем запись в логах, по которой есть вопросы у безопасности
+      name: anonymous
+      password: ${random.uuid}
+      roles: anonymous
+    oauth2:
+      resourceserver:
+        jwt:
+          jws-algorithms: RS512
+          public-key-location: classpath:/key/jwt.key.pub
+    main:
+      cloud-platform: none
+      banner-mode: off
+      allow-bean-definition-overriding: true
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      fail-on-empty-beans: false
+      write_dates_as_timestamps: true
+      WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS: false
+  profiles:
+    active: prod, kafka, test
+  liquibase:
+    contexts: test
+
+role.check:
+  enabled: false
+
+lock:
+  ttl-seconds: 300
+
+schedule:
+  etrn:
+    etrnAutoUnlockFreq: 0 0/5 * * * *
+
+default-timezone: ${DEFAULT_TIME_ZONE:Z}
+grpc.server.port: 0
+grpc.enabled: false
+extlogging.kafka: false
+dispatcher.service.url: http://localhost:8080
+scheduling.enabled: false

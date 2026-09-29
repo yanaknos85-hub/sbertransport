@@ -1,0 +1,62 @@
+grpc:
+  server:
+    port: 6565
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jws-algorithms: RS512
+          jwk-set-uri: ${JWKS_URI}
+  datasource:
+    url: ${DB_URL}
+    driver-class-name: org.postgresql.Driver
+  application:
+    name: request_checks
+  profiles:
+    active: prod,kafka,kafka-ssl,secman
+  liquibase:
+    enabled: true
+    change-log: db/changelog-master.yml
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    database-change-log-table: changelog_${spring.application.name}
+    database-change-log-lock-table: changelog_${spring.application.name}_lock
+    default-schema: ${spring.application.name}
+    liquibase-schema: ${MIGRATIONS_SCHEMA}
+  cloud:
+    vault:
+      enabled: false
+    stream:
+      binders:
+        kafka:
+          type: kafka
+          environment:
+            spring:
+              cloud:
+                stream:
+                  kafka:
+                    binder:
+                      brokers: ${KAFKA_BROKERS}
+        kafka-ssl:
+          type: kafka
+          environment:
+            spring:
+              cloud:
+                stream:
+                  kafka:
+                    binder:
+                      brokers: ${KAFKA_BROKERS}
+openapi:
+  request-checks:
+    base-path: /
+
+request-checks:
+    multipoint:
+      max: ${MAX_MULTIPOINT_REQUESTS:3}
+    duration:
+      max: ${MAX_DURATION:43200000}
+      day-start-hour: ${REQUEST_CHECKS_DURATION_DAY_START_HOUR:22}
+      tz-for-day-start: ${REQUEST_CHECKS_DURATION_TZ_FOR_DAY_START:+03:00}
+    maxMonthlyDistance: ${MAX_OVERRUN_LIMIT:5000000}

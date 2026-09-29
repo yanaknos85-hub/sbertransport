@@ -1,0 +1,66 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20240314"
+            author: delyukov-da
+            changes:
+                -   tagDatabase:
+                        tag: "20240314"
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    name: payment_done_datetime
+                                    type: timestamp
+                                    remarks: Время выплаты компенсации по заявке
+                            -   column:
+                                    name: payment_done_deadline
+                                    type: timestamp
+                                    remarks: Максимальное время выплаты компенсации по заявке без нарушения контрольного срока
+                            -   column:
+                                    name: payment_done_deadline_state
+                                    type: text
+                                    defaultValue: NONE
+                                    constraints:
+                                        nullable: false
+                                    remarks: Индикатор контрольного срока выплаты компенсации по заявке
+                -   addColumn:
+                        schemaName: request_audit
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    name: payment_done_datetime
+                                    type: timestamp
+                                    remarks: Время выплаты компенсации по заявке
+                            -   column:
+                                    name: payment_done_deadline
+                                    type: timestamp
+                                    remarks: Максимальное время выплаты компенсации по заявке без нарушения контрольного срока
+                            -   column:
+                                    name: payment_done_deadline_state
+                                    type: text
+                                    defaultValue: NONE
+                                    constraints:
+                                        nullable: false
+                                    remarks: Индикатор контрольного срока выплаты компенсации по заявке
+            rollback:
+                -   dropColumn:
+                        schemaName: request_audit
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    name: payment_done_deadline_state
+                            -   column:
+                                    name: payment_done_deadline
+                            -   column:
+                                    name: payment_done_datetime
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    name: payment_done_deadline_state
+                            -   column:
+                                    name: payment_done_deadline
+                            -   column:
+                                    name: payment_done_datetime

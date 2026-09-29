@@ -1,0 +1,289 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220825"
+            context: "20220825"
+            author: medvedev-ad
+            changes:
+                -   createTable:
+                        schemaName: contractors
+                        tableName: dispatcher
+                        remarks: Диспетчеры
+                        columns:
+                            -   column:
+                                    name: id
+                                    type: uuid
+                                    remarks: Идентификатор
+                                    constraints:
+                                        primaryKey: true
+                                        primaryKeyName: contractors_dispatcher_pk
+                            -   column:
+                                    name: human_readable_id
+                                    type: text
+                                    remarks: Человекочитаемый идентификатор
+                                    constraints:
+                                        nullable: false
+                                        unique: true
+                                        uniqueConstraintName: contractors_dispatcher_human_readable_id_uk
+                            -   column:
+                                    name: last_name
+                                    type: text
+                                    remarks: Фамилия
+                                    constraints:
+                                        nullable: false
+                            -   column:
+                                    name: first_name
+                                    type: text
+                                    remarks: Имя
+                                    constraints:
+                                        nullable: false
+                            -   column:
+                                    name: patronymic
+                                    type: text
+                                    remarks: Отчество
+                            -   column:
+                                    name: phone
+                                    type: text
+                                    remarks: Номер телефона
+                                    constraints:
+                                        nullable: false
+                                        uniqueConstraintName: contractors_dispatcher_email_uk
+                            -   column:
+                                    name: email
+                                    type: text
+                                    remarks: E-Mail
+                                    constraints:
+                                        nullable: false
+                                        unique: true
+                                        uniqueConstraintName: contractors_dispatcher_email_uk
+                            -   column:
+                                    name: contractor_id
+                                    type: uuid
+                                    remarks: Контрагент
+                                    constraints:
+                                        foreignKeyName: contractors_dispatcher_contractor_fk
+                                        referencedColumnNames: id
+                                        referencedTableName: contractor
+                                        referencedTableSchemaName: contractors
+                -   createIndex:
+                        schemaName: contractors
+                        tableName: dispatcher
+                        indexName: contractors_dispatcher_contractor_fk_ix
+                        columns:
+                            -   column:
+                                    name: contractor_id
+                -   createTable:
+                        schemaName: contractors
+                        tableName: request
+                        remarks: Заявки
+                        columns:
+                            -   column:
+                                    name: id
+                                    type: uuid
+                                    remarks: Идентификатор
+                                    constraints:
+                                        primaryKey: true
+                                        primaryKeyName: contractors_request_pk
+                            -   column:
+                                    name: contractor_id
+                                    type: uuid
+                                    remarks: Идентификатор контрагента
+                            -   column:
+                                    name: human_readable_id
+                                    type: text
+                                    remarks: Человекочитаемый идентификатор
+                            -   column:
+                                    name: author_id
+                                    type: uuid
+                                    remarks: Идентификатор автора заявки
+                            -   column:
+                                    name: passenger_id
+                                    type: uuid
+                                    remarks: Идентификатор пассажира
+                            -   column:
+                                    name: resolution
+                                    type: text
+                                    remarks: Решение по заявке
+                            -   column:
+                                    name: creation_time
+                                    type: timestamp
+                                    remarks: Дата создания
+                            -   column:
+                                    name: finished_time
+                                    type: timestamp
+                                    remarks: Дата закрытия заявки
+                            -   column:
+                                    name: time_zone
+                                    type: text
+                                    remarks: Временная зона
+                            -   column:
+                                    name: transport_type
+                                    type: text
+                                    remarks: Тип транспорта
+                            -   column:
+                                    name: trip_class
+                                    type: text
+                                    remarks: Класс поездки
+                            -   column:
+                                    name: approval_id
+                                    type: uuid
+                                    remarks: Идентификатор согласования
+                            -   column:
+                                    name: tariff_id
+                                    type: uuid
+                                    remarks: Идентификатор тарифа
+                            -   column:
+                                    name: approval_date
+                                    type: timestamp
+                                    remarks: Дата согласования
+                            -   column:
+                                    name: desired_date
+                                    type: timestamp
+                                    remarks: Желаемая дата поездки
+                            -   column:
+                                    name: sla_expired
+                                    type: boolean
+                                    remarks: Признак истечения sla
+                            -   column:
+                                    name: suburb
+                                    type: boolean
+                                    remarks: Признак междугородней поездки
+                            -   column:
+                                    name: deadline_state
+                                    type:  text
+                                    remarks: Состояние КС
+                            -   column:
+                                    name: status
+                                    type:  text
+                                    remarks: Статус заявки
+                            -   column:
+                                    name: status_code
+                                    type:  int4
+                                    remarks: Код статуса
+                            -   column:
+                                    name: passenger_count
+                                    type:  int4
+                                    remarks: Количество пассажиров
+                            -   column:
+                                    name: expected_distance
+                                    type:  double
+                                    remarks: Ожидаемое расстояние
+                            -   column:
+                                    name: expected_cost
+                                    type:  double
+                                    remarks: Ожидаемая стоимость
+                            -   column:
+                                    name: expected_time
+                                    type:  int8
+                                    remarks: Ожидаемое время в пути
+                            -   column:
+                                    name: purpose_id
+                                    type:  uuid
+                                    remarks: Причина поездки
+                            -   column:
+                                    name: comment_for_driver
+                                    type:  text
+                                    remarks: Комментарии водителю
+                            -   column:
+                                    name: passenger_owner
+                                    type:  boolean
+                                    remarks: Является ли пассажир инициатором поездки
+                            -   column:
+                                    name: ride_id
+                                    type:  uuid
+                                    remarks: Идентификатор соместной поездки
+                            -   column:
+                                    name: dead_line
+                                    type:  timestamp
+                                    remarks: КС
+                            -   column:
+                                    name: driver_id
+                                    type:  uuid
+                                    remarks: Идентификатор водителя
+                            -   column:
+                                    name: autopark_id
+                                    type:  uuid
+                                    remarks: Идентификатор автопарка
+                            -   column:
+                                    name: taxi_awaiting_search_start_date
+                                    type:  timestamp
+                                    remarks: Время начала поиска водителя
+                            -   column:
+                                    name: coop
+                                    type: boolean
+                                    remarks: Признак совместной поездки
+                                    defaultValueBoolean: false
+                                    defaultOnNull: true
+                -   createTable:
+                        schemaName: contractors
+                        tableName: request_waypoint
+                        remarks: Путевые точки
+                        columns:
+                            -   column:
+                                    name: id
+                                    type: uuid
+                                    remarks: Идентификатор
+                                    constraints:
+                                        primaryKey: true
+                            -   column:
+                                    name: address
+                                    type: jsonb
+                                    remarks: Адрес
+                            -   column:
+                                    name: ordering_index
+                                    type: int4
+                                    remarks: Индекс сортировки
+                            -   column:
+                                    name: request_id
+                                    type: uuid
+                                    remarks: Идентификатор заявки
+                                    constraints:
+                                        foreignKeyName: contractor_waypoint_request_fk
+                                        referencedTableSchemaName: contractors
+                                        referencedTableName: request
+                                        referencedColumnNames: id
+                -   createIndex:
+                        schemaName: contractors
+                        tableName: request
+                        indexName: contractors_request_contractor_fk_ix
+                        columns:
+                            -   column:
+                                    name: contractor_id
+                -   createIndex:
+                        schemaName: contractors
+                        tableName: request_waypoint
+                        indexName: contractors_waypoint_request_fk_ix
+                        columns:
+                            -   column:
+                                    name: request_id
+                -   createIndex:
+                        schemaName: contractors
+                        tableName: dispatcher
+                        indexName: contractors_dispatchers_phone_ix
+                        columns:
+                            -   column:
+                                    name: phone
+                -   createIndex:
+                        schemaName: contractors
+                        tableName: dispatcher
+                        indexName: contractors_dispatchers_email_ix
+                        columns:
+                            -   column:
+                                    name: email
+                -   createIndex:
+                        schemaName: contractors
+                        tableName: dispatcher
+                        indexName: contractors_dispatchers_id_phone_ix
+                        columns:
+                            -   column:
+                                    name: phone
+                            -   column:
+                                    name: id
+                -   createIndex:
+                        schemaName: contractors
+                        tableName: dispatcher
+                        indexName: contractors_dispatchers_id_email_ix
+                        columns:
+                            -   column:
+                                    name: email
+                            -   column:
+                                    name: id

@@ -1,0 +1,1 @@
+alter table contractors.vehicle drop column active;

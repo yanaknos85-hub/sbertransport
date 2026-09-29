@@ -1,0 +1,1 @@
+delete from trips.check_in where status = 'DRIVER_APPROVED'

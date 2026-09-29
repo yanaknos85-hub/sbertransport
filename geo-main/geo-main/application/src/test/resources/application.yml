@@ -1,0 +1,198 @@
+server:
+    port: 0
+spring:
+    config:
+        import: optional:configserver:http://localhost:8080
+    profiles:
+        active: logging, test
+    main:
+        lazy-initialization: true
+    application:
+        name: test
+    cloud:
+        kubernetes.enabled: false
+        consul.enabled: false
+        vault.enabled: false
+    datasource:
+        url: jdbc:postgresql://localhost:5432/transport
+        password: root
+        username: postgres
+        driver-class-name: org.postgresql.Driver
+        type: com.zaxxer.hikari.HikariDataSource
+        hikari:
+            minimum-idle: 0
+            maximum-pool-size: 5
+            idle-timeout: 10000
+            connection-timeout: 5000
+            max-lifetime: 30000
+            connection-test-query: SELECT 1
+            schema: contractors
+    liquibase:
+        enabled: true
+        change-log: db/changelog-master.yml
+        drop-first: false
+        test-rollback-on-update: true
+        url: ${spring.datasource.url}
+        user: ${spring.datasource.username}
+        password: ${spring.datasource.password}
+        database-change-log-table: changelog_${spring.application.name}
+        database-change-log-lock-table: changelog_${spring.application.name}_lock
+        liquibase-schema: public
+    jpa:
+        properties:
+            hibernate:
+                search:
+                    enabled: false
+                jdbc:
+                    batch_size: 25
+                    lob:
+                        non_contextual_creation: true
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+        hibernate:
+            ddl-auto: validate
+grpc:
+    server:
+        port: -1
+geo:
+    apiKey:
+        field: key
+        value: ${_2GIS_API_KEY:ruexhj4805}
+    url: ${_2GIS_BASE_URL:https://catalog.api.2gis.ru:443}
+    method: GET
+    errorMessagesPath: meta.error.message
+    geoCoding:
+        url: /3.0
+        reverse:
+            url: /items/geocode?fields=items.point,items.address,items.adm_div&page_size=1&page_size=50
+            format:
+                request:
+                    fields:
+                        latitude: lat
+                        longitude: lon
+                        sort: sort
+                        type: type
+                        radius: radius
+                response:
+                    root: result.items
+                    fields:
+                        street: address.components.street
+                        house: address.components.number
+                        region: adm_div[type=region].name
+                        district: adm_div[type=district_area].name
+                        city: adm_div[type=city].name
+                        settlement: adm_div[type=settlement].name
+                        living_area: adm_div[type=living_area].name
+                        place: adm_div[type=place].name
+                        country: adm_div[type=country].name
+                        latitude: (point|geocoded_by).lat
+                        longitude: (point|geocoded_by).lon
+                        type: type
+                        point: point
+                        name: name
+                        subtype: subtype
+            sort:
+                distance: distance
+            requestType:
+                type: building
+        parking:
+            url: /items?q=Московский%20паркинг,%20Москва,%20Объект&fields=items.geometry.centroid,items.geometry.hover,items.geometry.selection,items.attribute_groups,items.name_ex,items.is_paid,items.point&page_size=1&page_size=10
+            format:
+                request:
+                    fields:
+                        latitude: lat
+                        longitude: lon
+                        sort: sort
+                        type: type
+                        radius: radius
+                response:
+                    root: result.items
+                    fields:
+                        id: id
+                        attribute_groups: attribute_groups
+                        name_ex: name_ex
+                        is_paid: is_paid
+                        point: point
+                        geometry: geometry
+                        full_name: full_name
+                        name: name
+                        type: type
+                        purpose_name: purpose_name
+            sort:
+                distance: distance
+            requestType:
+                type: branch
+        parkingByNumber:
+            url: /items?q=Москва,%20Объект,%20Московский%20паркинг%20зона%20&fields=items.geometry.centroid,items.geometry.hover,items.geometry.selection,items.attribute_groups,items.name_ex,items.is_paid,items.point
+            format:
+                request:
+                    fields:
+                        location: q
+                        sort: sort
+                        type: type
+                response:
+                    root: result.items
+                    fields:
+                        id: id
+                        attribute_groups: attribute_groups
+                        name_ex: name_ex
+                        is_paid: is_paid
+                        point: point
+                        geometry: geometry
+                        full_name: full_name
+                        name: name
+                        type: type
+                        purpose_name: purpose_name
+            sort:
+                distance: distance
+            requestType:
+                type: branch
+        coder:
+            url: "/suggests?locale=ru_RU&fields=items.point,items.address,items.adm_div&page_size=10&type=adm_div.region,adm_div.district_area,adm_div.city,adm_div.settlement,adm_div.district,adm_div.living_area,adm_div.division,adm_div.place,street,branch,building,road,attraction,crossroad,route,route_type,station,station.metro,user_queries,attribute,rubric,meta_rubric,org,market.category,market.attribute,market.suggestor_category,special,coordinates,kilometer_road_sign"
+            urlItems: "/items?fields=items.point,items.address,items.adm_div&page_size=5"
+            format:
+                request:
+                    fields:
+                        query: q
+                        center: location
+                response:
+                    root: result.items
+                    fields:
+                        street: address.components.street
+                        house: address.components.number
+                        region: adm_div[type=region].name
+                        district: adm_div[type=district_area].name
+                        city: adm_div[type=city].name
+                        settlement: adm_div[type=settlement].name
+                        living_area: adm_div[type=living_area].name
+                        place: adm_div[type=place].name
+                        country: adm_div[type=country].name
+                        latitude: (point|geocoded_by).lat
+                        longitude: (point|geocoded_by).lon
+                        type: type
+                        point: point
+                        name: name
+                        subtype: subtype
+    routing:
+        url: /carrouting/6.0.0/global
+        method: POST
+        route:
+            format:
+                request:
+                    fields:
+                        type: type
+                        location: points
+                        latitude: y
+                        longitude: x
+                response:
+                    root: result
+                    fields:
+                        waypoints: waypoints.original_point
+                        segments: maneuvers
+                        distance: (total_distance  / 1000|outcoming_path.distance / 1000)
+                        time: (total_duration|outcoming_path.duration)
+                        coordinates: outcoming_path.geometry.selection
+                        latitude: (lat|y)
+                        longitude: (lon|x)
+        type:
+            car: stop
+            path: points.type

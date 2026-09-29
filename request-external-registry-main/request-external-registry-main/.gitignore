@@ -1,0 +1,8 @@
+**/target/
+.idea
+*.iml
+*.private.env.json
+/**/allure-results/**
+.gigaide
+application-local.yml
+.mvn

@@ -1,0 +1,47 @@
+.filters {
+  white-space: nowrap;
+  display: inline-block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding-top: var(--padding-half);
+  margin-top: 12px;
+}
+
+.headerDiv {
+  display: flex;
+  justify-content: space-between;
+
+  @media(max-width: 767px) {
+    flex-direction: column;
+    margin-left: 10px;
+  }
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.listWrapper {
+  width: 100%;
+  overflow-y: auto;
+  height: 75vh;
+
+  @media(max-width: 767px) {
+    height: calc(100vh - 245px);
+  }
+}
+
+.listWrapperRegular {
+  height: calc(75vh - 46px);
+
+  @media(max-width: 767px) {
+    height: calc(100vh - 260px);
+  }
+}

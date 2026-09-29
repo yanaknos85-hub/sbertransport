@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+
+    <groupId>ru.sber.transport.contractor</groupId>
+    <artifactId>parent</artifactId>
+    <version>5.14</version>
+
+    <parent>
+        <artifactId>java-parent</artifactId>
+        <groupId>ru.sber.transport</groupId>
+        <version>5.7</version>
+    </parent>
+    <name>contractor</name>
+
+    <modules>
+        <module>messaging</module>
+        <module>application</module>
+    </modules>
+
+    <properties>
+        <sonar.java.source>${maven.compiler.source}</sonar.java.source>
+        <sonar.projectKey>TRANSPORT_PLATFORM_contractor</sonar.projectKey>
+        <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
+        <sonar.host.url>https://sonar.delta.sbrf.ru/sonar</sonar.host.url>
+        <sonar.coverage.exclusions>**/grpc/**/*.java</sonar.coverage.exclusions>
+        <sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
+
+        <lombok.version>1.18.34</lombok.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--suppress UnresolvedMavenProperty -->
+        <source.image>
+            registry-ci.delta.sbrf.ru/dev/ci02351878/ci02353146_transport_dev/transport/open-jdk:21.0.3
+        </source.image>
+        <image-tag>${project.version}-${user.name}</image-tag>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-commons</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>ru.sber.qa</groupId>
+            <artifactId>allure-annotations</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit5</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -1,0 +1,49 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20240513-1
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_ddl.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/20240513-2
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/update_roles.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/20240513-3
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_roles.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/20240513-4
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -  addForeignKeyConstraint:
+                       baseColumnNames:  department_id
+                       baseTableName:  transport
+                       baseTableSchemaName:  vehicle
+                       constraintName:  transport_department_id_fk
+                       referencedColumnNames:  id
+                       referencedTableName:  department
+                       referencedTableSchemaName:  vehicle
+                -  addForeignKeyConstraint:
+                       baseColumnNames:  organization_id
+                       baseTableName:  transport
+                       baseTableSchemaName:  vehicle
+                       constraintName:  transport_organization_id_fk
+                       referencedColumnNames:  id
+                       referencedTableName:  organization
+                       referencedTableSchemaName:  vehicle

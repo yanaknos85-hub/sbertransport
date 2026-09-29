@@ -1,0 +1,100 @@
+{
+  "type" : "record",
+  "name" : "OrganizationMessage",
+  "namespace" : "ru.sber.transport.messages.corporate.avro",
+  "doc" : "Данные об организациях",
+  "fields":[
+    {
+      "name": "id",
+      "doc": "Идентификатор",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      },
+      "aliases": [
+        "headerId"
+      ]
+    },
+    {
+      "name": "digitId",
+      "doc": "Порядковый номер",
+      "type": "long"
+    },
+    {
+      "name": "name",
+      "doc": "Наименование",
+      "type": "string"
+    },
+    {
+      "name": "address",
+      "doc": "Адрес",
+      "type": "string"
+    },
+    {
+      "name": "msrn",
+      "doc": "ОГРН",
+      "type": "string"
+    },
+    {
+      "name": "tid",
+      "doc": "ИНН",
+      "type": "string"
+    },
+    {
+      "name": "code",
+      "doc": "Код",
+      "type": [ "null", "int" ],
+      "default": null
+    },
+    {
+      "name": "deleted",
+      "doc": "Флаг удаления",
+      "type": "boolean"
+    },
+    {
+      "name": "group",
+      "doc": "Группа организаций",
+      "type": [ "null", {
+        "type": "string",
+        "logicalType": "uuid"
+      }],
+      "default": null
+    },
+    {
+      "name": "contacts",
+      "doc": "Контактные данные",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "ContactMessage",
+          "fields": [
+            {
+              "name": "type",
+              "doc": "Тип контакта",
+              "type": {
+                "name": "ContactType",
+                "type": "enum",
+                "symbols": [ "PHONE", "EMAIL", "SITE" ],
+                "doc": "Допустимые типы контакта"
+              }
+            },
+            {
+              "name": "value",
+              "doc": "Значение контакта",
+              "type": "string"
+            },
+            {
+              "name": "id",
+              "doc": "Идентификатор контакта",
+              "type": {
+                "type": "string",
+                "logicalType": "uuid"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

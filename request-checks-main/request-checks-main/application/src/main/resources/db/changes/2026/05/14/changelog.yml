@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20260514-1200"
+      author: khalikov-ma
+      context: "TRANSPORT-42449"
+      preConditions:
+        - sqlCheck:
+            expectedResult: 0
+            sql: SELECT count(*) FROM information_schema.schemata WHERE schema_name = 'request_checks';
+        - onFail: MARK_RAN
+      changes:
+        - tagDatabase:
+              tag: "D-05.009.000"
+        - sql:
+            sql: CREATE SCHEMA request_checks;
+        - sql:
+            sql: COMMENT ON SCHEMA request_checks IS 'Проверка заявок';
+      rollback:
+        - sql:
+            sql: DROP SCHEMA request_checks cascade;

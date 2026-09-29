@@ -1,0 +1,17 @@
+databaseChangeLog:
+  -   changeSet:
+        id: 20260318-1
+        author: belov-a
+        dbms: postgresql
+        changes:
+          -   sqlFile:
+                path: change/add_method_determing_mass.sql
+                relativeToChangelogFile: true
+  -   changeSet:
+        id: 20260318-2
+        author: nikandrov-ae
+        dbms: postgresql
+        changes:
+          -   sqlFile:
+                path: change/add_organization_contact_phone.sql
+                relativeToChangelogFile: true

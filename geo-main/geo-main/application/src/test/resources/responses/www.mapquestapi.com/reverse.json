@@ -1,0 +1,71 @@
+{
+    "info": {
+        "statuscode": 0,
+        "copyright": {
+            "text": "© 2018 MapQuest, Inc.",
+            "imageUrl": "http://api.mqcdn.com/res/mqlogo.gif",
+            "imageAltText": "© 2018 MapQuest, Inc."
+        },
+        "messages": []
+    },
+    "options": {
+        "maxResults": 1,
+        "thumbMaps": false,
+        "ignoreLatLngInput": false
+    },
+    "results": [
+        {
+            "providedLocation": {
+                "latLng": {
+                    "lat": 30.333472,
+                    "lng": -81.470448
+                }
+            },
+            "locations": [
+                {
+                    "street": "63 City Hall Sq",
+                    "adminArea6": "",
+                    "adminArea6Type": "Neighborhood",
+                    "adminArea5": "Boston",
+                    "adminArea5Type": "City",
+                    "adminArea4": "Suffolk",
+                    "adminArea4Type": "County",
+                    "adminArea3": "MA",
+                    "adminArea3Type": "State",
+                    "adminArea1": "US",
+                    "adminArea1Type": "Country",
+                    "postalCode": "02201-1001",
+                    "geocodeQualityCode": "L1AAA",
+                    "geocodeQuality": "ADDRESS",
+                    "dragPoint": false,
+                    "sideOfStreet": "L",
+                    "linkId": "0",
+                    "unknownInput": "",
+                    "type": "s",
+                    "latLng": {
+                        "lat": 30.333472,
+                        "lng": -81.470448
+                    },
+                    "displayLatLng": {
+                        "lat": 30.333472,
+                        "lng": -81.470448
+                    },
+                    "nearestIntersection": {
+                        "streetDisplayName": "Posey Cir",
+                        "distanceMeters": "851755.1608527573",
+                        "latLng": {
+                            "longitude": -87.523761,
+                            "latitude": 35.013434
+                        },
+                        "label": "Danley Rd & Posey Cir"
+                    },
+                    "roadMetadata": {
+                        "speedLimitUnits": "mph",
+                        "tollRoad": null,
+                        "speedLimit": 40
+                    }
+                }
+            ]
+        }
+    ]
+}

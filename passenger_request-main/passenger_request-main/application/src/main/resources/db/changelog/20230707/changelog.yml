@@ -1,0 +1,22 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230707"
+            author: shabrov-ie
+            changes:
+                -   tagDatabase:
+                        tag: "20230707"
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columns:
+                            -   column:
+                                    type: text
+                                    name: phone_number
+                                    remarks: Номер телефона при создание заявки
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columns:
+                            -   column:
+                                    name: phone_number

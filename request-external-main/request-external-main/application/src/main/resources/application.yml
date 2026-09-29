@@ -1,0 +1,148 @@
+spring:
+  profiles:
+    active: kafka-avro
+  application:
+    name: external_request
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  cloud:
+    vault:
+      enabled: false
+  config:
+    import: optional:configserver:${spring.cloud.config.uri}
+  liquibase:
+    enabled: true
+    change-log: db/changelog-master.yml
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    database-change-log-table: changelog_${spring.application.name}
+    database-change-log-lock-table: changelog_${spring.application.name}_lock
+    liquibase-schema: ${MIGRATIONS_SCHEMA:public}
+grpc:
+  enabled: true
+  server:
+    port: 6565
+  client:
+    GLOBAL:
+      negotiation-type: plaintext
+    files:
+      address: discovery:///${grpc.files:grpc-files-v2}
+    corporate:
+      address: discovery:///${grpc.corporate:grpc-corporate}
+    tariff:
+      address: discovery:///${grpc.tariff:grpc-external-tariffs}
+    limits:
+      address: discovery:///${grpc.limits:grpc-limits}
+    geo-zones:
+      address: discovery:///${grpc.geo-zones:grpc-geo-zones}
+    request-checks:
+      address: discovery:///${grpc.request-checks:grpc-request-checks}
+openapi:
+  external-request:
+    base-path: /
+avro:
+  messaging:
+    enabled: ${AVRO_MESSAGING_ENABLED:false}
+works:
+  files:
+    - url: /registry
+      fileType:
+        - xlsx
+        - xls
+      collections:
+        - name: Реестр
+          type: ru.sber.transport.request.external.resolver.model.TripOrderRegistry
+          mappings:
+            - from: Номер заявки
+              to: number
+            - from: МВЗ
+              to: costCenter
+            - from: Дата заявки
+              to: createDate
+            - from: Статус заявки
+              to: status
+            - from: Статус поездки (причина отмены)
+              to: reason
+            - from: Вид тарифа
+              to: tariff
+            - from: Адрес отправления
+              to: startPoint
+            - from: Адрес прибытия
+              to: endPoint
+            - from: Дата/время поездки
+              to: tripDate
+            - from: Дата утверждения
+              to: approvalDate
+            - from: Контрольный срок
+              to: paymentDeadline
+            - from: Контрольный срок нарушен
+              to: paymentDeadlineViolated
+            - from: Комментарий
+              to: comment
+            - from: ФИО пассажира
+              to: passenger
+            - from: Табельный номер
+              to: personnelNumber
+            - from: ФИО согласующего
+              to: approver
+            - from: Плановая стоимость, ₽
+              to: plannedCost
+            - from: Фактическая стоимость, ₽
+              to: factCost
+            - from: Экономия, ₽
+              to: economy
+            - from: Плановая длительность
+              to: plannedDuration
+            - from: Плановое расстояние, км
+              to: distance
+            - from: Оценка сервису
+              to: rating
+            - from: Комментарий к оценке
+              to: assessmentComment
+    - url: /payment-report-registry
+      fileType:
+        - xlsx
+        - xls
+      collections:
+        - name: Реестр поездок (Go)
+          type: ru.sber.transport.request.external.resolver.model.TripOrderRegistryPayment
+          mappings:
+            - from: ID заявки
+              to: humanReadableId
+            - from: Вид оплаты
+              to: paymentCode
+            - from: Ресурс
+              to: resource
+            - from: Стоимость
+              to: factCost
+            - from: Табельный номер
+              to: personnelNumber
+            - from: ФИО пользователя
+              to: fio
+            - from: Период формирования приказа на выплату
+              to: period
+        - name: Агрегированный (Go)
+          type: ru.sber.transport.request.external.resolver.model.TripOrderRegistryPaymentAggregation
+          mappings:
+            - from: Вид оплаты
+              to: paymentCode
+            - from: Ресурс
+              to: resource
+            - from: Стоимость
+              to: factCost
+            - from: Табельный номер
+              to: personnelNumber
+            - from: ФИО пользователя
+              to: fio
+
+task-executor:
+  department-consistency-check:
+    core-pool-size: 2
+    max-pool-size: 4
+    queue-capacity: 20
+    thread-name-prefix: "DepartmentConsistencyCheck-"
+    rejected-execution-handler: "CALLER_RUNS"
+fraud:
+  single-trip-duration:
+    threshold-millis: ${FRAUD_SINGLE_TRIP_DURATION_THRESHOLD_MILLIS:28800000}

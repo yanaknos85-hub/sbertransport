@@ -1,0 +1,44 @@
+.table {
+  margin: var(--margin-large);
+  width: calc(100% - 2 * var(--margin-large));
+
+  :global(.ant-table.ant-table-bordered > .ant-table-footer) {
+    display: flex;
+    justify-content: center;
+    border-radius: 12px;
+    margin-top: 16px;
+    border: 1px dashed var(--gray-gray-3, #E0E0E0);
+    background: #fff;
+  }
+}
+
+.input {
+  &:global(.ant-input-affix-wrapper) {
+    border-radius: 2px;
+  }
+}
+
+.tableEdit {
+  &Buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &Delete {
+      cursor: pointer;
+      margin: 0 auto;
+    }
+  }
+
+  &Tooltip {
+    width: 100px;
+
+    :global(.ant-popover-buttons .ant-btn) {
+      &:first-child {
+        // Changes the order of buttons for requirements (work for all TableEditButtons tooltip!!!)
+        float: right;
+      }
+    }
+  }
+}
+

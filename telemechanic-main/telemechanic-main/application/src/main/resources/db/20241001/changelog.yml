@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20241001-1
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_access_create_telemedicine.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

@@ -1,0 +1,28 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20250603-1
+            author: makarov-md
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/delete_roles_form_title_1.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250605-2
+            author: makarov-md
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/truncate_ewb.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250605-3
+            author: makarov-md
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/alter_constraint_driver_ewb.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

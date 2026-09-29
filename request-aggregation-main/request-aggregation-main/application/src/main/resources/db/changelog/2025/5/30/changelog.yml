@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250530-1"
+      author: matevosyan-aa
+      changes:
+        - sqlFile:
+            endDelimiter: ;
+            path: changes/alter_tables.sql
+            relativeToChangelogFile: true
+            splitStatements: false

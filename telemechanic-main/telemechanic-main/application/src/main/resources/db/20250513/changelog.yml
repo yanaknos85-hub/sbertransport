@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20250513-1
+            author: makarov-md
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_access_department_with_tariff.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

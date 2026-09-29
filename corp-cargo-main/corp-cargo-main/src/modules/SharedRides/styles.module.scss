@@ -1,0 +1,68 @@
+.page {
+  width: 100%;
+  padding: var(--padding-base) 0;
+
+  :global(.ant-tabs-nav-wrap) {
+    padding: 0 var(--padding-large);
+  }
+
+  :global(.ant-tabs-tabpane) {
+    position: relative;
+    min-height: 300px;
+  }
+}
+
+.transportTypeLabel {
+  margin: 0 var(--margin-base);
+}
+
+.transportTypeSelect {
+  margin-bottom: var(--margin-base);
+  width: 300px;
+
+  &Label {
+    padding-right: var(--padding-half);
+  }
+}
+
+.headerDivider {
+  background-color: rgba(38, 38, 38, 0.08);
+  height: 1px;
+  border: none;
+  margin: 20px 0;
+}
+
+.controlTime {
+  display: flex;
+  gap: 16px;
+
+  .controlTimeHeader {
+    width: 230px;
+    height: 44px;
+    font-family: 'SB Sans Text';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #262626;
+  }
+
+  .controlTimeInput {
+    width: 100px;
+    height: 40px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding-left: 16px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.bottomBlock {
+  display: flex;
+  gap: 54px;
+}
+
+.toolTipIcon {
+  width: 18px;
+}

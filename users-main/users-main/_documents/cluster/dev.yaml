@@ -1,0 +1,53 @@
+application: users
+repo: app_platform_users
+resources:
+  limits:
+    cpu: 500m
+    memory: 1G
+  requests:
+    cpu: 500m
+    memory: 1G
+port:
+  http:
+    number: 8002
+    name: users
+    target: 8080
+routing:
+  match:
+    prefix: /api/users
+  rewrite:
+    uri: ' '
+profiles: kafka,kafka-ssl
+secman:
+  type: built_in
+additional:
+  envs:
+    - name: SPRING_CLOUD_CONFIG_URI
+      value: http://http-config-server:8080
+  configMap:
+    - name: kafka-ssl
+      data:
+        application-kafka-ssl.yml: |-
+          spring:
+            cloud:
+              vault:
+                namespace: CI02351878_CI02671580
+                authentication: kubernetes
+                kubernetes:
+                  role: ci02351878-edevgen-sbertransport-dev
+                  kubernetes-path: os/dev-terra000003-ids.ocp.delta.sbrf.ru
+                enabled: true
+                port: 443
+                host: t.secrets.delta.sbrf.ru
+            config:
+              import: 
+                - optional:vault://A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/application,kafka-ssl
+  volumes:
+    - name: kafka-ssl
+      configMap:
+        name: kafka-ssl
+        defaultMode: 420
+  mounts:
+    - name: kafka-ssl
+      mountPath: /app/resources/application-kafka-ssl.yml
+      subPath: application-kafka-ssl.yml

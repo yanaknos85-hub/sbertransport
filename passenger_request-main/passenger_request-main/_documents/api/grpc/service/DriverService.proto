@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package ru.sber.transport.contractor.grpc.service;
+option java_package = "ru.sber.transport.contractor.grpc.service";
+
+import "dto/DriverDescriptor.proto";
+
+service DriverService {
+
+  rpc GetLocation(ru.sber.transport.contractor.grpc.dto.DriverLocationRequest) returns (ru.sber.transport.contractor.grpc.dto.DriverLocation);
+
+}

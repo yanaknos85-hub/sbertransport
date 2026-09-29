@@ -1,0 +1,32 @@
+spring:
+  servlet:
+    multipart:
+      enabled: true
+  thymeleaf:
+    enabled: false
+  mustache:
+    enabled: false
+  jta:
+    enabled: false
+  sql:
+    init:
+      mode: never
+server:
+  error:
+    whitelabel:
+      enabled: false
+  compression:
+    enabled: true
+  http2:
+    enabled: true
+  servlet:
+    jsp:
+      registered: false
+management:
+  health:
+    readinessstate:
+      enabled: true
+    livenessstate:
+      enabled: true
+logging:
+  register-shutdown-hook: false

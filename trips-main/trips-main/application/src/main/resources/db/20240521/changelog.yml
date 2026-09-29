@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240503-1225"
+      author: ladeyshchikov-aa
+      changes:
+        - addColumn:
+            schemaName: trips
+            tableName: driver
+            columns:
+              - column:
+                  name: azimuth
+                  type: double precision
+                  remarks: Азимут автомобиля
+      rollback:
+        - dropColumn:
+            schemaName: trips
+            tableName: driver
+            columns:
+              - column:
+                  name: azimuth

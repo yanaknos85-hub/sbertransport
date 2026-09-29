@@ -1,0 +1,38 @@
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+
+interface Props {
+  to: string;
+  from: string;
+}
+
+const RouterContext = React.createContext({} as Props);
+
+export const RouterProvider = ({ children }) => {
+  const location = useLocation();
+
+  const [route, setRoute] = useState({
+    to: location.pathname,
+    from: location.pathname,
+  });
+
+  useEffect(() => {
+    setRoute(prev => ({ to: location.pathname, from: prev.to }));
+  }, [location]);
+
+  return (
+    <RouterContext.Provider value={route}>
+      {children}
+    </RouterContext.Provider>
+  );
+};
+
+export const useContextRouter = () => {
+  const context = React.useContext(RouterContext);
+
+  if (context === undefined) {
+    throw new Error('RouterContext must be used within a RouterContext.Provider');
+  }
+
+  return context;
+};

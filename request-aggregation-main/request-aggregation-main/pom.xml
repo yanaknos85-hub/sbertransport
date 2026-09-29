@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>java-parent</artifactId>
+        <groupId>ru.sber.transport</groupId>
+        <version>4.13.1</version>
+    </parent>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>application</module>
+    </modules>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ru.sber.transport.request.aggregation</groupId>
+    <artifactId>parent</artifactId>
+    <version>5.8</version>
+    <name>request-aggregation</name>
+
+    <!-- Определение свойств для проекта -->
+    <properties>
+        <sonar.projectKey>TRANSPORT_request_aggregation</sonar.projectKey>
+        <!-- Версия Java -->
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Настройки для SonarQube -->
+        <sonar.java.source>${maven.compiler.source}</sonar.java.source>
+        <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
+        <sonar.host.url>https://sonar.delta.sbrf.ru/sonar</sonar.host.url>
+        <sonar.coverage.exclusions>**/grpc/**/*.java</sonar.coverage.exclusions>
+        <sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
+    </properties>
+
+    <!-- Зависимости -->
+    <dependencies>
+        <!-- Базовая библиотека Allure -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-commons</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Внутренняя библиотека аннотаций Allure -->
+        <dependency>
+            <groupId>ru.sber.qa</groupId>
+            <artifactId>allure-annotations</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Подключение Allure для JUnit5 -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit5</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- Настройка сборки проекта -->
+    <build>
+        <finalName>request-aggregation</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+
+            <!-- Плагин для генерации POM-свойств -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <configuration>
+                    <skip>false</skip>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,72 @@
+spring.cloud.stream:
+  binders:
+    kafka-avro:
+      type: kafka
+      environment:
+        spring:
+          cloud:
+            stream:
+              kafka:
+                binder:
+                  consumerProperties:
+                    value.deserializer: ru.sber.transport.messaging.kafka.serialize.KafkaAvroDeserialize
+                    key.deserializer: org.apache.kafka.common.serialization.JsonDeserializer
+                  producerProperties:
+                    value.serializer: ru.sber.transport.messaging.kafka.serialize.KafkaAvroSerialize
+                    key.serializer: org.apache.kafka.common.serialization.JsonSerializer
+                    schema.registry.service-request-external.compatible: NONE
+  bindings:
+    organizations-in-0:
+      group: ${spring.application.name}-avro
+      destination: service-organization
+      binder: kafka-avro
+      content-type: application/*+avro
+      consumer:
+        useNativeDecoding: true
+    employees-in-0:
+      group: ${spring.application.name}-avro
+      destination: service-organization-employee
+      binder: kafka-avro
+      content-type: application/*+avro
+      consumer:
+        useNativeDecoding: true
+    departments-in-0:
+      group: ${spring.application.name}-avro
+      destination: service-organization-department
+      binder: kafka-avro
+      content-type: application/*+avro
+      consumer:
+        useNativeDecoding: true
+    positions-in-0:
+      group: ${spring.application.name}-avro
+      destination: service-organization-position
+      binder: kafka-avro
+      content-type: application/*+avro
+      consumer:
+        useNativeDecoding: true
+    delegates-in-0:
+      group: ${spring.application.name}-avro
+      destination: service-organization-employee-delegate
+      binder: kafka-avro
+      content-type: application/*+avro
+      consumer:
+        useNativeDecoding: true
+    frauds-in-0:
+      destination: service-ai-receipt-scanner-fraud
+      group: ${spring.application.name}-avro
+      binder: kafka-avro
+      contentType: application/*+avro
+      consumer:
+        useNativeDecoding: true
+    requestExternalAvro-out-0:
+      destination: service-request-external
+      binder: kafka-avro
+      content-type: application/*+avro
+      producer:
+        useNativeEncoding: true
+    notifications-out-0:
+      destination: service-notification
+      binder: kafka-avro
+      content-type: application/*+avro
+      producer:
+        useNativeEncoding: true

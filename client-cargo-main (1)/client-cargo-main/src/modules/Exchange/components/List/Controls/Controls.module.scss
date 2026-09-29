@@ -1,0 +1,23 @@
+.controls {
+  display: flex;
+  justify-content: space-between;
+
+  .filtersWrapper {
+    display: flex;
+    gap: 20px
+  }
+  .filtersWrapperMobile {
+    gap: 0;
+  }
+}
+
+.isMobileDirection {
+  flex-direction: column;
+}
+
+.filterButton {
+  & :hover div svg {
+    fill: #10BF6A;
+    stroke: #10BF6A;
+  }
+}

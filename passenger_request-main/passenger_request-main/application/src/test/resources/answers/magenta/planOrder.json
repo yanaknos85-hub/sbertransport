@@ -1,0 +1,54 @@
+{
+    "id": "1004904",
+    "newOrdersIds": [
+        "10005884"
+    ],
+    "passengers": 3,
+    "stops": [
+        {
+            "orderId": "10005884",
+            "state": "Active",
+            "address": "Невский проспект, округ Лиговка-Ямская",
+            "latitude": 59.923854,
+            "longitude": 30.384503,
+            "startTime": "2020-10-30T00:13:00Z",
+            "endTime": "2020-10-30T00:13:00Z",
+            "eventType": "Посадка"
+        },
+        {
+            "orderId": "10005884",
+            "state": "Active",
+            "address": "Загородный проспект 3, Владимирский округ",
+            "latitude": 59.927761,
+            "longitude": 30.345835,
+            "startTime": "2020-10-30T00:22:00Z",
+            "endTime": "2020-10-30T00:27:00Z",
+            "eventType": "Ожидание"
+        },
+        {
+            "orderId": "10005884",
+            "state": "Active",
+            "address": "Невский проспект, округ Лиговка-Ямская",
+            "latitude": 59.923854,
+            "longitude": 30.384503,
+            "startTime": "2020-10-30T00:35:00Z",
+            "endTime": "2020-10-30T00:35:00Z",
+            "eventType": "Высадка"
+        }
+    ],
+    "kpi": {
+        "totalCost": 227.83,
+        "totalDistanceKm": 7.548048973083496,
+        "totalTimeMin": 21.0,
+        "ordersKpi": [
+            {
+                "orderId": "10005884",
+                "costSharePart": 1.0,
+                "rideTimeMin": 21,
+                "savings": 0.0,
+                "savingsPct": 0.0,
+                "orderDistanceKm": 7
+            }
+        ]
+    }
+}

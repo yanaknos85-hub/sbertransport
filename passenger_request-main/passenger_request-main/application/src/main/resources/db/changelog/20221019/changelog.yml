@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: 20221019-1
+            author: delyukov-da
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/request_integration_ext.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_request_integration_ext.sql
+                        relativeToChangelogFile: true

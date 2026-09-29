@@ -1,0 +1,123 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ci02351878-edevgen-sbertransport-dev
+  name: contractor
+  labels:
+    app.kubernetes.io/part-of: transport
+    app.kubernetes.io/name: contractor
+spec:
+  selector:
+    matchLabels:
+      app: contractor
+  template:
+    metadata:
+      namespace: ci02351878-edevgen-sbertransport-dev
+      labels:
+        app: contractor
+        app.kubernetes.io/part-of: transport
+        app.kubernetes.io/name: contractor
+        secman-injector: enabled
+        version: development
+      annotations:
+        sidecar.istio.io/inject: "true"
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+        vault.hashicorp.com/agent-inject: 'true'
+        vault.hashicorp.com/agent-init-first: 'false'
+        vault.hashicorp.com/agent-pre-populate: 'false'
+        vault.hashicorp.com/namespace: CI02351878_CI02671580
+        vault.hashicorp.com/role: ci02351878-edevgen-sbertransport-dev
+        vault.hashicorp.com/agent-inject-secret-kafka-truststore.jks: 'true'
+        vault.hashicorp.com/agent-inject-template-kafka-truststore.jks: >-
+          {{- with secret
+          "A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/kafka" -}}
+              {{ base64Decode (index .Data "trust.store") }}
+          {{- end -}}
+        vault.hashicorp.com/agent-inject-secret-kafka-keystore.jks: 'true'
+        vault.hashicorp.com/agent-inject-template-kafka-keystore.jks: >-
+          {{- with secret
+          "A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/kafka" -}}
+              {{ base64Decode (index .Data "key.store") }}
+          {{- end -}}
+    spec:
+      serviceAccountName: springboot-servicediscovery
+      volumes:
+        - name: data
+          emptyDir: { }
+        - name: logs
+          emptyDir: { }
+        - name: temp
+          emptyDir: { }
+        - name: kubernetes
+          configMap:
+            name: kubernetes
+            defaultMode: 420
+        - name: logging
+          configMap:
+            name: logging
+            defaultMode: 420
+        - name: secman
+          configMap:
+            name: secman
+            defaultMode: 420
+            optional: true
+      containers:
+        - name: contractor
+          volumeMounts:
+            - name: data
+              mountPath: /mnt
+            - name: logs
+              mountPath: /log
+            - name: temp
+              mountPath: /tmp
+            - name: kubernetes
+              mountPath: /app/resources/application-kubernetes.yml
+              subPath: application-kubernetes.yml
+            - name: logging
+              mountPath: /app/resources/application-logging.yml
+              subPath: application-logging.yml
+            - name: secman
+              mountPath: /app/resources/application-secman.yml
+              subPath: application-secman.yml
+          terminationMessagePolicy: FallbackToLogsOnError
+          image: registry.sigma.sbrf.ru/dev/ci02351878/ci02353146_transport_dev/transport/contractor:231127-1-17898164
+          resources:
+            limits:
+              cpu: 500m
+              memory: 1G
+            requests:
+              cpu: 500m
+              memory: 1G
+          env:
+            - name: KAFKA_BROKERS
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka
+                  key: brokers
+            - name: FILE_MAX_SIZE
+              valueFrom:
+                configMapKeyRef:
+                  name: files
+                  key: image.size.max
+            - name: STAFF_LIMIT
+              valueFrom:
+                configMapKeyRef:
+                  name: contractor
+                  key: contractor.staff.limit
+            - name: SPRING_PROFILES_INCLUDE
+              value: secman
+            - name: JWKS_URI
+              value: http://jwks:8080
+            - name: SCHEMA_REGISTRY_URL
+              value: http://10.53.122.234:8081
+            - name: SSL_KAFKA_BROKERS
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka
+                  key: ssl.brokers
+            - name: KAFKA_SECURITY_PROTOCOL
+              value: SSL
+            - name: KAFKA_SSL_KEYSTORE_LOCATION
+              value: /vault/secrets/kafka-keystore.jks
+            - name: KAFKA_SSL_TRUSTSTORE_LOCATION
+              value: /vault/secrets/kafka-truststore.jks

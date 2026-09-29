@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package ru.sber.transport.dispatcher.grpc.service;
+
+option java_multiple_files = true;
+option java_package = "ru.sber.transport.dispatcher.grpc.service";
+option java_outer_classname = "DispatcherPenaltyProto";
+
+import "dto/DispatcherPenaltyDto.proto";
+
+service DispatcherPenaltyService {
+  rpc GetOrganizationsForPenalties (ru.sber.transport.dispatcher.grpc.dto.GetOrganizationsForPenaltiesRequest)
+      returns (ru.sber.transport.dispatcher.grpc.dto.GetOrganizationsForPenaltiesResponse);
+}

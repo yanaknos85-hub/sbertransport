@@ -1,0 +1,25 @@
+.layout {
+  width: 100%;
+
+  @media (min-width: 1260px) {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.cargoLayout {
+  position: relative;
+  max-width: 1156px;
+  width: 100%;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.tabs {
+  :global(.sbt-kit-tabs-nav-list) {
+    white-space: normal !important;
+    text-align: center;
+  }
+}

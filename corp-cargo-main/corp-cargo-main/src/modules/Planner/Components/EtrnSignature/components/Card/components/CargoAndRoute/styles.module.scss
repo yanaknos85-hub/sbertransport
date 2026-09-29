@@ -1,0 +1,38 @@
+.block {
+  border-radius: 12px;
+  background: rgba(248, 248, 249, 1);
+  padding: 16px;
+  flex: 1;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 14px;
+  color: #262626;
+  margin-bottom: 12px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--grey8);
+}
+
+.value {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dark-grey);
+}

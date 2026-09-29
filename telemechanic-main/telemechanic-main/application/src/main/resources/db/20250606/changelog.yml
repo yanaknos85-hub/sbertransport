@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20250606-1
+            author: tanini-v
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_access_find_transport_by_statenumber.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

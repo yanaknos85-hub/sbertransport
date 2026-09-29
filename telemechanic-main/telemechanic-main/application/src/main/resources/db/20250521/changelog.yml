@@ -1,0 +1,37 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20250521-1
+            author: makarov-md
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/alter_table_ewb_tariff_organization_id.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250521-2
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_roles.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250521-3
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/alter_ddl_request.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250521-4
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/alter_ddl_medic_request.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

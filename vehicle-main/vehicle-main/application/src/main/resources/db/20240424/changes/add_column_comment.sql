@@ -1,0 +1,1 @@
+comment on column vehicle.transport.vehicle_type is 'Тип ТС';

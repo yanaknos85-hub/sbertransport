@@ -1,0 +1,25 @@
+databaseChangeLog:
+    -   changeSet:
+            id: contractor/20210816
+            context: "20210816"
+            author: medvedev-ad
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/change_changelog_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: contractor/20210816-1
+            context: "20210816"
+            author: medvedev-ad
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/drop_old_changelog_records.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_old_changelog_records.sql
+                        relativeToChangelogFile: true

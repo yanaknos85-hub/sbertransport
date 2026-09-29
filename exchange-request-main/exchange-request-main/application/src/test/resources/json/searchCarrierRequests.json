@@ -1,0 +1,21 @@
+{
+  "sortSetting": {
+    "property": "REQUEST_HUMAN_ID",
+    "directionAsc": true
+  },
+  "pageSetting": {
+    "page": 0,
+    "size": 20
+  },
+  "fromCity": "Москва",
+  "toCity": "Санкт-Петербург",
+  "loadingDateRange": {
+    "start": "2025-04-01",
+    "end": "2026-04-03"
+  },
+  "deliveryDateRange": {
+    "start": "2025-04-03",
+    "end": "2026-04-04"
+  },
+  "statuses": ["CONFIRMED", "CARRIER_SELECTED"]
+}

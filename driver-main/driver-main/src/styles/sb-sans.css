@@ -1,0 +1,47 @@
+@font-face {
+  font-family: 'SB Sans Interface';
+  src: url(../assets/fonts/SBSansUI-Light.otf);
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: 'SB Sans Interface';
+  src: url(../assets/fonts/SBSansUI-Regular.otf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'SB Sans Interface';
+  src: url(../assets/fonts/SBSansUI-Semibold.otf);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'SB Sans Interface';
+  src: url(../assets/fonts/SBSansUI-Bold.otf);
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: 'SB Sans Text Mono';
+  src: url(../assets/fonts/SBSansTextMono-Regular.ttf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'SB Sans Text Mono';
+  src: url(../assets/fonts/SBSansTextMono-Bold.ttf);
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: 'SB Sans Text Regular';
+  src: url(../assets/fonts/SBSansText-Regular.otf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'SB Sans Text Semibold';
+  src: url(../assets/fonts/SBSansText-Semibold.otf);
+  font-weight: 400;
+}

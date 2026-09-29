@@ -1,0 +1,12 @@
+databaseChangeLog:
+  -   changeSet:
+        id: 20260306-1
+        author: belov-a
+        dbms: postgresql
+        changes:
+          -   sqlFile:
+                path: change/alter_tables.sql
+                relativeToChangelogFile: true
+          - sqlFile:
+              path: change/rename_waypoint_columns.sql
+              relativeToChangelogFile: true

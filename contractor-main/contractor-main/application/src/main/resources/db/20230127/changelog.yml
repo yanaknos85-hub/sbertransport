@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230127"
+      author: blandin-ad
+      changes:
+            - tagDatabase:
+                tag: "20230127"
+            - addColumn:
+                  schemaName: contractors
+                  tableName: shift
+                  columns:
+                      - column:
+                            name: active
+                            type: boolean
+                            remarks: Признак активности смены
+      rollback:
+          - dropColumn:
+                schemaName: contractors
+                tableName: shift
+                columns:
+                    - column:
+                          name: active

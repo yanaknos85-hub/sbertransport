@@ -1,0 +1,2 @@
+call migrations.fill_roles('dispatcher', 'GET /shift-conflicts/', 'ROLE_DISPATCHER_ROOM_ADMIN', true);
+call migrations.fill_roles('dispatcher', 'DELETE /shift-conflicts/{routeId}/', 'ROLE_DISPATCHER_ROOM_ADMIN', true);

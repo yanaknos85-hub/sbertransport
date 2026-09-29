@@ -1,0 +1,20 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20250520-1
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_ddl_contact.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250520-2
+            author: klyunkov-va
+            dbms: postgresql
+            context: "!test"
+            changes:
+                -   sqlFile:
+                        path: changes/alter_dml_contact.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

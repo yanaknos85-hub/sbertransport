@@ -1,0 +1,255 @@
+.filterSection {
+  display: flex;
+  justify-content: space-between;
+  flex: 1 0 100%;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  &__item {
+    display: flex;
+    gap: 12px;
+
+    &_search {
+      flex-grow: 1;
+    }
+  }
+
+  &__search {
+    flex: 1 1 300px;
+    border-radius: 8px;
+    max-width: 544px;
+    overflow: hidden;
+
+    :global {
+      .ant-input-affix-wrapper {
+        border: none;
+        background: var(--solitude);
+        border-radius: 8px;
+        padding-right: 30px;
+
+        &:hover,
+        &:focus {
+          border-color: transparent;
+          box-shadow: none;
+        }
+      }
+
+      .ant-input {
+        border: none;
+        border-radius: 8px;
+        background: var(--solitude);
+        height: 40px;
+        padding-right: 46px;
+
+        &:focus {
+          box-shadow: none;
+        }
+      }
+
+      .ant-input-suffix {
+        margin-left: -30px;
+        background: transparent;
+      }
+
+      .ant-input-clear-icon {
+        color: #adadad;
+        margin-right: 50px;
+
+        &:hover {
+          color: #7d7d7d;
+        }
+      }
+
+      .ant-input-wrapper {
+        position: relative;
+      }
+
+      .ant-input {
+        border: none;
+        border-radius: 8px;
+        background: var(--solitude);
+        height: 40px;
+        padding-right: 46px;
+      }
+
+      .ant-input-group-addon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: inherit !important;
+        width: auto;
+        z-index: 1;
+      }
+
+      .ant-btn-primary {
+        border: none;
+        border-radius: 0 8px 8px 0 !important;
+        background-color: #f2f3f6;
+        box-shadow: none;
+
+        svg {
+          fill: #adadad;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+          background-color: #f2f3f6;
+
+          &::after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  &__filterButton {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    stroke: #fff;
+  }
+
+  &__filterCounter {
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    background: #ff9a32;
+    width: 18px;
+    height: 18px;
+  }
+
+  &__actions {
+    width: 92px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.select {
+  :global {
+    .ant-select {
+      height: 40px;
+    }
+
+    .ant-select-selector {
+      height: 40px;
+      min-height: 40px !important;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+    }
+
+    .ant-select-selection-item {
+      display: flex;
+      align-items: center;
+      height: 40px;
+      line-height: normal;
+      white-space: nowrap;
+    }
+
+    .ant-select-selection-placeholder {
+      display: flex;
+      align-items: center;
+      height: 40px;
+      line-height: normal;
+      white-space: nowrap;
+    }
+
+    .ant-select-selection-search {
+      display: flex;
+      align-items: center;
+      height: 40px;
+
+      input {
+        height: 40px;
+      }
+    }
+
+    .ant-select-clear {
+      transform: translateY(1.5px);
+    }
+
+    .ant-select-arrow,
+    .ant-select-clear,
+    .ant-select-suffix {
+      margin-top: -10px;
+    }
+  }
+}
+
+.infoIcon {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  cursor: help;
+  color: black !important;
+  margin-right: 4px;
+  margin-left: -30px;
+}
+
+.hasValue {
+  .infoIcon {
+    color: #8c8c8c !important;
+  }
+}
+
+.suffixContent {
+  display: inline-block;
+}
+
+.deadlineInfo {
+  .infoSection {
+    margin-bottom: 8px;
+
+    strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    p {
+      margin: 0;
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.65);
+    }
+  }
+}
+
+.circleIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 6px;
+  line-height: 1;
+
+  svg {
+    width: 14px;
+    height: 14px;
+    display: block;
+  }
+}
+
+.optionLabel {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.infoCircleIcon {
+  margin-right: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: -2px;
+
+  svg {
+    width: 14px;
+    height: 14px;
+    display: block;
+  }
+}

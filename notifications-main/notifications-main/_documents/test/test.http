@@ -1,0 +1,28 @@
+### Вход
+POST {{auth}}/login
+Accept: application/json
+Authorization: Basic {{creds}} # Имя пользователя и пароль необходимо положить в файл http-client.private.env.json. Пример - http-client.private.env.json.example. Получившийся файл НЕ НАДО добавлять в гит
+
+> {%
+client.global.set("auth_token", response.body.token);
+client.global.set("refresh_token", response.body.refreshToken);
+%}
+
+### Получение настроек
+GET {{host}}/00000000-0000-0000-0000-000000000000/settings/
+Accept: application/json
+Authorization: Bearer {{ auth_token }}
+
+### Установка настроек
+PUT {{host}}/00000000-0000-0000-0000-000000000000/settings/00000000-0000-0000-0000-000000000000/
+Content-Type: application/json
+Authorization: Bearer {{ auth_token }}
+
+{
+}
+
+###
+
+GET {{host}}/00000000-0000-0000-0000-000000000000
+Accept: application/json
+Authorization: Bearer {{ auth_token }}

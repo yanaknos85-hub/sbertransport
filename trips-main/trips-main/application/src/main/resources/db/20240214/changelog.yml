@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240214"
+      author: blandin-ad
+      changes:
+        - addColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: expected_time
+                  type: bigint
+                  remarks: Плановая длительность поездки (секунды)
+      rollback:
+        - dropColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: expected_time

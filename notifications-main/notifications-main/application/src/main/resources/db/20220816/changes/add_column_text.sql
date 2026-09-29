@@ -1,0 +1,1 @@
+alter table notifications_settings.notification add column text varchar

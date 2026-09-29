@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20231218"
+      author: blandin-ad
+      changes:
+        - sql:
+            sql: update trips_cargo.contractors set autoassign = false where autoassign is null;
+        - update:
+            schemaName: trips_cargo
+            tableName: contractors
+            columns:
+              - column:
+                  name: autoassign
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+      rollback:
+        - update:
+            schemaName: trips_cargo
+            tableName: contractors
+            columns:
+              - column:
+                  name: autoassign
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: true

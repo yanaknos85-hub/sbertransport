@@ -1,0 +1,91 @@
+application: notifications
+repo: app_platform_notifications
+resources:
+  limits:
+    cpu: 200m
+    memory: 1G
+  requests:
+    cpu: 200m
+    memory: 1G
+port:
+  http:
+    number: 8080
+    name: request-ext
+    target: 8080
+routing:
+  internal: true
+secman:
+  type: built_in
+profiles: kafka,kafka-avro
+additional:
+  envs:
+    - name: SPRING_DATASOURCE_URL
+      valueFrom:
+        configMapKeyRef:
+          name: database
+          key: url.jdbc
+    - name: KAFKA_BROKERS
+      valueFrom:
+        configMapKeyRef:
+          name: kafka
+          key: brokers
+    - name: DEFAULT_CONTRACTOR_PUSH_ENABLED
+      valueFrom:
+        configMapKeyRef:
+          name: notifications
+          key: default.contractor.push.enabled
+    - name: DEFAULT_PUSH_ENABLED
+      valueFrom:
+        configMapKeyRef:
+          name: notifications
+          key: default.push.enabled
+    - name: DEFAULT_EMAIL_ENABLED
+      valueFrom:
+        configMapKeyRef:
+          name: notifications
+          key: default.email.enabled
+    - name: DEFAULT_SMS_ENABLED
+      valueFrom:
+        configMapKeyRef:
+          name: notifications
+          key: default.sms.enabled
+    - name: JWT_KEY_PUBLIC_PATH
+      value: /vault/secrets/jwt.public
+    - name: JDK_JAVA_OPTIONS
+      value: >-
+        -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:9001
+    - name: JWKS_URI
+      value: 'http://jwks:8080'
+    - name: SPRING_CLOUD_CONFIG_URI
+      value: 'http://http-config-server:8080'
+    - name: DEFAULT_LINK_ALPHA
+      value: urlalpha
+    - name: DEFAULT_LINK_SIGMA
+      value: urlsigma
+  configMap:
+    - name: kafka-secman
+      data:
+        application-kafka-avro.yml: |-
+          spring:
+            cloud:
+              vault:
+                namespace: CI02351878_CI02671580
+                authentication: kubernetes
+                kubernetes:
+                  role: ci02351878-edevgen-sbertransport-dev
+                  kubernetes-path: os/dev-terra000003-ids.ocp.delta.sbrf.ru
+                enabled: true
+                port: 443
+                host: t.secrets.delta.sbrf.ru
+            config:
+              import: 
+                - optional:vault://A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/application,kafka-avro
+  volumes:
+    - name: kafka-secman
+      configMap:
+        name: kafka-secman
+        defaultMode: 420
+  mounts:
+    - name: kafka-secman
+      mountPath: /app/resources/application-kafka-avro.yml
+      subPath: application-kafka-avro.yml

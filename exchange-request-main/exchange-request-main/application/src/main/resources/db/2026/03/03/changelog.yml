@@ -1,0 +1,9 @@
+databaseChangeLog:
+  -   changeSet:
+        id: 20260303-1
+        author: smirnova
+        dbms: postgresql
+        changes:
+          -   sqlFile:
+                path: add_status_model.sql
+                relativeToChangelogFile: true

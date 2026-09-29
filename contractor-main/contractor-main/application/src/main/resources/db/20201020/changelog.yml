@@ -1,0 +1,16 @@
+databaseChangeLog:
+    -   changeSet:
+            id: contractor/20201020
+            context: "20201020"
+            author: aas
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: create_matrix.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;
+            rollback:
+                -   sqlFile:
+                        path: drop_matrix.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

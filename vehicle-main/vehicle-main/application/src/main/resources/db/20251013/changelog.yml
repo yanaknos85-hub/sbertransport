@@ -1,0 +1,37 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20251013-1
+            author: azatsepilin
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/add_roles_get_accessible_position.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/20251013-2
+            author: azatsepilin
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/add_accessible_position_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/20251013-3
+            author: azatsepilin
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/insert_accessible_position_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/20251013-4
+            author: azatsepilin
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/add_column_accessible_position_id_to_transport.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

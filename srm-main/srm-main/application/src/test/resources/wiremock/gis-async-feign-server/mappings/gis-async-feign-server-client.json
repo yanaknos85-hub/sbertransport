@@ -1,0 +1,28 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "POST",
+        "queryParameters": {
+          "key": {
+            "equalTo": "ruexhj4805"
+          },
+          "version": {
+            "equalTo": "2.0"
+          }
+        }
+      },
+      "response": {
+        "status": "200",
+        "jsonBody": {
+          "task_id": "7b1e5722-aa76-11f0-b3bd-000000000001",
+          "message": "success add task",
+          "status": "TASK_CREATED"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}

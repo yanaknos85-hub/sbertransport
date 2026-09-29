@@ -1,0 +1,110 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250514-0859"
+      author: medvedev-ad
+      context: "TRANSPORT-32306"
+      changes:
+        - tagDatabase:
+            tag: "D-04.009.000"
+        - createTable:
+            schemaName: ${schema_name}
+            tableName: shedlock
+            remarks: "Таблица для хранения состояния запущенных задач"
+            columns:
+              - column:
+                  name: name
+                  type: varchar(64)
+                  remarks: Идентификатор задачи
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: ${schema_name}_shedlock_pk
+              - column:
+                  name: lock_until
+                  type: timestamp
+                  remarks: "Время окончания выполнения задачи"
+              - column:
+                  name: locked_at
+                  type: timestamp
+                  remarks: "Время запуска задачи"
+              - column:
+                  name: locked_by
+                  type: varchar(255)
+                  remarks: "Идентификатор запускающей задачу машины"
+  - changeSet:
+      id: "20250514-1046"
+      author: medvedev-ad
+      context: "TRANSPORT-32306"
+      changes:
+        - tagDatabase:
+            tag: "D-04.009.000"
+        - createTable:
+            schemaName: ${schema_name}
+            tableName: trip_order_history
+            remarks: История заказов поездок
+            columns:
+              - column:
+                  name: order_id
+                  type: uuid
+                  remarks: Идентификатор заказа поездки
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_trip_order_history_order_id_nn
+                    referencedTableSchemaName: ${schema_name}
+                    referencedTableName: trip_order
+                    referencedColumnNames: id
+                    foreignKeyName: ${schema_name}_trip_order_history_order_id_fk
+              - column:
+                  name: modified_at
+                  type: timestamp with time zone
+                  remarks: Дата и время изменения
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_trip_order_history_modified_at_nn
+              - column:
+                  name: modified_by
+                  type: uuid
+                  remarks: Идентификатор пользователя, который изменил заявку
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_trip_order_history_modified_by_nn
+              - column:
+                  name: status
+                  type: ${schema_name}.order_state
+                  remarks: Статус заявки
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_trip_order_history_status_nn
+              - column:
+                  name: comment
+                  type: text
+                  remarks: Комментарий к заявке
+              - column:
+                  name: reason
+                  type: text
+                  remarks: Причина изменения заявки
+        - addPrimaryKey:
+            schemaName: ${schema_name}
+            tableName: trip_order_history
+            columnNames: order_id,modified_at
+            primaryKeyName: ${schema_name}_trip_order_history_pk
+        - addColumn:
+            schemaName: ${schema_name}
+            tableName: trip_order
+            columns:
+              - column:
+                  name: planned_distance
+                  type: bigint
+                  remarks: Плановое расстояние поездки
+        - update:
+            schemaName: ${schema_name}
+            tableName: trip_order
+            columns:
+              - column:
+                  name: planned_distance
+                  valueNumeric: -1
+            whereClause: "planned_distance IS NULL"
+        - addNotNullConstraint:
+            schemaName: ${schema_name}
+            tableName: trip_order
+            columnName: planned_distance
+            notNullConstraintName: ${schema_name}_trip_order_planned_distance_nn

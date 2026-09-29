@@ -1,0 +1,9 @@
+databaseChangeLog:
+  -   changeSet:
+        id: 20251226-1
+        author: smirnova
+        dbms: postgresql
+        changes:
+          -   sqlFile:
+                path: create_schema.sql
+                relativeToChangelogFile: true

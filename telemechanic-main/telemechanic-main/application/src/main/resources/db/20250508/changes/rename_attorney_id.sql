@@ -1,0 +1,1 @@
+alter table telemechanic.attorney rename column attorney_id to number;

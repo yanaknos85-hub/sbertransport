@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20250306-1
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_columns_transport.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

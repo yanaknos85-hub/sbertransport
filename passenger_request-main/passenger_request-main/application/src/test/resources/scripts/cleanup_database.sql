@@ -1,0 +1,10 @@
+truncate request.car_location_task cascade;
+truncate request.request_for_taxi cascade;
+truncate request.taxi_trip cascade;
+truncate request.trip_purpose cascade;
+truncate request.contractor_message cascade;
+truncate request.tariff cascade;
+truncate request.employee cascade;
+truncate request.position cascade;
+truncate request.department cascade;
+truncate request.organization cascade;

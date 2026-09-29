@@ -1,0 +1,23 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20210915"
+            author: nikandrov-ae
+            dbms: postgresql
+            preConditions:
+                -   not:
+                        -   tableExists:
+                                schemaName: request
+                                tableName: request_for_cargo
+                        -   tableExists:
+                                schemaName: request
+                                tableName: cargo_detail
+            changes:
+                -   sqlFile:
+                        path: add_cargo_tables.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;
+            rollback:
+                -   sqlFile:
+                        path: rollback_add_cargo_tables.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

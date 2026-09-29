@@ -1,0 +1,93 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  &__title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0;
+    margin-bottom: 8px;
+  }
+
+  &__icon {
+    border-radius: 8px;
+    background-color: #19b150;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  &__avatar {
+    min-width: 40px;
+    min-height: 40px;
+    align-items: center;
+  }
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+
+  &__header {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  &__section {
+    display: flex;
+    gap: 12px;
+    color: #4D4D4D;
+
+    .divider {
+      width: 1px;
+      background-color: #c2c2c2;
+    }
+
+    .personBlock {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+      &__title {
+        font-family: SB Sans Text;
+        font-weight: 400;
+        color: #737373;
+      }
+    }
+  }
+
+  .licenseSection {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .licenseBlock {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: SB Sans Text;
+      font-weight: 400;
+      color: #737373;
+
+      &__number {
+        font-family: SB Sans Interface;
+        font-weight: 600;
+        color: #4D4D4D;
+      }
+    }
+  }
+}

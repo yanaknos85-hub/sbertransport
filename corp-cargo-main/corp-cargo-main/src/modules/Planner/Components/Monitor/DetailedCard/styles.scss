@@ -1,0 +1,82 @@
+.routeDetailed {
+  border-right: 10px solid transparent;
+
+  &__head {
+    .orderExecutionContainer-section__title {
+      border-bottom: 1px solid rgba(38, 38, 38, 0.08);
+      color: #1c1c1c;
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: end;
+    gap: 16px;
+  }
+
+  &__edit-button {
+    background: inherit;
+    padding: 11px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .orderExecutionContainer-item {
+    min-width: 320px;
+  }
+}
+
+.OrderHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 44px;
+
+  &__title {
+    a {
+      color: inherit;
+    }
+
+    .anticon-arrow-left {
+      margin-right: 18px;
+    }
+  }
+
+  &__control {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.order-content {
+  display: flex;
+  width: 90%;
+  gap: 20px;
+}
+
+.order-content-left {
+  width: 60%;
+}
+
+.order-content-right {
+  width: 40%;
+}
+
+.time-content {
+  display: flex;
+  width: 100%;
+}

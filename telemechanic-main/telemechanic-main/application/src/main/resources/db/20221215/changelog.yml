@@ -1,0 +1,15 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20221115-1
+            author: dudyrev-av
+            dbms: postgresql
+            context: "20221215"
+            changes:
+                -   tagDatabase:
+                        tag: "20221215"
+                -   sqlFile:
+                        path: change/add_role.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+          
+        

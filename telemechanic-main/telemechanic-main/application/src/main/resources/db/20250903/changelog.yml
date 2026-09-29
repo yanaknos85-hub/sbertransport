@@ -1,0 +1,12 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20250903-1
+            author: novikova-km
+            dbms: postgresql
+            changes:
+            -   sqlFile:
+                    path: changes/drop_history_initiator_not_null.sql
+                    relativeToChangelogFile: true
+                    splitStatements: false
+
+

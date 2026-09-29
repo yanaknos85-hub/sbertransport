@@ -1,0 +1,27 @@
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.buttonsContainer {
+  text-align: right;
+  display: inline;
+  width: 70%;
+}
+
+.buttonsContainerMainPage {
+  text-align: right;
+  display: inline;
+
+  button {
+    padding: 0;
+    background-color: inherit;
+    color: var(--jade);
+    border: none;
+    box-shadow: none;
+  }
+}
+
+.mgLeft {
+  margin-left: 1%;
+}

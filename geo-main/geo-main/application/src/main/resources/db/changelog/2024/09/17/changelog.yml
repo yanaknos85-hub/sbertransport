@@ -1,0 +1,136 @@
+databaseChangeLog:
+  -   changeSet:
+        id: "20240917-1656"
+        author: ladeyshchikov-aa
+        changes:
+          -   sql:
+                sql: create schema if not exists geo
+        rollback:
+          -   sql:
+                sql: select count(1)
+  -   changeSet:
+        id: "20240917-1657"
+        author: ladeyshchikov-aa
+        changes:
+          - createTable:
+              schemaName: geo
+              tableName: cluster
+              columns:
+                - column:
+                    name: id
+                    type: UUID
+                    remarks: Идентификатор записи
+                    constraints:
+                      primaryKey: true
+                      primaryKeyName: geo_cluster_pk
+                - column:
+                    name: latitude
+                    type: double precision
+                    remarks: Широта
+                    constraints:
+                      nullable: false
+                - column:
+                    name: longitude
+                    type: double precision
+                    remarks: Долгота
+                    constraints:
+                      nullable: false
+                - column:
+                    name: radius
+                    type: double precision
+                    remarks: Радиус кластера
+                    constraints:
+                      nullable: false
+        rollback:
+          - dropTable:
+              schemaName: geo
+              tableName: cluster
+  -   changeSet:
+        id: "20240917-1701"
+        author: ladeyshchikov-aa
+        changes:
+          - createTable:
+              schemaName: geo
+              tableName: cached_suggest_request
+              columns:
+                - column:
+                    name: id
+                    type: UUID
+                    remarks: Идентификатор записи
+                    constraints:
+                      primaryKey: true
+                      primaryKeyName: geo_cached_suggest_request_pk
+                - column:
+                    name: cluster_id
+                    type: uuid
+                    remarks: Идентификатор кластера
+                    constraints:
+                      nullable: false
+                - column:
+                    name: query
+                    type: varchar(1024)
+                    remarks: Текст запроса
+                    constraints:
+                      nullable: false
+                - column:
+                    name: response
+                    type: json
+                    remarks: Ответ от 2гис
+                    constraints:
+                      nullable: false
+          - addUniqueConstraint:
+              schemaName: geo
+              tableName: cached_suggest_request
+              columnNames: cluster_id,query
+              constraintName: geo_cached_suggest_request_cluster_id_query_uk
+          - createIndex:
+              schemaName: geo
+              tableName: cached_suggest_request
+              indexName: geo_cached_suggest_request_cluster_id_index
+              columns:
+                - column:
+                    name: cluster_id
+          - createIndex:
+              schemaName: geo
+              tableName: cached_suggest_request
+              indexName: geo_cached_suggest_request_query_index
+              columns:
+                - column:
+                    name: query
+        rollback:
+          - dropTable:
+              schemaName: geo
+              tableName: cached_suggest_request
+  -   changeSet:
+        id: "20240918-1537"
+        author: ladeyshchikov-aa
+        changes:
+          - createTable:
+              schemaName: geo
+              tableName: noise_point
+              columns:
+                - column:
+                    name: id
+                    type: UUID
+                    remarks: Идентификатор записи
+                    constraints:
+                      primaryKey: true
+                      primaryKeyName: geo_noise_point_pk
+                - column:
+                    name: latitude
+                    type: double precision
+                    remarks: Широта
+                - column:
+                    name: longitude
+                    type: double precision
+                    remarks: Долгота
+                - column:
+                    name: query
+                    type: varchar(1024)
+                    remarks: Текст запроса
+                    constraints:
+                      nullable: false
+        rollback:
+          - dropTable:
+              schemaName: geo
+              tableName: noise_point

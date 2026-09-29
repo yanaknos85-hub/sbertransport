@@ -1,0 +1,13 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20251119-1
+            author: tanini-v
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/create_fuel_type_name.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+              - sql:
+                  sql: drop table if exists vehicle.fuel_type_name;

@@ -1,0 +1,20 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20240928-1
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        relativeToChangelogFile: true
+                        path: change/alter_vehicle_ddl.sql
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20240928-2
+            author: klyunkov-va
+            dbms: postgresql
+            context: "!test"
+            changes:
+                -   sqlFile:
+                        relativeToChangelogFile: true
+                        path: change/migrate_transport.sql
+                        splitStatements: false

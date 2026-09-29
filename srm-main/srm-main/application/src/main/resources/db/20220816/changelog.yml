@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: 20220816
+            author: asigalov
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/alter_sharedride_table2.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

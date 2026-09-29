@@ -1,0 +1,12 @@
+server:
+    port: 8088
+
+#springdoc:
+#    api-docs:
+#        enabled: false
+#    swagger-ui:
+#        enabled: false
+
+integration:
+    url:
+        blind: http://localhost:8080

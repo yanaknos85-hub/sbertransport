@@ -1,0 +1,52 @@
+server:
+    port: 8123
+
+spring:
+    main:
+        banner-mode: off
+        web-application-type: servlet
+    config:
+        import:
+            - optional:configserver:${spring.cloud.config.uri}
+    jackson:
+        default-property-inclusion: non_null
+    application:
+        name: trips_cargo
+    profiles:
+        active: logging,migrations
+        include: import
+    cloud.consul.enabled: false
+    liquibase:
+        enabled: true
+        change-log: db/changelog-master.yml
+        url: ${spring.datasource.url}
+        user: ${spring.datasource.username}
+        password: ${spring.datasource.password}
+        database-change-log-table: changelog_${spring.application.name}
+        database-change-log-lock-table: changelog_${spring.application.name}_lock
+        default-schema: ${spring.application.name}
+        liquibase-schema: ${MIGRATION_SCHEMA:public}
+    cloud:
+        vault:
+            enabled: false
+    security:
+        oauth2:
+            resourceserver:
+                jwt:
+                    jws-algorithms: RS512
+                    jwk-set-uri: ${JWK_URL}
+    autoconfigure:
+        exclude:
+            - ru.sber.transport.utils.collections.reactive.MapUtilsAutoConfiguration
+websocket:
+    baseUrl: /ws
+driver:
+    assign:
+        minradius: ${DRIVER_ASSIGN_MINRADIUS_KM:3.0}
+        maxradius: ${DRIVER_ASSIGN_MAXRADIUS_KM:15.0}
+        timeSecs: ${DRIVER_ASSIGN_TIMESECS:180}
+        finishSearchMin: ${DRIVER_ASSIGN_FINISHSEARCHMIN:10}
+        triggerTimeSecs: ${DRIVER_ASSIGN_TRIGGERTIMESECS:1800}
+        autoAssignRadiusDelta: ${DRIVER_ASSIGN_AUTOASSIGNRADIUSDELTA_KM:1}
+authorization:
+    consent-check: ${CHECK_CONSENT:true}

@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20260729-add-duration-to-fraud-type"
+      author: voronovskii
+      dbms: postgresql
+      changes:
+        - sql:
+            sql: ALTER TYPE request.fraud_type ADD VALUE IF NOT EXISTS 'DURATION'

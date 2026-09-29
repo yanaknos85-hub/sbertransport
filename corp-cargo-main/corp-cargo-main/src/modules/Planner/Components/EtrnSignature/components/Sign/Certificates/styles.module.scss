@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 210px;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 11px;
+  }
+
+  .card {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 2px solid #E0E0E0FF;
+    padding: 8px;
+    border-radius: 12px;
+
+    &:hover,
+    &_selected {
+      border: 2px solid #10BF6AFF;
+      cursor: pointer;
+    }
+
+    &_disabled {
+      &:hover {
+        border: 2px solid #969696FF;
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+
+      .block {
+        display: flex;
+        gap: 4px;
+
+        &__label {
+          color: #737373;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230921-4"
+            author: blandin-ad
+            context: "20230921-4"
+            preConditions:
+                -   indexExists:
+                        schemaName: trips_cargo
+                        tableName: trips_cargo
+                        indexName: uk_trips_digit_id
+                    onFail: MARK_RAN
+            changes:
+                -   tagDatabase:
+                        tag: "20230921-4"
+                -   dropUniqueConstraint:
+                        schemaName: trips_cargo
+                        tableName: trips_cargo
+                        uniqueColumns: digit_id
+                        constraintName: uk_trips_digit_id
+            rollback:
+              -   addUniqueConstraint:
+                      schemaName: trips_cargo
+                      tableName: trips_cargo
+                      columnNames: digit_id
+                      constraintName: uk_trips_digit_id
+    -   changeSet:
+            id: "20230921-4-1"
+            author: blandin-ad
+            context: "20230921-4-1"
+            changes:
+                -   tagDatabase:
+                        tag: "20230921-4-1"
+                -   addUniqueConstraint:
+                        schemaName: trips_cargo
+                        tableName: trips_cargo
+                        columnNames: digit_id,contractor_id
+                        constraintName: uk_trips_digit_id_contractor_id
+            rollback:
+              -   dropUniqueConstraint:
+                    schemaName: trips_cargo
+                    tableName: trips_cargo
+                    columnNames: digit_id,contractor_id
+                    constraintName: uk_trips_digit_id_contractor_id

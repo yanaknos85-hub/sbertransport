@@ -1,0 +1,1 @@
+alter table telemechanic.title drop column status;

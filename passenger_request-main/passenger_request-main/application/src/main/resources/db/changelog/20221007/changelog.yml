@@ -1,0 +1,24 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221007"
+            author: medvedev-ad
+            preConditions:
+                -   onFail: MARK_RAN
+                    onError: HALT
+                    sqlCheck:
+                        expectedResult: 1
+                        sql: SELECT count(*) FROM information_schema.tables where table_name = 'urls' and table_schema = 'request'
+            changes:
+                -   addUniqueConstraint:
+                        schemaName: request
+                        tableName: urls
+                        columnNames: method,url
+                        constraintName: request_urls_method_url_uk
+                -   addUniqueConstraint:
+                        schemaName: request
+                        tableName: urls
+                        columnNames: method,pattern
+                        constraintName: request_method_pattern_url_uk
+            rollback:
+                -   sql:
+                        sql: select 1 #no need to rollback

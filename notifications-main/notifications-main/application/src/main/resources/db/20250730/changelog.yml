@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250730-1"
+      author: chizhov-nd
+      context: "20250730-1"
+      preConditions:
+        - indexExists:
+            schemaName: ${schema_name}_contractor
+            tableName: contractor
+            indexName: contractor_name_key
+          onFail: MARK_RAN
+      changes:
+        - tagDatabase:
+            tag: "20250730-1"
+        - dropUniqueConstraint:
+            schemaName: ${schema_name}_contractor
+            tableName: contractor
+            constraintName: contractor_name_key
+      rollback:
+        - addUniqueConstraint:
+            schemaName: ${schema_name}_contractor
+            tableName: contractor
+            columnNames: name
+            constraintName: contractor_name_key

@@ -1,0 +1,82 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250513-1255"
+      author: medvedev-ad
+      context: "TRANSPORT-32035"
+      changes:
+        - tagDatabase:
+            tag: "D-04.009.000"
+        - createTable:
+            schemaName: ${schema_name}
+            tableName: transport_types
+            remarks: Типы транспорта
+            columns:
+              - column:
+                  name: transport_type
+                  type: varchar(255)
+                  remarks: Тип транспорта
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: ${schema_name}_transport_types_pk
+        - createTable:
+            schemaName: ${schema_name}
+            tableName: organization_transport_type
+            remarks: Типы транспорта для организации
+            columns:
+              - column:
+                  name: organization_id
+                  type: uuid
+                  remarks: Идентификатор организации
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_organization_transport_type_organization_id_nn
+              - column:
+                  name: transport_type
+                  type: varchar(255)
+                  remarks: Тип транспорта
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_organization_transport_type_transport_type_nn
+        - createTable:
+            schemaName: ${schema_name}
+            tableName: position_transport_type
+            remarks: Типы транспорта для должности
+            columns:
+              - column:
+                  name: position_id
+                  type: uuid
+                  remarks: Идентификатор должности
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_position_transport_type_position_id_nn
+              - column:
+                  name: transport_type
+                  type: varchar(255)
+                  remarks: Тип транспорта
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_position_transport_type_transport_type_nn
+        - addPrimaryKey:
+            schemaName: ${schema_name}
+            tableName: position_transport_type
+            columnNames: position_id, transport_type
+            primaryKeyName: ${schema_name}_position_transport_type_pk
+        - addColumn:
+            schemaName: ${schema_name}
+            tableName: employee
+            columns:
+              - column:
+                  name: position_id
+                  type: uuid
+                  remarks: Идентификатор должности
+        - createTable:
+            schemaName: ${schema_name}
+            tableName: position
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор должности
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: ${schema_name}_position_pk

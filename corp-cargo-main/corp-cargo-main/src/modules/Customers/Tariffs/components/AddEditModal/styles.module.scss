@@ -1,0 +1,23 @@
+.formItem {
+  margin-top: 5px;
+  padding-right: 10px;
+  flex-direction: column;
+
+  select: {
+    padding: 12px 16px;
+  }
+
+  :global {
+    .ant-form-item-label {
+      text-align: left;
+    }
+  }
+}
+
+.disabledField {
+  background-color: #f5f5f5;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  cursor: not-allowed;
+}

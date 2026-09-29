@@ -1,0 +1,130 @@
+.content {
+  border: 2px solid rgb(224, 224, 224);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  color: rgb(144, 144, 144);
+  font-family: 'SB Sans Text';
+  letter-spacing: -0.3px;
+
+  &:hover,
+  &_selected {
+    border: 2px solid rgb(16, 191, 106);
+    cursor: pointer;
+  }
+
+  .logo {
+    height: 40px;
+    min-width: 40px;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 1px solid rgb(243, 243, 243);
+    display: flex;
+    align-items: center;
+    padding: 0 0 5px 5px;
+
+    > img {
+      width: 46px;
+      height: 27px;
+    }
+  }
+
+  .vehicle {
+    margin-left: 20px;
+    width: 11.6vw;
+    overflow: hidden;
+    display: flex;
+    gap: 6px;
+    font-size: 16px;
+    color: black;
+    line-height: 24px;
+    letter-spacing: -0.3px;
+
+    .brand {
+      font-weight: 600;
+    }
+  }
+
+  .engine {
+    width: 14.6vw;
+    overflow: hidden;
+    display: flex;
+    gap: 12px;
+
+    &__volume {
+      padding: 0 12px 0 12px;
+      border-left: 1px solid rgb(194, 194, 194);
+      border-right: 1px solid rgb(194, 194, 194);
+    }
+  }
+
+  .fuel {
+    width: 11.2vw;
+    overflow: hidden;
+    display: flex;
+    gap: 12px;
+
+    &__type {
+      padding-right: 12px;
+      border-right: 1px solid rgb(194, 194, 194);
+    }
+  }
+
+  .mudguards {
+    width: 5.5vw;
+    overflow: hidden;
+    display: flex;
+    gap: 12px;
+  }
+
+  .holder {
+    width: 5.4vw;
+    overflow: hidden;
+    display: flex;
+    gap: 12px;
+  }
+
+  .drive {
+    width: 8vw;
+    overflow: hidden;
+    display: flex;
+    gap: 12px;
+  }
+
+  .manufacturePeriod {
+    width: 7vw;
+    overflow: hidden;
+    display: flex;
+    gap: 12px;
+  }
+
+  .transmissionType {
+    width: 6vw;
+    overflow: hidden;
+    display: flex;
+    gap: 12px;
+  }
+
+  .bodyType {
+    width: 7vw;
+    overflow: hidden;
+    display: flex;
+    gap: 12px;
+  }
+
+  .weight {
+    width: 6vw;
+    overflow: hidden;
+    display: flex;
+    gap: 12px;
+  }
+
+  .dimensions {
+    width: 8vw;
+    overflow: hidden;
+    display: flex;
+    gap: 12px;
+  }
+}

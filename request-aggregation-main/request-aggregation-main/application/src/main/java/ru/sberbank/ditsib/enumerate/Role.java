@@ -1,0 +1,25 @@
+package ru.sberbank.ditsib.enumerate;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@Getter
+@RequiredArgsConstructor
+@Schema(title = "Роли", description = "Роли")
+public enum Role {
+    ROLE_ADMIN_CORP_CLIENT("ADMIN_CORP_CLIENT"),
+    ROLE_ADMIN_DATA_MASTER("ADMIN_DATA_MASTER"),
+    ROLE_DISPATCHER_SUPPORT_SERVICE("DISPATCHER_SUPPORT_SERVICE"),
+    ROLE_DRIVER("DRIVER"),
+    ROLE_EMPLOYEE_CORP_CLIENT("EMPLOYEE_CORP_CLIENT"),
+    ROLE_ENGINEER_CORP_CLIENT("ENGINEER_CORP_CLIENT"),
+    ROLE_MEDIC("MEDIC"),
+    ROLE_PARKING_ADMIN("PARKING_ADMIN"),
+    ROLE_PARKING_ADMIN_ORGANIZATION("PARKING_ADMIN_ORGANIZATION"),
+    ROLE_PARKING_COORDINATOR("PARKING_COORDINATOR"),
+    ROLE_TELEMECHANIC("TELEMECHANIC"),
+    ROLE_TELEMECHANIC_ORGANIZATION("TELEMECHANIC_ORGANIZATION");
+
+    private final String description;
+}

@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250425-1126"
+      author: medvedev-ad
+      context: "TRANSPORT-31816"
+      changes:
+        - tagDatabase:
+            tag: "D-04.008.000"
+        - sql:
+            sql: create type ${schema_name}.tariff as enum ('ECONOMY','COMFORT','BUSINESS','VIP')
+        - sql:
+            dbms: postgresql
+            sql: "comment on type ${schema_name}.tariff is 'Тарифы на поездки: Эконом (ECONOMY), Комфорт (COMFORT), Бизнес (BUSINESS), Вип (VIP)'"
+  - changeSet:
+      id: "20250425-1128"
+      author: medvedev-ad
+      context: "TRANSPORT-31816"
+      changes:
+        - tagDatabase:
+            tag: "D-04.008.000"
+        - addColumn:
+            schemaName: ${schema_name}
+            tableName: trip_order
+            columns:
+              - column:
+                  name: tariff
+                  type: ${schema_name}.tariff
+                  remarks: Тариф поездки
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_trip_order_tariff_nn
+              - column:
+                  name: reason
+                  type: text
+                  remarks: Причина смены состояния заявки
+        - createIndex:
+            schemaName: ${schema_name}
+            tableName: trip_order
+            indexName: ${schema_name}_trip_order_tariff_idx
+            columns:
+              - column:
+                  name: tariff

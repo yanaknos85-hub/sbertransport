@@ -1,0 +1,18 @@
+.lightCell {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+
+  &::before {
+    content: '';
+    width: 3px;
+    height: 36px;
+    background: #10BF6A;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+}
+
+.noPaddingCell {
+  padding: 0 !important;
+}

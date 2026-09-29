@@ -1,0 +1,103 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20231020"
+      author: blandin-ad
+      changes:
+        - dropColumn:
+            schemaName: trips_cargo
+            tableName: trips
+            columns:
+              - column:
+                  name: type
+      rollback:
+        - addColumn:
+            schemaName: trips_cargo
+            tableName: trips
+            columns:
+              - column:
+                  name: type
+                  type: varchar(9)
+                  remarks: Тип поездки PASSENGER|CARGO
+                  defaultValue: CARGO
+                  defaultOnNull: true
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: trips_cargo_trips_type_nn
+  - changeSet:
+      id: "20231020-1"
+      author: blandin-ad
+      changes:
+        - addNotNullConstraint:
+            schemaName: trips_cargo
+            tableName: dispatcher
+            columnName: contractor_id
+            constraintName: trips_cargo_dispatcher_contractor_id_nn
+      rollback:
+        - dropNotNullConstraint:
+            schemaName: trips_cargo
+            tableName: dispatcher
+            columnName: contractor_id
+            constraintName: trips_cargo_dispatcher_contractor_id_nn
+  - changeSet:
+      id: "20231020-2"
+      author: blandin-ad
+      changes:
+        - addColumn:
+            schemaName: trips_cargo
+            tableName: driver
+            columns:
+              - column:
+                  name: service_license_number
+                  type: varchar
+      rollback:
+        - dropColumn:
+            schemaName: trips_cargo
+            tableName: driver
+            columns:
+              - column:
+                  name: service_license_number
+  - changeSet:
+      id: "20231020-3"
+      author: blandin-ad
+      changes:
+        - renameColumn:
+            schemaName: trips_cargo
+            tableName: driver
+            oldColumnName: humanReadableId
+            newColumnName: human_readable_id
+        - renameColumn:
+            schemaName: trips_cargo
+            tableName: driver
+            oldColumnName: lastName
+            newColumnName: last_name
+        - renameColumn:
+            schemaName: trips_cargo
+            tableName: driver
+            oldColumnName: firstName
+            newColumnName: first_name
+        - renameColumn:
+            schemaName: trips_cargo
+            tableName: driver
+            oldColumnName: contactPhone
+            newColumnName: contact_phone
+      rollback:
+        - renameColumn:
+            schemaName: trips_cargo
+            tableName: driver
+            oldColumnName: human_readable_id
+            newColumnName: humanReadableId
+        - renameColumn:
+            schemaName: trips_cargo
+            tableName: driver
+            oldColumnName: last_name
+            newColumnName: lastName
+        - renameColumn:
+            schemaName: trips_cargo
+            tableName: driver
+            oldColumnName: first_name
+            newColumnName: firstName
+        - renameColumn:
+            schemaName: trips_cargo
+            tableName: driver
+            oldColumnName: contact_phone
+            newColumnName: contactPhone

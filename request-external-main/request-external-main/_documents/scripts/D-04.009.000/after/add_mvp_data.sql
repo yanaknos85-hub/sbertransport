@@ -1,0 +1,17 @@
+INSERT INTO external_request.transport_types ("transport_type") VALUES ('YANDEX');
+INSERT INTO external_request.department_transport_type (department_id,"transport_type") VALUES ('fbc6855a-4b74-46cd-988d-0c772544f109'::uuid,'YANDEX');
+INSERT INTO external_request.department_transport_type (department_id,"transport_type") VALUES ('3b9c20aa-2878-48f5-b5fa-6bec0e4b6788'::uuid,'YANDEX');
+INSERT INTO external_request.department_transport_type (department_id,"transport_type") VALUES ('1a02172e-5fbd-48be-a02e-91992ff0aac2'::uuid,'YANDEX');
+INSERT INTO external_request.department_transport_type (department_id,"transport_type") VALUES ('3aa35e19-38ac-4c13-91bb-ef5b746d832b'::uuid,'YANDEX');
+INSERT INTO external_request.department_transport_type (department_id,"transport_type") VALUES ('be826cb2-0afc-4b8c-97b5-6b652fece671'::uuid,'YANDEX');
+INSERT INTO external_request.department_transport_type (department_id,"transport_type") VALUES ('3a1482a1-69d1-449a-9708-1569c3dfa074'::uuid,'YANDEX');
+INSERT INTO external_request.department_transport_type (department_id,"transport_type") VALUES ('68422c7e-4670-4a32-81f9-eb6a4c72d31a'::uuid,'YANDEX');
+INSERT INTO external_request.department_transport_type (department_id,"transport_type") VALUES ('17bce9b5-18ac-43bf-82bc-63ef01ba107d'::uuid,'YANDEX');
+INSERT INTO external_request.department_transport_type (department_id,"transport_type") VALUES ('8db80736-d1f0-4f26-a6ee-bab48ac385c6'::uuid,'YANDEX');
+INSERT INTO external_request.department_transport_type (department_id,"transport_type") VALUES ('94948198-0019-422f-a5d0-882d9ac8a619'::uuid,'YANDEX');
+INSERT INTO external_request.department_transport_type (department_id,"transport_type") VALUES ('b9987bfc-b36d-43c0-bae9-6adb9dd6ebf0'::uuid,'YANDEX');
+INSERT INTO external_request.department_transport_type (department_id,"transport_type") VALUES ('30d630ed-8787-484e-ab49-ef8268f343f5'::uuid,'YANDEX');
+INSERT INTO external_request.department_transport_type (department_id,"transport_type") VALUES ('3edd2f9f-69a9-4c6d-a8bb-dad647b295cc'::uuid,'YANDEX');
+INSERT INTO external_request.department_transport_type (department_id,"transport_type") VALUES ('2aacac2f-7fe8-437c-9b2e-530a5299d56b'::uuid,'YANDEX');
+INSERT INTO external_request.department_transport_type (department_id,"transport_type") VALUES ('778cd565-bbd6-442a-96ea-bae1e8beff41'::uuid,'YANDEX');
+INSERT INTO external_request.department_transport_type (department_id,"transport_type") VALUES ('ae4238f7-0e48-423f-b52c-75896de03d6f'::uuid,'YANDEX');

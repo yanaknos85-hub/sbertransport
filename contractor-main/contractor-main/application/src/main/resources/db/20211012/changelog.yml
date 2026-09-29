@@ -1,0 +1,46 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211012"
+            context: "20211012"
+            author: medvedev-ad
+            dbms: postgresql
+            changes:
+                -   renameColumn:
+                        schemaName: contractors
+                        tableName: messages_geo_zone
+                        oldColumnName: code
+                        newColumnName: old_code
+                -   addColumn:
+                        schemaName: contractors
+                        tableName: messages_geo_zone
+                        columns:
+                            -   column:
+                                    name: code
+                                    type: text
+                -   sql:
+                        sql: update contractors.messages_geo_zone set code = old_code
+                -   dropColumn:
+                        schemaName: contractors
+                        tableName: messages_geo_zone
+                        columnName: old_code
+                -   addNotNullConstraint:
+                        schemaName: contractors
+                        tableName: messages_geo_zone
+                        columnName: code
+            rollback:
+                -   renameColumn:
+                        schemaName: contractors
+                        tableName: messages_geo_zone
+                        oldColumnName: code
+                        newColumnName: old_code
+                -   addColumn:
+                        schemaName: contractors
+                        tableName: messages_geo_zone
+                        columns:
+                            -   column:
+                                    name: code
+                                    type: text
+                -   dropColumn:
+                        schemaName: contractors
+                        tableName: messages_geo_zone
+                        columnName: old_code

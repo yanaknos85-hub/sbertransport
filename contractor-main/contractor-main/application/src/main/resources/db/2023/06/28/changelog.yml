@@ -1,0 +1,97 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230628-1542"
+      author: medvedev-ad
+      context: "20230628"
+      changes:
+        - tagDatabase:
+            tag: "release/D-02.020.000"
+        - addColumn:
+            schemaName: contractors
+            tableName: trips
+            columns:
+              - column:
+                  name: type
+                  type: varchar(9)
+                  remarks: Тип поездки PASSENGER|CARGO
+                  defaultValue: PASSENGER
+                  defaultOnNull: true
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: trips_trips_type_nn
+              - column:
+                  name: additional
+                  type: json
+                  remarks: Дополнительные данные поездки
+      rollback:
+        - dropColumn:
+            schemaName: contractors
+            tableName: trips
+            columns:
+              - column:
+                  name: type
+              - column:
+                  name: additional
+  - changeSet:
+      id: "20230628-0720"
+      author: medvedev-ad
+      context: "20230628"
+      dbms: postgresql
+      changes:
+        - tagDatabase:
+            tag: "release/D-02.020.000"
+        - update:
+            schemaName: contractors
+            tableName: trips
+            columns:
+              - column:
+                  name: additional
+                  valueComputed: json_build_object('passengerCount', passenger_count, 'taxiClass', taxi_class, 'driverWaitingTime', driver_waiting_time)
+      rollback:
+        - update:
+            schemaName: contractors
+            tableName: trips
+            columns:
+              - column:
+                  name: passenger_count
+                  valueComputed: cast(additional->>'passengerCount' as integer)
+              - column:
+                  name: taxi_class
+                  valueComputed: additional->>'taxiClass'
+              - column:
+                  name: driver_waiting_time
+                  valueComputed: cast(additional->>'driverWaitingTime' as bigint)
+  - changeSet:
+      id: "20230627-0721"
+      author: medvedev-ad
+      context: "20230628"
+      changes:
+        - tagDatabase:
+            tag: "release/D-02.020.000"
+        - dropColumn:
+            schemaName: contractors
+            tableName: trips
+            columns:
+              - column:
+                  name: passenger_count
+              - column:
+                  name: taxi_class
+              - column:
+                  name: driver_waiting_time
+      rollback:
+        - addColumn:
+            schemaName: contractors
+            tableName: trips
+            columns:
+              - column:
+                  name: passenger_count
+                  type: integer
+                  remarks: Количество пассажиров
+              - column:
+                  name: taxi_class
+                  type: text
+                  remarks: Класс такси
+              - column:
+                  name: driver_waiting_time
+                  type: text
+                  remarks: Время ожидания пассажира водителем

@@ -1,0 +1,145 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "240523-1"
+            author: shabrov-ie
+            changes:
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_personal
+                        columns:
+                            -   column:
+                                    type: jsonb
+                                    name: passengers
+                                    remarks: Список пассажиров
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            -   column:
+                                    type: jsonb
+                                    name: passengers
+                                    remarks: Список пассажиров
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columns:
+                            -   column:
+                                    type: jsonb
+                                    name: passengers
+                                    remarks: Список пассажиров
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    type: jsonb
+                                    name: passengers
+                                    remarks: Список пассажиров
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_group_transfer
+                        columns:
+                            -   column:
+                                    type: jsonb
+                                    name: passengers
+                                    remarks: Список пассажиров
+                -   addColumn:
+                        schemaName: request_audit
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    type: jsonb
+                                    name: passengers
+                                    remarks: Список пассажиров
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_personal
+                        columnName: passengers
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columnName: passengers
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columnName: passengers
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        columnName: passengers
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_group_transfer
+                        columnName: passengers
+                -   dropColumn:
+                        schemaName: request_audit
+                        tableName: request_for_public
+                        columnName: passengers
+    -   changeSet:
+            id: "240523-2"
+            author: shabrov-ie
+            changes:
+                -   tagDatabase:
+                        tag: "240523-2"
+                -   renameColumn:
+                        schemaName: request
+                        tableName: request_for_personal
+                        newColumnName: joined_passenger_ids
+                        oldColumnName: passengers
+                -   renameColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        newColumnName: joined_passenger_ids
+                        oldColumnName: passengers
+                -   renameColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        newColumnName: joined_passenger_ids
+                        oldColumnName: passengers
+                -   renameColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        newColumnName: joined_passenger_ids
+                        oldColumnName: passengers
+                -   renameColumn:
+                        schemaName: request
+                        tableName: request_for_group_transfer
+                        newColumnName: joined_passenger_ids
+                        oldColumnName: passengers
+                -   renameColumn:
+                        schemaName: request_audit
+                        tableName: request_for_public
+                        newColumnName: joined_passenger_ids
+                        oldColumnName: passengers
+            rollback:
+                -   renameColumn:
+                        schemaName: request
+                        tableName: request_for_personal
+                        newColumnName: passengers
+                        oldColumnName: joined_passenger_ids
+                -   renameColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        newColumnName: passengers
+                        oldColumnName: joined_passenger_ids
+                -   renameColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        newColumnName: passengers
+                        oldColumnName: joined_passenger_ids
+                -   renameColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        newColumnName: passengers
+                        oldColumnName: joined_passenger_ids
+                -   renameColumn:
+                        schemaName: request
+                        tableName: request_for_group_transfer
+                        newColumnName: passengers
+                        oldColumnName: joined_passenger_ids
+                -   renameColumn:
+                        schemaName: request_audit
+                        tableName: request_for_public
+                        newColumnName: passengers
+                        oldColumnName: joined_passenger_ids

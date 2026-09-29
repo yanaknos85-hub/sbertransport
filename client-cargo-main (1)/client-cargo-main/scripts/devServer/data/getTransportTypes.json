@@ -1,0 +1,52 @@
+[
+  {
+    "id": "7f18ce71-99a7-47b5-b285-335058c6715c",
+    "name": "TAXI",
+    "rusName": "Такси"
+  },
+  {
+    "id": "1a33601d-4db4-4720-8d09-95f015770fe0",
+    "name": "PERSONAL",
+    "rusName": "Личный транспорт"
+  },
+  {
+    "id": "fa96da51-068d-4cf5-bfd2-4cd28d717e13",
+    "name": "PUBLIC",
+    "rusName": "Общественный транспорт"
+  },
+  {
+    "id": "7f18ce71-65a7-47b5-b285-335058c6515c",
+    "name": "CARSHARING",
+    "rusName": "Каршеринг"
+  },
+  {
+    "id": "6f18ce82-99a7-34b5-b285-335058c6715c",
+    "name": "BICYCLE",
+    "rusName": "Велосипед"
+  },
+  {
+    "id": "1f13ce82-99a7-34b5-b285-225058b6715c",
+    "name": "WALK",
+    "rusName": "Пешком"
+  },
+  {
+    "id": "3c13ce82-24a7-11b5-b195-225058b6715c",
+    "name": "SCOOTER",
+    "rusName": "Самокат"
+  },
+  {
+    "id": "c6ab83a2-0637-11ec-9a03-0242ac130003",
+    "name": "DEDICATED",
+    "rusName": "Доставка сборного груза"
+  },
+  {
+    "id": "296c1c60-0aa3-4e06-85a0-f5efc021d8c9",
+    "name": "COURIER",
+    "rusName": "Курьерская доставка"
+  },
+  {
+    "id": "e2722f95-1043-41d0-8a57-09182c6410c6",
+    "name": "INTERREGIONAL",
+    "rusName": "Межрегиональная доставка"
+  }
+]

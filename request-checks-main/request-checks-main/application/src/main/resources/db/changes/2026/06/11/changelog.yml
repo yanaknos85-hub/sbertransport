@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20260611-1200"
+      author: khalikov-ma
+      context: "TRANSPORT-43172"
+      changes:
+        - sql:
+            sql: |
+              DELETE FROM request_checks.trip_request
+              WHERE transport_type NOT IN ('GROUP_TRANSFER', 'PUBLIC', 'PERSONAL', 'CARSHARING', 'TAXI', 'YANDEX');
+        - sql:
+            sql: |
+              DELETE FROM request_checks.waypoint
+              WHERE trip_request_id NOT IN (
+                SELECT id FROM request_checks.trip_request
+              );

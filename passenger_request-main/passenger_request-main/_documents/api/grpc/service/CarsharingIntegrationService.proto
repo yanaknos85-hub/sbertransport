@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package ru.sber.transport.integrations.carsharing.grpc.service;
+option java_package = "ru.sber.transport.integrations.carsharing.grpc.service";
+
+import "dto/EmployeeInfo.proto";
+import "google/protobuf/empty.proto";
+
+service CarsharingIntegrationService{
+    rpc joinToTariff(ru.sber.transport.integrations.carsharing.grpc.dto.EmployeeInfo)
+            returns (google.protobuf.Empty) {}
+}

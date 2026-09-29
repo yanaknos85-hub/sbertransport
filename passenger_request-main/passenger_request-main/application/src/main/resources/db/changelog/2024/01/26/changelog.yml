@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20240126"
+            author: shabrov-ie
+            changes:
+                -   tagDatabase:
+                        tag: "20240126"
+                -   sqlFile:
+                        path: sql/add_index.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: sql/remove_index.sql
+                        relativeToChangelogFile: true

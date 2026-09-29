@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: "request/20251022-0911"
+      author: farkhutdinov-ed
+      context: "TRANSPORT-35737"
+      dbms: postgresql
+      changes:
+        - createIndex:
+            schemaName: request
+            tableName: request_for_personal
+            indexName: request_employeeId_date_status_cost_idx
+            columns:
+              - column:
+                  name: passenger_id
+              - column:
+                  name: desired_date
+              - column:
+                  name: request_status
+              - column:
+                  name: expected_cost
+  - changeSet:
+      id: "request/20251022-0912"
+      author: farkhutdinov-ed
+      context: roles-init
+      dbms: postgresql
+      changes:
+        -   sqlFile:
+              path: changes/grant_access_post_personal_transport_checks_split_location.sql
+              relativeToChangelogFile: true
+              splitStatements: false

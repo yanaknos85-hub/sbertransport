@@ -1,0 +1,67 @@
+$gap: 13px;
+
+.header {
+  display: flex;
+  overflow-x: auto;
+  border-bottom: 2px solid #e0e0e0;
+
+  .datepickerInput {
+    height: 40px;
+    border-radius: 8px;
+    width: 200px;
+    margin-left: auto;
+  }
+
+  .filters {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr 40px 1fr;
+    row-gap: $gap;
+    column-gap: $gap;
+    grid-auto-rows: 60px;
+    align-items: center;
+  }
+
+  .buttonGroup {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    flex: 1 0;
+    width: 100%;
+
+    .settings {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      background: var(--solitude);
+      border-radius: 8px;
+
+      svg {
+        width: 24px;
+
+        path {
+          fill: var(--pale-grey);
+        }
+      }
+    }
+
+    .zoomButton {
+      svg {
+        font-size: 20px;
+        user-select: none;
+      }
+    }
+
+    .headerButton {
+      padding: 9px 20px;
+      font-size: 14px;
+      line-height: 22px;
+      border-radius: 8px;
+      height: fit-content;
+    }
+  }
+}

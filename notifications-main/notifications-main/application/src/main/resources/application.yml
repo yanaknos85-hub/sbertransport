@@ -1,0 +1,84 @@
+server:
+  port: @server.port@
+
+grpc:
+  server:
+    port: 6565
+spring:
+  config:
+    import:
+      - optional:configserver:${spring.cloud.config.uri}
+  jackson:
+    default-property-inclusion: non_null
+  application:
+    name: notifications
+  datasource:
+    url: jdbc:postgresql://localhost:5432/transport
+    password: root
+    username: postgres
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 10
+      connection-test-query: SELECT 1
+      minimum-idle: 1
+      allow-pool-suspension: true
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 25
+          lob:
+            non_contextual_creation: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+    show-sql: ${SHOW_SQL:false}
+    open-in-view: false
+  liquibase:
+    enabled: true
+    change-log: db/changelog-master.yml
+    drop-first: false
+    test-rollback-on-update: false
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    database-change-log-table: changelog_${spring.application.name}
+    database-change-log-lock-table: changelog_${spring.application.name}_lock
+    liquibase-schema: ${MIGRATIONS_SCHEMA:public}
+  profiles:
+    active: logging,messaging,kafka,kafka-avro
+  cloud:
+    vault:
+      enabled: false
+management:
+  health:
+    elasticsearch:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: health
+default:
+  contractor:
+    push:
+      channel:
+        enabled: "${DEFAULT_CONTRACTOR_PUSH_ENABLED:true}"
+  push:
+    channel:
+      enabled: "${DEFAULT_PUSH_ENABLED:true}"
+  email:
+    channel:
+      enabled: "${DEFAULT_EMAIL_ENABLED:true}"
+  sms:
+    channel:
+      enabled: "${DEFAULT_SMS_ENABLED:false}"
+  internal: "${DEFAULT_INTERNAL:true}"
+  link:
+    sigma: "${DEFAULT_LINK_SIGMA:null}"
+    alpha: "${DEFAULT_LINK_ALPHA:null}"
+    dzo: "${DEFAULT_LINK_DZO:null}"
+security:
+  roles:
+    enabled: true
+notification.settings.schedule: ${NOTIFICATION_SETTINGS_CRON_VALUE:0 */1 * * * *}

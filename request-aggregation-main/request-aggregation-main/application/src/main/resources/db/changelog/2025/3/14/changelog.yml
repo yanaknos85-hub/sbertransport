@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250511-1"
+      author: matevosyan-aa
+      changes:
+        - sqlFile:
+            endDelimiter: ;
+            path: changes/init_table_request_aggregation.sql
+            relativeToChangelogFile: true
+            splitStatements: false

@@ -1,0 +1,16 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220816"
+            author: blandin-ad
+            changes:
+                -   sqlFile:
+                        path: changes/add_column_text.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        path: changes/add_comment_on_column.sql
+                        relativeToChangelogFile: true
+            rollback:
+              - dropColumn:
+                  schemaName: notifications_settings
+                  tableName: notification
+                  columnName: text

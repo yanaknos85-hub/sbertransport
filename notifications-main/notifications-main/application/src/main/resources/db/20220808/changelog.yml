@@ -1,0 +1,45 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220808-1"
+            author: asigalov
+            changes:
+                -   sqlFile:
+                        path: changes/correct_types2.sql
+                        relativeToChangelogFile: true
+            rollback:
+              - dropColumn:
+                  schemaName: notifications_request
+                  tableName: taxi_trip
+                  columnName: shared_ride_id
+              - dropColumn:
+                  schemaName: notifications_request
+                  tableName: shared_trip
+                  columnName: id
+              - dropColumn:
+                  schemaName: notifications_request
+                  tableName: trip
+                  columnName: shared_ride_id
+              - addColumn:
+                  schemaName: notifications_request
+                  tableName: taxi_trip
+                  columns:
+                    - column:
+                        name: magenta_id
+                        type: integer
+              - addColumn:
+                  schemaName: notifications_request
+                  tableName: trip
+                  columns:
+                    - column:
+                        name: shared_ride_id
+                        type: bigint
+              - addColumn:
+                  schemaName: notifications_request
+                  tableName: shared_trip
+                  columns:
+                    - column:
+                        name: magenta_id
+                        type: bigint
+                        constraints:
+                          primaryKey: true
+                          primaryKeyName: position_pkey

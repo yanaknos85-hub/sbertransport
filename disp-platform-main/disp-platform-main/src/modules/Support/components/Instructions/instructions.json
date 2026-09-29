@@ -1,0 +1,227 @@
+{
+  "autopark": {
+    "title": "Создание автопарка",
+    "instructions": [
+      {
+        "name": "BRANCH_OFFICE",
+        "coverImage": "autopark-web/branch-office/cover.svg",
+        "title": "Филиал",
+        "pages": [
+          {
+            "image": "autopark-web/branch-office/1.png",
+            "title": "Меню",
+            "text": "В боковом меню выберите раздел «Автопарк → Филиалы»"
+          },
+          {
+            "image": "autopark-web/branch-office/2.png",
+            "title": "Добавьте филиал (автопарк)",
+            "text": "Для создания нового филиала (автопарка), нажмите на кнопку «Добавить» в правом углу под списком филиалов"
+          },
+          {
+            "image": "autopark-web/branch-office/3.png",
+            "title": "Добавьте филиал (автопарк)",
+            "text": "Введите название нового филиала и нажмите кнопку «Добавить»"
+          }
+        ]
+      },
+      {
+        "name": "VEHICLE",
+        "coverImage": "autopark-web/vehicle/cover.svg",
+        "title": "Автомобиль",
+        "pages": [
+          {
+            "image": "autopark-web/vehicle/1.png",
+            "title": "Меню",
+            "text": "В боковом меню выберите раздел «Автопарк → Автомобили»"
+          },
+          {
+            "image": "autopark-web/vehicle/2.png",
+            "title": "Добавьте автомобиль",
+            "text": "Для создания нового автомобиля и прявязки к автопарку, нажмите на кнопку «Добавить» в правом углу под списком\nавтомомбилей"
+          },
+          {
+            "image": "autopark-web/vehicle/3.png",
+            "title": "Заполните данные",
+            "text": "Выберите тип автомобиля и пренадлежность к автопарку, так же необходимо заполнить обязательные поля и нажать\nкнопку «Добавить»"
+          }
+        ]
+      },
+      {
+        "name": "DRIVER",
+        "coverImage": "autopark-web/driver/cover.svg",
+        "title": "Водитель",
+        "pages": [
+          {
+            "image": "autopark-web/driver/1.png",
+            "title": "Меню",
+            "text": "В боковом меню выберите раздел «Персонал»"
+          },
+          {
+            "image": "autopark-web/driver/2.png",
+            "title": "Добавьте водителя",
+            "text": "Для создания нового водителя, нажмите на кнопку «Добавить» в правом углу под списком водителей"
+          },
+          {
+            "image": "autopark-web/driver/3.png",
+            "title": "Введите данные",
+            "text": "Заполните обязательные поля и нажмите кнопку «Добавить»"
+          }
+        ]
+      },
+      {
+        "name": "SCHEDULE",
+        "coverImage": "autopark-web/schedule/cover.svg",
+        "title": "График рабочих смен",
+        "pages": [
+          {
+            "image": "autopark-web/schedule/1.png",
+            "title": "Меню",
+            "text": "В боковом меню выберите раздел «График работы»"
+          },
+          {
+            "image": "autopark-web/schedule/2.png",
+            "title": "Создайте смену",
+            "text": "Для создания смены, нажмите на кнопку «Создать смену» в правом верхнем углу над графиком"
+          },
+          {
+            "image": "autopark-web/schedule/3.png",
+            "title": "Создайте смену",
+            "text": "Заполните обязательные поля и нажмите кнопку «Создать»"
+          }
+        ]
+      },
+      {
+        "name": "DRIVER_ASSIGNMENT",
+        "coverImage": "autopark-web/driver-assignment/cover.svg",
+        "title": "Назначение водителя",
+        "pages": [
+          {
+            "image": "autopark-web/driver-assignment/1.png",
+            "title": "Выберите поездку",
+            "text": "На главной странице, в таблице с заявками, нажмите на «ID поездки»"
+          },
+          {
+            "image": "autopark-web/driver-assignment/2.png",
+            "title": "Назначьте водителя",
+            "text": "Выберите водителя из списка и нажмите кнопку «Назначить»"
+          }
+        ]
+      },
+      {
+        "name": "CLOSE_TRIP",
+        "coverImage": "autopark-web/close-trip/cover.svg",
+        "title": "Ручное закрытие заявки",
+        "pages": [
+          {
+            "image": "autopark-web/close-trip/1.png",
+            "title": "Меню",
+            "text": "На главной странице, в таблице с заявками, нажмите на «Редактирование заявки» с иконкой карандаша"
+          },
+          {
+            "image": "autopark-web/close-trip/2.png",
+            "title": "Отредактируйте заявку",
+            "text": "Смените статус заявки и укажите новые параметры пробега и время ожидания"
+          },
+          {
+            "image": "autopark-web/close-trip/3.png",
+            "title": "Сохраните измненеия в заявке",
+            "text": "Псоле изменения в заявке нажмите «Сохранить»"
+          }
+        ]
+      },
+      {
+        "name": "REPORTS",
+        "coverImage": "autopark-web/reports/cover.svg",
+        "title": "Отчетность",
+        "pages": [
+          {
+            "image": "autopark-web/reports/1.png",
+            "title": "Отчетность",
+            "text": "На главной странице, в правом верхнем углу, нажмите на «Выгрузку»"
+          },
+          {
+            "image": "autopark-web/reports/2.png",
+            "title": "Параметры выгрузки",
+            "text": "Выберите нужные статусы для отчета и период"
+          },
+          {
+            "image": "autopark-web/reports/3.png",
+            "title": "Параметры выгрузки",
+            "text": "После заполнения параметров, нажмите на кнопку «Скачать»"
+          }
+        ]
+      }
+    ]
+  },
+  "transfer": {
+    "title": "Бронирование трансфера",
+    "instructions": [
+      {
+        "name": "SDO",
+        "coverImage": "transfer-web/sdo/cover.svg",
+        "title": "Трансфер",
+        "pages": [
+          {
+            "image": "transfer-web/sdo/1.png",
+            "title": "Назначить водителя в графике работы",
+            "text": "В боковом меню выберите раздел «График работы»"
+          },
+          {
+            "image": "transfer-web/sdo/2.png",
+            "title": "Назначить водителя",
+            "text": "Для назначения водителя на заявку по брони нажмите на интересующую Вас заявку"
+          },
+          {
+            "image": "transfer-web/sdo/3.png",
+            "title": "Заполните данные",
+            "text": "Выберите водителя из списка, уточните время начала и окончания работы и нажмите кнопку «Сохранить»"
+          },
+          {
+            "image": "transfer-web/sdo/4.png",
+            "title": "Отображение смены на графике",
+            "text": "В графике работы вы можете увидеть изменения по поездке - назначение ее на водителя"
+          },
+          {
+            "image": "transfer-web/sdo/5.png",
+            "title": "Назначить водителя из диспетчерской",
+            "text": "Для назначения водителя, находящегося на смене, на забронированный автомобиль нажмите\nна поле «Начните вводить» в столбце «Водитель»"
+          },
+          {
+            "image": "transfer-web/sdo/6.png",
+            "title": "Водитель назначен",
+            "text": "После назначения водителя и его выхода на линию, изменения по заявке отобразятся в диспетчерской:\nцвет строки изменится на белый, столбец «Водитель» заполнит ФИО и телефон водителя"
+          },
+          {
+            "image": "transfer-web/sdo/7.png",
+            "title": "Выход водителя на линию",
+            "text": "В мобильном приложении водитель получает пуш-уведомление и нажимает кнопку «Выйти на линию»,\nпосле чего ему становится доступным выполнение заявок."
+          },
+          {
+            "image": "transfer-web/sdo/8.png",
+            "title": "Завершение заказа",
+            "text": "После завершения поездки водителем, статус поездки изменится на «Заказ выполнен»"
+          }
+        ]
+      }
+    ]
+  },
+  "download": {
+    "title": "Скачать",
+    "instructions": [
+      {
+        "name": "dispatcher",
+        "coverImage": "download/dispatcher/cover.svg",
+        "title": "Для диспетчера",
+        "pages": [],
+        "link": "download/dispatcher/dispatcher.pdf"
+      },
+      {
+        "name": "driver",
+        "coverImage": "download/driver/cover.svg",
+        "title": "Для водителей",
+        "pages": [],
+        "link": "download/driver/driver.pdf"
+      }
+    ]
+  }
+}

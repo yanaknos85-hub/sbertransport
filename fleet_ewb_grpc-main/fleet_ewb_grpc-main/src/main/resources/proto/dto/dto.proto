@@ -1,0 +1,77 @@
+syntax = "proto3";
+option java_package = "ru.sber.transport.ewb.grpc.dto";
+import "google/protobuf/timestamp.proto";
+
+package ru.sber.transport.ewb.grpc.dto;
+
+// Запрос на получение информации об активных ЭПЛ на определенную дату и время и по определенным подразделениям
+message HaveActiveEwbDto {
+    // Список идентификаторов подразделений
+    repeated string departmentIds = 1;
+
+    //  Дата и время начала проверки
+    google.protobuf.Timestamp checkStartDate = 2;
+}
+
+message FirstTitleRequestList {
+    repeated FirstTitleRequest requests = 1;
+}
+
+// Запрос на формирование первого титула ЭПЛ
+message FirstTitleRequest {
+    // Идентификатор записи
+    string id = 1;
+
+    // Идентификатор диспетчера
+    string dispatcher_id = 2;
+
+    // Дата начала перевозки (формат: YYYY-MM-DD)
+    string start_date = 3;
+
+    // Дата окончания перевозки (формат: YYYY-MM-DD)
+    string finish_date = 4;
+
+    // Вид перевозки (1-3 символа, например "СН")
+    string transportation_type = 5;
+
+    // Вид сообщения (1-2 символа, например "Г")
+    string communication_type = 6;
+
+    // Идентификатор подразделения водителя (UUID в строковом представлении)
+    string tariff_department_id = 7;
+
+    // Идентификатор транспортного средства (UUID в строковом представлении)
+    string transport_id = 8;
+
+    // Идентификатор сотрудника, который является водителем
+    string driver_employee_id = 9;
+}
+
+// Список ответов на запрос формирования первых титулов
+message FirstTitleResponseList {
+    repeated FirstTitleResponse responses = 1;
+}
+
+// Ответ на запрос формирования первого титула
+message FirstTitleResponse {
+    // Идентификатор записи
+    string id = 1;
+
+    // Уникальный идентификатор ЭПЛ
+    string ewb_id = 2;
+
+    // Человекочитаемый идентификатор
+    string human_readable_id = 3;
+
+    // Имя файла
+    string file_name = 4;
+
+    // Сформированный файл
+    bytes content = 5;
+
+    // Время создания титула
+    google.protobuf.Timestamp creation_time = 6;
+
+    // Текст ошибки. Пустая строка - успех, иначе текст ошибки
+    string error_text = 7;
+}

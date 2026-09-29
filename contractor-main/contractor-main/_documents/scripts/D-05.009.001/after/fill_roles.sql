@@ -1,0 +1,1 @@
+call migrations.fill_roles('contractors', 'PATCH /{contractorId}/', 'ROLE_DISPATCHER_ROOM_ADMIN', true);

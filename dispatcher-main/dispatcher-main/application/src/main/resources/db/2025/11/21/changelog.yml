@@ -1,0 +1,77 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20251121-01
+      author: gusev-ea
+      changes:
+        - addColumn:
+            schemaName: dispatcher
+            tableName: driver
+            columns:
+              - column:
+                  name: personnel_number
+                  type: varchar(255)
+                  remarks: Табельный номер
+        - addColumn:
+            schemaName: dispatcher
+            tableName: driver
+            columns:
+              - column:
+                  name: snils
+                  type: varchar(12)
+                  remarks: СНИЛС
+        - addColumn:
+            schemaName: dispatcher
+            tableName: driver
+            columns:
+              - column:
+                  name: tin
+                  type: varchar(16)
+                  remarks: ИНН
+        - addColumn:
+            schemaName: dispatcher
+            tableName: driver
+            columns:
+              - column:
+                  name: issue_date
+                  type: date
+                  remarks: Дата выдачи
+        - addColumn:
+            schemaName: dispatcher
+            tableName: driver
+            columns:
+              - column:
+                  name: expiry_date
+                  type: date
+                  remarks: Дата окончания
+
+      rollback:
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: driver
+            columns:
+              - column:
+                  name: personnel_number
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: driver
+            columns:
+              - column:
+                  name: snils
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: driver
+            columns:
+              - column:
+                  name: tin
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: driver
+            columns:
+              - column:
+                  name: issue_date
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: driver
+            columns:
+              - column:
+                  name: expiry_date

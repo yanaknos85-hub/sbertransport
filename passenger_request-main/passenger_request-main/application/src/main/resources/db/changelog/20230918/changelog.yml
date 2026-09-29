@@ -1,0 +1,38 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230918"
+            author: delyukov-da
+            changes:
+                -   tagDatabase:
+                        tag: "20230918"
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            -   column:
+                                    type: timestamp
+                                    name: driver_arrived_datetime
+                                    remarks: Время перехода заявки в статус Водитель ожидает в точке отправления
+                            -   column:
+                                    type: timestamp
+                                    name: driver_arrived_deadline
+                                    remarks: Максимальная дата прибытия водителя, без нарушения SLA
+                -   createIndex:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        column:
+                            name: driver_arrived_deadline
+                        indexName: request_request_for_taxi_driver_arrived_deadline_idx
+            rollback:
+                -   dropIndex:
+                        schemaName: request
+                        tableName: driver_arrived_deadline
+                        indexName: request_request_for_taxi_driver_arrived_deadline_idx
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            -   column:
+                                    name: driver_arrived_deadline
+                            -   column:
+                                    name: driver_arrived_datetime

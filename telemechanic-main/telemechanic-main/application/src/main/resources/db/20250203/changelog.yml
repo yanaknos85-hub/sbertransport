@@ -1,0 +1,21 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20250203-1
+            author: makarovm-d
+            dbms: postgresql
+            context: "!test"
+            changes:
+                -   sqlFile:
+                        path: changes/fix_request.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250203-2
+            author: makarovm-d
+            dbms: postgresql
+            context: "!test"
+            changes:
+                -   sqlFile:
+                        path: changes/fix_request_ewb.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

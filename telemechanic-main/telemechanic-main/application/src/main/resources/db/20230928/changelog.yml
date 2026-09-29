@@ -1,0 +1,10 @@
+databaseChangeLog:
+    - changeSet:
+          id: telemechanic/20230928-1
+          author: makarov-md
+          dbms: postgresql
+          changes:
+              - sqlFile:
+                    path: change/change_check_status.sql
+                    relativeToChangelogFile: true
+                    splitStatements: false

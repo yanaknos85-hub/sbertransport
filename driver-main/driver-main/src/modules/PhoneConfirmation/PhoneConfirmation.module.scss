@@ -1,0 +1,28 @@
+@import 'styles/variables.scss';
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .subTitle {
+    font-family: 'SB Sans Text';
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.3px;
+    color: $black;
+    margin: 36px 20px;
+  }
+
+  .phone {
+    font-family: SB Sans Interface;
+    font-weight: 600;
+    margin-left: 5px;
+  }
+
+  .btn {
+    width: auto;
+    margin: 0 20px 40px;
+  }
+}

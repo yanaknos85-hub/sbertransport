@@ -1,0 +1,2 @@
+call migrations.fill_roles('request_checks', 'POST /distance/total', 'ROLE_EMPLOYEE_CORP_CLIENT', true);
+call migrations.fill_roles('request_checks', 'POST /distance/total', 'ROLE_ADMIN_DATA_MASTER', true);

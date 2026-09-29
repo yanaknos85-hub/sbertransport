@@ -1,0 +1,45 @@
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers:
+            - ${KAFKA_BROKERS:@kafka.default.broker@}
+          producerProperties:
+            key.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+          consumerProperties:
+            key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      default-binder: kafka
+      bindings:
+        employeesInput-in-0:
+          group: ${spring.application.name}
+          destination: service.organization.employee
+          consumer:
+            enableDlq: true
+            autoCommitOnError: true
+            autoCommitOffset: true
+            ackEachRecord: true
+        organizationsInput-in-0:
+          group: ${spring.application.name}
+          destination: service.organization
+          consumer:
+            enableDlq: true
+            autoCommitOnError: true
+            autoCommitOffset: true
+            ackEachRecord: true
+        departmentsInput-in-0:
+          group: ${spring.application.name}
+          destination: service.organization.department
+          consumer:
+            enableDlq: true
+            autoCommitOnError: true
+            autoCommitOffset: true
+            ackEachRecord: true
+        positionsInput-in-0:
+          group: ${spring.application.name}
+          destination: service.organization.position
+          consumer:
+            enableDlq: true
+            autoCommitOnError: true
+            autoCommitOffset: true
+            ackEachRecord: true

@@ -1,0 +1,115 @@
+.titleChain {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.chainWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.titleCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 184px;
+}
+
+.titleLabel {
+  font-size: 14px;
+  color: #262626;
+  margin-bottom: 4px;
+  border-radius: 8px;
+  padding: 4px 16px;
+  width: 100%;
+}
+
+.statusBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 4px 12px;
+}
+
+.statusLabel {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.signerName {
+  font-size: 11px;
+  line-height: 14px;
+}
+
+.signerNameTextLight {
+  color: #adadad;
+}
+
+.signerNameTextDark {
+  color: #737373;
+}
+
+/* Тёмный текст (на светлом фоне) */
+.textLight {
+  color: #adadad;
+}
+
+.statusLabelTextLight {
+  color: #fff;
+}
+
+/* Светлый текст (на тёмном фоне) */
+.textDark {
+  color: #000;
+}
+
+/* Цвета фонов и бордеров */
+.bg_default {
+  background: #ebebeb;
+  border: 1px solid #ebebeb;
+}
+
+.bg_success {
+  background: #10bf6a;
+  border: 1px solid #10bf6a;
+}
+
+.bg_error {
+  background: red;
+  border: 1px solid red;
+}
+
+.connector {
+  position: absolute;
+  right: -32px;
+  top: 17px;
+  width: 32px;
+  height: 1px;
+  border-top: 1px solid;
+  border-radius: 1px;
+}
+
+.connector_success {
+  border-color: #87dfb4;
+}
+
+.connector_default {
+  border-color: #adadad;
+}
+
+.waitingText {
+  text-align: center;
+  padding: 40px 0;
+  color: #8c8c8c;
+}

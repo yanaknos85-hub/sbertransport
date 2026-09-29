@@ -1,0 +1,18 @@
+<svg width="37.000000" height="37.000000" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+		<filter id="filter_1982_47616_dd" x="0.000000" y="0.000000" width="37.000000" height="37.000000" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+			<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+			<feOffset dx="0" dy="2"/>
+			<feGaussianBlur stdDeviation="2.66667"/>
+			<feComposite in2="hardAlpha" operator="out" k2="-1" k3="1"/>
+			<feColorMatrix type="matrix" values="0 0 0 0 0.062745 0 0 0 0 0.74902 0 0 0 0 0.5451 0 0 0 0.2 0"/>
+			<feBlend mode="normal" in2="BackgroundImageFix" result="effect_dropShadow_1"/>
+			<feBlend mode="normal" in="SourceGraphic" in2="effect_dropShadow_1" result="shape"/>
+		</filter>
+	</defs>
+	<g filter="url(#filter_1982_47616_dd)">
+		<circle id="Oval" r="9.000000" transform="matrix(0.707107 -0.707107 -0.707107 -0.707107 18.5 16.5)" fill="#19B150" fill-opacity="1.000000"/>
+		<circle id="Oval" r="9.000000" transform="matrix(0.707107 -0.707107 -0.707107 -0.707107 18.5 16.5)" stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="3.000000"/>
+	</g>
+</svg>

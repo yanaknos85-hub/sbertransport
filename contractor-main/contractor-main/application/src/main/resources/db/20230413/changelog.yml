@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230413"
+      author: asigalov
+      changes:
+        - sqlFile:
+            endDelimiter: ;
+            path: changes/init_new_tables.sql
+            relativeToChangelogFile: true
+      rollback:
+        - dropTable:
+            schemaName: contractors
+            tableName: organization
+        - dropTable:
+            schemaName: contractors
+            tableName: employee
+        - dropTable:
+            schemaName: contractors
+            tableName: contract

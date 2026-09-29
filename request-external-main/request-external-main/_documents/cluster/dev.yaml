@@ -1,0 +1,53 @@
+application: request-external
+repo: app_platform_request_external
+resources:
+  limits:
+    cpu: 500m
+    memory: 1G
+  requests:
+    cpu: 500m
+    memory: 1G
+port:
+  http:
+    number: 8080
+    name: request-ext
+    target: 8080
+routing:
+  match:
+    prefix: /api/request/external/
+  rewrite:
+    uri: '/'
+secman:
+  type: built_in
+profiles: request-external
+additional:
+  envs:
+    - name: SPRING_CLOUD_CONFIG_URI
+      value: http://http-config-server:8080
+  configMap:
+    - name: kafka-secman
+      data:
+        application-kafka-avro.yml: |-
+          spring:
+            cloud:
+              vault:
+                namespace: CI02351878_CI02671580
+                authentication: kubernetes
+                kubernetes:
+                  role: ci02351878-edevgen-sbertransport-dev
+                  kubernetes-path: os/dev-terra000003-ids.ocp.delta.sbrf.ru
+                enabled: true
+                port: 443
+                host: t.secrets.delta.sbrf.ru
+            config:
+              import: 
+                - optional:vault://A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/application,kafka-avro
+  volumes:
+    - name: kafka-secman
+      configMap:
+        name: kafka-secman
+        defaultMode: 420
+  mounts:
+    - name: kafka-secman
+      mountPath: /app/resources/application-kafka-avro.yml
+      subPath: application-kafka-avro.yml

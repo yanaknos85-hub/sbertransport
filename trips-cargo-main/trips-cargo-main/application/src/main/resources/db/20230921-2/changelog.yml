@@ -1,0 +1,37 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230921-2"
+            author: blandin-ad
+            context: "20230921-2"
+            changes:
+                -   tagDatabase:
+                        tag: "20230921-2"
+                -   addColumn:
+                        schemaName: trips_cargo
+                        tableName: trips_cargo
+                        remarks: Поездки
+                        columns:
+                            -   column:
+                                    name: passenger_count
+                                    remarks: Количество пассажиров
+                                    type: int4
+                            -   column:
+                                    name: taxi_class
+                                    remarks: Класс такси
+                                    type: text
+                            -   column:
+                                    name: contractor_id
+                                    type: uuid
+                                    remarks: Идентификатор контрагента
+                            -   column:
+                                    name: waypoints
+                                    remarks: Путевые точки
+                                    type: json
+                            -   column:
+                                    name: start_time
+                                    remarks: Начальное время поездки
+                                    type: datetime
+                            -   column:
+                                    name: end_time
+                                    remarks: Предположительное конечное время поездки
+                                    type: datetime

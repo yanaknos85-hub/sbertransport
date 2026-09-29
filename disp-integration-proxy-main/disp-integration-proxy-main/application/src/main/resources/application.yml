@@ -1,0 +1,33 @@
+spring:
+  config:
+    import: optional:configserver:${spring.cloud.config.uri}
+  application:
+    name: disp_integration_proxy
+  security:
+    user:
+      name: anonymous
+      password: anonymous
+      roles: anonymous
+    oauth2:
+      resourceserver:
+        jwt:
+          jws-algorithms: RS512
+          jwk-set-uri: ${JWKS_URI}
+  cloud:
+    kubernetes.discovery.enabled: false
+    consul.enabled: false
+    vault:
+      enabled: false
+  liquibase:
+    enabled: false
+  autoconfigure:
+    exclude:
+      - ru.sber.transport.utils.collections.reactive.MapUtilsAutoConfiguration
+
+authorization:
+  consent-check: true
+
+integration-proxy:
+  auth-url: ${INTEGRATION_PROXY_AUTH_URL:http://authentication:8080/login}
+  trips-url: ${INTEGRATION_PROXY_TRIPS_URL:http://trips:8080/integration}
+  trips-cargo-url: ${INTEGRATION_PROXY_TRIPS_CARGO_URL:http://trips-cargo:8080/integration}

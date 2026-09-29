@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20241014"
+      author: raygorodskiy_pa
+      context: "20241014"
+      changes:
+        - tagDatabase:
+            tag: "20241014"
+        - addColumn:
+            schemaName: notifications_request
+            tableName: trip
+            columns:
+              - column:
+                  name: status_code
+                  type: integer
+      rollback:
+        - dropColumn:
+            schemaName: notifications_request
+            tableName: trip
+            columnName: status_code
+

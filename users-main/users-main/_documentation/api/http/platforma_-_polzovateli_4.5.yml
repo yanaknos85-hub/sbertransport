@@ -1,0 +1,261 @@
+openapi: 3.0.3
+info:
+  title: Платформа - Пользователи
+  version: '4.5'
+  description: Сервис по работе с пользователями
+servers:
+  - url: '{scheme}://{host}:{port}{api}'
+    description: Адрес для вызова
+    variables:
+      scheme:
+        enum:
+          - http
+          - https
+        default: http
+      host:
+        default: localhost
+      api:
+        default: /api/v4.5/users
+      port:
+        enum:
+          - '80'
+          - '8080'
+          - '443'
+          - '8443'
+        default: '80'
+paths:
+  /avatar:
+    summary: Аватары
+    description: Операции для работы с аватарами пользователей
+    get:
+      tags:
+        - Avatars
+      security:
+        - BearerToken: []
+      summary: Получение аватара
+      description: Получение аватара вошедшего пользователя
+      operationId: download
+      parameters:
+        - in: header
+          name: content-range
+          description: Диапазон загрузки
+          required: false
+          schema:
+            type: string
+            pattern: ^bytes\s?(\d+-\d+)?$
+            example: bytes 0-1024
+      responses:
+        '200':
+          $ref: '#/components/responses/Avatar'
+        '401':
+          description: Пользователь не авторизован или токен истек/отозван
+        '403':
+          description: Пользователь авторизован, но у него нет прав доступа к ресурсу
+        '404':
+          description: По указанному URL не найден ресурс
+          content:
+            application/json:
+              schema:
+                type: object
+                title: Не найдено
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  path:
+                    title: Путь запроса
+                    type: string
+                  entity:
+                    description: Запрашиваемая сущность
+                    properties:
+                      id:
+                        title: Идентификатор
+                        description: Идентификатор запрашиваемой сущности
+                        type: string
+                      name:
+                        title: Название
+                        description: Название запрашиваемой сущности
+                        type: string
+                  timestamp:
+                    title: Дата-время с зоной
+                    type: string
+                    format: date-time
+                    pattern: ^[0-2]\d{3}-[0-1]\d-[0-3]\dT[0-1]\d:[0-5]\d:[0-5]\d.\d{3,6}(Z|[+-][0-2]\d{1}(00|15|30|45))$
+                    example: 2024-01-01T10:05:10.023+0300
+    post:
+      tags:
+        - Avatars
+      security:
+        - BearerToken: []
+      summary: Установка аватара
+      description: Установка аватара вошедшему пользователю
+      operationId: upload
+      requestBody:
+        $ref: '#/components/requestBodies/Avatar'
+      responses:
+        '202':
+          description: Данные приняты
+        '401':
+          description: Пользователь не авторизован или токен истек/отозван
+        '403':
+          description: Пользователь авторизован, но у него нет прав доступа к ресурсу
+        '404':
+          description: По указанному URL не найден ресурс
+          content:
+            application/json:
+              schema:
+                type: object
+                title: Не найдено
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  path:
+                    title: Путь запроса
+                    type: string
+                  entity:
+                    description: Запрашиваемая сущность
+                    properties:
+                      id:
+                        title: Идентификатор
+                        description: Идентификатор запрашиваемой сущности
+                        type: string
+                      name:
+                        title: Название
+                        description: Название запрашиваемой сущности
+                        type: string
+                  timestamp:
+                    title: Дата-время с зоной
+                    type: string
+                    format: date-time
+                    pattern: ^[0-2]\d{3}-[0-1]\d-[0-3]\dT[0-1]\d:[0-5]\d:[0-5]\d.\d{3,6}(Z|[+-][0-2]\d{1}(00|15|30|45))$
+                    example: 2024-01-01T10:05:10.023+0300
+    delete:
+      tags:
+        - Avatars
+      security:
+        - BearerToken: []
+      summary: Удаление аватара
+      description: Удаление аватара вошедшего пользователя
+      responses:
+        '204':
+          description: Запрос отработал, ответа нет
+        '401':
+          description: Пользователь не авторизован или токен истек/отозван
+        '403':
+          description: Пользователь авторизован, но у него нет прав доступа к ресурсу
+  /avatar/{id}:
+    summary: Аватары пользователей
+    description: Работа с аватарами пользователей
+    parameters:
+      - in: path
+        name: id
+        required: true
+        description: Идентификатор
+        schema:
+          title: Идентификатор пользователя
+          allOf:
+            - title: Идентификатор
+              type: string
+              format: uuid
+    get:
+      tags:
+        - UserAvatar
+      security:
+        - BearerToken: []
+      summary: Получение аватара
+      description: Получение аватара вошедшего пользователя
+      operationId: getOfUser
+      parameters:
+        - in: header
+          name: content-range
+          description: Диапазон загрузки
+          required: false
+          schema:
+            type: string
+            pattern: ^bytes\s?(\d+-\d+)?$
+            example: bytes 0-1024
+      responses:
+        '200':
+          $ref: '#/components/responses/Avatar'
+        '401':
+          description: Пользователь не авторизован или токен истек/отозван
+        '403':
+          description: Пользователь авторизован, но у него нет прав доступа к ресурсу
+        '404':
+          description: По указанному URL не найден ресурс
+          content:
+            application/json:
+              schema:
+                type: object
+                title: Не найдено
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  path:
+                    title: Путь запроса
+                    type: string
+                  entity:
+                    description: Запрашиваемая сущность
+                    properties:
+                      id:
+                        title: Идентификатор
+                        description: Идентификатор запрашиваемой сущности
+                        type: string
+                      name:
+                        title: Название
+                        description: Название запрашиваемой сущности
+                        type: string
+                  timestamp:
+                    title: Дата-время с зоной
+                    type: string
+                    format: date-time
+                    pattern: ^[0-2]\d{3}-[0-1]\d-[0-3]\dT[0-1]\d:[0-5]\d:[0-5]\d.\d{3,6}(Z|[+-][0-2]\d{1}(00|15|30|45))$
+                    example: 2024-01-01T10:05:10.023+0300
+components:
+  requestBodies:
+    Avatar:
+      required: true
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              avatar:
+                $ref: '#/components/schemas/File'
+  responses:
+    Avatar:
+      description: Данные аватара
+      content:
+        image/*:
+          schema:
+            $ref: '#/components/schemas/File'
+      headers:
+        Content-Range:
+          description: Диапазон загрузки
+          schema:
+            type: string
+            title: Диапазон
+            description: Полученный диапазон
+            pattern: ^bytes\s?\d+-\d+/\d+$
+            example: bytes 0-100/1094
+  schemas:
+    File:
+      title: Файл
+      description: Данные файла
+      type: string
+      format: binary
+  securitySchemes:
+    BearerToken:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
+      description: Токен доступа
+security:
+  - BearerToken: []
+
+# Powered by APIStudio

@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20240419-1
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        relativeToChangelogFile: true
+                        path: change/enrich_department_easup_id.sql
+                        splitStatements: false

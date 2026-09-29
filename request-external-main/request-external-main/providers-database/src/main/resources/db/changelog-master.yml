@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - property:
+      name: schema_name
+      value: external_request
+  - includeAll:
+      path: /changes
+      relativeToChangelogFile: true

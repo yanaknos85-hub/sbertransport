@@ -1,0 +1,4 @@
+ru.sber.transport.roles.check.controller.impl.ControllersConfiguration
+ru.sber.transport.roles.check.services.impl.ServiceConfiguration
+ru.sber.transport.roles.check.data.DatabaseConfiguration
+ru.sber.transport.roles.check.services.impl.RoleCheckServiceImpl

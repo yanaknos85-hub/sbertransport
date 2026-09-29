@@ -1,0 +1,60 @@
+﻿syntax = "proto3";
+
+package ru.sber.transport.corporate.grpc.service;
+
+option java_multiple_files = true;
+option java_package = "ru.sber.transport.corporate.grpc.service";
+option java_outer_classname = "DocumentValidationProto";
+
+import "google/protobuf/timestamp.proto";
+
+// Запрос на валидацию документов для поездки на личном транспорте
+message ValidateDocumentsRequest {
+    // ID сотрудника, инициирующего проверку
+    string employeeId = 1;
+
+    // ID транспортного средства
+    string carId = 2;
+
+    // Желаемая дата и время поездки
+    google.protobuf.Timestamp desiredDate = 3;
+
+    // ID коллеги (опционально). Если заполнен — проверка проводится за него.
+    optional string colleagueEmployeeId = 4;
+}
+
+//Запрос на валидацию документов для поездки на каршеринге
+message ValidateDocumentsForCarSharingRequest {
+    // ID сотрудника, инициирующего проверку
+    string employeeId = 1;
+
+    // Желаемая дата и время поездки
+    google.protobuf.Timestamp desiredDate = 2;
+}
+
+// Ответ от сервиса о валидности документов для поездки на личном транспорте
+message ValidateDocumentsResponse {
+    // Результат проверки: true — ок, false — есть проблемы
+    bool valid = 1;
+
+    // Массив кодов ошибок или предупреждений (пусто, если valid == true)
+    repeated string errors = 2;
+}
+
+// Ответ от сервиса о валидности документов для поездки на каршеринге
+message ValidateDocumentsForCarSharingResponse {
+    // Результат проверки: true — ок, false — есть проблемы
+    bool valid = 1;
+
+    // Код ошибки или предупреждение (пусто, если valid == true)
+    string error = 2;
+}
+
+// gRPC сервис для валидации документов
+service DocumentValidationService {
+    // Проверка документов водителя для личного транспорта на дату поездки
+    rpc ValidateDocuments(ValidateDocumentsRequest) returns (ValidateDocumentsResponse);
+
+    // Проверка документов водителя для каршеринга на дату поездки
+    rpc ValidateDocumentsForCarSharing(ValidateDocumentsForCarSharingRequest) returns (ValidateDocumentsForCarSharingResponse);
+}

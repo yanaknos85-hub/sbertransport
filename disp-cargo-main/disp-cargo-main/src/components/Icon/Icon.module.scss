@@ -1,0 +1,20 @@
+.icon {
+  color: #000;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  font-size: inherit;
+  line-height: inherit;
+
+  &.icon_rotate90 {
+    transform: rotate(90deg);
+  }
+  &.icon_rotate180 {
+    transform: rotate(180deg);
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+}

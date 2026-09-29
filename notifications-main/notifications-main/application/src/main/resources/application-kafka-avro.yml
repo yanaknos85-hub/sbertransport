@@ -1,0 +1,46 @@
+spring.cloud.stream:
+  binders:
+    kafka-avro:
+      type: kafka
+      environment:
+        spring:
+          cloud:
+            stream:
+              kafka:
+                binder:
+                  consumerProperties:
+                    value.deserializer: ru.sber.transport.messaging.kafka.serialize.KafkaAvroDeserialize
+                    key.deserializer: org.apache.kafka.common.serialization.JsonDeserializer
+                    schema.registry.service-notification.compatible: NONE
+                  producerProperties:
+                    value.serializer: ru.sber.transport.messaging.kafka.serialize.KafkaAvroSerialize
+                    key.serializer: org.apache.kafka.common.serialization.JsonSerializer
+                    schema.registry.service-sms.compatible: NONE
+  bindings:
+    sms-out-0:
+      destination: service-sms
+      binder: kafka-avro
+      content-type: application/*+avro
+      producer:
+        useNativeEncoding: true
+    departments-in-0:
+      group: ${spring.application.name}
+      destination: service-organization-department
+      binder: kafka-avro
+      content-type: application/*+avro
+      consumer:
+        useNativeDecoding: true
+    organizations-in-0:
+      group: ${spring.application.name}
+      destination: service-organization
+      binder: kafka-avro
+      content-type: application/*+avro
+      consumer:
+        useNativeDecoding: true
+    employee-in-0:
+      group: ${spring.application.name}
+      destination: service-organization-employee
+      binder: kafka-avro
+      content-type: application/*+avro
+      consumer:
+        useNativeDecoding: true

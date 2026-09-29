@@ -1,0 +1,33 @@
+@import 'styles/variables.scss';
+
+.loginForm {
+  margin-top: 53px;
+}
+
+.form {
+  .btn_submit {
+    margin: 24px 0 16px;
+  }
+
+  :global(.form-field:not(:first-of-type)) {
+    margin-top: 16px;
+  }
+}
+
+.link {
+  width: 100%;
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'SB Sans Text';
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.32px;
+  color: $cool-gray;
+  text-align: center;
+}
+
+.headerChangePass {
+  text-align: left;
+  font-size: 18px;
+  margin: 0 0 10px;
+}

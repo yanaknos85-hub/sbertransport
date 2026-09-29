@@ -1,0 +1,58 @@
+{
+  "type" : "record",
+  "name" : "PushMessage",
+  "namespace" : "ru.sber.transport.messages.push.avro",
+  "doc": "Сообщение для отправки push-провайдеру",
+  "fields": [
+    {
+      "name": "id",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      },
+      "doc": "Идентификатор сообщения",
+      "aliases": [ "headerId" ]
+    },
+    {
+      "name": "receivers",
+      "doc": "Получатели",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "logicalType": "uuid"
+        }
+      }
+    },
+    {
+      "name": "type",
+      "doc": "Тип сообщения",
+      "type": "string"
+    },
+    {
+      "name": "template",
+      "doc": "Шаблон сообщения",
+      "type": "string"
+    },
+    {
+      "name": "data",
+      "doc": "Данные для заполнения шаблона",
+      "type": {
+        "type": "map",
+        "values": [
+          "string", "long", "int", "boolean", "bytes", "double", "float"
+        ]
+      }
+    },
+    {
+      "name": "additionalData",
+      "doc": "Данные для добавления в сообщение",
+      "type": {
+        "type": "map",
+        "values": [
+          "string", "long", "int", "boolean", "bytes", "double", "float"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+truncate table telemechanic.ewb cascade;

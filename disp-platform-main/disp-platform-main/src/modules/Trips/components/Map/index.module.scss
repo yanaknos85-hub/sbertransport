@@ -1,0 +1,45 @@
+.panel {
+  .mapContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 24px;
+  }
+
+  .contentBlock {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .title {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .dots {
+    cursor: grab;
+  }
+}
+
+.busynessFilter {
+  border: 1px solid rgb(242, 242, 242);
+  border-radius: 6px;
+  padding: 5px 16px 5px 12px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  font-size: 12px;
+
+  &.active {
+    border-color: rgb(112, 217, 166);
+    background: rgb(231, 249, 240);
+  }
+
+  svg {
+    transform: rotate(45deg);
+    height: 22px;
+    width: 26px;
+  }
+}

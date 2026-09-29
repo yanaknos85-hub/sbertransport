@@ -1,0 +1,15 @@
+spring:
+    profiles:
+        active: logging
+    main:
+        lazy-initialization: true
+    jackson:
+        default-property-inclusion: non_null
+    application:
+        name: constants
+    config:
+        import: optional:configserver:localhost
+security:
+    enabled: false
+    role:
+        enabled: false

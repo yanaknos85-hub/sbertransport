@@ -1,0 +1,20 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20250411-1
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/change_check_tire_tread.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250411-2
+            author: makarovm-d
+            dbms: postgresql
+            context: "!test"
+            changes:
+                -   sqlFile:
+                        path: changes/remove_parent_checks.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

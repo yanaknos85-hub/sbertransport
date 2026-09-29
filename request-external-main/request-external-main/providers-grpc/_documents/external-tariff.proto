@@ -1,0 +1,140 @@
+syntax = "proto3";
+
+import 'google/protobuf/struct.proto';
+package ru.sber.transport.tariff.external;
+
+/*
+ * Сервис получения цен
+ */
+service PriceDataService {
+
+  /*
+   * Запрос цен от перевозчика
+   */
+  rpc request(PriceDataRequest) returns(PriceDataResponse) {}
+
+}
+
+/*
+ * Объект запроса цен
+ */
+message PriceDataRequest {
+
+  /*
+   * Тариф
+   */
+  repeated Tariff tariff = 1;
+
+  /*
+   * Точка начала маршрута
+   */
+  Coordinates start = 2;
+
+  /*
+   * Точка окончания маршрута
+   */
+  Coordinates end = 3;
+
+}
+
+/*
+ * Координаты
+ */
+message Coordinates {
+
+  /*
+   * Широта
+   */
+  double latitude = 1;
+
+  /*
+   * Долгота
+   */
+  double longitude = 2;
+
+}
+
+/*
+* Ответ с ценами
+*/
+message PriceDataResponse {
+
+  /*
+   * Стоимость
+   */
+  Cost cost = 1;
+
+  /*
+   * Время в пути
+   */
+  string time = 2;
+
+  /*
+   * Время подачи
+   */
+  string waitTime = 3;
+
+  /*
+   * Расстояние в метрах
+   */
+  uint64 distance = 4;
+
+  /*
+   * Ссылка для оформления заказа
+   */
+  NullableString link = 5;
+
+}
+
+/*
+* Объект стоимости
+*/
+message Cost {
+
+  /*
+   * Целая часть
+   */
+  uint64 integerPart = 1;
+
+  /*
+   * Дробная часть
+   */
+  uint32 fractionPart = 2;
+
+}
+
+/*
+* Тарифы
+*/
+enum Tariff {
+
+  /*
+   * Эконом
+   */
+  ECONOMY = 0;
+
+  /*
+   * Комфорт
+   */
+  COMFORT = 1;
+
+  /*
+   * Бизнес
+   */
+  BUSINESS = 2;
+
+  /*
+   * ВИП
+   */
+  VIP = 3;
+}
+
+/*
+ * Обнуляемая строка
+ */
+message NullableString {
+  oneof Kind {
+    google.protobuf.NullValue null = 1;
+    string value = 2;
+  }
+}

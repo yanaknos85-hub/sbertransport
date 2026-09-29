@@ -1,0 +1,56 @@
+@import 'styles/variables.scss';
+
+.content {
+  width: auto;
+  padding: 37px 20px 0;
+
+  .nav {
+    padding: 0;
+
+    :global(.adm-nav-bar-left) {
+      flex: none;
+    }
+
+    :global(.adm-nav-bar-back-arrow) {
+      display: flex;
+    }
+
+    :global(.adm-nav-bar-title) {
+      padding: 0;
+    }
+  }
+
+  .title {
+    width: min-content;
+    font-family: 'SB Sans Text';
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 700;
+    letter-spacing: -0.84px;
+    color: $dark-grey;
+    margin: 0;
+  }
+
+  .subTitle {
+    font-family: 'SB Sans Text';
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.3px;
+    color: $bright-grey;
+    margin: 20px 0 8px;
+  }
+
+  .form {
+    margin: 34px 0 32px;
+
+    .radioGroup {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      margin: 24px 0 16px;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+.formItem {
+  margin-top: 5px;
+  padding-right: 10px;
+  flex-direction: column;
+
+  :global {
+    .ant-form-item-label {
+      text-align: left;
+    }
+  }
+}
+
+.nightTariffItem {
+  font-size: 14px;
+  margin-top: 20px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+
+  &__subTitle {
+    color: var(--text-color-minor);
+  }
+}
+
+.vipCheckbox {
+  font-size: 14;
+  margin-top: 20;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.groupTransferWrapper {
+  display: flex;
+  flex-direction: column;
+
+}

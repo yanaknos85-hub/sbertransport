@@ -1,0 +1,122 @@
+@import 'styles/variables.scss';
+
+.trip {
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px 4px rgba(0, 0, 0, 0.06), 0px 0px 1px 0px rgba(0, 0, 0, 0.04);
+  padding: 2px;
+  overflow: hidden;
+
+  .header {
+    background-color: rgba(25, 177, 80, 0.08);
+    color: $light-green;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .headerItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    text-align: center;
+    flex-grow: 1;
+  }
+
+  .divider {
+    width: 2px;
+    background-color: $white;
+    flex-shrink: 1;
+    align-self: stretch;
+  }
+
+  .block {
+    padding: 18px 16px 18px 16px;
+  }
+
+  .tripId {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .timeBlock {
+    margin-top: 8px;
+    font-size: 14px;
+    color: $pale-grey;
+    line-height: 20px;
+  }
+
+  .blockDivider {
+    margin: 0;
+  }
+
+  .route,
+  .startRoute {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .actions {
+    display: flex;
+    gap: 5px;
+    margin-top: 16px;
+  }
+
+  .action {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+  }
+
+  .startRoute {
+    border-color: $border-color;
+    padding-bottom: 20px
+  }
+
+  .detailsAction {
+    @extend .action;
+    width: 100%;
+    text-decoration: none;
+    color: $midnight-steel;
+    padding: 0 16px;
+  }
+
+  .startAction {
+    flex-grow: 1;
+    border-width: 2px;
+  }
+
+  .availableBtn {
+    background-color: $silver;
+    border-color: rgba(204, 204, 204, 0.5);
+    pointer-events: none;
+    margin-top: 16px;
+  }
+
+  .addressType {
+    font-size: 12px;
+    color: $pale-grey;
+
+    &:not(:first-of-type) {
+      margin-top: 18px;
+    }
+  }
+
+  .address {
+    font-size: 16px;
+  }
+
+  .taxi {
+    width: 24px;
+  }
+}

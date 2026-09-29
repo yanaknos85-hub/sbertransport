@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20221130"
+      author: blandin-ad
+      changes:
+          - tagDatabase:
+                tag: "20221130"
+          - createTable:
+                schemaName: contractors
+                tableName: shift
+                remarks: Cмены
+                columns:
+                    - column:
+                        name: id
+                        type: uuid
+                        remarks: Идентификатор
+                        constraints:
+                            primaryKey: true
+                            primaryKeyName: contractors_shift_pk
+                    - column:
+                        name: contractor_id
+                        type: uuid
+                        remarks: Идентификатор контрагента
+                    - column:
+                        name: driver_id
+                        type: uuid
+                        remarks: Идентификатор водителя
+                    - column:
+                        name: vehicle_id
+                        type: uuid
+                        remarks: Идентификатор автомобиля
+                    - column:
+                        name: start_date
+                        type: timestamp
+                        remarks: Дата начала смены
+                    - column:
+                        name: end_date
+                        type: timestamp
+                        remarks: Дата окончания смены
+                    - column:
+                        name: is_deleted
+                        type: boolean
+                        remarks: Признак удаленности смены
+                        defaultValue: false
+                        constraints:
+                            nullable: false
+      rollback:
+          - sql:
+                sql: drop table contractors.shift cascade

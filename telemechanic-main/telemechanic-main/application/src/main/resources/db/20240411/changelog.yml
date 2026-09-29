@@ -1,0 +1,19 @@
+databaseChangeLog:
+    - changeSet:
+          id: telemechanic/20240411-1
+          author: skakun-a
+          dbms: postgresql
+          changes:
+              - sqlFile:
+                    path: change/add_indexes.sql
+                    relativeToChangelogFile: true
+                    splitStatements: false
+    - changeSet:
+          id: telemechanic/20240411-2
+          author: skakun-a
+          dbms: postgresql
+          changes:
+              - sqlFile:
+                    path: change/add_index_for_check.sql
+                    relativeToChangelogFile: true
+                    splitStatements: false

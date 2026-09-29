@@ -1,0 +1,49 @@
+databaseChangeLog:
+    -   changeSet:
+            id: geo-zone/20210526
+            author: medvedev-ad
+            dbms: postgresql
+            changes:
+                - sql:
+                      endDelimiter: ;
+                      sql: create schema geo_zones
+                - createTable:
+                      schemaName: geo_zones
+                      tableName: geo_zone
+                      columns:
+                        - column:
+                            name: id
+                            type: uuid
+                            remarks: Идентификатор
+                            constraints:
+                                primaryKey: true
+                                primaryKeyName: geo_zone_pkey
+                        - column:
+                            name: code
+                            type: int8
+                            remarks: Код геозоны
+                            constraints:
+                                nullable: false
+                        - column:
+                              name: name
+                              type: text
+                              remarks: Название геозоны
+                              constraints:
+                                  nullable: false
+                        - column:
+                              name: parent_id
+                              type: uuid
+                              remarks: Идентификатор родительской геозоны
+                              constraints:
+                                  foreignKeyName: parent_geo_zone_fkey
+                                  referencedColumnNames: id
+                                  referencedTableName: geo_zone
+                                  referencedTableSchemaName: geo_zones
+            rollback:
+                - dropTable:
+                      schemaName: geo_zones
+                      tableName: geo_zone
+                      cascadeConstraints: true
+                - sql:
+                      endDelimiter: ;
+                      sql: drop schema geo_zones

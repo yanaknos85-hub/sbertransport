@@ -1,0 +1,5 @@
+ALTER TABLE CONTRACTORS.CONTRACTOR
+    ADD COLUMN DIGIT_ID          INT generated always as identity;
+
+COMMENT ON COLUMN CONTRACTORS.CONTRACTOR.DIGIT_ID IS 'Цифровой идентификатор';
+

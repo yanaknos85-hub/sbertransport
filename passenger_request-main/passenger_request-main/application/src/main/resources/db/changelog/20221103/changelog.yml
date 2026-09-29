@@ -1,0 +1,61 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221103"
+            author: dudyrev-av
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: request
+                        tableName: contractor_message
+                        columns:
+                            -   column:
+                                    name: url
+                                    type: varchar(255)
+                                    remarks: URL системы контрагента
+                            -   column:
+                                    name: login
+                                    type: varchar(255)
+                                    remarks: Логин для авторизации в системе контрагента
+                            -   column:
+                                    name: password
+                                    type: varchar(255)
+                                    remarks: Пароль для авторизации в системе контрагента
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: contractor_message
+                        columnName: url
+                -   dropColumn:
+                        schemaName: request
+                        tableName: contractor_message
+                        columnName: login
+                -   dropColumn:
+                        schemaName: request
+                        tableName: contractor_message
+                        columnName: password
+    -   changeSet:
+            id: "20221109"
+            author: shabrov-ie
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            -   column:
+                                    name: bus_rent_duration
+                                    type: integer
+                                    remarks: Время аренды (автобусы) в мс
+                            -   column:
+                                    name: bus_count
+                                    type: integer
+                                    remarks: Кол-во автобусов
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columnName: bus_rent_duration
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columnName: bus_count

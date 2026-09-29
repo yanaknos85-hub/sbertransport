@@ -1,0 +1,14 @@
+.formColumns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.rangePickerFullWidth {
+  width: 100%;
+}
+
+.closeIcon {
+  width: auto!important;
+  height: auto!important;
+}

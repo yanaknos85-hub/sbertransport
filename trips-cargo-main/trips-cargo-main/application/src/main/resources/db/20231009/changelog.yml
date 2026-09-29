@@ -1,0 +1,55 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20231009"
+      author: blandin-ad
+      changes:
+        - createTable:
+            schemaName: trips_cargo
+            tableName: check_in
+            remarks: Чек-ины по поездкам
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: trip_id
+                  remarks: Статус
+                  type: uuid
+              - column:
+                  name: longitude
+                  remarks: Долгота
+                  type: double precision
+              - column:
+                  name: latitude
+                  remarks: Широта
+                  type: double precision
+              - column:
+                  name: time
+                  remarks: Время
+                  type: timestamp with time zone
+              - column:
+                  name: time_zone
+                  type: text
+                  remarks: Временная зона
+              - column:
+                  name: status
+                  remarks: Статус поездки
+                  type: text
+              - column:
+                  name: type
+                  remarks: Тип чек-ина
+                  type: text
+        - createIndex:
+            schemaName: trips_cargo
+            tableName: check_in
+            columns:
+              - column:
+                  name: trip_id
+            indexName: trips_cargo_checkin_tripid_idx
+      rollback:
+        - dropTable:
+            schemaName: trips_cargo
+            tableName: check_in

@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230619-0850"
+      author: medvedev-ad
+      context: "20230619"
+      changes:
+        - tagDatabase:
+            tag: "20230619"
+        - dropColumn:
+            schemaName: notifications_request
+            tableName: trip
+            columnName: driver_id
+        - dropColumn:
+            schemaName: notifications_request
+            tableName: trip
+            columnName: employee_driver_id
+      rollback:
+        - addColumn:
+            schemaName: notifications_request
+            tableName: trip
+            columns:
+              - column:
+                  name: driver_id
+                  type: uuid
+              - column:
+                  name: employee_driver_id
+                  type: uuid

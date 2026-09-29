@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240117"
+      author: blandin-ad
+      changes:
+        - sql:
+            sql: update trips.contractors set autoassign = false where autoassign is null;
+        - addDefaultValue:
+            schemaName: trips
+            tableName: contractors
+            columnName: autoassign
+            defaultValueBoolean: false
+        - addNotNullConstraint:
+            schemaName: trips
+            tableName: contractors
+            columnName: autoassign
+            constraintName: trips_contractors_autoassign_nn
+      rollback:
+        - dropNotNullConstraint:
+            schemaName: trips
+            tableName: contractors
+            columnName: autoassign
+        - dropDefaultValue:
+            schemaName: trips
+            tableName: contractors
+            columnName: autoassign

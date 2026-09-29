@@ -1,0 +1,58 @@
+@import 'styles/variables.scss';
+
+.container {
+  height: auto;
+
+  .tabs {
+    margin: 22px 20px;
+
+    :global(.adm-tabs-header) {
+      background-color: rgba(118, 118, 128, 0.12);
+      border-radius: 8px;
+      padding: 2px;
+      border: none;
+    }
+
+    :global(.adm-tabs-tab-line) {
+      display: none;
+    }
+
+    :global(.adm-tabs-tab-wrapper) {
+      width: 50%;
+      padding: 0;
+    }
+
+    :global(.adm-tabs-tab) {
+      width: initial;
+      border-radius: 6px;
+      text-align: center;
+      font-family: 'SB Sans Text';
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 18px;
+      letter-spacing: -0.08px;
+      color: rgba(0, 0, 0, 0.5);
+      padding: 6px 0;
+    }
+
+    :global(.adm-tabs-tab-active) {
+      font-weight: 500;
+      color: $black;
+      box-shadow: 0px 3px 1px 0px rgba(0, 0, 0, 0.04);
+      background: $white;
+    }
+
+    :global(.adm-tabs-content) {
+      padding: 0;
+      margin-top: 20px;
+    }
+  }
+
+  .list {
+    height: 85vh;
+  }
+
+  .emptyList {
+    margin-top: 44px;
+  }
+}

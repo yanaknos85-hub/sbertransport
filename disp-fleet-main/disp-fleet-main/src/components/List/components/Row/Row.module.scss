@@ -1,0 +1,150 @@
+.dispatcherRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 16px;
+
+  &.dispatcherRow_selected {
+    border-color: var(--jade);
+  }
+
+  & > * {
+    flex-shrink: 0;
+  }
+
+  .imgWrap {
+    height: 40px;
+    width: 40px;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 1px solid var(--light-grey);
+    display: flex;
+    align-items: center;
+    padding: 0 0 5px 5px;
+
+    > img {
+      width: 46px;
+      height: 27px;
+    }
+  }
+
+  .avatar {
+  }
+
+  .content {
+    width: 90%;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    flex-grow: 1;
+    margin-left: 10px;
+
+    .title {
+      font-size: 18px;
+      line-height: 24px;
+      font-weight: 600;
+      word-break: break-word;
+    }
+
+    .statusRow {
+      $gap: 6px;
+      display: flex;
+      align-items: center;
+      margin-top: 4px;
+
+      .statusId {
+        color: #909090;
+        font-size: 14px;
+        line-height: 22px;
+        padding-right: $gap;
+
+        &:not(:first-child) {
+          border-left: 1px solid #c2c2c2;
+          padding-left: $gap;
+        }
+
+        span {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .sideFastAction {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    .fastActionButton {
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+  }
+}
+
+.fastActions {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 8px 0;
+  box-shadow: 0 0 1px rgba($color: #000, $alpha: 0.12), 0 4px 8px rgba($color: #000, $alpha: 0.12);
+
+  .fastAction {
+    width: 100%;
+    border: none;
+    display: flex;
+    align-items: center;
+    padding: 9px 16px;
+    background: #fff;
+    cursor: pointer;
+
+    &:hover {
+      background: #f5f5f5;
+    }
+
+    svg {
+      color: #909090;
+      margin-right: 16px;
+    }
+  }
+}
+
+.status {
+  display: flex;
+  align-items: center;
+
+  .circle {
+    $size: 8px;
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+  }
+
+  .status-circle_active,
+  .status-circle_inUse {
+    background-color: var(--jade);
+  }
+
+  .status-circle_inLine {
+    background-color: var(--jade);
+  }
+
+  .status-circle_inactive,
+  .status-circle_notInUse {
+    background-color: #d6d6d6;
+  }
+
+  .statusTitle {
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+    padding: 0;
+    margin: 0 0 0 12px;
+  }
+}

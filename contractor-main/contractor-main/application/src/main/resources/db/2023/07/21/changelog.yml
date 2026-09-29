@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230721-1421"
+      author: blandin-ad
+      context: "20230721"
+      changes:
+        - tagDatabase:
+            tag: "20230721"
+        - addColumn:
+            schemaName: contractors
+            tableName: vehicle
+            columns:
+              - column:
+                  name: vehicle_type
+                  type: text
+                  remarks: Тип автомобиля
+              - column:
+                  name: cargo_vehicle_data
+                  type: json
+                  remarks: Данные для грузовых автомобилей
+        - sql:
+            sql: update contractors.vehicle set vehicle_type = 'PASSENGER' where vehicle_type is null;
+        - addColumn:
+            schemaName: contractors
+            tableName: driver
+            columns:
+              - column:
+                  name: cargo_licence_number
+                  type: text
+                  remarks: Номер лиценции о предоставлении услуг по грузовым перевозкам
+              - column:
+                  name: driver_speciality
+                  type: text
+                  remarks: Специализация водителя
+        - sql:
+            sql: update contractors.driver set driver_speciality = 'PASSENGER' where driver_speciality is null;
+      rollback:
+        - dropColumn:
+            schemaName: contractors
+            tableName: vehicle
+            columns:
+              - column:
+                  name: vehicle_type
+              - column:
+                  name: cargo_vehicle_data
+        - dropColumn:
+            schemaName: contractors
+            tableName: driver
+            columns:
+              - column:
+                  name: cargo_licence_number
+              - column:
+                  name: driver_speciality

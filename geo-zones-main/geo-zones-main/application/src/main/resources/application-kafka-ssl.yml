@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        geoZoneSourceSsl-out-0:
+          destination: service.geo.zones
+          binder: kafka-ssl
+        grpcInternalConfiguratorSsl-in-0:
+          destination: configuration.grpc
+          group: ${spring.application.name}-ssl
+          binder: kafka-ssl

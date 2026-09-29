@@ -1,0 +1,56 @@
+.categoryFilter {
+  border-bottom: 1px solid #e0e0e0;
+  width: calc(100% + 56px);
+  margin: 0 -28px 0 -28px;
+
+  &__list {
+    display: flex;
+    gap: 24px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 26px;
+  }
+
+  &__item {
+    position: relative;
+    color: #adadad;
+    padding-bottom: 18px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      background-color: #10bf6a;
+      width: 100%;
+      height: 2px;
+      opacity: 0;
+      transition: opacity 0.2s linear;
+    }
+
+    &_active {
+      color: #262626;
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__button {
+    font-size: 18px !important;
+    line-height: 24px !important;
+    color: inherit !important;
+    height: 24px !important;
+    padding: 0 !important;
+
+    &:hover {
+      background: transparent !important;
+      color: #10bf6a !important;
+    }
+
+    &:focus {
+      background: transparent !important;
+    }
+  }
+}

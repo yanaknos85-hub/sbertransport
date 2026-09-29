@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220922"
+            author: medvedev-ad
+            changes:
+                -   sql:
+                        alter table request.taxi_trip alter column human_readable_id type text using human_readable_id::text
+            rollback:
+                -   sql:
+                        alter table request.taxi_trip alter column human_readable_id type varchar(255) using human_readable_id::varchar(255)

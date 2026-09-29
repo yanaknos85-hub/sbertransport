@@ -1,0 +1,12 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20260625"
+            author: belov-av
+            changes:
+              -   sqlFile:
+                    path: changes/add_column_sent_error.sql
+                    relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_column_sent_error.sql
+                        relativeToChangelogFile: true

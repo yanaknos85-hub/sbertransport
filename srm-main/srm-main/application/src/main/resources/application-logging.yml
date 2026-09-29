@@ -1,0 +1,32 @@
+logging:
+  level:
+    org.hibernate.sql: "${LOG_HIBERNATE_SQL:INFO}"
+    org.hibernate.type: "${LOG_HIBERNATE_TYPE:INFO}"
+    org.hibernate.engine.internal.StatefulPersistenceContext: ERROR
+    org.apache.kafka.clients.consumer.internals.ConsumerCoordinator: ERROR
+    org.springframework.kafka.core.KafkaTemplate: ${KAFKA_TEMPLATE_LOG_LEVEL:INFO}
+    ru.sberbank.ditsib: "${LOG_LEVEL:INFO}"
+    ru.sber.transport: "${LOG_LEVEL:INFO}"
+    org.springframework.web.client.RestTemplate: "${LOG_LEVEL:INFO}"
+    org.apache.poi.xssf.streaming.SXSSFCreationHelper: ERROR
+    ru.sberbank.ditsib.excel.writer.DataWriter: ERROR
+    org.springframework.transaction: "${LOG_HIBERNATE_SQL:INFO}"
+    org.springframework.orm.jpa: "${LOG_HIBERNATE_SQL:INFO}"
+  ##  Используется для записи файла в fluent-bit.
+  ##  На текущий момент в OpenShift файл будет доступен по пути /log/{название_сервиса}/server.log
+  pattern:
+    file:
+      "{
+                \"service\": \"${spring.application.name}\",
+                \"date\": \"%d{yyyy-MM-dd}\",
+                \"time\": \"%d{HH:mm:ss.SSS}\",
+                \"level\": \"%level\",
+                \"traceId\": \"%X{traceId:-}\",
+                \"spanId\": \"%X{spanId:-}\",
+                \"parentSpanId\": \"%X{parentSpanId:-}\",
+                \"message\": \"%replace(%replace(%msg){'\"', '\\\\\"'}){'[\n\t]', ' '}\",
+                \"stack\": [\"%replace(%replace(%replace(%ex){'\"', '\\''}){'\n\t', '\",\"'}){'\n', ''}\"]
+            }%nopex%n"
+  file:
+    path: "${LOG_PATH:/var/log/services}"
+    name: "${logging.file.path}/${spring.application.name}/server.log"

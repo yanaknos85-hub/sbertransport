@@ -1,0 +1,76 @@
+.futureIcon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #d6d6d6;
+  background-color: #fff;
+  font-size: 10px;
+  color: #fff;
+}
+
+.nowIcon {
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+  border-radius: 50%;
+  border: 2px solid #ff9a32;
+  background-color: #fff;
+  font-size: 10px;
+  color: #fff;
+}
+
+.nowInnerCircle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ff9a32;
+  font-size: 10px;
+  color: #fff;
+}
+
+.pastIcon {
+  display: flex;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 4px;
+  border-radius: 50%;
+  background-color: #19b150;
+  font-size: 10px;
+  color: #fff;
+}
+
+.timelineItem {
+  position: relative;
+
+  &Last {
+    :global(.ant-timeline-item-tail) {
+      display: none;
+    }
+  }
+
+  :global(.ant-timeline-item-content) {
+    min-height: 12px !important;
+    margin-right: 10px;
+    margin-left: 30px;
+  }
+}
+
+.status {
+  font-family: 'SB Sans Text', serif, sans-serif;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.12px;
+  color: #1f202b;
+}
+
+.date {
+  font-family: 'SB Sans Text', serif, sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: right;
+  letter-spacing: -0.3px;
+  color: #4d4d4d;
+  float: right;
+}
+

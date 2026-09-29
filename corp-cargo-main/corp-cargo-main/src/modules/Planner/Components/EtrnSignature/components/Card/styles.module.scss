@@ -1,0 +1,99 @@
+.wrapper {
+  color: var(--dark-grey);
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.actionBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.actionBarRight {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+}
+
+.viewDocButton {
+  width: 207px;
+  height: 40px;
+  padding: 9px 20px;
+  border-radius: 8px;
+  background: #f2f3f6;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dark-grey);
+  transition: background 0.2s ease;
+}
+
+.viewDocButton:hover {
+  background: #e5e6ea;
+}
+
+.closeButton {
+  width: 100px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 9px 20px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #262626;
+  transition: background 0.2s ease;
+}
+
+.closeButton:hover {
+  background: #f2f3f6;
+}
+
+.signButton {
+  width: 159px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 9px 20px;
+  border-radius: 8px;
+  background: #10bf6a;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  transition: background 0.2s ease;
+}
+
+.signButton:hover {
+  background: #0da85b;
+}
+
+.disable {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}

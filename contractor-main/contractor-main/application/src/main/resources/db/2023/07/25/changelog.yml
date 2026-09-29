@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230725-0828"
+      author: blandin-ad
+      context: "20230725"
+      changes:
+        - tagDatabase:
+            tag: "20230725"
+        - renameColumn:
+            schemaName: contractors
+            tableName: vehicle
+            oldColumnName: cargo_vehicle_data
+            newColumnName: vehicle_additional
+      rollback:
+        - renameColumn:
+            schemaName: contractors
+            tableName: vehicle
+            oldColumnName: vehicle_additional
+            newColumnName: cargo_vehicle_data

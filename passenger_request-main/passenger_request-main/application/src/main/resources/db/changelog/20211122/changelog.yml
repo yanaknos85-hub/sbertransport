@@ -1,0 +1,34 @@
+databaseChangeLog:
+    -   changeSet:
+          id: "20211122"
+          author: chuprin
+          dbms: postgresql
+          changes:
+              -   sqlFile:
+                    path: changes/add_dispatcher.sql
+                    relativeToChangelogFile: true
+              - sqlFile:
+                    path: changes/add_request_vehicle.sql
+                    relativeToChangelogFile: true
+              - sqlFile:
+                    path: changes/clear_request_dispatcher.sql
+                    relativeToChangelogFile: true
+              - sqlFile:
+                    path: changes/add_initiator_discription.sql
+                    relativeToChangelogFile: true
+              - sqlFile:
+                    path: changes/set_initiator_discription.sql
+                    relativeToChangelogFile: true
+              - sqlFile:
+                    path: changes/drop_initiator_constant.sql
+                    relativeToChangelogFile: true
+          rollback:
+              - sqlFile:
+                    path: rollback/add_request_vehicle.sql
+                    relativeToChangelogFile: true
+              - sqlFile:
+                    path: rollback/add_initiator_discription.sql
+                    relativeToChangelogFile: true
+              -   sqlFile:
+                      path: rollback/add_dispatcher.sql
+                      relativeToChangelogFile: true

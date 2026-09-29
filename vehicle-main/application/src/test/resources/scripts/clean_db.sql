@@ -1,0 +1,12 @@
+DELETE FROM vehicle.department;
+DELETE FROM vehicle.employee;
+DELETE FROM vehicle.model;
+DELETE FROM vehicle.organization;
+DELETE FROM vehicle.position;
+DELETE FROM vehicle.subtype;
+DELETE FROM vehicle.telematics;
+DELETE FROM vehicle.transport_department;
+DELETE FROM vehicle.transport_organization;
+DELETE FROM vehicle.type;
+DELETE FROM vehicle.vehicle;
+DELETE FROM vehicle.vehicle_fuel_type;

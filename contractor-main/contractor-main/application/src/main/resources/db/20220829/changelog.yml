@@ -1,0 +1,137 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220829"
+            context: "20220829"
+            author: medvedev-ad
+            changes:
+                -   addColumn:
+                        schemaName: contractors
+                        tableName: vehicle
+                        columns:
+                            -   column:
+                                    name: model_name
+                                    type: text
+                                    remarks: Название модели
+                            -   column:
+                                    name: model_brand
+                                    type: text
+                                    remarks: Название марки
+                            -   column:
+                                    name: model_year
+                                    type: int
+                                    remarks: Год модели
+                -   sql:
+                        sql: update contractors.vehicle set model_name = car_model.name, model_brand = car_model.brand, model_year = car_model.year from contractors.car_model where vehicle.model_id = car_model.id;
+                -   addNotNullConstraint:
+                        schemaName: contractors
+                        tableName: vehicle
+                        columnName: model_name
+                -   addNotNullConstraint:
+                        schemaName: contractors
+                        tableName: vehicle
+                        columnName: model_brand
+                -   dropColumn:
+                        schemaName: contractors
+                        tableName: vehicle
+                        columnName: model_id
+                -   dropTable:
+                        schemaName: contractors
+                        tableName: car_parameters
+                -   dropTable:
+                        schemaName: contractors
+                        tableName: car_model
+                -   createTable:
+                        schemaName: contractors
+                        tableName: driver_licenses
+                        remarks: Права водителей
+                        columns:
+                            -   column:
+                                    name: driver_id
+                                    type: uuid
+                                    remarks: Идентификатор водителя
+                                    constraints:
+                                        foreignKeyName: contractors_driver_licenses_driver_fk
+                                        referencedTableSchemaName: contractors
+                                        referencedTableName: driver
+                                        referencedColumnNames: id
+                            -   column:
+                                    name: license
+                                    type: text
+                                    constraints:
+                                        nullable: false
+                -   sql:
+                        sql: insert into contractors.driver_licenses (driver_id, license) (select driver, license_class from contractors.driver_license);
+                -   dropTable:
+                        schemaName: contractors
+                        tableName: driver_license
+            rollback:
+                -   createTable:
+                        schemaName: contractors
+                        tableName: driver_license
+                        columns:
+                            - column:
+                                  name: id
+                                  type: uuid
+                                  constraints:
+                                      primaryKey: true
+                            - column:
+                                  name: driver
+                                  type: uuid
+                            - column:
+                                  name: license_class
+                                  type: varchar(256)
+                -   createTable:
+                        schemaName: contractors
+                        tableName: car_parameters
+                        columns:
+                            -   column:
+                                  name: id
+                                  type: uuid
+                                  constraints:
+                                      primaryKey: true
+                            -   column:
+                                    name: color
+                                    type: varchar(255)
+                                    constraints:
+                                        nullable: false
+                            -   column:
+                                    name: mileage
+                                    type: float(8)
+                                    constraints:
+                                        nullable: false
+                            -   column:
+                                    name: year
+                                    type: int(4)
+                                    constraints:
+                                        nullable: false
+                            -   column:
+                                    name: car_model_id
+                                    type: uuid
+                            -   column:
+                                    name: trip_service
+                                    type: uuid
+                -   createTable:
+                        schemaName: contractors
+                        tableName: car_model
+                        columns:
+                           -   column:
+                                   name: id
+                                   type: uuid
+                                   constraints:
+                                       primaryKey: true
+                           -   column:
+                                   name: name
+                                   type: varchar(255)
+                                   constraints:
+                                       nullable: false
+                           -   column:
+                                   name: year
+                                   type: integer
+                           -   column:
+                                   name: brand
+                                   type: varchar(255)
+                                   constraints:
+                                       nullable: false
+                -   dropTable:
+                        schemaName: contractors
+                        tableName: driver_licenses

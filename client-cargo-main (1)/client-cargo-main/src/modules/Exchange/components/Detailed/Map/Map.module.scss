@@ -1,0 +1,23 @@
+.cargoMainInnerContent {
+  background: var(--pure-white);
+  border-radius: 8px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.12), 0 3px 10px -4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.addressCol {
+  width: 100%;
+
+  @media (min-width: 1260px) {
+    width: 50%;
+  }
+}
+
+.map {
+  height: 214px;
+  width: 100%;
+  margin-bottom: var(--margin-base);
+  margin-top: var(--margin-base);
+  border-radius: calc(var(--border-radius-base) * 4);
+}

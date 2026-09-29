@@ -1,0 +1,59 @@
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.rightMobile {
+  align-items: flex-start;
+}
+
+.priceBlock {
+  margin-bottom: 16px;
+  .title {
+    color: rgb(115, 115, 115);
+    font-size: 14px;
+    text-align: right;
+  }
+
+  .price {
+    color: rgba(0, 0, 0, 0.9);
+    font-family: SB Sans Interface;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .priceMobile {
+    display: flex;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  .rate {
+    font-size: 24px;
+    color: #fadb14;
+    &:global(.ant-rate-disabled .ant-rate-star) {
+      cursor: pointer;
+    }
+  }
+}
+
+.buttonsMobile {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.buttonsFinished {
+  flex-direction: column;
+  gap: 10px;
+}
+
+.more {
+  margin-left: 16px;
+  background-color: #F2F3F6;
+  border-color: #F2F3F6;
+  color: #4D4D4D;
+}

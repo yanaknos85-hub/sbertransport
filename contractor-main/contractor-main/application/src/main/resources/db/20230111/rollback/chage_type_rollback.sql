@@ -1,0 +1,1 @@
+alter table contractors.check_in alter column time_zone type timestamp USING time_zone::timestamp without time zone;

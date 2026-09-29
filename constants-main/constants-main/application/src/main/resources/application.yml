@@ -1,0 +1,12 @@
+server:
+  port: 8029
+
+spring:
+  profiles:
+    active: logging
+  jackson:
+    default-property-inclusion: non_null
+  application:
+    name: constants
+  config:
+    import: optional:configserver:${spring.cloud.config.uri}

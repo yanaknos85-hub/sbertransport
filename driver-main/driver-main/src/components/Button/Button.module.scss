@@ -1,0 +1,16 @@
+.button {
+  height: fit-content;
+  font-family: 'SB Sans Text';
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.32px;
+  padding: 11px;
+
+  &:global(.adm-button.adm-button-small) {
+    padding: 9px;
+  }
+
+  &:global(.adm-button.adm-button-large) {
+    padding: 15px;
+  }
+}

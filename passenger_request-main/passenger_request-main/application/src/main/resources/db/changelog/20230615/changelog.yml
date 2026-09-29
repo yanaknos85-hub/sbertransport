@@ -1,0 +1,15 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230615-1638"
+            author: sigalovaa
+            changes:
+                -   addNotNullConstraint:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columnName: coop_trip
+                        constraintName: request_request_for_taxi_coop_trip_nn
+                -   addNotNullConstraint:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columnName: passenger_count
+                        constraintName: request_request_for_taxi_passenger_count_nn

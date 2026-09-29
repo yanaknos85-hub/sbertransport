@@ -1,0 +1,24 @@
+@import 'styles/variables.scss';
+
+.waypoint {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+  font-size: 10px;
+  color: white;
+
+  &.AUTO {
+    background-color: $jade;
+  }
+
+  &.MANUAL {
+    background-color: #FF9A32;
+  }
+
+  &.NO_CHECKIN {
+    background-color: $pale-red;
+  }
+}

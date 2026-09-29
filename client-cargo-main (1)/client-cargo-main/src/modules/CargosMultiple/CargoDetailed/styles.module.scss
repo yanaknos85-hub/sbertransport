@@ -1,0 +1,257 @@
+.map {
+  height: 214px;
+  width: 100%;
+  margin-bottom: var(--margin-base);
+  margin-top: var(--margin-base);
+  border-radius: calc(var(--border-radius-base) * 4);
+}
+
+.addressCol {
+  width: 100%;
+
+  @media (min-width: 1260px) {
+    width: 50%;
+  }
+}
+
+.ttnRow {
+  font-family: 'SB Sans Interface', serif, sans-serif;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.driverInfoCol {
+  padding-left: 24px;
+}
+
+.driverField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.driverLabel {
+  font-size: 14px;
+  line-height: 20px;
+  color: #909090;
+}
+
+.driverValue {
+  font-size: 14px;
+  line-height: 20px;
+  color: #262626;
+  font-weight: 500;
+}
+
+.timelineItem {
+  position: relative;
+
+  &Last {
+    :global(.ant-timeline-item-tail) {
+      display: none;
+    }
+  }
+
+  :global(.ant-timeline-item-content) {
+    min-height: 12px !important;
+    margin-right: 10px;
+    margin-left: 30px;
+  }
+}
+
+.title {
+  font-size: 20px;
+  font-family: 'SB Sans Interface SemiBold', serif, sans-serif;
+  line-height: 28px;
+  letter-spacing: 0;
+  margin-top: 8px;
+}
+
+.creationTime {
+  font-family: 'SB Sans Interface', serif, sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  color: #909090;
+}
+
+.status {
+  font-family: 'SB Sans Text', serif, sans-serif;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.12px;
+  color: #1f202b;
+}
+
+.relocationTag {
+  padding: 3px 14px 3px 14px;
+  width: fit-content;
+  height: fit-content;
+  font-size: 12px;
+  color: #000000;
+  background: #FAFAFA;
+  border-radius: 12px;
+  border: 1px solid rgba(38, 38, 38, 0.08);
+}
+
+.date {
+  font-family: 'SB Sans Text', serif, sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: right;
+  letter-spacing: -0.3px;
+  color: #4d4d4d;
+  float: right;
+}
+
+.pastIcon {
+  display: flex;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 4px;
+  border-radius: 50%;
+  background-color: #19b150;
+  font-size: 10px;
+  color: #fff;
+}
+
+.nowIcon {
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+  border-radius: 50%;
+  border: 2px solid #ff9a32;
+  background-color: #fff;
+  font-size: 10px;
+  color: #fff;
+}
+
+.nowInnerCircle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ff9a32;
+  font-size: 10px;
+  color: #fff;
+}
+
+.futureIcon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #d6d6d6;
+  background-color: #fff;
+  font-size: 10px;
+  color: #fff;
+}
+
+.widgetApprovalBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.controlButtonsDiv {
+  display: flex;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.headerCol {
+  display: flex;
+  transform: translateY(2px);
+
+  @media(max-width: 767px) {
+    margin-bottom: 8px;
+  }
+}
+
+.fileContainer {
+  flex: 0 0 48px;
+}
+
+.externalLink {
+  cursor: not-allowed;
+}
+
+.textContainer {
+  flex: 2 0 0;
+}
+
+.cancelButton {
+  width: 146px;
+  height: 32px;
+  background-color: #f2f3f6;
+  color: #4d4d4d;
+  border-radius: 8px;
+  margin-right: 8px;
+  font-weight: 600;
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+}
+.arrowIcon {
+  font-size: 20px;
+}
+
+.totalBlockTitle {
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.3px;
+  color: #adadad;
+}
+
+.totalBlockTitle span {
+  white-space: nowrap;
+}
+
+.totalBlockValue {
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.3px;
+  color: #000000;
+}
+
+.modalText {
+  font-family: 'SB Sans Text', serif, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: -0.24px;
+  color: #10bf6a;
+}
+
+.statusText {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.3px;
+  color: #262626;
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+}
+
+.arrowIcon {
+  font-size: 20px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.statusContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.textArea {
+  margin-top: 16px;
+}

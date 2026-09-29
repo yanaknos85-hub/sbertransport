@@ -1,0 +1,56 @@
+.content {
+  margin-right: 7px;
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 41px;
+    position: relative;
+    margin-bottom: 26px;
+
+    .imgWrap {
+      height: 138px;
+      width: 138px;
+      overflow: hidden;
+      border-radius: 69px;
+      border: 1px solid var(--light-grey);
+      display: flex;
+      align-items: center;
+      padding: 0 0 15px 15px;
+    }
+
+    .headerInfo {
+      flex: 1 1 auto;
+
+      .regNum {
+        font-family: 'SB Sans Interface', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 24px;
+        color: var(--dark-grey);
+        margin-bottom: 12px;
+      }
+    }
+
+    .buttonsWrap {
+      display: flex;
+      gap: 12px;
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      .button {
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 8px;
+        background-color: var(--solitude);
+        color: var(--pale-grey);
+
+        &:hover {
+          border: 1px solid var(--jade);
+        }
+      }
+    }
+  }
+}

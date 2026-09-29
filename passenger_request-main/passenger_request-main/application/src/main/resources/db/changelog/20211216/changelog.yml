@@ -1,0 +1,20 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211216"
+            author: aas
+            dbms: postgresql
+            changes:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: department
+                        columnName: structure_path
+            rollback:
+                -   addColumn:
+                        schemaName: request
+                        tableName: department
+                        columns:
+                            - column:
+                                name: structure_path
+                                type: text
+                        
+                                    

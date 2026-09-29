@@ -1,0 +1,159 @@
+syntax = "proto3";
+
+package ru.sber.transport.request.grpc.dto;
+option java_package = "ru.sber.transport.request.grpc.dto";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+
+/**
+ * StatsRequest.
+ */
+message StatsRequest {
+    int32 month1 = 1;
+    int32 year1 = 2;
+    int32 month2 = 3;
+    int32 year2 = 4;
+}
+
+message StatsResponse {
+    string organizationId = 1;
+    int32 year = 2;
+    int32 month = 3;
+    string serviceType = 4;
+    string transportType = 5;
+    int32 totalExecuted = 6;
+    int32 totalCanceled = 7;
+    int32 totalNotExecuted = 8;
+    int64 totalSum = 9;
+    int32 slaWithoutViolation = 10;
+    int32 slaWithViolation = 11;
+    int32 csiStarPositive = 12;
+    int32 csiStarNegative = 13;
+    int64 budgetTotal = 14;
+    int64 budgetSpent = 15;
+}
+
+/**
+ * GetRequest.
+ */
+message SrmGetRequest {
+  string sharedRideId = 1;
+}
+
+message SrmGetResponse {
+  string id = 1;
+  int32 oldId = 2;
+  string tariffId = 3;
+  string timeZone = 4;
+  string transportType = 5;
+  int64 rideCost = 6;
+  double rideDistance = 7;
+  int64 rideTime = 8;
+  repeated SrmWaypoint waypoints = 9;
+  repeated SrmRequestKpi requestKpis = 10;
+  bool active = 11;
+}
+
+message SrmWaypoint {
+   string id = 1;
+   string requestKpiId = 2;
+   string eventType = 3;
+   google.protobuf.Timestamp startTime = 4;
+   google.protobuf.Timestamp endTime = 5;
+   int64 waitingTime = 6;
+   double latitude = 7;
+   double longitude = 8;
+   string address = 9;
+   int32 orgOrderingIndex = 10;
+   int32 orderingIndex = 11;
+   bool active = 12;
+}
+
+message SrmRequestKpi {
+   string id = 1;
+   int32 oldId = 2;
+   google.protobuf.Timestamp pickupTime = 3;
+   google.protobuf.Timestamp dropTime = 4;
+   int32 requiredPassengers = 5;
+   NullableDouble requiredVolume = 6;
+   NullableDouble requiredWeight = 7;
+   double requestDistance = 8;
+   int64 requestTime = 9;
+   int64 requestPrice = 10;
+   double costSharePart = 11;
+   int64 savingsCash = 12;
+   double savingsProcents = 13;
+   google.protobuf.Timestamp creationTime = 14;
+   int32 orderingIndex = 15;
+}
+
+/**
+ * AddBunch.
+ */
+message SrmAddBunchRequest {
+   repeated SrmPostRequest srmPostRequest = 1;
+}
+
+message SrmPostRequest {
+   string requestId = 1;
+   int32 requiredPassengers = 2;
+   double requiredVolume = 3;
+   double requiredWeight = 4;
+   string tariffId = 5;
+   NullableTimestamp pickupTime = 6;
+   NullableTimestamp dropTime = 7;
+   string timeZone = 8;
+   string pointMatchingType = 9;
+   bool cargoExpress = 10;
+   int64 requestPrice = 11;
+   string transportType = 12;
+   repeated SrmPostWaypoint waypoints = 13;
+}
+
+message SrmPostWaypoint {
+   double latitude = 1;
+   double longitude = 2;
+   int32 waitingTime = 3;
+   string address = 4;
+   int32 loaderNumber = 5;
+}
+
+message SrmAddBunchResponse {
+   repeated AddBunchFault faults = 1;
+   repeated SrmGetResponse sharedRides = 2;
+}
+
+message AddBunchFault {
+    string requestId = 1;
+    string message = 2;
+}
+
+/**
+ * Common structures.
+ */
+message NullableString {
+    oneof kind {
+        google.protobuf.NullValue null = 1;
+        string data = 2;
+    }
+}
+
+message NullableDouble {
+    oneof kind {
+        google.protobuf.NullValue null = 1;
+        double data = 2;
+    }
+}
+
+message NullableTimestamp {
+    oneof kind {
+        google.protobuf.NullValue null = 1;
+        google.protobuf.Timestamp data = 2;
+    }
+}
+
+
+
+
+

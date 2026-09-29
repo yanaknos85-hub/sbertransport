@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250909-1443"
+      author: medvedev-ad
+      context: "TRANSPORT-35786"
+      changes:
+        - tagDatabase:
+            tag: "D-04.018.000"
+        - createTable:
+            schemaName: request
+            tableName: fraud
+            remarks: Информация о фроде заявок
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор заявки
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: request_fraud_pk
+              - column:
+                  name: comment
+                  type: text
+                  remarks: Комментарий, описывающий подозрение на фронт

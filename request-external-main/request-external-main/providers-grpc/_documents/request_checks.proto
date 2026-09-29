@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package ru.sber.transport.request_checks.grpc;
+
+option java_multiple_files = true;
+option java_package = "ru.sber.transport.request_checks.grpc";
+option java_outer_classname = "RequestChecksProto";
+
+import "google/protobuf/timestamp.proto";
+
+// Запрос на проверку длительности поездки
+message CheckDurationLimitRequest {
+    // ID пассажира
+    string passengerId = 1;
+
+    // Дата-время поездки
+    google.protobuf.Timestamp desiredDate = 2;
+
+    // Ожидаемая продолжительность поездки в миллисекундах
+    int64 expectedDuration = 3;
+
+    // Часовой пояс в формате ISO 8601 (например, "+03:00")
+    string timeZone = 4;
+}
+
+// Ответ на проверку длительности
+message CheckDurationLimitResponse {
+    // Успешная проверка (пустой ответ)
+}
+
+// Запрос на проверку суммарного километража
+message CheckOverrunLimitRequest {
+    // ID пассажира
+    string passengerId = 1;
+
+    // Дата-время поездки
+    google.protobuf.Timestamp desiredDate = 2;
+
+    // Ожидаемая дистанция поездки в метрах
+    int32 expectedDistance = 3;
+
+    // Часовой пояс в формате ISO 8601 (например, "+03:00")
+    string timeZone = 4;
+}
+
+// Ответ на проверку суммарного километража
+message CheckOverrunLimitResponse {
+    // Комментарий о нарушении
+    string comment = 1;
+
+    // Суммарная дистанция поездок за месяц в метрах
+    int32 totalDistance = 2;
+}
+
+// gRPC сервис для проверки поездок
+service RequestCheckService {
+    // Проверка лимита длительности поездок
+    // Сумма длительности всех поездок за день + новая поездка не должна превышать 12 часов
+    rpc CheckDurationLimit(CheckDurationLimitRequest) returns (CheckDurationLimitResponse);
+}
+
+// gRPC сервис для проверки суммарного километража
+service OverrunRequestCheckService {
+    // Проверка лимита суммарного километража
+    // Проверка, что сумма пробега за месяц на пассажира меньше порогового значения
+    rpc CheckOverrunLimit(CheckOverrunLimitRequest) returns (CheckOverrunLimitResponse);
+}

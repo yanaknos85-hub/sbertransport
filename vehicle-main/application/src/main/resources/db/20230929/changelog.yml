@@ -1,0 +1,38 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20230929-1
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/create_role_url_tables.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/20230929-2
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/create_brand_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/20230929-3
+            author: skakun-a
+            validCheckSum: 9:eb54a38c1f730515057dcf43be070f4f
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/fill_roles.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/20230929-4
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_access_to_brand_operations.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

@@ -1,0 +1,11 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211108"
+            author: medvedev-ad
+            dbms: postgresql
+            changes:
+                -   addUniqueConstraint:
+                        schemaName: geo_zones
+                        tableName: geo_zone
+                        columnNames: code
+                        constraintName: geo_zone_code_uk

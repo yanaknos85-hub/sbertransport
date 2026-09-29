@@ -1,0 +1,1 @@
+update telemechanic.department td set autopark_name = null;

@@ -1,0 +1,9 @@
+drop table if exists telemechanic.check;
+drop table if exists telemechanic.request_check_list;
+drop table if exists telemechanic.roles;
+drop table if exists telemechanic.urls;
+drop table if exists telemechanic.employee;
+drop table if exists telemechanic.position;
+drop table if exists telemechanic.department;
+drop table if exists telemechanic.organization;
+drop table if exists telemechanic.vehicle;

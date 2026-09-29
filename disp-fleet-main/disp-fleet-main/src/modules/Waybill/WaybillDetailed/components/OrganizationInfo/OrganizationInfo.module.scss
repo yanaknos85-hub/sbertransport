@@ -1,0 +1,52 @@
+.sberIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 24px;
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+
+  &__header {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  &__section {
+    display: flex;
+    gap: 12px;
+
+    .divider {
+      width: 1px;
+      background-color: #c2c2c2;
+    }
+  }
+
+  .block {
+    display: flex;
+    gap: 6px;
+    color: #4D4D4D;
+
+    &__title {
+      font-family: SB Sans Text;
+      font-weight: 400;
+      color: #737373;
+    }
+  }
+}

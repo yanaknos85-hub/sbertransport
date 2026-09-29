@@ -1,0 +1,19 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/2024024-1
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_gehicle_type_column.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/2024024-2
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_column_comment.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

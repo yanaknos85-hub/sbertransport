@@ -1,0 +1,67 @@
+spring:
+    cloud:
+        stream:
+            kafka:
+                default:
+                    consumer:
+                        enableDlq: true
+            bindings:
+                tripOutput-out-0:
+                    destination: service.trip
+                driverOutput-out-0:
+                    destination: service.trip.driver
+                shiftOutput-out-0:
+                    destination: service.trip.shift
+                reportOutput-out-0:
+                    destination: service.trip.reports
+                contractorTripUpdateOutput-out-0:
+                    destination: service.contractor.update.trip
+                requestInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.request
+                contractorInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.dispatcher.contractor
+                dispatcherInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.dispatcher
+                driverInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.dispatcher.driver
+                autoparkInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.dispatcher.autopark
+                vehicleInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.dispatcher.vehicle
+                shiftInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.dispatcher.shift
+                factDistanceInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.distance.fact
+                integrationClientInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.dispatcher.integrationClient
+                ewbInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.fleet-registry.ewb_closed
+            binders:
+                kafka:
+                    type: kafka
+                    environment:
+                        spring.cloud.stream.kafka:
+                            bindings:
+                                default:
+                                    consumer:
+                                        enableDlq: true
+                            binder:
+                                brokers:
+                                    - ${KAFKA_BROKERS:@kafka.default.broker@}
+                                producerProperties:
+                                    key.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+                                consumerProperties:
+                                    key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+                                    dlqProducerProperties:
+                                        key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+                                    standardHeaders: both

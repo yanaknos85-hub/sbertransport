@@ -1,0 +1,2 @@
+call migrations.fill_roles('trips_cargo', 'GET /contractor/{contractorId}/statistic/', 'ROLE_DISPATCHER_CONTRACTOR', true);
+call migrations.fill_roles('trips_cargo', 'GET /contractor/{contractorId}/statistic/', 'ROLE_DISPATCHER_CORP_CLIENT', true);

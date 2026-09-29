@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230331"
+      author: blandin-ad
+      changes:
+          - tagDatabase:
+                tag: "20230331"
+          - dropNotNullConstraint:
+                schemaName: contractors
+                tableName: driver
+                columnName: passport
+      rollback:
+          - addNotNullConstraint:
+                schemaName: contractors
+                tableName: driver
+                columnName: passport

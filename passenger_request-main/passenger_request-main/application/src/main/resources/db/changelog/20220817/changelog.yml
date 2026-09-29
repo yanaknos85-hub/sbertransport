@@ -1,0 +1,13 @@
+databaseChangeLog:
+    -   changeSet:
+            id: requests/20220817
+            author: dudyrev
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/carsharing_request_add_comment.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: rollback/rollback_carsharing_request_add_comment.sql
+                        relativeToChangelogFile: true

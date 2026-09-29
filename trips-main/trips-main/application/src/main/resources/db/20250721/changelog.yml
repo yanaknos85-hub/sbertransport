@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250721"
+      author: zhirov-aa
+      preConditions:
+        - not:
+            - columnExists:
+                schemaName: trips
+                tableName: trips
+                columnName: fact_cost
+        - onFail: MARK_RAN
+      changes:
+        - tagDatabase:
+            tag: "D-04.014.000"
+        - addColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: fact_cost
+                  type: bigint
+                  remarks: Фактическая стоимость поездки в копейках
+      rollback:
+        - addColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: fact_cost
+                  type: bigint
+                  remarks: Фактическая стоимость поездки в копейках

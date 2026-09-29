@@ -1,0 +1,100 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-height: 75vh;
+  overflow: auto;
+  padding-right: 10px;
+  padding-bottom: 16px;
+
+  @media (max-height: 1200px) {
+    max-height: 65vh;
+  }
+
+  &::-webkit-scrollbar {
+    width: 11px;
+  }
+
+  .section {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    .sectionHeader {
+      font-family: 'SB Sans Interface', sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 24px;
+      color: #000000;
+    }
+
+    .panel {
+      margin: 0;
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.12);
+
+      :global {
+        .ant-row {
+          margin-bottom: 0 !important;
+        }
+      }
+
+      .iconCard {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+    }
+  }
+
+  .placement {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .documents {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    .docTextWrap {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 160px;
+
+      .docNum {
+        font-size: 18px;
+        line-height: 24px;
+      }
+
+      .docWhen {
+        color: rgb(115, 115, 115);
+      }
+    }
+  }
+
+  .status {
+    font-weight: 600;
+    font-size: 9px;
+    letter-spacing: 0.2px;
+    line-height: 12px;
+    height: 18px;
+    border-radius: 16px;
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px 3px 8px;
+
+    &_use {
+      color: rgb(16, 191, 106);
+      background-color: rgb(231, 249, 240);
+    }
+
+    &_notUse {
+      color: rgb(160, 168, 176);
+      background-color: rgb(240, 241, 242);
+    }
+  }
+}

@@ -1,0 +1,19 @@
+databaseChangeLog:
+    - changeSet:
+          id: telemechanic/20240301-1
+          author: skakun-a
+          dbms: postgresql
+          changes:
+              - sqlFile:
+                    path: change/add_request_finished_time.sql
+                    relativeToChangelogFile: true
+                    splitStatements: false
+    - changeSet:
+          id: telemechanic/20240301-2
+          author: skakun-a
+          dbms: postgresql
+          changes:
+              - sqlFile:
+                    path: change/fill_request_finished_time.sql
+                    relativeToChangelogFile: true
+                    splitStatements: false

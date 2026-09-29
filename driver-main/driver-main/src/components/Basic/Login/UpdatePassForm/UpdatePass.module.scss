@@ -1,0 +1,36 @@
+@import 'styles/variables.scss';
+
+.headerChangePass {
+  font-family: 'SB Sans Text';
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.32px;
+  color: $pale-grey;
+  margin: 34px 0 32px;
+}
+
+.form {
+  .btn_submit {
+    margin: 24px 0 16px;
+  }
+
+  :global(.form-field:not(:first-of-type)) {
+    margin-top: 16px;
+  }
+}
+
+.tooltipContent {
+  margin: 8px 0;
+
+  span {
+    display: inline-block;
+  }
+}
+
+.tooltipTrigger {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+  vertical-align: middle;
+}

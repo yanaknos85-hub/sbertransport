@@ -1,0 +1,51 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250623-1729"
+      author: khalikov-ma
+      context: "TRANSPORT-32834"
+      dbms: postgresql
+      changes:
+        - tagDatabase:
+            tag: "D-04.010.000"
+        - sql:
+            sql: alter type ${schema_name}.order_state add value 'ORDER_PAYMENT_FORMATION' after 'CANCELLED'
+        - sql:
+            sql: alter type ${schema_name}.order_state add value 'PAYMENT_AWAITING' after 'ORDER_PAYMENT_FORMATION'
+        - sql:
+            sql: alter type ${schema_name}.order_state add value 'PAYMENT_DONE' after 'PAYMENT_AWAITING'
+        - sql:
+            sql: alter type ${schema_name}.order_state add value 'PAYMENT_NOT_DONE' after 'PAYMENT_DONE'
+        - sql:
+            sql: "comment on type ${schema_name}.order_state is 'Состояние заявки на поездку: Новая (NEW), Требуется подтверждение (CONFIRMATION_NEEDED), Подтверждение (CONFIRMATION), Необходимы данные (DATA_NEEDED), Подтверждена (CONFIRMED), Отклонена (DECLINED), Отменена (CANCELLED), Формирование приказа на выплату (ORDER_PAYMENT_FORMATION), Ожидание выплаты (PAYMENT_AWAITING), Выплата произведена (PAYMENT_DONE), Выплата не произведена (PAYMENT_NOT_DONE)'"
+  - changeSet:
+      id: "20250623-1731"
+      author: khalikov-ma
+      context: "TRANSPORT-32834"
+      dbms: h2
+      changes:
+        - tagDatabase:
+            tag: "D-04.010.000"
+        - modifyDataType:
+            schemaName: ${schema_name}
+            tableName: trip_order
+            columnName: status
+            newDataType: varchar(255)
+        - modifyDataType:
+            schemaName: ${schema_name}
+            tableName: trip_order_history
+            columnName: status
+            newDataType: varchar(255)
+        - sql:
+            sql: drop type ${schema_name}.order_state
+        - sql:
+            sql: create type ${schema_name}.order_state as enum('NEW', 'CONFIRMATION_NEEDED', 'CONFIRMATION', 'DATA_NEEDED', 'CONFIRMED', 'DECLINED', 'CANCELLED', 'ORDER_PAYMENT_FORMATION', 'PAYMENT_AWAITING', 'PAYMENT_DONE', 'PAYMENT_NOT_DONE')
+        - modifyDataType:
+            schemaName: ${schema_name}
+            tableName: trip_order
+            columnName: status
+            newDataType: ${schema_name}.order_state
+        - modifyDataType:
+            schemaName: ${schema_name}
+            tableName: trip_order_history
+            columnName: status
+            newDataType: ${schema_name}.order_state

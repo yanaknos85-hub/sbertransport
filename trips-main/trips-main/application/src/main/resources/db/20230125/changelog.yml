@@ -1,0 +1,43 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230125"
+            author: medvedev-ad
+            preConditions:
+                -   indexExists:
+                        schemaName: trips
+                        tableName: trips
+                        indexName: uk_trips_digit_id
+                    onFail: MARK_RAN
+            context: "20230125"
+            changes:
+                -   tagDatabase:
+                        tag: "20230125"
+                -   dropUniqueConstraint:
+                        schemaName: trips
+                        tableName: trips
+                        uniqueColumns: digit_id
+                        constraintName: uk_trips_digit_id
+            rollback:
+              -   addUniqueConstraint:
+                      schemaName: trips
+                      tableName: trips
+                      columnNames: digit_id
+                      constraintName: uk_trips_digit_id
+    -   changeSet:
+            id: "20230125-1"
+            author: medvedev-ad
+            context: "20230125"
+            changes:
+                -   tagDatabase:
+                        tag: "20230125"
+                -   addUniqueConstraint:
+                        schemaName: trips
+                        tableName: trips
+                        columnNames: digit_id,contractor_id
+                        constraintName: uk_trips_digit_id_contractor_id
+            rollback:
+              -   dropUniqueConstraint:
+                    schemaName: trips
+                    tableName: trips
+                    columnNames: digit_id,contractor_id
+                    constraintName: uk_trips_digit_id_contractor_id

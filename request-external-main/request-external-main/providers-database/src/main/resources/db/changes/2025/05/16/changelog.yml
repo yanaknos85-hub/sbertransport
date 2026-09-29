@@ -1,0 +1,51 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250516-0811"
+      author: medvedev-ad
+      context: "TRANSPORT-32431"
+      changes:
+        - tagDatabase:
+            tag: "D-04.009.000"
+        - createTable:
+            schemaName: ${schema_name}
+            tableName: department_transport_type
+            remarks: Ограничения типов транспорта для подразделений
+            columns:
+              - column:
+                  name: department_id
+                  type: uuid
+                  remarks: Идентификатор подразделения
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_department_transport_type_department_id_nn
+              - column:
+                  name: transport_type
+                  type: varchar(255)
+                  remarks: Тип транспорта
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_department_transport_type_transport_type_nn
+        - addPrimaryKey:
+            schemaName: ${schema_name}
+            tableName: department_transport_type
+            columnNames: department_id, transport_type
+            primaryKeyName: ${schema_name}_department_transport_type_pk
+  - changeSet:
+      id: "20250516-1602"
+      author: medvedev-ad
+      context: "TRANSPORT-32431"
+      changes:
+        - tagDatabase:
+            tag: "D-04.009.000"
+        - addColumn:
+            schemaName: ${schema_name}
+            tableName: department
+            columns:
+              - column:
+                  name: parent_id
+                  type: uuid
+                  remarks: Идентификатор родительского подразделения
+              - column:
+                  name: name
+                  type: varchar(255)
+                  remarks: Название подразделения

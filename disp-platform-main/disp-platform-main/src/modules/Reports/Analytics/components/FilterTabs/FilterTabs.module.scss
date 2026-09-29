@@ -1,0 +1,30 @@
+.controls {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  background-color: var(--solitude);
+  border-radius: 8px;
+  gap: 4px;
+  padding: 4px;
+  margin-left: auto;
+
+  .item {
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-family: SB Sans Text;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+    color: var(--pale-grey);
+    cursor: pointer;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+    transition-property: background-color, color;
+
+    &_active {
+      background-color: var(--white);
+      color: var(--dark-grey);
+    }
+  }
+}

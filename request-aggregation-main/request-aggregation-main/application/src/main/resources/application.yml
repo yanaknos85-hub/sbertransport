@@ -1,0 +1,50 @@
+server:
+    port: 8069
+
+spring:
+    config:
+        import: management.yml, kafka.yml, database.yml, optional:configserver:${spring.cloud.config.uri}
+    security:
+        user: #убираем запись в логах, по которой есть вопросы у безопасности
+            name: anonymous
+            password: ${random.uuid}
+            roles: anonymous
+        oauth2:
+            resourceserver:
+                jwt:
+                    jws-algorithms: RS512
+                    jwk-set-uri: ${JWKS_URI}
+    main:
+        banner-mode: off
+    jackson:
+        default-property-inclusion: non_null
+    application:
+        name: request-aggregation
+        version: @project.version@
+    cloud:
+        vault:
+            enabled: false
+        openfeign:
+            client:
+                config:
+                    main-lead-service:
+                        url: ${main-lead-service.url}
+                        connectTimeout: 10000
+                        readTimeout: 600000
+grpc:
+    client:
+        GLOBAL:
+            negotiation-type: plaintext
+        tariff:
+            address: discovery:///${grpc.tariff:grpc-tariff}
+        geo:
+            address: discovery:///${grpc.geo:grpc-geo}
+main-lead-service:
+    url: ${MEF_URL:https://ai.ci02351878-edevml-str.apps.dev-terra000010-edm.ocp.delta.sbrf.ru}
+    store: ${MEF_STORE:./_documents/mef/keystore.jks}
+    password: ${MEF_PASSWORD:Init1234_}
+lead:
+    config:
+        max-file-size: ${LEAD_CONFIG_MAX_FILE_SIZE:1MB}
+        max-row-count: ${LEAD_CONFIG_MAX_ROW_COUNT:800}
+        departure-delay: ${LEAD_CONFIG_DEPARTURE_DELAY:3}

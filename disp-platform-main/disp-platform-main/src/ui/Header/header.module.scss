@@ -1,0 +1,22 @@
+.title {
+  font-size: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+.select {
+  width: 250px !important;
+  margin-right: 8px;
+
+  :global(.sbt-kit-select-selection-placeholder) {
+    color: var(--dark-grey);
+  }
+
+  &:global(.sbt-kit-select-open .sbt-kit-select-selection-placeholder) {
+    color: var(--pale-grey);
+  }
+}

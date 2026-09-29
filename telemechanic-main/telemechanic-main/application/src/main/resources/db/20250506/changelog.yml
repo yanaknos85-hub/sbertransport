@@ -1,0 +1,56 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20250506-1
+            author: tanini-v
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_access_get_region_code.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+                -   sqlFile:
+                        path: changes/create_region_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+                -   loadData:
+                        catalogName: telemechanic
+                        columns:
+                            - column:
+                                  header: id
+                                  name: id
+                                  type: uuid
+                            - column:
+                                  header: code
+                                  name: code
+                                  type: varchar
+                            - columm:
+                                  header: name
+                                  name: name
+                                  type: varchar
+                        file: dml/regions.csv
+                        relativeToChangelogFile: true
+                        schemaName: telemechanic
+                        tableName: region
+            rollback:
+                -   sqlFile:
+                        path: changes/rollback.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250506-2
+            author: makarov-md
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_access.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250506-3
+            author: makarov-md
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_ddl_dispatcher.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

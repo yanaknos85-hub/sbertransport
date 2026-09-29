@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240917-0836"
+      author: blandin-ad
+      context: "TRANSPORT-25203"
+      changes:
+        - tagDatabase:
+            tag: "D-03.018.000"
+        - addColumn:
+            schemaName: dispatcher
+            tableName: shift
+            columns:
+              - column:
+                  name: row_id
+                  type: uuid
+                  remarks: ID ряда смен
+      rollback:
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: shift
+            columns:
+              - column:
+                  name: row_id

@@ -1,0 +1,97 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20251113-01
+      author: gusev-ea
+      changes:
+        - addColumn:
+            schemaName: dispatcher
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: ewb_creation_possibility
+                  type: boolean
+                  remarks: Флаг возможности создания ЭПЛ
+                  defaultValueBoolean: false
+                  defaultOnNull: false
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: dispatcher_dispatcher_ewb_creation_possibility_not_null
+        - addColumn:
+            schemaName: dispatcher
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: personnel_number
+                  type: varchar(255)
+                  remarks: Табельный номер
+        - addColumn:
+            schemaName: dispatcher
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: attorney_number
+                  type: varchar(255)
+                  remarks: Номер доверенности
+        - addColumn:
+            schemaName: dispatcher
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: issue_date
+                  type: date
+                  remarks: Дата выдачи
+        - addColumn:
+            schemaName: dispatcher
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: expiry_date
+                  type: date
+                  remarks: Дата окончания срока действия
+        - addColumn:
+            schemaName: dispatcher
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: creation_system
+                  type: varchar(150)
+                  remarks: Система создания
+
+      rollback:
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: ewb_creation_possibility
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: personnel_number
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: attorney_number
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: issue_date
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: expiry_date
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: creation_system
+

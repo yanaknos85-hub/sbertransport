@@ -1,0 +1,123 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20231118"
+            author: delyukov-da
+            changes:
+                -   tagDatabase:
+                        tag: "20231118"
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            -   column:
+                                    name: approval_deadline
+                                    type: timestamp
+                                    remarks: Максимальная дата согласования заявки без нарушения контрольного срока
+                            -   column:
+                                    name: approval_deadline_state
+                                    type: text
+                                    defaultValue: NONE
+                                    constraints:
+                                        nullable: false
+                                    remarks: Индикатор контрольного срока согласования заявки
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_personal
+                        columns:
+                            -   column:
+                                    name: approval_deadline
+                                    type: timestamp
+                                    remarks: Максимальная дата согласования заявки без нарушения контрольного срока
+                            -   column:
+                                    name: approval_deadline_state
+                                    type: text
+                                    defaultValue: NONE
+                                    constraints:
+                                        nullable: false
+                                    remarks: Индикатор контрольного срока согласования заявки
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    name: approval_deadline
+                                    type: timestamp
+                                    remarks: Максимальная дата согласования заявки без нарушения контрольного срока
+                            -   column:
+                                    name: approval_deadline_state
+                                    type: text
+                                    defaultValue: NONE
+                                    constraints:
+                                        nullable: false
+                                    remarks: Индикатор контрольного срока согласования заявки
+                -   addColumn:
+                        schemaName: request_audit
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    name: approval_deadline
+                                    type: timestamp
+                                    remarks: Максимальная дата согласования заявки без нарушения контрольного срока
+                            -   column:
+                                    name: approval_deadline_state
+                                    type: text
+                                    defaultValue: NONE
+                                    constraints:
+                                        nullable: false
+                                    remarks: Индикатор контрольного срока согласования заявки
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columns:
+                            -   column:
+                                    name: approval_deadline
+                                    type: timestamp
+                                    remarks: Максимальная дата согласования заявки без нарушения контрольного срока
+                            -   column:
+                                    name: approval_deadline_state
+                                    type: text
+                                    defaultValue: NONE
+                                    constraints:
+                                        nullable: false
+                                    remarks: Индикатор контрольного срока согласования заявки
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columns:
+                            -   column:
+                                    name: approval_deadline_state
+                            -   column:
+                                    name: approval_deadline
+                -   dropColumn:
+                        schemaName: request_audit
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    name: approval_deadline_state
+                            -   column:
+                                    name: approval_deadline
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    name: approval_deadline_state
+                            -   column:
+                                    name: approval_deadline
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_personal
+                        columns:
+                            -   column:
+                                    name: approval_deadline_state
+                            -   column:
+                                    name: approval_deadline
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            -   column:
+                                    name: approval_deadline_state
+                            -   column:
+                                    name: approval_deadline

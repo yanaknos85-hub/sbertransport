@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: grpc-dispatcher
+  namespace: ci02351878-edevgen-sbertransport-dev
+spec:
+  ports:
+    - name: grpc-dispatcher
+      protocol: TCP
+      port: 6565
+      targetPort: 6565
+  selector:
+    app: dispatcher

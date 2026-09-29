@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240110"
+      author: blandin-ad
+      changes:
+        - sql:
+            sql: alter table trips.trips alter column creation_time type timestamp with time zone;
+      rollback:
+        - sql:
+            sql: alter table trips.trips alter column creation_time type timestamp;

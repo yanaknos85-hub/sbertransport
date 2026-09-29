@@ -1,0 +1,113 @@
+.modalInfo {
+  border-radius: 10px;
+  margin-top: 24px;
+  width: 100%;
+  align-items: center;
+  padding: 16px;
+  background-color: rgba(242, 243, 246, 0.6);
+  display: flex;
+  justify-content: space-between;
+}
+
+.commentTitle {
+  font-family: 'SB Sans Interface', serif, sans-serif;
+  color: #262626;
+  font-weight: 400;
+  font-size: 14px;
+  margin-top: 24px;
+}
+
+.commentText {
+  font-family: 'SB Sans Text', serif, sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  color: #909090;
+}
+
+.title {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: #262626 !important;
+  text-align: center;
+  margin-top: 32px;
+  margin-bottom: 0;
+}
+
+.rateWrapper {
+  :global{
+    .ant-rate {
+      font-size: 36px;
+    }
+  }
+
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 4px;
+  font-size: 36px;
+
+  .positive {
+    color: var(--jade);
+  }
+
+  .negative {
+    color: var(--neon-carrot);
+  }
+}
+
+.commentWrapper {
+  background: var(--pure-white);
+  border-radius: 8px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.12), 0 3px 10px -4px rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  margin-top: 16px;
+}
+
+.iconBlock {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+
+  & svg {
+    margin-left: 24px;
+  }
+
+  & svg:nth-child(1) {
+    margin-left: 0;
+  }
+
+  & div {
+    margin-left: 24px;
+  }
+
+  & div:nth-child(1) {
+    margin-left: 0;
+  }
+
+  @media (max-width: 767px) {
+    margin-bottom: 12px;
+
+    & svg {
+      width: 75px;
+      height: 75px;
+    }
+
+    & div {
+      margin-left: 4px;
+    }
+  }
+}
+
+.commentHeaderText {
+  font-family: 'SB Sans Interface', serif, sans-serif;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.commentText {
+  font-family: 'SB Sans Text', serif, sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  color: #909090;
+}

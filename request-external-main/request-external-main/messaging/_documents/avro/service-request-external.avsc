@@ -1,0 +1,332 @@
+{
+  "namespace": "ru.sber.transport.messages.request.external.avro",
+  "name": "RequestMessage",
+  "type": "record",
+  "doc": "Внешняя заявка на перевозку",
+  "fields": [
+    {
+      "name": "id",
+      "doc": "Идентификатор",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      },
+      "aliases": [
+        "headerId"
+      ]
+    },
+    {
+      "name": "tariff",
+      "doc": "Тариф",
+      "type": {
+        "type": "enum",
+        "name": "TariffMessage",
+        "symbols": [
+          "ECONOMY",
+          "COMFORT",
+          "BUSINESS",
+          "VIP"
+        ]
+      }
+    },
+    {
+      "name": "passengerId",
+      "doc": "Идентификатор пассажира",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "humanReadableId",
+      "doc": "Человекочитаемый идентификатор",
+      "type": "string"
+    },
+    {
+      "name": "waypoints",
+      "doc": "Путевые точки",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "WaypointMessage",
+          "doc": "Путевая точка",
+          "fields": [
+            {
+                "doc": "Идентификатор путевой точки",
+                "name": "id",
+                "type": {
+                  "type": "string",
+                  "logicalType": "uuid"
+                }
+              },
+            {
+              "name": "country",
+              "type": "string",
+              "doc": "Название страны"
+            },
+            {
+              "name": "region",
+              "type": "string",
+              "doc": "Название региона"
+            },
+            {
+              "name": "city",
+              "type": [
+                "null",
+                "string"
+              ],
+              "doc": "Название города",
+              "default": null
+            },
+            {
+              "name": "street",
+              "type": [
+                "null",
+                "string"
+              ],
+              "doc": "Название улицы",
+              "default": null
+            },
+            {
+              "name": "house",
+              "type": [
+                "null",
+                "string"
+              ],
+              "doc": "Номер дома",
+              "default": null
+            },
+            {
+              "name": "building",
+              "type": [
+                "null",
+                "string"
+              ],
+              "doc": "Корпус",
+              "default": null
+            },
+            {
+              "name": "structure",
+              "type": [
+                "null",
+                "string"
+              ],
+              "doc": "Строение",
+              "default": null
+            },
+            {
+              "name": "longitude",
+              "type": "double",
+              "precision": 18,
+              "scale": 15,
+              "doc": "Долгота"
+            },
+            {
+              "name": "latitude",
+              "type": "double",
+              "precision": 18,
+              "scale": 15,
+              "doc": "Широта"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "doc": "Идентификатор цели поездки",
+      "name": "purposeId",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "doc": "Идентификатор организации",
+      "name": "organizationId",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "doc": "Идентификатор подразделения",
+      "name": "departmentId",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "doc": "Идентификатор согласованта",
+      "name": "approverId",
+      "type": [
+        "null",
+        {
+           "type": "string",
+           "logicalType": "uuid"
+        }
+      ],
+      "default": null
+    },
+    {
+      "doc": "Дата согласования заявки",
+      "name": "approvalDate",
+      "type": [
+        "null",
+        {
+          "type": "long",
+          "logicalType": "timestamp-millis"
+        }
+      ],
+      "default": null
+    },
+    {
+      "doc": "Дата поездки",
+      "name": "date",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    },
+    {
+      "doc": "Таймзона",
+      "name": "timeZone",
+      "type": "string",
+      "default": "UTC"
+    },
+    {
+      "doc": "Статус",
+      "name": "status",
+      "type": {
+        "type": "enum",
+        "name": "StatusMessage",
+        "symbols": [
+          "NEW",
+          "CONFIRMATION_NEEDED",
+          "CONFIRMATION",
+          "DATA_NEEDED",
+          "CONFIRMED",
+          "GENAI_CHECK",
+          "DECLINED",
+          "CANCELLED",
+          "ORDER_PAYMENT_FORMATION",
+          "PAYMENT_AWAITING",
+          "PAYMENT_DONE",
+          "PAYMENT_NOT_DONE"
+        ]
+      }
+    },
+    {
+      "doc": "Комментарий",
+      "name": "comment",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    },
+    {
+      "doc": "Причина смена статуса",
+      "name": "reason",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    },
+    {
+      "doc": "Фактические данные",
+      "name": "actual",
+      "type": {
+        "type": "record",
+        "name": "ActualData",
+        "fields": [
+          {
+            "name": "cost",
+            "doc": "Стоимость",
+            "type": [
+              "null",
+              "double"
+            ],
+            "precision": 18,
+            "scale": 2,
+            "default": null
+          }
+        ]
+      }
+    },
+    {
+      "doc": "Плановые данные",
+      "name": "planned",
+      "type": {
+        "type": "record",
+        "name": "PlannedData",
+        "fields": [
+          {
+            "doc": "Расстояние",
+            "name": "distance",
+            "type": "long"
+          },
+          {
+            "name": "duration",
+            "doc": "Длительность",
+            "type": {
+              "type": "string",
+              "logicalType": "duration"
+            }
+          },
+          {
+            "name": "cost",
+            "doc": "Стоимость",
+            "type": "double",
+            "precision": 18,
+            "scale": 2
+          }
+        ]
+      }
+    },
+    {
+      "name": "assessments",
+      "doc": "Оценки",
+      "type": {
+        "type": "array",
+        "doc": "Модель оценок",
+        "items": {
+          "type": "record",
+          "name": "Assessment",
+          "doc": "Модель оценки",
+          "fields": [
+            {
+              "name": "type",
+              "doc": "Тип оценки",
+              "type": {
+                "name": "AssessmentType",
+                "type": "enum",
+                "doc": "Тип оценки",
+                "symbols": [
+                  "SERVICE"
+                ]
+              }
+            },
+            {
+              "name": "rating",
+              "doc": "Рейтинг",
+              "type": "int"
+            },
+            {
+              "name": "comment",
+              "doc": "Комментарий",
+              "type": [
+                "null",
+                "string"
+              ],
+              "default": null
+            }
+          ]
+        }
+      },
+      "default": []
+    }
+  ]
+}

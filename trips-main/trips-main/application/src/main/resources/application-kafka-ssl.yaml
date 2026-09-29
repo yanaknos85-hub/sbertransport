@@ -1,0 +1,85 @@
+spring:
+  cloud:
+    stream:
+      binders:
+        kafka-ssl:
+          type: kafka
+          environment:
+            spring.cloud.stream.kafka:
+              binder:
+                configuration:
+                  security.protocol: ${KAFKA_SECURITY_PROTOCOL:SSL}
+                  ssl:
+                    endpoint.identification.algorithm: ""
+                    client.auth: required
+                    enabled.protocols: TLSv1.2
+                    truststore:
+                      location: ${KAFKA_SSL_TRUSTSTORE_LOCATION:}
+                      password: ${KAFKA_SSL_TRUSTSTORE_PASSWORD:}
+                    keystore:
+                      location: ${KAFKA_SSL_KEYSTORE_LOCATION:}
+                      password: ${KAFKA_SSL_KEYSTORE_PASSWORD:}
+                    key.password: ${KAFKA_SSL_KEY_PASSWORD:}
+                brokers:
+                  - ${KAFKA_SSL_BROKERS}
+                producerProperties:
+                  key.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+                  value.serializer: org.springframework.kafka.support.serializer.JsonDeserializer
+                consumerProperties:
+                  value.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+                defaultBrokerPort: "9093"
+      bindings:
+        tripOutputSsl-out-0:
+          destination: service.trip
+          binder: kafka-ssl
+        driverOutputSsl-out-0:
+          destination: service.trip.driver
+          binder: kafka-ssl
+        shiftOutputSsl-out-0:
+          destination: service.trip.shift
+          binder: kafka-ssl
+        reportOutputSsl-out-0:
+          destination: service.trip.reports
+          binder: kafka-ssl
+        contractorTripUpdateOutputSsl-out-0:
+          destination: service.contractor.update.trip
+          binder: kafka-ssl
+        requestInputSsl-in-0:
+          group: ${spring.application.name}-ssl
+          destination: service.request
+          binder: kafka-ssl
+        contractorInputSsl-in-0:
+          group: ${spring.application.name}-ssl
+          destination: service.dispatcher.contractor
+          binder: kafka-ssl
+        dispatcherInputSsl-in-0:
+          group: ${spring.application.name}-ssl
+          destination: service.dispatcher
+          binder: kafka-ssl
+        driverInputSsl-in-0:
+          group: ${spring.application.name}-ssl
+          destination: service.dispatcher.driver
+          binder: kafka-ssl
+        autoparkInputSsl-in-0:
+          group: ${spring.application.name}-ssl
+          destination: service.dispatcher.autopark
+          binder: kafka-ssl
+        vehicleInputSsl-in-0:
+          group: ${spring.application.name}-ssl
+          destination: service.dispatcher.vehicle
+          binder: kafka-ssl
+        shiftInputSsl-in-0:
+          group: ${spring.application.name}-ssl
+          destination: service.dispatcher.shift
+          binder: kafka-ssl
+        factDistanceInputSsl-in-0:
+          group: ${spring.application.name}-ssl
+          destination: service.distance.fact
+          binder: kafka-ssl
+        integrationClientInputSsl-in-0:
+          group: ${spring.application.name}-ssl
+          destination: service.dispatcher.integrationClient
+          binder: kafka-ssl
+        ewbInputSsl-in-0:
+          group: ${spring.application.name}-ssl
+          destination: service.fleet-registry.ewb_closed

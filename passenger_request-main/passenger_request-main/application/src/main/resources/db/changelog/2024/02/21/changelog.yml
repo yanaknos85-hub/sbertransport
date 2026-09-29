@@ -1,0 +1,37 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20240221"
+            author: delyukov-da
+            changes:
+                -   tagDatabase:
+                        tag: "20240221"
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_personal
+                        columns:
+                            -   column:
+                                    name: trip_approval_datetime
+                                    type: timestamp
+                                    remarks: Время утверждения/отклонения маршрута заявки
+                            -   column:
+                                    name: trip_approval_deadline
+                                    type: timestamp
+                                    remarks: Максимальное время утверждения маршрута заявки без нарушения контрольного срока
+                            -   column:
+                                    name: trip_approval_deadline_state
+                                    type: text
+                                    defaultValue: NONE
+                                    constraints:
+                                        nullable: false
+                                    remarks: Индикатор контрольного срока утверждения маршрута заявки
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_personal
+                        columns:
+                            -   column:
+                                    name: trip_approval_deadline_state
+                            -   column:
+                                    name: trip_approval_deadline
+                            -   column:
+                                    name: trip_approval_datetime

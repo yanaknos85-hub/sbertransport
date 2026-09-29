@@ -1,0 +1,37 @@
+server.port: -1
+spring:
+  datasource:
+    username: postgres
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jws-algorithms: RS512
+          jwk-set-uri: http://localhost:8080
+  cloud:
+    vault:
+      enabled: false
+    config:
+      uri: http://localhost:8080
+  liquibase:
+    enabled: true
+    change-log: db/changelog-master.yml
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    database-change-log-table: changelog_${spring.application.name}
+    database-change-log-lock-table: changelog_${spring.application.name}_lock
+    liquibase-schema: public
+grpc:
+  server:
+    port: 0
+  client:
+    GLOBAL:
+      negotiation-type: plaintext
+    corporate:
+      address: static://localhost:6565
+    tariff:
+      address: static://localhost:6566
+avro:
+  messaging:
+    enabled: false

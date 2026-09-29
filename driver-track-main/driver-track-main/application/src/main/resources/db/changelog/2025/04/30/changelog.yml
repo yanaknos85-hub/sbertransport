@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250430-0948"
+      author: ladeyshchikov_aa
+      changes:
+        - addUniqueConstraint:
+            schemaName: driver_track
+            tableName: route
+            columnNames: trip_id,source
+            constraintName: driver_track_route_trip_id_source_uk
+      rollback:
+        - dropUniqueConstraint:
+            schemaName: driver_track
+            tableName: route
+            constraintName: driver_track_route_trip_id_source_uk

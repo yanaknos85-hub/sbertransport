@@ -1,0 +1,17 @@
+syntax = "proto3";
+option java_package = "ru.sber.transport.work_order.grpc.service";
+import "dto/WorkOrder.proto";
+import "google/protobuf/empty.proto";
+
+package ru.sber.transport.work_order.grpc.service;
+
+service WorkOrderGrpcService {
+    rpc UploadWorkOrder(ru.sber.transport.work_order.grpc.dto.NewOrderDto)
+            returns (ru.sber.transport.work_order.grpc.dto.TotalPrice);
+
+    rpc DeleteWorkOrder(ru.sber.transport.work_order.grpc.dto.OrderId)
+            returns (google.protobuf.Empty);
+
+    rpc GetWorkOrder(ru.sber.transport.work_order.grpc.dto.OrderId)
+            returns (ru.sber.transport.work_order.grpc.dto.Order);
+}

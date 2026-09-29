@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20241118"
+      author: raygorodskiy_pa
+      context: "20241118"
+      changes:
+        - tagDatabase:
+            tag: "20241118"
+        - dropColumn:
+            schemaName: notifications_request
+            tableName: trip
+            columnName: driver
+        - dropColumn:
+            schemaName: notifications_request
+            tableName: trip
+            columnName: vehicle
+
+      rollback:
+        - addColumn:
+            schemaName: notifications_request
+            tableName: trip
+            columns:
+              - column:
+                  name: driver
+                  type: jsonb
+              - column:
+                  name: vehicle
+                  type: jsonb

@@ -1,0 +1,2 @@
+update notifications_settings.channel set text = 'К вашей поезде присоединился {passenger.lastName} {passenger.firstName} {passenger.patronymic}.'
+where transport.notifications_settings.channel.text = 'К вашей поезде присоединился <ФИО пассажира, присоединяющегося к поездке>.';

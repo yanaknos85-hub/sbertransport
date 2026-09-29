@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230525"
+      author: sigalovaa
+      changes:
+          - tagDatabase:
+                tag: "20230525"
+          - addColumn:
+                schemaName: contractors
+                tableName: contractor
+                columns:
+                    - column:
+                        name: autoassign
+                        type: boolean
+                        remarks: Автоназначение заявок
+                        defaultOnNull: true
+                        defaultValue: true
+                        constraints:
+                            nullable: false
+          - sql:
+              sql: update contractors.contractor set autoassign = true
+      rollback:
+          - dropColumn:
+                schemaName: contractors
+                tableName: contractor
+                columns:
+                    - column:
+                        name: autoassign

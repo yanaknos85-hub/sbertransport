@@ -1,0 +1,41 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230921-3"
+            author: blandin-ad
+            context: "20230921-3"
+            changes:
+                -   tagDatabase:
+                        tag: "20230921-3"
+                -   createTable:
+                        schemaName: trips_cargo
+                        tableName: contractors
+                        remarks: Контрагенты
+                        columns:
+                            -   column:
+                                    name: id
+                                    type: uuid
+                                    remarks: Идентификатор
+                                    constraints:
+                                        primaryKey: true
+                            -   column:
+                                    name: digit_id
+                                    type: numeric
+                                    remarks: Целочисленный идентификатор
+                -   addColumn:
+                        schemaName: trips_cargo
+                        tableName: trips_cargo
+                        columns:
+                            -   column:
+                                    name: digit_id
+                                    type: numeric
+                                    remarks: Порядковый номер. Используется в human readable id
+                                    constraints:
+                                        nullable: false
+                                        unique: true
+                                        uniqueConstraintName: uk_trips_digit_id
+                            -   column:
+                                    name: requests
+                                    type: json
+                                    remarks: Связанные заявки
+                                    constraints:
+                                        nullable: false

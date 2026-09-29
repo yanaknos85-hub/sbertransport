@@ -1,0 +1,28 @@
+.container {
+  width: fit-content;
+  padding: 2px 8px;
+  border-radius: 16px;
+  color: #10bf6a;
+  background-color: #10BF6A26;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  &_canceled {
+    color: #fe5b3b;
+    background-color: #FE5B3B26;
+  }
+
+  &_finished {
+    color: #333333;
+    background-color: #37373726;
+  }
+
+  span {
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 14px;
+    letter-spacing: .12px;
+  }
+}

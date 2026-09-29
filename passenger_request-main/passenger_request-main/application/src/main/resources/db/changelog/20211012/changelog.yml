@@ -1,0 +1,51 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211012"
+            author: medvedev-ad
+            dbms: postgresql
+            changes:
+                -   renameColumn:
+                        schemaName: request
+                        tableName: messages_geo_zone
+                        oldColumnName: code
+                        newColumnName: old_code
+                -   addColumn:
+                        schemaName: request
+                        tableName: messages_geo_zone
+                        columns:
+                            -   column:
+                                    name: code
+                                    type: text
+                -   sql:
+                        sql: update request.messages_geo_zone set code = old_code
+                -   dropColumn:
+                        schemaName: request
+                        tableName: messages_geo_zone
+                        columnName: old_code
+                -   addNotNullConstraint:
+                        schemaName: request
+                        tableName: messages_geo_zone
+                        columnName: code
+            rollback:
+                -   renameColumn:
+                        schemaName: request
+                        tableName: messages_geo_zone
+                        oldColumnName: code
+                        newColumnName: old_code
+                -   addColumn:
+                        schemaName: request
+                        tableName: messages_geo_zone
+                        columns:
+                            -   column:
+                                    name: code
+                                    type: bigint
+                -   sql:
+                        sql: update request.messages_geo_zone set code = old_code::bigint
+                -   dropColumn:
+                        schemaName: request
+                        tableName: messages_geo_zone
+                        columnName: old_code
+                -   addNotNullConstraint:
+                        schemaName: request
+                        tableName: messages_geo_zone
+                        columnName: code

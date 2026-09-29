@@ -1,0 +1,20 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221115"
+            author: medvedev-ad
+            context: "20221115"
+            changes:
+                -   tagDatabase:
+                        tag: "20221115"
+                -   createIndex:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        column:
+                            name: active
+                        indexName: request_request_for_taxi_active_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: request_for_cargo
+                        column:
+                            name: active
+                        indexName: request_request_for_cargo_active_idx

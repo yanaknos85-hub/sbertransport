@@ -1,0 +1,22 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost
+  main:
+    lazy-initialization: true
+server:
+  port: 0
+logging:
+  level:
+    org.jooq: DEBUG
+
+driver-track:
+  gps-spoofing-filter:
+    enabled: true
+    interval-seconds: 5
+    max-intervals: 6
+    jump-threshold-km: 0.150
+    low-speed-increment-km: 0.060
+    medium-speed-increment-km: 0.100
+    high-speed-increment-km: 0.150
+    min-distance-between-points-km: 0.01

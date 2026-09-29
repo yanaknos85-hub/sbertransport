@@ -1,0 +1,51 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240709"
+      author: blandin-ad
+      changes:
+          - addColumn:
+                schemaName: trips_cargo
+                tableName: trips
+                columns:
+                    - column:
+                          name: time_zone
+                          type: text
+                          remarks: Временная зона
+      rollback:
+          - dropColumn:
+                schemaName: trips_cargo
+                tableName: trips
+                columns:
+                    - column:
+                          name: time_zone
+  - changeSet:
+      id: "20240719"
+      author: blandin-ad
+      changes:
+        - addColumn:
+            schemaName: trips_cargo
+            tableName: trips
+            columns:
+              - column:
+                  name: comment
+                  type: text
+                  remarks: Комментарий к заказу
+              - column:
+                  name: author_name
+                  type: text
+                  remarks: ФИО автора маршрута
+              - column:
+                  name: author_phone
+                  type: text
+                  remarks: Номер телефона автора маршрута
+      rollback:
+        - dropColumn:
+            schemaName: trips_cargo
+            tableName: trips
+            columns:
+              - column:
+                  name: comment
+              - column:
+                  name: author_name
+              - column:
+                  name: author_phone

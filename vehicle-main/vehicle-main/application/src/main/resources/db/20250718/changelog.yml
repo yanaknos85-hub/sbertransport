@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20250718-1
+            author: novikovak_m
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/fix_drop_driving_license_tables.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

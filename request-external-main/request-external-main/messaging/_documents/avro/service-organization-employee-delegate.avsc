@@ -1,0 +1,61 @@
+{
+  "namespace": "ru.sber.transport.messages.corporate.avro",
+  "name": "DelegateData",
+  "type": "record",
+  "doc": "Информация о делегатах сотрудника",
+  "fields": [
+    {
+      "name": "id",
+      "doc": "Идентификатор",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      },
+      "aliases": [
+        "headerId"
+      ]
+    },
+    {
+      "name": "supervisorId",
+      "doc": "Идентификатор руководителя",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "delegateId",
+      "doc": "Идентификатор делегата",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "startDate",
+      "doc": "Дата начала действия",
+      "type": {
+        "type": "int",
+        "logicalType": "date"
+      }
+    },
+    {
+      "name": "endDate",
+      "doc": "Дата окончания действия",
+      "type": {
+        "type": "int",
+        "logicalType": "date"
+      }
+    },
+    {
+      "name": "transportType",
+      "doc": "Тип транспорта",
+      "type": "string"
+    },
+    {
+      "name": "deleted",
+      "doc": "Признак удаления",
+      "type": "boolean"
+    }
+  ]
+}

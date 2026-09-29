@@ -1,0 +1,15 @@
+.panel {
+  &__header {
+    font-family: SB Sans Interface;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0;
+    color: #262626;
+  }
+
+  &__divider {
+    margin: 16px 0;
+    color: #26262614;
+  }
+}

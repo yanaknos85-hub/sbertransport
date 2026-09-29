@@ -1,0 +1,45 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250630
+      author: shabrov-ie
+      changes:
+        - createTable:
+            schemaName: dispatcher
+            tableName: integration_client
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    notNullConstraintName: nn_integration_client_id
+              - column:
+                  name: contractor_id
+                  type: uuid
+                  remarks: ID автосервиса
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: nn_integration_client_contractor_id
+              - column:
+                  name: active
+                  type: boolean
+                  remarks: Флаг активности
+                  defaultValue: true
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: nn_integration_client_active
+              - addForeignKeyConstraint:
+                  baseTableSchemaName: dispatcher
+                  baseTableName: integration_client
+                  baseColumnNames: contractor_id
+                  constraintName: fk_contractor_id
+                  referencedColumnNames: id
+                  referencedTableName: contractor
+                  referencedTableSchemaName: dispatcher
+              - addIndex:
+                  indexName: idx_contractor_id
+                  unique: false
+                  columnNames: contractor_id
+                  tableName: integration_client
+                  schemaName: dispatcher

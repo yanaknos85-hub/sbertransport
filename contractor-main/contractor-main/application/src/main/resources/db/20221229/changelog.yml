@@ -1,0 +1,49 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221229"
+            author: medvedev-ad
+            context: "20221229"
+            changes:
+                -   tagDatabase:
+                        tag: "20221229"
+                -   createTable:
+                        schemaName: contractors
+                        tableName: trip_history
+                        remarks: История изменения поездки
+                        columns:
+                            -   column:
+                                    name: change_time
+                                    type: timestamp
+                                    remarks: Время изменения данных
+                            -   column:
+                                    name: trip_id
+                                    type: uuid
+                                    remarks: Измененная поездка
+                                    constraints:
+                                        foreignKeyName: fk_trip_history_trip
+                                        referencedTableSchemaName: contractors
+                                        referencedTableName: trips
+                                        referencedColumnNames: id
+                            -   column:
+                                    name: old_dispatcher_id
+                                    type: uuid
+                                    remarks: Предыдущий диспетчер
+                                    constraints:
+                                        foreignKeyName: fk_trip_history_old_dispatcher
+                                        referencedTableSchemaName: contractors
+                                        referencedTableName: dispatcher
+                                        referencedColumnNames: id
+                            -   column:
+                                    name: new_dispatcher_id
+                                    type: uuid
+                                    remarks: Новый диспетчер
+                                    constraints:
+                                        foreignKeyName: fk_trip_history_new_dispatcher
+                                        referencedTableSchemaName: contractors
+                                        referencedTableName: dispatcher
+                                        referencedColumnNames: id
+                -   addPrimaryKey:
+                        schemaName: contractors
+                        tableName: trip_history
+                        constraintName: trip_history_item_pk
+                        columnNames: change_time,trip_id

@@ -1,0 +1,1 @@
+call migrations.fill_roles('request_aggregation', 'POST /manager/leads/file/validate', 'ROLE_DISPATCHER_SUPPORT_SERVICE', true);

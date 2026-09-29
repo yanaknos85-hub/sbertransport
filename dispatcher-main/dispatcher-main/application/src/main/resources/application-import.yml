@@ -1,0 +1,93 @@
+works:
+  files:
+    - url: /vehicles
+      fileType:
+        - xlsx
+        - xls
+      collections:
+        - name: Легковые
+          type: ru.sber.transport.dispatcher.dto.files.vehicle.PassengerVehicleFile
+          mappings:
+            - from: Тип
+              to: vehicleType
+            - from: Принадлежность к автопарку
+              to: autoParkName
+            - from: Регистрационный знак
+              to: stateNumber
+            - from: Марка ТС
+              to: modelBrand
+            - from: Автомобиль находится в эксплуатации
+              to: inExploitation
+            - from: Модель ТС
+              to: modelName
+            - from: Цвет
+              to: color
+            - from: Идентификационный номер (VIN)
+              to: vin
+            - from: Разрешенная максимальная масса, т.
+              to: maxAllowedWeight
+            - from: Серия, номер полиса обязательного страхования ТС
+              to: insuranceNumber
+            - from: Экологический класс
+              to: ecoClass
+            - from: Расход топлива, л/км
+              to: fuelConsumption
+            - from: Комплектация
+              to: packageClass
+            - from: Пробег, км
+              to: mileage
+            - from: Год выпуска
+              to: modelYear
+            - from: Тип привода
+              to: chassisType
+            - from: Тип двигателя
+              to: engineType
+            - from: Тип трансмиссии
+              to: transmissionType
+            - from: Тип кузова
+              to: bodyType
+            - from: Паспорт ТС
+              to: passport
+        - name: Грузовые
+          type: ru.sber.transport.dispatcher.dto.files.vehicle.CargoVehicleFile
+          mappings:
+            - from: Тип
+              to: vehicleType
+            - from: Принадлежность к автопарку
+              to: autoParkName
+            - from: Регистрационный знак
+              to: stateNumber
+            - from: Марка ТС
+              to: modelBrand
+            - from: Автомобиль находится в эксплуатации
+              to: inExploitation
+            - from: Модель ТС
+              to: modelName
+            - from: Цвет
+              to: color
+            - from: Идентификационный номер (VIN)
+              to: vin
+            - from: Разрешенная максимальная масса, т.
+              to: maxAllowedWeight
+            - from: Объем, м3
+              to: volume
+            - from: Длина, м
+              to: length
+            - from: Ширина, м
+              to: width
+            - from: Высота, м
+              to: height
+    - url: /shifts
+      fileType:
+        - xlsx
+        - xls
+      collections:
+        - name: Смены
+          type: ru.sber.transport.dispatcher.dto.files.shift.ShiftFile
+          mappings:
+            - from: Табельный номер водителя
+              to: personnelNumber
+            - from: Регистрационный знак автомобиля
+              to: stateNumber
+            - from: Дата начала смены
+              to: startDate

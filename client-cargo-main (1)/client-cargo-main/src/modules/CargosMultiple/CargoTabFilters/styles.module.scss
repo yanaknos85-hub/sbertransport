@@ -1,0 +1,28 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.tabs {
+  :global(.ant-tabs-nav-more) {
+    display: none;
+  }
+
+  :global(.ant-tabs-tab) {
+    color: #000;
+    opacity: 0.2;
+  }
+
+  :global(.ant-tabs-tab-active) {
+    opacity: 1;
+    color: #000;
+  }
+
+  :global(.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn) {
+    color: #000;
+  }
+
+  :global(.ant-tabs-tab):hover {
+    color: #000;
+  }
+}

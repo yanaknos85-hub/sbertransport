@@ -1,0 +1,127 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  annotations:
+    sidecar.istio.io/inject: 'true'
+    traffic.sidecar.istio.io/excludeOutboundPorts: '6565'
+  name: authentication_sbid
+  namespace: ci02351878-edevgen-dev-cargo1
+  labels:
+    app: authentication_sbid
+    app.kubernetes.io/part-of: transport
+    app.kubernetes.io/name: authentication_sbid
+    repo: app_cargo_authentication_sbid
+    template: authentication_sbid
+    version: development
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: authentication_sbid
+  template:
+    metadata:
+      labels:
+        app: authentication_sbid
+        app.kubernetes.io/name: authentication_sbid
+        app.kubernetes.io/part-of: transport
+        secman-injector: enabled
+        version: development
+      annotations:
+        sidecar.istio.io/inject: 'true'
+    spec:
+      containers:
+        - name: authentication_sbid
+          image: registry.sigma.sbrf.ru/dev/ci02351878/ci02353146_transport_dev/transport/authentication-sbid:260113-1-jenkins
+          resources:
+            limits:
+              cpu: 1500m
+              memory: 4G
+            requests:
+              cpu: 400m
+              memory: 2G
+          env:
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: database
+                  key: url.jdbc
+            - name: FILE_UPLOAD_DIR
+              valueFrom:
+                configMapKeyRef:
+                  name: files
+                  key: image.path
+            - name: SPRING_CLOUD_STATIC_DISCOVERY_ENABLED
+              value: 'true'
+            - name: JWT_KEY_PUBLIC_PATH
+              value: /vault/secrets/jwt.public
+            - name: DEFAULT_TIME_ZONE
+              value: GMT+03
+          ports:
+            - containerPort: 8131
+              protocol: TCP
+              name: http
+          volumeMounts:
+            - name: data
+              mountPath: /mnt
+            - name: logs
+              mountPath: /log
+            - name: tmp
+              mountPath: /tmp
+            - name: secman-list
+              readOnly: true
+              mountPath: /tmp/secman/config
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8131
+            initialDelaySeconds: 60
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8131
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: FallbackToLogsOnError
+          securityContext:
+            readOnlyRootFilesystem: true
+            runAsNonRoot: false
+        - name: fluent-bit
+          image: registry.sigma.sbrf.ru/ci00734898/ci00685811_synapse/fluent-bit@sha256:391be4b7b42d1374f6578e850e74bc4977a1d35cc3adad1fcf0940f74f0ac379
+          resources:
+            limits:
+              cpu: 200m
+              memory: 500Mi
+            requests:
+              cpu: 200m
+              memory: 300Mi
+          securityContext:
+            readOnlyRootFilesystem: true
+          volumeMounts:
+            - name: logs
+              mountPath: /log
+            - name: cm-fluentbit
+              readOnly: true
+              mountPath: /fluent-bit/etc/
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      serviceAccount: springboot-servicediscovery
+      volumes:
+        - name: data
+          emptyDir: {}
+        - name: logs
+          emptyDir: {}
+        - name: tmp
+          emptyDir: {}
+        - name: secman-list
+          configMap:
+            name: secman-list-common
+            defaultMode: 0444
+            optional: true
+        - name: cm-fluentbit
+          configMap:
+            name: cm-fluentbit
+            defaultMode: 0444
+            optional: true

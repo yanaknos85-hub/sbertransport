@@ -1,0 +1,31 @@
+.controls {
+  display: flex;
+  justify-content: space-between;
+
+  .filtersWrapper {
+    display: flex;
+  }
+
+}
+
+.filterButton {
+  margin-left: 16px;
+
+  & :hover div svg {
+    fill: #10BF6A;
+    stroke: #10BF6A;
+  }
+}
+
+.listWrapper {
+  height: calc(83vh - 105px);
+  overflow-y: auto;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding-top: var(--padding-half);
+  margin-top: 12px;
+}
+

@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250611"
+      author: blandin-ad
+      changes:
+        - addColumn:
+            schemaName: trips
+            tableName: trip_history
+            columns:
+              - column:
+                  name: old_expected_vehicle_id
+                  type: uuid
+                  remarks: Старое ожидаемое транспортное средство
+              - column:
+                  name: new_expected_vehicle_id
+                  type: uuid
+                  remarks: Новое ожидаемое транспортное средство
+      rollback:
+        - dropColumn:
+            schemaName: trips
+            tableName: trip_history
+            columns:
+              - column:
+                  name: old_expected_vehicle_id
+              - column:
+                  name: new_expected_vehicle_id
+
+

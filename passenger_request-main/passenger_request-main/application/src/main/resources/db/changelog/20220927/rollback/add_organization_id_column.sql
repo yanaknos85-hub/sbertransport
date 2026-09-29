@@ -1,0 +1,1 @@
+alter table request.request drop column organization_id;

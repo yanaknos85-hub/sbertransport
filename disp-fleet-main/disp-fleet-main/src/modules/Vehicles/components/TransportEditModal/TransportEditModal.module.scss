@@ -1,0 +1,39 @@
+.modal {
+  width: 75vw !important;
+  top: 20px;
+
+  :global {
+    .ant-modal-header {
+      padding: 15px 20px;
+      border: none;
+
+      .ant-modal-title {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 28px;
+      }
+    }
+
+    .ant-modal-body {
+      padding: 0;
+    }
+
+    .ant-modal-footer {
+      padding: 20px;
+      border: none;
+
+      button {
+        height: 40px;
+      }
+    }
+  }
+
+  :global(.ant-modal-close-x) {
+    display: flex;
+    justify-content: center;
+
+    .modalIcon {
+      width: 24px;
+    }
+  }
+}

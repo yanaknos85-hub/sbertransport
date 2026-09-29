@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: test
+  datasource:
+    username: postgres
+  liquibase:
+    enabled: true
+    change-log: db/changelog-master.yml
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    database-change-log-table: changelog_${spring.application.name}
+    database-change-log-lock-table: changelog_${spring.application.name}_lock
+    default-schema: ${spring.application.name}
+    liquibase-schema: ${MIGRATION_SCHEMA:public}

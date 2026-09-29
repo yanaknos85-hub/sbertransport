@@ -1,0 +1,21 @@
+curl --X POST \
+--url '{url}/api/roles/' \
+--header 'Authorization: Bearer {token}' \
+--header 'Content-Type: application/json' \
+--data '{
+        	"code": "ROLE_AUTOSERVICE_RECEPTION",
+        	"name": "Мастер-приемщик",
+        	"description": "Роль, для сотрудников внешних контрагентов, выполняющих функцию мастер-приемщик автосервиса",
+        	"exclusive": ["EXTERNAL"]
+        }'
+
+curl --X POST \
+--url '{url}/api/roles/' \
+--header 'Authorization: Bearer {token}' \
+--header 'Content-Type: application/json' \
+--data '{
+        	"code": "ROLE_AUTOSERVICE_MECHANIC",
+        	"name": "Мастер",
+        	"description": "Роль, для сотрудников внешних контрагентов, выполняющих функцию мастер автосервиса",
+        	"exclusive": ["EXTERNAL"]
+        }'

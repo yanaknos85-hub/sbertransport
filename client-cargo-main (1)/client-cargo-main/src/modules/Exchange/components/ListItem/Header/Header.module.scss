@@ -1,0 +1,52 @@
+.isMobileDirection {
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerMobile {
+  gap: 8px;
+}
+
+.data {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.dataMobile {
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.humanId {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.desiredDate {
+  font-size: 14px;
+  font-weight: 300;
+  .dateTitle {
+    color: rgb(115, 115, 115);
+  }
+  .date {
+    font-weight: 600;
+  }
+}
+
+.status {
+  padding: 9px 8px;
+  height: 18px;
+  font-size: 14px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  /* Green / Green 1 */
+  background: rgb(231, 249, 240);
+  /* Green/Green 10 */
+  color: rgb(16, 191, 106);
+}

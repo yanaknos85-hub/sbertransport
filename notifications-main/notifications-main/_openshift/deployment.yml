@@ -1,0 +1,104 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    namespace: ci02351878-edevgen-sbertransport-dev
+    name: notifications
+    annotations:
+        sidecar.istio.io/inject: "true"
+    labels:
+        app.kubernetes.io/part-of: transport
+        app.kubernetes.io/name: notifications
+spec:
+    selector:
+        matchLabels:
+            app.kubernetes.io/part-of: transport
+            app.kubernetes.io/name: notifications
+    template:
+        metadata:
+            namespace: ci02351878-edevgen-sbertransport-dev
+            labels:
+                app.kubernetes.io/part-of: transport
+                app.kubernetes.io/name: notifications
+        spec:
+            imagePullSecrets:
+                -   name: cab-sa-ci000274
+            volumes:
+                - name: data
+                - name: logs
+            containers:
+                -   name: notifications
+                    volumeMounts:
+                        -   mountPath: /mnt
+                            name: data
+                        -   mountPath: /log
+                            name: logs
+                    terminationMessagePolicy: FallbackToLogsOnError
+                    image: registry.sigma.sbrf.ru/dev/ci02351878/ci02353146_transport_dev/transport/notifications:220112-1-medvedev-ad
+                    resources:
+                        limits:
+                            cpu: 200m
+                            memory: 1G
+                        requests:
+                            cpu: 200m
+                            memory: 1G
+                    env:
+                        -   name: SPRING_DATASOURCE_URL
+                            valueFrom:
+                                secretKeyRef:
+                                    name: database
+                                    key: url.jdbc
+                        -   name: SPRING_DATASOURCE_USERNAME
+                            valueFrom:
+                                secretKeyRef:
+                                    name: database
+                                    key: user
+                        -   name: SPRING_DATASOURCE_PASSWORD
+                            valueFrom:
+                                secretKeyRef:
+                                    name: database
+                                    key: password
+                        -   name: KAFKA_BROKERS
+                            valueFrom:
+                                configMapKeyRef:
+                                    name: kafka
+                                    key: brokers
+                        -   name: SEARCH_ENGINE_ENABLE
+                            valueFrom:
+                                configMapKeyRef:
+                                    name: elastic
+                                    key: enabled
+                        -   name: LOG_PATH
+                            valueFrom:
+                                configMapKeyRef:
+                                    name: log
+                                    key: path
+                        -   name: CONSUL_ENABLED
+                            valueFrom:
+                                configMapKeyRef:
+                                    name: consul
+                                    key: enabled
+                        -   name: MIGRATIONS_SCHEMA
+                            valueFrom:
+                                secretKeyRef:
+                                    name: database
+                                    key: migrations
+                        -   name: DEFAULT_CONTRACTOR_PUSH_ENABLED
+                            valueFrom:
+                                configMapKeyRef:
+                                    name: notifications
+                                    key: default.contractor.push.enabled
+                        -   name: DEFAULT_PUSH_ENABLED
+                            valueFrom:
+                                configMapKeyRef:
+                                    name: notifications
+                                    key: default.push.enabled
+                        -   name: DEFAULT_EMAIL_ENABLED
+                            valueFrom:
+                                configMapKeyRef:
+                                    name: notifications
+                                    key: default.email.enabled
+                        -   name: DEFAULT_SMS_ENABLED
+                            valueFrom:
+                                configMapKeyRef:
+                                    name: notifications
+                                    key: default.sms.enabled

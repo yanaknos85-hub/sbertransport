@@ -1,0 +1,13 @@
+databaseChangeLog:
+    -   changeSet:
+            id: requests/20220623
+            author: Malkov-aa
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: alter_table_requests.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: rollback_alter_table_requests.sql
+                        relativeToChangelogFile: true

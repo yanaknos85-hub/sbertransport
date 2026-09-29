@@ -1,0 +1,9 @@
+databaseChangeLog:
+  -   changeSet:
+        id: 20260304-1
+        author: smirnova
+        dbms: postgresql
+        changes:
+          -   sqlFile:
+                path: add_users_table.sql
+                relativeToChangelogFile: true

@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: contractor/20210412
+      context: "20210412"
+      author: kirillov
+      dbms: postgresql
+      changes:
+        - sqlFile:
+            path: changes/create_car_models.sql
+            relativeToChangelogFile: true
+            endDelimiter: ;
+        - sqlFile:
+            path: changes/create_vehicle_drop_transport.sql
+            relativeToChangelogFile: true
+            endDelimiter: ;
+      rollback:
+        - sqlFile:
+            path: rollback/drop_car_models.sql
+            relativeToChangelogFile: true
+            endDelimiter: ;
+        - sqlFile:
+            path: rollback/drop_vehicle_create_transport.sql
+            relativeToChangelogFile: true
+            endDelimiter: ;

@@ -1,0 +1,1 @@
+drop table request.request_for_import;

@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220429"
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/add_tables.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/rollback_drop_tables.sql
+                        relativeToChangelogFile: true

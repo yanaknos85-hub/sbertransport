@@ -1,0 +1,15 @@
+INSERT INTO vehicle.accessible_position (id, title) VALUES ('9c404ea0-6e68-40f3-8c39-51e8f4d1ff85', 'Заместитель управляющего ГОСБ');
+INSERT INTO vehicle.accessible_position (id, title) VALUES ('b7a86fbc-e722-47ab-b0ed-f66a5c43d2e4', 'Управляющий ГОСБ');
+INSERT INTO vehicle.accessible_position (id, title) VALUES ('f7d3aeb2-d4de-4747-a018-c16e4131278a', 'Заместитель председателя ТБ');
+INSERT INTO vehicle.accessible_position (id, title) VALUES ('96c87256-ae54-4368-afbe-ce64227e8396', 'Председатель ТБ');
+INSERT INTO vehicle.accessible_position (id, title) VALUES ('e32b48ad-ddac-47d7-beef-b99921a16785', 'ТОН подразделения безопасности');
+INSERT INTO vehicle.accessible_position (id, title) VALUES ('666571cc-488b-4447-89a4-ab65f41604d7', 'ТОН подразделения транспортного обеспечения');
+INSERT INTO vehicle.accessible_position (id, title) VALUES ('569e6465-7788-48b7-8227-de0a593464ca', 'Руководитель подразделения ЦА');
+INSERT INTO vehicle.accessible_position (id, title) VALUES ('78843169-1557-4531-8f61-549143e36892', 'Руководитель функционального блока ЦА');
+INSERT INTO vehicle.accessible_position (id, title) VALUES ('7e39078b-1e47-4733-acaa-3252431137b8', 'Член Правления');
+INSERT INTO vehicle.accessible_position (id, title) VALUES ('3508b786-0c91-4311-b618-ba50202970d3', 'Президент, председатель Правления');
+INSERT INTO vehicle.accessible_position (id, title) VALUES ('31465e50-7e57-41f9-9785-ed2214637764', 'Резерв руководителей подразделений ЦА');
+INSERT INTO vehicle.accessible_position (id, title) VALUES ('2556e662-46a0-41b2-9e37-626c0a115261', 'Резерв руководителей функциональных блоков ЦА');
+INSERT INTO vehicle.accessible_position (id, title) VALUES ('80f86865-77bb-4427-b140-1353e4812086', 'Резерв членов Правления');
+INSERT INTO vehicle.accessible_position (id, title) VALUES ('45931aec-1b12-4f56-90d8-da8150234e31', 'ТОН подразделения безопасности');
+INSERT INTO vehicle.accessible_position (id, title) VALUES ('4e2a5e47-4a03-46c8-9491-59369f241475', 'ТОН подразделения транспортного обеспечения');

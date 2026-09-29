@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240909-1024"
+      author: blandin-ad
+      context: "TRANSPORT-25708"
+      changes:
+        - tagDatabase:
+            tag: "D-03.016.000"
+        - addColumn:
+            schemaName: dispatcher
+            tableName: driver
+            columns:
+              - column:
+                  name: online
+                  type: boolean
+                  remarks: Признак нахождения водителя на смене
+      rollback:
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: driver
+            columns:
+              - column:
+                  name: online

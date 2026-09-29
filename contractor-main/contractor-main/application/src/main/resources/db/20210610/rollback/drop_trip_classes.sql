@@ -1,0 +1,1 @@
+DROP TABLE contractors.trip_classes;

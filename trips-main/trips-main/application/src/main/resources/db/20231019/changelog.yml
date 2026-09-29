@@ -1,0 +1,36 @@
+databaseChangeLog:
+    - changeSet:
+          id: "20231019"
+          author: blandin-ad
+          changes:
+              - sql:
+                    dbms: postgresql
+                    sql: update trips.trips set passenger_count = cast(additional->>'passengerCount' as integer);
+              - sql:
+                    dbms: postgresql
+                    sql: update trips.trips set taxi_class = additional->>'taxiClass';
+              - sql:
+                    dbms: postgresql
+                    sql: update trips.trips set driver_waiting_time = cast(additional->>'driverWaitingTime' as bigint);
+              - dropColumn:
+                    schemaName: trips
+                    tableName: trips
+                    columns:
+                        - column:
+                              name: additional
+          rollback:
+              - addColumn:
+                    schemaName: trips
+                    tableName: trips
+                    columns:
+                        - column:
+                              name: additional
+                              remarks: Дополнительные данные о поездке
+                              type: json
+              - update:
+                    schemaName: trips
+                    tableName: trips
+                    columns:
+                        - column:
+                              name: additional
+                              valueComputed: json_build_object('passengerCount', passenger_count, 'taxiClass', taxi_class, 'driverWaitingTime', driver_waiting_time)

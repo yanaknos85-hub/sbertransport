@@ -1,0 +1,66 @@
+server:
+    port: 8050
+    tomcat:
+        relaxed-query-chars:
+            - "["
+            - "]"
+
+spring:
+    main:
+        banner-mode: off
+        web-application-type: servlet
+    jackson:
+        default-property-inclusion: non_null
+    application:
+        name: trips
+    config:
+      import:
+          - classpath:/application-import.yml
+          - classpath:/application-kafka.yml
+          - optional:configserver:${spring.cloud.config.uri}
+    profiles:
+        active: prod
+    liquibase:
+        enabled: true
+        change-log: db/changelog-master.yml
+        url: ${spring.datasource.url}
+        user: ${spring.datasource.username}
+        password: ${spring.datasource.password}
+        database-change-log-table: changelog_${spring.application.name}
+        database-change-log-lock-table: changelog_${spring.application.name}_lock
+        default-schema: ${spring.application.name}
+        liquibase-schema: ${MIGRATION_SCHEMA:public}
+    cloud:
+        vault:
+            enabled: false
+    security:
+      oauth2:
+        resourceserver:
+            jwt:
+                jws-algorithms: RS512
+                jwk-set-uri: ${JWK_URL}
+websocket:
+    baseUrl: /ws
+driver:
+    assign:
+        minradius: ${DRIVER_ASSIGN_MINRADIUS_KM:3.0}
+        maxradius: ${DRIVER_ASSIGN_MAXRADIUS_KM:15.0}
+        timeSecs: ${DRIVER_ASSIGN_TIMESECS:180}
+        finishSearchMin: ${DRIVER_ASSIGN_FINISHSEARCHMIN:10}
+        triggerTimeSecs: ${DRIVER_ASSIGN_TRIGGERTIMESECS:1800}
+        autoAssignRadiusDelta: ${DRIVER_ASSIGN_AUTOASSIGNRADIUSDELTA_KM:1}
+        reservedTimeMin: ${DRIVER_ASSIGN_RESERVE_TIME_MIN:90}
+    liberator:
+        isEnabled: ${DRIVER_LIBERATOR_IS_ENABLED:false}
+        rate: ${DRIVER_LIBERATOR_RATE:0 * * * * *}
+report:
+    processor:
+        isEnabled: ${REPORT_PROCESSOR_IS_ENABLED:true}
+        rate: ${REPORT_PROCESSOR_RATE:0 */3 * * * *}
+        selection:
+            limit: ${REPORT_PROCESSOR_SELECTION_LIMIT:100}
+conflict:
+    changing-state-of-finished-trip:
+        ignore: ${IGNORE_CONFLICT_CHANGING_STATE_OF_FINISHED_TRIP:false}
+authorization:
+    consent-check: ${CHECK_CONSENT:true}

@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20251111-1030"
+      author: farkhutdinov
+      changes:
+        - addColumn:
+            tableName: trip_order
+            schemaName: external_request
+            columns:
+              - column:
+                  name: receipt_link
+                  type: text
+                  remarks: Ссылка на чек Яндекс Go.

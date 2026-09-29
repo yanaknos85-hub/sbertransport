@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240925"
+      author: blandin-ad
+      changes:
+        - addColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: report_created
+                  type: boolean
+                  remarks: Признак готовности отчета по поездке
+        - sql:
+           sql: update trips.trips set report_created = false
+        - addNotNullConstraint:
+            schemaName: trips
+            tableName: trips
+            columnName: report_created
+            constraintName: trips_trips_report_created_nnc
+      rollback:
+        - dropColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: report_created
+
+

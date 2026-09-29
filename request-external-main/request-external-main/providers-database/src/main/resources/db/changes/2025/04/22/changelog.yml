@@ -1,0 +1,243 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250422-1450"
+      author: medvedev-ad
+      context: "TRANSPORT-31816"
+      changes:
+        - tagDatabase:
+            tag: "D-04.008.000"
+        - sql:
+            sql: create schema if not exists ${schema_name}
+        - sql:
+            dbms: postgresql
+            sql: comment on schema ${schema_name} is 'Внешние заявки на поездки'
+        - sql:
+            sql: create type ${schema_name}.order_state as enum('NEW', 'CONFIRMATION', 'DATA_NEEDED', 'CONFIRMED', 'DECLINED', 'CANCELLED')
+        - sql:
+            dbms: postgresql
+            sql: "comment on type ${schema_name}.order_state is 'Состояние заявки на поездку: Новая (NEW), Подтверждение (CONFIRMATION), Необходимы данные (DATA_NEEDED), Подтверждена (CONFIRMED), Отклонена (DECLINED), Отменена (CANCELLED)'"
+      rollback:
+        - sql:
+            sql: drop schema if exists ${schema_name}
+  - changeSet:
+      id: "20250422-1458"
+      author: medvedev-ad
+      context: "TRANSPORT-31816"
+      changes:
+        - tagDatabase:
+            tag: "D-04.008.000"
+        - createTable:
+            schemaName: ${schema_name}
+            tableName: trip_order
+            remarks: "Заявка на поездку"
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор заявки на поездку
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: ${schema_name}_trip_order_pk
+              - column:
+                  name: passenger_id
+                  type: uuid
+                  remarks: Идентификатор пассажира, который создал заявку на поездку
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_trip_order_passenger_id_nn
+              - column:
+                  name: digit_id
+                  type: integer
+                  remarks: Порядковый номер заявки в рамках организации пассажира
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_trip_order_digit_id_nn
+              - column:
+                  name: date
+                  type: timestamp with timezone
+                  remarks: Дата поездки
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_trip_order_date_nn
+              - column:
+                  name: purpose_id
+                  type: uuid
+                  remarks: Идентификатор цели поездки
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_trip_order_purpose_id_nn
+              - column:
+                  name: planned_cost
+                  type: numeric(18, 2)
+                  remarks: Плановая стоимость поездки
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_price_data_cost_nn
+              - column:
+                  name: fact_cost
+                  type: numeric(18, 2)
+                  remarks: Фактическая стоимость поездки
+              - column:
+                  name: status
+                  type: ${schema_name}.order_state
+                  remarks: Состояние заявки на поездку
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_trip_order_status_nn
+              - column:
+                  name: comment
+                  type: text
+                  remarks: Комментарий к заявке на поездку
+              - column:
+                  name: hash
+                  type: text
+                  remarks: Хэш заявки на поездку
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_trip_order_hash_nn
+              - column:
+                  name: modified_at
+                  type: timestamp with timezone
+                  remarks: Дата изменения заявки на поездку
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_trip_order_modified_at_nn
+        - createTable:
+            schemaName: ${schema_name}
+            tableName: waypoint
+            remarks: "Путевые точки поездки"
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор путевой точки
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: ${schema_name}_waypoint_pk
+              - column:
+                  name: country
+                  type: varchar(100)
+                  remarks: Страна
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_waypoint_country_nn
+              - column:
+                  name: region
+                  type: varchar(100)
+                  remarks: Регион
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_waypoint_region_nn
+              - column:
+                  name: city
+                  type: varchar(100)
+                  remarks: Город
+              - column:
+                  name: street
+                  type: varchar(100)
+                  remarks: Улица
+              - column:
+                  name: house
+                  type: varchar(100)
+                  remarks: Дом
+              - column:
+                  name: structure
+                  type: varchar(100)
+                  remarks: Строение
+              - column:
+                  name: building
+                  type: varchar(100)
+                  remarks: Корпус
+              - column:
+                  name: latitude
+                  type: numeric(18, 15)
+                  remarks: Широта
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_waypoint_latitude_nn
+              - column:
+                  name: longitude
+                  type: numeric(18, 15)
+                  remarks: Долгота
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_waypoint_longitude_nn
+        - createTable:
+            schemaName: ${schema_name}
+            tableName: ordered_request_waypoint
+            remarks: Точки с привязкой к заявке на поездку с указанием их порядкового номера
+            columns:
+              - column:
+                  name: waypoint_id
+                  type: uuid
+                  remarks: Идентификатор путевой точки
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_ordered_request_waypoint_waypoint_id_nn
+                    referencedTableSchemaName: ${schema_name}
+                    referencedTableName: waypoint
+                    referencedColumnNames: id
+                    foreignKeyName: ${schema_name}_ordered_request_waypoint_waypoint_fk
+              - column:
+                  name: order_id
+                  type: uuid
+                  remarks: Идентификатор заявки на поездку
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_ordered_request_waypoint_order_id_nn
+                    referencedTableSchemaName: ${schema_name}
+                    referencedTableName: trip_order
+                    referencedColumnNames: id
+                    foreignKeyName: ${schema_name}_ordered_request_waypoint_order_fk
+              - column:
+                  name: order_number
+                  type: integer
+                  remarks: Порядковый номер путевой точки в рамках заявки на поездку
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_ordered_request_waypoint_order_number_nn
+                    checkConstraint: order_number >= 0
+        - addPrimaryKey:
+            schemaName: ${schema_name}
+            tableName: ordered_request_waypoint
+            columnNames: waypoint_id,order_id,order_number
+            constraintName: ${schema_name}_ordered_request_waypoint_pk
+  - changeSet:
+      id: "20250422-1520"
+      author: medvedev-ad
+      context: "TRANSPORT-31816"
+      dbms: postgresql
+      changes:
+        - tagDatabase:
+            tag: "D-04.008.000"
+        - addColumn:
+            schemaName: ${schema_name}
+            tableName: trip_order
+            columns:
+            - column:
+                name: planned_duration
+                type: interval
+                remarks: Плановое время поездки
+                constraints:
+                  nullable: false
+                  notNullConstraintName: ${schema_name}_price_data_duration_nn
+  - changeSet:
+      id: "20250422-1520"
+      author: medvedev-ad
+      context: "TRANSPORT-31816"
+      dbms: h2
+      changes:
+        - tagDatabase:
+            tag: "D-04.008.000"
+        - sql:
+            sql: ALTER TABLE external_request.trip_order ADD planned_duration INTERVAL SECOND
+        - addNotNullConstraint:
+            schemaName: ${schema_name}
+            tableName: trip_order
+            columnName: planned_duration
+            constraintName: ${schema_name}_price_data_duration_nn
+      rollback:
+        - dropColumn:
+            schemaName: ${schema_name}
+            tableName: trip_order
+            columnName: planned_duration

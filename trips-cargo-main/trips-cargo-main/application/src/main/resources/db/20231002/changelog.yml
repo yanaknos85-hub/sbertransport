@@ -1,0 +1,159 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20231002"
+      author: blandin-ad
+      changes:
+        - createTable:
+            schemaName: trips_cargo
+            tableName: driver
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: humanReadableId
+                  type: varchar(255)
+                  remarks: Человекочитаемый идентификатор
+                  constraints:
+                    nullable: false
+                    unique: true
+                    uniqueConstraintName: trips_cargo_driver_human_readable_id_uk
+              - column:
+                  name: lastName
+                  type: text
+                  remarks: Фамилия
+              - column:
+                  name: firstName
+                  type: text
+                  remarks: Имя
+              - column:
+                  name: patronymic
+                  type: text
+                  remarks: Отчество
+              - column:
+                  name: passport
+                  type: varchar(11)
+                  remarks: Серия и номер паспорта
+              - column:
+                  name: contractor_id
+                  type: uuid
+                  remarks: Идентификатор контрагента
+                  constraints:
+                    foreignKeyName: trips_cargo_driver_contractor_fk
+                    referencedColumnNames: id
+                    referencedTableName: contractors
+                    referencedTableSchemaName: trips_cargo
+              - column:
+                  name: active
+                  type: boolean
+                  remarks: Признак активности
+              - column:
+                  name: rating
+                  type: integer
+                  remarks: Рейтинг
+              - column:
+                  name: driver_license_number
+                  type: varchar
+                  remarks: Серия и номер водительского удостоверения
+              - column:
+                  name: cargo_licence_number
+                  type: varchar
+                  remarks: Номер лицензии на предоставление услуг по грузовым перевозкам
+              - column:
+                  name: latitude
+                  type: double precision
+                  remarks: Широта
+              - column:
+                  name: longitude
+                  type: double precision
+                  remarks: Долгота
+              - column:
+                  name: point_time
+                  type: timestamp with time zone
+                  remarks: Временная метка
+              - column:
+                  name: time_zone
+                  type: text
+                  remarks: Временная зона
+              - column:
+                  name: serving
+                  type: boolean
+                  remarks: Признак занятости водителя
+              - column:
+                  name: online
+                  type: boolean
+                  remarks: Признак выхода на линию
+              - column:
+                  name: active_trip_id
+                  type: uuid
+                  remarks: Идентификатор активной поездки
+              - column:
+                  name: shift_id
+                  type: uuid
+                  remarks: Идентификатор активной смены
+              - column:
+                  name: experience
+                  type: text
+                  remarks: Опыт водителя
+              - column:
+                  name: contactPhone
+                  type: text
+                  remarks: Номер телефона
+              - column:
+                  name: email
+                  type: text
+                  remarks: Электронная почта
+      rollback:
+        - dropTable:
+            schemaName: trips_cargo
+            tableName: driver
+  - changeSet:
+      id: "20231002-1"
+      author: blandin-ad
+      changes:
+        - createTable:
+            schemaName: trips_cargo
+            tableName: vehicle
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: brand
+                  type: text
+                  remarks: Марка
+              - column:
+                  name: model
+                  type: text
+                  remarks: Модель
+              - column:
+                  name: state_number
+                  type: text
+                  remarks: Регистрационный номер
+              - column:
+                  name: color
+                  type: text
+                  remarks: Цвет
+              - column:
+                  name: contractor_id
+                  type: uuid
+                  remarks: Идентификатор контрагента
+                  constraints:
+                    foreignKeyName: trips_cargo_vehicle_contractor_fk
+                    referencedColumnNames: id
+                    referencedTableName: contractors
+                    referencedTableSchemaName: trips_cargo
+              - column:
+                  name: deleted
+                  type: boolean
+                  remarks: Признак активности
+      rollback:
+        - dropTable:
+            schemaName: trips_cargo
+            tableName: vehicle

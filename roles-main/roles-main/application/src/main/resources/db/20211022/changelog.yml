@@ -1,0 +1,42 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211022"
+            author: medvedev-ad
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/define_already_migrated.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+              -   sql:
+                    sql: select 1 # no need rollback
+    -   changeSet:
+            id: "20211022-1"
+            author: medvedev-ad
+            changes:
+                -   sqlFile:
+                        path: changes/init_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sql:
+                      sql: drop schema roles cascade;
+    -   changeSet:
+            id: "20211022-2"
+            author: medvedev-ad
+            changes:
+                -   addColumn:
+                        schemaName: roles
+                        tableName: role
+                        columns:
+                            -   column:
+                                    name: data_master
+                                    type: boolean
+                                    defaultValueBoolean: false
+                                    remarks: Роль является ролью оператора СМД
+            rollback:
+              - dropColumn:
+                  schemaName: roles
+                  tableName: role
+                  columnName: data_master

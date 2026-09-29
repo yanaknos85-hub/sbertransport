@@ -1,0 +1,10 @@
+curl --X POST \
+--url '{url}/api/roles/' \
+--header 'Authorization: Bearer {token}' \
+--header 'Content-Type: application/json' \
+--data '{
+        	"code": "ROLE_RELOCATION_APPROVER",
+        	"name": "Согласовант услуги Переезд",
+        	"description": "Роль согласующего для заявок с типом Переезд (релокация сотрудников)",
+        	"exclusive": ["INTERNAL"]
+        }'

@@ -1,0 +1,101 @@
+spring.cloud:
+    stream:
+        bindings:
+            organizationsInput-in-0:
+                group: ${spring.application.name}
+                destination: service.organization
+                binder: integration
+            organizationsInputDlq-in-0:
+                group: ${spring.application.name}
+                destination: error.${spring.cloud.stream.bindings.organizationsInput-in-0.destination}.${spring.application.name}
+                consumer:
+                    maxAttempts: 10
+                    backOffInitialInterval: 30000
+                    backOffMultiplier: 2
+                    backOffMaxInterval: 3000000
+                binder: integration
+            positionsInput-in-0:
+                group: ${spring.application.name}
+                destination: service.organization.position
+                binder: integration
+            positionsInputDlq-in-0:
+                group: ${spring.application.name}
+                destination: error.${spring.cloud.stream.bindings.positionsInput-in-0.destination}.${spring.application.name}
+                consumer:
+                    maxAttempts: 10
+                    backOffInitialInterval: 30000
+                    backOffMultiplier: 2
+                    backOffMaxInterval: 3000000
+                binder: integration
+            departmentsInput-in-0:
+                group: ${spring.application.name}
+                destination: service.organization.department
+                binder: integration
+            departmentsInputDlq-in-0:
+                group: ${spring.application.name}
+                destination: error.${spring.cloud.stream.bindings.departmentsInput-in-0.destination}.${spring.application.name}
+                consumer:
+                    maxAttempts: 10
+                    backOffInitialInterval: 30000
+                    backOffMultiplier: 2
+                    backOffMaxInterval: 3000000
+                binder: integration
+            employeesInput-in-0:
+                group: ${spring.application.name}
+                destination: service.organization.employee
+                binder: integration
+            employeesInputDlq-in-0:
+                group: ${spring.application.name}
+                destination: error.${spring.cloud.stream.bindings.employeesInput-in-0.destination}.${spring.application.name}
+                consumer:
+                    maxAttempts: 10
+                    backOffInitialInterval: 30000
+                    backOffMultiplier: 2
+                    backOffMaxInterval: 3000000
+                binder: integration
+            transportInput-in-0:
+                group: ${spring.application.name}
+                destination: service.transport
+                binder: integration
+            attorneyInput-in-0:
+                group: ${spring.application.name}
+                destination: service.attorney
+                binder: integration
+            drivingLicenseInput-out-0:
+                group: ${spring.application.name}
+                destination: service.driving.license
+                binder: integration
+            odometerValueOutput-out-0:
+                group: ${spring.application.name}
+                destination: service.odometer.history
+                binder: integration
+            fleetOwnerOrganizationsInput-in-0:
+                group: ${spring.application.name}
+                destination: service.tariff-fleet.fleet_owner_organization
+                binder: integration
+            organizationMedicalLicensesInput-in-0:
+                group: ${spring.application.name}
+                destination: service.tariff-fleet.organization_medical_license
+                binder: integration
+            ewbContractsInput-in-0:
+                group: ${spring.application.name}
+                destination: service.tariff-fleet.ewb_contract
+                consumer:
+                    enableDlq: true
+                    topic.properties:
+                        cleanup.policy: compact,delete
+                        retention.ms: 604800000
+                binder: integration
+            ewbContractsInputDlq-in-0:
+                group: ${spring.application.name}
+                destination: error.${spring.cloud.stream.bindings.ewbContractsInput-in-0.destination}.${spring.application.name}
+                consumer:
+                    maxAttempts: 10
+                    backOffInitialInterval: 30000
+                    backOffMultiplier: 2
+                    backOffMaxInterval: 3000000
+                binder: integration
+            ewbTariffsInput-in-0:
+                group: ${spring.application.name}
+                destination: service.tariff-fleet.ewb_tariff
+                binder: integration

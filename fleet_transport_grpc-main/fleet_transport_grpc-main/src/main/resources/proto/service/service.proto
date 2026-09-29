@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_package = "ru.sber.transport.transport.grpc.service";
+import "dto/dto.proto";
+
+package ru.sber.transport.transport.grpc.service;
+
+service VehicleService {
+    rpc getEwbInfo(ru.sber.transport.transport.grpc.dto.EwbData)
+        returns (ru.sber.transport.transport.grpc.dto.EnrichedEwbInfo);
+
+    rpc getDriverInfo(ru.sber.transport.transport.grpc.dto.DriverInfoRequest)
+        returns (ru.sber.transport.transport.grpc.dto.DriverInfoResponse);
+
+    rpc getAttorneyInfo(ru.sber.transport.transport.grpc.dto.AttorneyInfoRequest)
+        returns (ru.sber.transport.transport.grpc.dto.AttorneyInfoResponse);
+}

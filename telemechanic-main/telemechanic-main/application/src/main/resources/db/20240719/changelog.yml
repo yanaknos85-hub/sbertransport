@@ -1,0 +1,18 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20240719
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: telemechanic
+                        tableName: ewb
+                        columns:
+                            -   column:
+                                    name: odometer_out
+                                    type: uuid
+                                    remarks: ID показаний одометра на выезде
+                            -   column:
+                                    name: odometer_in
+                                    type: uuid
+                                    remarks: ID показаний одометра на заезде

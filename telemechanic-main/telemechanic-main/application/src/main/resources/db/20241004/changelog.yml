@@ -1,0 +1,28 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20241004-1
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/edit_telemedicine_roles.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20241004-2
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_access_get_medical_license.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20241004-3
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/edit_medical_license_roles.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

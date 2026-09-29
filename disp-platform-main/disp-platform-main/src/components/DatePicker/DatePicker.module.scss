@@ -1,0 +1,435 @@
+.dateInputContainer {
+  position: relative;
+
+  .dateInputLabel {
+    font-size: 9px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    font-family: SB Sans Interface;
+    position: absolute;
+    z-index: 10;
+    left: 16px;
+    top: 4px;
+  }
+
+  .datePicker {
+    min-width: 227px;
+    min-height: 40px;
+    border-radius: 8px;
+    padding: 0 16px;
+    position: relative;
+
+    &::before {
+      content: "";
+      width: 1px;
+      height: 32px;
+      position: absolute;
+      right: 56px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    :global {
+      .anticon-calendar svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .ant-picker {
+        &-suffix {
+          margin-left: auto;
+          width: 20px;
+          display: inline-flex;
+          align-items: center;
+        }
+
+        &-clear {
+          width: 20px;
+          height: 21px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        &-input {
+          > input {
+            font-family: SB Sans Text;
+            font-size: 14px;
+            letter-spacing: -0.3px;
+          }
+        }
+
+        &-range {
+          &-separator {
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+
+  :global {
+    .ant-picker-focused {
+      box-shadow: none;
+
+      &::before {
+        transition: background-color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+      }
+    }
+  }
+
+  .dateRangePicker {
+    @extend .datePicker;
+
+    :global {
+      .ant-picker {
+        &-clear {
+          right: 16px;
+        }
+
+        &-input {
+          width: 80px;
+
+          > input {
+            width: 80px;
+          }
+        }
+
+        &-range-separator {
+          height: 1px;
+          padding: 0 2px;
+          margin: 0 2px;
+        }
+      }
+    }
+  }
+
+  .placeholderRange {
+    :global {
+      .ant-picker-input {
+        width: 90px;
+
+        > input {
+          width: 90px;
+        }
+      }
+
+      .ant-picker-range-separator {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .dateQuarterPicker,
+  .dateYearPicker {
+    :global(.ant-picker-input) {
+      > input {
+        letter-spacing: -0.8px;
+
+        &::placeholder {
+          letter-spacing: -0.8px;
+        }
+      }
+    }
+  }
+
+  .labeledDatePicker {
+    :global(.ant-picker-input) {
+      > input {
+        padding-top: 16px;
+
+        &::placeholder {
+          color: var(--light-gray);
+        }
+      }
+    }
+
+    :global(.ant-picker-range-separator) {
+      position: relative;
+      top: 7px;
+    }
+  }
+
+  .inActiveLabel {
+    :global {
+      .ant-picker-range-separator {
+        background-color: var(--light-gray);
+      }
+    }
+  }
+
+  .dropdownDatePicker {
+    $cell-size: 32px;
+    border-radius: 12px;
+    box-shadow:
+      0px 4px 8px -2px rgba(0, 0, 0, 0.12),
+      0px 0px 1px 0px rgba(0, 0, 0, 0.12);
+
+    :global {
+      .ant-picker {
+        &-month-btn,
+        &-year-btn {
+          font-weight: 500;
+          color: var(--dark-grey);
+        }
+
+        &-date-range-wrapper {
+          box-shadow:
+            0px 4px 8px -2px rgba(0, 0, 0, 0.12),
+            0px 0px 1px 0px rgba(0, 0, 0, 0.12);
+          border-radius: 12px;
+
+          :global {
+            .ant-picker-panel-container .ant-picker-panel {
+              box-shadow: none;
+              border: none;
+            }
+
+            .ant-picker {
+              &-cell-in-view.ant-picker-cell-range-start::before {
+                left: 0;
+              }
+
+              &-decade-panel,
+              &-year-panel,
+              &-quarter-panel,
+              &-month-panel,
+              &-week-panel,
+              &-time-panel {
+                .ant-picker-cell-selected::before {
+                  margin: 0;
+                  border-radius: 0;
+                  background-color: var(--light-green);
+                }
+
+                .ant-picker-cell-range-start.ant-picker-cell-range-end.ant-picker-cell-selected::before {
+                  border-radius: 8px;
+                }
+              }
+            }
+          }
+        }
+
+        &-decade-panel,
+        &-year-panel,
+        &-quarter-panel,
+        &-month-panel,
+        &-week-panel,
+        &-time-panel {
+          .ant-picker-cell-in-view.ant-picker-cell-range-start::before {
+            left: 50%;
+          }
+        }
+
+        &-panel-container {
+          border-radius: 12px;
+        }
+
+        &-cell {
+          &::before {
+            height: $cell-size;
+            min-width: $cell-size;
+            margin: 0 2px;
+            border-radius: 8px;
+          }
+
+          &-disabled {
+            color: var(--light-gray);
+
+            &::before {
+              background-color: var(--white);
+            }
+          }
+
+          &-inner {
+            min-width: $cell-size;
+            height: $cell-size;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+          }
+
+          &-in-view {
+            color: var(--dark-grey);
+          }
+
+          &-in-range::before {
+            background-color: var(--light-green);
+            border-radius: 0;
+            margin: 0;
+          }
+
+          &-today .ant-picker-cell-inner {
+            position: relative;
+
+            &::before {
+              border: none;
+            }
+
+            &::after {
+              content: "";
+              width: 8px;
+              height: 4px;
+              background-color: var(--jade);
+              border-radius: 2px;
+              position: absolute;
+              bottom: 0;
+              left: 50%;
+              transform: translateX(-50%);
+            }
+          }
+        }
+
+        &-year-panel,
+        &-quarter-panel,
+        &-month-panel,
+        &-week-panel,
+        &-date-panel,
+        &-time-panel {
+          width: 292px;
+        }
+
+        &-decade-panel {
+          width: 310px;
+        }
+
+        &-content {
+          width: 100%;
+
+          thead,
+          tbody {
+            width: 100%;
+          }
+
+          td {
+            padding: 2px 0;
+            height: 36px;
+          }
+
+          thead tr {
+            th {
+              font-weight: 600;
+              color: var(--dark-grey);
+
+              &:nth-child(6),
+              &:nth-child(7) {
+                color: var(--light-red);
+              }
+            }
+          }
+        }
+
+        &-body {
+          padding: 16px 20px 36px;
+        }
+
+        &-header {
+          padding: 20px 20px 0;
+          border: none;
+
+          button,
+          &-view {
+            line-height: 24px;
+          }
+        }
+
+        &-footer {
+          border: none;
+
+          &-extra {
+            padding: 0 20px 5px;
+
+            &:not(:last-child) {
+              border: none;
+            }
+          }
+        }
+
+        &-range-arrow {
+          display: none;
+        }
+
+        &-quarter-panel {
+          .ant-picker-cell {
+            &-disabled::before {
+              background-color: var(--solitude);
+              height: 36px;
+            }
+
+            &-inner {
+              height: 36px;
+              min-width: 63px;
+            }
+          }
+        }
+      }
+
+      .ant-radio {
+        &-group {
+          display: flex;
+          gap: 8px;
+        }
+
+        &-button-wrapper {
+          font-family: "SB Sans Text", sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 22px;
+          border-radius: 8px;
+          color: #4d4d4d;
+          background: rgba(0, 0, 0, 0.06);
+          padding: 4px 12px;
+          border: none;
+
+          &:not(:first-child)::before {
+            display: none;
+          }
+
+          &-checked:not(.ant-radio-button-wrapper-disabled) {
+            background: rgba(0, 0, 0, 0.9);
+            color: var(--silver);
+            font-size: 16px;
+            line-height: 24px;
+          }
+        }
+      }
+
+      .ant-picker-cell-in-view.ant-picker-cell-range-end:not(.ant-picker-cell-range-end-single):not(
+          .ant-picker-cell-range-start
+        )
+        .ant-picker-cell-inner,
+      .ant-picker-cell-in-view.ant-picker-cell-range-start:not(.ant-picker-cell-range-start-single):not(
+          .ant-picker-cell-range-end
+        )
+        .ant-picker-cell-inner {
+        border-radius: 8px;
+      }
+
+      .ant-picker-date-panel
+        .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-range-hover-start
+        .ant-picker-cell-inner::after,
+      .ant-picker-date-panel
+        .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-range-hover-end
+        .ant-picker-cell-inner::after,
+      .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-range-hover::before,
+      .ant-picker-cell-in-view.ant-picker-cell-range-start.ant-picker-cell-range-hover::before,
+      .ant-picker-cell-in-view.ant-picker-cell-range-end.ant-picker-cell-range-hover::before,
+      .ant-picker-cell-in-view.ant-picker-cell-range-start:not(
+          .ant-picker-cell-range-start-single
+        ).ant-picker-cell-range-hover-start::before,
+      .ant-picker-cell-in-view.ant-picker-cell-range-end:not(
+          .ant-picker-cell-range-end-single
+        ).ant-picker-cell-range-hover-end::before,
+      .ant-picker-panel
+        > :not(.ant-picker-date-panel)
+        .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-range-hover-start::before,
+      .ant-picker-panel
+        > :not(.ant-picker-date-panel)
+        .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-range-hover-end::before {
+        background-color: var(--turquoise);
+      }
+    }
+  }
+}

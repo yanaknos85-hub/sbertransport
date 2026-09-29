@@ -1,0 +1,16 @@
+.pageHeader {
+  padding: 0;
+
+  :global(.ant-page-header-heading-title) {
+    font-weight: 600;
+  }
+
+  :global(.ant-page-header-heading-left) {
+    flex-wrap: wrap;
+  }
+
+  :global(.ant-page-header-heading-sub-title) {
+    flex: 0 0 100%;
+    padding-left: 32px;
+  }
+}

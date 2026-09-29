@@ -1,0 +1,1 @@
+DROP TABLE contractors.driver_tag_to_handbook

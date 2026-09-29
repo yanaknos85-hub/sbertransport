@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230405"
+      author: medvedev-ad
+      context: "20230405"
+      changes:
+        - tagDatabase:
+            tag: "20230405"
+        - dropTable:
+            schemaName: notifications
+            tableName: tokens
+      rollback:
+        - createTable:
+            schemaName: notifications
+            tableName: tokens
+            columns:
+              - column:
+                  name: token
+                  type: varchar(1000)
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: notifications_tokens_pk
+              - column:
+                  name: employee_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: notifications_tokens_employee_id_nn
+              - column:
+                  name: platform_type
+                  type: varchar(7)

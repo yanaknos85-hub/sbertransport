@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240229-1052"
+      author: ladeyshchikov_aa
+      changes:
+        - addColumn:
+            schemaName: contractors
+            tableName: employee
+            columns:
+              - column:
+                  name: consent
+                  remarks: Флаг подписания ПДн
+                  type: boolean
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+      rollback:
+        - dropColumn:
+            schemaName: contractors
+            tableName: employee
+            columnName: consent
+

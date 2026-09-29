@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20260302-1001"
+      author: zhirov_aa
+      changes:
+        - sql:
+            sql: DELETE FROM driver_track.expected_waypoints_trip ewt1
+              WHERE EXISTS (
+                SELECT 1 
+                FROM driver_track.expected_waypoints_trip ewt2
+                WHERE ewt1.trip_id = ewt2.trip_id
+                AND ewt1.id > ewt2.id 
+              );
+        - addUniqueConstraint:
+            schemaName: driver_track
+            tableName: expected_waypoints_trip
+            columnNames: trip_id
+            constraintName: uk_expected_waypoints_trip_trip_id
+            validate: true
+      rollback:
+        - dropUniqueConstraint:
+            schemaName: driver_track
+            tableName: expected_waypoints_trip
+            constraintName: uk_expected_waypoints_trip_trip_id
+
+  - changeSet:
+      id: "20260302-1002"
+      author: zhirov_aa
+      changes:
+        - sql:
+            sql: DELETE FROM driver_track.fact_waypoints_trip fwt1
+              WHERE EXISTS (
+                SELECT 1 
+                FROM driver_track.fact_waypoints_trip fwt2
+                WHERE fwt1.trip_id = fwt2.trip_id
+                AND fwt1.id > fwt2.id 
+              );
+        - addUniqueConstraint:
+            schemaName: driver_track
+            tableName: fact_waypoints_trip
+            columnNames: trip_id
+            constraintName: uk_fact_waypoints_trip_trip_id
+            validate: true
+      rollback:
+        - dropUniqueConstraint:
+            schemaName: driver_track
+            tableName: fact_waypoints_trip
+            constraintName: uk_fact_waypoints_trip_trip_id
+

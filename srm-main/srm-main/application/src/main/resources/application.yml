@@ -1,0 +1,105 @@
+grpc:
+  server:
+    port: 6565
+server:
+  port: 8042
+  tomcat:
+    relaxed-query-chars:
+      - "["
+      - "]"
+spring:
+  config:
+    import:
+      - optional:configserver:${SPRING_CLOUD_CONFIG_URI}
+      - management.yml
+  jackson:
+    default-property-inclusion: non_null
+  application:
+    name: srm
+    version: @project.version@
+  profiles:
+    active: kafka
+  datasource:
+    url: jdbc:postgresql://localhost:5432/transport
+    password: root
+    username: postgres
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 10
+      schema: ${spring.application.name}
+      minimum-idle: 1
+      idle-timeout: 10000
+      connection-timeout: 30000
+      max-lifetime: 60000
+  jpa:
+    show-sql: ${SHOW_SQL:false}
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    change-log: classpath:db/changelog-master.yml
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    database-change-log-table: changelog_${spring.application.name}
+    database-change-log-lock-table: changelog_${spring.application.name}_lock
+    liquibase-schema: ${MIGRATIONS_SCHEMA:public}
+  cloud:
+    vault:
+      enabled: false
+    openfeign:
+      client:
+        config:
+          default:
+            connectTimeout: 10000
+            readTimeout: 60000
+#            logger-level: full
+          gis-feign-client:
+            url: ${TWOGIS_ROOT_URL:http://routing.api.2gis.com/get_dist_matrix}
+          gis-async-feign-client:
+            url: ${TWOGIS_ROOT_URL_ASYNC:http://routing.api.2gis.com/async_matrix/create_task/get_dist_matrix}
+          gis-async-result-feign-client:
+            url: ${TWOGIS_ROOT_URL_ASYNC_RESULT:http://routing.api.2gis.com/async_matrix/result/get_dist_matrix}
+          sowa-feign-client:
+            url: ${SOWA_URL:sowa.url}
+management:
+  health:
+    elasticsearch:
+      enabled: false
+gisdata:
+  provider: ${GIS_PROVIDER:twogis}
+  providers:
+    twogis:
+      rootUrl: ${TWOGIS_ROOT_URL:http://routing.api.2gis.com/get_dist_matrix}
+      apiKey: ${TWOGIS_API_KEY:ruexhj4805}
+    twogisasync:
+      rootUrl: ${TWOGIS_ROOT_URL_ASYNC:http://routing.api.2gis.com/async_matrix/create_task/get_dist_matrix}
+      apiKey: ${TWOGIS_API_KEY:ruexhj4805}
+    twogisasyncresult:
+      rootUrl: ${TWOGIS_ROOT_URL_ASYNC_RESULT:http://routing.api.2gis.com/async_matrix/result/get_dist_matrix}
+      apiKey: ${TWOGIS_API_KEY:ruexhj4805}
+  asyncLevel: ${ASYNC_LEVEL:12}
+  sowaUrl: ${SOWA_URL:sowa.url}
+  timeout: ${GIS_DATA_TIMEOUT:10000}
+  sleepTime: ${GIS_DATA_SLEEP_TIME:1000}
+
+magenta:
+  user: ${MAGENTA_USER:user}
+  password: ${MAGENTA_PASSWORD:g3f$67GHf#%6}
+
+drug:
+  updateInfoUrl: ${DRUG_UPDATEINFOURL:http://updateinfodrug}
+  updateInfoLogin: ${DRUG_UPDATEINFOLOGIN:login}
+  updateInfoPassword: ${DRUG_UPDATEINFOPASSWORD:password}
+  delayUpdateInfoSec: ${DRUG_DELAYUPDATEINFOSEC:5}
+
+sharedride:
+  deactivate:
+    cron: ${SHAREDRIDE_DEACTIVATE_CRON:0 0 */1 * * *}
+
+ssl:
+  support: true
+  client.enabled: false
+  trust.enabled: false
+javamelody:
+  enabled: ${JAVAMELODY_ENABLED:false}

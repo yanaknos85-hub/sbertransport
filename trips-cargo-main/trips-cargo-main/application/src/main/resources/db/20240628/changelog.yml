@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240628-1331"
+      author: mabatov-nv
+      changes:
+        - addColumn:
+            schemaName: trips_cargo
+            tableName: trips
+            columns:
+              - column:
+                  name: dispatcher_start_time
+                  type: timestamp with time zone
+                  remarks: Время начала поездки по диспетчеру
+      rollback:
+        - dropColumn:
+            schemaName: trips_cargo
+            tableName: trips
+            columns:
+              - column:
+                  name: dispatcher_start_time

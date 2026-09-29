@@ -1,0 +1,36 @@
+.buttonGroup {
+  position: absolute;
+  width: 90px;
+  right: 30px;
+  top: -70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tableWrapper {
+  position: relative;
+}
+
+.iconButton {
+  background-color: var(--solitude);
+  color: var(--charcoal);
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1px 6px !important;
+  border: none;
+
+  &:hover,
+  &:focus {
+    color: var(--charcoal);
+    background-color: var(--solitude);
+  }
+
+  &::after {
+    display: none;
+  }
+}

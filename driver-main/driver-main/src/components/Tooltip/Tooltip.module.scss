@@ -1,0 +1,28 @@
+@import 'styles/variables.scss';
+
+.tooltip {
+  :global(.adm-popover-inner) {
+    box-shadow: 0 3px 18px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  :global(.adm-popover-inner-content) {
+    font-family: 'SB Sans Text';
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.32px;
+  }
+
+  &:global(.adm-popover-dark .adm-popover-inner) {
+    background-color: $cool-gray;
+  }
+
+  &:global(.adm-popover-dark .adm-popover .adm-popover-arrow) {
+    color: $cool-gray;
+  }
+
+  &.arrowHide {
+    :global(.adm-popover-arrow) {
+      display: none;
+    }
+  }
+}

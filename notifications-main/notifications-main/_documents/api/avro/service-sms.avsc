@@ -1,0 +1,80 @@
+{
+  "namespace": "ru.sber.transport.messages.sms.avro",
+  "name": "SmsMessage",
+  "type": "record",
+  "doc": "Модель сообщения с СМС",
+  "fields": [
+    {
+      "name": "id",
+      "doc": "Идентификатор",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      },
+      "aliases": [
+        "headerId"
+      ]
+    },
+    {
+      "name": "phones",
+      "doc": "Номера телефонов получателей",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "template",
+      "doc": "Шаблон текста сообщения",
+      "type": "string"
+    },
+    {
+      "name": "data",
+      "type": [ "null", {
+        "type": "record",
+        "name": "DataList",
+        "doc": "Данные для шаблона",
+        "fields": [
+          {
+            "name": "values",
+            "doc": "Список значений",
+            "type": {
+              "type": "array",
+              "items": {
+                "type": "record",
+                "name": "Data",
+                "doc": "Данные для шаблона",
+                "fields": [
+                  {
+                    "name": "key",
+                    "type": "string",
+                    "doc": "Ключ"
+                  },
+                  {
+                    "name": "value",
+                    "type": [
+                      "null",
+                      "int",
+                      "boolean",
+                      "long",
+                      "double",
+                      "string",
+                      "bytes",
+                      "Data",
+                      "DataList"
+                    ],
+                    "doc": "Значение"
+                  }
+                ]
+              }
+            },
+            "default": []
+          }
+        ]
+      }],
+      "default": null
+    }
+  ]
+}

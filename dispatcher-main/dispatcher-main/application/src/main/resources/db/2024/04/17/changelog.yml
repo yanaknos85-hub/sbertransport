@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240417-1302"
+      author: blandin-ad
+      context: "TRANSPORT-18380"
+      changes:
+        - tagDatabase:
+            tag: "D-03.008.000"
+        - addForeignKeyConstraint:
+            baseTableSchemaName: dispatcher
+            baseTableName: contractor
+            baseColumnNames: main_dispatcher_id
+            referencedTableSchemaName: dispatcher
+            referencedTableName: dispatcher
+            referencedColumnNames: id
+            constraintName: dispatcher_contractor_dispatcher_id_fk
+      rollback:
+        - dropForeignKeyConstraint:
+            baseTableSchemaName: dispatcher
+            baseTableName: contractor
+            baseColumnNames: main_dispatcher_id
+            constraintName: dispatcher_contractor_dispatcher_id_fk

@@ -1,0 +1,139 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: dispatcher
+  namespace: ci02351878-edevgen-sbertransport-dev
+spec:
+  selector:
+    matchLabels:
+      app: dispatcher
+  template:
+    metadata:
+      namespace: ci02351878-edevgen-sbertransport-dev
+      labels:
+        app: dispatcher
+        app.kubernetes.io/name: dispatcher
+        app.kubernetes.io/part-of: transport
+        secman-injector: enabled
+        version: development
+      annotations:
+        vault.hashicorp.com/agent-inject-template-kafka-truststore.jks: >-
+          {{- with secret
+          "A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/kafka" -}}
+              {{ base64Decode (index .Data "trust.store") }}
+          {{- end -}}
+        vault.hashicorp.com/namespace: CI02351878_CI02671580
+        vault.hashicorp.com/agent-inject-secret-kafka-keystore.jks: 'true'
+        vault.hashicorp.com/role: ci02351878-edevgen-sbertransport-dev
+        sidecar.istio.io/inject: 'true'
+        vault.hashicorp.com/agent-inject: 'true'
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+        vault.hashicorp.com/agent-init-first: 'false'
+        vault.hashicorp.com/agent-pre-populate: 'false'
+        vault.hashicorp.com/agent-inject-secret-kafka-truststore.jks: 'true'
+        vault.hashicorp.com/agent-inject-template-kafka-keystore.jks: >-
+          {{- with secret
+          "A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/kafka" -}}
+              {{ base64Decode (index .Data "key.store") }}
+          {{- end -}}
+    spec:
+      restartPolicy: Always
+      serviceAccountName: springboot-servicediscovery
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30
+      securityContext: {}
+      containers:
+        - name: dispatcher
+          image: >-
+            registry-ci.delta.sbrf.ru/dev/ci02351878/ci02353146_transport_dev/transport/dispatcher:CI02351878-240415-1-blandin-ad
+          env:
+            - name: KAFKA_BROKERS
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka
+                  key: brokers
+            - name: FILE_MAX_SIZE
+              valueFrom:
+                configMapKeyRef:
+                  name: files
+                  key: image.size.max
+            - name: STAFF_LIMIT
+              valueFrom:
+                configMapKeyRef:
+                  name: dispatcher-service
+                  key: contractor.staff.limit
+            - name: JWKS_URI
+              value: 'http://jwks:8080'
+            - name: SCHEMA_REGISTRY_URL
+              value: 'http://10.53.122.234:8081'
+            - name: SPRING_PROFILES_INCLUDE
+              value: secman
+            - name: SSL_KAFKA_BROKERS
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka
+                  key: brokers
+            - name: KAFKA_SECURITY_PROTOCOL
+              value: PLAINTEXT
+            - name: KAFKA_SSL_KEYSTORE_LOCATION
+              value: /vault/secrets/kafka-keystore.jks
+            - name: KAFKA_SSL_TRUSTSTORE_LOCATION
+              value: /vault/secrets/kafka-truststore.jks
+            - name: JAVA_TOOL_OPTIONS
+              value: >-
+                -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:9002
+          resources:
+            limits:
+              cpu: 500m
+              memory: 1G
+            requests:
+              cpu: 500m
+              memory: 1G
+          volumeMounts:
+            - name: data
+              mountPath: /mnt
+            - name: logs
+              mountPath: /log
+            - name: temp
+              mountPath: /tmp
+            - name: kubernetes
+              mountPath: /app/resources/application-kubernetes.yml
+              subPath: application-kubernetes.yml
+            - name: logging
+              mountPath: /app/resources/application-logging.yml
+              subPath: application-logging.yml
+            - name: secman
+              mountPath: /app/resources/application-secman.yml
+              subPath: application-secman.yml
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: FallbackToLogsOnError
+          imagePullPolicy: IfNotPresent
+      serviceAccount: springboot-servicediscovery
+      volumes:
+        - name: data
+          emptyDir: {}
+        - name: logs
+          emptyDir: {}
+        - name: temp
+          emptyDir: {}
+        - name: kubernetes
+          configMap:
+            name: kubernetes
+            defaultMode: 420
+        - name: logging
+          configMap:
+            name: logging
+            defaultMode: 420
+        - name: secman
+          configMap:
+            name: secman-avro
+            defaultMode: 420
+            optional: true
+      dnsPolicy: ClusterFirst
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600

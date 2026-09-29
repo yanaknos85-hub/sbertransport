@@ -1,0 +1,8 @@
+**/target/
+.idea
+.gigaide
+.sberstack
+*.iml
+*.private.env.json
+/**/allure-results
+/**/.embeddings

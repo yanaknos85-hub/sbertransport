@@ -1,0 +1,20 @@
+.duration {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 4px 12px;
+    color: #000000;
+    border: 1px solid #ebebeb;
+    font-family: SB Sans Text;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: -0.3px;
+}
+
+.activeDuration {
+    background-color: #e7f9f0;
+    border-color: #70d9a6;
+}

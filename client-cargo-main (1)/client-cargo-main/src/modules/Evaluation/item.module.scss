@@ -1,0 +1,17 @@
+.notification {
+  background-color: #262c31 !important;
+  opacity: 1 !important;
+  color: white !important;
+
+  :global(.ant-notification-notice-message) {
+    color: white;
+  }
+
+  :global(.ant-notification-notice-close-x) {
+    display: none;
+  }
+
+  :global(.ant-notification-notice-description) {
+    opacity: 0.8;
+  }
+}

@@ -1,0 +1,47 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20250604-1
+            author: makarov-md
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/create_organization_address.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250604-2
+            author: tanini-v
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_access_ewb_search_all_organizations.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+                        
+    -   changeSet:
+            id: telemechanic/20250604-3
+            author: tanini-v
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_access_drivers_fio.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250605-1
+            author: makarov-md
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_organization_constraint_address.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250606-1
+            author: makarov-md
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_access_ewb_form_title_1.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

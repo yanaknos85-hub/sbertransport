@@ -1,0 +1,28 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230703"
+            author: shabrov-ie
+            changes:
+                -   tagDatabase:
+                        tag: "20230703"
+                -   addColumn:
+                        schemaName: request
+                        tableName: carsharing_trip
+                        columns:
+                            -   column:
+                                    type: text
+                                    name: start_address
+                                    remarks: Адрес начала поездки
+                            -   column:
+                                    type: text
+                                    name: finish_address
+                                    remarks: Адрес окончания поездки
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: carsharing_trip
+                        columns:
+                            -   column:
+                                    name: start_address
+                            -   column:
+                                    name: finish_address

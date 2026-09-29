@@ -1,0 +1,17 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: trips-cargo
+  namespace: ci02351878-edevgen-sbertransport-dev
+  labels:
+    app.kubernetes.io/name: trips-cargo
+    app.kubernetes.io/part-of: transport
+    template: trips-cargo
+spec:
+  ports:
+    - name: trips-cargo
+      protocol: TCP
+      port: 8080
+      targetPort: 8123
+  selector:
+    app: trips-cargo

@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230525-1413"
+      author: medvedev-ad
+      context: "20230525"
+      changes:
+        - tagDatabase:
+            tag: "20230525"
+        - addColumn:
+            schemaName: notifications_corporate
+            tableName: employee
+            columns:
+              - column:
+                  name: organization_id
+                  remarks: Ссылка на организацию
+                  type: uuid

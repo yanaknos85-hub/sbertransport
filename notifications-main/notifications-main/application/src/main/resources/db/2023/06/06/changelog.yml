@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230606-1138"
+      author: medvedev-ad
+      context: "20230606"
+      changes:
+        - tagDatabase:
+            tag: "20230606"
+        - dropNotNullConstraint:
+            schemaName: notifications_limits
+            tableName: limit
+            columnName: owner_id

@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20260514-1422"
+      author: blandin-ad
+      changes:
+        - addColumn:
+            schemaName: dispatcher
+            tableName: shift
+            columns:
+              - column:
+                  name: ewb_id
+                  type: uuid
+                  remarks: Идентификатор электронного путевого листа
+                  constraints:
+                    unique: true
+                    uniqueConstraintName: dispatcher_shift_ebw_id_uc
+      rollback:
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: shift
+            columns:
+              - column:
+                  name: ewb_id

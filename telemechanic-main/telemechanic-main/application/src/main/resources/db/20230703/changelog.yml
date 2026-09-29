@@ -1,0 +1,24 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20230703-1
+            author: klyunkov-va
+            validCheckSum: 9:cdbcbd1337991d12bae5426961cbbb3a
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/add_data.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+                -   sqlFile:
+                        relativeToChangelogFile: true
+                        path: change/fill_roles.sql
+                        splitStatements: false
+                -   sqlFile:
+                        path: change/update_data.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/remove_data.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

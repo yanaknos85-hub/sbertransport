@@ -1,0 +1,121 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: geo
+  namespace: ci02351878-edevgen-sbertransport-dev
+  labels:
+    app: geo
+    app.kubernetes.io/name: geo
+    app.kubernetes.io/part-of: transport
+    template: geo
+    version: D-01.016.000
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: geo
+  template:
+    metadata:
+      namespace: ci02351878-edevgen-sbertransport-dev
+      labels:
+        app: geo
+        secman-injector: enabled
+        version: D-01.016.000
+      annotations:
+        sidecar.istio.io/inject: 'true'
+        traffic.sidecar.istio.io/excludeOutboundPorts: '6565'
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+    spec:
+      volumes:
+        - name: data
+          emptyDir: {}
+        - name: logs
+          emptyDir: {}
+        - name: tmp
+          emptyDir: {}
+        - name: kubernetes
+          configMap:
+            name: kubernetes
+            defaultMode: 420
+        - name: logging
+          configMap:
+            name: logging
+            defaultMode: 420
+        - name: secman
+          configMap:
+            name: secman
+            defaultMode: 420
+            optional: true
+      containers:
+        - resources:
+            limits:
+              cpu: 500m
+              memory: 1G
+            requests:
+              cpu: 500m
+              memory: 1G
+          terminationMessagePath: /dev/termination-log
+          name: geo
+          env:
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: database
+                  key: url.jdbc
+            - name: KAFKA_BROKERS
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka
+                  key: brokers
+            - name: SPRING_PROFILES_INCLUDE
+              value: secman,prod,2gis
+            - name: _2GIS_BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: geo
+                  key: url.base
+            - name: MAPQUEST_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: geo
+                  key: url.mapquest
+            - name: TOMTOM_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: geo
+                  key: url.tomtom
+            - name: YANDEX_GEOCODE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: geo
+                  key: url.geocoder
+            - name: JWKS_URL
+              value: http://jwks:8080
+            - name: JDK_JAVA_OPTIONS
+              value: >-
+                -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:9002
+          securityContext:
+            readOnlyRootFilesystem: true
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: data
+              mountPath: /mnt
+            - name: logs
+              mountPath: /log
+            - name: tmp
+              mountPath: /tmp
+            - name: kubernetes
+              mountPath: /app/resources/application-kubernetes.yml
+              subPath: application-kubernetes.yml
+            - name: logging
+              mountPath: /app/resources/application-logging.yml
+              subPath: application-logging.yml
+            - name: secman
+              mountPath: /app/resources/application-secman.yml
+              subPath: application-secman.yml
+          terminationMessagePolicy: FallbackToLogsOnError
+          image: >-
+            registry.sigma.sbrf.ru/dev/ci02351878/ci02353146_transport_dev/transport/geo:231113-2-17898164
+          ports:
+            - containerPort: 8006
+              name: http-geo

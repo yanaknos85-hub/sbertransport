@@ -1,0 +1,125 @@
+.filtersPanel {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.filtersCol {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  white-space: nowrap;
+
+  &.rightCol {
+    margin-left: auto;
+  }
+}
+
+.filterBtn {
+  width: 80px;
+  padding: 0;
+  justify-content: center;
+
+  svg {
+    min-width: 24px;
+  }
+}
+
+.switcher {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btnPlus {
+  padding: 9px 11px;
+}
+
+.modal {
+  width: 500px !important;
+  max-width: 100%;
+  border-radius: 12px;
+
+  :global(.ant-modal-content) {
+    border-radius: 12px;
+  }
+
+  :global(.ant-modal-body) {
+    padding-top: 0;
+    padding-bottom: 5px;
+  }
+
+  :global(.ant-modal-header),
+  :global(.ant-modal-footer) {
+    border: none;
+  }
+
+  :global(.ant-modal-title) {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+  }
+
+  .cancelButton {
+    border-color: transparent;
+  }
+
+  :global(.ant-btn) {
+    border-radius: 8px;
+    padding: 0 20px;
+    height: 40px;
+  }
+
+  :global(.ant-form-item-label) {
+    text-align: left;
+    width: 100%;
+
+    label {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+      display: block;
+      &::after {
+        content: "";
+      }
+    }
+  }
+
+  .subtitle {
+    margin-bottom: 20px;
+  }
+}
+
+.buttonLoad {
+  width: 40px;
+  justify-content: center;
+  background: var(--solitude);
+  border: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: var(--solitude);
+  }
+
+  &::after {
+    display: none;
+  }
+}
+
+.statistics {
+  margin-left: auto;
+}
+
+.tooltip {
+  :global(.ant-tooltip-arrow) {
+    display: none;
+  }
+
+  :global(.ant-tooltip-inner) {
+    border-radius: 8px;
+  }
+}

@@ -1,0 +1,143 @@
+application: oto
+repo: app_passenger_oto
+resources:
+  limits:
+    cpu: 500m
+    memory: 1500Mi
+  requests:
+    cpu: 300m
+    memory: 1000Mi
+port:
+  http:
+    number: 8127
+    name: oto
+    target: 8080
+routing:
+  match:
+    prefix: /api/oto/
+  rewrite:
+    uri: '/'
+secman:
+  type: built_in
+profiles: kafka,kafka-ssl,kafka-avro
+additional:
+  annotations:
+    vault.hashicorp.com/agent-inject-secret-consumer-sr-truststore.jks: 'true'
+    vault.hashicorp.com/secret-volume-path-consumer-sr-truststore.jks: /vault/secret/pki
+    vault.hashicorp.com/agent-inject-template-consumer-sr-truststore.jks: >-
+      {{- with secret
+      "A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/application,kafka-avro"
+      -}}
+          {{ base64Decode (index .Data "file:base64:spring.cloud.stream.binders.kafka-avro.environment.spring.cloud.stream.kafka.binder.consumerProperties.schema.registry.ssl.truststore.location") }}
+      {{- end -}}
+
+    vault.hashicorp.com/agent-inject-secret-producer-sr-truststore.jks: 'true'
+    vault.hashicorp.com/secret-volume-path-producer-sr-truststore.jks: /vault/secret/pki
+    vault.hashicorp.com/agent-inject-template-producer-sr-truststore.jks: >-
+      {{- with secret
+      "A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/application,kafka-avro"
+      -}}
+          {{ base64Decode (index .Data "file:base64:spring.cloud.stream.binders.kafka-avro.environment.spring.cloud.stream.kafka.binder.producerProperties.schema.registry.ssl.truststore.location") }}
+      {{- end -}}
+
+    vault.hashicorp.com/agent-inject-secret-producer-sr-keystore.jks: 'true'
+    vault.hashicorp.com/secret-volume-path-producer-sr-keystore.jks: /vault/secret/pki
+    vault.hashicorp.com/agent-inject-template-producer-sr-keystore.jks: >-
+      {{- with secret
+      "A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/application,kafka-avro"
+      -}}
+          {{ base64Decode (index .Data "file:base64:spring.cloud.stream.binders.kafka-avro.environment.spring.cloud.stream.kafka.binder.producerProperties.schema.registry.ssl.keystore.location") }}
+      {{- end -}}
+
+    vault.hashicorp.com/secret-volume-path-consumer-sr-keystore.jks: /vault/secret/pki
+    vault.hashicorp.com/agent-inject-secret-consumer-sr-keystore.jks: 'true'
+    vault.hashicorp.com/agent-inject-template-consumer-sr-keystore.jks: >-
+      {{- with secret
+      "A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/application,kafka-avro"
+      -}}
+          {{ base64Decode (index .Data "file:base64:spring.cloud.stream.binders.kafka-avro.environment.spring.cloud.stream.kafka.binder.consumerProperties.schema.registry.ssl.keystore.location") }}
+      {{- end -}}
+
+    vault.hashicorp.com/secret-volume-path-kafka-truststore.jks: /vault/secret/pki
+    vault.hashicorp.com/agent-inject-secret-kafka-truststore.jks: 'true'
+    vault.hashicorp.com/agent-inject-template-kafka-truststore.jks: >-
+      {{- with secret
+      "A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/application,kafka-avro"
+      -}}
+          {{ base64Decode (index .Data "file:base64:spring.cloud.stream.binders.kafka-avro.environment.spring.cloud.stream.kafka.binder.configuration.ssl.truststore.location") }}
+      {{- end -}}
+
+    vault.hashicorp.com/agent-inject-secret-kafka-keystore.jks: 'true'
+    vault.hashicorp.com/secret-volume-path-kafka-keystore.jks: /vault/secret/pki
+    vault.hashicorp.com/agent-inject-template-kafka-keystore.jks: >-
+      {{- with secret
+      "A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/application,kafka-avro"
+      -}}
+          {{ base64Decode (index .Data "file:base64:spring.cloud.stream.binders.kafka-avro.environment.spring.cloud.stream.kafka.binder.configuration.ssl.keystore.location") }}
+      {{- end -}}
+
+    vault.hashicorp.com/agent-inject-default-template: json
+    vault.hashicorp.com/agent-inject-template-application.yml: >-
+      {{- with secret
+      "A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/application"
+      -}}
+        spring:
+          liquibase:
+            liquibase-schema: {{ index .Data "spring.liquibase.liquibase-schema" }}
+          datasource:
+            url: {{ index .Data "spring.datasource.url" }}
+         {{ with secret "PG/default/static-creds/CI02671580-pg-dev-role" }}
+            username: {{ .Data.username }}
+            password: "{{ .Data.password }}"
+          {{- end -}}
+      {{- end -}}
+
+    vault.hashicorp.com/secret-volume-path-application-kafka-avro.yml: /app/resources/config
+    vault.hashicorp.com/agent-inject-secret-application-kafka-avro.yml: 'true'
+    vault.hashicorp.com/agent-inject-template-application-kafka-avro.yml: >-
+      {{- with secret
+      "A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/application,kafka-avro"
+      -}}
+        spring.cloud.stream.binders.kafka-avro.environment.spring.cloud.stream.kafka:
+          binder:
+            configuration:
+              ssl:
+                key:
+                  password: {{ index .Data "spring.cloud.stream.binders.kafka-avro.environment.spring.cloud.stream.kafka.binder.configuration.ssl.key.password" }}
+                keystore:
+                  location: /vault/secret/pki/kafka-keystore.jks
+                  password: {{ index .Data "spring.cloud.stream.binders.kafka-avro.environment.spring.cloud.stream.kafka.binder.configuration.ssl.keystore.password" }}
+                truststore:
+                  location: /vault/secret/pki/kafka-truststore.jks
+                  password: {{ index .Data "spring.cloud.stream.binders.kafka-avro.environment.spring.cloud.stream.kafka.binder.configuration.ssl.truststore.password" }}
+            consumerProperties:
+              basic.auth.user.info: {{ index .Data "spring.cloud.stream.binders.kafka-avro.environment.spring.cloud.stream.kafka.binder.consumerProperties.schema.registry.basic.auth.user.info" }}
+              schema.registry.ssl.key.password: {{ index .Data "spring.cloud.stream.binders.kafka-avro.environment.spring.cloud.stream.kafka.binder.consumerProperties.schema.registry.ssl.key.password" }}
+              schema.registry.ssl.keystore.location: /vault/secret/pki/consumer-sr-keystore.jks
+              schema.registry.ssl.keystore.password: {{ index .Data "spring.cloud.stream.binders.kafka-avro.environment.spring.cloud.stream.kafka.binder.consumerProperties.schema.registry.ssl.keystore.password" }}
+              schema.registry.ssl.truststore.location: /vault/secret/pki/consumer-sr-truststore.jks
+              schema.registry.ssl.truststore.password: {{ index .Data "spring.cloud.stream.binders.kafka-avro.environment.spring.cloud.stream.kafka.binder.consumerProperties.schema.registry.ssl.truststore.password" }}
+            producerProperties:
+              basic.auth.user.info: {{ index .Data "spring.cloud.stream.binders.kafka-avro.environment.spring.cloud.stream.kafka.binder.producerProperties.schema.registry.basic.auth.user.info" }}
+              schema.registry.ssl.key.password: {{ index .Data "spring.cloud.stream.binders.kafka-avro.environment.spring.cloud.stream.kafka.binder.producerProperties.schema.registry.ssl.key.password" }}
+              schema.registry.ssl.keystore.location: /vault/secret/pki/producer-sr-keystore.jks
+              schema.registry.ssl.keystore.password: {{ index .Data "spring.cloud.stream.binders.kafka-avro.environment.spring.cloud.stream.kafka.binder.producerProperties.schema.registry.ssl.keystore.password" }}
+              schema.registry.ssl.truststore.location: /vault/secret/pki/producer-sr-truststore.jks
+              schema.registry.ssl.truststore.password: {{ index .Data "spring.cloud.stream.binders.kafka-avro.environment.spring.cloud.stream.kafka.binder.producerProperties.schema.registry.ssl.truststore.password" }}
+      {{- end -}}
+
+    vault.hashicorp.com/namespace: CI02351878_CI02671580
+    vault.hashicorp.com/role: ci02351878-edevgen-sbertransport-dev
+    sidecar.istio.io/inject: 'true'
+    vault.hashicorp.com/agent-inject: 'true'
+    vault.hashicorp.com/agent-inject-secret-application.properties: 'true'
+    vault.hashicorp.com/agent-init-first: 'false'
+    vault.hashicorp.com/agent-pre-populate: 'false'
+    vault.hashicorp.com/secret-volume-path-application.properties: /app/resources/config
+    vault.hashicorp.com/secret-volume-path-application.yml: /app/resources/config
+    vault.hashicorp.com/agent-inject-secret-application.yml: 'true'
+  labels:
+    secman-injector: enabled
+  envs:
+    - name: SPRING_CLOUD_CONFIG_URI
+      value: http://http-config-server:8080

@@ -1,0 +1,49 @@
+.modal {
+  :global {
+    .ant-modal-header {
+      border-bottom: none;
+
+      .ant-modal-title {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 28px;
+      }
+    }
+
+    .ant-modal-body {
+      padding: 0 24px;
+    }
+
+    .ant-modal-footer {
+      border-top: none;
+      padding: 24px;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .stateNumber {
+      font-family: 'SB Sans Text';
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 24px;
+      letter-spacing: -0.3px;
+    }
+
+    .description {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .date {
+      max-width: 100%;
+
+      :global(.ant-picker) {
+        width: 100%;
+      }
+    }
+  }
+}

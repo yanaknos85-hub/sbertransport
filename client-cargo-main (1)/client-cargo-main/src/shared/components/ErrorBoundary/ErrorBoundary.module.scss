@@ -1,0 +1,33 @@
+.errorImg {
+  width: 180px;
+  margin-bottom: 15px;
+}
+
+.defaultWrapper {
+  text-align: center;
+}
+
+.defaultErrorContainer {
+  max-width: 280px;
+  margin: auto;
+}
+
+:global(.ant-btn).reloadButton {
+  display: flex;
+  margin: 10px auto 0 auto;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.code {
+  margin-top: 5px
+}
+
+.phone {
+  display: block;
+  font-size: 20px;
+  color: rgb(16, 191, 106);
+  margin-top: 5px;
+  font-weight: 600;
+}

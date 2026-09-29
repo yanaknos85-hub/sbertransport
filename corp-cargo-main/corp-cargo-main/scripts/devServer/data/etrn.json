@@ -1,0 +1,120 @@
+{
+  "content": [
+    {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "humanReadableId": "ЭТрН-772812",
+      "sla": "24.06.2026 00:00",
+      "status": "IDENTIFIED",
+      "currentTitle": "T2",
+      "senderName": "ООО Грузоотправитель",
+      "receiverName": "АО Грузополучатель",
+      "carrierName": "ООО ТК Перевозчик"
+    },
+    {
+      "id": "b1a2c3d4-5678-90ab-cdef-1234567890ab",
+      "humanReadableId": "ЭТрН-772813",
+      "sla": "24.06.2026 00:00",
+      "status": "WAIT_KORUS_DATA",
+      "currentTitle": "T1",
+      "senderName": "ООО ЛогистикПлюс",
+      "receiverName": "ПАО ТорговыйДом",
+      "carrierName": "ООО ГрузАвтоТранс"
+    },
+    {
+      "id": "c2b3d4e5-6789-01ab-cdef-234567890abc",
+      "humanReadableId": "ЭТрН-772814",
+      "sla": "24.06.2026 00:00",
+      "status": "WAIT_CONDITIONS",
+      "currentTitle": "T3",
+      "senderName": "ООО СтройМатериалы",
+      "receiverName": "АО ЖилСтройКомплект",
+      "carrierName": "ООО БыстраяДоставка"
+    },
+    {
+      "id": "d3e4f5a6-7890-12bc-defa-34567890abcd",
+      "humanReadableId": "ЭТрН-772815",
+      "sla": "24.06.2026 00:00",
+      "status": "WAIT_KORUS_DATA",
+      "currentTitle": "T1",
+      "senderName": "АО МеталлИнвест",
+      "receiverName": "ООО СтальПрокат",
+      "carrierName": "ООО ТрансЛогистик"
+    },
+    {
+      "id": "e4f5a6b7-8901-23cd-efab-45678901abcd",
+      "humanReadableId": "ЭТрН-772816",
+      "sla": "24.06.2026 00:00",
+      "status": "READY_FOR_BANK_ACTION",
+      "currentTitle": "T2",
+      "senderName": "ООО ПищевыеТехнологии",
+      "receiverName": "АО ПродуктыПитания",
+      "carrierName": "ООО ХолодДоставка"
+    },
+    {
+      "id": "f5a6b7c8-9012-34de-fabc-56789012abcd",
+      "humanReadableId": "ЭТрН-772817",
+      "sla": "27.07.2026 00:00",
+      "status": "WAIT_KORUS_CONFIRMATION",
+      "currentTitle": "T1",
+      "senderName": "ПАО НефтеГазСнаб",
+      "receiverName": "ООО ЭнергоРесурс",
+      "carrierName": "ООО СпецТранс"
+    },
+    {
+      "id": "a6b7c8d9-0123-45ef-abcd-67890123abcd",
+      "humanReadableId": "ЭТрН-772818",
+      "sla": "27.07.2026 00:00",
+      "status": "WAIT_KORUS_CONFIRMATION",
+      "currentTitle": "T3",
+      "senderName": "ООО ХимическаяПромышленность",
+      "receiverName": "АО АгроХимСбыт",
+      "carrierName": "ООО ОпасныеГрузы"
+    },
+    {
+      "id": "b7c8d9e0-1234-56fa-bcde-78901234abcd",
+      "humanReadableId": "ЭТрН-772819",
+      "sla": "27.07.2026 00:00",
+      "status": "PROCESS_COMPLETED",
+      "currentTitle": "T2",
+      "senderName": "АО МебельСтиль",
+      "receiverName": "ООО МебельГрад",
+      "carrierName": "ООО СборныеГрузы"
+    },
+    {
+      "id": "c8d9e0f1-2345-67ab-cdef-89012345abcd",
+      "humanReadableId": "ЭТрН-772820",
+      "sla": "28.07.2026 07:00",
+      "status": "PROCESS_COMPLETED",
+      "currentTitle": "T1",
+      "senderName": "ООО ЭлектроникаСервис",
+      "receiverName": "АО ЦифровыеТехнологии",
+      "carrierName": "ООО ЭкспрессДоставка"
+    },
+    {
+      "id": "d9e0f1a2-3456-78bc-defa-90123456abcd",
+      "humanReadableId": "ЭТрН-772821",
+      "sla": "28.07.2026 07:00",
+      "status": "PROCESS_COMPLETED",
+      "currentTitle": "T3",
+      "senderName": "ООО ТекстильПром",
+      "receiverName": "АО ОдеждаРоссии",
+      "carrierName": "ООО ТканиТранс"
+    }
+  ],
+  "number": 0,
+  "size": 10,
+  "totalElements": 10,
+  "totalPages": 1,
+  "empty": false,
+  "first": true,
+  "last": false,
+  "numberOfElements": 10,
+  "pageable": {
+    "pageNumber": 0,
+    "pageSize": 10,
+    "sort": [],
+    "offset": 0,
+    "paged": true,
+    "unpaged": false
+  }
+}

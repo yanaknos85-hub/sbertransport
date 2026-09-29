@@ -1,0 +1,14 @@
+export const TRIPS_SERVICE = '/trips';
+export const TRIPS_BY_CONTRACTOR = `${TRIPS_SERVICE}/contractor/:contractorId/`;
+export const TRIP = `${TRIPS_SERVICE}/contractor/:contractorId/trip/:tripId/`;
+export const TRIPS_BY_DISPATCHER = `${TRIPS_SERVICE}/contractor/:contractorId/dispatcher/:dispatcherId/`;
+export const DRIVERS_LOCATIONS = `${TRIPS_SERVICE}/contractor/:contractorId/driver/location/`;
+export const DRIVERS_LOCATION_WEBSOCKET = `${TRIPS_SERVICE}/ws/driverPositions/v2`;
+export const CHECKIN_INFO = `${TRIPS_SERVICE}/contractor/:contractorId/trip/:tripId/checkin-info/`;
+export const DRIVER_ONLINE_SWITCHER = `${TRIPS_SERVICE}/self/dispatcher/driver/:driverId/online-switcher/`;
+export const EXPORT_TRIPS = `${TRIPS_SERVICE}/files/trips/`;
+export const TRIPS_WEBSOCKET = `${TRIPS_SERVICE}/ws/trips/v2`;
+export const BUSYNESS = `${TRIPS_SERVICE}/self/dispatcher/driver/busyness/`;
+export const TRIPS_STATISTIC = `${TRIPS_SERVICE}/contractor/:contractorId/statistic/`;
+export const TRIPS_TABLE_SETTINGS = `${TRIPS_SERVICE}/settings/reports/columns/`;
+export const TRIPS_ANALYTICS_WORKLOAD = `${TRIPS_SERVICE}-analytics/workload`;

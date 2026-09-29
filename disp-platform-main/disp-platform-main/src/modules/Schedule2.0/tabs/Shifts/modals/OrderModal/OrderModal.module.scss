@@ -1,0 +1,106 @@
+$heightInput: 40px;
+
+.modal {
+  border-radius: 12px;
+  overflow: hidden;
+
+  :global(.ant-modal-close-x) {
+    display: flex;
+    justify-content: center;
+
+    .ModalIcon {
+      width: 24px;
+    }
+  }
+
+  :global(.ant-modal-content) {
+    border-radius: 12px;
+  }
+
+  :global(.ant-modal-header),
+  :global(.ant-modal-footer) {
+    border: none;
+  }
+
+  :global(.ant-modal-title) {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+    color: var(--dark-grey);
+  }
+
+  .cancelButton {
+    color: var(--light-red) !important;
+    border-color: transparent;
+
+    &:hover,
+    &:focus {
+      border-color: var(--light-red);
+    }
+  }
+
+  :global(.ant-btn) {
+    border-radius: 8px;
+    padding: 0 20px;
+    height: 40px;
+  }
+}
+
+.form {
+  .formItem {
+    flex-direction: column;
+    margin: 0;
+
+    :global(.ant-form-item-control) {
+      min-height: fit-content;
+    }
+
+    :global(.ant-form-item-label) {
+      max-height: fit-content;
+    }
+
+    .input {
+      height: $heightInput;
+      border-radius: 8px;
+      width: 100%;
+    }
+
+    .select {
+      height: $heightInput;
+
+      :global(.ant-select-arrow) {
+        color: #000;
+      }
+
+      :global(.ant-select-selection-item) {
+        div {
+          display: none;
+        }
+      }
+
+      :global(.ant-select-selector),
+      :global(input.ant-select-selection-search-input) {
+        height: $heightInput;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    :global(.ant-form-item-label) {
+      text-align: left;
+
+      label {
+        &::after {
+          content: "";
+        }
+      }
+    }
+  }
+}
+
+.dropdownPickerPanel {
+  :global(.ant-picker-time-panel-column::after) {
+    height: 10px;
+  }
+}

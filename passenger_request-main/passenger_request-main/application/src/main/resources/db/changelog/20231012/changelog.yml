@@ -1,0 +1,476 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20231012-1131"
+            author: AALadeyshchikov
+            changes:
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_personal
+                        columns:
+                            -   column:
+                                    type: json
+                                    name: tariff
+                                    remarks: Тарифф
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            -   column:
+                                    type: json
+                                    name: tariff
+                                    remarks: Тарифф
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columns:
+                            -   column:
+                                    type: json
+                                    name: tariff
+                                    remarks: Тарифф
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    type: json
+                                    name: tariff
+                                    remarks: Тарифф
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_personal
+                        columnName: tariff
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columnName: tariff
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columnName: tariff
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        columnName: tariff
+    -   changeSet:
+            id: "20231108-1411"
+            author: AALadeyshchikov
+            changes:
+                -   modifyDataType:
+                        schemaName: request
+                        tableName: request_for_personal
+                        columnName: tariff
+                        newDataType: jsonb
+                -   modifyDataType:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columnName: tariff
+                        newDataType: jsonb
+                -   modifyDataType:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columnName: tariff
+                        newDataType: jsonb
+                -   modifyDataType:
+                        schemaName: request
+                        tableName: request_for_public
+                        columnName: tariff
+                        newDataType: jsonb
+            rollback:
+                -   modifyDataType:
+                        schemaName: request
+                        tableName: request_for_personal
+                        columnName: tariff
+                        newDataType: json
+                -   modifyDataType:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columnName: tariff
+                        newDataType: json
+                -   modifyDataType:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columnName: tariff
+                        newDataType: json
+                -   modifyDataType:
+                        schemaName: request
+                        tableName: request_for_public
+                        columnName: tariff
+                        newDataType: json
+    -   changeSet:
+            id: "20231108-1000"
+            author: AALadeyshchikov
+            changes:
+                -   createTable:
+                        schemaName: request
+                        tableName: tariff
+                        columns:
+                            # BaseTariff
+                            -   column:
+                                    name: id
+                                    type: UUID
+                                    remarks: Идентификатор записи
+                                    constraints:
+                                        nullable: false
+                            -   column:
+                                    name: humanreadableid
+                                    type: varchar(100)
+                                    remarks: Человекочитаемый идентификатор записи
+                                    constraints:
+                                        nullable: false
+                            -   column:
+                                    name: department_id
+                                    type: UUID
+                                    remarks: Идентификатор департамента
+                                    constraints:
+                                        nullable: false
+                            -   column:
+                                    name: service_type
+                                    type: varchar(255)
+                                    remarks: Вид транспортной услуги
+                                    constraints:
+                                        nullable: false
+                            -   column:
+                                    name: organization_id
+                                    type: UUID
+                                    remarks: Идентификатор организации
+                            -   column:
+                                    name: region_id
+                                    type: UUID
+                                    remarks: Идентификатор региона
+                            -   column:
+                                    name: transport_type
+                                    type: varchar(50)
+                                    remarks: Тип транспорта
+                                    constraints:
+                                        nullable: false
+                            -   column:
+                                    name: active
+                                    type: boolean
+                                    remarks: Служебное флаг активности
+                                    constraints:
+                                        nullable: false
+                            # BaseTariffWithContract
+                            -   column:
+                                    name: contract_id
+                                    type: UUID
+                                    remarks: Идентификатор договора
+                            # SuburbTariffParams
+                            -   column:
+                                    name: cost_per_km_suburb
+                                    type: integer
+                                    remarks: Цена за км  за чертой города, коп
+                            -   column:
+                                    name: cost_per_min_suburb
+                                    type: integer
+                                    remarks: Цена за минуту  за чертой города, коп
+                            -   column:
+                                    name: suburb_service_cost_per_km
+                                    type: integer
+                                    remarks: Стоимость 1 км платной подачи за чертой города, коп.
+                            -   column:
+                                    name: suburb_service_cost_per_min
+                                    type: integer
+                                    remarks: Стоимость 1 мин платной подачи за чертой города, коп.
+                            -   column:
+                                    name: cost_per_min_inter_region
+                                    type: integer
+                                    remarks: Стоимость пробега 1 км межрегиональной поездки, коп.
+                            -   column:
+                                    name: cost_per_km_inter_region
+                                    type: integer
+                                    remarks: Стоимость 1 минуты межрегиональной поездки, коп
+                            # EngineTariffParams
+                            -   column:
+                                    name: coef_engine_1_6
+                                    type: double
+                                    remarks: К объема двигателя для ТС до 1,6 л.
+                            -   column:
+                                    name: coef_engine_1_6_to_2_0
+                                    type: double
+                                    remarks: К объема двигателя для ТС от 1,6 до 2,0 л
+                            -   column:
+                                    name: coef_engine_2_0_to_2_5
+                                    type: double
+                                    remarks: К объема двигателя для ТС от 2,0 до 2,5 л
+                            # TimedTariffParams
+                            -   column:
+                                    name: coef_work_day_morning
+                                    type: double
+                                    remarks: Коэффициент временного интервала поездки утро будние дни 07:00-10:00
+                            -   column:
+                                    name: coef_work_day_noon
+                                    type: double
+                                    remarks: Коэффициент временного интервала поездки день будние дни 10:00-18:00
+                            -   column:
+                                    name: coef_work_day_evening
+                                    type: double
+                                    remarks: Коэффициент временного интервала поездки вечерний будние дни 18:00-22:00
+                            -   column:
+                                    name: coef_work_day_night
+                                    type: double
+                                    remarks: Коэффициент временного интервала поездки ночной будние дни 22:00-07:00
+                            -   column:
+                                    name: coef_day_off
+                                    type: double
+                                    remarks: Коэффициент выходного дня СБ, ВСКР
+                            # CoopTariffParams
+                            -   column:
+                                    name: savings_deviation_pct
+                                    type: double
+                                    remarks: Отклонение экономии от поездки в процентах
+                            -   column:
+                                    name: distance_deviation_km
+                                    type: double
+                                    remarks: Предельно-допустимое отклонение по километражу, км
+                            -   column:
+                                    name: time_deviation_min
+                                    type: integer
+                                    remarks: Отклонение по времени прибытия во вторую точку в минутах
+                            -   column:
+                                    name: min_cancel_time_min
+                                    type: integer
+                                    remarks: Триггерное время (За какое время до поездки ее можно отменить)
+                            # ContractorDeviationsTariffParams
+                            -   column:
+                                    name: contractor_max_diff_computed_distance_percent
+                                    type: integer
+                                    remarks: Допустимый % отклонения протяженности маршрута от контрагента и расчетной протяженности в АС
+                            -   column:
+                                    name: contractor_max_diff_fact_distance_percent
+                                    type: integer
+                                    remarks: Допустимый % отклонения протяженности маршрута от контрагента и фактической протяженности в АС
+                            -   column:
+                                    name: contractor_max_diff_computed_cost_percent
+                                    type: integer
+                                    remarks: Допустимый % отклонения стоимости поездки в реестре контрагента и расчетной стоимости в АС
+                            -   column:
+                                    name: contractor_max_diff_contractor_cost_percent
+                                    type: integer
+                                    remarks: Допустимый % отклонения стоимости поездки в реестре контрагента и возвращенной стоимости от подрядчика
+                            -   column:
+                                    name: contractor_max_diff_computed_waiting_percent
+                                    type: integer
+                                    remarks: Допустимый % отклонения времени ожидания в реестре контрагента и времени ожидания предварительно рассчитанного в АС.
+                            # Tariffs
+                            -   column:
+                                    name: ride_cost_per_min
+                                    type: integer
+                                    remarks: Стоимость за минуту, коп
+                            -   column:
+                                    name: minutes_included
+                                    type: integer
+                                    remarks: Бесплатных минут пути, включенных в тариф
+                            -   column:
+                                    name: distance_included
+                                    type: double
+                                    remarks: Бесплатных километров пути, включенных в тариф
+                            -   column:
+                                    name: min_ride_distance_cost
+                                    type: integer
+                                    remarks: Стоимость минимальной поездки с включенным расстоянием, коп
+                            -   column:
+                                    name: min_ride_time_cost
+                                    type: integer
+                                    remarks: Стоимость минимальной поездки с включенным временем, коп
+                            -   column:
+                                    name: wait_cost_per_min
+                                    type: integer
+                                    remarks: Стоимость за минуту ожидания
+                            -   column:
+                                    name: wait_cost_per_min_intermediate
+                                    type: integer
+                                    remarks: Стоимость за минуту ожидания в промежуточной точке, коп.
+                            -   column:
+                                    name: seasonal_coefficient
+                                    type: double
+                                    remarks: Сезонный коэффициент
+                            -   column:
+                                    name: season_start
+                                    type: date
+                                    remarks: Дата начала действия тарифа
+                            -   column:
+                                    name: season_end
+                                    type: date
+                                    remarks: Дата завершения действия тарифа
+                            -   column:
+                                    name: coef_traffic
+                                    type: double
+                                    remarks: Коэффициент загрузки дорог
+                            -   column:
+                                    name: coef_material_assets
+                                    type: double
+                                    remarks: K перевозки ТМЦ
+                            -   column:
+                                    name: trust_idx
+                                    type: double
+                                    remarks: Индекс затрат на страхование, руб./км
+                            -   column:
+                                    name: contractor_id
+                                    type: UUID
+                                    remarks: Контрагент
+                            -   column:
+                                    name: contractor_tariff_id
+                                    type: text
+                                    remarks: Идентификатор тарифа контрагента
+                            -   column:
+                                    name: taxi_class
+                                    type: varchar(255)
+                                    remarks: Класс такси
+                            -   column:
+                                    name: ride_cost_per_km
+                                    type: integer
+                                    remarks: Цена за км, коп
+                            -   column:
+                                    name: free_waiting_time
+                                    type: integer
+                                    remarks: Бесплатных минут ожидания, включенных в тариф
+                            -   column:
+                                    name: car_service_cost
+                                    type: integer
+                                    remarks: Стоимость подачи такси, коп
+                            -   column:
+                                    name: coef_child_seat
+                                    type: double
+                                    remarks: Коэффициент доплаты за детское кресло
+                            -   column:
+                                    name: coef_pet_transport
+                                    type: double
+                                    remarks: Коэффициент доплаты за перевозку животного
+                            -   column:
+                                    name: coef_bicycle
+                                    type: double
+                                    remarks: Коэффициент доплаты за лыжи/сноуборд/велосипед
+                            -   column:
+                                    name: coef_org
+                                    type: double
+                                    remarks: Коэффициент организации
+                            -   column:
+                                    name: work_group
+                                    type: varchar
+                                    remarks: Рабочая группа
+                            -   column:
+                                    name: trigger_time
+                                    type: integer
+                                    remarks: Триггерное время
+                            -   column:
+                                    name: is_night_tariff
+                                    type: boolean
+                                    remarks: Признак - является ночным тарифом
+                            -   column:
+                                    name: deleted
+                                    type: boolean
+                                    remarks: Флаг удаления тарифа
+                            -   column:
+                                    name: coef_casco
+                                    type: double
+                                    remarks: Коэффициент на полное покрытие ответственности КАСКО
+                            -   column:
+                                    name: metro_ticket_cost
+                                    type: integer
+                                    remarks: Цена билета на метро, коп
+                            -   column:
+                                    name: tram_ticket_cost
+                                    type: integer
+                                    remarks: Цена билета на трамвай, коп
+                            -   column:
+                                    name: trolleybus_ticket_cost
+                                    type: integer
+                                    remarks: Цена билета на троллейбус, коп
+                            -   column:
+                                    name: bus_ticket_cost
+                                    type: integer
+                                    remarks: Цена билета на автобус, коп
+                            -   column:
+                                    name: city_local_train_cost
+                                    type: integer
+                                    remarks: Цена билета на электричку, коп
+                            -   column:
+                                    name: metro_availability
+                                    type: boolean
+                                    remarks: Доступность метро в регионе
+                            -   column:
+                                    name: tram_availability
+                                    type: boolean
+                                    remarks: Доступность трамвая в регионе
+                            -   column:
+                                    name: trolleybus_availability
+                                    type: boolean
+                                    remarks: Доступность троллейбуса в регионе
+                            -   column:
+                                    name: bus_availability
+                                    type: boolean
+                                    remarks: Доступность автобуса в регионе
+                            -   column:
+                                    name: city_local_train_availability
+                                    type: boolean
+                                    remarks: Доступность электрички в регионе
+                            -   column:
+                                    name: travel_card_metro_cost
+                                    type: integer
+                                    remarks: Стоимость проездного на метро, коп
+                            -   column:
+                                    name: travel_card_tram_cost
+                                    type: integer
+                                    remarks: Стоимость проездного на трамвай, коп
+                            -   column:
+                                    name: travel_card_trolleybus_cost
+                                    type: integer
+                                    remarks: Стоимость проездного на троллейбус, коп
+                            -   column:
+                                    name: travel_card_bus_cost
+                                    type: integer
+                                    remarks: Стоимость проездного на автобус, коп
+                            -   column:
+                                    name: travel_card_local_train_cost
+                                    type: integer
+                                    remarks: Стоимость проездного на электричку, коп
+                            -   column:
+                                    name: travel_card_all_city_transport_cost
+                                    type: integer
+                                    remarks: Стоимость проездного на метро, коп
+                            -   column:
+                                    name: travel_card_metro_availability
+                                    type: boolean
+                                    remarks: Доступность проездного на метро
+                            -   column:
+                                    name: travel_card_tram_availability
+                                    type: boolean
+                                    remarks: Доступность проездного на трамвай
+                            -   column:
+                                    name: travel_card_trolleybus_availability
+                                    type: boolean
+                                    remarks: Доступность проездного на троллейбус
+                            -   column:
+                                    name: travel_card_bus_availability
+                                    type: boolean
+                                    remarks: Доступность проездного на автобус
+                            -   column:
+                                    name: travel_card_local_train_availability
+                                    type: boolean
+                                    remarks: Доступность проездного на электричку
+                            -   column:
+                                    name: travel_card_all_city_transport_availability
+                                    type: boolean
+                                    remarks: Доступность проездного на метро
+            rollback:
+                -   dropTable:
+                        schemaName: request
+                        tableName: tariff
+    -   changeSet:
+            id: "20231115-0802"
+            author: AALadeyshchikov
+            changes:
+                -   addColumn:
+                        schemaName: request
+                        tableName: tariff
+                        columns:
+                            -   column:
+                                    type: varchar(255)
+                                    name: region
+                                    remarks: Регион
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: tariff
+                        columnName: region

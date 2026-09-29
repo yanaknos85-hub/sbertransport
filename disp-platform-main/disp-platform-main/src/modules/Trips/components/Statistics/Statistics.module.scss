@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    gap: 5px;
+    text-wrap: nowrap;
+    cursor: pointer;
+    padding: 4px 12px;
+    color: #000000;
+    border: 1px solid #ebebeb;
+
+    font-family: SB Sans Text;
+    font-size: 12px;
+    line-height: 22px;
+    font-weight: 400;
+    letter-spacing: -0.3px;
+}
+
+.count {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.activeStatus {
+    background-color: #e7f9f0;
+    border-color: #70d9a6;
+}

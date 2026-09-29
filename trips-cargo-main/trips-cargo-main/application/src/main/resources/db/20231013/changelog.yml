@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20231013"
+      author: blandin-ad
+      changes:
+        - addColumn:
+            schemaName: trips_cargo
+            tableName: trips
+            columns:
+              - column:
+                  name: capacity
+                  remarks: Грузоподъемность тс
+                  type: double precision
+              - column:
+                  name: loaders_work_time
+                  remarks: Время работы грузчиков
+                  type: bigint
+      rollback:
+        - dropColumn:
+            schemaName: trips_cargo
+            tableName: trips
+            columns:
+              - column:
+                  name: capacity
+              - column:
+                  name: loaders_work_time

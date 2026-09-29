@@ -1,0 +1,25 @@
+.Modal {
+  :global(.ant-modal-content) {
+    border-radius: 8px;
+  }
+
+  :global(.ant-modal-close-x) {
+    display: flex;
+    justify-content: center;
+    .ModalIcon {
+      width: 24px;
+    }
+  }
+
+  .okButton {
+    border-radius: 8px;
+    padding: 4px 13px;
+    height: 40px;
+  }
+
+  .cancelButton {
+    border: none;
+    padding: 4px 13px;
+    height: 40px;
+  }
+}

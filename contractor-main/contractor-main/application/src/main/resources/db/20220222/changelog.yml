@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: contractor/20220222
+            context: "20220222"
+            author: nikulinsa
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/drop_constraint_in_vehicle.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: rollback/rollback_drop_constraint_in_vehicle.sql
+                        relativeToChangelogFile: true

@@ -1,0 +1,21 @@
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  top: 98px;
+  right: 24px;
+}
+
+.modal {
+  :global(.ant-modal-footer) {
+    display: flex;
+    justify-content: space-around;
+    & :global(.ant-btn) {
+      width: 100%;
+    }
+  }
+}
+
+.showModalButton {
+  margin-right: var(--margin-large);
+}

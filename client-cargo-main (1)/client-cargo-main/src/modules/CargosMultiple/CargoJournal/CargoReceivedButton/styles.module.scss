@@ -1,0 +1,25 @@
+.requestInfo {
+  margin-bottom: 20px;
+}
+
+.infoRow {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+  align-items: flex-start;
+}
+
+.label {
+  font-weight: 500;
+  min-width: 140px;
+  flex-shrink: 0;
+}
+
+.value {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.textArea {
+  margin-top: 16px;
+}

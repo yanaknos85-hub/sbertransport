@@ -1,0 +1,1 @@
+DELETE FROM telemechanic.check c WHERE c.check_type = 'HEADLAMPS' OR c.check_type = 'SIDE_MIRRORS' OR c.check_type = 'SPLASH_GUARDS';

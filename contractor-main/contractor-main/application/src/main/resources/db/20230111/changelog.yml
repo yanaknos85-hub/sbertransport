@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230111"
+      author: blandin-ad
+      changes:
+        - tagDatabase:
+            tag: "20230110"
+        - addColumn:
+            schemaName: contractors
+            tableName: check_in
+            columns:
+              - column:
+                  name: time_zone
+                  type: datetime
+                  remarks: Временная зона
+      rollback:
+        - dropColumn:
+            schemaName: contractors
+            tableName: check_in
+            columns:
+              - column:
+                  name: time_zone
+  - changeSet:
+      id: "20230111-2"
+      author: blandin-ad
+      changes:
+        - sqlFile:
+            path: change/change_type.sql
+            relativeToChangelogFile: true
+      rollback:
+        - sqlFile:
+            path: rollback/chage_type_rollback.sql
+            relativeToChangelogFile: true
+  - changeSet:
+      id: "20230112"
+      author: blandin-ad
+      changes:
+        - createIndex:
+            schemaName: contractors
+            tableName: check_in
+            columns:
+              - column:
+                  name: trip_id
+            indexName: contractors_checkin_tripid_idx
+      rollback:
+        - dropIndex:
+            schemaName: contractors
+            tableName: check_in
+            indexName: contractors_checkin_tripid_idx

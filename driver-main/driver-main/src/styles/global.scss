@@ -1,0 +1,14 @@
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  font-family: 'SB Sans Interface', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.st-safe-area {
+  position: absolute;
+  z-index: -1;
+}

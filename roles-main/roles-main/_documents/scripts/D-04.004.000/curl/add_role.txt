@@ -1,0 +1,10 @@
+curl --X POST \
+--location '{url}/api/roles/' \
+--header 'Authorization: Bearer {token}' \
+--header 'Content-Type: application/json' \
+--data '{
+        	"code": "ROLE_CLIENT_MANAGER",
+        	"name": "Клиентский менеджер",
+        	"description": "Роль идет как дополнительная роль к уже имеющейся роли Администратора системы мастер-данных",
+        	"data_master": true
+        }'

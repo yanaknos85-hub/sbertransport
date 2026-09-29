@@ -1,0 +1,13 @@
+databaseChangeLog:
+    -   changeSet:
+            id: 20220831
+            author: bychkov-va
+            dbms: postgresql
+            changes:
+                -   sql:
+                        sql: create schema telemechanic;
+                -   sql:
+                        sql: comment on schema telemechanic is 'Telemechanic';
+            rollback:
+                -   sql:
+                        sql: drop schema telemechanic;

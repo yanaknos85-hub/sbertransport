@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250506-1549"
+      author: medvedev-ad
+      context: "TRANSPORT-31820"
+      changes:
+        - tagDatabase:
+            tag: "D-04.009.000"
+        - addColumn:
+            schemaName: ${schema_name}
+            tableName: trip_order
+            columns:
+              - column:
+                  name: receipt
+                  type: text
+                  remarks: Название файла чека поездки

@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240304-1519"
+      author: khristyuk_vv
+      context: "TRANSPORT-20292"
+      changes:
+        - addColumn:
+            schemaName: trips_cargo
+            tableName: trips
+            columns:
+              - column:
+                  name: route_human_readable_id
+                  type: varchar(255)
+                  remarks: Человекочитаемый идентификатор маршрутного листа
+      rollback:
+        - dropColumn:
+            schemaName: trips_cargo
+            tableName: trips
+            columns:
+              - column:
+                  name: route_human_readable_id

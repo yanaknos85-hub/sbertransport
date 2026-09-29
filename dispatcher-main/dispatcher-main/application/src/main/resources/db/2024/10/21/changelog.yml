@@ -1,0 +1,59 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20241021-1124"
+      author: blandin-ad
+      context: "TRANSPORT-26866"
+      changes:
+        - tagDatabase:
+            tag: "D-03.020.000"
+        - createTable:
+            schemaName: dispatcher
+            tableName: trips
+            columns:
+              - column:
+                  name: id
+                  remarks: Идентификатор
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: dispatcher_trips_pk
+              - column:
+                  name: start_time
+                  remarks: Время начала поездки
+                  type: timestamp with time zone
+              - column:
+                  name: end_time
+                  remarks: Время окончания поездки
+                  type: timestamp with time zone
+              - column:
+                  name: shift_id
+                  remarks: Идентификатор смены, в рамках которой происходит выполнение поездки
+                  type: uuid
+              - column:
+                  name: contractor_id
+                  remarks: Идентификатор конрагента, обрабатывающего поездку
+                  type: uuid
+      rollback:
+        - dropTable:
+            schemaName: dispatcher
+            tableName: trips
+  - changeSet:
+      id: "20241024-1124"
+      author: blandin-ad
+      context: "TRANSPORT-26866"
+      changes:
+        - tagDatabase:
+            tag: "D-03.020.000"
+        - addForeignKeyConstraint:
+            baseTableSchemaName: dispatcher
+            baseTableName: trips
+            baseColumnNames: shift_id
+            referencedTableSchemaName: dispatcher
+            referencedTableName: shift
+            referencedColumnNames: id
+            constraintName: dispatcher_trips_shift_id_fk
+      rollback:
+        - dropForeignKeyConstraint:
+            baseTableSchemaName: dispatcher
+            baseTableName: trips
+            constraintName: dispatcher_trips_shift_id_fk

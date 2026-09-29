@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20231016-1044"
+      author: medvedev-ad
+      context: "TRANSPORT-17137"
+      changes:
+        - tagDatabase:
+            tag: "D-02.034.000"
+        - sql:
+            sql: create schema test
+        - createTable:
+            schemaName: test
+            tableName: test
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: test_pk
+              - column:
+                  name: name
+                  type: text

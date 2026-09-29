@@ -1,0 +1,106 @@
+spring.cloud:
+    stream:
+        kafka:
+            binder:
+                brokers:
+                    - ${KAFKA_BROKERS}
+                auto-alter-topics: true
+                autoAddPartitions: true
+                producer-properties:
+                    key.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+                consumer-properties:
+                    key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+                    dlqProducerProperties.key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+                    standardHeaders: both
+            default:
+                consumer:
+                    enableDlq: true
+                    topic.properties:
+                        cleanup.policy: compact,delete
+                        retention.ms: 604800000
+                producer:
+                    topic.properties:
+                        cleanup.policy: compact,delete
+                        retention.ms: 604800000
+            bindings:
+                employeesInputDlq-in-0:
+                    consumer:
+                        enableDlq: false
+                departmentsInputDlq-in-0:
+                    consumer:
+                        enableDlq: false
+                positionsInputDlq-in-0:
+                    consumer:
+                        enableDlq: false
+                organizationsInputDlq-in-0:
+                    consumer:
+                        enableDlq: false
+        binders:
+            kafka:
+                type: kafka
+                environment:
+                    spring.cloud.stream.kafka:
+                        binder:
+                            producerProperties:
+                                key.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+                            consumerProperties:
+                                key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+        default-binder: kafka
+        bindings:
+            organizationsInput-in-0:
+                group: ${spring.application.name}
+                destination: service.organization
+            organizationsInputDlq-in-0:
+                group: ${spring.application.name}
+                destination: error.${spring.cloud.stream.bindings.organizationsInput-in-0.destination}.${spring.application.name}
+                consumer:
+                    maxAttempts: 10
+                    backOffInitialInterval: 30000
+                    backOffMultiplier: 2
+                    backOffMaxInterval: 3000000
+            positionsInput-in-0:
+                group: ${spring.application.name}
+                destination: service.organization.position
+            positionsInputDlq-in-0:
+                group: ${spring.application.name}
+                destination: error.${spring.cloud.stream.bindings.positionsInput-in-0.destination}.${spring.application.name}
+                consumer:
+                    maxAttempts: 10
+                    backOffInitialInterval: 30000
+                    backOffMultiplier: 2
+                    backOffMaxInterval: 3000000
+            departmentsInput-in-0:
+                group: ${spring.application.name}
+                destination: service.organization.department
+            departmentsInputDlq-in-0:
+                group: ${spring.application.name}
+                destination: error.${spring.cloud.stream.bindings.departmentsInput-in-0.destination}.${spring.application.name}
+                consumer:
+                    maxAttempts: 10
+                    backOffInitialInterval: 30000
+                    backOffMultiplier: 2
+                    backOffMaxInterval: 3000000
+            employeesInput-in-0:
+                group: ${spring.application.name}
+                destination: service.organization.employee
+            employeesInputDlq-in-0:
+                group: ${spring.application.name}
+                destination: error.${spring.cloud.stream.bindings.employeesInput-in-0.destination}.${spring.application.name}
+                consumer:
+                    maxAttempts: 10
+                    backOffInitialInterval: 30000
+                    backOffMultiplier: 2
+                    backOffMaxInterval: 3000000
+            odometerHistoryValueInput-in-0:
+                group: ${spring.application.name}
+                destination: service.odometer.history
+            transportOutput-out-0:
+                group: ${spring.application.name}
+                destination: service.transport
+            engineTypeOutput-out-0:
+                group: ${spring.application.name}
+                destination: service.vehicle.engine_type
+            fuelTypeOutput-out-0:
+                group: ${spring.application.name}
+                destination: service.vehicle.fuel_type
+            

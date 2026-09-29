@@ -1,0 +1,35 @@
+works:
+  files:
+    -   url: /contractor
+        fileType:
+          - xlsx
+          - xls
+          - ods
+        collections:
+          -   name: Контрагенты
+              type: ru.sber.transport.contractor.dto.files.ContractorFile
+              mappings:
+                -   from: Имя контрагента
+                    to: name
+                -   from: Инн
+                    to: tin
+                -   from: ОГРН контрагента
+                    to: msrn
+                -   from: Фио контактного лица
+                    to: contactPersonInfo
+                -   from: Номер контактного лица
+                    to: contactPersonPhone
+                -   from: Название контрагента латиницей
+                    to: contractorName
+                -   from: Название контрагента кириллицей
+                    to: contractorRusName
+                -   from: Тип интеграции
+                    to: integrationType
+                -   from: Интеграционный email контрагента
+                    to: integrationEmail
+                -   from: Интеграционный url контрагента
+                    to: url
+                -   from: Интеграционный login контрагента
+                    to: login
+                -   from: Интеграционный password контрагента
+                    to: password

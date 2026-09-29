@@ -1,0 +1,12 @@
+databaseChangeLog:
+    - changeSet:
+        id: "20231205"
+        author: delyukov-da
+        changes:
+            -   tagDatabase:
+                    tag: "20231205"
+            -  addPrimaryKey:
+                constraintName: pk_request_tariff_id
+                schemaName: request
+                tableName: tariff
+                columnNames: id

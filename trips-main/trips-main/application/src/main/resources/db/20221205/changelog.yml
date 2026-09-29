@@ -1,0 +1,76 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221205"
+            author: medvedev-ad
+            context: "20221205"
+            changes:
+                -   tagDatabase:
+                        tag: "20221205"
+                -   sql:
+                        sql: create schema trips;
+                -   sql:
+                        sql: comment on schema trips is 'Таблица поездок';
+            rollback:
+                -   sql:
+                        sql: drop schema trips cascade;
+    -   changeSet:
+            id: "20221205-1"
+            author: medvedev-ad
+            context: "20221205"
+            changes:
+                -   createTable:
+                        schemaName: trips
+                        tableName: trips
+                        remarks: Поездки
+                        columns:
+                            -   column:
+                                    name: id
+                                    type: uuid
+                                    remarks: Идентификатор
+                                    constraints:
+                                        primaryKey: true
+                            -   column:
+                                    name: status
+                                    type: text
+                                    remarks: Статус
+                                    defaultValue: WAITING_FOR_ASSIGNMENT
+                                    constraints:
+                                        nullable: false
+                -   createTable:
+                        schemaName: trips
+                        tableName: employee
+                        remarks: Сотрудники
+                        columns:
+                            -   column:
+                                    name: id
+                                    type: uuid
+                                    remarks: Идентификатор
+                                    constraints:
+                                        primaryKey: true
+                            -   column:
+                                    name: last_name
+                                    type: text
+                                    remarks: Фамилия
+                            -   column:
+                                    name: first_name
+                                    type: text
+                                    remarks: Имя
+                            -   column:
+                                    name: patronymic
+                                    type: text
+                                    remarks: Отчество
+                -   createTable:
+                        schemaName: trips
+                        tableName: tariffs
+                        remarks: Тарифы
+                        columns:
+                            -   column:
+                                    name: id
+                                    type: uuid
+                                    remarks: Идентификатор
+                                    constraints:
+                                        primaryKey: true
+                            -   column:
+                                    name: human_readable_id
+                                    type: text
+                                    remarks: Человекочитаемый идентификатор

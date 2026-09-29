@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240707-1"
+      author: nikandrov-ae
+      changes:
+        - addColumn:
+            schemaName: trips_cargo
+            tableName: trips
+            columns:
+              - column:
+                  name: loaders
+                  type: integer
+                  remarks: Количество грузчиков на маршруте
+                  constraints:
+                    nullable: false
+                  defaultOnNull: true
+                  defaultValueNumeric: 0
+      rollback:
+        - dropColumn:
+            schemaName: trips_cargo
+            tableName: trips
+            columns:
+              - column:
+                  name: loaders

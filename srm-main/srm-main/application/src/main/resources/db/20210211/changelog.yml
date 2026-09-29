@@ -1,0 +1,22 @@
+databaseChangeLog:
+    -   changeSet:
+            id: srm/20210211
+            author: aas
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: create_schema.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: add_srm.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: create_tariff_tables.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: create_setting.sql
+                        relativeToChangelogFile: true

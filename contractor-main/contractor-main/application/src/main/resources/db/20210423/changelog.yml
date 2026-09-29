@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: contractor/20210423
+      context: "20210423"
+      author: kirillov
+      dbms: postgresql
+      changes:
+        - sqlFile:
+              path: changes/add_contractor_hri.sql
+              relativeToChangelogFile: true
+              endDelimiter: ;
+        - sqlFile:
+            path: changes/alter_car_models_year.sql
+            relativeToChangelogFile: true
+            endDelimiter: ;
+        - sqlFile:
+            path: changes/add_contractor_name_tin_constraint.sql
+            relativeToChangelogFile: true
+            endDelimiter: ;
+      rollback:
+        - sqlFile:
+            path: rollback/alter_car_models_year.sql
+            relativeToChangelogFile: true
+            endDelimiter: ;
+        - sqlFile:
+            path: rollback/drop_contractor_name_tin_constraint.sql
+            relativeToChangelogFile: true
+            endDelimiter: ;
+        - sqlFile:
+            path: rollback/drop_contractor_hri.sql
+            relativeToChangelogFile: true
+            endDelimiter: ;

@@ -1,0 +1,24 @@
+curl --X POST \
+--location '{url}/api/roles/' \
+--header 'Authorization: Bearer {token}' \
+--header 'Content-Type: application/json' \
+--data '{
+        	"code": "ROLE_AUTOSERVICE_MANAGER",
+        	"name": "Руководитель автосервиса",
+        	"description": "Роль, для сотрудников внешних контрагентов, выполняющих функцию руководителя автосервисы",
+        	"exclusive": ["EXTERNAL"],
+        	"data_master": true
+        }'
+
+
+curl --X POST \
+--location '{url}/api/roles/' \
+--header 'Authorization: Bearer {token}' \
+--header 'Content-Type: application/json' \
+--data '{
+          "code": "ROLE_AUTOSERVICE_TA",
+          "name": "Техническая учетная запись",
+          "description": "Роль, для технической учетной записи",
+          "scopes": ["AUTOSERVICE_TA"],
+          "exclusive": ["EXTERNAL"]
+        }'

@@ -1,0 +1,66 @@
+as: transport                                       # Верхнеуровневое название АС.
+namespace: ci02351878-edevgen-sbertransport-dev
+application: trips-cargo
+repo: app_platform_trips_cargo                        # Репозиторий-источник
+version: 231227-1-17898164                          # Номер версии. Может быть номером релиза.
+serviceAccount: springboot-servicediscovery
+resources:
+  limits:
+    cpu: 500m
+    memory: 2G
+  requests:
+    cpu: 500m
+    memory: 1G
+port:
+  http:                                             # Не добавлять если нет. Если указано, добавит service с описанием http
+    number: 8123
+    name: trips-cargo
+    target: 8080
+image:
+  registry: registry.delta.sbrf.ru/dev/ci02351878/ci02353146_transport_dev/transport
+  tag: :231227-1-17898164
+routing:
+  gateway: client-ingress-dev-platform
+  hosts:
+    - api.platform.transport.apps.dev-terra000003-ids.ocp.delta.sbrf.ru
+  match:
+    prefix: /api/trips-cargo
+  rewrite:
+    uri: ' '
+profiles: prod,kafka                               # Список профилей для подключения
+secman:
+  #  namespace: CI02351878_CI02668103               # Используется если secman.type != built_in. role для подключения к секману.
+  type: built_in                                    # built_in - встроенное подключение к секману, configmap - wait-скрипт монтируется, container - wait-скрипт в контейнере.
+#  configmap:                                       # Используется если secman.type != built_in. Указывать в случае если wait-script монтируется.
+#    script: /tmp/waitscript/waitScript.sh          # Используется если secman.type != built_in. Путь к wait-скрипту.
+#  container:                                       # Используется если secman.type != built_in. Указывать в случае если используется wait-script в контейнере.
+#    script: /app1/scripts/waitscript/waitScript.sh # Используется если secman.type != built_in. Путь к wait-скрипту.
+#  startClass: test                                 # Используется если secman.type != built_in. Стартовый класс сервиса.
+additional:                                        # Дополнительные данные для деплоя
+  #   annotations:                                    # Дополнительные аннотации для деплоя. Указывать в том же виде, в котором они были бы указаны в деплое.
+  #     testAnnotation: annotation
+  #     secondAnnotation: annotation
+  envs:                                           # Дополнительные переменные окружения для деплоя. Указывать в том же виде, в котором они были бы указаны в деплое.
+    - name: JAVA_TOOL_OPTIONS
+      valueFrom:
+        configMapKeyRef:
+          name: jdk-java-options
+          key: debug
+    - name: CHECK_CONSENT
+      value: 'false'
+    - name: JWK_URL
+      value: http://jwks:8080
+    - name: KAFKA_BROKERS
+      valueFrom:
+        configMapKeyRef:
+          name: kafka
+          key: brokers
+#   volumes:                                        # Список дополнительных разделов. Указывать в том же виде, в котором они были бы указаны в деплое.
+#     - name: test
+#       configMap:
+#         name: volume
+#         defaultMode: 420
+#   mounts:                                         # Список дополнительных монтирований. Транслируется в volumeMounts. Указывать в том же виде, в котором они были бы указаны в деплое.
+#     - name: test
+#       mountPath: test.yml
+#       subPath: test.yml

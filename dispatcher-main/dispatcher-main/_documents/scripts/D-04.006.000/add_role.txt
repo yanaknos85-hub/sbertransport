@@ -1,0 +1,10 @@
+curl --X POST \
+--location '{url}/api/roles/' \
+--header 'Authorization: Bearer {token}' \
+--header 'Content-Type: application/json' \
+--data '{
+        	"code": "ROLE_DISPATCHER_ROOM_ADMIN",
+        	"name": "Администратор диспетчерской",
+        	"description": "Роль, которая позваоляет пользователю переключаться между разными диспетчерскими и производить административные манипуляции",
+        	"data_master": true
+        }'

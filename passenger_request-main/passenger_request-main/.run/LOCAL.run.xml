@@ -1,0 +1,36 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="LOCAL" type="Spring Boot Run" factoryName="Spring Boot Run">
+    <option name="ActiveProfiles" value="local, logging" />
+    <option name="AdditionalParameters" />
+    <envs>
+      <env name="grpc.client.geo-zones.address" value="static://localhost:6510" />
+      <env name="grpc.client.srm.address" value="static://localhost:6511" />
+      <env name="HIBERNATE_GENERATE_STATISTICS" value="false" />
+      <env name="JWKS_URI" value="http://localhost:8090" />
+      <env name="KAFKA_BROKERS" value="localhost:9092,127.0.0.1:9092" />
+      <env name="LOG_HIBERNATE_SQL" value="INFO" />
+      <env name="LOG_HIBERNATE_TYPE" value="INFO" />
+      <env name="LOG_LEVEL" value="INFO" />
+      <env name="MIGRATIONS_SCHEMA" value="migrations" />
+      <env name="SCHEDULED_DEADLINE_CHECK" value="-" />
+      <env name="scheduler.car-location.cron" value="-" />
+      <env name="scheduler.driver-arrived-deadline.cron" value="-" />
+      <env name="scheduler.in-progress-trip.cron" value="-" />
+      <env name="scheduler.new-trip.cron" value="-" />
+      <env name="SHOW_SQL" value="false" />
+      <env name="SPRING_CLOUD_DISCOVERY_CLIENT_SIMPLE_INSTANCES_GRPC-FILES-V2_0_URI" value="http://localhost:9090" />
+      <env name="SPRING_CLOUD_VAULT_ENABLED" value="false" />
+      <env name="SPRING_DATASOURCE_PASSWORD" value="root" />
+      <env name="SPRING_DATASOURCE_URL" value="jdbc:postgresql://localhost:5432/transport" />
+      <env name="SPRING_DATASOURCE_USERNAME" value="postgres" />
+    </envs>
+    <option name="FrameDeactivationPolicy" />
+    <option name="MainClass" value="ru.sberbank.ditsib.transport.request.RequestApplication" />
+    <module name="application" />
+    <shortenClasspath name="NONE" />
+    <option name="UpdatePolicy" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

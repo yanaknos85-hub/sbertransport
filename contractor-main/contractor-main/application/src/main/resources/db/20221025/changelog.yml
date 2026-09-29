@@ -1,0 +1,35 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221025"
+            context: "20221025"
+            author: medvedev-ad
+            changes:
+                -   addColumn:
+                        schemaName: contractors
+                        tableName: contractor
+                        columns:
+                            -   column:
+                                    name: integration_type
+                                    type: varchar(255)
+                                    remarks: Тип интеграции
+                                    defaultOnNull: true
+                                    defaultValue: EMAIL_XML
+                                    constraints:
+                                        nullable: false
+    -   changeSet:
+            id: "20221025-1"
+            context: "20221025"
+            author: medvedev-ad
+            changes:
+                -   addColumn:
+                        schemaName: contractors
+                        tableName: contractor
+                        columns:
+                            -   column:
+                                    name: main_dispatcher_id
+                                    type: uuid
+                                    remarks: Идентификатор основного диспетчера
+                                    constraints:
+                                        foreignKeyName: contractor_main_dispatcher_dispatcher_fk
+                                        referencedTableName: contractors.dispatcher
+                                        referencedColumnNames: id

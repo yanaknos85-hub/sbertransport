@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20241113"
+      author: blandin-ad
+      changes:
+        - dropColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: processing_shift_id
+      rollback:
+        - addColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: processing_shift_id
+                  type: uuid
+                  remarks: Фактическая смена обработки поездки
+
+

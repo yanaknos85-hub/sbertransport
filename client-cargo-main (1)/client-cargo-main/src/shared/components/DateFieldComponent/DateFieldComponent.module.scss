@@ -1,0 +1,11 @@
+.border {
+  border-radius: 16px;
+  background-color: #fff;
+
+  .infoText {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--gray-10);
+    line-height: 1.4;
+  }
+}

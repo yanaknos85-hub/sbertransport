@@ -1,0 +1,23 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221209-2"
+            author: blandin-ad
+            changes:
+                -   tagDatabase:
+                        tag: "20221209-2"
+                -   addColumn:
+                        schemaName: request
+                        tableName: dep_limit_message
+                        columns:
+                            -   column:
+                                    name: active
+                                    type: boolean
+                                    defaultValueBoolean: true
+                                    remarks: Признак активности лимита
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: dep_limit_message
+                        columns:
+                            -   column:
+                                    name: active

@@ -1,0 +1,17 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20250618"
+            author: burlakov-sv
+            preConditions:
+                - onFail: MARK_RAN
+                - columnExists:
+                    schemaName: request
+                    tableName: request
+                    columnName: vehicle_id
+            changes:
+                -   tagDatabase:
+                        tag: "20250618"
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request
+                        columnName: vehicle_id

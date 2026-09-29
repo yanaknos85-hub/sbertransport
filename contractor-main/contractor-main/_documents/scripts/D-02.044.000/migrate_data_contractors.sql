@@ -1,0 +1,2 @@
+update trips.contractors set digit_id = c.digit_id, autoassign = c.autoassign from contractors.contractor as c where trips.contractors.id = c.id;
+update trips_cargo.contractors set digit_id = c.digit_id, autoassign = c.autoassign from contractors.contractor as c where trips_cargo.contractors.id = c.id;

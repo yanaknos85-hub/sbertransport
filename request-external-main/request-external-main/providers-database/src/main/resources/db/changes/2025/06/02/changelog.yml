@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250602-1316"
+      author: medvedev-ad
+      context: "TRANSPORT-32883"
+      changes:
+        - tagDatabase:
+            tag: "D-04.009.000"
+        - createIndex:
+            schemaName: ${schema_name}
+            tableName: assessments
+            columns:
+              - column:
+                  name: order_id
+            indexName: ${schema_name}_assessments_order_id_idx

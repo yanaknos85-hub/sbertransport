@@ -1,0 +1,53 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230530"
+            author: shabrov-ie
+            changes:
+                -   tagDatabase:
+                        tag: "20230530"
+                -   createIndex:
+                        columns:
+                            -   column:
+                                    name: request_for_carsharing_id
+                        schemaName: request
+                        tableName: request_for_carsharing_history
+                        indexName: request_for_carsharing_id_idx
+                -   createIndex:
+                        columns:
+                            -   column:
+                                    name: request_for_personal_id
+                        schemaName: request
+                        tableName: request_for_personal_history
+                        indexName: request_for_personal_id_idx
+                -   createIndex:
+                        columns:
+                            -   column:
+                                    name: request_for_public_id
+                        schemaName: request
+                        tableName: request_for_public_history
+                        indexName: request_for_public_id_idx
+                -   createIndex:
+                        columns:
+                            -   column:
+                                    name: request_for_taxi_id
+                        schemaName: request
+                        tableName: request_for_taxi_history
+                        indexName: request_for_taxi_id_idx
+            rollback:
+                -   dropIndex:
+                        schemaName: request
+                        tableName: request_for_carsharing_history
+                        indexName: request_for_carsharing_id_idx
+                -   dropIndex:
+                        schemaName: request
+                        tableName: request_for_personal_history
+                        indexName: request_for_personal_id_idx
+                -   dropIndex:
+                        schemaName: request
+                        tableName: request_for_public_history
+                        indexName: request_for_public_id_idx
+                -   dropIndex:
+                        schemaName: request
+                        tableName: request_for_taxi_history
+                        indexName: request_for_taxi_id_idx
+                

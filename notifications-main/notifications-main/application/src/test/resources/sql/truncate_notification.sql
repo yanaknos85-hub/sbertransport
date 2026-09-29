@@ -1,0 +1,3 @@
+truncate notifications.notification cascade;
+truncate notifications_settings.notification cascade;
+truncate notifications_corporate.employee cascade;

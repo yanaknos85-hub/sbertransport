@@ -1,0 +1,14 @@
+<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_50762_450845)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M18 13.8916V6.72335C18 6.08253 17.6585 5.491 17.1037 5.17103L10.8963 1.5869C10.3415 1.26693 9.65853 1.26693 9.10374 1.5869L2.89626 5.17103C2.34147 5.491 2 6.08342 2 6.72335V13.8907C2 14.5316 2.34147 15.1231 2.89626 15.443L9.10374 19.0281C9.65853 19.348 10.3415 19.348 10.8963 19.0281L17.1037 15.4439C17.6585 15.124 18 14.5316 18 13.8916Z" stroke="#737373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M4.77502 10.8722L7.4638 12.4317" stroke="#737373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2.24023 5.82715L10 10.3075L17.7598 5.82715" stroke="#737373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M10.0001 19.2696V10.307" stroke="#737373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M6.11963 8.06715L14.1232 3.45142" stroke="#737373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_50762_450845">
+<rect width="20" height="20" fill="white" transform="translate(0 0.346924)"/>
+</clipPath>
+</defs>
+</svg>

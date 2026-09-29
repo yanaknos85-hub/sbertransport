@@ -1,0 +1,59 @@
+spring:
+    cloud:
+        stream:
+            kafka:
+                default:
+                    consumer:
+                        enableDlq: true
+                binder:
+                    brokers:
+                        - ${KAFKA_BROKERS:@kafka.default.broker@}
+                    producerProperties:
+                        key.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+                    consumerProperties:
+                        key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+            default-binder: kafka
+            bindings:
+                organizationInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.organization
+                    binder: kafka
+                departmentInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.organization.department
+                    binder: kafka
+                employeeInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.organization.employee
+                    binder: kafka
+                positionInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.organization.position
+                    binder: kafka
+                delegateInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.organization.employee.delegate
+                    binder: kafka
+                fraudInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.ai.receipt.scanner.fraud
+                    binder: kafka
+                updateStatusInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.request-external.update.status
+                    binder: kafka
+                notificationsOutput-out-0:
+                    destination: service.notification
+                    binder: kafka
+                requestExternal-out-0:
+                    destination: service.request.external
+                    binder: kafka
+                requestPayoutOutput-out-0:
+                    destination: payout.create.request-payout
+                    binder: kafka
+                fraudMonitoringOutput-out-0:
+                    destination: service.fraud-monitoring.listen.fraud
+                    binder: kafka
+                receiptScannerOutput-out-0:
+                    destination: service.ai.receipt.scanner.listen.document
+                    binder: kafka

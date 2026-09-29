@@ -1,0 +1,22 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211102"
+            author: alekseev-pa
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: geo_zones
+                        tableName: geo_zone
+                        columns:
+                            -   column:
+                                    name: active
+                                    type: boolean
+                                    defaultValueBoolean: true
+                -   addNotNullConstraint:
+                        columnDataType: boolean
+                        columnName: active
+                        constraintName: active_not_null
+                        defaultNullValue: true
+                        schemaName: geo_zones
+                        tableName: geo_zone
+                        validate: true

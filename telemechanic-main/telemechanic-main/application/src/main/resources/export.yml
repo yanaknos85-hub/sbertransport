@@ -1,0 +1,74 @@
+works:
+    files:
+        -   url: /registry
+            fileType:
+                - xlsx
+                - xls
+            collections:
+                -   name: Журнал выпуска ТС на линию
+                    type: ru.sber.transport.telemechanic.dto.RegistryExcelDto
+                    mappings:
+                        -   from: ID заявки
+                            to: humanReadableId
+                        -   from: Организация
+                            to: officialName
+                        -   from: Дата и время создания заявки
+                            to: creationTime
+                        -   from: Дата и время начала прохождения проверок
+                            to: checksStartedTime
+                        -   from: Дата и время завершения прохождения проверок
+                            to: checksFinishedTime
+                        -   from: Дата и время проведения контроля
+                            to: inspectionTime
+                        -   from: Отметка о прохождении контроля
+                            to: inspectionMark
+                        -   from: Государственный номер
+                            to: stateNumber
+                        -   from: Марка
+                            to: brand
+                        -   from: Модель
+                            to: model
+                        -   from: Табельный номер водителя
+                            to: personnelNumber
+                        -   from: ФИО водителя
+                            to: fullName
+                        -   from: Табельный номер сотрудника, проводившего контроль
+                            to: inspectorPersonnelNumber
+                        -   from: ФИО сотрудника, проводившего контроль
+                            to: inspectorFullName
+                        -   from: Комментарий
+                            to: comment
+                        -   from: Подразделение
+                            to: orgstructureChain
+        -   url: /ewb-self-organization
+            fileType:
+                - xlsx
+            dynamic:
+                type: ru.sber.transport.telemechanic.dto.ewb_report.EwbRegistryExcelSelfOrganizationDto
+                mappings:
+                    -   from: Реестр
+                        to: registry
+        -   url: /ewb-all-organizations
+            fileType:
+                - xlsx
+            dynamic:
+                type: ru.sber.transport.telemechanic.dto.ewb_report.EwbRegistryExcelAllOrganizationsDto
+                mappings:
+                    -   from: Реестр
+                        to: registry
+        -   url: /medic-request-self-organization
+            fileType:
+                - xlsx
+            dynamic:
+                type: ru.sber.transport.telemechanic.dto.medic_request_report.MedicRequestExcelSelfOrganizationDto
+                mappings:
+                    -   from: Реестр
+                        to: registry
+        -   url: /medic-request-all-organizations
+            fileType:
+                - xlsx
+            dynamic:
+                type: ru.sber.transport.telemechanic.dto.medic_request_report.MedicRequestExcelAllOrganizationsDto
+                mappings:
+                    -   from: Реестр
+                        to: registry

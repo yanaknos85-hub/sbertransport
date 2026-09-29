@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250424-1601"
+      author: blandin-ad
+      context: "TRANSPORT-31376"
+      changes:
+        - tagDatabase:
+            tag: "D-04.008.000"
+        - addColumn:
+            schemaName: dispatcher
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: phone_confirmed
+                  type: boolean
+                  remarks: Признак подтверждения номера телефона
+                  defaultValueBoolean: false
+                  defaultOnNull: false
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: dispatcher_dispatcher_phone_confirmed_nnc
+        - addColumn:
+            schemaName: dispatcher
+            tableName: driver
+            columns:
+              - column:
+                  name: phone_confirmed
+                  type: boolean
+                  remarks: Признак подтверждения номера телефона
+                  defaultValueBoolean: false
+                  defaultOnNull: false
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: dispatcher_driver_phone_confirmed_nnc
+      rollback:
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: phone_confirmed
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: driver
+            columns:
+              - column:
+                  name: phone_confirmed

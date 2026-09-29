@@ -1,0 +1,34 @@
+  .findIcon {
+    padding: 0 !important;
+    line-height: 0 !important;
+    border: none !important;
+    outline: none;
+    background-color: #F2F3F6 !important;
+    &:hover {
+      background-color: #F2F3F6 !important;
+    }
+  }
+
+.form {
+  width: 320px;
+
+  :global(.ant-form-item) {
+    margin-bottom: 0;
+    :global(.ant-input-affix-wrapper) {
+      height: 40px ;
+      background: inherit;
+      padding: 11px 16px;
+    }
+    :global(.ant-input-affix-wrapper > .ant-input) {
+      padding: 0;
+      background: inherit;
+      font-family: 'SB Sans Text Regular';
+      font-size: 16px;
+      height: 18px;
+    }
+  }
+}
+
+.formMobile {
+  width: 100%;
+}

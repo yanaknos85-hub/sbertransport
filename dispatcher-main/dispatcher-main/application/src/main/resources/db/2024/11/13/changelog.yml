@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20241113-1002"
+      author: blandin-ad
+      context: "TRANSPORT-26866"
+      changes:
+        - tagDatabase:
+            tag: "D-03.020.000"
+        - addColumn:
+            schemaName: dispatcher
+            tableName: trips
+            columns:
+              - column:
+                  name: vehicle_id
+                  type: uuid
+                  remarks: Идентификатор автомобиля
+        - sql:
+            sql: update dispatcher.trips set vehicle_id = s.vehicle_id from dispatcher.shift as s where trips.shift_id = s.id;
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: trips
+            columns:
+              - column:
+                  name: shift_id
+      rollback:
+          - addColumn:
+              schemaName: dispatcher
+              tableName: trips
+              columns:
+                - column:
+                    name: shift_id
+                    remarks: Идентификатор смены, в рамках которой происходит выполнение поездки
+                    type: uuid
+          - dropColumn:
+              schemaName: dispatcher
+              tableName: trips
+              columns:
+                - column:
+                    name: vehicle_id

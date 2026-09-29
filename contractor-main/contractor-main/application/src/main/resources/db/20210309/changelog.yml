@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: contractor/20210309
+      context: "20210309"
+      author: goloschapov
+      dbms: postgresql
+      changes:
+        - sqlFile:
+            path: update_driver_tag_table.sql
+            relativeToChangelogFile: true
+            endDelimiter: ;
+      rollback:
+        - sqlFile:
+            path: rollback_driver_tag_table.sql
+            relativeToChangelogFile: true
+            endDelimiter: ;

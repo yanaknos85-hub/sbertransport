@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250407-1648"
+      author: blandin-ad
+      context: "TRANSPORT-29421"
+      changes:
+        - tagDatabase:
+            tag: "release/D-04.008.000"
+        - addUniqueConstraint:
+            schemaName: dispatcher
+            tableName: driver
+            columnNames: humanreadableid
+            constraintName: dispatcher_driver_humanreadableid_uk
+      rollback:
+        - dropUniqueConstraint:
+            schemaName: dispatcher
+            tableName: driver
+            constraintName: dispatcher_driver_humanreadableid_uk

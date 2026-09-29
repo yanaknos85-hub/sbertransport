@@ -1,0 +1,13 @@
+databaseChangeLog:
+  -   changeSet:
+        id: 20260305-1
+        author: mabatov-nv
+        dbms: postgresql
+        changes:
+          -   sqlFile:
+                path: change/add_column_request_organization.sql
+                relativeToChangelogFile: true
+        rollback:
+          -   sqlFile:
+                path: rollback/drop_column_request_organization.sql
+                relativeToChangelogFile: true

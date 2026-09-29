@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230921-5"
+      author: blandin-ad
+      changes:
+        - tagDatabase:
+            tag: "20230921-5"
+        - addColumn:
+            schemaName: trips_cargo
+            tableName: trips_cargo
+            columns:
+              - column:
+                  name: driver_waiting_time
+                  type: bigint
+                  remarks: Время ожидания пассажира водителем
+              - column:
+                  name: fact_distance
+                  type: double precision
+                  remarks: Фактическая дистанция поездки
+      rollback:
+        - dropColumn:
+            schemaName: trips_cargo
+            tableName: trips_cargo
+            columns:
+              - column:
+                  name: driver_waiting_time
+              - column:
+                  name: fact_distance

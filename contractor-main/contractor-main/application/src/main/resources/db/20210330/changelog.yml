@@ -1,0 +1,16 @@
+databaseChangeLog:
+    -   changeSet:
+            id: contractor/20210330
+            context: "20210330"
+            author: oleshko
+            dbms: postgresql
+            changes:
+                - sqlFile:
+                        path: changes/add_contractor_constraints.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_contractor_constraint.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

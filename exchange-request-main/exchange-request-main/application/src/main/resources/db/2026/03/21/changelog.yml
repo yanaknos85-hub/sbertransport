@@ -1,0 +1,9 @@
+databaseChangeLog:
+  -   changeSet:
+        id: 20260321-1
+        author: nikandrov-ae
+        dbms: postgresql
+        changes:
+          -   sqlFile:
+                path: change/add_carrier_reply_selected.sql
+                relativeToChangelogFile: true

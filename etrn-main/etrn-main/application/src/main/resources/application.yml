@@ -1,0 +1,34 @@
+server:
+  port: @server.port@
+spring:
+  application:
+    name: etrn-cargo
+  config:
+    import: database.yml, management.yml
+  security:
+    user: #убираем запись в логах, по которой есть вопросы у безопасности
+      name: anonymous
+      password: ${random.uuid}
+      roles: anonymous
+    oauth2:
+      resourceserver:
+        jwt:
+          jws-algorithms: RS512
+          jwk-set-uri: ${JWKS_URI}
+  cloud:
+    vault.enabled: false
+    kubernetes.enabled: false
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      fail-on-empty-beans: false
+      write_dates_as_timestamps: true
+      WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS: false
+lock:
+  ttl-seconds: ${TIME_TO_LOCK_SECONDS:300}
+dispatcher:
+  service:
+    url: ${DISPATCHER_SERVICE_URL:http://api.cargo.transport.apps.a37dgxlc.k8s.delta.sbrf.ru/api/dispatcher-room}
+schedule:
+  etrn:
+    etrnAutoUnlockFreq: ${ETRN_AUTO_UNLOCK_FREQ:0 0/5 * * * *}

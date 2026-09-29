@@ -1,0 +1,113 @@
+.header {
+  font-weight: 600;
+}
+
+.tripType {
+  font-weight: 600;
+  text-align: center;
+  padding: calc(var(--padding-fourth) / 2) var(--padding-half);
+  font-size: 15px;
+  margin-bottom: var(--margin-fourth);
+}
+
+.economics {
+  border-radius: var(--indent-half);
+  padding: 2px 10px;
+  color: black;
+  font-weight: 900;
+  text-align: center;
+  margin: 0 0 0 var(--margin-half);
+}
+
+.cooperativeTripWrapper {
+  margin: 0 0 16px 0 !important;
+}
+
+.suitableTrips {
+  display: flex;
+  flex-direction: column;
+  white-space: break-spaces;
+  border-radius: 8px;
+  box-shadow: 0 0 5px var(--card-shadow) !important;
+  padding: var(--padding-base);
+
+  .button {
+    margin-top: var(--margin-fourth);
+  }
+
+  .tripInfo {
+    //  цвет взят из макета
+    --gray: #a8abb3;
+    display: flex;
+    flex-direction: row;
+
+    .transportLogo {
+      margin-top: var(--margin-half);
+      margin-right: var(--margin-half);
+      display: inline-block;
+      width: 70px;
+      height: 50px;
+      background: url(../../../../../../shared/components/Images/car_yellow.svg) no-repeat no-repeat center 0;
+      background-size: contain;
+    }
+
+    .transportLogoPersonal {
+      margin-top: var(--margin-half);
+      margin-right: var(--margin-half);
+      display: inline-block;
+      width: calc(3.5 * var(--indent-large));
+      height: calc(3 * var(--indent-large));
+      background: url(../../../../../../shared/components/Images/black.png) no-repeat no-repeat center 0;
+      background-size: contain;
+    }
+
+    .halfPart {
+      flex: 1;
+    }
+
+    .fullContent {
+      max-width: 100% !important;
+    }
+
+    .infoCols {
+      width: 100%;
+
+      .costContainer {
+        // justify-content: center;
+      }
+
+      .economyCost {
+        font-size: 18px;
+        font-family: 'SB Sans Interface Bold';
+        padding-top: var(--padding-fourth);
+        color: black;
+        max-width: 50% !important;
+      }
+
+      .oldCost {
+        padding: var(--padding-fourth) 0 0 var(--padding-half);
+        color: var(--gray);
+        font-size: 16px;
+        font-family: 'SB Sans Interface Bold';
+        text-decoration: line-through;
+        max-width: 50% !important;
+      }
+
+      .infoDetailed {
+        color: rgb(27, 178, 80);
+        font-weight: 800;
+        text-align: center;
+        flex: 1;
+      }
+
+      .infoDetailedWarning {
+        color: var(--warning-color);
+        font-weight: 800;
+        text-align: left;
+        margin: 0 0 var(--margin-half);
+        padding: var(--padding-fourth) 0 ;
+        flex: 1;
+      }
+    }
+  }
+}

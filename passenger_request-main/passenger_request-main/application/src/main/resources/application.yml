@@ -1,0 +1,221 @@
+grpc:
+  client:
+    GLOBAL:
+      negotiation-type: plaintext
+    files:
+      address: discovery:///${grpc.files:grpc-files-v2}
+    limits:
+      address: discovery:///${grpc.limits:grpc-limits}
+    geo-zones:
+      address: discovery:///${grpc.geo-zones:grpc-geo-zones}
+    srm:
+      address: discovery:///${grpc.srm:grpc-srm}
+    integrations-carsharing:
+      address: discovery:///${grpc.integrations-carsharing:grpc-integrations-carsharing}
+    tariff:
+      address: discovery:///${grpc.tariff:grpc-tariff}
+    contractor:
+      address: discovery:///${grpc.grpc-contractor:grpc-contractor}
+    easup:
+      address: discovery:///${grpc.grpc-easup:grpc-easup}
+    request-checks:
+      address: discovery:///${grpc.request-checks:grpc-request-checks}
+    corporate-documents:
+      address: discovery:///${grpc.corporate:grpc-corporate}
+  server:
+    port: 6565
+
+server:
+  port: 8082
+  tomcat:
+    relaxed-query-chars:
+      - "["
+      - "]"
+spring:
+  config:
+    import:
+      - optional:configserver:${SPRING_CLOUD_CONFIG_URI}
+      - kafka.yml
+  application:
+    name: request
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 25
+      schema: ${spring.application.name}
+  jpa:
+    properties:
+      org:
+        hibernate:
+          envers:
+            store_data_at_delete: true
+      hibernate:
+        jdbc:
+          batch_size: 25
+          lob:
+            non_contextual_creation: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: ${SHOW_SQL:false}
+    open-in-view: false
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog-master.yml
+    drop-first: false
+    test-rollback-on-update: true
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    database-change-log-table: changelog_${spring.application.name}
+    database-change-log-lock-table: changelog_${spring.application.name}_lock
+    liquibase-schema: ${MIGRATIONS_SCHEMA:public}
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: ${file.max-size}
+      max-request-size: ${file.max-size}
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: true
+      WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS: false
+  profiles:
+    active: prod
+    include: import-export
+  cloud:
+    vault:
+      enabled: false
+management.endpoints.web.exposure.include: "*"
+ssl:
+  support: true
+  client:
+    enabled: ${CLIENT_ENABLED:false}
+    store:
+      path: ${CLIENT_CERTIFICATE:}
+      password: ${CLIENT_STORE_PASSWORD:}
+    password: ${CLIENT_CERT_PASSWORD:}
+  trust:
+    enabled: ${TRUST_ENABLED:false}
+    store:
+      path: ${TRUST_CERTIFICATE:}
+      password: ${TRUST_CERT_PASSWORD:}
+magenta:
+  rootUrl: ${MAGENTA_ROOT_URL:dryg.magenta-technology.com}
+  apiUrl: ${MAGENTA_API_URL:https://dryg.magenta-technology.com/api/v1}
+  authPort: 443
+  authProtocol: https
+  user: user
+  password: g3f$67GHf#%6
+  headerSenderName: sender_service
+  headerSenderValue: TRANSPORT_AS
+  saveTariffsUrl: https://dryg.magenta-technology.com/api/v1/shared_rides/1/save_tariffs
+  postNewSharedRideUrl: https://dryg.magenta-technology.com/api/v1/shared_rides/1/plan_order/ride/-1
+  getSuitableRidesUrl: https://dryg.magenta-technology.com/api/v1/shared_rides/1/plan_order/
+  cancelOrderUrl: https://dryg.magenta-technology.com/api/v1/shared_rides/1/plan_order/
+  addRequestToRideUrl: https://dryg.magenta-technology.com/api/v1/shared_rides/1/plan_order/ride/
+request.maxFileSize: ${file.max-size} #500000
+logging:
+  level:
+    org.hibernate.engine.internal.StatefulPersistenceContext: ERROR
+file:
+  upload-dir: ${FILE_UPLOAD_DIR:request/src/upload/publicTransport}
+  max-size: ${FILE_MAX_SIZE_REQUEST:20971520}
+address:
+  catalog:
+    file:
+      path: ${ADDRESS_CATALOG_FILE_PATH:classpath:address-catalog/VSP_09_12_2020.xlsx}
+dispatcher:
+  maxDeadlineTime: ${DISPATCHER_MAX_DEDLINE_TIMEOUT:45}
+  dedlineNotifyTimeout: ${DISPATCHER_DEDLINE_NOTIFY_TIMEOUT:15}
+  maxTripDistance: ${DISPATCHER_MAX_TRIP_DISTANCE:100.0}
+  updateDeadlineTimeout: ${DISPATCHER_UPDATE_DEADLINE_TIMEOUT:60000}
+  force-start-trip: ${DISPATCHER_FORCE_START_TRIP_TIMEOUT:60000}
+request:
+  triggerTime: { REQUEST_TRIGGERTIME:720 }
+  cancelTime: { REQUEST_CANCELTIME:240 }
+  validation:
+    others:
+      enabled: ${VALIDATION_OTHERS_ENABLED:true}
+      enabled-for: TAXI, PERSONAL, CARSHARING
+    multipoint:
+      enabled: ${MULTIPOINT_VALIDATOR_ENABLED:true}
+    corporate-documents:
+      carsharing:
+        enabled: ${CORPORATE_DOCUMENTS_CARSHARING_VALIDATOR_ENABLED:false}
+      personalTransport:
+        enabled: ${CORPORATE_DOCUMENTS_PERSONAL_TRANSPORT_VALIDATOR_ENABLED:false}
+    travel-card:
+      one-time-trip:
+        enabled: ${TRAVEL_CARD_ONE_TIME_TRIP_VALIDATOR_ENABLED:true}
+      overlap:
+        enabled: ${TRAVEL_CARD_OVERLAP_VALIDATOR_ENABLED:true}
+    all-points-max-wait-time:
+      taxi:
+        limit-in-minutes: ${MAX_WAIT_TIME_AT_ALL_POINTS:60}
+        distance-threshold: ${DISTANCE_THRESHOLD:50000}
+  fraud:
+    single-trip-duration-limit-ms: ${FRAUD_SINGLE_TRIP_DURATION_THRESHOLD_MILLIS:28800000}
+external-prices:
+  timeout: ${EXTERNAL_PRICES_TIMEOUT:5000}
+  taxi-providers:
+    citymobil:
+      base-url: ${PROVIDER_CITY_URL:https://t.city-mobil.ru/taxiserv/api/corporate}
+      auth-header: ${PROVIDER_CITY_AUTH_HEADER:Authorization}
+      auth-token: ${PROVIDER_CITY_AUTH_TOKEN:Bearer 4b1217eed59b3b73d4688b0778b45710}
+      provider: ${PROVIDER_CITY_PROVIDER:CITYMOBIL}
+      enabled: ${PROVIDER_CITY_ENABLED:true}
+    yandex:
+      base-url: ${PROVIDER_YANDEX_URL:https://taxi-routeinfo.taxi.yandex.net/taxi_info}
+      auth-header: ${PROVIDER_YANDEX_AUTH_HEADER:YaTaxi-Api-Key}
+      auth-token: ${PROVIDER_YANDEX_AUTH_TOKEN:rqWQyAmTGQNwOhjukDtluJsuKDLECoFjPNE}
+      provider: ${PROVIDER_YANDEX_PROVIDER:YANDEX}
+      client-id: ${PROVIDER_YANDEX_AUTH_CLIENT_ID:sbertransport}
+      enabled: ${PROVIDER_YANDEX_ENABLED:true}
+    uber:
+      base-url: ${PROVIDER_UBER_URL:https://taxi-routeinfo.taxi.yandex.net/taxi_info}
+      auth-header: ${PROVIDER_UBER_AUTH_HEADER:YaTaxi-Api-Key}
+      auth-token: ${PROVIDER_UBER_AUTH_TOKEN:rqWQyAmTGQNwOhjukDtluJsuKDLECoFjPNE}
+      provider: ${PROVIDER_UBER_PROVIDER:UBER}
+      client-id: ${PROVIDER_UBER_AUTH_CLIENT_ID:sbertransport}
+      enabled: ${PROVIDER_UBER_ENABLED:true}
+feign:
+  url:
+    corporate: ${FEIGN_URL_CORPORATE:http://localhost:8007}
+    tariff: ${FEIGN_URL_TARIFF:http://localhost:8005}
+    geo: ${FEIGN_URL_GEO:http://localhost:8006}
+    srm: ${FEIGN_URL_SRM:}
+sharedride:
+  service: ${SR_PROVIDER:magenta}
+default-timezone: ${DEFAULT_TIME_ZONE:Z}
+trips:
+  inProgress:
+    afterTripFinishRate: ${TRIPS_INPROGRESS_AFTERTRIPFINISHRATE:4}
+scheduler:
+  car-location:
+    cron: ${CAR_LOCATION_CRON:*/10 * * * * *}
+    lock-at-least-for: ${CAR_LOCATION_LOCK_AT_LEAST_FOR:PT30S}
+    lock-at-most-for: ${CAR_LOCATION_LOCK_AT_MOST_FOR:PT1M}
+  car-location-task-expiration:
+    cron: ${CAR_LOCATION_TASK_EXPIRATION_CRON:0 0 3 * * *}
+    lock-at-least-for: ${CAR_LOCATION_TASK_EXPIRATION_LOCK_AT_LEAST_FOR:PT30M}
+    lock-at-most-for: ${CAR_LOCATION_TASK_EXPIRATION_LOCK_AT_MOST_FOR:PT1H}
+  new-trip:
+    cron: ${NEW_TRIP_CRON:0 */2 * * * *}
+    lock-at-least-for: ${NEW_TRIP_LOCK_AT_LEAST_FOR:PT1M}
+    lock-at-most-for: ${NEW_TRIP_LOCK_AT_MOST_FOR:PT5M}
+  in-progress-trip:
+    cron: ${IN_PROGRESS_TRIP_CRON:0 * * * * *}
+    lock-at-least-for: ${IN_PROGRESS_TRIP_LOCK_AT_LEAST_FOR:PT1M}
+    lock-at-most-for: ${IN_PROGRESS_TRIP_LOCK_AT_MOST_FOR:PT5M}
+  driver-arrived-deadline:
+    cron: ${DRIVER_ARRIVED_DEADLINE_CRON:0 */15 * * * *}
+    lock-at-least-for: ${DRIVER_ARRIVED_DEADLINE_LOCK_AT_LEAST_FOR:PT1M}
+    lock-at-most-for: ${DRIVER_ARRIVED_DEADLINE_LOCK_AT_MOST_FOR:PT5M}
+split-check:
+  personal:
+    cost-threshold: ${PERSONAL_REQUEST_SPLIT_CHECK_COST_THRESHOLD:10000.00} # в копейках
+    duration-threshold: ${PERSONAL_REQUEST_SPLIT_CHECK_DURATION_THRESHOLD:60} # в минутах
+    request-count-threshold: ${PERSONAL_REQUEST_SPLIT_CHECK_REQUEST_COUNT_THRESHOLD:2}
+    ignore-statuses: ${PERSONAL_REQUEST_SPLIT_CHECK_IGNORE_STATUSES:PERSONAL_CANCELLED,PERSONAL_AWAITING_TRIP_DECLINED}

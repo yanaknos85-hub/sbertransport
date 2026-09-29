@@ -1,0 +1,78 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "240712-1"
+            author: shabrov-ie
+            changes:
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_personal
+                        columns:
+                            -   column:
+                                    type: jsonb
+                                    name: min_tariff_taxi
+                                    remarks: Минимальная стоимость такси на момент формирования заявки
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            -   column:
+                                    type: jsonb
+                                    name: min_tariff_taxi
+                                    remarks: Минимальная стоимость такси на момент формирования заявки
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columns:
+                            -   column:
+                                    type: jsonb
+                                    name: min_tariff_taxi
+                                    remarks: Минимальная стоимость такси на момент формирования заявки
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    type: jsonb
+                                    name: min_tariff_taxi
+                                    remarks: Минимальная стоимость такси на момент формирования заявки
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_group_transfer
+                        columns:
+                            -   column:
+                                    type: jsonb
+                                    name: min_tariff_taxi
+                                    remarks: Минимальная стоимость такси на момент формирования заявки
+                -   addColumn:
+                        schemaName: request_audit
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    type: jsonb
+                                    name: min_tariff_taxi
+                                    remarks: Минимальная стоимость такси на момент формирования заявки
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_personal
+                        columnName: min_tariff_taxi
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columnName: min_tariff_taxi
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columnName: min_tariff_taxi
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        columnName: min_tariff_taxi
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_group_transfer
+                        columnName: min_tariff_taxi
+                -   dropColumn:
+                        schemaName: request_audit
+                        tableName: request_for_public
+                        columnName: min_tariff_taxi

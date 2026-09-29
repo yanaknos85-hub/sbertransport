@@ -1,0 +1,1 @@
+alter table request_audit.request_for_public drop column organization_id;

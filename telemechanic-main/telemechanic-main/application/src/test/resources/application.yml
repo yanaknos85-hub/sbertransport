@@ -1,0 +1,149 @@
+server:
+    port: -1
+spring:
+    profiles:
+        active: test
+    config:
+        import:
+            - database.yml
+            - kafka-test.yml
+            - export.yml
+    cloud:
+        discovery:
+            enabled: false
+            client:
+                simple:
+                    instances:
+                        grpc-files:
+                            -   uri: http://localhost:9999
+        openfeign:
+            client:
+                config:
+                    korus:
+                        url: ${korus.url}
+                        error-decoder: ru.sber.transport.telemechanic.client.FeignErrorDecoder
+                        default-request-headers:
+                            Authorization: ${korus.token}
+                    telemedic:
+                        url: ${telemedic.url}
+                        error-decoder: ru.sber.transport.telemechanic.client.FeignErrorDecoder
+                        default-request-headers:
+                            Authorization: ${telemedic.token}
+        vault:
+            enabled: false
+    datasource:
+        username: postgres
+    security:
+        user: #убираем запись в логах, по которой есть вопросы у безопасности
+            name: anonymous
+            password: ${random.uuid}
+            roles: anonymous
+        oauth2:
+            resourceserver:
+                jwt:
+                    jws-algorithms: RS512
+                    public-key-location: classpath:/key/jwt.key.pub
+    main:
+        banner-mode: off
+        lazy-initialization: true
+        cloud-platform: none
+        allow-bean-definition-overriding: true
+    jackson:
+        serialization:
+            write_dates_as_timestamps: false
+    application:
+        name: telemechanic
+    liquibase:
+        contexts: test
+    servlet:
+        multipart:
+            enabled: true
+            max-file-size: 30MB
+            max-request-size: 30MB
+scheduler:
+    dispatcher:
+        cron: ${DISPATCHER_CRON:0 0 0 * * *}
+        lock-at-most-for: ${DISPATCHER_LOCK_AT_MOST_FOR:PT1H}
+        lock-at-least-for: ${DISPATCHER_LOCK_AT_LEAST_FOR:PT30M}
+    driver:
+        cron: ${DRIVER:0 0 0 * * *}
+        lock-at-most-for: ${DRIVER_LOCK_AT_MOST_FOR:PT1H}
+        lock-at-least-for: ${DRIVER_LOCK_AT_LEAST_FOR:PT30M}
+    status:
+        ewb:
+            cron: ${STATUS_EWB_CRON:0 59 23 * * *}
+            lock-at-most-for: ${STATUS_EWB_LOCK_AT_MOST_FOR:PT1H}
+            lock-at-least-for: ${STATUS_EWB_LOCK_AT_LEAST_FOR:PT30M}
+        request:
+            cron: ${STATUS_REQUEST_CRON:0 59 23 * * *}
+            lock-at-most-for: ${STATUS_REQUEST_LOCK_AT_MOST_FOR:PT1H}
+            lock-at-least-for: ${STATUS_REQUEST_LOCK_AT_LEAST_FOR:PT30M}
+        medic-request:
+            cron: ${STATUS_MEDIC_REQUEST_CRON:0 59 23 * * *}
+            lock-at-most-for: ${STATUS_MEDIC_REQUEST_LOCK_AT_MOST_FOR:PT1H}
+            lock-at-least-for: ${STATUS_MEDIC_REQUEST_LOCK_AT_LEAST_FOR:PT30M}
+        
+predict-config:
+    need-plate-number: ${MEF_NEED_PLATE_NUMBER:true}
+    need-car-wipers: ${MEF_NEED_CAR_WIPERS:true}
+    need-washer-liquid: ${MEF_NEED_WASHER-LIQUID:true}
+    need-front-lights: ${MEF_NEED_FRONT-LIGHTS:true}
+    need-back-lights: ${MEF_NEED_BACK-LIGHTS:true}
+    need-side-mirrors: ${MEF_NEED_SIDE-MIRRORS:true}
+    need-splash-guards: ${MEF_NEED_SPLASH-GUARDS:true}
+    need-wind-screen: ${MEF_NEED_WIND-SCREEN:true}
+    need-power-steering-liquid-level: ${MEF_NEED_POWER-STEERING-LIQUID-LEVEL:true}
+    need-coolant-level: ${MEF_NEED_COOLANT-LEVEL:true}
+    need-oil-level: ${MEF_NEED_OIL-LEVEL:true}
+    need-instrument-panel: ${MEF_NEED_INSTRUMENT-PANEL:true}
+    host-ai: ${MEF_HOST_AI:https://ai.ci02351878-edevml-str.apps.dev-terra000010-edm.ocp.delta.sbrf.ru/}
+    store: ${MEF_PEM:mef/keystore.jks}
+    password: ${MEF_PASSWORD:Init1234_}
+    need-file-upload: ${MEF_NEED_FILE_UPLOAD:true}
+korus:
+    url: https://localhwost:31137
+    login: mock_login
+    password: mock_password
+    token: some_correct_token
+telemedic:
+    url: https://localhost:31138
+    token: mock_token
+ewb:
+    path: ${EWB_PATH:false}
+ewb-sber:
+    id: ${EWB_SBER_ID:b365d294-ca0e-48dc-a7b5-dd20489b3f70}
+    name: ${EWB_SBER_NAME:ПАО Сбербанк}
+    msrn: ${EWB_SBER_MSRN:1027700132195}
+    tin: ${EWB_SBER_TIN:7707083893}
+    phone: ${EWB_SBER_PHONE:88005555550}
+grpc:
+    server:
+        port: 6565
+    client:
+        GLOBAL:
+            negotiation-type: plaintext
+        grpc-files:
+            max-inbound-message-size: 6MB
+            max-outbound-message-size: 6MB
+            address: discovery:/grpc-files
+        grpc-vehicle:
+            address: discovery:/grpc-vehicle
+        grpc-corporate:
+            address: discovery:/grpc-corporate
+ewb-grpc:
+    first-title:
+        max-request-size: ${EWB_GRPC_FIRST_TITLE_MAX_REQUEST_SIZE:100}
+check-photo:
+    auto-deletion:
+        enabled: false
+        cron: ${CHECK_PHOTO_AUTO_DELETION_CRON:0 0 1 * * *}
+        lock-at-least-for: ${CHECK_PHOTO_AUTO_DELETION_LOCK_AT_LEAST_FOR:10s}
+        lock-at-most-for: ${CHECK_PHOTO_AUTO_DELETION_LOCK_AT_MOST_FOR:60m}
+        expiration-duration: 1m
+        batch-size: 2
+        max-quantity: 50
+telemedicine-config:
+  token: ${TELEMEDICINE_API_KEY:c2JlclRyYW5zcG9ydC1EaW1lY29UZWxlbWVkaWNpbmUwMzExMjAyNTExMDBSZXF1aXJlZFRvT2J0YWluRGF0YU9uVGhlRHJpdmVyc1JlbW90ZU1lZGljYWxFeGFtaW5hdGlvbkJlZm9yZUdvaW5nT25UaGVSb2Fk}
+  contractorApiToken: ${TELEMEDICINE_CONTRACTOR_API_KEY:sbertransport01}
+files:
+    content-max-length: 10485760

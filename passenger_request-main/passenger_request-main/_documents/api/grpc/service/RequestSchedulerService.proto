@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package ru.sber.transport.request.grpc.service;
+
+import "google/protobuf/empty.proto";
+
+/**
+ * Сервис для работы с планировщиком.
+ */
+service RequestSchedulerService {
+
+    rpc RequestDeadlineChecker(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+    rpc RequestScheduleTrips(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+    rpc RequestScheduleTripsInProgress(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+    rpc RequestScheduleSendStats(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}

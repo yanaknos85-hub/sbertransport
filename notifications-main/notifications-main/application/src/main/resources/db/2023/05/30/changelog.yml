@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230530-1021"
+      author: medvedev-ad
+      context: "20230530"
+      changes:
+        - tagDatabase:
+            tag: "20230530"
+        - addColumn:
+            schemaName: notifications_request
+            tableName: taxi_trip
+            columns:
+              - column:
+                  name: driver
+                  type: json
+                  remarks: Информация о водителе
+              - column:
+                  name: vehicle
+                  type: json
+                  remarks: Информация оо автомобиле

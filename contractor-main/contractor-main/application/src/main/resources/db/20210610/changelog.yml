@@ -1,0 +1,32 @@
+databaseChangeLog:
+    - changeSet:
+          id: contractor/20210610
+          context: "20210610"
+          author: oleshko
+          dbms: postgresql
+          changes:
+              -   sqlFile:
+                      path: changes/create_trip_classes.sql
+                      relativeToChangelogFile: true
+                      endDelimiter: ;
+              - sqlFile:
+                    path: changes/create_car_parameters.sql
+                    relativeToChangelogFile: true
+                    endDelimiter: ;
+              -   sqlFile:
+                      path: changes/add_driver_tag_constraints.sql
+                      relativeToChangelogFile: true
+                      endDelimiter: ;
+          rollback:
+              - sqlFile:
+                    path: rollback/drop_car_parameters.sql
+                    relativeToChangelogFile: true
+                    endDelimiter: ;
+              - sqlFile:
+                    path: rollback/drop_trip_classes.sql
+                    relativeToChangelogFile: true
+                    endDelimiter: ;
+              -   sqlFile:
+                      path: rollback/delete_constraints.sql
+                      relativeToChangelogFile: true
+                      endDelimiter: ;

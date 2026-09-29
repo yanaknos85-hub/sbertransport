@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240122"
+      author: blandin-ad
+      changes:
+        - addColumn:
+            schemaName: trips_cargo
+            tableName: trips
+            columns:
+              - column:
+                  name: expected_cost
+                  type: bigint
+                  remarks: Плановая стоимость поездки (копейки)
+              - column:
+                  name: expected_distance
+                  type: double precision
+                  remarks: Плановое расстояние поездки (километры)
+              - column:
+                  name: creation_time
+                  type: timestamp with time zone
+                  remarks: Время создания поездки
+        - sql:
+            sql: alter table trips_cargo.trips alter column start_time type timestamp with time zone;
+        - sql:
+            sql: alter table trips_cargo.trips alter column end_time type timestamp with time zone;
+        - sql:
+            sql: alter table trips_cargo.trips alter column arrived_date type timestamp with time zone;
+      rollback:
+        - dropColumn:
+            schemaName: trips_cargo
+            tableName: trips
+            columns:
+              - column:
+                  name: expected_cost
+              - column:
+                  name: expected_distance
+        - sql:
+            sql: alter table trips_cargo.trips alter column start_time type timestamp;
+        - sql:
+            sql: alter table trips_cargo.trips alter column end_time type timestamp;
+        - sql:
+            sql: alter table trips_cargo.trips alter column arrived_date type timestamp;

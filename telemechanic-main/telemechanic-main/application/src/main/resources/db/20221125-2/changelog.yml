@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20221125-1
+            author: dudyrev-av
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/create_sequence.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sql:
+                        sql: rollback/drop_sequence.sql
+        

@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: 20220519
+            author: asigalov
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/alter_sharedride_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/rollback_sharedride_table.sql
+                        relativeToChangelogFile: true

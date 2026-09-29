@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20231012"
+      author: blandin-ad
+      changes:
+        - addColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: passenger_count
+                  type: integer
+                  remarks: Кол-во пассажиров
+              - column:
+                  name: taxi_class
+                  type: text
+                  remarks: Класс такси
+              - column:
+                  name: driver_waiting_time
+                  type: bigint
+                  remarks: Время ожидания водителя
+      rollback:
+        - dropColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: passenger_count
+              - column:
+                  name: taxi_class
+              - column:
+                  name: driver_waiting_time
+

@@ -1,0 +1,15 @@
+databaseChangeLog:
+    -   changeSet:
+            id: contractor/20210831
+            context: "20210831"
+            author: palekseev
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/add_contractor_integration_fields.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/rollback_add_contractor_integration_fields.sql
+                        relativeToChangelogFile: true

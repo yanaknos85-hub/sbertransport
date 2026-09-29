@@ -1,0 +1,15 @@
+databaseChangeLog:
+  -   changeSet:
+        id: "20240627"
+        author: raygorodskiy-pa
+        context: "20240627"
+        changes:
+          -   tagDatabase:
+                tag: "20240627"
+          -   sql:
+                sql: alter table trips_cargo.trips add driver_waiting_time bigint;
+          -   sql:
+                sql: comment on column trips_cargo.trips.driver_waiting_time is 'Время ожидания водителя';
+        rollback:
+          -   sql:
+                sql: alter table trips_cargo.trips drop column driver_waiting_time;

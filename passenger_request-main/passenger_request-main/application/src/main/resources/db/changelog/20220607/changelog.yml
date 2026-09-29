@@ -1,0 +1,54 @@
+
+databaseChangeLog:
+    -   changeSet:
+            id: "20220607"
+            author: smirnova
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/add_column_for_status_template.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_column_for_status_template.sql
+                        relativeToChangelogFile: true
+    -   changeSet:
+            id: 20220607-1
+            author: smirnova
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/template_for_cargo_history.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_template_for_cargo_history.sql
+                        relativeToChangelogFile: true
+    -   changeSet:
+            id: 20220607-2
+            author: smirnova
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/add_column_temlate_for_cargo.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_column_temlate_for_cargo.sql
+                        relativeToChangelogFile: true
+    -   changeSet:
+            id: 20220607-3
+            author: smirnova
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/create_calendar.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_calendar.sql
+                        relativeToChangelogFile: true

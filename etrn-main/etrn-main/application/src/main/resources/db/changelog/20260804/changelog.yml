@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-drop-currenttitle-column
+      author: mabatov-nv
+      changes:
+        - sqlFile:
+            path: change/001-drop-currenttitle-column.sql
+            relativeToChangelogFile: true
+            splitStatements: false

@@ -1,0 +1,1 @@
+alter table contractors.autopark drop column active;

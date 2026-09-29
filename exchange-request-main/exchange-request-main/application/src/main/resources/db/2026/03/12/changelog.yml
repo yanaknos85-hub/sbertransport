@@ -1,0 +1,9 @@
+databaseChangeLog:
+  -   changeSet:
+        id: 20260312-1
+        author: nikandrov-ae
+        dbms: postgresql
+        changes:
+          -   sqlFile:
+                path: drop_users_column.sql
+                relativeToChangelogFile: true

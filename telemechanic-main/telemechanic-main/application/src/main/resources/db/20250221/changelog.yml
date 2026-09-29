@@ -1,0 +1,25 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20250221-1
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/create_table_attorney.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: changes/rollback.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250221-2
+            author: makarovm-d
+            dbms: postgresql
+            context: "!test"
+            changes:
+                -   sqlFile:
+                        path: changes/fill_telemechanic_attorney.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

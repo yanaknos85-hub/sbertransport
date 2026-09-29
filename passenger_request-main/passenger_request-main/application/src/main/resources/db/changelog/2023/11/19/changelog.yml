@@ -1,0 +1,13 @@
+databaseChangeLog:
+    -   changeSet:
+            id: requests/20231119
+            author: delyukov
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/approval_deadline_index.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: rollback/rollback_approval_deadline_index.sql
+                        relativeToChangelogFile: true

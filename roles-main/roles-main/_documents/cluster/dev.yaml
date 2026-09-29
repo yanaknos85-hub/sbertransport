@@ -1,0 +1,25 @@
+application: roles
+repo: app_platform_roles
+resources:
+  limits:
+    cpu: 500m
+    memory: 1G
+  requests:
+    cpu: 500m
+    memory: 1G
+routing:
+  match:
+    prefix: /api/roles/
+  rewrite:
+    uri: '/'
+port:
+  http:
+    number: 8003
+    target: 8080
+    name: roles
+secman:
+  type: build_in
+additional:
+  envs:
+    - name: SPRING_CLOUD_CONFIG_URI
+      value: http://http-config-server:8080

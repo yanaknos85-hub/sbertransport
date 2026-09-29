@@ -1,0 +1,21 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211006-1"
+            author: palekseev
+            dbms: postgresql
+            preConditions:
+                - onFail: MARK_RAN
+                - not:
+                    - columnExists:
+                        schemaName: request
+                        tableName: organization
+                        columnName: official_name
+            changes:
+                -   addColumn:
+                        schemaName: request
+                        tableName: organization
+                        columns:
+                            -   column:
+                                    name: official_name
+                                    type: varchar(255)
+                                    remarks: Название организации

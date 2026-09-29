@@ -1,0 +1,1 @@
+DROP TABLE contractors.car_parameters;

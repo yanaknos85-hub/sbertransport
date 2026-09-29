@@ -1,0 +1,1 @@
+drop TABLE contractors.driver_user_profile;

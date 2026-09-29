@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20231013"
+      author: blandin-ad
+      changes:
+        - tagDatabase:
+            tag: "20231013"
+        - dropUniqueConstraint:
+            schemaName: contractors
+            tableName: trips
+            constraintName: uk_trips_digit_id_contractor_id
+        - addUniqueConstraint:
+            schemaName: contractors
+            tableName: trips
+            columnNames: digit_id,contractor_id,type
+            constraintName: uk_trips_digit_id_contractor_id_type
+      rollback:
+        - dropUniqueConstraint:
+            schemaName: contractors
+            tableName: trips
+            constraintName: uk_trips_digit_id_contractor_id_type
+        - addUniqueConstraint:
+            schemaName: contractors
+            tableName: trips
+            columnNames: digit_id,contractor_id
+            constraintName: uk_trips_digit_id_contractor_id

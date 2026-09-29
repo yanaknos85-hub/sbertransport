@@ -1,0 +1,396 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: '8'
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"driver-track","app.kubernetes.io/name":"driver-track","app.kubernetes.io/part-of":"transport","deployed":"2024-07-29_08-33","reflex.agent.version":"1.263","reflex.cluster":"dynatrace-ift.delta.sbrf.ru","reflex.env":"cad839c1-47a7-4149-aaf0-4fd6e617ed0e","repo":"app_platform_driver_track","template":"driver-track","version":"3.14-SNAPSHOT-jenkins-22049955-1047"},"name":"driver-track","namespace":"ci02351878-edevgen-sbertransport-dev"},"spec":{"selector":{"matchLabels":{"app":"driver-track"}},"template":{"metadata":{"annotations":{"proxy.istio.io/config":"{
+      \"holdApplicationUntilProxyStarts\": true
+      }","sidecar.istio.io/inject":"true"},"labels":{"app":"driver-track","app.kubernetes.io/name":"driver-track","app.kubernetes.io/part-of":"transport","deployed":"2024-07-29_08-33","version":"3.14-SNAPSHOT-jenkins-22049955-1047"}},"spec":{"containers":[{"env":[{"name":"SPRING_PROFILES_INCLUDE","value":"logging,secman,prod"},{"name":"KAFKA_SSL_TRUSTSTORE_LOCATION","value":"/vault/secrets/kafka-truststore.jks"},{"name":"KAFKA_SSL_KEYSTORE_LOCATION","value":"/vault/secrets/kafka-keystore.jks"},{"name":"KAFKA_SECURITY_PROTOCOL","value":"PLAINTEXT"},{"name":"KAFKA_SSL_BROKERS","valueFrom":{"configMapKeyRef":{"key":"brokers","name":"kafka"}}},{"name":"KAFKA_BROKERS","valueFrom":{"configMapKeyRef":{"key":"brokers","name":"kafka"}}},{"name":"JWKS_URI","value":"http://jwks:8080"},{"name":"CHECK_CONSENT","value":"false"},{"name":"SPRING_PROFILES_INCLUDE","value":"kafka,logging,secman"},{"name":"JDK_JAVA_OPTIONS","valueFrom":{"configMapKeyRef":{"key":"debug","name":"jdk-java-options"}}},{"name":"SPRING_DATASOURCE_URL","valueFrom":{"configMapKeyRef":{"key":"url.jdbc","name":"database"}}}],"image":"registry-ci.delta.sbrf.ru/dev/ci02351878/ci02353146_transport_dev/transport/driver-track:3.14-SNAPSHOT-jenkins-22049955-1047","name":"driver-track","ports":[{"containerPort":8080,"name":"http-driver-tra","protocol":"TCP"}],"resources":{"limits":{"cpu":"200m","memory":"400M"},"requests":{"cpu":"200m","memory":"400M"}},"securityContext":{"readOnlyRootFilesystem":true},"volumeMounts":[{"mountPath":"/log","name":"logs"},{"mountPath":"/tmp","name":"temp"},{"mountPath":"/app/resources/application-logging.yml","name":"logging","subPath":"application-logging.yml"},{"mountPath":"/app/resources/application-secman.yml","name":"secman","subPath":"application-secman.yml"}]}],"serviceAccountName":"springboot-servicediscovery","volumes":[{"emptyDir":{},"name":"data"},{"emptyDir":{},"name":"logs"},{"emptyDir":{},"name":"temp"},{"configMap":{"defaultMode":420,"name":"logging"},"name":"logging"},{"configMap":{"defaultMode":420,"name":"secman","optional":true},"name":"secman"}]}}}}
+  resourceVersion: '3616231764'
+  name: driver-track
+  uid: 1bc0f0ee-59bd-49dd-a605-e9875afa13ab
+  creationTimestamp: '2024-07-29T04:46:07Z'
+  generation: 8
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps/v1
+      time: '2024-07-29T05:16:42Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:template':
+            'f:spec':
+              'f:containers':
+                'k:{"name":"driver-track"}':
+                  'f:env':
+                    'k:{"name":"CHECK_CONSENT"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"JWKS_URI"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"KAFKA_SECURITY_PROTOCOL"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"KAFKA_SSL_BROKERS"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:configMapKeyRef':
+                          .: {}
+                          'f:key': {}
+                          'f:name': {}
+                    'k:{"name":"KAFKA_SSL_KEYSTORE_LOCATION"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"KAFKA_SSL_TRUSTSTORE_LOCATION"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"SPRING_DATASOURCE_URL"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:configMapKeyRef':
+                          .: {}
+                          'f:key': {}
+                          'f:name': {}
+    - manager: oc
+      operation: Update
+      apiVersion: apps/v1
+      time: '2024-07-29T05:34:01Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:kubectl.kubernetes.io/last-applied-configuration': {}
+          'f:labels':
+            'f:reflex.agent.version': {}
+            'f:version': {}
+            'f:repo': {}
+            'f:reflex.cluster': {}
+            'f:app': {}
+            'f:app.kubernetes.io/name': {}
+            .: {}
+            'f:template': {}
+            'f:app.kubernetes.io/part-of': {}
+            'f:deployed': {}
+            'f:reflex.env': {}
+        'f:spec':
+          'f:progressDeadlineSeconds': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:strategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:maxSurge': {}
+              'f:maxUnavailable': {}
+            'f:type': {}
+          'f:template':
+            'f:metadata':
+              'f:annotations':
+                .: {}
+                'f:proxy.istio.io/config': {}
+                'f:sidecar.istio.io/inject': {}
+              'f:labels':
+                .: {}
+                'f:app': {}
+                'f:app.kubernetes.io/name': {}
+                'f:app.kubernetes.io/part-of': {}
+                'f:deployed': {}
+                'f:version': {}
+            'f:spec':
+              'f:volumes':
+                .: {}
+                'k:{"name":"data"}':
+                  .: {}
+                  'f:emptyDir': {}
+                  'f:name': {}
+                'k:{"name":"logging"}':
+                  .: {}
+                  'f:configMap':
+                    .: {}
+                    'f:defaultMode': {}
+                    'f:name': {}
+                  'f:name': {}
+                'k:{"name":"logs"}':
+                  .: {}
+                  'f:emptyDir': {}
+                  'f:name': {}
+                'k:{"name":"secman"}':
+                  .: {}
+                  'f:configMap':
+                    .: {}
+                    'f:defaultMode': {}
+                    'f:name': {}
+                    'f:optional': {}
+                  'f:name': {}
+                'k:{"name":"temp"}':
+                  .: {}
+                  'f:emptyDir': {}
+                  'f:name': {}
+              'f:containers':
+                'k:{"name":"driver-track"}':
+                  'f:image': {}
+                  'f:volumeMounts':
+                    .: {}
+                    'k:{"mountPath":"/app/resources/application-logging.yml"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+                      'f:subPath': {}
+                    'k:{"mountPath":"/app/resources/application-secman.yml"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+                      'f:subPath': {}
+                    'k:{"mountPath":"/log"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+                    'k:{"mountPath":"/tmp"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+                  'f:terminationMessagePolicy': {}
+                  .: {}
+                  'f:resources':
+                    .: {}
+                    'f:limits':
+                      .: {}
+                      'f:cpu': {}
+                      'f:memory': {}
+                    'f:requests':
+                      .: {}
+                      'f:cpu': {}
+                      'f:memory': {}
+                  'f:env':
+                    .: {}
+                    'k:{"name":"JDK_JAVA_OPTIONS"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:configMapKeyRef':
+                          .: {}
+                          'f:key': {}
+                          'f:name': {}
+                    'k:{"name":"KAFKA_BROKERS"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:configMapKeyRef':
+                          .: {}
+                          'f:key': {}
+                          'f:name': {}
+                    'k:{"name":"SPRING_PROFILES_INCLUDE"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                  'f:securityContext':
+                    .: {}
+                    'f:readOnlyRootFilesystem': {}
+                  'f:terminationMessagePath': {}
+                  'f:imagePullPolicy': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":8080,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                  'f:name': {}
+              'f:dnsPolicy': {}
+              'f:serviceAccount': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:terminationGracePeriodSeconds': {}
+              'f:serviceAccountName': {}
+              'f:securityContext': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2024-07-29T05:34:19Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:deployment.kubernetes.io/revision': {}
+        'f:status':
+          'f:availableReplicas': {}
+          'f:conditions':
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:observedGeneration': {}
+          'f:readyReplicas': {}
+          'f:replicas': {}
+          'f:updatedReplicas': {}
+  namespace: ci02351878-edevgen-sbertransport-dev
+  labels:
+    app: driver-track
+    app.kubernetes.io/part-of: transport
+    deployed: 2024-07-29_08-33
+    reflex.env: cad839c1-47a7-4149-aaf0-4fd6e617ed0e
+    reflex.agent.version: '1.263'
+    repo: app_platform_driver_track
+    version: 3.14-SNAPSHOT-jenkins-22049955-1047
+    reflex.cluster: dynatrace-ift.delta.sbrf.ru
+    app.kubernetes.io/name: driver-track
+    template: driver-track
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: driver-track
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: driver-track
+        app.kubernetes.io/name: driver-track
+        app.kubernetes.io/part-of: transport
+        deployed: 2024-07-29_08-33
+        version: 3.14-SNAPSHOT-jenkins-22049955-1047
+      annotations:
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+        sidecar.istio.io/inject: 'true'
+    spec:
+      restartPolicy: Always
+      serviceAccountName: springboot-servicediscovery
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30
+      securityContext: {}
+      containers:
+        - resources:
+            limits:
+              cpu: 200m
+              memory: 1G
+            requests:
+              cpu: 200m
+              memory: 1G
+          terminationMessagePath: /dev/termination-log
+          name: driver-track
+          env:
+            - name: SPRING_PROFILES_INCLUDE
+              value: 'logging,secman,prod'
+            - name: KAFKA_SSL_TRUSTSTORE_LOCATION
+              value: /vault/secrets/kafka-truststore.jks
+            - name: KAFKA_SSL_KEYSTORE_LOCATION
+              value: /vault/secrets/kafka-keystore.jks
+            - name: KAFKA_SECURITY_PROTOCOL
+              value: PLAINTEXT
+            - name: KAFKA_SSL_BROKERS
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka
+                  key: brokers
+            - name: KAFKA_BROKERS
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka
+                  key: brokers
+            - name: JWKS_URI
+              value: 'http://jwks:8080'
+            - name: CHECK_CONSENT
+              value: 'false'
+            - name: JDK_JAVA_OPTIONS
+              valueFrom:
+                configMapKeyRef:
+                  name: jdk-java-options
+                  key: debug
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: database
+                  key: url.jdbc
+          securityContext:
+            readOnlyRootFilesystem: true
+          ports:
+            - name: http-driver-tra
+              containerPort: 8080
+              protocol: TCP
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: logs
+              mountPath: /log
+            - name: temp
+              mountPath: /tmp
+            - name: logging
+              mountPath: /app/resources/application-logging.yml
+              subPath: application-logging.yml
+            - name: secman
+              mountPath: /app/resources/application-secman.yml
+              subPath: application-secman.yml
+          terminationMessagePolicy: File
+          image: >-
+            registry-ci.delta.sbrf.ru/dev/ci02351878/ci02353146_transport_dev/transport/driver-track:3.14-SNAPSHOT-jenkins-22049955-1047
+      serviceAccount: springboot-servicediscovery
+      volumes:
+        - name: data
+          emptyDir: {}
+        - name: logs
+          emptyDir: {}
+        - name: temp
+          emptyDir: {}
+        - name: logging
+          configMap:
+            name: logging
+            defaultMode: 420
+        - name: secman
+          configMap:
+            name: secman
+            defaultMode: 420
+            optional: true
+      dnsPolicy: ClusterFirst
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 8
+  replicas: 1
+  updatedReplicas: 1
+  readyReplicas: 1
+  availableReplicas: 1
+  conditions:
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2024-07-29T05:34:19Z'
+      lastTransitionTime: '2024-07-29T05:34:19Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2024-07-29T05:34:19Z'
+      lastTransitionTime: '2024-07-29T04:46:07Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "driver-track-b4d64c55" has successfully progressed.

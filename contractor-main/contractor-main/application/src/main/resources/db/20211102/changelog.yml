@@ -1,0 +1,23 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211102"
+            context: "20211102"
+            author: alekseev-pa
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: contractors
+                        tableName: contractor
+                        columns:
+                            -   column:
+                                    name: active
+                                    type: boolean
+                                    defaultValueBoolean: true
+                -   addNotNullConstraint:
+                        columnDataType: boolean
+                        columnName: active
+                        constraintName: active_not_null
+                        defaultNullValue: true
+                        schemaName: contractors
+                        tableName: contractor
+                        validate: true

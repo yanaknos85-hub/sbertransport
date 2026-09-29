@@ -1,0 +1,19 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20250909-1
+            author: MDmiTikhomirov
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/create_transport_org_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250909-2
+            author: MDmiTikhomirov
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/copy_data_to_transport_organization.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

@@ -1,0 +1,96 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: role
+  namespace: ci02351878-edevgen-sbertransport-dev
+  labels:
+    app: role
+    app.kubernetes.io/name: role
+    app.kubernetes.io/part-of: transport
+    template: role
+    version: D-01.016.000
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: role
+  template:
+    metadata:
+      namespace: ci02351878-edevgen-sbertransport-dev
+      labels:
+        app: role
+        app.kubernetes.io/name: role
+        app.kubernetes.io/part-of: transport
+        secman-injector: enabled
+        version: D-01.016.000
+      annotations:
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+        sidecar.istio.io/inject: 'true'
+    spec:
+      volumes:
+        - name: logs
+          emptyDir: {}
+        - name: temp
+          emptyDir: {}
+        - name: kubernetes
+          configMap:
+            name: kubernetes
+            defaultMode: 420
+        - name: logging
+          configMap:
+            name: logging
+            defaultMode: 420
+        - name: secman
+          configMap:
+            name: secman
+            defaultMode: 420
+            optional: true
+      containers:
+        - resources:
+            limits:
+              cpu: 500m
+              memory: 1G
+            requests:
+              cpu: 500m
+              memory: 1G
+          terminationMessagePath: /dev/termination-log
+          name: role
+          env:
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: database
+                  key: url.jdbc
+            - name: SPRING_PROFILES_INCLUDE
+              value: secman
+            - name: KAFKA_BROKERS
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka
+                  key: brokers
+            - name: JWKS_URL
+              value: http://jwks:8080
+            - name: JDK_JAVA_OPTIONS
+              value: >-
+                -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:9001
+          securityContext:
+            readOnlyRootFilesystem: true
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: logs
+              mountPath: /log
+            - name: temp
+              mountPath: /tmp
+            - name: kubernetes
+              mountPath: /app/resources/application-kubernetes.yml
+              subPath: application-kubernetes.yml
+            - name: logging
+              mountPath: /app/resources/application-logging.yml
+              subPath: application-logging.yml
+            - name: secman
+              mountPath: /app/resources/application-secman.yml
+              subPath: application-secman.yml
+          image: >-
+            registry.sigma.sbrf.ru/dev/ci02351878/ci02353146_transport_dev/transport/roles:231030-4-17898164
+      serviceAccountName: springboot-servicediscovery
+      restartPolicy: Always

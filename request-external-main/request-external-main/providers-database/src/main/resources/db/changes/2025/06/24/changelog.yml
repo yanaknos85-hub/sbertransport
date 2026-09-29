@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250624-1200"
+      author: khalikov-ma
+      context: "TRANSPORT-32834"
+      changes:
+        - tagDatabase:
+            tag: "D-04.010.000"
+        - dropNotNullConstraint:
+            schemaName: ${schema_name}
+            tableName: trip_order_history
+            columnName: modified_by
+        - update:
+            schemaName: ${schema_name}
+            tableName: trip_order_history
+            columns:
+              - column:
+                  name: modified_by
+                  valueComputed: 'null'
+            where: modified_by = '00000000-0000-0000-0000-000000000000'
+      rollback:
+        - update:
+            schemaName: ${schema_name}
+            tableName: trip_order_history
+            columns:
+              - column:
+                  name: modified_by
+                  value: '00000000-0000-0000-0000-000000000000'
+            where: modified_by is null
+        - addNotNullConstraint:
+            schemaName: ${schema_name}
+            tableName: trip_order_history
+            columnName: modified_by
+            constraintName: ${schema_name}_trip_order_history_modified_by_nn

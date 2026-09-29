@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250715-add_main_lead_group_id
+      author: rakhimov-di
+      changes:
+        - sqlFile:
+            path: changes/add_main_lead_group_id.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            endDelimiter: ;

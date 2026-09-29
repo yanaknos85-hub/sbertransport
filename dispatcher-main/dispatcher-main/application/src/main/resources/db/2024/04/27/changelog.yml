@@ -1,0 +1,73 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240427-0932"
+      author: blandin-ad
+      context: "TRANSPORT-18380"
+      changes:
+        - tagDatabase:
+            tag: "D-03.010.000"
+        - addColumn:
+            schemaName: dispatcher
+            tableName: contractor
+            columns:
+              - column:
+                  name: tin
+                  type: varchar(20)
+                  remarks: ИНН
+        - dropUniqueConstraint:
+            schemaName: dispatcher
+            tableName: contractor
+            constraintName: dispatcher_contractor_name_uc
+        - addUniqueConstraint:
+            schemaName: dispatcher
+            tableName: contractor
+            columnNames: name,tin
+            constraintName: dispatcher_contractor_name_tin_uc
+        - addNotNullConstraint:
+            schemaName: dispatcher
+            tableName: contractor
+            columnName: name
+            constraintName: dispatcher_contractor_name_nnc
+        - addNotNullConstraint:
+            schemaName: dispatcher
+            tableName: contractor
+            columnName: tin
+            constraintName: dispatcher_contractor_tin_nnc
+      rollback:
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: contractor
+            columns:
+              - column:
+                  name: tin
+        - addUniqueConstraint:
+            schemaName: dispatcher
+            tableName: contractor
+            columnNames: name
+            constraintName: dispatcher_contractor_name_uc
+        - dropUniqueConstraint:
+            schemaName: dispatcher
+            tableName: contractor
+            constraintName: dispatcher_contractor_name_tin_uc
+        - dropNotNullConstraint:
+            schemaName: dispatcher
+            tableName: contractor
+            columnName: name
+            constraintName: dispatcher_contractor_name_nnc
+        - dropNotNullConstraint:
+            schemaName: dispatcher
+            tableName: contractor
+            columnName: tin
+            constraintName: dispatcher_contractor_tin_nnc
+  - changeSet:
+      id: "20240427-1036"
+      author: blandin-ad
+      context: "TRANSPORT-18380"
+      changes:
+        - tagDatabase:
+            tag: "D-03.010.000"
+        - sql:
+            sql: alter table dispatcher.contractor alter column tin type varchar(12)
+      rollback:
+        - sql:
+            sql: alter table dispatcher.contractor alter column tin type varchar(20)

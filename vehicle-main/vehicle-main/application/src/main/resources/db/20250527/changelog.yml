@@ -1,0 +1,18 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20250527-1
+            author: tanini-v
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/employee_tin_drop_column.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+                -   sqlFile:
+                        path: changes/drop_driving_license_tables.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+                -   sqlFile:
+                        path: changes/revoke_driver_license_url_roles.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

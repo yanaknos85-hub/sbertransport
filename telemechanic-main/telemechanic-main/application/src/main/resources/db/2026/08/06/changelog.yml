@@ -1,0 +1,48 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20260806-1
+            author: blandin-ad
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        relativeToChangelogFile: true
+                        path: change/fill_roles.sql
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20260806-2
+            author: savchenko-ya
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        relativeToChangelogFile: true
+                        path: change/add_communication_type.sql
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        relativeToChangelogFile: true
+                        path: rollback/communication_type_rollback.sql
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20260806-3
+            author: savchenko-ya
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        relativeToChangelogFile: true
+                        path: change/add_transportation_columns.sql
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        relativeToChangelogFile: true
+                        path: rollback/transportation_columns_rollback.sql
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20260806-4
+            author: savchenko-ya
+            dbms: postgresql
+            runInTransaction: false
+            changes:
+                -   sqlFile:
+                        relativeToChangelogFile: true
+                        path: change/fill_ewb_columns.sql
+                        splitStatements: false

@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX if not exists idx_exchange_request_reply_request_id_org_id ON exchange_request.request_carrier_reply(request_id, organization_id);

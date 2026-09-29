@@ -1,0 +1,403 @@
+openapi: 3.0.3
+info:
+  title: Контрагенты
+  description: Сервис по работе с когнтрагентами
+  version: "1"
+servers:
+  - url: '{scheme}://{host}:{port}/api/contractors'
+    description: Адрес для вызова
+    variables:
+      scheme:
+        default: http
+        enum:
+          - http
+          - https
+      host:
+        default: localhost
+      port:
+        default: "80"
+        enum:
+          - "80"
+          - "8080"
+          - "443"
+          - "8443"
+paths:
+  /:
+    summary: Контрагенты
+    description: Набор операций для работы с контрагентами
+    get:
+      tags:
+        - "Контрагенты"
+      summary: Получение всех
+      description: Получение всех контрагентов
+      parameters:
+        - in: header
+          name: X-Paged
+          required: false
+          description: Признак необходимости пагинации
+          schema:
+            type: boolean
+            default: false
+        - in: query
+          name: projection
+          required: false
+          description: Проекция для отображения данных (подробности в ответах)
+          schema:
+            type: string
+            format: enum
+            enum:
+              - SELECT
+              - FULL
+            default: FULL
+        - in: query
+          name: id
+          required: false
+          description: Идентификатор контрагента для фильтрации
+          schema:
+            $ref: '#/components/schemas/UUID'
+        - in: query
+          name: name
+          required: false
+          description: Наименование контрагента для фильтрации
+          schema:
+            type: string
+        - in: query
+          name: msrn
+          required: false
+          description: ОГРН
+          schema:
+            type: string
+        - in: query
+          name: ratingFrom
+          required: false
+          description: Рейтинг контрагента (от)
+          schema:
+            type: integer
+            minimum: 0
+        - in: query
+          name: ratingTo
+          required: false
+          description: Рейтинг контрагента (до)
+          schema:
+            type: integer
+            maximum: 500
+        - in: query
+          name: organizationId
+          required: false
+          description: Идентификатор организации
+          schema:
+            $ref: '#/components/schemas/UUID'
+        - in: query
+          name: regionIds
+          required: false
+          description: Идентификатры регионов
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/UUID'
+        - in: query
+          name: page
+          required: false
+          description: Страница для отображения
+          schema:
+            type: number
+            minimum: 0
+            default: 0
+        - in: query
+          name: size
+          required: false
+          description: Размер страницы
+          schema:
+            type: number
+            minimum: 0
+            default: 20
+        - in: query
+          name: direction
+          required: false
+          description: Направление сортировки
+          schema:
+            type: string
+            format: enum
+            enum:
+              - ASC
+              - DESC
+            default: ASC
+        - in: query
+          name: field
+          required: false
+          description: Поле сортировки
+          schema:
+            type: string
+            format: enum
+            enum:
+              - rating
+              - name
+              - tin
+              - msrn
+            default: name
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - title: Полный список
+                    description: Полные данные контрагентов. При projection=FULL, либо без параметров
+                    type: object
+                    allOf:
+                      - $ref: '#/components/schemas/ContractorDTO'
+                  - title: Полный пагинированный список
+                    description: Полные данные контрагентов. С заголовком X-Paged=true, и projection=FULL без параметров)
+                    type: object
+                    properties:
+                      number:
+                        title: Номер страницы
+                        description: Номер страницы
+                        type: number
+                      size:
+                        title: Размер страницы
+                        description: Размер страницы
+                        type: number
+                      content:
+                        $ref: '#/components/schemas/ContractorDTO'
+                      hasContent:
+                        title: Наличие контента
+                        description: Флаг наличия контента
+                        type: boolean
+                      isFirst:
+                        title: Первая страница
+                        description: Флаг первой страницы
+                        type: boolean
+                      isLast:
+                        title: Последняя страница
+                        description: Флаг последней страницы
+                        type: boolean
+                      hasNext:
+                        title: Есть следующая
+                        description: Флаг, указывающий, что есть еще одна страница
+                        type: boolean
+                      hasPrevious:
+                        title: Есть предыдущая
+                        description: Флаг, указывающий, что есть еще одна страница до текущей
+                        type: boolean
+                      totalPages:
+                        title: Всего страниц
+                        description: Всего страниц в выборке
+                        type: number
+                      totalElements:
+                        title: Всего элементов
+                        description: Всего элементов в выборке
+                        type: number
+                  - title: Краткий список
+                    description: Краткие данные контрагентов. При projection=SELECT
+                    type: object
+                    allOf:
+                      - $ref: '#/components/schemas/ContractorShortDTO'
+        400:
+          description: Один из параметров запроса некорректен
+        401:
+          description: Не авторизован
+        403:
+          description: Нет прав
+        404:
+          description: Один или несколько ресурсов не найдено
+components:
+  securitySchemes:
+    BearerToken:
+      description: Токен доступа
+      scheme: bearer
+      type: http
+      bearerFormat: JWT
+  schemas:
+    UUID:
+      title: Идентификатор
+      type: string
+      format: uuid
+      pattern: "[\\da-f]{8}(-[\\da-f]{4}){3}-[\\da-f]{12}"
+    ContractorDTO:
+      title: Контрагент
+      description: Информация о контрагенте
+      required:
+        - name
+      properties:
+        name:
+          title: Наименование
+          type: string
+          description: Название контрагента
+          maxLength: 128
+        msrn:
+          title: ОГРН
+          description: ОГРН контрагента
+          type: string
+          pattern: \d{13}
+        tin:
+          title: ИНН
+          description: ИНН контрагента
+          type: string
+          minLength: 10
+          maxLength: 10
+        contactPersonInfo:
+          title: Контактное лицо
+          description: Имя контактного лица
+          type: string
+          maxLength: 250
+        contactPersonPhone:
+          title: Контактное лицо (телефон)
+          description: Телефон контактного лица
+          type: string
+          minLength: 10
+        rating:
+          title: Рейтинг
+          description: Рейтинг контрагента
+          type: number
+          minimum: 0
+          maximum: 500
+        img:
+          title: Логотип
+          description: URL к логотипу контрагента
+          type: string
+        regionIds:
+          title: Регионы
+          description: Регионы присутствия контрагента
+          type: array
+          items:
+            $ref: '#/components/schemas/UUID'
+        integrationParams:
+          $ref: '#/components/schemas/EmailIntegrationParamsDto'
+        jsonIntegrationParams:
+          $ref: '#/components/schemas/JsonIntegrationParamsDto'
+        digitId:
+          title: Номер
+          description: Порядковый номер контрагента
+          type: number
+        id:
+          title: Идентификатор
+          description: Идентификатор контрагента
+          allOf:
+            - $ref: '#/components/schemas/UUID'
+        humanReadableId:
+          title: Натуральный идентификатор
+          description: Натуральный идентификатор контрагента (a-ka человекочитаемый идентификатор)
+          type: string
+        integrationType:
+          title: Тип интеграции
+          description: Тип интеграции с контрагентом
+          type: string
+          format: enum
+          enum:
+            - EMAIL_XML_API
+            - JSON_API_1_0
+            - DISPATCHER
+            - EMAIL_XML_WOUR_API
+        mainDispatcher:
+          $ref: '#/components/schemas/DispatcherDto'
+        autoassign:
+          title: Автоназначение
+          description: Флаг включения автоназначения
+          type: boolean
+    ContractorShortDTO:
+      title: Контрагент (краткий)
+      description: Краткая информация о контрагенте
+      required:
+        - name
+      properties:
+        name:
+          title: Наименование
+          type: string
+          description: Название контрагента
+          maxLength: 128
+        id:
+          title: Идентификатор
+          description: Идентификатор контрагента
+          allOf:
+            - $ref: '#/components/schemas/UUID'
+        autoassign:
+          title: Автоназначение
+          description: Флаг включения автоназначения
+          type: boolean
+    EmailIntegrationParamsDto:
+      title: E-Mail интеграция
+      description: Информация об интеграции посредством электронной почты
+      required:
+        - contractorName
+        - contractorRusName
+        - email
+      properties:
+        contractorName:
+          title: Наименование
+          description: Латинское наименование
+          type: string
+          minLength: 3
+        contractorRusName:
+          title: Наименование
+          description: Кириллическое наименование
+          type: string
+          minLength: 3
+        email:
+          title: Адрес
+          description: Адрес электронной почты
+          type: string
+    JsonIntegrationParamsDto:
+      title: HTTP интеграция
+      description: Информация об интеграции посредством прямого обмена данными
+      required:
+        - url
+        - login
+        - password
+      properties:
+        url:
+          title: Адрес
+          description: Адрес для обмена данными
+          type: string
+          minLength: 1
+        login:
+          title: Логин
+          description: Имя ТУЗ для обмена, выпущенное контрагентом
+          type: string
+          minLength: 1
+        password:
+          title: Логин
+          description: Пароль ТУЗ для обмена, выпущенное контрагентом
+          type: string
+          minLength: 1
+    DispatcherDto:
+      title: Диспетчер
+      description: Информация о диспетчере
+      properties:
+        id:
+          title: Идентификатор
+          description: Идентификатор диспетчера
+          allOf:
+            - $ref: '#/components/schemas/UUID'
+        lastName:
+          title: Фамилия
+          description: Фамилия диспетчера
+          type: string
+        firstName:
+          title: Имя
+          description: Имя диспетчера
+          type: string
+        patronymic:
+          title: Отчество
+          description: Отчество диспетчера
+          type: string
+        humanReadableId:
+          title: Натуральный идентификатор
+          description: Натуральный идентификатор контрагента (a-ka человекочитаемый идентификатор)
+          type: string
+        phone:
+          title: Номер телефона
+          description: Номер телефона для связи с контрагентом
+          type: string
+          pattern: (\+7|8)\d{10}
+        email:
+          title: E-Mail
+          description: Адрес электронной почты для связи с контрагентом
+          type: string
+          pattern: ^[\w!#$%&’*+/=?`{|}~^-]+(?:\.[\w!#$%&’*+/=?`{|}~^-]+)*@(?:[\w-]+\.)+\w{2,6}$
+        contractorId:
+          title: Контрагент
+          description: Идентификатор контрагента
+          allOf:
+            - $ref: '#/components/schemas/UUID'

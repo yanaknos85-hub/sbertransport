@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>ru.sber.transport.request.external</groupId>
+        <artifactId>parent</artifactId>
+        <version>${release.version}</version>
+    </parent>
+
+    <artifactId>messaging</artifactId>
+
+    <properties>
+        <avro.source.path>_documents/avro</avro.source.path>
+        <payout.messaging.version>5.13.0.2</payout.messaging.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ru.sber.transport</groupId>
+            <artifactId>kafka-functional</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ru.sber.transport.request.external</groupId>
+            <artifactId>providers</artifactId>
+            <version>${parent.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ru.sber.transport.request.external</groupId>
+            <artifactId>model</artifactId>
+            <version>${parent.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ru.sber.transport.web-socket</groupId>
+            <artifactId>starter</artifactId>
+            <version>4.9</version>
+        </dependency>
+        <dependency>
+            <groupId>ru.sber.transport.corporate</groupId>
+            <artifactId>messaging</artifactId>
+            <version>${corporate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ru.sber.transport.payout</groupId>
+            <artifactId>messaging</artifactId>
+            <version>${payout.messaging.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.avro</groupId>
+                <artifactId>avro-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240726"
+      author: blandin-ad
+      changes:
+        - addColumn:
+            schemaName: trips
+            tableName: contractors
+            columns:
+              - column:
+                  name: integration_type
+                  type: text
+                  remarks: Тип интеграции конрагента
+      rollback:
+        - dropColumn:
+            schemaName: trips
+            tableName: contractors
+            columns:
+              - column:
+                  name: integration_type

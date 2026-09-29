@@ -1,0 +1,55 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250620-1"
+      author: chizhov-nd
+      context: "20250620-1"
+      changes:
+        - tagDatabase:
+            tag: "20250620-1"
+        - addColumn:
+            schemaName: notifications_request
+            tableName: driver
+            columns:
+              - column:
+                  name: phone_confirmed
+                  type: boolean
+                  remarks: Признак подтверждения номера телефона
+                  defaultValueBoolean: false
+                  defaultOnNull: false
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: notifications_request_driver_phone_confirmed_nnc
+      rollback:
+        - dropColumn:
+            schemaName: notifications_request
+            tableName: driver
+            columns:
+              - column:
+                  name: phone_confirmed
+  - changeSet:
+      id: "20250620-2"
+      author: chizhov-nd
+      context: "20250620-2"
+      changes:
+        - tagDatabase:
+            tag: "20250620-2"
+        - addColumn:
+            schemaName: notifications_corporate
+            tableName: employee
+            columns:
+              - column:
+                  name: phone_confirmed
+                  type: boolean
+                  remarks: Признак подтверждения номера телефона
+                  defaultValueBoolean: false
+                  defaultOnNull: false
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: notifications_corporate_employee_phone_confirmed_nnc
+      rollback:
+        - dropColumn:
+            schemaName: notifications_corporate
+            tableName: employee
+            columns:
+              - column:
+                  name: phone_confirmed

@@ -1,0 +1,15 @@
+databaseChangeLog:
+    -   changeSet:
+            id: contractor/20211122
+            context: "20211122"
+            author: vkudinov
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/add_vehicle_fields.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/rollback_add_vehicle_fields.sql
+                        relativeToChangelogFile: true

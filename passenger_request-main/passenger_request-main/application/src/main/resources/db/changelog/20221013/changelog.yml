@@ -1,0 +1,19 @@
+databaseChangeLog:
+    - changeSet:
+        id: "20221007-1"
+        author: dudyrev-av
+        dbms: postgresql
+        changes:
+            - addColumn:
+                schemaName: request
+                tableName: contractor_message
+                columns:
+                    - column:
+                        name: integration_type
+                        type: text
+                        remarks: Тип интеграции
+        rollback:
+            - dropColumn:
+                schemaName: request
+                tableName: contractor_message
+                columnName: integration_type

@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20260527"
+      author: blandin-ad
+      changes:
+        - tagDatabase:
+            tag: "D-05.008.000"
+        - addColumn:
+            schemaName: trips_cargo
+            tableName: shift
+            columns:
+              - column:
+                  name: ewb_id
+                  type: uuid
+                  remarks: Идентификатор ЭПЛ
+      rollback:
+        - dropColumn:
+            schemaName: trips_cargo
+            tableName: shift
+            columns:
+              - column:
+                  name: ewb_id

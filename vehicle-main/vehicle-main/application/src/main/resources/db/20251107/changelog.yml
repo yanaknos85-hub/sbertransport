@@ -1,0 +1,69 @@
+databaseChangeLog:
+  - changeSet:
+      id: vehicle/20251107-1
+      author: dolegoviabramov
+      dbms: postgresql
+      preConditions:
+        - not:
+            - columnExists:
+                tableName: transport
+                columnName: balance_unit_number
+            - columnExists:
+                tableName: transport
+                columnName: facility
+            - columnExists:
+                tableName: transport
+                columnName: equipment_unit_system_number
+        - onFail: MARK_RAN
+      changes:
+        - addColumn:
+            schemaName: vehicle
+            tableName: transport
+            columns:
+              - column:
+                  name: balance_unit_number
+                  remarks: Балансовая единица
+                  type: varchar(4)
+                  defaultValue: '0'
+                  constraints:
+                    nullable: false
+              - column:
+                  name: facility
+                  remarks: Завод
+                  type: varchar(4)
+                  defaultValue: '0'
+                  constraints:
+                    nullable: false
+              - column:
+                  name: equipment_unit_system_number
+                  remarks: Единица оборудования
+                  type: varchar(30)
+                  defaultValue: '0'
+                  constraints:
+                    nullable: false
+        - dropDefaultValue:
+            schemaName: vehicle
+            tableName: transport
+            columnName: balance_unit_number
+            columnDataType: varchar(4)
+        - dropDefaultValue:
+            schemaName: vehicle
+            tableName: transport
+            columnName: facility
+            columnDataType: varchar(4)
+        - dropDefaultValue:
+            schemaName: vehicle
+            tableName: transport
+            columnName: equipment_unit_system_number
+            columnDataType: varchar(30)
+      rollback:
+        - dropColumn:
+            schemaName: vehicle
+            tableName: transport
+            columns:
+              - column:
+                  name: balance_unit_number
+              - column:
+                  name: facility
+              - column:
+                  name: equipment_unit_system_number

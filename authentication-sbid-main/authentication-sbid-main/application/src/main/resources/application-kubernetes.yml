@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    kubernetes.enabled: true
+    discovery:
+      client:
+        health-indicator:
+          enabled: false
+    kubernetes:
+      discovery:
+        enabled: true
+      config:
+        enabled: false
+        enable-api: false
+      secrets:
+        enabled: false

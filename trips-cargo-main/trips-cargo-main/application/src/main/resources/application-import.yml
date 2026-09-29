@@ -1,0 +1,131 @@
+works:
+    files:
+        -   url: /trips
+            fileType:
+                - xlsx
+                - xls
+            collections:
+                -   name: Поездки
+                    type: ru.sber.transport.trips.cargo.business.dto.TripsExportDto
+                    mappings:
+                        -   from: №
+                            to: number
+                        -   from: ID поездки
+                            to: id
+                        -   from: ID маршрута
+                            to: routeId
+                        -   from: ID заявки(-ок)
+                            to: requestIds
+                        -   from: Начало поездки|Дата
+                            to: start.date
+                        -   from: Начало поездки|Время
+                            to: start.time
+                        -   from: Маршрут|Подача
+                            to: route.start
+                        -   from: Маршрут|Промежуточные точки
+                            to: route.waypoints
+                        -   from: Маршрут|Окончание
+                            to: route.end
+                        -   from: Прохождение точек маршрута|Количество точек маршрута
+                            to: checkin.quantity
+                        -   from: Прохождение точек маршрута|Статус
+                            to: checkin.status
+                        -   from: Прохождение точек маршрута|Геопозиция подтверждена
+                            to: checkin.waypointConfirmation
+                        -   from: Статус
+                            to: status
+                        -   from: Комментарии для водителя
+                            to: comment
+                        -   from: Заказчик
+                            to: author
+                        -   from: Номер ТС
+                            to: vehicleNumber
+                        -   from: Водитель
+                            to: driver.fullName
+                        -   from: Время создания|Дата
+                            to: creationTime.date
+                        -   from: Время создания|Время
+                            to: creationTime.time
+                        -   from: Количество грузчиков
+                            to: loaders
+                        -   from: План|Протяженность (км)
+                            to: expected.distances
+                        -   from: План|Ожидание (мин)
+                            to: expected.waitTime
+                        -   from: План|Стоимость (руб)
+                            to: expected.costs
+                        -   from: Факт|Протяженность (км)
+                            to: fact.distance
+                        -   from: Факт|Стоимость (руб)
+                            to: fact.cost
+                        -   from: Факт|Время поездки (мин)
+                            to: fact.time
+                        -   from: Факт|Время ожидания (мин)
+                            to: fact.waitTime
+                        -   from: Тип поездки
+                            to: tripType
+                        -   from: Номер договора
+                            to: contractNumber
+                        -   from: Тариф|Время ожидания (руб/мин)
+                            to: tariff.waitTime
+                        -   from: Тариф|Стоимость (руб/мин)
+                            to: tariff.cost
+                        -   from: МВЗ
+                            to: payPlace
+                        -   from: Данные диспетчера|Ожидание(мин)
+                            to: dispatcherData.driverWaitTime
+                        -   from: Диспетчер
+                            to: dispatcher.fullName
+                        -   from: Телефон диспетчера
+                            to: dispatcher.phone
+
+        -   url: /cargo
+            fileType:
+                - xlsx
+                - xls
+            collections:
+                -   name: Взаиморасчет
+                    type: ru.sber.transport.trips.cargo.business.dto.CargoExportDto
+                    mappings:
+                        -   from: № п/п
+                            to: ordinal
+                        -   from: ФИО водителя
+                            to: driverFullName
+                        -   from: № автомобиля
+                            to: vehicleNumber
+                        -   from: HRID Маршрутного листа
+                            to: routeHumanReadableId
+                        -   from: Дата подачи ТС
+                            to: desiredDate
+                        -   from: Адрес подачи ТС
+                            to: startAddress
+                        -   from: Промежуточные адреса - точки маршрута
+                            to: intermediateAddresses
+                        -   from: Адрес последнего пункта назначения
+                            to: finishAddress
+                        -   from: Время начала работы (подачи) ТС
+                            to: factStartTime
+                        -   from: Время окончания работы ТС
+                            to: factFinishTime
+                        -   from: Протяженность маршрута, км
+                            to: factDistanceKm
+                        -   from: Ожидание, мин.
+                            to: factWaitTimeMin
+                        -   from: Погрузочно-разгрузочные работы, ч.
+                            to: intermediateWaitTimeHours
+                        -   from: Вес (кг)
+                            to: weight
+                        -   from: Грузоподъемность ТС, тонн
+                            to: maxWeight
+                        -   from: Тариф, руб./км (без НДС)
+                            to: factPriceRub
+                        -   from: Тариф за время ожидания, руб./м. (без НДС)
+                            to: factWaitCostRub
+                        -   from: Тариф на погрузо-разгрузочные работы, руб./ч. (без НДС)
+                            to: loadingUnloadingTariffCostRubHours
+                        -   from: Тариф на погрузо-разгрузочные работы, руб./мин. (без НДС)
+                            to: loadingUnloadingTariffCostRubMin
+                        -   from: Транспортные расходы без НДС, руб.
+                            to: transportCostsWithoutNds
+                        -   from: Итого без НДС, руб.
+                            to: factSumWithoutNdsRub

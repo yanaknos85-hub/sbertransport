@@ -1,0 +1,1819 @@
+openapi: 3.0.3
+info:
+  title: Заявка на Яндекс-go
+  version: 4.22.0
+  description: Набор операций по работе с заявками на ЯНдекс-go
+servers:
+  - url: '{scheme}://{host}:{port}{api}'
+    description: Адрес для вызова
+    variables:
+      scheme:
+        enum:
+          - http
+          - https
+        default: http
+      host:
+        default: localhost
+      api:
+        default: /api/request/v4.9/external/
+      port:
+        enum:
+          - '80'
+          - '8080'
+          - '443'
+          - '8443'
+        default: '80'
+paths:
+  /:
+    summary: Заявки на Яндекс-go
+    description: Операции с заявками на Яндекс-go
+    post:
+      summary: Добавить
+      description: Добавить заявку
+      tags:
+        - externalRequestCommand
+      operationId: add
+      requestBody:
+        $ref: '#/components/requestBodies/NewExternalRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/ExternalRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+    get:
+      summary: Получить все
+      description: Получить все заявки
+      tags:
+        - externalRequestQuery
+      operationId: getAll
+      parameters:
+        - in: query
+          required: false
+          name: kind
+          description: Тип пользователя. Заявки выбираются в зависимости от значения этого фильтра (та, где вошедший пользователь является пассажиром или согласовантом)
+          schema:
+            $ref: '#/components/schemas/OrderKind'
+        - in: query
+          required: false
+          name: humanReadableId
+          description: Фильтр по человекочитаемому идентификатору
+          schema:
+            type: string
+        - in: query
+          required: false
+          description: Фильтр по БЕ
+          name: balanceUnitSet
+          schema:
+            type: array
+            maxItems: 10000000
+            items:
+              type: integer
+              format: int32
+        - in: query
+          required: false
+          description: Фильтр по МВЗ
+          name: costCenter
+          schema:
+            type: string
+        - in: query
+          required: false
+          description: Фильтр по статусам
+          name: status
+          schema:
+            type: array
+            maxItems: 10000000
+            items:
+              $ref: '#/components/schemas/State'
+        - in: query
+          required: false
+          description: Фильтр по пассажирам
+          name: passenger
+          schema:
+            type: array
+            maxItems: 10000000
+            items:
+              title: Идентификатор
+              type: string
+              format: uuid
+        - in: query
+          required: false
+          description: Фильтр по согласующим
+          name: approver
+          schema:
+            type: array
+            maxItems: 10000000
+            items:
+              title: Идентификатор
+              type: string
+              format: uuid
+        - in: query
+          name: startFrom
+          description: Фильтр по времени начала - от
+          required: false
+          schema:
+            title: Дата-время с зоной
+            type: string
+            format: date-time
+            example: 2024-01-01T10:05:10.023+0300
+        - in: query
+          name: startTo
+          description: Фильтр по времени начала - до
+          required: false
+          schema:
+            title: Дата-время с зоной
+            type: string
+            format: date-time
+            example: 2024-01-01T10:05:10.023+0300
+        - in: query
+          name: passengerName
+          description: Фильтр по пассажиру
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: approverName
+          description: Фильтр по согласующему
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: format
+          required: false
+          description: Формат ответа
+          schema:
+            $ref: '#/components/schemas/Format'
+        - in: query
+          name: page
+          required: false
+          description: Страница
+          schema:
+            type: integer
+            default: 0
+            minimum: 0
+        - in: query
+          name: size
+          required: false
+          description: Размер страницы
+          schema:
+            type: integer
+            default: 20
+            minimum: 0
+        - in: query
+          name: sort
+          required: false
+          description: Поле для сортировки. По-умолчанию humanReadableId
+          schema:
+            type: string
+            default: humanReadableId
+        - in: query
+          name: direction
+          required: false
+          description: Направление сортировки. По-умолчанию DESC
+          schema:
+            default: DESC
+            allOf:
+              - $ref: '#/components/schemas/SortDirection'
+      responses:
+        '200':
+          $ref: '#/components/responses/ExternalRequests'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /report:
+    post:
+      summary: Получить все (с фильтром в теле)
+      description: Получить все заявки
+      tags:
+        - externalRequestQuery
+      operationId: getReport
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filter:
+                  $ref: '#/components/schemas/RegistryFilterRq'
+                page:
+                  type: integer
+                  default: 0
+                  minimum: 0
+                size:
+                  type: integer
+                  default: 20
+                  minimum: 0
+                sort:
+                  type: string
+                  default: humanReadableId
+                direction:
+                  $ref: '#/components/schemas/SortDirection'
+              required:
+                - filter
+      responses:
+        '200':
+          $ref: '#/components/responses/ExternalRequests'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /{requestId}:
+    summary: Одна завка
+    description: Работа с одной заявкой
+    parameters:
+      - in: path
+        name: requestId
+        description: Идентификатор заявки
+        required: true
+        schema:
+          title: Идентификатор
+          type: string
+          format: uuid
+    get:
+      summary: Получить
+      description: Получить информацию об одной заявке
+      tags:
+        - externalRequestQuery
+      parameters:
+        - in: header
+          name: If-Modified-Since
+          required: false
+          description: Условный заголовок "если изменилось после". Если объект не менялся до указанной даты, будет возвращен ответ 304 Not Modified. Заголовок служит для снижения нагрузки на бэк и базу.
+          schema:
+            title: Время в формате JS
+            description: Время в формате JS для использования в заголовках
+            type: string
+            format: date-time
+            example: Sat, 01 Mar 2025 09:50:00 GMT
+      operationId: get
+      responses:
+        '200':
+          $ref: '#/components/responses/ExternalRequest'
+        '304':
+          $ref: '#/components/responses/NotModified'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Изменить
+      description: Изменить информацию о заказе
+      tags:
+        - externalRequestCommand
+      operationId: edit
+      parameters:
+        - in: header
+          name: If-Unmodified-Since
+          required: false
+          description: Условный заголовок "если не изменилось после". Если объект менялся после указанной даты, будет возвращен ответ 412 Precondition failed. Заголовок служит для исключения одновременного изменения одного и того же объекта.
+          schema:
+            title: Время в формате JS
+            description: Время в формате JS для использования в заголовках
+            type: string
+            format: date-time
+            example: Sat, 01 Mar 2025 09:50:00 GMT
+      requestBody:
+        $ref: '#/components/requestBodies/EditExternalRequest'
+      responses:
+        '202':
+          $ref: '#/components/responses/Accepted'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '412':
+          $ref: '#/components/responses/Precondition'
+    patch:
+      summary: Частичное изменение
+      description: Частичное изменение объекта. Позволяет менять отдельные атрибуты не затрагивая всего объекта. Для изменения доступны только те поля, которые можно изменить через `PUT`-запрос
+      tags:
+        - externalRequestCommand
+      operationId: editPartially
+      parameters:
+        - in: header
+          name: If-Unmodified-Since
+          required: false
+          description: Условный заголовок "если не изменилось после". Если объект менялся после указанной даты, будет возвращен ответ 412 Precondition failed. Заголовок служит для исключения одновременного изменения одного и того же объекта.
+          schema:
+            title: Время в формате JS
+            description: Время в формате JS для использования в заголовках
+            type: string
+            format: date-time
+            example: Sat, 01 Mar 2025 09:50:00 GMT
+      requestBody:
+        $ref: '#/components/requestBodies/Patch'
+      responses:
+        '202':
+          $ref: '#/components/responses/Accepted'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '412':
+          $ref: '#/components/responses/Precondition'
+    delete:
+      summary: Удаление
+      description: Удаление объекта
+      tags:
+        - externalRequestCommand
+      operationId: delete
+      parameters:
+        - in: header
+          name: If-Unmodified-Since
+          required: false
+          description: Условный заголовок "если не изменилось после". Если объект менялся после указанной даты, будет возвращен ответ 412 Precondition failed. Заголовок служит для исключения одновременного изменения одного и того же объекта.
+          schema:
+            title: Время в формате JS
+            description: Время в формате JS для использования в заголовках
+            type: string
+            format: date-time
+            example: Sat, 01 Mar 2025 09:50:00 GMT
+      responses:
+        '202':
+          $ref: '#/components/responses/Accepted'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '412':
+          $ref: '#/components/responses/Precondition'
+    head:
+      summary: Мета данные
+      description: Мета данные объекта. Позволяет получить состояние объекта без запроса всего набора данных
+      tags:
+        - externalRequestQuery
+      operationId: meta
+      parameters:
+        - in: header
+          name: If-Modified-Since
+          required: false
+          description: Условный заголовок "если не изменилось после". Если объект менялся после указанной даты, будет возвращен ответ 412 Precondition failed. Заголовок служит для исключения одновременного изменения одного и того же объекта.
+          schema:
+            title: Время в формате JS
+            description: Время в формате JS для использования в заголовках
+            type: string
+            format: date-time
+            example: Sat, 01 Mar 2025 09:50:00 GMT
+      responses:
+        '202':
+          $ref: '#/components/responses/Accepted'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '412':
+          $ref: '#/components/responses/Precondition'
+  /{requestId}/files:
+    summary: Файлы по заявке
+    description: Работа с файлами заявки
+    parameters:
+      - in: path
+        name: requestId
+        description: Идентификатор заявки
+        required: true
+        schema:
+          title: Идентификатор
+          type: string
+          format: uuid
+    post:
+      summary: Отправить
+      description: Опубликовать файл, связанный с заявкой
+      tags:
+        - externalRequestFiles
+      operationId: postFile
+      requestBody:
+        $ref: '#/components/requestBodies/File'
+      responses:
+        '202':
+          $ref: '#/components/responses/AcceptedNoHeaders'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    get:
+      summary: Получить
+      description: Получить данные файла
+      tags:
+        - externalRequestFiles
+      operationId: getFile
+      parameters:
+        - in: header
+          name: Content-Range
+          description: Получение части контента (от-до)
+          schema:
+            type: string
+            title: Данные для получения фрагмента
+            description: Данные о полученном фрагменте файла (от-до)
+            example: bytes 100-200
+      responses:
+        '200':
+          $ref: '#/components/responses/File'
+        '204':
+          $ref: '#/components/responses/NoFile'
+        '206':
+          $ref: '#/components/responses/PartiallyFile'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      summary: Удалить
+      description: Удалить файл
+      tags:
+        - externalRequestFiles
+      operationId: deleteFile
+      responses:
+        '204':
+          $ref: '#/components/responses/AcceptedNoHeaders'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /allow:
+    summary: Энд-поинты ограничений
+    description: Список операция для работы с ограничениями
+    get:
+      deprecated: true
+      tags:
+        - temporary
+      summary: Создание заказа
+      description: Эндпоинт проверки возможности создания заказа. `Только на время проведения MVP для ограничения выборки`.
+      operationId: allowOrder
+      responses:
+        '200':
+          $ref: '#/components/responses/Allowed'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /{requestId}/history:
+    summary: История изменений статусов заявки
+    description: Получение истории изменений статусов для конкретной заявки
+    parameters:
+      - in: path
+        name: requestId
+        description: Идентификатор заявки
+        required: true
+        schema:
+          title: Идентификатор
+          type: string
+          format: uuid
+    get:
+      summary: Получить историю статусов
+      description: Возвращает список всех изменений статусов заявки с указанием времени изменения
+      tags:
+        - externalRequestQuery
+      operationId: getStatusHistory
+      responses:
+        '200':
+          description: Успешный запрос, возвращает историю изменений статусов
+          content:
+            application/json:
+              schema:
+                type: array
+                maxItems: 10000000
+                items:
+                  $ref: '#/components/schemas/TripOrderStatusHistory'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /organizations/{organizationId}/departments/filter-registry:
+    get:
+      summary: Получить все отделы с уровнями(1-6) для фильтров в реестре.
+      description: Возвращает список всех активных департаментов организации с их идентификаторами, уровнями и названиями
+      tags:
+        - externalDepartmentsQuery
+      operationId: getDepartmentsForRegistryFilters
+      parameters:
+        - in: path
+          name: organizationId
+          description: Идентификатор организации
+          required: true
+          schema:
+            title: Идентификатор
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Успешный ответ. Список департаментов.
+          content:
+            application/json:
+              schema:
+                type: array
+                maxItems: 10000000
+                items:
+                  $ref: '#/components/schemas/DepartmentRegistryFilterRs'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /files/payment-report-registry:
+    summary: Формирование реестра к выплате
+    description: Формирование ссылки на скачивание реестра к выплате
+    get:
+      summary: Получить ссылку на реестр к выплате
+      description: Получить ссылку на отфильтрованный реестр к выплате
+      tags:
+        - externalRequestRegistry
+      operationId: getPaymentRegistryLink
+      parameters:
+        - in: query
+          required: false
+          name: humanReadableId
+          description: Фильтр по человекочитаемому идентификатору
+          schema:
+            type: string
+        - in: query
+          required: false
+          description: Фильтр по БЕ
+          name: balanceUnitSet
+          schema:
+            type: array
+            maxItems: 10000000
+            items:
+              type: integer
+              format: int32
+        - in: query
+          required: false
+          description: Фильтр по МВЗ
+          name: costCenter
+          schema:
+            type: string
+        - in: query
+          name: startFrom
+          description: Фильтр по времени начала - от
+          required: false
+          schema:
+            title: Дата-время с зоной
+            type: string
+            format: date-time
+            example: 2024-01-01T10:05:10.023+0300
+        - in: query
+          name: startTo
+          description: Фильтр по времени начала - до
+          required: false
+          schema:
+            title: Дата-время с зоной
+            type: string
+            format: date-time
+            example: 2024-01-01T10:05:10.023+0300
+        - in: query
+          name: passengerName
+          description: ФИО пассажира
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: approverName
+          description: ФИО согласующего
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: paymentFormationStart
+          description: Дата формирования приказа от
+          required: false
+          schema:
+            title: Дата-время с зоной
+            type: string
+            format: date-time
+            example: 2024-01-01T10:05:10.023+0300
+        - in: query
+          name: paymentFormationEnd
+          description: Дата формирования приказа до
+          required: false
+          schema:
+            title: Дата-время с зоной
+            type: string
+            format: date-time
+            example: 2024-01-01T10:05:10.023+0300
+      responses:
+        '200':
+          $ref: '#/components/responses/RegistryLink'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /files/registry:
+    summary: Скачивание реестра
+    description: Формирование ссылки на скачивание реестра
+    get:
+      summary: Получить ссылку
+      description: Получить ссылку на отфильтрованный реестр
+      tags:
+        - externalRequestRegistry
+      operationId: getRegistryLink
+      parameters:
+        - in: query
+          required: false
+          name: humanReadableId
+          description: Фильтр по человекочитаемому идентификатору
+          schema:
+            type: string
+        - in: query
+          required: false
+          description: Фильтр по БЕ
+          name: balanceUnitSet
+          schema:
+            type: array
+            maxItems: 10000000
+            items:
+              type: integer
+              format: int32
+        - in: query
+          required: false
+          description: Фильтр по МВЗ
+          name: costCenter
+          schema:
+            type: string
+        - in: query
+          required: false
+          description: Фильтр по статусам
+          name: status
+          schema:
+            type: array
+            maxItems: 10000000
+            items:
+              $ref: '#/components/schemas/State'
+        - in: query
+          name: startFrom
+          description: Фильтр по времени начала - от
+          required: false
+          schema:
+            title: Дата-время с зоной
+            type: string
+            format: date-time
+            example: 2024-01-01T10:05:10.023+0300
+        - in: query
+          name: startTo
+          description: Фильтр по времени начала - до
+          required: false
+          schema:
+            title: Дата-время с зоной
+            type: string
+            format: date-time
+            example: 2024-01-01T10:05:10.023+0300
+        - in: query
+          name: passengerName
+          description: ФИО пассажира
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: approverName
+          description: ФИО согласующего
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: paymentFormationStart
+          description: Дата формирования приказа от
+          required: false
+          schema:
+            title: Дата-время с зоной
+            type: string
+            format: date-time
+            example: 2024-01-01T10:05:10.023+0300
+        - in: query
+          name: paymentFormationEnd
+          description: Дата формирования приказа до
+          required: false
+          schema:
+            title: Дата-время с зоной
+            type: string
+            format: date-time
+            example: 2024-01-01T10:05:10.023+0300
+      responses:
+        '200':
+          $ref: '#/components/responses/RegistryLink'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+components:
+  responses:
+    Allowed:
+      description: Список разрешений
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Allowed'
+    File:
+      description: Файл получен
+      content:
+        image/*:
+          schema:
+            $ref: '#/components/schemas/FileContent'
+    NoFile:
+      description: Запрос обработан успешно, данных в ответе нет
+    PartiallyFile:
+      description: Файл получен частично
+      content:
+        image/*:
+          schema:
+            $ref: '#/components/schemas/FileContent'
+      headers:
+        Content-Range:
+          schema:
+            type: string
+            title: Ответ о файле
+            description: Данные о полученном фрагменте файла (от-до/размер)
+            example: bytes 100-200/1024
+    Accepted:
+      description: Запрос принят, изменения в системе
+      headers:
+        etag:
+          description: Хэш объекта
+          schema:
+            type: string
+        last-modified:
+          description: Время когда изменился объект
+          schema:
+            title: Время в формате JS
+            description: Время в формате JS для использования в заголовках
+            type: string
+            format: date-time
+            example: Sat, 01 Mar 2025 09:50:00 GMT
+    AcceptedNoHeaders:
+      description: Запрос принят, изменения в системе
+    ExternalRequests:
+      description: Список заявок
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ExternalRequestPage'
+    ExternalRequest:
+      description: Запрос принят, заявка создана
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListExternalRequest'
+      headers:
+        etag:
+          description: Хэш объекта
+          schema:
+            type: string
+        last-modified:
+          description: Дата изменения
+          schema:
+            title: Время в формате JS
+            description: Время в формате JS для использования в заголовках
+            type: string
+            format: date-time
+            example: Sat, 01 Mar 2025 09:50:00 GMT
+    RegistryLink:
+      description: Метаданные о формате экспорта
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ExportFileInfo'
+    Precondition:
+      description: Запрос не прошел по предусловию, например, объект поменялся с указанной даты
+    Unauthorized:
+      description: Ошибка авторизации
+    Forbidden:
+      description: Нет доступа
+    NotModified:
+      description: Не изменено
+    NotFound:
+      description: Нет ресурса
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NotFound'
+    Conflict:
+      description: Ресурс конфликтует с существующим
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Conflict'
+  requestBodies:
+    File:
+      required: true
+      description: Файл
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                $ref: '#/components/schemas/FileContent'
+    Patch:
+      required: true
+      description: Данные для частичного изменения
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Patch'
+    NewExternalRequest:
+      required: true
+      description: Тело запроса на создание заявки
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NewExternalRequest'
+    EditExternalRequest:
+      required: true
+      description: Тело запроса на изменение заявки
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/EditExternalRequest'
+  schemas:
+    ExternalRequestPage:
+      title: Страница заявок
+      description: Страница с данными заявок
+      required:
+        - content
+        - page
+        - sort
+      properties:
+        content:
+          title: Заявки
+          description: Данные заявок. Вариант ответа выбирается в зависимости от запрошенного формата
+          type: array
+          maxItems: 10000000
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/ListExternalRequest'
+              - $ref: '#/components/schemas/FullExternalRequest'
+              - $ref: '#/components/schemas/RegistryExternalRequest'
+        sort:
+          $ref: '#/components/schemas/Sort'
+        page:
+          $ref: '#/components/schemas/Page'
+    EditExternalRequest:
+      title: Данные заявки для изменения
+      description: Новые данные заявки
+      properties:
+        factCost:
+          title: Фактическая стоимость поездки (руб)
+          description: Фактическая стоимость поездки в рублях
+          type: number
+          minimum: 0
+        status:
+          $ref: '#/components/schemas/State'
+        reason:
+          title: Описание
+          description: Описание статуса, например, причина отклонения
+          type: string
+        assessments:
+          $ref: '#/components/schemas/Assessments'
+        receiptLink:
+          title: Ссылка на чек
+          description: Ссылка чек яндекс-го
+          type: string
+    Assessments:
+      title: Оценки
+      description: Данные оценок от пользователей
+      properties:
+        service:
+          title: Сервис
+          description: Оценка работы сериса
+          allOf:
+            - $ref: '#/components/schemas/Assessment'
+    Assessment:
+      title: Оценка
+      description: Оценка от пользователя
+      required:
+        - rating
+      properties:
+        rating:
+          title: Рейтинг
+          description: Числовая оценка работы сервиса
+          type: integer
+          minimum: 1
+          maximum: 5
+        comment:
+          title: Комментарий
+          description: Произвольный комментарий от пользователя
+          type: string
+          maxLength: 1000
+    FraudComment:
+      title: Комментарий к фроду
+      description: Комментарий к фроду
+      properties:
+        text:
+          title: Текст сообщения о нарушениях
+          description: Текст сообщения о нарушениях
+          type: string
+        id:
+          title: Идентификатор связанной заявки
+          description: Идентификатор связанной заявки
+          type: string
+          format: uuid
+        humanReadableId:
+          title: Человекочитаемый идентификатор связанной заявки
+          description: Человекочитаемый идентификатор связанной заявки
+          type: string
+    ListExternalRequest:
+      title: Внешняя заявка
+      description: Данные внешней заявки
+      required:
+        - id
+        - humanReadableId
+        - tariff
+        - passengerId
+        - tripDate
+        - plannedCost
+        - plannedDuration
+        - status
+        - purposeId
+        - waypoints
+        - receiptLink
+      properties:
+        id:
+          title: Идентификатор
+          type: string
+          format: uuid
+        tariff:
+          $ref: '#/components/schemas/TariffType'
+        passengerId:
+          title: Пассажир
+          description: Информация о пассажире
+          allOf:
+            - title: Идентификатор
+              type: string
+              format: uuid
+        humanReadableId:
+          $ref: '#/components/schemas/HumanReadableId'
+        tripDate:
+          title: Дата поездки
+          allOf:
+            - title: Дата-время с зоной
+              type: string
+              format: date-time
+              example: 2024-01-01T10:05:10.023+0300
+        waypoints:
+          title: Путевые точки
+          description: Список путевых точек
+          type: array
+          maxItems: 10000000
+          items:
+            $ref: '#/components/schemas/Waypoint'
+        plannedCost:
+          title: Плановая стоимость поездки (руб)
+          description: Плановая стоимость поездки в рублях
+          type: number
+          minimum: 0
+        plannedDuration:
+          title: Плановая длительность поездки
+          description: Плановая длительность поездки
+          allOf:
+            - title: Время
+              type: string
+              format: time
+        factCost:
+          title: Фактическая стоимость поездки (руб)
+          description: Фактическая стоимость поездки в рублях
+          type: number
+          minimum: 0
+        purposeId:
+          title: Цель поездки
+          description: Идентификатор цели поездки
+          allOf:
+            - title: Идентификатор
+              type: string
+              format: uuid
+        status:
+          $ref: '#/components/schemas/State'
+        comment:
+          title: Комментарий
+          description: Комментарии
+          type: string
+        reason:
+          title: Причина
+          description: Причина перевода в статус
+          type: string
+        link:
+          title: Ссылка
+          description: Ссылка на создание заказа в приложении или на сайте перевозчика. Заполняется только для новых заказов
+          type: string
+          format: url
+        receipt:
+          title: Название файла чека
+          description: Название файла чека если есть
+          type: string
+        assessments:
+          $ref: '#/components/schemas/Assessments'
+        fraudComment:
+          type: array
+          maxItems: 10000000
+          items:
+            $ref: '#/components/schemas/FraudComment'
+        receiptLink:
+          title: Ссылка на чек яндекс го
+          description: Ссылка на чек
+          type: string
+    FullExternalRequest:
+      title: Полная внешняя заявка
+      description: Развернутые данные внешней заявки
+      required:
+        - id
+        - humanReadableId
+        - tariff
+        - passenger
+        - tripDate
+        - plannedCost
+        - plannedDuration
+        - status
+        - purposeId
+        - waypoints
+      properties:
+        id:
+          title: Идентификатор
+          type: string
+          format: uuid
+        tariff:
+          $ref: '#/components/schemas/TariffType'
+        passenger:
+          title: Пассажир
+          description: Информация о пассажире
+          allOf:
+            - $ref: '#/components/schemas/Employee'
+        humanReadableId:
+          $ref: '#/components/schemas/HumanReadableId'
+        tripDate:
+          title: Дата поездки
+          allOf:
+            - title: Дата-время с зоной
+              type: string
+              format: date-time
+              example: 2024-01-01T10:05:10.023+0300
+        waypoints:
+          title: Путевые точки
+          description: Список путевых точек
+          type: array
+          maxItems: 10000000
+          items:
+            $ref: '#/components/schemas/Waypoint'
+        plannedCost:
+          title: Плановая стоимость поездки (руб)
+          description: Плановая стоимость поездки в рублях
+          type: number
+          minimum: 0
+        plannedDuration:
+          title: Плановая длительность поездки
+          description: Плановая длительность поездки
+          allOf:
+            - title: Время
+              type: string
+              format: time
+        factCost:
+          title: Фактическая стоимость поездки (руб)
+          description: Фактическая стоимость поездки в рублях
+          type: number
+          minimum: 0
+        purposeId:
+          title: Цель поездки
+          description: Идентификатор цели поездки
+          allOf:
+            - title: Идентификатор
+              type: string
+              format: uuid
+        status:
+          $ref: '#/components/schemas/State'
+        comment:
+          title: Комментарий
+          description: Комментарии
+          type: string
+        reason:
+          title: Причина
+          description: Причина перевода в статус
+          type: string
+        link:
+          title: Ссылка
+          description: Ссылка на создание заказа в приложении или на сайте перевозчика. Заполняется только для новых заказов
+          type: string
+          format: url
+        receipt:
+          title: Название файла чека
+          description: Название файла чека если есть
+          type: string
+        assessments:
+          $ref: '#/components/schemas/Assessments'
+        fraudComment:
+          type: array
+          maxItems: 10000000
+          items:
+            $ref: '#/components/schemas/FraudComment'
+    RegistryExternalRequest:
+      title: Внешняя заявка для реестра
+      description: Развернутые данные внешней заявки для отображения в реестре
+      required:
+        - id
+        - humanReadableId
+        - tariff
+        - passenger
+        - tripDate
+        - plannedCost
+        - plannedDuration
+        - status
+        - purposeId
+        - waypoints
+      properties:
+        id:
+          title: Идентификатор
+          type: string
+          format: uuid
+        tariff:
+          $ref: '#/components/schemas/TariffType'
+        passenger:
+          title: Пассажир
+          description: Информация о пассажире
+          allOf:
+            - $ref: '#/components/schemas/Employee'
+        approver:
+          title: Согласующий
+          description: Информация о согласующем
+          allOf:
+            - $ref: '#/components/schemas/Employee'
+        humanReadableId:
+          $ref: '#/components/schemas/HumanReadableId'
+        tripDate:
+          title: Дата поездки
+          allOf:
+            - title: Дата-время с зоной
+              type: string
+              format: date-time
+              example: 2024-01-01T10:05:10.023+0300
+        waypoints:
+          title: Путевые точки
+          description: Список путевых точек
+          type: array
+          maxItems: 10000000
+          items:
+            $ref: '#/components/schemas/Waypoint'
+        plannedCost:
+          title: Плановая стоимость поездки (руб)
+          description: Плановая стоимость поездки в рублях
+          type: number
+          minimum: 0
+        plannedDuration:
+          title: Плановая длительность поездки
+          description: Плановая длительность поездки
+          allOf:
+            - title: Время
+              type: string
+              format: time
+        factCost:
+          title: Фактическая стоимость поездки (руб)
+          description: Фактическая стоимость поездки в рублях
+          type: number
+          minimum: 0
+        purposeId:
+          title: Цель поездки
+          description: Идентификатор цели поездки
+          allOf:
+            - title: Идентификатор
+              type: string
+              format: uuid
+        status:
+          $ref: '#/components/schemas/State'
+        comment:
+          title: Комментарий
+          description: Комментарии
+          type: string
+        reason:
+          title: Причина
+          description: Причина перевода в статус
+          type: string
+        link:
+          title: Ссылка
+          description: Ссылка на создание заказа в приложении или на сайте перевозчика. Заполняется только для новых заказов
+          type: string
+          format: url
+        receipt:
+          title: Название файла чека
+          description: Название файла чека если есть
+          type: string
+        assessments:
+          $ref: '#/components/schemas/Assessments'
+        costCenter:
+          title: МВЗ
+          description: МВЗ (место возникновения затрат)
+          type: string
+        fraudComment:
+          type: array
+          maxItems: 10000000
+          items:
+            $ref: '#/components/schemas/FraudComment'
+    Employee:
+      title: Участник заявки
+      description: Данные об участнике о поездках
+      required:
+        - id
+      properties:
+        id:
+          title: Идентификатор
+          type: string
+          format: uuid
+        firstName:
+          title: Имя
+          description: Имя
+          type: string
+        lastName:
+          title: Фамилия
+          description: Фамилия
+          type: string
+        patronymic:
+          title: Отчество
+          description: Отчество
+          type: string
+    State:
+      title: Состояние заявки
+      description: |-
+        Состояние заявки
+
+        |Статус                         |Описание                                                |
+        |-------------------------------|--------------------------------------------------------|
+        |NEW                            |Новая заявка                                            |
+        |CONFIRMATION_NEEDED            |Требуется подтверждение завершения поездки пассажиром   |
+        |CONFIRMATION                   |Требуется подтверждение завершения поездки согласующим  |
+        |DATA_NEEDED                    |Требуются дополнительные сведения                       |
+        |CONFIRMED                      |Подтверждено                                            |
+        |DECLINED                       |Отклонено                                               |
+        |CANCELLED                      |Заявка отменена                                         |
+        |ORDER_PAYMENT_FORMATION        |Формирование приказа на выплату                         |
+        |PAYMENT_AWAITING               |Ожидание выплаты                                        |
+        |PAYMENT_DONE                   |Выплата произведена                                     |
+        |PAYMENT_NOT_DONE               |Выплата не произведена                                  |
+      type: string
+      format: enum
+      enum:
+        - NEW
+        - CONFIRMATION_NEEDED
+        - CONFIRMATION
+        - DATA_NEEDED
+        - CONFIRMED
+        - DECLINED
+        - CANCELLED
+        - ORDER_PAYMENT_FORMATION
+        - PAYMENT_AWAITING
+        - PAYMENT_DONE
+        - PAYMENT_NOT_DONE
+    NewExternalRequest:
+      title: Новая внешняя заявка
+      description: Данные внешней заявки
+      required:
+        - tripDate
+        - waypoints
+        - purposeId
+        - tariff
+      properties:
+        tripDate:
+          title: Дата поездки
+          allOf:
+            - title: Дата-время с зоной
+              type: string
+              format: date-time
+              example: 2024-01-01T10:05:10.023+0300
+        waypoints:
+          title: Путевые точки
+          description: Список путевых точек
+          type: array
+          maxItems: 10000000
+          items:
+            $ref: '#/components/schemas/Waypoint'
+        purposeId:
+          title: Цель поездки
+          description: Идентификатор цели поездки
+          allOf:
+            - title: Идентификатор
+              type: string
+              format: uuid
+        tariff:
+          $ref: '#/components/schemas/TariffType'
+        comment:
+          title: Комментарии
+          description: Комментарии к заявке
+          type: string
+        taxiCost:
+          title: Стоимость
+          description: Стоимость(в рублях) корп. такси
+          type: number
+    TripOrderStatusHistory:
+      title: Изменение в истории заявки
+      description: Данные об изменениях заявки
+      required:
+        - status
+        - modifiedAt
+      properties:
+        modifiedAt:
+          title: Время изменения статуса заявки
+          allOf:
+            - title: Дата-время с зоной
+              type: string
+              format: date-time
+              example: 2024-01-01T10:05:10.023+0300
+        status:
+          $ref: '#/components/schemas/State'
+        comment:
+          title: Комментарий
+          description: Комментарии
+          type: string
+        reason:
+          title: Причина
+          description: Причина перевода в статус
+          type: string
+    Waypoint:
+      title: Путевая точка
+      description: Данные путевой точки
+      required:
+        - country
+        - region
+        - orderNumber
+        - latitude
+        - longitude
+      properties:
+        country:
+          title: Страна
+          description: Название страны
+          type: string
+        region:
+          title: Регион
+          description: Название региона
+          type: string
+        city:
+          title: Город
+          description: Название города
+          type: string
+        street:
+          title: Улица
+          description: Название улицы
+          type: string
+        house:
+          title: Дом
+          description: Дом
+          type: string
+        structure:
+          title: Строение
+          description: Строение
+          type: string
+        building:
+          title: Корпус
+          description: Корпус
+          type: string
+        latitude:
+          title: Широта
+          description: Широта в десятичных координатах
+          type: number
+        longitude:
+          title: Долгота
+          description: Долгота в десятичных координатах
+          type: number
+    Format:
+      title: Формат ответа
+      type: string
+      format: enum
+      default: LIST
+      description: |-
+        Форматы ответа
+
+        |Параметр |Описание                                               |
+        |---------|-------------------------------------------------------|
+        |LIST     |Минимальный набор данных (свернуты данные о пассажире) |
+        |FULL     |Полный набор данных (данные о пассажире развернуты)    |
+        |REGISTRY |Набор данных для отображения реестров                  |
+      enum:
+        - LIST
+        - FULL
+        - REGISTRY
+    Allowed:
+      deprecated: true
+      type: object
+      title: Разрешение
+      description: Описание разрешения
+      required:
+        - order
+      properties:
+        order:
+          type: boolean
+          title: Заказ поездки
+          description: Признак разрешения заказа поездки
+    Sort:
+      description: Данные о наложенной сортировке
+      required:
+        - field
+        - direction
+      properties:
+        field:
+          title: Поле
+          description: Поле сортировки
+          type: string
+        direction:
+          format: enum
+          description: |
+            Направление сортировки.
+            *ASC* - по возрастанию
+            *DESC* - по убыванию
+          enum:
+            - ASC
+            - DESC
+          type: string
+          title: SortDirection
+          default: ASC
+    Page:
+      description: Данные о странице
+      required:
+        - number
+        - size
+        - last
+        - first
+        - total
+        - count
+      properties:
+        number:
+          title: Номер страницы
+          description: Номер запрошенной страницы
+          minimum: 0
+          type: integer
+        size:
+          title: Размер страницы
+          description: Размер запрошенной страницы
+          minimum: 0
+          type: integer
+        last:
+          title: Последняя
+          description: Флаг последней страницы
+          type: boolean
+        first:
+          title: Первая
+          description: Флаг первой страницы
+          type: boolean
+        total:
+          title: Всего
+          description: Общее количество элементов
+          minimum: 0
+          type: integer
+        count:
+          title: Страницы
+          description: Общее количество страниц
+          minimum: 0
+          type: integer
+    Patch:
+      description: Тело запроса для частичного изменения данных
+      type: array
+      items:
+        required:
+          - op
+          - path
+        properties:
+          op:
+            format: enum
+            title: Операция
+            description: Тип операции с полем
+            enum:
+              - REPLACE
+              - ADD
+              - REMOVE
+            type: string
+          path:
+            title: Путь к полю
+            description: Полный путь к полю, разделенный слэшами
+            type: string
+            example: /field/subfield/subsubfield
+          value:
+            title: Новое значение
+            description: Новое значение для установки в поле
+            type: object
+    SortDirection:
+      format: enum
+      description: |
+        Направление сортировки.
+        *ASC* - по возрастанию
+        *DESC* - по убыванию
+      enum:
+        - ASC
+        - DESC
+      type: string
+      title: SortDirection
+      default: ASC
+    NotFound:
+      description: По указанному URL не найден ресурс
+      type: object
+      properties:
+        message:
+          title: Сообщение об ошибке
+          description: Общее сообщение об ошибке
+          type: string
+        path:
+          title: Путь запроса
+          type: string
+        entity:
+          description: Запрашиваемая сущность
+          properties:
+            id:
+              title: Идентификатор
+              description: Идентификатор запрашиваемой сущности
+              type: string
+            name:
+              title: Название
+              description: Название запрашиваемой сущности
+              type: string
+        timestamp:
+          title: Дата-время
+          type: string
+          format: date-time
+    Conflict:
+      description: Данные запроса конфликтуют с существующими в системе данными
+      type: object
+      properties:
+        message:
+          title: Сообщение об ошибке
+          description: Общее сообщение об ошибке
+          type: string
+        timestamp:
+          title: Дата-время
+          type: string
+          format: date-time
+        path:
+          title: Путь запроса
+          type: string
+        entity:
+          description: Запрашиваемая сущность
+          properties:
+            id:
+              title: Идентификатор
+              description: Идентификатор запрашиваемой сущности
+              type: string
+            name:
+              title: Название
+              description: Название запрашиваемой сущности
+              type: string
+        problems:
+          title: Конфликтующие сущности
+          description: Список конфликтов
+          type: array
+          maxItems: 10000000
+          items:
+            description: Описание проблемы запроса
+            type: object
+            properties:
+              field:
+                title: Поле
+                description: Наименование поля с проблемой
+                type: string
+              value:
+                title: Значение
+                description: Полученное от клиента значение
+                type: string
+    HumanReadableId:
+      type: string
+      description: Натуральный идентификатор
+      format: AB-XXXX-XXXXXXXX
+      example: OT-1234-56789012
+      pattern: '[A-Z]{2}-\d{4}-\d{8}'
+    TariffType:
+      type: string
+      title: Тип тарифа
+      description: |-
+        Тип тарифа для получения данных
+
+        |Название |Описание                                             |
+        |---------|-----------------------------------------------------|
+        |ECONOMY  |Эконом                                               |
+        |COMFORT  |Комфорт                                              |
+        |BUSINESS |Улучшенный комфорт (в терминологии яндекса Комфорт+) |
+        |VIP      |Максимальный класс (в терминологии яндекса Бизнес)   |
+      format: enum
+      enum:
+        - ECONOMY
+        - COMFORT
+        - BUSINESS
+        - VIP
+    FileContent:
+      format: binary
+      description: Описание файла
+      type: string
+    OrderKind:
+      title: Тип заявки
+      description: |-
+        Тип заявки для получения. По-умолчанию PASSENGER
+
+        |Значение |Описание               |
+        |---------|-----------------------|
+        |PASSENGER|Заявки на поездки      |
+        |APPROVAL |Заявки на согласование |
+      type: string
+      format: enum
+      enum:
+        - PASSENGER
+        - APPROVAL
+      default: PASSENGER
+    OrderPaymentFormationStartRange:
+      title: Даты формирования приказа
+      description: Диапазон дат формирования приказов
+      required:
+        - startDate
+        - endDate
+      properties:
+        startDate:
+          title: Дата начала формирования приказа(Включительно)
+          description: Дата с зоной в строком представлении
+          allOf:
+            - title: Дата-время с зоной
+              type: string
+              format: date-time
+              example: 2024-01-01T10:05:10.023+0300
+          type: string
+        endDate:
+          title: Дата оканчания формирования приказа(Включительно)
+          description: Дата с зоной в строком представлении
+          example: '2025-10-03T20:59:59.999Z'
+          allOf:
+            - title: Дата-время с зоной
+              type: string
+              format: date-time
+              example: 2024-01-01T10:05:10.023+0300
+    RegistryFilterRq:
+      title: Фильтр реестра заявок
+      description: Тело запроса с фильтрами для реестра заявок
+      type: object
+      properties:
+        organizationId:
+          title: ID организации
+          type: string
+          format: uuid
+        humanReadableId:
+          title: Номер заявки
+          type: string
+        balanceUnits:
+          title: Балансовые единицы
+          type: array
+          maxItems: 10000000
+          items:
+            type: integer
+            format: int32
+        costCenter:
+          title: МВЗ
+          type: string
+        status:
+          title: Статус заявки
+          type: array
+          maxItems: 10000000
+          items:
+            $ref: '#/components/schemas/State'
+        passenger:
+          title: Идентификатор пассажира
+          type: array
+          maxItems: 10000000
+          items:
+            title: Идентификатор
+            type: string
+            format: uuid
+        approver:
+          title: Идентификатор согласующего
+          type: array
+          maxItems: 10000000
+          items:
+            title: Идентификатор
+            type: string
+            format: uuid
+        startFrom:
+          title: Интервал для фильтрации даты начала поездки
+          allOf:
+            - title: Дата-время с зоной
+              type: string
+              format: date-time
+              example: 2024-01-01T10:05:10.023+0300
+        startTo:
+          title: Интервал для фильтрации даты окончания поездки
+          allOf:
+            - title: Дата-время с зоной
+              type: string
+              format: date-time
+              example: 2024-01-01T10:05:10.023+0300
+        passengerName:
+          title: Имя пассажира
+          type: string
+        approverName:
+          title: Имя согласующего
+          type: string
+        orderPaymentFormationStartRange:
+          $ref: '#/components/schemas/OrderPaymentFormationStartRange'
+        departments:
+          title: Идентификаторы подразделений для фильтрации
+          description: Идентификаторы подразделений для фильтрации, разделенные по уровням
+          type: object
+          properties:
+            '1':
+              type: array
+              maxItems: 10000000
+              items:
+                type: string
+                format: uuid
+            '2':
+              type: array
+              maxItems: 10000000
+              items:
+                type: string
+                format: uuid
+            '3':
+              type: array
+              maxItems: 10000000
+              items:
+                type: string
+                format: uuid
+            '4':
+              type: array
+              maxItems: 10000000
+              items:
+                type: string
+                format: uuid
+            '5':
+              type: array
+              maxItems: 10000000
+              items:
+                type: string
+                format: uuid
+            '6':
+              type: array
+              maxItems: 10000000
+              items:
+                type: string
+                format: uuid
+          additionalProperties: false
+          example:
+            '1':
+              - 3fa85f64-5717-4562-b3fc-2c963f66afa6
+              - 3fa85f64-5717-4562-b3fc-2c963f66afa6
+            '2': []
+            '3': []
+            '4': []
+            '5': []
+            '6': []
+          maxProperties: 6
+      required:
+        - filter
+        - page
+        - size
+    DepartmentRegistryFilterRs:
+      type: object
+      properties:
+        id:
+          title: Идентификатор
+          type: string
+          format: uuid
+        level:
+          type: integer
+          example: 1
+          description: Уровень в иерархии (1–6)
+        name:
+          type: string
+          example: Отдел логистики
+          description: Название отдела
+      required:
+        - id
+        - level
+        - name
+      description: DTO для представления отдела с уровнем
+    ExportFileInfo:
+      title: Информация о выгружаемом файле
+      description: Ссылка на файл
+      properties:
+        request_url:
+          title: Ссылка на скачивание файла
+          description: Ссылка
+          type: string
+          format: url
+        started:
+          title: Флаг запуска выгрузки
+          description: Флаг запуска выгрузки
+          type: boolean
+  securitySchemes:
+    BearerToken:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
+      description: Токен доступа
+security:
+  - BearerToken: []
+
+# Powered by APIStudio

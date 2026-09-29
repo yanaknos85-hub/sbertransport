@@ -1,0 +1,84 @@
+.modal {
+  :global(.ant-modal-title) {
+    font-size: calc(var(--font-size-base) * 1.25) !important;
+    font-family: 'SB Sans Interface SemiBold', serif, sans-serif;
+    color: var(--gray-10);
+  }
+
+  :global(.ant-modal-header) {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+
+  :global(.ant-modal-footer) {
+    height: 70px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  :global(.ant-modal-body) {
+    p {
+      color: var(--gray-7);
+      font-family: 'SB Sans Text', serif, sans-serif;
+      font-size: var(--fz-16) !important;
+    }
+  }
+
+  :global(.ant-modal-content) {
+    border: 1px solid var(--solitude);
+    border-radius: 12px;
+  }
+
+  :global(.ant-checkbox-wrapper) {
+    font-size: var(--fz-16) !important;
+    color: var(--gray-10);
+    font-family: 'SB Sans Text', serif, sans-serif;
+  }
+
+  :global(.ant-input) {
+    border: 1px solid var(--input-border-color);
+    border-radius: 8px;
+    padding: 12px var(--padding-half);
+    box-shadow: none;
+  }
+
+  :global(.ant-input):hover {
+    margin: -1px;
+    border: 2px solid var(--input-border-color) !important;
+    box-shadow: none;
+    transition: all 0.3s linear;
+  }
+
+  :global(.ant-input):focus {
+    margin: -1px;
+    border: 2px solid var(--jade) !important;
+    box-shadow: none !important;
+    transition: all 0.3s linear;
+    outline: none;
+  }
+
+  :global(.ant-input):active {
+    margin: -1px;
+    box-shadow: none;
+  }
+
+  :global(.ant-btn) {
+    border-radius: 8px;
+    border: none;
+  }
+
+  :global(.ant-btn):hover {
+    border: none;
+  }
+
+  :global(.ant-btn):active {
+    border: none;
+  }
+
+  :global(.ant-input-number) {
+    border-radius: 8px;
+    padding: 9px 16px;
+    width: 100%;
+  }
+}

@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20240708
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                - addColumn:
+                      schemaName: vehicle
+                      tableName: employee
+                      columns:
+                          - column:
+                                name: tin
+                                type: bigint
+                                remarks: ИНН

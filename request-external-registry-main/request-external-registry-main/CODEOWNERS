@@ -1,0 +1,8 @@
+CODEOWNERS.toplevel.auto_unapprove_on_change enable
+CODEOWNERS.toplevel.create_pull_request_comment disable
+CODEOWNERS.source_branch_exclusion_pattern release/D-*
+
+@@@Developers medvedev.a.dmit@sberbank.ru ADmBlandin@sberbank.ru AAlLadeyshchikov@sberbank.ru
+** @@Developers
+
+AllGroupsCheck(1)

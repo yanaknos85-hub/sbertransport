@@ -1,0 +1,46 @@
+.tripDetailedView {
+  min-width: 900px;
+  .mapWrapper {
+    height: 300px;
+
+    .map {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .tableWrapper {
+    margin-top: var(--margin-base);
+
+    .label {
+      :global(.ant-descriptions-item-label) {
+        width: var(--width-base);
+        margin-right: var(--margin-large);
+      }
+
+      :global(.ant-descriptions-item-content) {
+        justify-content: start;
+      }
+
+      & ::after {
+        content: none;
+      }
+
+      .coopTripContainer {
+        width: 100%;
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 1fr;
+        grid-gap: var(--margin-large);
+
+        .coopTripItem {
+          word-wrap: break-word;
+          white-space: pre-line;
+          .companionContainer {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}

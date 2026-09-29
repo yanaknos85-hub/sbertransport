@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+ru.sber.transport.audit.AuditConfig,\
+ru.sber.transport.audit.filter.AuditFilter,\
+ru.sber.transport.audit.service.impl.DocumentationResolverImpl,\
+ru.sber.transport.audit.writer.impl.AuditWriterImpl

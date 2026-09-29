@@ -1,0 +1,45 @@
+@import 'styles/variables.scss';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+
+    .header {
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: -0.3px;
+    }
+
+    .steps {
+        display: flex;
+        flex-direction: column;
+        padding-inline: 12px;
+    }
+
+    .step {
+        .text {
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: -0.3px;
+        }
+
+        .image {
+            height: 100%;
+            width: 90%;
+            padding-top: 12px;
+        }
+    }
+}
+
+.modal {
+  :global(.adm-modal-body) {
+    max-height: 90vh;
+  }
+
+  :global(.adm-modal-title) {
+    font-size: 22px;
+    text-align: left;
+  }
+}

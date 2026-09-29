@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20251022-1033"
+      author: farkhutdinov
+      changes:
+        - createIndex:
+            indexName: external_request_department_org_id_status_lvl_lvl_idx
+            tableName: department
+            schemaName: external_request
+            columns:
+              - column:
+                  name: organization_id
+              - column:
+                  name: status
+              - column:
+                  name: level

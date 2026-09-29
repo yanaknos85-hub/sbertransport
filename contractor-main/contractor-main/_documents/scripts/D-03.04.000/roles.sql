@@ -1,0 +1,2 @@
+call migrations.fill_roles('contractors', 'PATCH /self/dispatcher/consent/', 'ROLE_DISPATCHER_CONTRACTOR', true);
+call migrations.fill_roles('contractors', 'PATCH /self/driver/consent/', 'ROLE_DRIVER_CONTRACTOR', true);

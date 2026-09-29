@@ -1,0 +1,43 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20251014-1354"
+      author: medvedev-ad
+      context: "TRANSPORT-36223"
+      changes:
+        - tagDatabase:
+            tag: "D-04.020.000"
+        - sql:
+            sql: create type request.fraud_type as enum ('RECEIPT', 'RADIUS');
+        - sql:
+            dbms: postgresql
+            sql: comment on type request.fraud_type is 'Тип фрода (RECEIPT - отклонение по чеку, RADIUS - отклонение по радиусу)';
+      rollback:
+        - sql:
+            sql: drop type request.fraud_type;
+  - changeSet:
+      id: "20251014-1356"
+      author: medvedev-ad
+      context: "TRANSPORT-36223"
+      changes:
+        - tagDatabase:
+            tag: "D-04.020.000"
+        - addColumn:
+            schemaName: request
+            tableName: fraud
+            columns:
+              - column:
+                  name: type
+                  type: request.fraud_type
+                  remarks: Тип фрода
+        - update:
+            schemaName: request
+            tableName: fraud
+            columns:
+                - column:
+                    name: type
+                    value: RECEIPT
+        - addNotNullConstraint:
+            schemaName: request
+            tableName: fraud
+            columnName: type
+            constraintName: request_fraud_type_nn

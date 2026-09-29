@@ -1,0 +1,24 @@
+databaseChangeLog:
+    -   changeSet:
+            id: contractor/20210916
+            context: "20210916"
+            author: chuprin
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/drop_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false;
+                -   sqlFile:
+                        path: change/add_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false;
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+                -   sqlFile:
+                        path: rollback/add_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

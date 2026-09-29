@@ -1,0 +1,34 @@
+application: push
+repo: app_platform_push
+resources:
+  limits:
+    cpu: 500m
+    memory: 1G
+  requests:
+    cpu: 500m
+    memory: 1G
+port:
+  http:
+    number: 8025
+    target: 8080
+    name: push
+secman:
+  type: built_in
+additional:
+  envs:
+    - name: SPRING_CLOUD_CONFIG_URI
+      value: http://http-config-server:8080
+    - name: JWKS_URI
+      value: 'http://jwks:8080'
+    - name: KAFKA_BROKERS
+      valueFrom:
+        configMapKeyRef:
+          name: kafka
+          key: brokers
+    - name: KAFKA_SSL_BROKERS
+      valueFrom:
+        configMapKeyRef:
+          name: kafka
+          key: brokers
+    - name: KAFKA_SECURITY_PROTOCOL
+      value: PLAINTEXT

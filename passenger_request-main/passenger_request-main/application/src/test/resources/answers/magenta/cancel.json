@@ -1,0 +1,23 @@
+[
+    {
+        "id": "1004917",
+        "newOrdersIds": [],
+        "passengers": 0,
+        "stops": [],
+        "kpi": {
+            "totalCost": 388.0,
+            "totalDistanceKm": 8.186177253723145,
+            "totalTimeMin": 22.0,
+            "ordersKpi": [
+                {
+                    "orderId": "10005897",
+                    "costSharePart": 1.0,
+                    "rideTimeMin": 22,
+                    "savings": 0.0,
+                    "savingsPct": 0.0,
+                    "orderDistanceKm": 8
+                }
+            ]
+        }
+    }
+]

@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - include:
+      file: 01/changelog.yml
+      relativeToChangelogFile: true
+  - include:
+      file: 04/changelog.yml
+      relativeToChangelogFile: true
+  - include:
+      file: 05/changelog.yml
+      relativeToChangelogFile: true
+  - include:
+      file: 08/changelog.yml
+      relativeToChangelogFile: true

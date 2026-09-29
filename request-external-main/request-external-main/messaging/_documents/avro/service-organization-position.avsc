@@ -1,0 +1,56 @@
+{
+  "namespace": "ru.sber.transport.messages.corporate.avro",
+  "name": "PositionMessage",
+  "type": "record",
+  "doc": "Информация о должности",
+  "fields": [
+    {
+      "name": "id",
+      "doc": "Идентификатор",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      },
+      "aliases": [
+        "headerId"
+      ]
+    },
+    {
+      "doc": "Человекочитаемый идентификатор",
+      "name": "humanReadableId",
+      "type": "string"
+    },
+    {
+      "doc": "Идентификатор организации",
+      "name": "organizationId",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "doc": "Наименование должности",
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "doc": "Флаг активности",
+      "name": "active",
+      "type": "boolean"
+    },
+    {
+      "doc": "Флаг самосогласования",
+      "name": "self_approved",
+      "type": "boolean"
+    },
+    {
+      "doc": "Доступные типы транспорта",
+      "name": "available_classes",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "default": []
+    }
+  ]
+}

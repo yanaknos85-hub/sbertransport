@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20260115-0900
+      author: zhirov-aa
+      changes:
+        - addColumn:
+            schemaName: dispatcher
+            tableName: contractor
+            columns:
+              - column:
+                  name: is_internal
+                  type: boolean
+                  defaultValueBoolean: false
+                  remarks: Признак внутреннего автопарка
+                  constraints:
+                      nullable: false
+      rollback:
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: contractor
+            columnName: is_internal

@@ -1,0 +1,15 @@
+.button {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: var(--solitude);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+
+   &.disabled {
+    cursor: not-allowed;
+  }
+}

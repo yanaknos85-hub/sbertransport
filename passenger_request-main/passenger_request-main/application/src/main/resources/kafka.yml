@@ -1,0 +1,274 @@
+spring:
+  cloud:
+    stream:
+      binders:
+        kafka:
+          type: kafka
+          environment:
+            spring:
+              cloud:
+                stream:
+                  kafka:
+                    default:
+                      consumer:
+                        enableDlq: true
+                    binder:
+                      brokers:
+                        - ${KAFKA_BROKERS:@kafka.default.broker@}
+                      producerProperties:
+                        key.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+                      consumerProperties:
+                        key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+                      auto-alter-topics: ${KAFKA_AUTO_ALTER_TOPICS:true}
+                    bindings:
+                      requestOutput-out-0:
+                        producer:
+                          compression.type: ${KAFKA_REQUEST_OUTPUT_CT:gzip}
+                          topic.properties:
+                            cleanup.policy: ${KAFKA_REQUEST_OUTPUT_CP:compact,delete}
+                            retention.ms: ${KAFKA_REQUEST_OUTPUT_RMS:604800000}
+      default-binder: kafka
+      bindings:
+        contractorRequestInput-in-0:
+          group: ${spring.application.name}
+          destination: service.trip.registry.check.contractorRequest
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        carsharingTripInput-in-0:
+          group: ${spring.application.name}
+          destination: service.integrations.carsharing.trip
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        departmentsInput-in-0:
+          group: ${spring.application.name}
+          destination: service.organization.department
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        employeesInput-in-0:
+          group: ${spring.application.name}
+          destination: service.organization.employee
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        organizationsInput-in-0:
+          group: ${spring.application.name}
+          destination: service.organization
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        positionsInput-in-0:
+          group: ${spring.application.name}
+          destination: service.organization.position
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        transportTypeInput-in-0:
+          group: ${spring.application.name}
+          destination: service.transportType
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        approveRequestInput-in-0:
+          group: ${spring.application.name}
+          destination: service.trip.request.approve
+        rolesInput-in-0:
+          group: ${spring.application.name}
+          destination: service.roles
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        transportInput-in-0:
+          group: ${spring.application.name}
+          destination: service.contractor.transport
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        delegateInput-in-0:
+          group: ${spring.application.name}
+          destination: service.organization.employee.delegate
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        tripPurposeInput-in-0:
+          group: ${spring.application.name}
+          destination: service.organization.trip.purpose
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        approveFinalTripInput-in-0:
+          group: ${spring.application.name}
+          destination: service.final.trip.approve
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        approveUpdateTripInput-in-0:
+          group: ${spring.application.name}
+          destination: service.update.trip.approve
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        updateRequestStatusFromReportsInput-in-0:
+          group: ${spring.application.name}
+          destination: service.request.status.update.from.reports
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        updateRequestStatusInput-in-0:
+          group: ${spring.application.name}
+          destination: service.request.update.status
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        departmentTripRequestApproversInput-in-0:
+          group: ${spring.application.name}
+          destination: service.department.trip.approvers
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        approveSharedRideInput-in-0:
+          group: ${spring.application.name}
+          destination: service.shared.ride.approve
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        tariffInput-in-0:
+          group: ${spring.application.name}
+          destination: service.tariff
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        contractInput-in-0:
+          group: ${spring.application.name}
+          destination: service.contract
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        contractorInput-in-0:
+          group: ${spring.application.name}
+          destination: service.contractor
+        deadlineSettingsInput-in-0:
+          group: ${spring.application.name}
+          destination: service.organization.deadlineSettings
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        approvalsSettingsInput-in-0:
+          group: ${spring.application.name}
+          destination: service.organization.approvalsSettings
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        geoZoneInput-in-0:
+          group: ${spring.application.name}
+          destination: service.geo.zones
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        inContractorTaxiTripInProgressInput-in-0:
+          group: ${spring.application.name}
+          destination: service.integrations.contractor.trip.inprogress
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        limitInput-in-0:
+          group: ${spring.application.name}
+          destination: service.limits
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        taxiTariffInput-in-0:
+          group: ${spring.application.name}
+          destination: service.tariff.taxi
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        groupTransferTariffInput-in-0:
+          group: ${spring.application.name}
+          destination: service.tariff.groupTransfer
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        personalTariffInput-in-0:
+          group: ${spring.application.name}
+          destination: service.tariff.personal
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        carSharingTariffInput-in-0:
+          group: ${spring.application.name}
+          destination: service.tariff.carSharing
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        publicTariffInput-in-0:
+          group: ${spring.application.name}
+          destination: service.tariff.public
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        limitSpendOutput-out-0:
+          group: ${spring.application.name}
+          destination: service.limits.spend
+        contractorTripUpdateInput-in-0:
+          group: ${spring.application.name}
+          destination: service.contractor.update.trip
+        statsOutput-out-0:
+          group: ${spring.application.name}
+          destination: service.reports.stats
+        limitActionRequest-out-0:
+          destination: service.limits.action
+        frequentlyAddressOutput-out-0:
+          destination: service.request.address.used
+        requestOutput-out-0:
+          destination: service.request
+        requestRatingOutput-out-0:
+          destination: service.request.rating
+        updateRequestOutput-out-0:
+          destination: service.trip.request.update
+        viewDocumentOutput-out-0:
+          destination: service.trip.request.view.document
+        requestDocumentOutput-out-0:
+          destination: service.trip.request.document
+        taxiTripOutput-out-0:
+          destination: service.request.taxi.trip
+        contractorTaxiTripOutput-out-0:
+          destination: service.integrations.contractor.trip
+        limitActionResponse-in-0:
+          group: ${spring.application.name}
+          destination: service.limits.action.result
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        requestInput-in-0:
+          group: ${spring.application.name}
+          destination: service.request.expired
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        carLocationRequestOutput-out-0:
+          group: ${spring.application.name}
+          destination: service.request.car-location-request
+        orderLocationResponseInput-in-0:
+          group: ${spring.application.name}
+          destination: service.response.car-location-response
+        subscriptionOutput-out-0:
+          group: ${spring.application.name}
+          destination: sessions_subscriptions_notifications
+        carLocationResourceIdInput-in-0:
+          destination: car_location_resource_id
+          group: ${spring.application.name}
+        fraudInput-in-0:
+          destination: service.ai.receipt.scanner.fraud
+          group: ${spring.application.name}
+        fraudInputRadius-in-0:
+          group: ${spring.application.name}
+          destination: service.fraud.radius
+        requestPayoutOutput-out-0:
+          destination: payout.create.request-payout
+        fraudMonitoringOutput-out-0:
+          destination: service.fraud-monitoring.listen.fraud
+        receiptScannerDocumentOutput-out-0:
+          destination: service.ai.receipt.scanner.listen.document

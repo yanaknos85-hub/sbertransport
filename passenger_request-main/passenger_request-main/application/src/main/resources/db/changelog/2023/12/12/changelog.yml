@@ -1,0 +1,61 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20231212"
+            author: shabrov-ie
+            changes:
+                -   tagDatabase:
+                        tag: "20231212"
+                -   setTableRemarks:
+                        schemaName: request
+                        tableName: evaluation
+                        remarks: Оценка заявки. Таблица подлежит удалению, оценка хранится в request.request_for_*
+            rollback:
+                -   setTableRemarks:
+                        schemaName: request
+                        tableName: evaluation
+                        remarks: Оценка заявки
+    -   changeSet:
+            id: "20231212-1"
+            author: shabrov-ie
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columns:
+                            -   column:
+                                    name: rating_mark
+                                    type: integer
+                                    remarks: Оценка
+                            -   column:
+                                    name: rating_comment
+                                    type: varchar(255)
+                                    remarks: Комментарий к оценке
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columnName: rating_mark
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columnName: rating_comment
+    -   changeSet:
+            id: "20231212-2"
+            author: shabrov-ie
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            -   column:
+                                    name: request_closed_datetime
+                                    type: timestamp
+                                    remarks: Дата получение всей информации по поездке или принудительное закрытие системой
+        
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columnName: request_closed_datetime

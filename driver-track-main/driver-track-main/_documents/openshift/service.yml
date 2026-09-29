@@ -1,0 +1,63 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: http-driver-track
+  namespace: ci02351878-edevgen-sbertransport-dev
+  uid: a5fb748b-6bea-4833-98f1-a4d989d82722
+  resourceVersion: '3616046206'
+  creationTimestamp: '2024-07-29T04:46:07Z'
+  labels:
+    app.kubernetes.io/name: driver-track
+    app.kubernetes.io/part-of: transport
+    repo: app_platform_driver_track
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app.kubernetes.io/name":"driver-track","app.kubernetes.io/part-of":"transport","repo":"app_platform_driver_track"},"name":"http-driver-track","namespace":"ci02351878-edevgen-sbertransport-dev"},"spec":{"ports":[{"name":"http-driver-tra","port":8080,"protocol":"TCP","targetPort":8080}],"selector":{"app":"driver-track"}}}
+  managedFields:
+    - manager: oc
+      operation: Update
+      apiVersion: v1
+      time: '2024-07-29T04:46:07Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:kubectl.kubernetes.io/last-applied-configuration': {}
+          'f:labels':
+            .: {}
+            'f:app.kubernetes.io/name': {}
+            'f:app.kubernetes.io/part-of': {}
+            'f:repo': {}
+        'f:spec':
+          'f:ports':
+            .: {}
+            'k:{"port":8080,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+          'f:selector':
+            .: {}
+            'f:app': {}
+          'f:sessionAffinity': {}
+          'f:type': {}
+spec:
+  ports:
+    - name: http-driver-tra
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: driver-track
+  clusterIP: 29.66.245.211
+  clusterIPs:
+    - 29.66.245.211
+  type: ClusterIP
+  sessionAffinity: None
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+status:
+  loadBalancer: {}

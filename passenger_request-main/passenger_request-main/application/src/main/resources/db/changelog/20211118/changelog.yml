@@ -1,0 +1,13 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211118"
+            author: bisenov-vb
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/delete_limit_sharings.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sql:
+                        sql: select 1 # rollback not needed

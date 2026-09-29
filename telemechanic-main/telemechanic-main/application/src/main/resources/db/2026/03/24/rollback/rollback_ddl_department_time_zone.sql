@@ -1,0 +1,1 @@
+drop table if exists telemechanic.department_time_zone;

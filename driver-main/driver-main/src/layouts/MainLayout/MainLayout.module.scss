@@ -1,0 +1,18 @@
+.mask {
+  z-index: 9;
+}
+
+.floating-panel {
+  z-index: 51;
+
+  --border-radius: 16px;
+  --header-height: 16px;
+}
+
+.warning {
+  width: calc(100% - 40px);
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+}

@@ -1,0 +1,61 @@
+.auth {
+  min-height: 100%;
+  max-height: max-content;
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    display: flex;
+    padding: 0 20px;
+    margin: 37px 0 0;
+
+    .nav {
+      padding: 0;
+
+      :global(.adm-nav-bar-left) {
+        flex: none;
+      }
+
+      :global(.adm-nav-bar-back-arrow) {
+        display: flex;
+      }
+
+      :global(.adm-nav-bar-title) {
+        padding: 0;
+      }
+    }
+
+    h1 {
+      font-family: 'SB Sans Text';
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 40px;
+      color: var(--adm-color-black);
+      white-space: pre-line;
+      margin: 0;
+
+      span {
+        font-size: 32px;
+      }
+    }
+  }
+
+  .content {
+    width: auto;
+    padding: 0 20px;
+  }
+
+  .footer {
+    background: url('../../assets/images/transport.png') bottom right no-repeat;
+    background-size: contain;
+    height: 238px;
+    max-height: 25%;
+    margin-top: auto;
+
+    @media screen and (min-width: 900px) {
+      height: 300px;
+      margin-bottom: 32px;
+      padding-left: 32px;
+    }
+  }
+}

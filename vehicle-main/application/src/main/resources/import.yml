@@ -1,0 +1,192 @@
+works:
+    files:
+        -   url: /indicators
+            fileType:
+                - xlsx
+                - xls
+            collections:
+                -   name: Отчет по показателям
+                    type: ru.sberbank.ditsib.transport.vehicle.dto.files.ReportDto
+                    mappings:
+                        -   from: Организация
+                            to: organizationName
+                        -   from: Орг. Единица
+                            to: easupId
+                        -   from: Государственный номер
+                            to: stateNumber
+                        -   from: Марка
+                            to: brand
+                        -   from: Модель
+                            to: model
+                        -   from: VIN
+                            to: vin
+                        -   from: Год выпуска
+                            to: year
+                        -   from: Дата начала эксплуатации
+                            to: exploitationStart
+                        -   from: Вид ТС
+                            to: type
+                        -   from: Подвид ТС
+                            to: subtype
+                        -   from: Отчетный год
+                            to: reportYear
+                        -   from: Вид отчета
+                            to: reportType
+                        -   from: Январь
+                            to: valueJanuary
+                        -   from: Февраль
+                            to: valueFebruary
+                        -   from: Март
+                            to: valueMarch
+                        -   from: Апрель
+                            to: valueApril
+                        -   from: Май
+                            to: valueMay
+                        -   from: Июнь
+                            to: valueJune
+                        -   from: Июль
+                            to: valueJuly
+                        -   from: Август
+                            to: valueAugust
+                        -   from: Сентябрь
+                            to: valueSeptember
+                        -   from: Октябрь
+                            to: valueOctober
+                        -   from: Ноябрь
+                            to: valueNovember
+                        -   from: Декабрь
+                            to: valueDecember
+
+        -   url: /transport
+            fileType:
+                - xlsx
+            collections:
+                -   name: Выгрузка из справочника ТС
+                    type: ru.sberbank.ditsib.transport.vehicle.dto.files.TransportReportDto
+                    mappings:
+                        -   from: Инвентарный номер
+                            to: inventoryNumber
+                        -   from: Номер основного средства
+                            to: assetNumber
+                        -   from: Организация
+                            to: officialName
+                        -   from: Подразделение
+                            to: departmentName
+                        -   from: Место базирование автомобиля
+                            to: locationAddress
+                        -   from: Адрес стоянки автомобиля
+                            to: parkingAddress
+                        -   from: Вид
+                            to: typeTitle
+                        -   from: Подвид
+                            to: subtypeTitle
+                        -   from: Государственный номер ТС
+                            to: stateNumber
+                        -   from: VIN-номер
+                            to: vinCode
+                        -   from: № Шасси
+                            to: chassisNumber
+                        -   from: № Кузова
+                            to: bodyNumber
+                        -   from: Свидетельство о регистрации (СТС)
+                            to: certificateNumber
+                        -   from: Дата выдачи СТС
+                            to: certificateIssuedDate
+                        -   from: Номер ПТС
+                            to: passportNumber
+                        -   from: Дата выдачи ПТС
+                            to: passportIssuedDate
+                        -   from: Марка по ПТС
+                            to: brandByPassport
+                        -   from: Модель по ПТС
+                            to: modelByPassport
+                        -   from: Цвет кузова
+                            to: bodyColor
+                        -   from: EMEI телематики
+                            to: telematicsIMEI
+                        -   from: Наименование телематики
+                            to: telematicsTitle
+                        -   from: Дата начала эксплуатации
+                            to: exploitationStart
+                        -   from: Дата окончания эксплуатации
+                            to: exploitationEnd
+                        -   from: Текущий пробег
+                            to: currentMileage
+                        -   from: Статус
+                            to: status
+                        -   from: Год выпуска
+                            to: year
+                        -   from: Тип ТС
+                            to: vehicleType
+                        -   from: Модель ТС
+                            to: modelTitle
+                        -   from: Марка ТС
+                            to: brandTitle
+                        -   from: Категория ТС
+                            to: categoryTitle
+                        -   from: Организация изготовитель (страна)
+                            to: manufacturer
+                        -   from: Экологический класс
+                            to: ecologicalClass
+                        -   from: Мощность ЛС
+                            to: enginePower
+                        -   from: Тип двигателя транспортного средства
+                            to: engineTypeTitle
+                        -   from: Объем двигателя
+                            to: engineCapacity
+                        -   from: Объем топливного бака
+                            to: fuelTankVolume
+                        -   from: Вид топлива
+                            to: fuelTypeTitle
+                        -   from: Расход топлива в городе
+                            to: cityConsumptionRate
+                        -   from: Расход топлива в за городом
+                            to: countryConsumptionRate
+                        -   from: Смешанный расход топлива(базовый)
+                            to: hybridConsumptionRate
+                        -   from: Привод
+                            to: driveTitle
+                        -   from: Наличие брызговиков
+                            to: mudguardInstalled
+                        -   from: Держать запасного колеса
+                            to: spareWheelHolderInstalled
+                        -   from: Масса без нагрузки
+                            to: weight
+                        -   from: Макс снаряженная масса
+                            to: maxWeight
+                        -   from: Высота, мм
+                            to: height
+                        -   from: Ширина, мм
+                            to: width
+                        -   from: Длина, мм
+                            to: length
+                        -   from: Межсервисный интервал по времени
+                            to: serviceIntervalDays
+                        -   from: Межсервисный интервал по пробегу
+                            to: serviceIntervalMileage
+                        -   from: Допуск по времени
+                            to: serviceAuthorizationDays
+                        -   from: Допуск по пробегу
+                            to: serviceAuthorizationMileage
+                        -   from: Тип кузова
+                            to: bodyTypeTitle
+                        -   from: Тип трансмиссии
+                            to: transmissionTypeTitle
+                        -   from: Размер переднего колеса
+                            to: frontWheelSizeTitle
+                        -   from: Размер заднего колеса
+                            to: rearWheelSizeTitle
+                        -   from: Год начала производства
+                            to: yearManufactureBegin
+                        -   from: Год снятия с производства
+                            to: yearManufactureEnd
+                        -   from: Комментарий
+                            to: comment
+                        -   from: Закрепление за должностью
+                            to: accessiblePositionTitle
+                        -   from: Балансовая единица
+                            to: balanceUnitNumber
+                        -   from: Завод
+                            to: facility
+                        -   from: Единица оборудования
+                            to: equipmentUnitSystemNumber

@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20251125-add-personal-to-fraud-type"
+      author: farkhutdinov.ed
+      dbms: postgresql
+      changes:
+        - sql:
+            sql: ALTER TYPE request.fraud_type ADD VALUE IF NOT EXISTS 'SPLIT'

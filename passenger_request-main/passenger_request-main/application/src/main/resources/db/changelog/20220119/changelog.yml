@@ -1,0 +1,29 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220119"
+            author: bisenov-vb
+            changes:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columnName: deadline
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            -   column:
+                                    name: driver_assignment_deadline
+                                    type: timestamp
+                                    remarks: "Контрольный срок по назначению водителя"
+            rollback:
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            -   column:
+                                    name: deadline
+                                    type: text
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columnName: driver_assignment_deadline

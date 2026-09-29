@@ -1,0 +1,205 @@
+@mixin rounded {
+  &:first-of-type {
+    border-top-left-radius: 12px !important;
+    border-bottom-left-radius: 12px !important;
+  }
+
+  &:last-of-type {
+    border-top-right-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+  }
+}
+
+.model_detail_page {
+  padding: var(--padding-base) 0;
+  position: relative;
+
+  :global(li.ant-list-item) {
+    padding: 0;
+
+    &:first-child {
+      padding-top: var(--padding-base);
+    }
+  }
+
+  :global(ul.ant-list-item-action) {
+    align-self: flex-start;
+  }
+
+  :global(.ant-list-item-meta-description) {
+    margin-bottom: var(--margin-half);
+  }
+
+  :global(.ant-row.ant-form-item) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 700px) {
+    width: calc(100% - 50px);
+  }
+
+  form {
+    .buttonBar {
+      button {
+        width: 100%;
+        margin-top: var(--margin-half);
+      }
+    }
+
+    :global(.ant-list-item-action) {
+      :global(.anticon) {
+        margin: 0 2px;
+      }
+
+      :global(.anticon-close) {
+        color: var(--error-color);
+      }
+
+      :global(.anticon-check),
+      :global(.anticon-edit) {
+        color: var(--link-color);
+      }
+    }
+  }
+}
+
+.cancelEditing {
+  color: var(--error-color);
+  padding: 0 var(--padding-half);
+}
+
+.common_sum {
+  display: flex;
+  align-items: center;
+
+  :global(.inner_span) {
+    padding-left: var(--padding-half);
+    margin-bottom: var(--margin-half);
+  }
+}
+
+.minimal_sum {
+  :global(.inner_cell) {
+    display: flex;
+    align-items: center;
+  }
+
+  :global(.inner_span) {
+    padding-left: var(--padding-half);
+    margin-bottom: var(--margin-half);
+  }
+}
+
+.minimal_sum_several {
+  padding-bottom: var(--padding-large);
+  display: flex;
+  align-items: center;
+
+  :global(.inner_span) {
+    padding-left: var(--padding-half);
+    margin-bottom: var(--margin-half);
+  }
+}
+
+.specific_territory {
+  display: flex;
+  align-items: center;
+}
+
+.headerAccordion {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  font-weight: 600;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.iconSettingsGear {
+  width: 20px;
+  margin-right: 5px;
+}
+
+.table {
+  margin: var(--margin-half) 0 var(--margin-large) 0;
+
+  :global(.ant-table-footer) {
+    display: flex;
+    background: none;
+
+    :global(.ant-btn) {
+      border: none;
+      border-radius: 8px;
+      background: #f2f3f6;
+      font-weight: 600;
+    }
+  }
+
+  :global(.ant-table-thead) {
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.12), 0px 4px 8px -2px rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+
+    tr {
+      background: #ffffff;
+    }
+
+    tr:first-child th:first-child {
+      padding: 15px;
+      border-right: none;
+      border-left: 1px solid #f8f8f8;
+      border-radius: 8px 0 0 8px;
+    }
+
+    tr:last-child th:last-child {
+      border-left: none;
+      border-right: 1px solid #f8f8f8;
+      border-radius: 0 8px 8px 0;
+    }
+
+    th {
+      font-size: 12px;
+      color: #737373;
+      border-top: 1px solid #f8f8f8;
+      border-bottom: 1px solid #f8f8f8;
+      border-left: none;
+      border-right: none;
+      background: #ffffff;
+    }
+  }
+
+  :global(.ant-table-tbody) {
+    td {
+      border: none;
+
+      :global(.ant-form-item) {
+        margin-bottom: 0;
+      }
+      :global(.ant-select-selector),
+      :global(.ant-input-number) {
+        border-radius: 8px;
+      }
+
+      :global(.tableEditButtons_tableEditButtonsDelete) {
+        // background-color: #F2F3F6;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+      }
+    }
+  }
+}
+
+.buttonBlock {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+
+  .button {
+    margin-right: var(--margin-base);
+  }
+}

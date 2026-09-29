@@ -1,0 +1,109 @@
+server:
+  port: 0
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          public-key-location: classpath:key/jwt.key.pub
+  main:
+    lazy-initialization: true
+    allow-bean-definition-overriding: true
+  config:
+    import: optional:configserver:${spring.cloud.config.uri}
+  profiles:
+    active: test,import
+  application:
+    name: dispatcher-test
+    version: 1
+  cloud:
+    kubernetes.enabled: false
+    consul.enabled: false
+    vault.enabled: false
+    stream:
+      default-binder: integration
+      bindings:
+        driverInput-in-0:
+          destination: service.trip.driver
+          group: ${spring.application.name}
+        shiftInput-in-0:
+          destination: service.trip.shift
+          group: ${spring.application.name}
+        tripInput-in-0:
+          destination: service.trip
+          group: ${spring.application.name}
+        confirmationDataInput-in-0:
+          group: ${spring.application.name}
+          destination: service.confirmation.approved
+        transportInput-in-0:
+          group: ${spring.application.name}
+          destination: service.transport
+        contractorOutput-out-0:
+          destination: service.dispatcher.contractor
+          binder: kafka
+        dispatcherOutput-out-0:
+          destination: service.dispatcher
+          binder: kafka
+        vehicleOutput-out-0:
+          destination: service.dispatcher.vehicle
+          binder: kafka
+        shiftOutput-out-0:
+          destination: service.dispatcher.shift
+          binder: kafka
+        usersOutput-out-0:
+          destination: service.users
+          binder: kafka
+        driverOutput-out-0:
+          destination: service.dispatcher.driver
+          binder: kafka
+        autoparkOutput-out-0:
+          destination: service.dispatcher.autopark
+          binder: kafka
+        confirmationDataOutput-out-0:
+          destination: service.confirmation.data
+          binder: kafka
+        integrationClient-out-0:
+          destination: service.dispatcher.integrationClient
+          binder: kafka
+  datasource:
+    url: jdbc:postgresql://localhost:5432/transport
+    password: root
+    username: postgres
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 0
+      maximum-pool-size: 5
+      idle-timeout: 10000
+      connection-timeout: 5000
+      max-lifetime: 30000
+      connection-test-query: SELECT 1
+      schema: dispatcher
+  liquibase:
+    enabled: true
+    change-log: db/changelog-master.yml
+    drop-first: false
+    test-rollback-on-update: false
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    database-change-log-table: changelog_${spring.application.name}
+    database-change-log-lock-table: changelog_${spring.application.name}_lock
+    liquibase-schema: public
+  jpa:
+    properties:
+      hibernate:
+        search:
+          enabled: false
+        jdbc:
+          batch_size: 25
+          lob:
+            non_contextual_creation: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+grpc:
+  port: 10000

@@ -1,0 +1,10 @@
+.requestWrapper {
+  display: flex;
+  gap: 10px;
+  flex-grow: 1;
+  margin-top: 15px;
+
+  >* {
+    flex: 1 1 50%;
+  }
+}

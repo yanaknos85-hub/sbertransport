@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20221226
+            author: dudyrev-av
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/add_check_photo_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sql:
+                        sql: rollback/drop_check_photo_table.sql
+        

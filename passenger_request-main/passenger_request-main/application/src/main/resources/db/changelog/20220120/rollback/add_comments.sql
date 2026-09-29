@@ -1,0 +1,1 @@
+alter table request.request_for_import rename column data to dto_json;

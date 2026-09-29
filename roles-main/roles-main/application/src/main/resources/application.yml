@@ -1,0 +1,28 @@
+server:
+  port: @server.port@
+spring:
+  threads:
+    virtual:
+      enabled: true
+  config:
+    import: optional:configserver:${spring.cloud.config.uri}
+  jackson:
+    default-property-inclusion: non_null
+  application:
+    name: roles
+    version: @project.version@
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    change-log: classpath:db/changelog-master.yml
+    drop-first: false
+    test-rollback-on-update: false
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    database-change-log-table: changelog_${spring.application.name}
+    database-change-log-lock-table: changelog_${spring.application.name}_lock
+    liquibase-schema: ${MIGRATIONS_SCHEMA:public}
+  cloud:
+    vault:
+      enabled: false

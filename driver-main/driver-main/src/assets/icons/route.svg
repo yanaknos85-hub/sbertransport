@@ -1,0 +1,31 @@
+<svg width="21.000000" height="74.000000" viewBox="0 0 21 74" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip1959_176686">
+			<rect id="cell/point_start" width="18.000000" height="18.000000" fill="white" fill-opacity="0"/>
+		</clipPath>
+		<linearGradient x1="9.000000" y1="28.000000" x2="9.000000" y2="48.000000" id="paint_linear_1959_176708_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#19B150"/>
+			<stop offset="1.000000" stop-color="#6979F7"/>
+		</linearGradient>
+		<clipPath id="clip1959_176713">
+			<rect id="cell/point_start" width="18.000000" height="18.000000" transform="translate(0.000000 56.000000)" fill="white" fill-opacity="0"/>
+		</clipPath>
+	</defs>
+	<rect id="cell/point_start" width="18.000000" height="18.000000" fill="#FFFFFF" fill-opacity="0"/>
+	<g clip-path="url(#clip1959_176686)">
+		<circle id="Oval" cx="9.000000" cy="9.000000" r="9.000000" fill="#19B150" fill-opacity="1.000000"/>
+		<path id="А" d="M12.42 12L10.74 12L10.24 10.53L7.68 10.53L7.2 12L5.57 12L8.03 5L9.97 5L12.42 12ZM9.79 9.18L8.96 6.68L8.13 9.18L9.79 9.18Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="evenodd"/>
+	</g>
+	<path id="Lower" d="M9 18L9 28" stroke="#19B150" stroke-opacity="1.000000" stroke-width="3.000000" stroke-linecap="square"/>
+	<rect id="Line" width="21.000000" height="20.000000" transform="translate(0.000000 28.000000)" fill="#FFFFFF" fill-opacity="0"/>
+	<path id="Rectangle 21" d="M7.5 29.5C7.5 28.67 8.17 28 9 28C9.82 28 10.5 28.67 10.5 29.5L10.5 48L7.5 48L7.5 29.5Z" fill="url(#paint_linear_1959_176708_0)" fill-opacity="1.000000" fill-rule="evenodd"/>
+	<path id="Upper" d="M9 48L9 56" stroke="#6979F7" stroke-opacity="1.000000" stroke-width="3.000000" stroke-linecap="square"/>
+	<rect id="cell/point_start" width="18.000000" height="18.000000" transform="translate(0.000000 56.000000)" fill="#FFFFFF" fill-opacity="0"/>
+	<g clip-path="url(#clip1959_176713)">
+		<circle id="Oval" cx="9.000000" cy="65.000000" r="9.000000" fill="#6979F7" fill-opacity="1.000000"/>
+		<path id="А" d="M6.44 61.39L6.44 68.5L9.2 68.5Q10.41 68.49 11.07 67.96Q11.23 67.83 11.35 67.67Q11.72 67.18 11.72 66.41Q11.72 65.9 11.5 65.53Q11.46 65.46 11.41 65.39Q11.31 65.26 11.18 65.15Q10.92 64.93 10.55 64.84Q10.87 64.71 11.1 64.48Q11.21 64.38 11.29 64.25Q11.36 64.15 11.41 64.04Q11.56 63.72 11.56 63.33Q11.56 62.69 11.26 62.26Q11.11 62.05 10.89 61.88Q10.22 61.39 8.93 61.39L6.44 61.39ZM8.99 64.36L7.9 64.36L7.9 62.57L8.93 62.57Q9.53 62.57 9.82 62.78Q9.85 62.81 9.89 62.85Q10.1 63.06 10.1 63.48Q10.1 63.81 9.94 64.01Q9.68 64.35 8.99 64.36ZM7.9 67.32L7.9 65.4L9.25 65.4Q9.77 65.41 10.02 65.67Q10.26 65.92 10.26 66.39Q10.26 66.69 10.12 66.9Q10.06 66.99 9.97 67.07Q9.68 67.32 9.16 67.32L7.9 67.32Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="evenodd"/>
+	</g>
+</svg>

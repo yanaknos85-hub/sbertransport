@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20251014-1
+            author: azatsepilin
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/add_columns_consumption_rate_to_transport.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

@@ -1,0 +1,94 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240724-1429"
+      author: ladeyshchikov_aa
+      changes:
+        - sql:
+            sql: create schema driver_track
+        - sql:
+            sql: comment on schema driver_track is 'Сервис фактических расстояний'
+      rollback:
+        - sql:
+            sql: drop schema driver_track cascade;
+  - changeSet:
+      id: "20240724-1435"
+      author: ladeyshchikov_aa
+      changes:
+        - createTable:
+            schemaName: driver_track
+            tableName: driver_message
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: active
+                  type: boolean
+                  remarks: Признак активности
+              - column:
+                  name: online
+                  type: boolean
+                  remarks: Признак выхода на линию
+              - column:
+                  name: active_trip_id
+                  type: uuid
+                  remarks: Идентификатор активной поездки
+              - column:
+                  name: consent
+                  type: boolean
+                  remarks: Признак подписания ПДн
+              - column:
+                  name: serving
+                  type: boolean
+                  remarks: Признак обслуживания пассажира
+        - createTable:
+            schemaName: driver_track
+            tableName: coordinate
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: trip_id
+                  type: uuid
+                  remarks: Идентификатор поездки
+              - column:
+                  name: latitude
+                  type: double precision
+                  remarks: Широта
+              - column:
+                  name: longitude
+                  type: double precision
+                  remarks: Долгота
+              - column:
+                  name: time
+                  type: timestamp
+                  remarks: Время
+        - createIndex:
+            columns:
+              - column:
+                  name: trip_id
+            indexName: driver_track_coordinate_trip_id_idx
+            schemaName: driver_track
+            tableName: coordinate
+        - createIndex:
+            columns:
+              - column:
+                  descending: false
+                  name: time
+            indexName: driver_track_coordinate_time_idx
+            schemaName: driver_track
+            tableName: coordinate
+      rollback:
+        - dropTable:
+            schemaName: driver_track
+            tableName: driver_message
+        - dropTable:
+            schemaName: driver_track
+            tableName: coordinate

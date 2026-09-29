@@ -1,0 +1,56 @@
+.etrnFilterHandlers {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  align-items: center;
+  gap: 12px;
+}
+
+.etrnFilterContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  background-color: #fff;
+}
+
+.formWrapper {
+  flex-grow: 1;
+
+  :global {
+    .ant-form-item {
+      margin-bottom: 0;
+
+      .ant-input-affix-wrapper {
+        height: 40px;
+      }
+    }
+
+    .ant-input {
+      background-color: #f2f4f7;
+    }
+  }
+}
+
+.etrnFilterSection {
+  &__filterButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    font-size: 14px;
+    stroke: #fff;
+
+    &:disabled,
+    &:disabled:hover,
+    &:disabled:focus,
+    &:disabled:active {
+      background-color: #10BF6A;
+      border-color: #10BF6A;
+      color: #fff;
+      opacity: 1;
+    }
+  }
+}

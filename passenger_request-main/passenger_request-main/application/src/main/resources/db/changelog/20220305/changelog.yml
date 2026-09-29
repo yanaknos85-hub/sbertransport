@@ -1,0 +1,27 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220305"
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_cargo
+                        columns:
+                            -   column:
+                                    name: transfer_time
+                                    type: timestamp
+                                    remarks: Дата завершения сбора груза
+                            -   column:
+                                    name: shipment_time
+                                    type: timestamp
+                                    remarks: Дата завершения доставки груза
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_cargo
+                        columnName: transfer_time
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_cargo
+                        columnName: shipment_time

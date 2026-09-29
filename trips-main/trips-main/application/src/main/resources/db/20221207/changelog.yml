@@ -1,0 +1,58 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221207"
+            author: medvedev-ad
+            context: "20221207"
+            changes:
+                -   tagDatabase:
+                        tag: "20221207"
+                -   addColumn:
+                        schemaName: trips
+                        tableName: trips
+                        remarks: Поездки
+                        columns:
+                            -   column:
+                                    name: passenger_count
+                                    remarks: Количество пассажиров
+                                    type: int4
+                            -   column:
+                                    name: taxi_class
+                                    remarks: Класс такси
+                                    type: text
+                            -   column:
+                                    name: contractor_id
+                                    type: uuid
+                                    remarks: Идентификатор контрагента
+                            -   column:
+                                    name: waypoints
+                                    remarks: Путевые точки
+                                    type: json
+                            -   column:
+                                    name: start_time
+                                    remarks: Начальное время поездки
+                                    type: datetime
+                            -   column:
+                                    name: end_time
+                                    remarks: Предположительное конечное время поездки
+                                    type: datetime
+                -   createTable:
+                        schemaName: trips
+                        tableName: trips_requests
+                        remarks: Поездки и заявки
+                        columns:
+                            -   column:
+                                    name: trip_id
+                                    type: uuid
+                                    remarks: Ссылка на поездку
+                                    constraints:
+                                        foreignKeyName: trips_trips_requests_trip_id_fk
+                                        referencedTableSchemaName: trips
+                                        referencedTableName: trips
+                            -   column:
+                                    name: request_id
+                                    type: uuid
+                                    remarks: Ссылка на заявку
+                                    constraints:
+                                        foreignKeyName: trips_trips_requests_request_id_fk
+                                        referencedTableSchemaName: trips
+                                        referencedTableName: request

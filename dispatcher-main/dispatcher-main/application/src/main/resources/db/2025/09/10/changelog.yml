@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2025090410-0842
+      author: blandin-ad
+      changes:
+        - addColumn:
+            schemaName: dispatcher
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: autopark_id
+                  type: uuid
+                  remarks: Идентификатор филиала
+        - addColumn:
+            schemaName: dispatcher
+            tableName: driver
+            columns:
+              - column:
+                  name: autopark_id
+                  type: uuid
+                  remarks: Идентификатор филиала
+      rollback:
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: autopark_id
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: driver
+            columns:
+              - column:
+                  name: autopark_id

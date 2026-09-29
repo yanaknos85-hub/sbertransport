@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20260703-1200"
+      author: voronovskii
+      context: "TRANSPORT-42840"
+      changes:
+        - sql:
+            sql: |
+              ALTER TABLE request_checks.trip_request
+              ALTER COLUMN distance TYPE int
+              USING (distance::int);

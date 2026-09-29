@@ -1,0 +1,10 @@
+- match:
+    - uri:
+        prefix: /api/trips
+  rewrite:
+    uri: ' '
+  route:
+    - destination:
+        host: trips
+        port:
+          number: 8080

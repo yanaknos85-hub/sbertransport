@@ -1,0 +1,54 @@
+.datePicker {
+  :global(.ant-picker-clear) {
+    width: 24px;
+    height: 24px;
+
+    > span {
+      display: none;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px;
+      height: 8px;
+      background: url(/assets/icons/close-small.svg) no-repeat no-repeat center 0;
+      background-size: contain;
+    }
+  }
+
+  :global(.ant-picker-suffix) {
+    > span {
+      display: none;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      position: relative;
+      top: 0;
+      right: 0;
+      width: 24px;
+      height: 24px;
+      background: url(/assets/icons/calendar.svg) no-repeat no-repeat center 0;
+      background-size: contain;
+    }
+  }
+
+  :global(.ant-picker-input) {
+    &::before {
+      content: '';
+      position: absolute;
+      right: 56px;
+      width: 1px;
+      height: 28px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(38, 38, 38, 0.08);
+    }
+  }
+}

@@ -1,0 +1,327 @@
+$widthDriverInfo: 200px;
+$gap: 4px;
+$widthAbout: 180px;
+$widthOnline: 80px;
+$zIndexAboutColumns: 10;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  .input {
+    height: 40px;
+    border-radius: 8px;
+    width: 200px;
+    margin-left: auto;
+  }
+}
+
+.container {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  .header {
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: $zIndexAboutColumns + 1;
+    background: #fff;
+    width: fit-content;
+
+    .cells {
+      margin-left: $gap;
+    }
+
+    .headerColumns {
+      display: flex;
+
+      :not(:first-child) {
+        margin-left: $gap;
+      }
+
+      .cell {
+        position: relative;
+        background: #eff0f1;
+        color: #737373;
+        height: 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        line-height: 16px;
+
+        .time {
+          font-size: 18px;
+          line-height: 24px;
+        }
+      }
+
+      .driverInfo {
+        width: $widthDriverInfo;
+      }
+
+      .cellId,
+      .name {
+        width: $widthAbout;
+      }
+
+      .online {
+        width: $widthOnline;
+      }
+    }
+  }
+
+  .dataRow {
+    display: flex;
+    width: fit-content;
+
+    &:not(:first-child) {
+      margin-top: $gap;
+    }
+
+    .driverInfo {
+      width: $widthDriverInfo;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 24px;
+      position: relative;
+
+      span {
+        color: #737373;
+      }
+    }
+
+    .cellId,
+    .name {
+      width: $widthAbout;
+    }
+
+    .online {
+      width: $widthOnline;
+    }
+
+    .infoIcon {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+    }
+  }
+
+  .aboutColumns {
+    display: flex;
+    position: sticky;
+    left: 0;
+    z-index: $zIndexAboutColumns;
+    background: white;
+  }
+
+  .cell {
+    position: relative;
+    color: #000;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: #f7f8f9;
+
+    &:not(:first-child) {
+      margin-left: $gap;
+    }
+
+    &.name {
+      align-items: center;
+    }
+
+    &.booked {
+      background-color: #fff5eb;
+    }
+
+    &.workload {
+      width: 110px;
+      padding: 12px 0;
+    }
+
+    &:not(:has(.badge:hover)).clickable {
+      cursor: pointer;
+
+      &:hover {
+        background: #e0e0e0;
+      }
+    }
+
+    .vehicleName {
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+
+.badge {
+  position: absolute;
+  left: 0;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: rgba(204, 204, 204, 0.4);
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 2px 8px 2px 12px;
+  z-index: 1;
+  height: 100%;
+
+  &:hover {
+    background-color: rgba(204, 204, 204, 0.6);
+  }
+
+  &.trip {
+    opacity: 0.4;
+    background-color: rgba(0, 145, 255, 0.4);
+    bottom: 0;
+    height: 60%;
+    align-items: center;
+
+    &.planning {
+      background-color: rgb(126, 131, 128);
+    }
+
+    &.factTime {
+      background-color: rgb(183, 236, 210);
+    }
+
+    &.booked {
+      background-color: #ffd7ad;
+      cursor: pointer;
+    }
+  }
+
+  &.active {
+    background-color: rgba(179, 222, 255, 0.3);
+
+    &:hover {
+      background-color: rgba(179, 222, 255, 0.5)
+    }
+
+    &.trip {
+      background-color: rgba(0, 145, 255, 0.4);
+      opacity: 1;
+
+      &.planning {
+        background-color: rgb(126, 131, 128);
+      }
+
+      &.factTime {
+        background-color: rgb(183, 236, 210);
+      }
+    }
+  }
+
+  &.badgeOneCell {
+    position: relative;
+    left: 0;
+    max-width: 100%;
+  }
+
+  &.startDateVisible {
+    &::after {
+      content: '';
+      background-color: #0091ff;
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 4px;
+    }
+  }
+
+  &.trip {
+    &::after {
+      background-color: #0091ff;
+    }
+
+    &.factTime::after {
+      background-color: rgb(16, 191, 106);
+    }
+
+    &.booked::after {
+      background-color: #ff9a32;
+    }
+  }
+
+  &.clickable {
+    cursor: pointer;
+  }
+
+  .stateNumber {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 600;
+    color: rgb(0, 128, 224);
+    white-space: nowrap;
+    display: flex;
+    gap: 8px;
+  }
+
+  .tripId {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    line-height: 18px;
+    color: #000;
+    white-space: nowrap;
+  }
+
+  .close {
+    padding: 0;
+    flex-shrink: 0;
+    background-color: transparent;
+    height: 8px;
+    line-height: 13px;
+    cursor: pointer;
+
+    svg {
+      color: #262626;
+      width: 8px;
+      height: 8px;
+    }
+  }
+
+  .eplBadge {
+    padding: 4px 8px;
+    color: #e6f4ff;
+    border-radius: 0px 0px 4px 4px;
+    font-size: 9px;
+    line-height: 9px;
+    font-weight: 600;
+  }
+}
+
+.badge {
+  &.active {
+    .eplBadge {
+      background-color: rgb(0, 128, 224);
+    }
+  }
+
+  &.booked {
+    .eplBadge {
+      background-color: #909090;
+    }
+  }
+
+  &:not(.booked):not(.active) {
+    .eplBadge {
+      background-color: #909090;
+    }
+  }
+}

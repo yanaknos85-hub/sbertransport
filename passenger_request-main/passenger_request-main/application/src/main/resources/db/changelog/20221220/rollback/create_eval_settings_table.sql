@@ -1,0 +1,1 @@
+drop table request.eval_settings;

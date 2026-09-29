@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250825"
+      author: blandin-ad
+      preConditions:
+        - not:
+            - columnExists:
+                schemaName: trips
+                tableName: dispatcher
+                columnName: oauth_id
+            - columnExists:
+                schemaName: trips
+                tableName: driver
+                columnName: oauth_id
+        - onFail: MARK_RAN
+      changes:
+        - tagDatabase:
+            tag: "D-04.016.000"
+        - addColumn:
+            schemaName: trips
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: oauth_id
+                  type: uuid
+                  remarks: Идентификатор пользователя во внешней системе
+                  constraints:
+                    unique: true
+                    uniqueConstraintName: trips_dispatcher_oauth_id_uc
+        - addColumn:
+            schemaName: trips
+            tableName: driver
+            columns:
+              - column:
+                  name: oauth_id
+                  type: uuid
+                  remarks: Идентификатор пользователя во внешней системе
+                  constraints:
+                    unique: true
+                    uniqueConstraintName: trips_driver_oauth_id_uc
+      rollback:
+        - dropColumn:
+            schemaName: trips
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: oauth_id
+        - dropColumn:
+            schemaName: trips
+            tableName: driver
+            columns:
+              - column:
+                  name: oauth_id

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package ru.sber.transport.geo_zones.grpc.service;
+
+import "dto/GeoZonesDescriptor.proto";
+
+service GeoZonesService {
+
+  rpc Region(ru.sber.transport.geo_zones.grpc.dto.Waypoint) returns (ru.sber.transport.geo_zones.grpc.dto.Region) {}
+
+  rpc RegionBranch(ru.sber.transport.geo_zones.grpc.dto.Waypoint) returns (stream ru.sber.transport.geo_zones.grpc.dto.Region) {}
+
+}

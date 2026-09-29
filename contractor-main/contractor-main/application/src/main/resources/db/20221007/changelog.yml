@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20221007-1"
+      context: "20221007"
+      author: dudyrev-av
+      dbms: postgresql
+      tag: "20221007-1"
+      changes:
+          - addColumn:
+              schemaName: contractors
+              tableName: contractor
+              columns:
+                  - column:
+                      name: login
+                      type: varchar(255)
+                  - column:
+                      name: password
+                      type: varchar(255)
+                  - column:
+                      name: url
+                      type: varchar(255)
+      rollback:
+          - dropColumn:
+              schemaName: contractors
+              tableName: contractor
+              columnName: login
+          - dropColumn:
+              schemaName: contractors
+              tableName: contractor
+              columnName: password
+          - dropColumn:
+              schemaName: contractors
+              tableName: contractor
+              columnName: url

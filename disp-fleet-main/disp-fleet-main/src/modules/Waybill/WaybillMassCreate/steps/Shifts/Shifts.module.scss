@@ -1,0 +1,108 @@
+.divider {
+  margin: 16px 0;
+  color: #26262614;
+}
+
+.pageHeader {
+  padding: 0;
+}
+
+.helperText {
+  font-family: 'SB Sans Interface', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+  color: #4D4D4D;
+  text-align: left;
+  margin-top: 8px;
+}
+
+.datePicker {
+  width: 320px;
+}
+
+.table {
+  margin-top: 16px;
+
+  :global {
+    .ant-table-thead {
+      .ant-table-cell {
+        /* Caption 1/12/Regular */
+        color: rgb(115, 115, 115);
+        font-family: SB Sans Interface;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 16px;
+        letter-spacing: 0.2px;
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+    }
+
+    .ant-table-tbody > tr.ant-table-row-selected > td {
+      background-color: transparent !important;
+    }
+
+    .ant-checkbox-inner {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+
+      &::after {
+        top: 50%;
+        left: 50%;
+      }
+    }
+
+    .ant-checkbox-checked {
+      .ant-checkbox-inner {
+        &::after {
+          transform: translate(-50%, -65%) rotate(45deg);
+        }
+      }
+    }
+  }
+}
+
+.backButton {
+  background: #F2F3F6;
+  color: black;
+}
+
+.searchPanel {
+  margin-top: 16px;
+  width: 286px;
+}
+
+.errorRow {
+  :global(.ant-table-cell) {
+    background-color: #fff1f0 !important;
+    color: #ff4d4f;
+  }
+}
+
+.errorIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #ff4d4f;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #cf1322;
+  }
+}
+
+// Стили для столбца с индикатором ошибки
+.errorIndicatorColumn {
+  padding: 13px 0 !important;
+  text-align: center;
+  min-width: 24px;
+  max-width: 24px;
+}

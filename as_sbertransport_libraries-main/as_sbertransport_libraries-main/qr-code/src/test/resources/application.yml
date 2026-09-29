@@ -1,0 +1,7 @@
+spring:
+    qrcode:
+        text:
+            maxlength: 128
+        errorcorrection:
+            level: L
+        

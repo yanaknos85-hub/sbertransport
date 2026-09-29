@@ -1,0 +1,41 @@
+.rainBow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+
+    .workload {
+        font-family: SB Sans Interface;
+        color: var(--dark-grey);
+    }
+
+    &Small {
+        .workload {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 24px;
+        }
+
+        svg {
+            width: 24px;
+            height: 14px;
+        }
+    }
+
+    &Middle {
+        .workload {
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 30px;
+        }
+
+        svg {
+            width: 42px;
+            height: 21px;
+        }
+    }
+
+    svg {
+        margin-left: auto;
+    }
+}

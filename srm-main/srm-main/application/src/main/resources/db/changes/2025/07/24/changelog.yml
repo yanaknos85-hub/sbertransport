@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250724-1431"
+      author: medvedev-ad
+      context: "TRANSPORT-33831"
+      changes:
+        - tagDatabase:
+            tag: "D-04.014.000"
+        - createIndex:
+            schemaName: srm
+            tableName: srm_shared_ride
+            columns:
+              - column:
+                  name: active
+              - column:
+                  name: tariff_id
+              - column:
+                  name: bunch_id
+            indexName: srm_shared_ride_active_tariff_id_bunch_id_idx
+        - createIndex:
+            schemaName: srm
+            tableName: srm_request_kpi
+            columns:
+              - column:
+                  name: shared_ride_id
+            indexName: srm_request_kpi_shared_ride_id_idx
+        - createIndex:
+            schemaName: srm
+            tableName: srm_request_kpi
+            columns:
+              - column:
+                  name: old_id
+            indexName: srm_request_kpi_old_id_idx
+  - changeSet:
+      id: "20250724-1503"
+      author: medvedev-ad
+      context: "TRANSPORT-33831"
+      changes:
+        - tagDatabase:
+            tag: "D-04.014.000"
+        - createIndex:
+            schemaName: srm
+            tableName: tariff
+            columns:
+              - column:
+                  name: transport_type
+              - column:
+                  name: id
+            indexName: srm_tariff_transport_type_id_idx

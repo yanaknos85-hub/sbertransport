@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20231019"
+      author: blandin-ad
+      changes:
+        - sql:
+            dbms: postgresql
+            sql: update trips_cargo.trips set capacity = cast(additional->>'capacity' as double precision);
+        - sql:
+            dbms: postgresql
+            sql: update trips_cargo.trips set loaders_work_time = cast(additional->>'loadersWorkTime' as bigint);
+        - dropColumn:
+            schemaName: trips_cargo
+            tableName: trips
+            columns:
+              - column:
+                  name: additional
+      rollback:
+        - addColumn:
+            schemaName: trips_cargo
+            tableName: trips
+            columns:
+              - column:
+                  name: additional
+                  remarks: Дополнительные данные о поездке
+                  type: json
+        - update:
+            schemaName: trips_cargo
+            tableName: trips
+            columns:
+              - column:
+                  name: additional
+                  valueComputed: json_build_object('capacity', capacity, 'loadersWorkTime', loaders_work_time)

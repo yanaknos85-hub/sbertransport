@@ -1,0 +1,106 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    margin-bottom: 12px;
+  }
+
+  .button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  .separator {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid rgba(38, 38, 38, 0.08);
+    margin: 14px -20px 60px -20px;
+
+    &_hidden {
+      border: 0;
+      margin: 25px;
+    }
+  }
+
+  .formItem {
+    display: flex;
+    flex-direction: column;
+
+    :global {
+      .ant-form-item-control {
+        min-height: fit-content;
+      }
+
+      .ant-form-item-label {
+        text-align: left;
+        width: 100%;
+
+        label {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          width: 100%;
+          display: block;
+          &::after {
+            content: '';
+          }
+        }
+      }
+    }
+
+    .input {
+      height: 48px;
+      border-radius: 8px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      :global(.ant-input-number-input-wrap) {
+        width: 100%;
+      }
+    }
+  }
+
+  :global {
+    .ant-row {
+      gap: 16px;
+
+      @media (min-width: 1200px) {
+        flex-wrap: nowrap;
+      }
+
+      &:not(:first-child) {
+        padding-top: 16px;
+        border-top: 1px solid rgba(38, 38, 38, 0.08);
+      }
+    }
+
+    .ant-col {
+      min-width: 180px;
+      flex: 1 1 0;
+      width: 100%;
+    }
+
+    .ant-form-item {
+      margin-bottom: 16px;
+    }
+
+    .ant-form-item-label > label {
+      height: auto;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 0.2px;
+      color: var(--dark-grey);
+      margin-bottom: 8px;
+    }
+
+    .sbt-kit-select-selection-placeholder {
+      font-size: 12px;
+    }
+  }
+}

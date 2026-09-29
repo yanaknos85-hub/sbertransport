@@ -1,0 +1,65 @@
+$heightInput: 40px;
+
+.modal {
+  border-radius: 12px;
+  overflow: hidden;
+
+  :global(.ant-modal-content) {
+    border-radius: 12px;
+  }
+
+  :global(.ant-modal-header),
+  :global(.ant-modal-footer) {
+    border: none;
+  }
+
+  :global(.ant-modal-title) {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+  }
+
+  :global(.ant-btn) {
+    border-radius: 8px;
+    padding: 0 20px;
+    height: $heightInput;
+  }
+
+  :global(.ant-picker) {
+    width: 100%;
+    height: $heightInput;
+    border-radius: 8px;
+  }
+}
+
+.form {
+  .formItem {
+    flex-direction: column;
+    margin: 0 0 20px;
+
+    :global(.ant-form-item-label) {
+      text-align: left;
+      max-height: fit-content;
+
+      label {
+        &::after {
+          content: "";
+        }
+      }
+    }
+
+    :global(.ant-form-item-control-input) {
+      min-height: $heightInput;
+    }
+  }
+
+  .dates {
+    display: flex;
+    gap: 16px;
+
+    > .formItem {
+      flex: 1;
+      margin-bottom: 0;
+    }
+  }
+}

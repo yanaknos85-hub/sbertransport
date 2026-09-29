@@ -1,0 +1,31 @@
+server.port: -1
+spring:
+  datasource:
+    username: postgres
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          enabled: false
+          jws-algorithms: RS512
+          jwk-set-uri: http://localhost:8080
+  cloud:
+    vault:
+      enabled: false
+    stream:
+      binders:
+        in-memory:
+          type: in-memory
+      default-binder: in-memory
+  liquibase:
+    enabled: true
+    change-log: db/changelog-master.yml
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    database-change-log-table: changelog_${spring.application.name}
+    database-change-log-lock-table: changelog_${spring.application.name}_lock
+    liquibase-schema: public
+grpc:
+  server:
+    port: -1

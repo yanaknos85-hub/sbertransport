@@ -1,0 +1,40 @@
+### Вход
+POST {{auth}}/login
+Accept: application/json
+Authorization: Basic {{creds}} # Имя пользователя и пароль необходимо положить в файл http-client.private.env.json. Пример - http-client.private.env.json.example. Получившийся файл НЕ НАДО добавлять в гит
+
+> {%
+client.global.set("auth_token", response.body.token);
+client.global.set("refresh_token", response.body.refreshToken);
+%}
+
+### Релогин
+POST {{auth}}/login
+Accept: application/json
+Authorization: Token {{refresh_token}} # Имя пользователя и пароль необходимо положить в файл http-client.private.env.json. Пример - http-client.private.env.json.example. Получившийся файл НЕ НАДО добавлять в гит
+
+> {%
+client.global.set("auth_token", response.body.token);
+client.global.set("refresh_token", response.body.refreshToken);
+%}
+
+### Запрос аватара
+GET {{host}}/avatar
+Authorization: Bearer {{auth_token}}
+Accept: application/json
+
+### Установка аватара
+POST {{host}}/avatar
+Authorization: Bearer {{auth_token}}
+Content-Type: multipart/form-data;boundary=test-boundary
+
+--test-boundary
+Content-Disposition: form-data; filename="file.jpg"; name="avatar"
+Content-Type: image/jpeg
+
+< files/2gg.jpg
+
+### Запрос аватара другого пользователя
+GET {{host}}/avatar/30d6bac3-c1bc-4ce3-a6a4-e15f3d489914
+Authorization: Bearer {{auth_token}}
+Accept: application/json

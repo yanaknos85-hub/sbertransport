@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230109"
+      author: blandin-ad
+      changes:
+        - tagDatabase:
+            tag: "20230109"
+        - dropUniqueConstraint:
+            schemaName: contractors
+            tableName: dispatcher
+            constraintName: contractors_dispatcher_email_uk
+      rollback:
+        - addUniqueConstraint:
+            schemaName: contractors
+            tableName: dispatcher
+            columnNames: email
+            constraintName: contractors_dispatcher_email_uk

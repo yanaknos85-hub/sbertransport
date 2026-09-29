@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20250605-1
+            author: tanini-v
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_access_organization_employee.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

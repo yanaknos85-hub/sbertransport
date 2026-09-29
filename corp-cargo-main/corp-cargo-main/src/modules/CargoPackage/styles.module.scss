@@ -1,0 +1,149 @@
+.contractorLabel {
+  color: #262626;
+  font-size: 12px;
+  font-family: 'SB Sans Interface';
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+  margin-bottom: 8px;
+}
+
+.contractorSelect {
+  width: 486px;
+
+  &:global(.ant-select:not(.ant-select-customize-input) .ant-select-selector) {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    min-height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+  }
+
+  &:global(.ant-select-selection-search) {
+    display: none;
+  }
+
+  &Label {
+    padding-right: var(--padding-half);
+  }
+}
+
+.cargoPackageSettings {
+  padding: 0 var(--padding-large);
+
+  :global(.ant-table) {
+    margin-top: var(--margin-base);
+  }
+
+  :global(.ant-input-affix-wrapper) {
+    height: 48px;
+    border-radius: 8px;
+    padding: 5px;
+  }
+}
+
+.cargoPackageTable {
+  :global {
+    .ant-table {
+      background-color: transparent;
+
+      tr,
+      td {
+        border: none;
+      }
+
+      tr {
+        td:first-child,
+        th:first-child {
+          border-radius: 10px 0 0 10px;
+          padding-right: 14px;
+        }
+
+        td:last-child,
+        th:last-child {
+          border-radius: 0 10px 10px 0;
+        }
+
+        td {
+          padding: 14px 16px;
+
+          table {
+            border-spacing: 0 12px;
+          }
+
+          td {
+            padding: 0;
+          }
+
+          &:first-child + td {
+            padding-left: 0;
+          }
+        }
+      }
+
+      .ant-table-footer {
+        display: flex;
+        justify-content: center;
+        background: #ffffff;
+      }
+    }
+    .ant-table-cell-fix-right {
+      background-color: transparent;
+    }
+
+    .ant-table-thead {
+      box-shadow: 0px 4px 8px -2px rgba(0, 0, 0, 0.12), 0px 0px 1px 0px rgba(0, 0, 0, 0.12);
+      border-radius: 8px;
+      background-color: #fff;
+
+      tr,
+      th {
+        background-color: #fff;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 22px;
+        line-height: 16px;
+        letter-spacing: -0.3px;
+        color: #737373;
+        border: none;
+      }
+    }
+
+    .ant-table-body {
+      table {
+        border-spacing: 0 12px;
+      }
+    }
+  }
+}
+
+.createButton {
+  width: 100%;
+  border: 1px dashed #e0e0e0;
+  border-radius: 12px;
+  height: 56px !important;
+  background-color: #ffffff;
+  color: #909090;
+}
+
+.footerButtonContainer {
+  width: 100%;
+}
+
+.editCell {
+  :global {
+    .ant-input {
+      border-radius: 8px;
+    }
+  }
+  .cellSpan {
+    display: block;
+    width: 100%;
+    padding: 4px;
+    border-radius: 8px;
+    border: solid 1px #e0e0e0;
+  }
+}

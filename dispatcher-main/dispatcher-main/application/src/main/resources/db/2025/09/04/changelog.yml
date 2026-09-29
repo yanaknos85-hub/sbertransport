@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250904-1012
+      author: blandin-ad
+      changes:
+        - addColumn:
+            schemaName: dispatcher
+            tableName: autopark
+            columns:
+              - column:
+                  name: routing_id
+                  type: uuid
+                  remarks: Идентификатор филиала во внешней системе для маршрутизации поездок
+                  constraints:
+                    unique: true
+                    uniqueConstraintName: dispatcher_autopark_routing_id_uc
+      rollback:
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: autopark
+            columns:
+              - column:
+                  name: routing_id

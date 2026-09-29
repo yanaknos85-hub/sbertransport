@@ -1,0 +1,60 @@
+.buttonsWrapper {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.saveButtonWrapper {
+  margin-right: auto;
+}
+
+.button {
+  &:global(.ant-btn) {
+    padding: 20px 24px;
+    margin-left: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    line-height: 4px;
+  }
+
+  &.reset {
+    color: red;
+    background: inherit;
+
+    &:hover {
+      color: white;
+      background: #10BF6A;
+    }
+  }
+
+  &.submit {
+    color: white;
+    background: #10BF6A;
+  }
+}
+
+.bookmarkButton {
+  color: #262626;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &:global(.ant-btn) {
+    margin-left: 12px;
+    padding: 0;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &:hover {
+    color: #10BF6A;
+  }
+
+  &.active {
+    color: #10BF6A;
+  }
+}

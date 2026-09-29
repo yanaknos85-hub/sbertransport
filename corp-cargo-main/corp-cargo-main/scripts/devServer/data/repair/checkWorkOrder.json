@@ -1,0 +1,256 @@
+{
+  "number": "ДжМ1007345",
+  "workOrderName": null,
+  "s3Id": null,
+  "vehicle": {
+    "vin": "XUS2327BDL0000327",
+    "stateNumber": {
+      "value": "B852EM138",
+      "comment": null
+    },
+    "year": null,
+    "brand": "Chevrolet",
+    "model": "2327BD",
+    "mileage": "21237"
+  },
+  "works": [
+    {
+      "nameNormalized": {
+        "value": "защита двигателя – с/у",
+        "comment": "Проведение данной работы не целесообразно"
+      },
+      "hourNormalized": {
+        "value": 0.4,
+        "comment": null
+      },
+      "amount": 1,
+      "hourPrice": 333.79,
+      "totalPrice": {
+        "value": 133.52,
+        "comment": null
+      },
+      "ordinal": 0
+    },
+    {
+      "nameNormalized": {
+        "value": "моторное масло и масляный фильтр – замена",
+        "comment": null
+      },
+      "hourNormalized": {
+        "value": 0.7,
+        "comment": "Проведение данной работы не целесообразно"
+      },
+      "amount": 1,
+      "hourPrice": 333.79,
+      "totalPrice": {
+        "value": 233.65,
+        "comment": null
+      },
+      "ordinal": 1
+    },
+    {
+      "nameNormalized": {
+        "value": "тормозной диск  – задние – снятие и установка",
+        "comment": "Проведение данной работы не целесообразно"
+      },
+      "hourNormalized": {
+        "value": 0.9,
+        "comment": null
+      },
+      "amount": 1,
+      "hourPrice": 333.79,
+      "totalPrice": {
+        "value": 300.41,
+        "comment": null
+      },
+      "ordinal": 2
+    },
+    {
+      "nameNormalized": {
+        "value": "тормозные колодки – передние – снятие и установка (с обеих сторон)",
+        "comment": null
+      },
+      "hourNormalized": {
+        "value": 0.7,
+        "comment": null
+      },
+      "amount": 1,
+      "hourPrice": 333.79,
+      "totalPrice": {
+        "value": 233.65,
+        "comment": null
+      },
+      "ordinal": 3
+    },
+    {
+      "nameNormalized": {
+        "value": "смазка направляющих тормозного суппорта",
+        "comment": "Проведение данной работы не целесообразно"
+      },
+      "hourNormalized": {
+        "value": 0.4,
+        "comment": "Проведение данной работы не целесообразно"
+      },
+      "amount": 1,
+      "hourPrice": 333.79,
+      "totalPrice": {
+        "value": 133.52,
+        "comment": null
+      },
+      "ordinal": 4
+    },
+    {
+      "nameNormalized": {
+        "value": "видеорегистратор - настройка",
+        "comment": "Проведение данной работы не целесообразно"
+      },
+      "hourNormalized": {
+        "value": 0.3,
+        "comment": null
+      },
+      "amount": 1,
+      "hourPrice": 333.79,
+      "totalPrice": {
+        "value": 100.14,
+        "comment": null
+      },
+      "ordinal": 5
+    },
+    {
+      "nameNormalized": {
+        "value": "проверка уровней жидкости в узлах и агрегатах автомобиля",
+        "comment": null
+      },
+      "hourNormalized": {
+        "value": 0.6,
+        "comment": null
+      },
+      "amount": 1,
+      "hourPrice": 333.79,
+      "totalPrice": {
+        "value": 200.27,
+        "comment": null
+      },
+      "ordinal": 6
+    },
+    {
+      "nameNormalized": {
+        "value": null,
+        "comment": "Проведение данной работы не целесообразно"
+      },
+      "hourNormalized": {
+        "value": 1,
+        "comment": "Проведение данной работы не целесообразно"
+      },
+      "amount": 1,
+      "hourPrice": 333.79,
+      "totalPrice": {
+        "value": 333.79,
+        "comment": null
+      },
+      "ordinal": 7
+    },
+    {
+      "nameNormalized": {
+        "value": "колеса – снятие и установка (один)",
+        "comment": "Проведение данной работы не целесообразно"
+      },
+      "hourNormalized": {
+        "value": 0.8,
+        "comment": null
+      },
+      "amount": 1,
+      "hourPrice": 333.79,
+      "totalPrice": {
+        "value": 267.03,
+        "comment": null
+      },
+      "ordinal": 8
+    }
+  ],
+  "details": [
+    {
+      "nameNormalized": {
+        "value": "омывающая жидкость",
+        "comment": "Замена данной запасной части не целесообразно"
+      },
+      "unit": "шт",
+      "amount": 2,
+      "unitPrice": 380.0,
+      "totalPrice": {
+        "value": 703.76,
+        "comment": null
+      },
+      "ordinal": 0
+    },
+    {
+      "nameNormalized": {
+        "value": "фильтр масляный",
+        "comment": null
+      },
+      "unit": "шт",
+      "amount": 1,
+      "unitPrice": 800.0,
+      "totalPrice": {
+        "value": 740.8,
+        "comment": null
+      },
+      "ordinal": 1
+    },
+    {
+      "nameNormalized": {
+        "value": "масло моторное",
+        "comment": "Замена данной запасной части не целесообразно"
+      },
+      "unit": "шт",
+      "amount": 10,
+      "unitPrice": 1040.0,
+      "totalPrice": {
+        "value": 9630.4,
+        "comment": null
+      },
+      "ordinal": 2
+    },
+    {
+      "nameNormalized": {
+        "value": "колодки тормозные",
+        "comment": null
+      },
+      "unit": "шт",
+      "amount": 1,
+      "unitPrice": 3898.0,
+      "totalPrice": {
+        "value": 3609.55,
+        "comment": null
+      },
+      "ordinal": 3
+    },
+    {
+      "nameNormalized": {
+        "value": "смазка",
+        "comment": null
+      },
+      "unit": "шт",
+      "amount": 1,
+      "unitPrice": 595.0,
+      "totalPrice": {
+        "value": 550.97,
+        "comment": null
+      },
+      "ordinal": 4
+    }
+  ],
+  "totalWorkPrice": {
+    "value": 1935.98,
+    "comment": null
+  },
+  "totalDetailPrice": {
+    "value": 15235.48,
+    "comment": null
+  },
+  "totalPrice": {
+    "value": null,
+    "comment": "Итоговая сумма Заказ-наряда некорректна;"
+  },
+  "haveComments": true
+}

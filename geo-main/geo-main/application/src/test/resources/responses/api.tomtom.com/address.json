@@ -1,0 +1,399 @@
+{
+    "summary": {
+        "query": "washington dc",
+        "queryType": "NON_NEAR",
+        "queryTime": 66,
+        "numResults": 10,
+        "offset": 0,
+        "totalResults": 29,
+        "fuzzyLevel": 1
+    },
+    "results": [
+        {
+            "type": "Geography",
+            "id": "US/GEO/p0/84713",
+            "score": 4.7717227936,
+            "entityType": "Municipality",
+            "address": {
+                "municipality": "Washington",
+                "countrySecondarySubdivision": "District of Columbia",
+                "countrySubdivision": "DC",
+                "countrySubdivisionName": "District of Columbia",
+                "countryCode": "US",
+                "country": "United States",
+                "countryCodeISO3": "USA",
+                "freeformAddress": "Washington, DC"
+            },
+            "position": {
+                "lat": 38.89206,
+                "lon": -77.01991
+            },
+            "viewport": {
+                "topLeftPoint": {
+                    "lat": 38.99538,
+                    "lon": -77.1199
+                },
+                "btmRightPoint": {
+                    "lat": 38.79151,
+                    "lon": -76.90953
+                }
+            },
+            "boundingBox": {
+                "topLeftPoint": {
+                    "lat": 38.99538,
+                    "lon": -77.1199
+                },
+                "btmRightPoint": {
+                    "lat": 38.79151,
+                    "lon": -76.90953
+                }
+            },
+            "dataSources": {
+                "geometry": {
+                    "id": "00005544-4300-3c00-0000-000059684734"
+                }
+            }
+        },
+        {
+            "type": "Geography",
+            "id": "US/GEO/p0/84728",
+            "score": 4.5734367371,
+            "entityType": "Neighbourhood",
+            "address": {
+                "municipalitySubdivision": "Downtown Washington DC",
+                "countrySecondarySubdivision": "District of Columbia",
+                "countrySubdivision": "DC",
+                "countrySubdivisionName": "District of Columbia",
+                "countryCode": "US",
+                "country": "United States",
+                "countryCodeISO3": "USA",
+                "freeformAddress": "Downtown Washington DC, DC"
+            },
+            "position": {
+                "lat": 38.90374,
+                "lon": -77.03457
+            },
+            "viewport": {
+                "topLeftPoint": {
+                    "lat": 38.90737,
+                    "lon": -77.04958
+                },
+                "btmRightPoint": {
+                    "lat": 38.89876,
+                    "lon": -77.02397
+                }
+            },
+            "boundingBox": {
+                "topLeftPoint": {
+                    "lat": 38.90737,
+                    "lon": -77.04958
+                },
+                "btmRightPoint": {
+                    "lat": 38.89876,
+                    "lon": -77.02397
+                }
+            },
+            "dataSources": {
+                "geometry": {
+                    "id": "00005544-4300-3c00-0000-000023c34607"
+                }
+            }
+        },
+        {
+            "type": "Street",
+            "id": "US/STR/p2/6525567",
+            "score": 3.9811182022,
+            "address": {
+                "streetName": "DC-295 North",
+                "municipality": "Washington",
+                "countrySecondarySubdivision": "District of Columbia",
+                "countrySubdivision": "DC",
+                "countrySubdivisionName": "District of Columbia",
+                "countryCode": "US",
+                "country": "United States",
+                "countryCodeISO3": "USA",
+                "freeformAddress": "DC-295 North, Washington, DC",
+                "localName": "Washington"
+            },
+            "position": {
+                "lat": 38.8878,
+                "lon": -76.96128
+            },
+            "viewport": {
+                "topLeftPoint": {
+                    "lat": 38.89811,
+                    "lon": -76.97436
+                },
+                "btmRightPoint": {
+                    "lat": 38.88013,
+                    "lon": -76.95126
+                }
+            }
+        },
+        {
+            "type": "Street",
+            "id": "US/STR/p2/6525596",
+            "score": 3.9811182022,
+            "address": {
+                "streetName": "DC-295 South",
+                "municipality": "Washington",
+                "countrySecondarySubdivision": "District of Columbia",
+                "countrySubdivision": "DC",
+                "countrySubdivisionName": "District of Columbia",
+                "countryCode": "US",
+                "country": "United States",
+                "countryCodeISO3": "USA",
+                "freeformAddress": "DC-295 South, Washington, DC",
+                "localName": "Washington"
+            },
+            "position": {
+                "lat": 38.88824,
+                "lon": -76.96138
+            },
+            "viewport": {
+                "topLeftPoint": {
+                    "lat": 38.89816,
+                    "lon": -76.97455
+                },
+                "btmRightPoint": {
+                    "lat": 38.88018,
+                    "lon": -76.95145
+                }
+            }
+        },
+        {
+            "type": "Street",
+            "id": "US/STR/p2/6524543",
+            "score": 3.9219384193,
+            "address": {
+                "streetName": "DC Village Lane Southwest",
+                "municipalitySubdivision": "Bellevue",
+                "municipality": "Washington",
+                "countrySecondarySubdivision": "District of Columbia",
+                "countrySubdivision": "DC",
+                "countrySubdivisionName": "District of Columbia",
+                "postalCode": "20032",
+                "extendedPostalCode": "20032-5205, 20032-5206, 20032-5210",
+                "countryCode": "US",
+                "country": "United States",
+                "countryCodeISO3": "USA",
+                "freeformAddress": "DC Village Lane Southwest, Washington, DC 20032",
+                "localName": "Washington"
+            },
+            "position": {
+                "lat": 38.81534,
+                "lon": -77.01362
+            },
+            "viewport": {
+                "topLeftPoint": {
+                    "lat": 38.81665,
+                    "lon": -77.01576
+                },
+                "btmRightPoint": {
+                    "lat": 38.81307,
+                    "lon": -77.01317
+                }
+            }
+        },
+        {
+            "type": "Geography",
+            "id": "US/GEO/p0/84715",
+            "score": 3.8759844303,
+            "entityType": "MunicipalitySubdivision",
+            "address": {
+                "municipalitySubdivision": "Washington Navy Yard",
+                "countrySecondarySubdivision": "District of Columbia",
+                "countrySubdivision": "DC",
+                "countrySubdivisionName": "District of Columbia",
+                "countryCode": "US",
+                "country": "United States",
+                "countryCodeISO3": "USA",
+                "freeformAddress": "Washington Navy Yard, DC"
+            },
+            "position": {
+                "lat": 38.87368,
+                "lon": -76.9949
+            },
+            "viewport": {
+                "topLeftPoint": {
+                    "lat": 38.87639,
+                    "lon": -76.99888
+                },
+                "btmRightPoint": {
+                    "lat": 38.87124,
+                    "lon": -76.99118
+                }
+            },
+            "boundingBox": {
+                "topLeftPoint": {
+                    "lat": 38.87639,
+                    "lon": -76.99888
+                },
+                "btmRightPoint": {
+                    "lat": 38.87124,
+                    "lon": -76.99118
+                }
+            },
+            "dataSources": {
+                "geometry": {
+                    "id": "00005544-4300-3c00-0000-00004d7c6d84"
+                }
+            }
+        },
+        {
+            "type": "Geography",
+            "id": "US/GEO/p0/84749",
+            "score": 3.7952156067,
+            "entityType": "Neighbourhood",
+            "address": {
+                "municipalitySubdivision": "Washington Highlands",
+                "countrySecondarySubdivision": "District of Columbia",
+                "countrySubdivision": "DC",
+                "countrySubdivisionName": "District of Columbia",
+                "countryCode": "US",
+                "country": "United States",
+                "countryCodeISO3": "USA",
+                "freeformAddress": "Washington Highlands, DC"
+            },
+            "position": {
+                "lat": 38.83096,
+                "lon": -76.9985
+            },
+            "viewport": {
+                "topLeftPoint": {
+                    "lat": 38.83851,
+                    "lon": -77.00498
+                },
+                "btmRightPoint": {
+                    "lat": 38.82127,
+                    "lon": -76.98501
+                }
+            },
+            "boundingBox": {
+                "topLeftPoint": {
+                    "lat": 38.83851,
+                    "lon": -77.00498
+                },
+                "btmRightPoint": {
+                    "lat": 38.82127,
+                    "lon": -76.98501
+                }
+            },
+            "dataSources": {
+                "geometry": {
+                    "id": "00005544-4300-3c00-0000-000023c3461d"
+                }
+            }
+        },
+        {
+            "type": "Geography",
+            "id": "US/GEO/p0/84797",
+            "score": 3.7952156067,
+            "entityType": "Neighbourhood",
+            "address": {
+                "municipalitySubdivision": "Washington Hospital",
+                "countrySecondarySubdivision": "District of Columbia",
+                "countrySubdivision": "DC",
+                "countrySubdivisionName": "District of Columbia",
+                "countryCode": "US",
+                "country": "United States",
+                "countryCodeISO3": "USA",
+                "freeformAddress": "Washington Hospital, DC"
+            },
+            "position": {
+                "lat": 38.92895,
+                "lon": -77.01223
+            },
+            "viewport": {
+                "topLeftPoint": {
+                    "lat": 38.93132,
+                    "lon": -77.0179
+                },
+                "btmRightPoint": {
+                    "lat": 38.92626,
+                    "lon": -77.00701
+                }
+            },
+            "boundingBox": {
+                "topLeftPoint": {
+                    "lat": 38.93132,
+                    "lon": -77.0179
+                },
+                "btmRightPoint": {
+                    "lat": 38.92626,
+                    "lon": -77.00701
+                }
+            },
+            "dataSources": {
+                "geometry": {
+                    "id": "00005544-4300-3c00-0000-000023c34650"
+                }
+            }
+        },
+        {
+            "type": "Street",
+            "id": "US/STR/p1/4737676",
+            "score": 3.7905914783,
+            "address": {
+                "streetName": "Washington Circle Northwest",
+                "municipality": "Washington",
+                "countrySecondarySubdivision": "District of Columbia",
+                "countrySubdivision": "DC",
+                "countrySubdivisionName": "District of Columbia",
+                "countryCode": "US",
+                "country": "United States",
+                "countryCodeISO3": "USA",
+                "freeformAddress": "Washington Circle Northwest, Washington, DC",
+                "localName": "Washington"
+            },
+            "position": {
+                "lat": 38.90274,
+                "lon": -77.05071
+            },
+            "viewport": {
+                "topLeftPoint": {
+                    "lat": 38.90307,
+                    "lon": -77.05079
+                },
+                "btmRightPoint": {
+                    "lat": 38.90198,
+                    "lon": -77.04945
+                }
+            }
+        },
+        {
+            "type": "Street",
+            "id": "US/STR/p2/6524241",
+            "score": 3.7905914783,
+            "address": {
+                "streetName": "Washington Place Northeast",
+                "municipalitySubdivision": "Brentwood",
+                "municipality": "Washington",
+                "countrySecondarySubdivision": "District of Columbia",
+                "countrySubdivision": "DC",
+                "countrySubdivisionName": "District of Columbia",
+                "postalCode": "20018",
+                "extendedPostalCode": "20018-1023, 20018-1024, 20018-1070",
+                "countryCode": "US",
+                "country": "United States",
+                "countryCodeISO3": "USA",
+                "freeformAddress": "Washington Place Northeast, Washington, DC 20018",
+                "localName": "Washington"
+            },
+            "position": {
+                "lat": 38.92084,
+                "lon": -76.99479
+            },
+            "viewport": {
+                "topLeftPoint": {
+                    "lat": 38.92193,
+                    "lon": -76.99586
+                },
+                "btmRightPoint": {
+                    "lat": 38.91982,
+                    "lon": -76.99367
+                }
+            }
+        }
+    ]
+}

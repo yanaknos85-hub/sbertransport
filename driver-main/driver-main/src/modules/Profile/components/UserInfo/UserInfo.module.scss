@@ -1,0 +1,123 @@
+@import 'styles/variables.scss';
+
+.user {
+  margin: 0 20px 16px;
+
+  .info {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 16px 0;
+
+    .user {
+      width: 100%;
+      position: relative;
+      font-family: 'SB Sans Text';
+      display: flex;
+      flex-direction: column;
+
+      &Name {
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 600;
+        letter-spacing: -0.3px;
+        color: $black;
+        display: block;
+      }
+
+      &Role {
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: -0.15px;
+        color: $midnight-steel;
+        margin-top: 8px;
+      }
+
+      &AutoPark {
+        font-size: 12px;
+        line-height: 15px;
+        color: $pale-grey;
+        margin-top: 6px;
+      }
+    }
+
+    .avatarWrapper {
+      min-width: 64px;
+      min-height: 64px;
+      position: relative;
+
+      .skeleton {
+        width: 64px;
+        height: 64px;
+        border-radius: 30px;
+        position: absolute;
+      }
+
+      :global(.adm-space-item) {
+        padding: 0;
+      }
+
+      .imageUploader {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        :global(.adm-image-uploader-upload-button) {
+          background-color: transparent;
+          width: 64px;
+          height: 64px;
+        }
+
+        :global(.adm-image-uploader-upload-button-icon) {
+          width: 24px;
+          height: 24px;
+          display: block;
+          background-image: url(../../../../assets/icons/edit-avatar.svg);
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          z-index: 10;
+
+          svg {
+            display: none;
+          }
+        }
+
+        :global(.adm-image-uploader-input) {
+          z-index: 20;
+        }
+      }
+    }
+  }
+
+  .statistics {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: SB Sans Interface;
+    margin-top: 16px;
+
+    .rating {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 20px;
+      letter-spacing: -0.4px;
+      color: $charcoal;
+    }
+
+    .ratingLabel {
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: -0.12px;
+      color: $pale-grey;
+      margin-top: 5px;
+    }
+  }
+}

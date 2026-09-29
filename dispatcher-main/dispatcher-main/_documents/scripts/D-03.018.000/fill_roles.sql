@@ -1,0 +1,1 @@
+call migrations.fill_roles('dispatcher', 'DELETE /{contractorId}/shift/row/{rowId}/', 'ROLE_DISPATCHER_CONTRACTOR', true);

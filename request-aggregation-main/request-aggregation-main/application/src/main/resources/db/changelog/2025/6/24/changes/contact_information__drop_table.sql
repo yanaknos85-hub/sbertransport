@@ -1,0 +1,1 @@
+drop table request_aggregation.contact_information cascade;

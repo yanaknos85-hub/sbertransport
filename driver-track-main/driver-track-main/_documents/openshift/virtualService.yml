@@ -1,0 +1,49 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"networking.istio.io/v1beta1","kind":"VirtualService","metadata":{"annotations":{},"name":"api-area-driver-track","namespace":"ci02351878-edevgen-sbertransport-dev"},"spec":{"exportTo":["."],"gateways":["client-ingress-dev-platform","mesh"],"hosts":["api.platform.transport.apps.dev-terra000003-ids.ocp.delta.sbrf.ru"],"http":[{"match":[{"uri":{"prefix":"/api/track/driver"}}],"rewrite":{"uri":"
+      "},"route":[{"destination":{"host":"http-driver-track","port":{"number":8080}}}]}]}}
+  creationTimestamp: '2024-07-29T04:46:07Z'
+  generation: 1
+  managedFields:
+    - apiVersion: networking.istio.io/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:kubectl.kubernetes.io/last-applied-configuration': {}
+        'f:spec':
+          .: {}
+          'f:exportTo': {}
+          'f:gateways': {}
+          'f:hosts': {}
+          'f:http': {}
+      manager: oc
+      operation: Update
+      time: '2024-07-29T04:46:07Z'
+  name: api-area-driver-track
+  namespace: ci02351878-edevgen-sbertransport-dev
+  resourceVersion: '3616046212'
+  uid: 7c50b99e-0251-4775-8f28-3a46226b8a3a
+spec:
+  exportTo:
+    - .
+  gateways:
+    - client-ingress-dev-platform
+    - mesh
+  hosts:
+    - api.platform.transport.apps.dev-terra000003-ids.ocp.delta.sbrf.ru
+  http:
+    - match:
+        - uri:
+            prefix: /api/track/driver
+      rewrite:
+        uri: ' '
+      route:
+        - destination:
+            host: http-driver-track
+            port:
+              number: 8080

@@ -1,0 +1,242 @@
+const percentage = 'Допустимый % отклонения';
+const wayDistance = 'протяженности маршрута';
+const tripCost = 'стоимости поездки';
+const awaitingTime = 'времени ожидания';
+const registry = 'в реестре';
+const contractor = 'контрагента';
+const distance = 'протяженности';
+const final = 'в АС';
+
+export const TariffStrings = {
+  pageHeader: 'К списку тарифов',
+  deleteConfirm: 'Вы уверены что хотите отключить тариф?',
+  addNew: 'Создать',
+  save: 'Сохранить',
+  remove: 'Отключить',
+  cancel: 'Отменить',
+  cancelConfirm: 'Вы хотите отменить изменения?',
+  confirm: 'Да',
+  rejection: 'Нет',
+  tariffs: 'Тарифы',
+
+  serviceTypeRequired: 'Укажите тип услуги',
+  organizationRequired: 'Укажите корп. клиента',
+  transportTypeRequired: 'Укажите тип транспорта',
+  taxiClassRequired: 'Укажите класс такси',
+  contractorRequired: 'Укажите контрагента',
+  contractRequired: 'Укажите контракт',
+  periodRequired: 'Укажите период действия',
+  publicTransportTypeRequired: 'Укажите тип общественного транспорта',
+  regionRequired: 'Укажите территорию действия тарифа',
+  integerRequired: 'Введите целое число',
+
+  parametersTab: 'Параметры тарифа',
+  packTab: 'Упаковочные материалы',
+  coopParametersTab: 'Параметры тарифа для совместной поездки',
+
+  anyParameterRequired: 'Введите значение',
+
+  rideCostPerKm: 'Стоимость 1 км поездки, руб.',
+  rideCostPerMin: 'Стоимость 1 мин, руб.',
+  rideCostPerHour: 'Стоимость 1 часа, руб.',
+  distanceIncluded: 'Минимальная поездка, км',
+  tariffDataTitle: 'Данные по тарифу',
+  minAttributesTitle: 'Атрибуты для минимальной поездки/подачи ТС',
+  minRideValue: 'Минимальное количество',
+  minRideAmount: 'Стоимость, руб',
+  transferFreeWaitingTime: 'Бесплатное время ожидания, мин',
+
+  mainAttributesTitle: 'Основные атрибуты',
+  conditionsTitle: 'Условия',
+  minOrderCreationTimeMin: 'Мин. время для формирования  заказа, мин.',
+  minOrderCancelationTimeMin: 'Минимальное время отмены заявки, мин.',
+  transferCostPerKmCity: 'Стоимость 1 км в городе, руб.',
+  transferCostPerKmSuburb: 'Стоимость 1 км за городом, руб.',
+  transferCostPerMinCity: 'Стоимость 1 мин в городе, руб.',
+  transferCostPerMinSuburb: 'Стоимость 1 мин за городом, руб.',
+  transferWaitCostPerMin: 'Цена за 1 минуту ожидания, руб.',
+  transferOversizedLuggage: 'Негабаритный багаж',
+  transferChildSeats: 'Детские кресла',
+  transferAnimals: 'Животные',
+
+  minRideDistanceCost: 'Стоимость минимальной поездки, руб',
+  packName: 'Название упаковки',
+  packCost: 'Цена',
+  transportMode: 'Вид транспорта',
+  maxRouteLength: 'Максимальная протяженность маршрута, км',
+  maxWaypointCount: 'Максимальное количество точек в маршруте',
+  timeIncluded: '',
+  minRideTimeCost: '',
+  freeWaitingTime: 'Бесплатное время ожидания при подаче, мин.',
+  waitCostPerMin: 'Стоимость за минуту ожидания при подаче, руб.',
+  waitCostPerMinIntermediate: 'Стоимость за минуту ожидания в промежуточной точке, руб.',
+  suburbServiceCostPerKm: 'Стоимость поездки за чертой города в км, руб.',
+  suburbServiceCostPerMin: 'Стоимость поездки за чертой города в мин, руб.',
+  costPerKmSuburb: 'Стоимость 1 км платной подачи за чертой города, руб.',
+  costPerMinSuburb: 'Стоимость 1 мин платной подачи за чертой города, руб.',
+  coefWorkDayMorning: 'Коэффициент временного интервала поездки: утро будние дни 07:00-10:00',
+  coefWorkDayNoon: 'Коэффициент временного интервала поездки: день будние дни 10:00-18:00',
+  coefWorkDayEvening: 'Коэффициент временного интервала поездки: вечерний будние дни 18:00-22:00',
+  coefWorkDayNight: 'Коэффициент временного интервала поездки: ночной будние дни 22:00-07:00',
+  coefDayOff: 'Коэффициент выходного дня: СБ, ВСКР',
+  coefTraffic: 'Коэффициент загрузки дорог (пробок, баллы Яндекс, прогнозные) *Более 7 баллов',
+  coefChildSeat: 'Коэффициент доплаты за детское кресло',
+  coefPetTransport: 'Коэффициент доплаты за перевозку животного',
+  coefBicycle: 'Коэффициент доплаты за лыжи/сноуборд/велосипед',
+  coefOrg: 'Коэффициент организации',
+  costPerKmInterRegion: 'Стоимость пробега 1 км межрегиональной поездки, руб.',
+  coefPassenger: 'Коэффициент доплаты за 1 пассажира',
+  costPerMinInterRegion: 'Стоимость 1 минуты межрегиональной поездки, руб.',
+  distanceDeviationKm: 'Предельно допустимое отклонение по километражу, км',
+  timeDeviationMin: 'Предельно допустимое отклонение по времени выезда, минуты',
+  savingsDeviationPct: 'Показатель экономии, %',
+  minCancelTimeMin: 'Минимальное время отмены заказа, мин',
+  triggerTime: 'Триггерное время, мин',
+  isNightTariff: 'Ночной тариф',
+  nightTariffSubTitle: '*время действия ночного тарифа 22.00-06.00',
+
+  waitCostPerMinPers: 'Стоимость за минуту ожидания в промежуточной точке, руб.',
+  suburbServiceCostPerKmPers: 'Стоимость поездки за чертой города (в пределах области региона) за км, руб.',
+  suburbServiceCostPerMinPers: 'Стоимость поездки за городом (в пределах области региона) за мин, руб.',
+  costPerKmSuburbPers: 'Стоимость пробега 1 км межрегиональной поездки (между областями), руб.',
+  costPerMinSuburbPers: 'Стоимость 1 минуты межрегиональной поездки (между областями), руб.',
+  coefEngine1_6: 'Коэффициент объема двигателя для ТС до 1,6 л. ( только для бензиновых двигателей)',
+  coefEngine1_6_to_2_0: 'Коэффициент объема двигателя для ТС от 1,7 до 2,0 л (только для бензиновых двигателей)',
+  coefEngine2_0_to_2_5: 'Коэффициент объема двигателя для ТС от 2,0 до 2,5 л (только для бензиновых двигателей)',
+  seasonalCoefficient: 'Коэффициент',
+  seasonalCoefficientLabel: 'Сезонный коэффициент',
+  seasonStartEnd: 'Дата',
+  coefMaterialAssets: 'Коэффициент перевозки ТМЦ',
+  trustIdx: 'Индекс затрат на страхование, руб./км',
+
+  coefCasko: 'Коэффициент на полное покрытие ответственности КАСКО',
+
+  rideCostPerKmCS: 'Тариф за поездку 1 км, руб',
+  rideCostPerMinCS: 'Тариф за поездку 1 мин, руб.',
+  waitCostPerMinCS: 'Стоимость времени ожидания при бронировании и аренде ТС, руб.',
+
+  calculation: 'Расчет',
+  bookingCost: 'Стоимость брони FIX, руб.',
+  coefInsurance: 'Коэффициент на страхование',
+
+  minCostPerKmText: 'Стоимость минимальной поездки/подачи за км',
+  minCostPerMinText: 'Стоимость минимальной поездки/подачи за минуты',
+
+  costLoader: 'Стоимость грузчика за 1 час, руб',
+  minTimeLoader: 'Минимальное время работы грузчика, час',
+  minCostTimeLoader: 'Стоимость минимального времени работы грузчика, руб',
+  driverLoader: 'Водитель грузчик',
+  freeWaitingAmount: 'Бесплатное ожидание',
+  waitingCostMinute: 'Стоимость 1 минуты ожидания',
+  express: 'Доплата за Экспресс',
+
+  regionAvailability: 'Доступность в регионе',
+  metroParam: 'Метро (за один билет, руб.)',
+  tramParam: 'Трамвай (за один билет, руб.)',
+  trolleyParam: 'Троллейбус (за один билет, руб.)',
+  busParam: 'Автобус (за один билет, руб.)',
+  cardMetroParam: 'Проездной документ на метро',
+  cardTramParam: 'Проездной документ на трамвай',
+  cardBusParam: 'Проездной документ на автобус',
+  cardTrolleybusParam: 'Проездной документ на троллейбус',
+  cardAllCityTransportParam: 'Единый проездной документ',
+
+  organizationId: 'Корп. клиент',
+  transportType: 'Вид транспорта',
+  specificServiceType: 'Вид сервиса',
+  publicTransportType: 'Вид компенсации',
+  taxiClass: 'Класс такси',
+  contractorId: 'Контрагент',
+  contractNumber: 'Номер договора',
+  region: 'Территория обслуживания',
+  integrationType: 'Тип интеграции',
+  contractorTariffId: 'Тариф контрагента',
+  serviceType: 'Услуга',
+  department: 'Код подразделения',
+
+  tariffDateRange: 'Период действия тарифа',
+  customersTariffDateRange: 'Период действия',
+
+  maxDiffComputedDistancePercent: `${percentage} ${wayDistance} от ${contractor} и расчетной ${distance} ${final}`,
+  maxDiffFactDistancePercent: `${percentage} ${wayDistance} от ${contractor} и фактической ${distance} ${final}`,
+  maxDiffComputedCostPercent: `${percentage} ${tripCost} ${registry} ${contractor} и расчетной стоимости ${final}`,
+  maxDiffContractorCostPercent: `${percentage} ${tripCost} ${registry} ${contractor} и возвращенной стоимости от подрядчика`,
+  maxDiffComputedWaitingPercent: `${percentage} ${awaitingTime} ${registry} ${contractor} и времени ожидания, предварительно рассчитанного ${final}`,
+};
+
+export enum TariffsHanbooksNames {
+  organizationIds = 'organizationIds',
+  organizationId = 'organizationId',
+  clientOrganization = 'clientOrganization',
+  serviceType = 'serviceType',
+  transportType = 'transportType',
+  contractor = 'contractor',
+  contractorId = 'contractorId',
+  contractorName = 'contractorName',
+  humanReadableId = 'humanReadableId',
+  active = 'active',
+  statusActive = 'statusActive',
+  statusInactive = 'statusInactive',
+  regionId = 'regionId',
+  isNightTariff = 'isNightTariff',
+  contractNumber = 'contractNumber',
+  hourNormalizedPrice = 'hourNormalizedPrice',
+  detailDiscountPrice = 'detailDiscountPrice',
+  workWarranty = 'workWarranty',
+  mileageWarranty ='mileageWarranty',
+  detailWarranty = 'detailWarranty',
+}
+
+export const TariffsHanbookTitles: Record<TariffsHanbooksNames, string> = {
+  organizationIds: 'organizationIds',
+  organizationId: 'Заказчик / Корп. клиент',
+  clientOrganization: 'Организация-клиент',
+  serviceType: 'Услуга',
+  transportType: 'Вид услуги',
+  contractor: 'Исполнитель',
+  contractorId: 'Контрагент',
+  contractorName: 'Контрагент',
+  humanReadableId: 'ID тарифа',
+  active: 'Статус',
+  statusActive: 'Активен',
+  statusInactive: 'Отключен',
+  regionId: 'Регион',
+  isNightTariff: 'Ночной тариф',
+  contractNumber: 'Номер контракта',
+  hourNormalizedPrice: 'Стоимость нормо-часа, руб',
+  detailDiscountPrice: 'Размер скидки на запасные части, %',
+  workWarranty: 'Гарантия на работы по времени, месяцы',
+  mileageWarranty: 'Гарантия на работы по пробегу, км',
+  detailWarranty: 'Гарантия на запчасти, месяцы',
+};
+
+export const taxiClassOptions = [
+  { label: 'Эконом', value: 'ECONOMY' },
+  { label: 'Комфорт', value: 'COMFORT' },
+  { label: 'Комфорт+', value: 'COMFORT_PLUS' },
+  { label: 'Бизнес', value: 'BUSINESS' },
+  { label: 'Служебный', value: 'OFFICIAL' },
+
+  { label: 'Автобус до 9 мест', value: 'VIP_BUS' },
+  { label: 'Автобус от 10 до 21 места', value: 'SMALL_BUS' },
+  { label: 'Автобус от 22 до 41 места', value: 'MIDDLE_BUS' },
+  { label: 'Автобус от 42 до 55 места', value: 'LARGE_BUS' },
+];
+
+export enum TimeDistanceUnits {
+  KM = 'km',
+  MIN = 'min'
+};
+
+export const defaultTimeDistanceUnit = TimeDistanceUnits.KM;
+
+export const selectTimeDistanceUnitOptions = [
+  {
+    label: 'КМ',
+    value: TimeDistanceUnits.KM,
+  },
+  {
+    label: 'Мин',
+    value: TimeDistanceUnits.MIN,
+  }
+];

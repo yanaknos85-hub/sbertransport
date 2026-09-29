@@ -1,0 +1,55 @@
+const { params, config } = require('@sber-sbertransport/tool-kit/tslint');
+
+module.exports = config({
+  ...params,
+  files: ['src/**/*.js*', 'src/**/*.ts*'],
+  rules: {
+    ...params.rules,
+    // ...свои правила
+  }
+},{
+  ignores: [
+    '**/*/*.d.ts',
+    '**/*/*.test.*',
+    '**/*/*.spec.*',
+    '**/*/images/*',
+    '**/*/img/*',
+
+    // 'src/modules/Approvals/*',
+    // 'src/modules/CarSharingRegistry/*',
+    // 'src/modules/CargoAuto/*',
+    'src/modules/CargoPackage/*',
+    'src/modules/CargoRegistry/*',
+    'src/modules/CargoType/*',
+    'src/modules/Contractors/*',
+    'src/modules/DeadlineSettings/*',
+    'src/modules/Departments/*',
+    'src/modules/Employees/*',
+    'src/modules/EmployeesAttributes/*',
+    'src/modules/Engineers/*',
+    'src/modules/Geo/*',
+    'src/modules/Home/*',
+    'src/modules/ImportReport/*',
+    'src/modules/Locations/*',
+    'src/modules/NewTariffs/*',
+    'src/modules/OrderExecution/*',
+    'src/modules/Organizations/*',
+    'src/modules/Page404/*',
+    'src/modules/PersonalRegistry/*',
+    'src/modules/Planner/*',
+    'src/modules/Positions/*',
+    'src/modules/PublicRegistry/*',
+    'src/modules/Registry/*',
+    'src/modules/Roles/*',
+    'src/modules/ServiceMetrics/*',
+    'src/modules/ServiceSettings/*',
+    'src/modules/SharedRides/*',
+    'src/modules/TariffSettings/*',
+    'src/modules/TaxiRegistry/*',
+    'src/modules/TripDetailed/*',
+    'src/modules/TripPurposes/*',
+    'src/modules/TripSettings/*',
+    'src/modules/UploadButton/*',
+    'src/modules/WorkingGroups/*',
+  ],
+});

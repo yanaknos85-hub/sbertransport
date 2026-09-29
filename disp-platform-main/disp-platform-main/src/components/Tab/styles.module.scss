@@ -1,0 +1,49 @@
+.tabs {
+  overflow: visible;
+
+  &.card {
+    :global {
+      .ant-tabs-nav {
+        &::before {
+          margin-top: 16px;
+          bottom: -16px;
+        }
+
+        .ant-tabs-tab {
+          border-radius: 8px;
+          border: none;
+          background-color: rgba(0, 0, 0, 0.06);
+          color: var(--charcoa);
+          transition: none !important;
+          font-size: 16px;
+          line-height: 24px;
+          letter-spacing: -0.3px;
+          padding: 6px 16px;
+
+          &:hover {
+            background-color: var(--solitude);
+          }
+
+          &-active {
+            background-color: var(--light-green);
+            color: var(--dark-grey) !important;
+            border: 2px solid var(--jade);
+            padding: 4px 14px;
+
+            &:hover {
+              background-color: var(--light-green);
+            }
+          }
+
+          +.ant-tabs-tab {
+            margin-left: 8px;
+          }
+        }
+
+        .ant-tabs-tab-btn {
+          color: var(--charcoal);
+        }
+      }
+    }
+  }
+}

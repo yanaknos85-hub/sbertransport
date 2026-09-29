@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: contractor/20210323
+      context: "20210323"
+      author: kirillov
+      dbms: postgresql
+      changes:
+        - sqlFile:
+            path: changes/create_imported_data_table.sql
+            relativeToChangelogFile: true
+            endDelimiter: ;
+      rollback:
+        - sqlFile:
+            path: rollback/drop_imported_data_table.sql
+            relativeToChangelogFile: true
+            endDelimiter: ;

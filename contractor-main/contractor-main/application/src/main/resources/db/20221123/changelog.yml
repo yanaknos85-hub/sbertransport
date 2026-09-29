@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20221123"
+      author: blandin-ad
+      changes:
+          -   tagDatabase:
+                  tag: "20221123"
+          -   addColumn:
+                  schemaName: contractors
+                  tableName: driver
+                  columns:
+                    -   column:
+                          name: email
+                          type: text
+                          remarks: Почта
+      rollback:
+          -   dropColumn:
+                  schemaName: contractors
+                  tableName: driver
+                  columns:
+                      -   column:
+                            name: email

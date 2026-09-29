@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20251022-1030"
+      author: farkhutdinov
+      changes:
+        - addColumn:
+            tableName: department
+            schemaName: external_request
+            columns:
+              - column:
+                  name: level
+                  type: integer
+                  remarks: Уровень подразделения в иерархии

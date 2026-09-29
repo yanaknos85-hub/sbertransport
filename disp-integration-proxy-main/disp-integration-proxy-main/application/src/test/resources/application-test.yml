@@ -1,0 +1,14 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8080
+  datasource:
+    username: postgres
+authorization:
+  consent-check: false
+integration-proxy:
+  auth-url: http://authentication:8080/login
+  trips-url: http://trips:8080/integration
+  trips-cargo-url: http://trips-cargo:8080/integration

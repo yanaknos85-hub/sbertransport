@@ -1,0 +1,123 @@
+spring:
+  cloud:
+    stream:
+      default-binder: kafka-ssl
+      bindings:
+        #                contractorOutputAvro-out-0:
+        #                    destination: service-contractor
+        #                    binder: kafka-avro
+        #                    content-type: application/*+avro
+        #                    producer:
+        #                        useNativeEncoding: true
+        driverInputSsl-in-0:
+          destination: service.trip.driver
+          group: ${spring.application.name}-ssl
+        shiftInputSsl-in-0:
+          destination: service.trip.shift
+          group: ${spring.application.name}-ssl
+        tripInputSsl-in-0:
+          destination: service.trip
+          group: ${spring.application.name}-ssl
+        confirmationDataInputSsl-in-0:
+          group: ${spring.application.name}-ssl
+          destination: service.confirmation.approved
+        transportInputSsl-in-0:
+          group: ${spring.application.name}-ssl
+          destination: service.transport
+        integrationMaisShiftInputSsl-in-0:
+          group: ${spring.application.name}
+          destination: service.integration-mais.shift
+        contractorOutputSsl-out-0:
+          destination: service.dispatcher.contractor
+          binder: kafka-ssl
+        dispatcherOutputSsl-out-0:
+          destination: service.dispatcher
+          binder: kafka-ssl
+        vehicleOutputSsl-out-0:
+          destination: service.dispatcher.vehicle
+          binder: kafka-ssl
+        shiftOutputSsl-out-0:
+          destination: service.dispatcher.shift
+          binder: kafka-ssl
+        usersOutputSsl-out-0:
+          destination: service.users
+          binder: kafka-ssl
+        driverOutputSsl-out-0:
+          destination: service.dispatcher.driver
+          binder: kafka-ssl
+        autoparkOutputSsl-out-0:
+          destination: service.dispatcher.autopark
+          binder: kafka-ssl
+        confirmationDataOutputSsl-out-0:
+          destination: service.confirmation.data
+          binder: kafka-ssl
+        integrationClientSsl-out-0:
+          destination: service.dispatcher.integrationClient
+          binder: kafka
+        ewbOutputSsl-out-0:
+          destination: service.telemechanic.first-title.create
+          binder: kafka-ssl
+        ewbInputSsl-in-0:
+          group: ${spring.application.name}-ssl
+          destination: service.telemechanic.first-title.create.response
+      binders:
+        kafka:
+          type: kafka-ssl
+          environment:
+            spring.cloud.stream.kafka:
+              binder:
+                auto-alter-topics: true
+                brokers:
+                  - ${KAFKA_BROKERS:@kafka.default.broker@}
+                producerProperties:
+                  compression.type: gzip
+                  key.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+                consumerProperties:
+                  key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+                  enableDlq: true
+                  compression.type: gzip
+                  dlqProducerProperties:
+                    key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+                  standardHeaders: both
+              default:
+                consumer:
+                  enableDlq: true
+        kafka-avro:
+          type: kafka-ssl
+          environment:
+            spring.cloud.stream:
+              kafka:
+                binder:
+                  configuration:
+                    security.protocol: ${KAFKA_SECURITY_PROTOCOL:SSL}
+                    ssl:
+                      endpoint.identification.algorithm: ""
+                      client.auth: required
+                      enabled.protocols: TLSv1.2
+                      truststore:
+                        location: ${KAFKA_SSL_TRUSTSTORE_LOCATION:}
+                        password: ${KAFKA_SSL_TRUSTSTORE_PASSWORD:}
+                      keystore:
+                        location: ${KAFKA_SSL_KEYSTORE_LOCATION:}
+                        password: ${KAFKA_SSL_KEYSTORE_PASSWORD:}
+                      key.password: ${KAFKA_SSL_KEY_PASSWORD:}
+                  auto-alter-topics: true
+                  brokers:
+                    - ${SSL_KAFKA_BROKERS:@kafka.default.broker@}
+                  producerProperties:
+                    key.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+                    value.serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+                    compression.type: gzip
+                    schema.reflection: true
+                    schema.registry.url: ${SCHEMA_REGISTRY_URL}
+                  consumerProperties:
+                    key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+                    value.deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+                    enableDlq: true
+                    standardHeaders: both
+                    compression.type: gzip
+                    schema.registry.url: ${SCHEMA_REGISTRY_URL}
+                    specific.avro.reader: true
+                default:
+                  consumer:
+                    enableDlq: true

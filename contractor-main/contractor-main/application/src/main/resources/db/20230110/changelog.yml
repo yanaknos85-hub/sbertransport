@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230110"
+      author: blandin-ad
+      changes:
+        - tagDatabase:
+            tag: "20230110"
+        - createTable:
+            schemaName: contractors
+            tableName: check_in
+            remarks: Чек-ины по поездкам
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: trip_id
+                  remarks: Статус
+                  type: uuid
+              - column:
+                  name: longitude
+                  remarks: Долгота
+                  type: double precision
+              - column:
+                  name: latitude
+                  remarks: Широта
+                  type: double precision
+              - column:
+                  name: time
+                  remarks: Время
+                  type: datetime
+              - column:
+                  name: status
+                  remarks: Статус поездки
+                  type: text
+              - column:
+                  name: type
+                  remarks: Тип чек-ина
+                  type: text
+      rollback:
+        - dropTable:
+            schemaName: contractors
+            tableName: check_in

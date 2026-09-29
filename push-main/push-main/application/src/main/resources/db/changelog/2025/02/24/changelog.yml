@@ -1,0 +1,87 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250224-1001"
+      author: blandin-ad
+      context: "TRANSPORT-30135"
+      changes:
+        - createTable:
+            schemaName: push
+            tableName: send_history
+            columns:
+              - column:
+                  name: message_id
+                  type: uuid
+                  remarks: Идентификатор сообщения
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: push_send_history_message_id_nnc
+                    primaryKey: true
+                    primaryKeyName: push_send_history_pk
+              - column:
+                  name: send_time
+                  type: timestamp with time zone
+                  remarks: Время отправки сообщения
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: push_send_history_send_time_nnc
+              - column:
+                  name: recipient_id
+                  type: uuid
+                  remarks: Идентификатор получателя
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: push_send_history_recipient_id_nnc
+              - column:
+                  name: token_id
+                  type: uuid
+                  remarks: Идентификатор токена
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: push_send_history_token_id_nnc
+              - column:
+                  name: message
+                  type: text
+                  remarks: Текст сообщения
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: push_send_history_message_nnc
+              - column:
+                  name: status
+                  type: text
+                  remarks: Статус отправки сообщения
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: push_send_history_status_nnc
+              - column:
+                  name: error_description
+                  type: json
+                  remarks: Описание ошибки
+      rollback:
+        - dropTable:
+            schemaName: push
+            tableName: send_history
+
+  - changeSet:
+      id: "20250319-1715"
+      author: blandin-ad
+      context: "TRANSPORT-30135"
+      changes:
+        - dropPrimaryKey:
+            schemaName: push
+            tableName: send_history
+            primaryKeyName: push_send_history_pk
+        - addPrimaryKey:
+            schemaName: push
+            tableName: send_history
+            primaryKeyName: push_send_history_pk
+            columnNames: message_id,send_time
+      rollback:
+        - dropPrimaryKey:
+            schemaName: push
+            tableName: send_history
+            primaryKeyName: push_send_history_pk
+        - addPrimaryKey:
+            schemaName: push
+            tableName: send_history
+            primaryKeyName: push_send_history_pk
+            columnNames: message_id

@@ -1,0 +1,593 @@
+{
+    "content": [
+        {
+            "id": "42eced62-cb16-4c35-b4e7-e0314ea24455",
+            "humanReadableId": "CT-0025-00103263",
+            "transportType": "DEDICATED",
+            "author": {
+                "id": "2c9e8d8e-c4fe-4832-b805-43cfe0e408c0",
+                "firstName": "Евгений",
+                "lastName": "Рассохин",
+                "patronymic": "Викторович",
+                "personnelNumber": "1898931",
+                "departmentId": "0c020c14-0ca8-400a-9765-7527a1e1f44c",
+                "userId": "2c9e8d8e-c4fe-4832-b805-43cfe0e408c0",
+                "positionId": "fcbc517f-f516-4aa6-b1de-b23e83dce849",
+                "organizationId": "ac1d7c0e-6ebd-40b4-9595-086dbed05c22",
+                "departmentName": "ИФТ подразделение 00",
+                "mvz": "9900L29813",
+                "humanReadableId": "US-0025-00000033",
+                "mobilePhone": "+79819519519",
+                "email": "sbertransport1@sigma-exchtest.sbrf.ru"
+            },
+            "creationTime": 1736502337665,
+            "desiredDate": 1746072480000,
+            "timeZone": "+3",
+            "active": true,
+            "segments": [
+                {
+                    "cost": 0,
+                    "distance": 0.029,
+                    "time": 8000,
+                    "coordinates": [
+                        {
+                            "latitude": 55.682013,
+                            "longitude": 37.576223
+                        },
+                        {
+                            "latitude": 55.68212,
+                            "longitude": 37.576338
+                        },
+                        {
+                            "latitude": 55.682187,
+                            "longitude": 37.576409
+                        },
+                        {
+                            "latitude": 55.682253,
+                            "longitude": 37.576481
+                        }
+                    ]
+                },
+                {
+                    "cost": 0,
+                    "distance": 0.46,
+                    "time": 110000,
+                    "coordinates": [
+                        {
+                            "latitude": 55.682253,
+                            "longitude": 37.576481
+                        },
+                        {
+                            "latitude": 55.682276,
+                            "longitude": 37.576416
+                        },
+                        {
+                            "latitude": 55.682448,
+                            "longitude": 37.575914
+                        },
+                        {
+                            "latitude": 55.682551,
+                            "longitude": 37.575612
+                        },
+                        {
+                            "latitude": 55.682604,
+                            "longitude": 37.575458
+                        },
+                        {
+                            "latitude": 55.682672,
+                            "longitude": 37.575259
+                        },
+                        {
+                            "latitude": 55.682794,
+                            "longitude": 37.574902
+                        },
+                        {
+                            "latitude": 55.683049,
+                            "longitude": 37.574162
+                        },
+                        {
+                            "latitude": 55.683203,
+                            "longitude": 37.573713
+                        },
+                        {
+                            "latitude": 55.683341,
+                            "longitude": 37.573308
+                        },
+                        {
+                            "latitude": 55.683394,
+                            "longitude": 37.573154
+                        },
+                        {
+                            "latitude": 55.683475,
+                            "longitude": 37.572916
+                        },
+                        {
+                            "latitude": 55.683475,
+                            "longitude": 37.572916
+                        },
+                        {
+                            "latitude": 55.683546,
+                            "longitude": 37.57271
+                        },
+                        {
+                            "latitude": 55.68388,
+                            "longitude": 37.571737
+                        },
+                        {
+                            "latitude": 55.684425,
+                            "longitude": 37.570145
+                        }
+                    ]
+                },
+                {
+                    "cost": 0,
+                    "distance": 1.758,
+                    "time": 434000,
+                    "coordinates": [
+                        {
+                            "latitude": 55.684425,
+                            "longitude": 37.570145
+                        },
+                        {
+                            "latitude": 55.684779,
+                            "longitude": 37.570526
+                        },
+                        {
+                            "latitude": 55.685215,
+                            "longitude": 37.570994
+                        },
+                        {
+                            "latitude": 55.685455,
+                            "longitude": 37.571251
+                        },
+                        {
+                            "latitude": 55.685528,
+                            "longitude": 37.57133
+                        },
+                        {
+                            "latitude": 55.685625,
+                            "longitude": 37.571434
+                        },
+                        {
+                            "latitude": 55.68633,
+                            "longitude": 37.572192
+                        },
+                        {
+                            "latitude": 55.68633,
+                            "longitude": 37.572192
+                        },
+                        {
+                            "latitude": 55.68645,
+                            "longitude": 37.57232
+                        },
+                        {
+                            "latitude": 55.686515,
+                            "longitude": 37.572389
+                        },
+                        {
+                            "latitude": 55.686778,
+                            "longitude": 37.572672
+                        },
+                        {
+                            "latitude": 55.687052,
+                            "longitude": 37.572967
+                        },
+                        {
+                            "latitude": 55.687218,
+                            "longitude": 37.573145
+                        },
+                        {
+                            "latitude": 55.687305,
+                            "longitude": 37.573217
+                        },
+                        {
+                            "latitude": 55.687384,
+                            "longitude": 37.573265
+                        },
+                        {
+                            "latitude": 55.687467,
+                            "longitude": 37.573316
+                        },
+                        {
+                            "latitude": 55.687532,
+                            "longitude": 37.573376
+                        },
+                        {
+                            "latitude": 55.687929,
+                            "longitude": 37.573799
+                        },
+                        {
+                            "latitude": 55.687984,
+                            "longitude": 37.573872
+                        },
+                        {
+                            "latitude": 55.688023,
+                            "longitude": 37.573939
+                        },
+                        {
+                            "latitude": 55.688026,
+                            "longitude": 37.573943
+                        },
+                        {
+                            "latitude": 55.688069,
+                            "longitude": 37.57403
+                        },
+                        {
+                            "latitude": 55.688107,
+                            "longitude": 37.574087
+                        },
+                        {
+                            "latitude": 55.688133,
+                            "longitude": 37.574128
+                        },
+                        {
+                            "latitude": 55.688351,
+                            "longitude": 37.574361
+                        },
+                        {
+                            "latitude": 55.688545,
+                            "longitude": 37.57457
+                        },
+                        {
+                            "latitude": 55.688718,
+                            "longitude": 37.574756
+                        },
+                        {
+                            "latitude": 55.688763,
+                            "longitude": 37.574805
+                        },
+                        {
+                            "latitude": 55.688872,
+                            "longitude": 37.574887
+                        },
+                        {
+                            "latitude": 55.689007,
+                            "longitude": 37.574949
+                        },
+                        {
+                            "latitude": 55.689126,
+                            "longitude": 37.574987
+                        },
+                        {
+                            "latitude": 55.689706,
+                            "longitude": 37.575193
+                        },
+                        {
+                            "latitude": 55.691256,
+                            "longitude": 37.575742
+                        },
+                        {
+                            "latitude": 55.691699,
+                            "longitude": 37.575899
+                        },
+                        {
+                            "latitude": 55.69187,
+                            "longitude": 37.57596
+                        },
+                        {
+                            "latitude": 55.691979,
+                            "longitude": 37.575999
+                        },
+                        {
+                            "latitude": 55.692719,
+                            "longitude": 37.57626
+                        },
+                        {
+                            "latitude": 55.692856,
+                            "longitude": 37.576309
+                        },
+                        {
+                            "latitude": 55.692856,
+                            "longitude": 37.576309
+                        },
+                        {
+                            "latitude": 55.693124,
+                            "longitude": 37.576404
+                        },
+                        {
+                            "latitude": 55.693124,
+                            "longitude": 37.576404
+                        },
+                        {
+                            "latitude": 55.69332,
+                            "longitude": 37.576474
+                        },
+                        {
+                            "latitude": 55.693472,
+                            "longitude": 37.576527
+                        },
+                        {
+                            "latitude": 55.693659,
+                            "longitude": 37.576593
+                        },
+                        {
+                            "latitude": 55.694418,
+                            "longitude": 37.576863
+                        },
+                        {
+                            "latitude": 55.69531,
+                            "longitude": 37.577179
+                        },
+                        {
+                            "latitude": 55.695659,
+                            "longitude": 37.577302
+                        },
+                        {
+                            "latitude": 55.695659,
+                            "longitude": 37.577302
+                        },
+                        {
+                            "latitude": 55.696081,
+                            "longitude": 37.577452
+                        },
+                        {
+                            "latitude": 55.696133,
+                            "longitude": 37.57747
+                        },
+                        {
+                            "latitude": 55.696435,
+                            "longitude": 37.577578
+                        },
+                        {
+                            "latitude": 55.696806,
+                            "longitude": 37.577709
+                        },
+                        {
+                            "latitude": 55.697212,
+                            "longitude": 37.577854
+                        },
+                        {
+                            "latitude": 55.697373,
+                            "longitude": 37.57791
+                        },
+                        {
+                            "latitude": 55.698257,
+                            "longitude": 37.578224
+                        },
+                        {
+                            "latitude": 55.698609,
+                            "longitude": 37.57835
+                        },
+                        {
+                            "latitude": 55.698876,
+                            "longitude": 37.578444
+                        },
+                        {
+                            "latitude": 55.699185,
+                            "longitude": 37.578554
+                        },
+                        {
+                            "latitude": 55.699293,
+                            "longitude": 37.578591
+                        },
+                        {
+                            "latitude": 55.699404,
+                            "longitude": 37.578631
+                        }
+                    ]
+                },
+                {
+                    "cost": 0,
+                    "distance": 0.025,
+                    "time": 7000,
+                    "coordinates": [
+                        {
+                            "latitude": 55.699404,
+                            "longitude": 37.578631
+                        },
+                        {
+                            "latitude": 55.699358,
+                            "longitude": 37.579031
+                        }
+                    ]
+                },
+                {
+                    "cost": 0,
+                    "distance": 0.035,
+                    "time": 10000,
+                    "coordinates": [
+                        {
+                            "latitude": 55.699358,
+                            "longitude": 37.579031
+                        },
+                        {
+                            "latitude": 55.699572,
+                            "longitude": 37.579106
+                        },
+                        {
+                            "latitude": 55.699672,
+                            "longitude": 37.579141
+                        }
+                    ]
+                },
+                {
+                    "cost": 0,
+                    "distance": 0,
+                    "time": 0,
+                    "coordinates": []
+                }
+            ],
+            "waypoints": [
+                {
+                    "id": "c523e56a-d57a-41db-a4f8-0be0e277b09a",
+                    "type": "LOAD",
+                    "orderingIndex": 1,
+                    "address": {
+                        "id": "115a391c-4fef-44d9-b1da-449cf29527fc",
+                        "latitude": 55.681954,
+                        "longitude": 37.576398,
+                        "country": "Россия",
+                        "region": "Москва",
+                        "city": "Москва",
+                        "street": "улица Кедрова",
+                        "house": "24",
+                        "existInVspGosbTbRegistry": false
+                    },
+                    "addressStringRepresentation": "Москва, улица Кедрова, 24",
+                    "loader": false,
+                    "volume": 810000,
+                    "weight": 50,
+                    "distance": 2.31,
+                    "requests": [
+                        {
+                            "id": "d46797a4-785a-4e14-9019-f7a27a812433",
+                            "request": {
+                                "id": "2ebcd6ff-3585-4906-b7d8-a70add1d45dd",
+                                "humanReadableId": "OT-0025-00118978",
+                                "transportType": "DEDICATED",
+                                "desiredDate": 1746072480000,
+                                "author": {
+                                    "id": "2c9e8d8e-c4fe-4832-b805-43cfe0e408c0",
+                                    "firstName": "Евгений",
+                                    "lastName": "Рассохин",
+                                    "patronymic": "Викторович",
+                                    "personnelNumber": "1898931",
+                                    "userId": "2c9e8d8e-c4fe-4832-b805-43cfe0e408c0",
+                                    "positionId": "fcbc517f-f516-4aa6-b1de-b23e83dce849",
+                                    "humanReadableId": "US-0025-00000033",
+                                    "mobilePhone": "+79819519519",
+                                    "email": "sbertransport1_test@sigma-exchtest.sbrf.ru"
+                                },
+                                "status": "CARGO_DELIVERY_CONFIRMATION_FINISHED",
+                                "occupiedPlacesCount": 1,
+                                "comment": "null"
+                            },
+                            "waypointType": "LOAD"
+                        }
+                    ]
+                },
+                {
+                    "id": "f9dcf45a-09b4-4a6e-a54b-094b1a39169d",
+                    "type": "UNLOAD",
+                    "orderingIndex": 2,
+                    "address": {
+                        "id": "870c4c14-cbf0-4a51-8107-650b20080fc6",
+                        "latitude": 55.69926177835627,
+                        "longitude": 37.5795579928468,
+                        "country": "Россия",
+                        "region": "Москва",
+                        "city": "Москва",
+                        "street": "улица Вавилова",
+                        "house": "19",
+                        "existInVspGosbTbRegistry": false
+                    },
+                    "addressStringRepresentation": "Москва, улица Вавилова, 19",
+                    "loader": false,
+                    "volume": 0,
+                    "weight": 0,
+                    "distance": 0,
+                    "requests": [
+                        {
+                            "id": "80dea702-96e5-4a41-bc14-06cbf9f04f12",
+                            "request": {
+                                "id": "2ebcd6ff-3585-4906-b7d8-a70add1d45dd",
+                                "humanReadableId": "OT-0025-00118978",
+                                "transportType": "DEDICATED",
+                                "desiredDate": 1746072480000,
+                                "author": {
+                                    "id": "2c9e8d8e-c4fe-4832-b805-43cfe0e408c0",
+                                    "firstName": "Евгений",
+                                    "lastName": "Рассохин",
+                                    "patronymic": "Викторович",
+                                    "personnelNumber": "1898931",
+                                    "userId": "2c9e8d8e-c4fe-4832-b805-43cfe0e408c0",
+                                    "positionId": "fcbc517f-f516-4aa6-b1de-b23e83dce849",
+                                    "humanReadableId": "US-0025-00000033",
+                                    "mobilePhone": "+79819519519",
+                                    "email": "sbertransport1_test@sigma-exchtest.sbrf.ru"
+                                },
+                                "status": "CARGO_DELIVERY_CONFIRMATION_FINISHED",
+                                "occupiedPlacesCount": 1,
+                                "comment": "null"
+                            },
+                            "waypointType": "UNLOAD"
+                        }
+                    ]
+                }
+            ],
+            "auto": {
+                "id": "71500cea-d408-4804-af53-be1eb0e69214",
+                "name": "Насыпные Авто",
+                "length": 14,
+                "width": 3,
+                "height": 3,
+                "volume": 120,
+                "capacity": {
+                    "id": "00000000-0000-0000-0000-000000010000",
+                    "capacity": 10000
+                },
+                "cargoCategory": "REGULAR"
+            },
+            "tariffId": "ebb6a89d-9432-40b7-80a5-d5877691ae80",
+            "organizations": [
+                "ac1d7c0e-6ebd-40b4-9595-086dbed05c22"
+            ],
+            "cost": 199,
+            "distance": 2.31,
+            "volume": 810000,
+            "weight": 50,
+            "status": "CARGO_PLANNING",
+            "creatorType": "HANDLE",
+            "contractorInfo": {
+                "id": "3ccc7f8c-223f-4ef9-98b9-16abd8d37cb6",
+                "name": "Грузовичкофф XML",
+                "integrationType": "JSON_API_1_0"
+            },
+            "deliveryTime": 2,
+            "workgroup": "null/транспорт/Москва/0495",
+            "hourTariff": 50,
+            "loaders": 1
+        }
+    ],
+    "pageable": {
+        "pageNumber": 0,
+        "pageSize": 10,
+        "sort": [
+            {
+                "direction": "DESC",
+                "property": "desiredDate",
+                "ignoreCase": false,
+                "nullHandling": "NATIVE",
+                "ascending": false,
+                "descending": true
+            },
+            {
+                "direction": "DESC",
+                "property": "humanReadableId",
+                "ignoreCase": false,
+                "nullHandling": "NATIVE",
+                "ascending": false,
+                "descending": true
+            }
+        ],
+        "offset": 0,
+        "paged": true,
+        "unpaged": false
+    },
+    "totalElements": 14,
+    "totalPages": 2,
+    "last": false,
+    "size": 10,
+    "number": 0,
+    "sort": [
+        {
+            "direction": "DESC",
+            "property": "desiredDate",
+            "ignoreCase": false,
+            "nullHandling": "NATIVE",
+            "ascending": false,
+            "descending": true
+        },
+        {
+            "direction": "DESC",
+            "property": "humanReadableId",
+            "ignoreCase": false,
+            "nullHandling": "NATIVE",
+            "ascending": false,
+            "descending": true
+        }
+    ],
+    "numberOfElements": 10,
+    "first": true,
+    "empty": false
+}

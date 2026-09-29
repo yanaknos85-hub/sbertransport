@@ -1,0 +1,19 @@
+databaseChangeLog:
+  -   changeSet:
+        id: request/20250813-1
+        author: makarov-md
+        dbms: postgresql
+        changes:
+          -   sqlFile:
+                path: changes/grant_access_get_car_location.sql
+                relativeToChangelogFile: true
+                splitStatements: false
+  -   changeSet:
+        id: request/20250813-2
+        author: makarov-md
+        dbms: postgresql
+        changes:
+          -   sqlFile:
+                path: changes/ddl_car_location_task.sql
+                relativeToChangelogFile: true
+                splitStatements: false

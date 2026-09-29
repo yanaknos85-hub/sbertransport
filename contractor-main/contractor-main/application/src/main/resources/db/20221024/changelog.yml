@@ -1,0 +1,32 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221024"
+            context: "20221024"
+            author: medvedev-ad
+            changes:
+                -   addColumn:
+                        schemaName: contractors
+                        tableName: dispatcher
+                        columns:
+                            -   column:
+                                    name: active
+                                    remarks: Признак активности диспетчера
+                                    defaultValueBoolean: true
+                                    defaultOnNull: true
+                                    type: boolean
+                                    constraints:
+                                        nullable: false
+                -   createIndex:
+                        schemaName: contractors
+                        tableName: contractor
+                        columns:
+                            -   column:
+                                    name: active
+                        indexName: contractors_contractor_active_idx
+                -   createIndex:
+                        schemaName: contractors
+                        tableName: dispatcher
+                        columns:
+                            -   column:
+                                    name: active
+                        indexName: contractors_dispatcher_active_idx

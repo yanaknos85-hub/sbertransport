@@ -1,0 +1,24 @@
+databaseChangeLog:
+    -   changeSet:
+            id: contractor/20200331
+            context: "20200331"
+            author: mad
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: create_schema.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: create_contractors_table.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: rollback_contractors_table.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: rollback_schema.sql
+                        relativeToChangelogFile: true

@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230608-1639"
+      author: medvedev-ad
+      context: "20230608"
+      changes:
+        - tagDatabase:
+            tag: "20230608"
+        - createTable:
+            schemaName: notifications_contractor
+            tableName: vehicle
+            remarks: Автомобили
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: notifications_contractor_vehicle_pk
+              - column:
+                  name: brand
+                  type: text
+                  remarks: Марка
+              - column:
+                  name: model
+                  type: text
+                  remarks: Модель
+              - column:
+                  name: color
+                  type: text
+                  remarks: Цвет
+              - column:
+                  name: registration_number
+                  type: text
+                  remarks: Госномер

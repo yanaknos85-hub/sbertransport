@@ -1,0 +1,19 @@
+@import 'styles/variables.scss';
+
+.field {
+  padding: 1px;
+}
+
+.label {
+  display: block;
+  font-family: SB Sans Text;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.3px;
+  color: $dark-grey;
+  margin-bottom: 6px;
+}
+
+.checkBoxed {
+  @extend .label;
+}

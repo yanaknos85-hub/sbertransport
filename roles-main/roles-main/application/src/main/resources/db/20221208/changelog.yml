@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20221208-1"
+      author: medvedev-ad
+      context: "20221208"
+      preConditions:
+        - not:
+            - columnExists:
+                schemaName: roles
+                tableName: role
+                columnName: default_for
+        - onFail: MARK_RAN
+      changes:
+        - tagDatabase:
+            tag: "20221208"
+        - addColumn:
+            schemaName: roles
+            tableName: role
+            columns:
+              - column:
+                  name: default_for
+                  type: json
+                  remarks: Роль является умолчанием для указанных пространств
+        - sqlFile:
+            dbms: postgresql
+            path: changes/fill_default_for.sql
+            relativeToChangelogFile: true
+        - sql:
+            sql: ALTER TABLE roles.role DROP COLUMN "default"
+      rollback:
+        - addColumn:
+            schemaName: roles
+            tableName: role
+            columns:
+              - column:
+                  name: default
+                  type: boolean
+                  remarks: Роль является умолчанием
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+        - sqlFile:
+            dbms: postgresql
+            path: rollback/fill_default_for.sql
+            relativeToChangelogFile: true
+        - dropColumn:
+            schemaName: roles
+            tableName: role
+            columnName: default_for

@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        requests-in-0:
+          group: ${spring.application.name}
+          destination: service.request
+          binder: kafka
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        externalRequestInput-in-0:
+          group: ${spring.application.name}
+          destination: service.request.external
+          binder: kafka
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false

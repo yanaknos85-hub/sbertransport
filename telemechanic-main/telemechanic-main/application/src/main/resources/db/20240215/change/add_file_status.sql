@@ -1,0 +1,1 @@
+alter table telemechanic.check_photo add column file_status varchar(20);

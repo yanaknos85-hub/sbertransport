@@ -1,0 +1,23 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8888
+  main:
+    lazy-initialization: true
+  application:
+    name: users
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 100
+      connection-test-query: SELECT 1
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost
+avatar:
+  allowedTypes: image/bmp,image/gif,image/ico,image/jpg,image/png,image/svg,image/tiff,image/webp
+  path: target/test/images/
+debug: true

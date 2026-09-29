@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240813"
+      author: chizhov-nd
+      changes:
+        - addColumn:
+            schemaName: trips_cargo
+            tableName: trips
+            columns:
+              - column:
+                  name: fact_cost
+                  type: smallint
+                  remarks: Фактическая стоимость поездки (копейки)
+      rollback:
+        - dropColumn:
+            schemaName: trips_cargo
+            tableName: trips
+            columns:
+              - column:
+                  name: fact_cost

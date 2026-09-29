@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        rolesOutputSsl-out-0:
+          destination: service.roles
+          binder: kafka-ssl

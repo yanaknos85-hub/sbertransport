@@ -1,0 +1,95 @@
+spring.cloud.stream:
+  binders:
+    kafka:
+      type: kafka
+      environment:
+        spring.cloud.stream.kafka:
+          default:
+            consumer:
+              enableDlq: true
+              autoCommitOnError: true
+              topic.properties:
+                cleanup.policy: compact,delete
+                retention.ms: 604800000
+            producer:
+              topic.properties:
+                cleanup.policy: compact,delete
+                retention.ms: 604800000
+          binder:
+            brokers:
+              - ${KAFKA_BROKERS:localhost}
+            producerProperties:
+              key.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+            consumerProperties:
+              key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+  bindings:
+    emailOutput-out-0:
+      destination: service.email.output
+      binder: kafka
+    pushOutput-out-0:
+      destination: service.push
+      binder: kafka
+    tripApproveInput-in-0:
+      group: ${spring.application.name}
+      destination: service.trip.request.approve
+      binder: kafka
+    tripRequestInput-in-0:
+      group: ${spring.application.name}
+      destination: service.request
+      binder: kafka
+    tripInput-in-0:
+      destination: service.trip
+      group: ${spring.application.name}
+      binder: kafka
+    approveLimitsRequestInput-in-0:
+      group: ${spring.application.name}
+      destination: service.limits.approve.request
+      binder: kafka
+    delegateInput-in-0:
+      group: ${spring.application.name}
+      destination: service.organization.employee.delegate
+      binder: kafka
+    tripPurposeInput-in-0:
+      group: ${spring.application.name}
+      destination: service.organization.trip.purpose
+      binder: kafka
+    sharedRideApproveInput-in-0:
+      group: ${spring.application.name}
+      destination: service.shared.ride.approve
+      binder: kafka
+    driverInput-in-0:
+      group: ${spring.application.name}
+      destination: service.dispatcher.driver
+      binder: kafka
+    vehicleInput-in-0:
+      group: ${spring.application.name}
+      destination: service.dispatcher.vehicle
+      binder: kafka
+    taxiTripInput-in-0:
+      group: ${spring.application.name}
+      destination: service.request.taxi.trip
+      binder: kafka
+    taxiTariffInput-in-0:
+      group: ${spring.application.name}
+      destination: service.tariff.taxi
+      binder: kafka
+    deadlineSettingsInput-in-0:
+      group: ${spring.application.name}
+      destination: service.organization.deadlineSettings
+      binder: kafka
+    rolesInput-in-0:
+      group: ${spring.application.name}
+      destination: service.roles
+      binder: kafka
+    dispatcherInput-in-0:
+      group: ${spring.application.name}
+      destination: service.dispatcher
+      binder: kafka
+    contractorInput-in-0:
+      group: ${spring.application.name}
+      destination: service.dispatcher.contractor
+      binder: kafka
+    notificationInput-in-0:
+      group: ${spring.application.name}
+      destination: service.notification
+      binder: kafka

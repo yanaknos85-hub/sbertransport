@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250515-0840"
+      author: medvedev-ad
+      context: "TRANSPORT-32315"
+      changes:
+        - tagDatabase:
+            tag: "D-04.009.000"
+        - renameColumn:
+            schemaName: ${schema_name}
+            tableName: trip_order
+            oldColumnName: fact_cost
+            newColumnName: actual_cost
+  - changeSet:
+      id: "20250515-1500"
+      author: medvedev-ad
+      context: "TRANSPORT-32315"
+      changes:
+        - tagDatabase:
+            tag: "D-04.009.000"
+        - addColumn:
+            schemaName: ${schema_name}
+            tableName: trip_order_history
+            columns:
+              - column:
+                  name: receipt
+                  type: text
+                  remarks: Название файла чека

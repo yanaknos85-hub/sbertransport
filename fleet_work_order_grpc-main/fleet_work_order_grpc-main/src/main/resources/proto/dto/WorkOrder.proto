@@ -1,0 +1,204 @@
+syntax = "proto3";
+
+option java_package = "ru.sber.transport.work_order.grpc.dto";
+
+import "google/protobuf/struct.proto";
+import "google/protobuf/empty.proto";
+
+package ru.sber.transport.work_order.grpc.dto;
+
+message NewOrderDto {
+    bytes file = 1;
+    OrderDto orderDto = 2;
+    string humanReadableId = 3;
+}
+
+message OrderDto {
+    NullableString number = 1;
+    NullableString name = 2;
+    NullableString s3Id = 3;
+    VehicleMonitorDto vehicle = 4;
+    repeated WorkMonitorDto works = 5;
+    repeated DetailMonitorDto details = 6;
+    BigDecimalCommentMonitorDto totalWorkPrice = 7;
+    BigDecimalCommentMonitorDto totalDetailPrice = 8;
+    BigDecimalCommentMonitorDto totalPrice = 9;
+    bool haveComments = 10;
+    NullableDate workOrderDate = 11;
+}
+
+message VehicleMonitorDto {
+    NullableString vin = 1;
+    StateNumberMonitorDto stateNumber = 2;
+    NullableString year = 3;
+    NullableString brand = 4;
+    NullableString model = 5;
+    NullableInt mileage = 6;
+}
+
+message WorkMonitorDto {
+    StringCommentMonitorDto nameNormalized = 1;
+    BigDecimalCommentMonitorDto hourNormalized = 2;
+    NullableDouble amount = 3;
+    BigDecimalCommentMonitorDto hourPrice = 4;
+    BigDecimalCommentMonitorDto totalPrice = 5;
+    int32 ordinal = 6;
+    NullableDouble taxPrice = 7;
+    NullableString name = 8;
+}
+
+message DetailMonitorDto {
+    StringCommentMonitorDto nameNormalized = 1;
+    NullableString unit = 2;
+    NullableDouble amount = 3;
+    NullableDouble unitPrice = 4;
+    BigDecimalCommentMonitorDto totalPrice = 5;
+    int32 ordinal = 6;
+    BigDecimalCommentMonitorDto discountPercentage = 7;
+    BigDecimalCommentMonitorDto discountPrice = 8;
+    NullableDouble taxPrice = 9;
+    NullableString code = 10;
+    NullableString name = 11;
+}
+
+message StateNumberMonitorDto {
+    NullableString value = 1;
+    NullableString comment = 2;
+}
+
+message StringCommentMonitorDto {
+    NullableString value = 1;
+    NullableString comment = 2;
+}
+
+message BigDecimalCommentMonitorDto {
+    NullableDouble value = 1;
+    NullableString comment = 2;
+}
+
+message TotalPrice {
+    NullableString orderId = 1;
+    NullableDouble totalPrice = 2;
+    NullableString totalPriceComment = 3;
+}
+
+message OrderId {
+    string id = 1;
+}
+
+message Revision {
+    NullableDouble totalPrice = 1;
+    NullableString orderId = 2;
+}
+
+message Order {
+    NullableString id = 1;
+    NullableString name = 2;
+    NullableString s3Id = 3;
+    Vehicle vehicle = 4;
+    message Vehicle {
+        NullableString id = 1;
+        NullableString stateNumber = 2;
+        NullableString brand = 3;
+        NullableString model = 4;
+        NullableString vin = 5;
+        NullableString year = 6;
+        NullableInt mileage = 7;
+        NullableString stateNumberComment = 8;
+    }
+    repeated OrderWork orderWorks = 5;
+    message OrderWork {
+        NullableString id = 1;
+        NullableString orderId = 2;
+        NullableString nameNormalized = 3;
+        NullableDouble hourNormalized = 4;
+        NullableInt amount = 5;
+        NullableDouble hourPrice = 6;
+        NullableDouble totalPrice = 7;
+        NullableString totalPriceComment = 8;
+        int32 ordinal = 9;
+        NullableString nameNormalizedComment = 10;
+        NullableString hourNormalizedComment = 11;
+        NullableString hourPriceComment = 12;
+        NullableDouble taxPrice = 13;
+        NullableString name = 14;
+    }
+    repeated OrderDetail orderDetails = 6;
+    message OrderDetail {
+        NullableString id = 1;
+        NullableString orderId = 2;
+        NullableString nameNormalized = 3;
+        NullableString unit = 4;
+        NullableDouble amount = 5;
+        NullableDouble unitPrice = 6;
+        NullableDouble totalPrice = 7;
+        NullableString totalPriceComment = 8;
+        int32 ordinal = 9;
+        NullableString nameNormalizedComment = 10;
+        NullableDouble discountPercentage = 11;
+        NullableString discountPercentageComment = 12;
+        NullableDouble discountPrice = 13;
+        NullableString discountPriceComment = 14;
+        NullableDouble taxPrice = 15;
+        NullableString code = 16;
+        NullableString name = 17;
+    }
+    NullableString number = 7;
+    bool haveComments = 8;
+    NullableDouble totalWorkPrice = 9;
+    NullableDouble totalDetailPrice = 10;
+    NullableDouble totalPrice = 11;
+    NullableString totalWorkPriceComment = 12;
+    NullableString totalDetailPriceComment = 13;
+    NullableString totalPriceComment = 14;
+    NullableDate workOrderDate = 15;
+}
+
+/**
+ * Модель даты
+ */
+message Date {
+
+    /**
+    * Год
+    */
+    int32 year = 1;
+
+    /**
+    * Месяц
+    */
+    int32 month = 2;
+
+    /**
+    * День
+    */
+    int32 day = 3;
+}
+
+message NullableInt {
+    oneof Kind {
+        google.protobuf.NullValue null = 1;
+        int32 value = 2;
+    }
+}
+
+message NullableString {
+    oneof Kind {
+        google.protobuf.NullValue null = 1;
+        string value = 2;
+    }
+}
+
+message NullableDate {
+    oneof Kind {
+        google.protobuf.NullValue null = 1;
+        Date value = 2;
+    }
+}
+
+message NullableDouble {
+    oneof Kind {
+        google.protobuf.NullValue null = 1;
+        double value = 2;
+    }
+}

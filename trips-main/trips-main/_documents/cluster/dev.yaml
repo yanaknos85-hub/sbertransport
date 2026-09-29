@@ -1,0 +1,59 @@
+application: trips
+repo: app_platform_trips
+resources:
+  limits:
+    cpu: 600m
+    memory: 2G
+  requests:
+    cpu: 600m
+    memory: 2G
+port:
+  http:
+    number: 8050
+    name: trip
+    target: 8080
+routing:
+  match:
+    prefix: /api/trips
+  rewrite:
+    uri: ' '
+profiles: prod,kafka
+secman:
+  type: built_in
+additional:
+  envs:
+    - name: JAVA_TOOL_OPTIONS
+      valueFrom:
+        configMapKeyRef:
+          name: jdk-java-options
+          key: debug
+    - name: DRIVER_ASSIGN_RADIUS
+      value: '5'
+    - name: DRIVER_ASSIGN_TRIGGERTIMESECS
+      value: '1800'
+    - name: DRIVER_ASSIGN_FINISHSEARCHMIN
+      value: '-15'
+    - name: DRIVER_ASSIGN_MINRADIUS_KM
+      value: '3.0'
+    - name: DRIVER_ASSIGN_MAXRADIUS_KM
+      value: '15.0'
+    - name: DRIVER_ASSIGN_TIMESECS
+      value: '180'
+    - name: DRIVER_ASSIGN_AUTOASSIGNRADIUSDELTA_KM
+      value: '1'
+    - name: IGNORE_CONFLICT_CHANGING_STATE_OF_FINISHED_TRIP
+      value: 'true'
+    - name: JWKS_URI
+      value: 'http://jwks:8080'
+    - name: KAFKA_BROKERS
+      valueFrom:
+        configMapKeyRef:
+          name: kafka
+          key: brokers
+    - name: KAFKA_SSL_BROKERS
+      valueFrom:
+        configMapKeyRef:
+          name: kafka
+          key: brokers
+    - name: KAFKA_SECURITY_PROTOCOL
+      value: PLAINTEXT

@@ -1,0 +1,3 @@
+drop table request.request_for_group_transfer_history;
+drop table request.request_for_group_transfer;
+drop table request.group_transfer_trip;

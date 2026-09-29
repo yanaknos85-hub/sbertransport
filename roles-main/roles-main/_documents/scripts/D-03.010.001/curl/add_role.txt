@@ -1,0 +1,15 @@
+curl --location '{url}/api/roles/' \
+--header 'Authorization: Bearer {token}' \
+--header 'Content-Type: application/json' \
+--data '{
+        	"code": "ROLE_EXTERNAL_REQUEST",
+        	"name": "Внутренняя диспетчерская",
+        	"description": "Обладает возможностью получать заявки на обработку",
+        	"data_master": false,
+        	"scopes": [
+        		"CONTRACTOR"
+        	],
+            "exclusive":[
+                "EXTERNAL"
+            ]
+        }'

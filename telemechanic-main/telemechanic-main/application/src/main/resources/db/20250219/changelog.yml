@@ -1,0 +1,25 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20250219-1
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_columns_transport_type_subtype.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: changes/rollback.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20250219-2
+            author: makarovm-d
+            dbms: postgresql
+            context: "!test"
+            changes:
+                -   sqlFile:
+                        path: changes/fill_type_and_subtype.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

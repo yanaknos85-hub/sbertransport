@@ -1,0 +1,54 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20251014"
+      author: burlakov-sv
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              schemaName: trips_cargo
+              tableName: autopark
+      changes:
+        - tagDatabase:
+            tag: D-04.020.000
+        - createTable:
+            schemaName: trips_cargo
+            tableName: autopark
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Уникальный идентификатор записи
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: contractor_id
+                  type: uuid
+                  remarks: Уникальный идентификатор автопарка
+              - column:
+                  name: routing_id
+                  type: uuid
+                  remarks: Идентификатор филиала во внешней системе
+              - column:
+                  name: active
+                  type: boolean
+                  remarks: Признак активности филиала
+        - addNotNullConstraint:
+            schemaName: trips_cargo
+            tableName: autopark
+            columnName: contractor_id
+            constraintName: trips_cargo_autopark_contractor_id_nnc
+        - addUniqueConstraint:
+            schemaName: trips_cargo
+            tableName: autopark
+            columnNames: routing_id
+            constraintName: trips_cargo_autopark_routing_id_uc
+        - addNotNullConstraint:
+            schemaName: trips_cargo
+            tableName: autopark
+            columnName: active
+            constraintName: trips_cargo_active_contractor_id_nnc
+      rollback:
+        - dropTable:
+            schemaName: trips_cargo
+            tableName: autopark

@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20240919-1
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                - addColumn:
+                    schemaName: vehicle
+                    tableName: odometer_history
+                    columns:
+                     -  column:
+                         name: meta_attributes
+                         type: varchar(255)
+                         remarks: Различные данные об источнике и причинах изменения показаний одометра. Потенциальные кандидаты на включение в таблицу как отдельное поле

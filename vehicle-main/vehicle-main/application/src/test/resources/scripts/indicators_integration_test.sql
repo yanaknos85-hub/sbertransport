@@ -1,0 +1,97 @@
+INSERT INTO vehicle.transport (id, inventory_number, asset_number, vehicle_id, subtype_id, state_number, vin_code,
+                               chassis_number, body_number, certificate_number, certificate_issued_date, passport_number, passport_issued_date,
+                               brand_by_passport, model_by_passport, body_color, telematics_id, exploitation_start, exploitation_end, current_mileage,
+                               status, year, vehicle_type, location_address, parking_address, comment, balance_unit_number, facility, equipment_unit_system_number)
+VALUES ('bc3f3b07-f136-4270-af0b-ff84af381ac4', '6', '6','748ba8ab-572a-4178-9e05-fae61aefb376', 'c5964d64-7b98-4978-bf93-3c48d38c3d7c',
+        'А111АА116', '6111sssssssss', '6', '6', '6', '2023-03-20','6', '2024-03-05', '6', '6', '6', '60b9b87e-3a4c-4500-acc4-60dbea5eec46',
+        '2023-03-01', null, 6, 'IN_USE', 2007, 'Легковой','Москва', 'Москва', 'НЕТ', '0', '0', '0');
+
+INSERT INTO vehicle.transport (id, inventory_number, asset_number, vehicle_id, subtype_id, state_number, vin_code,
+                               chassis_number, body_number, certificate_number, certificate_issued_date, passport_number, passport_issued_date,
+                               brand_by_passport, model_by_passport, body_color, telematics_id, exploitation_start, exploitation_end, current_mileage,
+                               status, year, vehicle_type, location_address, parking_address, comment, balance_unit_number, facility, equipment_unit_system_number)
+VALUES ('b83c1f6b-c9ab-4652-8f07-99aa1fa048d1', '123123123', '12312321', '400466cb-df0e-40be-8b34-9ff42444637a',
+        'c5964d64-7b98-4978-bf93-3c48d38c3d7c', 'А777АА78', 'W0934234143131', null, null, '77АА1231231', '2023-03-09', '77АА7123123',
+        '2024-03-08', 'Ford', 'transit', 'серый', '60b9b87e-3a4c-4500-acc4-60dbea5eec46', '2023-03-10', '2024-02-26', 18999, 'NOT_IN_USE',
+         2024, 'Легковой', 'Москва', 'Москва', 'НЕТ', '0', '0', '0');
+
+INSERT INTO vehicle.transport (id, inventory_number, asset_number, vehicle_id, subtype_id, state_number, vin_code,
+                               chassis_number, body_number, certificate_number, certificate_issued_date, passport_number, passport_issued_date,
+                               brand_by_passport, model_by_passport, body_color, telematics_id, exploitation_start, exploitation_end, current_mileage,
+                               status, year, vehicle_type, location_address, parking_address, comment, balance_unit_number, facility, equipment_unit_system_number)
+VALUES ('9ad7733b-c506-4984-b893-56d7022b705b', '1', '1',
+        '748ba8ab-572a-4178-9e05-fae61aefb376', 'c5964d64-7b98-4978-bf93-3c48d38c3d7c', 'А111АА111', 'баd234234', '1', '1', '1', '2023-03-20', '1',
+        '2024-03-05', '1', '1', '1', '60b9b87e-3a4c-4500-acc4-60dbea5eec46', '2023-03-01', null, 1, 'IN_USE', 2007, 'Легковой',
+        'Москва', 'Москва', 'НЕТ', '0', '0', '0');
+
+INSERT INTO vehicle.transport_department (transport_id, department_id) VALUES
+    ('bc3f3b07-f136-4270-af0b-ff84af381ac4', '003a33fb-faa6-49a7-be37-106fdbef2324'),
+    ('b83c1f6b-c9ab-4652-8f07-99aa1fa048d1', '003a33fb-faa6-49a7-be37-106fdbef2324'),
+    ('9ad7733b-c506-4984-b893-56d7022b705b', '003a33fb-faa6-49a7-be37-106fdbef2324');
+INSERT INTO vehicle.transport_organization VALUES
+    ('bc3f3b07-f136-4270-af0b-ff84af381ac4', 'fc73b25b-9564-4560-98b5-abc0f16af9b2'),
+    ('b83c1f6b-c9ab-4652-8f07-99aa1fa048d1', 'fc73b25b-9564-4560-98b5-abc0f16af9b2'),
+    ('9ad7733b-c506-4984-b893-56d7022b705b', 'fc73b25b-9564-4560-98b5-abc0f16af9b2');
+
+INSERT INTO vehicle.fuel_consumption(id, consumption, transport_id, year, month, creation_date, creator_user_id)
+VALUES ('94c1658c-4cf8-0001-d6d1-0898cbd7cf9e', 200, '9ad7733b-c506-4984-b893-56d7022b705b', 2023, 2, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('a2907f78-dc49-666f-b6b7-b5875c840037', 300, '9ad7733b-c506-4984-b893-56d7022b705b', 2023, 3, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('84542e1c-75d9-7175-1ae4-5508a5f6d2b0', 400, '9ad7733b-c506-4984-b893-56d7022b705b', 2023, 4, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('85162983-a2af-e36a-61b9-3e76f2817d99', 350, '9ad7733b-c506-4984-b893-56d7022b705b', 2023, 5, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('8a535444-0a74-380d-1b80-46f93fd1b510', 300, '9ad7733b-c506-4984-b893-56d7022b705b', 2023, 6, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('9a14aac6-e059-08f3-b63a-ee117b97db09', 400, '9ad7733b-c506-4984-b893-56d7022b705b', 2023, 7, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('c974eb65-68c5-da36-da01-f2eb22d7d586', 250, '9ad7733b-c506-4984-b893-56d7022b705b', 2023, 8, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('d9f39ee6-aee5-b810-047f-8be33e3f8726', 300, '9ad7733b-c506-4984-b893-56d7022b705b', 2023, 9, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('c12290c8-d0e1-4607-bf9f-aa51060bd4f9', 300, '9ad7733b-c506-4984-b893-56d7022b705b', 2023, 10, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('737e2195-c0a2-564e-2545-0249fcee8f44', 410, '9ad7733b-c506-4984-b893-56d7022b705b', 2023, 11, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('60a2bc4b-eb1f-2cf5-124d-c81eced84843', 380, '9ad7733b-c506-4984-b893-56d7022b705b', 2024, 0, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('861b8a8f-0984-11a4-252b-db62f2456400', 400, '9ad7733b-c506-4984-b893-56d7022b705b', 2024, 1, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('75fc6d7d-da27-8a33-f1e8-160da008f355', 200, '9ad7733b-c506-4984-b893-56d7022b705b', 2024, 2, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('e1e2d4c9-bd48-b56a-8a80-55a83da9bd99', 300, '9ad7733b-c506-4984-b893-56d7022b705b', 2024, 3, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('2ebde7a7-5408-362e-a6e0-8c18a63e491c', 400, '9ad7733b-c506-4984-b893-56d7022b705b', 2024, 4, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8');
+INSERT INTO vehicle.odometer_value(id, value, transport_id, year, month, creation_date, creator_user_id)
+VALUES ('efd97751-25a5-1485-12e1-ad4c53630950', 2000, '9ad7733b-c506-4984-b893-56d7022b705b', 2023, 2, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('62aeb638-40a7-adfa-08e6-6d537b349f61', 3000, '9ad7733b-c506-4984-b893-56d7022b705b', 2023, 3, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('794ae2e1-e71e-4073-5ebd-4fd9291dfd38', 4000, '9ad7733b-c506-4984-b893-56d7022b705b', 2023, 4, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('c26b3a9d-7600-e298-153f-b7ba441ed931', 4500, '9ad7733b-c506-4984-b893-56d7022b705b', 2023, 5, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('3e2a58aa-ba38-f7b6-462e-b6361ce16fa6', 5000, '9ad7733b-c506-4984-b893-56d7022b705b', 2023, 6, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('a8127359-348e-39df-3ef5-4cd904743cea', 5000, '9ad7733b-c506-4984-b893-56d7022b705b', 2023, 7, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('39617e9d-56f8-e3e0-f157-e9c2d6d94895', 6500, '9ad7733b-c506-4984-b893-56d7022b705b', 2023, 8, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('3f3102bc-1c64-ae2b-832a-de5edb4a6619', 7000, '9ad7733b-c506-4984-b893-56d7022b705b', 2023, 9, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('80ecc2e6-36f5-7813-9a33-744f25c34129', 8000, '9ad7733b-c506-4984-b893-56d7022b705b', 2023, 10, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('b102e25e-8395-30e8-8315-8564c252b2a5', 9100, '9ad7733b-c506-4984-b893-56d7022b705b', 2023, 11, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('fe80a48a-1ce6-33a3-43d6-d326c3bcab3d', 9800, '9ad7733b-c506-4984-b893-56d7022b705b', 2024, 0, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('f1070f3a-d870-c90b-73be-0a617a444768', 10000, '9ad7733b-c506-4984-b893-56d7022b705b', 2024, 1, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('6e6bdd0f-72fc-4e47-aa2b-cc4cc91a9ef2', 12000, '9ad7733b-c506-4984-b893-56d7022b705b', 2024, 2, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('5102b27d-7099-2cba-2bb7-ac209912d651', 13000, '9ad7733b-c506-4984-b893-56d7022b705b', 2024, 3, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8'),
+       ('cb4a9156-ada8-e7dd-ccd1-c8d1d52ab234', 14000, '9ad7733b-c506-4984-b893-56d7022b705b', 2024, 4, current_timestamp,
+        '3cd35c19-fd39-413c-99a0-30f35bd642a8');

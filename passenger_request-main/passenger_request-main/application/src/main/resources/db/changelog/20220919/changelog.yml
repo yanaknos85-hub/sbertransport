@@ -1,0 +1,27 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220919"
+            author: medvedev-ad
+            changes:
+                -   sqlFile:
+                        dbms: postgresql
+                        path: changes/delete_hri_duplicates.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+                -   addUniqueConstraint:
+                        schemaName: request
+                        tableName: taxi_trip
+                        columnNames: human_readable_id
+                        constraintName: request_taxi_trip_human_readable_id_uk
+            rollback:
+                - sql:
+                      sql: select 1 #no need rollback
+    -   changeSet:
+            id: "20220919-1"
+            author: medvedev-ad
+            changes:
+                -   addNotNullConstraint:
+                        schemaName: request
+                        tableName: address
+                        columnName: exist_in_vsp_tb_registry
+                        defaultNullValue: "false"

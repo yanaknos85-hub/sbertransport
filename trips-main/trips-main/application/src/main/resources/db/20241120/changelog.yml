@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20241120"
+      author: blandin-ad
+      changes:
+        - createTable:
+            schemaName: trips
+            tableName: column_settings
+            columns:
+              - column:
+                  name: user_id
+                  type: uuid
+                  remarks: Идентификатор пользователя
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: setting
+                  type: json
+                  remarks: Объект данных о настройке отображения столбцов
+        - addForeignKeyConstraint:
+            baseTableSchemaName: trips
+            baseTableName: column_settings
+            baseColumnNames: user_id
+            referencedTableSchemaName: trips
+            referencedTableName: dispatcher
+            referencedColumnNames: id
+            constraintName: trips_column_settings_user_id_fk
+      rollback:
+        - dropTable:
+            schemaName: trips
+            tableName: column_settings
+
+

@@ -1,0 +1,30 @@
+.parametersTab {
+    :global(.ant-form-item-label) {
+      flex-grow: 1;
+      text-align: left;
+    }
+    :global(.ant-col.ant-form-item-control) {
+      width: 220px;
+      max-width: 220px;
+    }
+    :global(.ant-input-number) {
+      width: 100%;
+    }
+  }
+
+  .customSelect {
+    :global(.ant-select-selector) {
+      height: 40px !important;
+      display: flex;
+      align-items: center;
+    }
+    :global(.ant-select-selection-search-input) {
+      height: 40px !important;
+      line-height: 40px !important;
+    }
+  }
+
+  .switchRightAligned {
+    float: right;
+    margin-right: 0;
+  }

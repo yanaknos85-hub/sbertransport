@@ -1,0 +1,24 @@
+.searchInput {
+  position: relative;
+  min-width: 340px;
+  color: #adadad;
+  height: fit-content;
+  margin-right: 13px;
+
+  .input {
+    height: 40px;
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 22px;
+    border-color: var(--solitude);
+    background-color: var(--solitude);
+  }
+
+  svg {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+  }
+}

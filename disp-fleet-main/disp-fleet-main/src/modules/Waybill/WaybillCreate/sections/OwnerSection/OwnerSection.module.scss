@@ -1,0 +1,24 @@
+.container {
+  margin-top: 16px;
+
+  &__title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  &__divider {
+    margin: 16px 0;
+    color: #26262614;
+  }
+
+  &__fields {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+
+    >* {
+      flex-grow: 1;
+    }
+  }
+}

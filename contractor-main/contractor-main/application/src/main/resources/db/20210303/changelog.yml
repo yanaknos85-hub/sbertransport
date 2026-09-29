@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: contractor/20210303
+      context: "20210303"
+      author: kirillov
+      dbms: postgresql
+      changes:
+        - sqlFile:
+            path: changes/add_columns_contractor_table.sql
+            relativeToChangelogFile: true
+            endDelimiter: ;
+        - sqlFile:
+            path: changes/create_drivers_tag_table.sql
+            relativeToChangelogFile: true
+            endDelimiter: ;
+        - sqlFile:
+            path: changes/move_user_profile_to_drivers_table.sql
+            relativeToChangelogFile: true
+            endDelimiter: ;
+      rollback:
+        - sqlFile:
+            path: rollback/rollback_drop_drivers_tag_table.sql
+            relativeToChangelogFile: true
+            endDelimiter: ;
+        - sqlFile:
+            path: rollback/rollback_drop_columns_contractor_table.sql
+            relativeToChangelogFile: true
+            endDelimiter: ;
+        - sqlFile:
+            path: rollback/rollback_drop_driver_table.sql
+            relativeToChangelogFile: true
+            endDelimiter: ;

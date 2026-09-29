@@ -1,0 +1,42 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211124"
+            author: medvedev-ad
+            changes:
+                -   addNotNullConstraint:
+                        schemaName: request
+                        tableName: waypoint
+                        columnName: checkin_only_manual
+                        defaultNullValue: 'false'
+                -   addNotNullConstraint:
+                        schemaName: request
+                        tableName: waypoint
+                        columnName: checkin_automatic
+                        defaultNullValue: 'false'
+                -   addNotNullConstraint:
+                        schemaName: request
+                        tableName: waypoint
+                        columnName: checkin_manual
+                        defaultNullValue: 'false'
+    -   changeSet:
+            id: "20211124-1"
+            author: medvedev-ad
+            changes:
+                -   addNotNullConstraint:
+                        schemaName: request
+                        tableName: waypoint
+                        columnName: active
+                        defaultNullValue: 'true'
+    
+    -   changeSet:
+            id: "20211124-2"
+            author: nikulinsa
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/create_vehicle_in_request.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: rollback/create_vehicle_in_request.sql
+                        relativeToChangelogFile: true

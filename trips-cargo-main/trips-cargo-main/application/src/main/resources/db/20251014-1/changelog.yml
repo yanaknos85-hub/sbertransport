@@ -1,0 +1,77 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20251014-1"
+      author: burlakov-sv
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            columnExists:
+              schemaName: trips_cargo
+              tableName: dispatcher
+              columnName: autopark_id
+        - not:
+            columnExists:
+              schemaName: trips_cargo
+              tableName: driver
+              columnName: autopark_id
+        - not:
+            columnExists:
+              schemaName: trips_cargo
+              tableName: vehicle
+              columnName: autopark_id
+        - not:
+            columnExists:
+              schemaName: trips_cargo
+              tableName: trips
+              columnName: autopark_id
+      changes:
+        - addColumn:
+            schemaName: trips_cargo
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: autopark_id
+                  type: uuid
+                  remarks: Идентификатор автопарка
+        - addColumn:
+            schemaName: trips_cargo
+            tableName: driver
+            columns:
+              - column:
+                  name: autopark_id
+                  type: uuid
+                  remarks: Идентификатор автопарка
+        - addColumn:
+            schemaName: trips_cargo
+            tableName: vehicle
+            columns:
+              - column:
+                  name: autopark_id
+                  type: uuid
+                  remarks: Идентификатор автопарка
+
+        - addColumn:
+            schemaName: trips_cargo
+            tableName: trips
+            columns:
+              - column:
+                  name: autopark_id
+                  type: uuid
+                  remarks: Идентификатор автопарка
+      rollback:
+        - dropColumn:
+            schemaName: trips_cargo
+            tableName: dispatcher
+            columnName: autopark_id
+        - dropColumn:
+            schemaName: trips_cargo
+            tableName: driver
+            columnName: autopark_id
+        - dropColumn:
+            schemaName: trips_cargo
+            tableName: vehicle
+            columnName: autopark_id
+        - dropColumn:
+            schemaName: trips_cargo
+            tableName: trips
+            columnName: autopark_id

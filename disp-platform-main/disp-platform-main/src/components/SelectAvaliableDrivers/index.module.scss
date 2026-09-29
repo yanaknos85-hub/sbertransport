@@ -1,0 +1,12 @@
+.driverSelectOption {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  float: left;
+}
+
+.online {
+  color: var(--success-color);
+}

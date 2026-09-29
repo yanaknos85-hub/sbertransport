@@ -1,0 +1,27 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220120_1"
+            author: smirnova
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/create_table_import.sql
+                        relativeToChangelogFile: true
+        
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_table_import.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;
+    -   changeSet:
+            id: "20220120_2"
+            author: smirnova
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_comments.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: rollback/add_comments.sql
+                        relativeToChangelogFile: true

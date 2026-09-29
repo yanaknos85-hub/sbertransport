@@ -1,0 +1,102 @@
+{
+    "liters": [
+        {
+            "month": 1,
+            "consumption": 8600
+        },
+        {
+            "month": 2,
+            "consumption": 7900
+        },
+        {
+            "month": 3,
+            "consumption": 6800
+        },
+        {
+            "month": 4,
+            "consumption": 6200
+        },
+        {
+            "month": 5,
+            "consumption": 5100
+        },
+        {
+            "month": 6,
+            "consumption": 5400
+        },
+        {
+            "month": 7,
+            "consumption": 4800
+        },
+        {
+            "month": 8,
+            "consumption": 5200
+        },
+        {
+            "month": 9,
+            "consumption": 6200
+        },
+        {
+            "month": 10,
+            "consumption": 6250
+        },
+        {
+            "month": 11,
+            "consumption": 7800
+        },
+        {
+            "month": 12,
+            "consumption": 7900
+        }
+    ],
+    "rubles": [
+        {
+            "month": 1,
+            "consumption": 516000
+        },
+        {
+            "month": 2,
+            "consumption": 474000
+        },
+        {
+            "month": 3,
+            "consumption": 408000
+        },
+        {
+            "month": 4,
+            "consumption": 372000
+        },
+        {
+            "month": 5,
+            "consumption": 306000
+        },
+        {
+            "month": 6,
+            "consumption": 324000
+        },
+        {
+            "month": 7,
+            "consumption": 288000
+        },
+        {
+            "month": 8,
+            "consumption": 312000
+        },
+        {
+            "month": 9,
+            "consumption": 372000
+        },
+        {
+            "month": 10,
+            "consumption": 375000
+        },
+        {
+            "month": 11,
+            "consumption": 468000
+        },
+        {
+            "month": 12,
+            "consumption": 474000
+        }
+    ]
+} 

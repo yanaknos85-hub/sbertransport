@@ -1,0 +1,14 @@
+**/target/
+.idea
+*.iml
+*.private.env.json
+/tmp/
+/application/toster
+/**/*_tmp
+.embeddings
+.gigaide
+allure-results
+hs_err_*
+/application/.flattened-pom.xml
+/.flattened-pom.xml
+/.gigacode/settings.json

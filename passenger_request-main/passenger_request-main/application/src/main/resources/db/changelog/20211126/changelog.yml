@@ -1,0 +1,30 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211126"
+            author: nikandrov-ae
+            changes:
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_cargo
+                        columns:
+                            -   column:
+                                    name: finished_time
+                                    type: timestamp
+                                    remarks: "Дата окончания"
+                            -   column:
+                                    name: time_zone
+                                    type: varchar(100)
+                                    remarks: "Таймзона созданной заявки"
+    -   changeSet:
+            id: "20211126-1"
+            author: nikandrov-ae
+            changes:
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_cargo_history
+                        columns:
+                            -   column:
+                                    name: initiator_description
+                                    type: varchar(128)
+                                    defaultValue: "EMPLOYEE"
+                                    remarks: "Тип сотрудника"

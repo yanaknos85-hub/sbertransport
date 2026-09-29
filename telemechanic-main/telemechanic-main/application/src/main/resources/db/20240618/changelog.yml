@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20240618
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        relativeToChangelogFile: true
+                        path: change/fix_ewb_table.sql
+                        splitStatements: false
+                -   sqlFile:
+                        relativeToChangelogFile: true
+                        path: change/add_title_table.sql
+                        splitStatements: false

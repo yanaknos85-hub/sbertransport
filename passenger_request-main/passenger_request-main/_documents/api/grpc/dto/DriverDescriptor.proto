@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package ru.sber.transport.contractor.grpc.dto;
+
+message DriverLocationRequest {
+  string tripId = 1;
+}
+
+message DriverLocation {
+  double latitude = 1;
+  double longitude = 2;
+}

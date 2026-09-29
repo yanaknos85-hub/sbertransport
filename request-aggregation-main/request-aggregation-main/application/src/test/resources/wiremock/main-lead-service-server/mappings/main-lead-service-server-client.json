@@ -1,0 +1,38 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "/mass-taxi-route/predict"
+      },
+      "response": {
+        "status": "200",
+        "jsonBody": {
+          "userId": "00000000-0000-0000-0000-000000000000",
+          "transportType": "NEW",
+          "tripType": "NEW",
+          "comment": "",
+          "departureTime": "2025-05-06T21:00:00",
+          "isDriver": false,
+          "points": [
+            {
+              "typePoint": "START",
+              "longitude": null,
+              "latitude": null,
+              "waypoint": "Г.Москва ул Нижегородская 2/1 к2б"
+            },
+            {
+              "typePoint": "END",
+              "longitude": null,
+              "latitude": null,
+              "waypoint": "г.Казань Чуйкова 29б"
+            }
+          ]
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}

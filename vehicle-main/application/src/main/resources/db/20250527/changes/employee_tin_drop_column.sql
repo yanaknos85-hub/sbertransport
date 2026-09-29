@@ -1,0 +1,1 @@
+ALTER TABLE vehicle.employee DROP COLUMN IF EXISTS tin;

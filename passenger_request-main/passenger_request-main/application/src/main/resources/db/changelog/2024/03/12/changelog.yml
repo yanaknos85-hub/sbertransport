@@ -1,0 +1,95 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20240312"
+            author: shabrovie
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: request
+                        tableName: tariff
+                        columns:
+                            -   column:
+                                    name: min_create_time
+                                    type: integer
+                                    remarks: Минимальное время для формирования заказа в минутах.
+                            -   column:
+                                    name: min_cancel_time
+                                    type: integer
+                                    remarks: Минимальное время отмены поездки в минутах
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: tariff
+                        columns:
+                            -   column:
+                                    name: min_create_time
+                            -   column:
+                                    name: min_cancel_time
+    -   changeSet:
+            id: "20240312-1"
+            author: shabrovie
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_group_transfer
+                        columns:
+                            -   column:
+                                    name: awaiting_search_start_date
+                                    type: timestamp
+                                    remarks: Дата начала поиска водителя
+                            -   column:
+                                    name: vip
+                                    type: boolean
+                                    remarks: вип
+                            -   column:
+                                    name: information
+                                    type: jsonb
+                                    remarks: Дополнительная информация о заявке
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_group_transfer
+                        columns:
+                            -   column:
+                                    name: awaiting_search_start_date
+                            -   column:
+                                    name: vip
+                            -   column:
+                                    name: information
+    -   changeSet:
+            id: "20240312-2"
+            author: shabrovie
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: request
+                        tableName: group_transfer_trip
+                        columns:
+                            -   column:
+                                    name: group_transfer_id
+                                    type: text
+                                    remarks: ID в системе Исполнителя
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: group_transfer_trip
+                        columns:
+                            -   column:
+                                    name: group_transfer_id
+    -   changeSet:
+            id: "20240312-3"
+            author: shabrovie
+            dbms: postgresql
+            changes:
+                -   modifyDataType:
+                        schemaName: request
+                        tableName: request_for_group_transfer
+                        columnName: information
+                        newDataType: text
+            rollback:
+                -   modifyDataType:
+                        schemaName: request
+                        tableName: request_for_group_transfer
+                        columnName: information
+                        newDataType: jsonb

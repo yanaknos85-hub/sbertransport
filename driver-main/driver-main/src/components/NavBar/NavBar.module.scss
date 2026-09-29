@@ -1,0 +1,35 @@
+@import 'styles/variables.scss';
+
+.navBar {
+  padding: 16px 16px 0;
+
+  &:global(.adm-nav-bar) {
+    --height: auto;
+    align-items: flex-start;
+  }
+
+  :global(.adm-nav-bar-left) {
+    flex: none;
+  }
+
+  :global(.adm-nav-bar-title) {
+    font-family: 'SB Sans Text';
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: -0.84px;
+    color: $dark-violet;
+    text-align: left;
+    padding: 0;
+  }
+
+  :global(.adm-nav-bar-back) {
+    padding: 0;
+
+    :global(.adm-nav-bar-back-arrow) {
+      width: 24px;
+      height: 24px;
+      margin: 0;
+    }
+  }
+}

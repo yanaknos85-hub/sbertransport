@@ -1,0 +1,45 @@
+databaseChangeLog:
+    -   changeSet:
+            id: transport/20250916-1
+            author: MDmiTikhomirov
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_column_vehicle.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: transport/20250916-2
+            author: MDmiTikhomirov
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/create_table_vehicle_fuel_type.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: transport/20250916-3
+            author: MDmiTikhomirov
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/migrate_data_to_vehicle_engine_type.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+                -   sqlFile:
+                        path: changes/migrate_data_to_vehicle_fuel_type.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: transport/20250916-4
+            author: MDmiTikhomirov
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/remove_column_vehicle.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+                -   sqlFile:
+                      path: changes/add_constraint_vehicle.sql
+                      relativeToChangelogFile: true
+                      splitStatements: false

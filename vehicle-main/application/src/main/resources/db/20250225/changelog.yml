@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20250225-1
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_not_null_constraint_creation_system.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

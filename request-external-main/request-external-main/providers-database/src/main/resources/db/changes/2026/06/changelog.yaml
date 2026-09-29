@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20260623-1033"
+      author: voronovskii
+      changes:
+        - addColumn:
+            tableName: fraud
+            schemaName: ${schema_name}
+            columns:
+              - column:
+                  name: type
+                  type: varchar(50)
+
+        - update:
+            tableName: fraud
+            schemaName: ${schema_name}
+            columns:
+              - column:
+                  name: type
+                  value: RECEIPT
+            where: "comment ILIKE '%не пройдена%'"
+
+        - update:
+            tableName: fraud
+            schemaName: ${schema_name}
+            columns:
+              - column:
+                  name: type
+                  value: ABSENCE
+            where: "comment ILIKE '%отпуске%'"
+
+        - update:
+            tableName: fraud
+            schemaName: ${schema_name}
+            columns:
+              - column:
+                  name: type
+                  value: RADIUS
+            where: "comment ILIKE '%повторяющиеся%'"
+
+        - update:
+            tableName: fraud
+            schemaName: ${schema_name}
+            columns:
+              - column:
+                  name: type
+                  value: UNKNOWN
+            where: "type IS NULL"
+
+        - addNotNullConstraint:
+            tableName: fraud
+            schemaName: ${schema_name}
+            columnName: type

@@ -1,0 +1,36 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221128"
+            context: "20221128"
+            author: sigalovaa
+            changes:
+                -   tagDatabase:
+                        tag: "20221128"
+                -   addColumn:
+                        schemaName: contractors
+                        tableName: request
+                        columns:
+                            -   column:
+                                    name: driver_arrived_date
+                                    type: timestamp
+                                    remarks: временная метка водитель приехал
+                            -   column:
+                                    name: driver_start_request_date
+                                    type: timestamp
+                                    remarks: временная метка водитель начал путь
+                            -   column:
+                                    name: driver_finish_request_date
+                                    type: timestamp
+                                    remarks: временная метка закончил путь
+            rollback:
+                -   dropColumn:
+                      schemaName: contractors
+                      tableName: request
+                      columns:
+                        - column:
+                            name: driver_arrived_date
+                        - column:
+                            name: driver_start_request_date
+                        - column:
+                            name: driver_finish_request_date
+

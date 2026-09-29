@@ -1,0 +1,205 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20250225-0954"
+            author: ladeyshchikov-aa
+            changes:
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            -   column:
+                                    name: outcome_tariff_id
+                                    type: uuid
+                                    remarks: Идентификатор расходного тарифа
+                            -   column:
+                                    name: outcome_tariff
+                                    type: jsonb
+                                    remarks: Расходный тариф.
+                            -   column:
+                                    name: outcome_expected_cost
+                                    type: float8
+                                    remarks: Ожидаемая стоимость по расходному тарифу.
+                -   addColumn:
+                        schemaName: request
+                        tableName: update_request
+                        columns:
+                            -   column:
+                                    name: outcome_expected_cost
+                                    type: float8
+                                    remarks: Ожидаемая стоимость по расходному тарифу.
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    name: outcome_tariff_id
+                                    type: uuid
+                                    remarks: Идентификатор расходного тарифа
+                            -   column:
+                                    name: outcome_tariff
+                                    type: jsonb
+                                    remarks: Расходный тариф.
+                            -   column:
+                                    name: outcome_expected_cost
+                                    type: float8
+                                    remarks: Ожидаемая стоимость по расходному тарифу.
+                -   addColumn:
+                        schemaName: request_audit
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    name: outcome_tariff_id
+                                    type: uuid
+                                    remarks: Идентификатор расходного тарифа
+                            -   column:
+                                    name: outcome_tariff
+                                    type: jsonb
+                                    remarks: Расходный тариф.
+                            -   column:
+                                    name: outcome_expected_cost
+                                    type: float8
+                                    remarks: Ожидаемая стоимость по расходному тарифу.
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_personal
+                        columns:
+                            -   column:
+                                    name: outcome_tariff_id
+                                    type: uuid
+                                    remarks: Идентификатор расходного тарифа
+                            -   column:
+                                    name: outcome_tariff
+                                    type: jsonb
+                                    remarks: Расходный тариф.
+                            -   column:
+                                    name: outcome_expected_cost
+                                    type: float8
+                                    remarks: Ожидаемая стоимость по расходному тарифу.
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_group_transfer
+                        columns:
+                            -   column:
+                                    name: outcome_tariff_id
+                                    type: uuid
+                                    remarks: Идентификатор расходного тарифа
+                            -   column:
+                                    name: outcome_tariff
+                                    type: jsonb
+                                    remarks: Расходный тариф.
+                            -   column:
+                                    name: outcome_expected_cost
+                                    type: float8
+                                    remarks: Ожидаемая стоимость по расходному тарифу.
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columns:
+                            -   column:
+                                    name: outcome_tariff_id
+                                    type: uuid
+                                    remarks: Идентификатор расходного тарифа
+                            -   column:
+                                    name: outcome_tariff
+                                    type: jsonb
+                                    remarks: Расходный тариф.
+                            -   column:
+                                    name: outcome_expected_cost
+                                    type: float8
+                                    remarks: Ожидаемая стоимость по расходному тарифу.
+                -   addColumn:
+                        schemaName: request
+                        tableName: group_transfer_trip
+                        columns:
+                            -   column:
+                                    name: outcome_tariff_id
+                                    type: uuid
+                                    remarks: Идентификатор расходного тарифа
+                -   addColumn:
+                        schemaName: request
+                        tableName: taxi_trip
+                        columns:
+                            -   column:
+                                    name: outcome_tariff_id
+                                    type: uuid
+                                    remarks: Идентификатор расходного тарифа
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            -   column:
+                                    name: outcome_tariff_id
+                            -   column:
+                                    name: outcome_tariff
+                            -   column:
+                                    name: outcome_expected_cost
+                -   dropColumn:
+                        schemaName: request
+                        tableName: update_request
+                        columns:
+                            -   column:
+                                    name: outcome_expected_cost
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    name: outcome_tariff_id
+                            -   column:
+                                    name: outcome_tariff
+                            -   column:
+                                    name: outcome_expected_cost
+                -   dropColumn:
+                        schemaName: request_audit
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    name: outcome_tariff_id
+                            -   column:
+                                    name: outcome_tariff
+                            -   column:
+                                    name: outcome_expected_cost
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_personal
+                        columns:
+                            -   column:
+                                    name: outcome_tariff_id
+                            -   column:
+                                    name: outcome_tariff
+                            -   column:
+                                    name: outcome_expected_cost
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_group_transfer
+                        columns:
+                            -   column:
+                                    name: outcome_tariff_id
+                            -   column:
+                                    name: outcome_tariff
+                            -   column:
+                                    name: outcome_expected_cost
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columns:
+                            -   column:
+                                    name: outcome_tariff_id
+                            -   column:
+                                    name: outcome_tariff
+                            -   column:
+                                    name: outcome_expected_cost
+                -   dropColumn:
+                        schemaName: request
+                        tableName: group_transfer_trip
+                        columns:
+                            -   column:
+                                    name: outcome_tariff_id
+                -   dropColumn:
+                        schemaName: request
+                        tableName: taxi_trip
+                        columns:
+                            -   column:
+                                    name: outcome_tariff_id
+                      

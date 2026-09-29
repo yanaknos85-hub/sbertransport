@@ -1,0 +1,97 @@
+$heightInput: 40px;
+
+.modal {
+  border-radius: 12px;
+  overflow: hidden;
+
+  :global(.ant-modal-content) {
+    border-radius: 12px;
+  }
+
+  :global(.ant-modal-header),
+  :global(.ant-modal-footer) {
+    border: none;
+  }
+
+  :global(.ant-modal-title) {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+  }
+
+  .cancelButton {
+    color: #ff5743 !important;
+    border-color: transparent;
+
+    &:hover,
+    &:focus {
+      border-color: #ff5743;
+    }
+  }
+
+  :global(.ant-btn) {
+    border-radius: 8px;
+    padding: 0 20px;
+    height: 40px;
+  }
+}
+
+.form {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 20px;
+  column-gap: 20px;
+  align-items: baseline;
+
+  .formItem {
+    display: grid;
+    margin: 0;
+
+    :global(.ant-form-item-control) {
+      min-height: fit-content;
+    }
+
+    .input {
+      height: $heightInput;
+      border-radius: 8px;
+      width: 100%;
+    }
+
+    .select {
+      height: $heightInput;
+
+      :global(.ant-select-arrow) {
+        color: #000;
+      }
+
+      :global(.ant-select-selection-item) {
+        div {
+          display: none;
+        }
+      }
+
+      :global(.ant-select-selector),
+      :global(input.ant-select-selection-search-input) {
+        height: $heightInput;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+
+        .optionID {
+          display: none;
+        }
+      }
+    }
+
+    :global(.ant-form-item-label) {
+      text-align: left;
+
+      label {
+        &::after {
+          content: "";
+        }
+      }
+    }
+  }
+}

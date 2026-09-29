@@ -1,0 +1,120 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221109"
+            author: medvedev-ad
+            context: "20221109"
+            changes:
+                -   tagDatabase:
+                        tag: "20221109"
+                -   createIndex:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        column:
+                            name: taxi_trip_id
+                        indexName: request_request_for_taxi_taxi_trip_id_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        column:
+                            name: ride_id
+                        indexName: request_request_for_taxi_ride_id_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: waypoint_info
+                        column:
+                            name: trip_id
+                        indexName: request_waypoint_info_trip_id_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: taxi_trip
+                        column:
+                            name: status
+                        indexName: request_taxi_trip_status_idx
+    -   changeSet:
+            id: "20221109-1"
+            author: medvedev-ad
+            context: "20221109"
+            changes:
+                -   tagDatabase:
+                        tag: "20221109"
+                -   createIndex:
+                        schemaName: request
+                        tableName: address
+                        columns:
+                            -   column:
+                                    name: country
+                            -   column:
+                                    name: region
+                            -   column:
+                                    name: street
+                            -   column:
+                                    name: city
+                            -   column:
+                                    name: house
+                            -   column:
+                                    name: building
+                            -   column:
+                                    name: structure
+                        indexName: request_address_country_region_street_city_house_building_structure_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: checkin_settings
+                        column:
+                            name: service_type
+                        indexName: request_checkin_settings_service_type_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: checkin_settings
+                        column:
+                            name: transport_type
+                        indexName: request_checkin_settings_transport_type_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: checkin_settings
+                        column:
+                            name: region_id
+                        indexName: request_checkin_settings_region_id_idx
+    -   changeSet:
+            id: "20221109-2"
+            author: medvedev-ad
+            context: "20221109"
+            changes:
+                -   tagDatabase:
+                        tag: "20221109"
+                -   createIndex:
+                        schemaName: request
+                        tableName: cargo_detail
+                        column:
+                            name: request_for_cargo_id
+                        indexName: request_cargo_detail_request_for_cargo_id_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: request_integration_ext
+                        column:
+                            name: request_id
+                        indexName: request_request_integration_ext_request_id_idx
+    -   changeSet:
+            id: "20221109-3"
+            author: medvedev-ad
+            context: "20221109"
+            changes:
+                -   tagDatabase:
+                        tag: "20221109"
+                -   createIndex:
+                        schemaName: request
+                        tableName: template_requests
+                        column:
+                            name: template_id
+                        indexName: request_template_requests_template_id_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: template_for_cargo
+                        column:
+                            name: creation_time
+                        indexName: request_template_for_cargo_creation_time_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: template_for_cargo
+                        column:
+                            name: template_status
+                        indexName: request_template_for_cargo_template_status_idx

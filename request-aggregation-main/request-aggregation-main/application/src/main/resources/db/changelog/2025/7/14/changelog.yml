@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250703-rename-subtype
+      author: rakhimov-di
+      changes:
+        - sqlFile:
+            path: changes/alter_user_fields.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            endDelimiter: ;
+  - changeSet:
+      id: 20250714-alter_user_employee
+      author: rakhimov-di
+      changes:
+        - sqlFile:
+            path: changes/alter_user_employee_id.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            endDelimiter: ;
+  - changeSet:
+      id: 20250714-user_address_fk
+      author: rakhimov-di
+      changes:
+        - sqlFile:
+            path: changes/alter_user_address_fk.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            endDelimiter: ;

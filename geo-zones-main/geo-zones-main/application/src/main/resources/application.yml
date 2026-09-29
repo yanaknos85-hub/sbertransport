@@ -1,0 +1,73 @@
+server:
+  port: 8022
+
+spring:
+  config:
+    import: optional:configserver:${spring.cloud.config.uri}
+  jackson:
+    default-property-inclusion: non_null
+  application:
+    name: geo-zones
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-test-query: SELECT 1
+      schema: geo_zones
+  jpa:
+    properties:
+      hibernate:
+        search:
+          enabled: true
+          automatic_indexing:
+            strategy: session
+          schema_management:
+            strategy: drop-and-create
+          backend:
+            lucene_version: LUCENE_8_7_0
+            directory:
+              locking.strategy: native-filesystem
+              filesystem_access.strategy: auto
+              type: local-filesystem
+              root: ${INDEX_ROOT:./target/index}
+        jdbc:
+          batch_size: 25
+          lob:
+            non_contextual_creation: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: ${SHOW_SQL:false}
+    open-in-view: false
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog-master.yml
+    drop-first: false
+    driver-class-name: ${spring.datasource.driver-class-name}
+    test-rollback-on-update: false
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    database-change-log-table: changelog_geo_zones
+    database-change-log-lock-table: changelog_geo_zones_lock
+    liquibase-schema: ${MIGRATIONS_SCHEMA:public}
+works:
+  files:
+    - url: /geozones
+      fileType:
+        - xlsx
+        - xls
+      collections:
+        - name: Геозоны
+          type: ru.sberbank.ditsib.geo_zones.export.dto.GeoZoneFileDTO
+          mappings:
+            - from: Код
+              to: code
+            - from: Название
+              to: name
+            - from: Название родительской геозоны
+              to: parentName
+            - from: Код родительской геозоны
+              to: parentCode
+            - from: Временная зона
+              to: timeZone
+grpc.server.port: 6565

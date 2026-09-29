@@ -1,0 +1,2 @@
+alter table request.request_for_carsharing add column status_comment varchar(255);
+comment on column request.request_for_carsharing.status_comment is 'Коментарий к статусу при отмене поездки инженером';

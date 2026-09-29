@@ -1,0 +1,98 @@
+.modal {
+  width: 567px !important;
+  min-width: 600px;
+  border-radius: 12px;
+  overflow: hidden;
+
+  :global(.ant-modal-content) {
+    border-radius: 12px;
+  }
+
+  :global(.ant-modal-header) {
+    padding: 24px 16px 0;
+  }
+
+  :global(.ant-modal-body) {
+    padding: 0 16px 16px;
+    margin-top: 40px;
+  }
+
+  :global(.ant-modal-header),
+  :global(.ant-modal-footer) {
+    border: none;
+  }
+
+  :global(.ant-modal-close-x) {
+    display: flex;
+    justify-content: center;
+
+    .ModalIcon {
+      width: 24px;
+    }
+  }
+
+  :global(.ant-modal-title) {
+    font-family: 'SB Sans Text';
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: var(--dark-grey);
+  }
+
+  .banner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: linear-gradient(193.04deg, #f1f5f9 53.782%, #efffe2 111.133%);
+
+    p {
+      font-family: 'SB Sans Text';
+      font-size: 14px;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+      color: var(--dark-grey);
+    }
+
+    svg {
+      min-width: 66px;
+    }
+  }
+
+  .template {
+    margin: 32px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    :global(.ant-btn) {
+      font-family: 'SB Sans Text';
+      font-size: 14px;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+      color: var(--jade);
+
+      &:hover {
+        background: none;
+      }
+
+      svg {
+        margin-right: 5px;
+
+        path {
+          stroke: var(--jade);
+        }
+      }
+    }
+  }
+
+  .error {
+    color: var(--light-red);
+  }
+
+  .resultBtn {
+    margin: 20px 0 0 auto;
+  }
+}

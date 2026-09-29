@@ -1,0 +1,22 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20231112"
+            author: delyukov-da
+            changes:
+                -   tagDatabase:
+                        tag: "20231112"
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            -   column:
+                                    type: integer
+                                    name: number_passengers_joined
+                                    remarks: Количество присоединившихся пассажиров (заявок)
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            -   column:
+                                    name: number_passengers_joined

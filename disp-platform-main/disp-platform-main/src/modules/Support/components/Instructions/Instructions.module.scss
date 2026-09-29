@@ -1,0 +1,60 @@
+.container {
+  .title {
+    font-family: SB Sans Interface;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    color: var(--dark-grey);
+    margin: 24px 0;
+  }
+
+  :global {
+    .ant-tabs-nav-list {
+      gap: 16px;
+    }
+
+    .ant-tabs-tab {
+      padding: 0 0 19px;
+      font-family: SB Sans Text;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: -0.3px;
+      color: var(--bright-grey);
+      margin: 0;
+    }
+
+    .ant-tabs-content {
+      height: 100%;
+    }
+
+    .ant-tabs-tab-active .ant-tabs-tab-btn {
+      color: var(--dark-grey) !important;
+    }
+  }
+
+  .instructions {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+    padding-bottom: 12px;
+    overflow-y: auto;
+
+    .card {
+      min-width: 186px;
+      height: 160px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 12px 10px 10px 12px;
+      cursor: pointer;
+
+      svg {
+        width: 60px;
+        height: 60px;
+        margin: 0 0 0 auto;
+      }
+    }
+  }
+}

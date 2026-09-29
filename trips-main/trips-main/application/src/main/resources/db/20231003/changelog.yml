@@ -1,0 +1,109 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20231003"
+      author: blandin-ad
+      changes:
+        - createTable:
+            schemaName: trips
+            tableName: vehicle
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: brand
+                  type: text
+                  remarks: Марка
+              - column:
+                  name: model
+                  type: text
+                  remarks: Модель
+              - column:
+                  name: state_number
+                  type: text
+                  remarks: Регистрационный номер
+              - column:
+                  name: color
+                  type: text
+                  remarks: Цвет
+              - column:
+                  name: contractor_id
+                  type: uuid
+                  remarks: Идентификатор контрагента
+                  constraints:
+                    foreignKeyName: trips_vehicle_contractor_fk
+                    referencedColumnNames: id
+                    referencedTableName: contractors
+                    referencedTableSchemaName: trips
+              - column:
+                  name: deleted
+                  type: boolean
+                  remarks: Признак активности
+      rollback:
+        - dropTable:
+            schemaName: trips
+            tableName: vehicle
+  - changeSet:
+      id: "20231003-1"
+      author: blandin-ad
+      changes:
+        - createTable:
+            schemaName: trips
+            tableName: shift
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: contractor_id
+                  type: uuid
+                  remarks: Идентификатор контрагента
+                  constraints:
+                    foreignKeyName: trips_shift_contractor_fk
+                    referencedColumnNames: id
+                    referencedTableName: contractors
+                    referencedTableSchemaName: trips
+              - column:
+                  name: driver_id
+                  type: uuid
+                  remarks: Идентификатор водителя
+                  constraints:
+                    foreignKeyName: trips_shift_driver_fk
+                    referencedColumnNames: id
+                    referencedTableName: driver
+                    referencedTableSchemaName: trips
+              - column:
+                  name: vehicle_id
+                  type: uuid
+                  remarks: Идентификатор автомобиля
+                  constraints:
+                    foreignKeyName: trips_shift_vehicle_fk
+                    referencedColumnNames: id
+                    referencedTableName: vehicle
+                    referencedTableSchemaName: trips
+              - column:
+                  name: start_date
+                  type: timestamp
+                  remarks: Время начала смены
+              - column:
+                  name: end_date
+                  type: timestamp
+                  remarks: Время окончания смены
+              - column:
+                  name: deleted
+                  type: boolean
+                  remarks: Признак удаленности
+              - column:
+                  name: active
+                  type: boolean
+                  remarks: Признак активности
+      rollback:
+        - dropTable:
+            schemaName: trips
+            tableName: shift

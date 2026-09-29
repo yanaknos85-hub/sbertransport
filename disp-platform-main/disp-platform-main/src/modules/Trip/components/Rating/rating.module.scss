@@ -1,0 +1,16 @@
+.rating {
+  display: inline-flex;
+  background: rgb(242, 243, 246);
+  border-radius: 19px;
+  padding: 0 10px;
+  gap: 3px;
+
+  :global(.anticon) {
+    display: inline-flex;
+    align-items: center;
+
+    svg {
+      width: 10px;
+    }
+  }
+}

@@ -1,0 +1,84 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "240620-1"
+            author: shabrov-ie
+            changes:
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_personal
+                        columns:
+                            -   column:
+                                    type: text
+                                    name: source
+                                    remarks: Источник создания заявки
+                                    defaultValue: "UNDEFINED"
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            -   column:
+                                    type: text
+                                    name: source
+                                    remarks: Источник создания заявки
+                                    defaultValue: "UNDEFINED"
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columns:
+                            -   column:
+                                    type: text
+                                    name: source
+                                    remarks: Источник создания заявки
+                                    defaultValue: "UNDEFINED"
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    type: text
+                                    name: source
+                                    remarks: Источник создания заявки
+                                    defaultValue: "UNDEFINED"
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_group_transfer
+                        columns:
+                            -   column:
+                                    type: text
+                                    name: source
+                                    remarks: Источник создания заявки
+                                    defaultValue: "UNDEFINED"
+                -   addColumn:
+                        schemaName: request_audit
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                    type: text
+                                    name: source
+                                    remarks: Источник создания заявки
+                                    defaultValue: "UNDEFINED"
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_personal
+                        columnName: source
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columnName: source
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columnName: source
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        columnName: source
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_group_transfer
+                        columnName: source
+                -   dropColumn:
+                        schemaName: request_audit
+                        tableName: request_for_public
+                        columnName: source

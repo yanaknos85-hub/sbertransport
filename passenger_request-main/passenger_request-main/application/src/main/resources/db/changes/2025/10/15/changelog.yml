@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20251015-0851"
+      author: medvedev-ad
+      context: "TRANSPORT-36223"
+      changes:
+        - tagDatabase:
+            tag: "D-04.020.000"
+        - addColumn:
+            schemaName: request
+            tableName: fraud
+            columns:
+              - column:
+                  name: request_id
+                  type: uuid
+                  remarks: Ссылка на заявку
+        - update:
+            schemaName: request
+            tableName: fraud
+            columns:
+                - column:
+                    name: request_id
+                    valueComputed: id
+        - addNotNullConstraint:
+            schemaName: request
+            tableName: fraud
+            columnName: request_id
+            constraintName: request_fraud_request_id_nn

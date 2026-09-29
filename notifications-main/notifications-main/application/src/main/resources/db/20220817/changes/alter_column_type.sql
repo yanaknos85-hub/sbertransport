@@ -1,0 +1,1 @@
+ALTER TABLE notifications_settings.notification ALTER COLUMN type TYPE VARCHAR(50)

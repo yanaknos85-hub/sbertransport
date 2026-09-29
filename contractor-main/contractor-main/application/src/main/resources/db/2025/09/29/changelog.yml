@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250929-1350"
+      author: blandin-ad
+      changes:
+        - tagDatabase:
+            tag: "20250929"
+        - dropUniqueConstraint:
+            schemaName: contractors
+            tableName: contractor
+            constraintName: contractors_contractor_tin_name_uk
+      rollback:
+        - addUniqueConstraint:
+            schemaName: contractors
+            tableName: contractor
+            columnNames: tin,name
+            constraintName: contractors_contractor_tin_name_uk
+  - changeSet:
+      id: "20250930-1010"
+      author: blandin-ad
+      changes:
+        - tagDatabase:
+            tag: "20250930"
+        - dropIndex:
+            schemaName: contractors
+            tableName: contractor
+            indexName: contractor_name_tin_unique_index
+      rollback:
+        - addUniqueConstraint:
+            schemaName: contractors
+            tableName: contractor
+            columnNames: tin,name
+            constraintName: contractor_name_tin_unique_index

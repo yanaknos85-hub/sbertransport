@@ -1,0 +1,16 @@
+databaseChangeLog:
+    -   changeSet:
+            id: contractor/20210318
+            context: "20210318"
+            author: oleshko
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: changes/create_autopark.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: rollback/drop_autopark_table.sql
+                        relativeToChangelogFile: true

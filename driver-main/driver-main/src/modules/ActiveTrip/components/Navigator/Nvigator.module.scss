@@ -1,0 +1,43 @@
+.navigator {
+  padding: 20px;
+
+  .title {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .text {
+    margin-top: 8px;
+    color: #909090;
+    font-size: 16px;
+  }
+
+  .apps {
+    margin-top: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+
+    img {
+      width: 64px;
+    }
+  }
+
+  .alert {
+    margin-top: 32px;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    background-color: rgb(255, 245, 235);
+    border: 1px solid rgb(255, 225, 194);
+    border-radius: 10px;
+    font-size: 12px;
+  }
+
+  .button {
+    margin-top: 45px;
+  }
+}

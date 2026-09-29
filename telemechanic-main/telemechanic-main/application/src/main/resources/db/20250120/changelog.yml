@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20250120-1
+            author: pasechnikovr-i
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_access_role_telemechanic_organization.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

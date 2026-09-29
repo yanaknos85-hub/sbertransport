@@ -1,0 +1,101 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20210917-1"
+            author: palekseev
+            dbms: postgresql
+            preConditions:
+                -   onFail: MARK_RAN
+                -   not:
+                        -   tableExists:
+                                schemaName: request
+                                tableName: approvals_settings_message
+            changes:
+                -   createTable:
+                        schemaName: request
+                        tableName: approvals_settings_message
+                        remarks: Настройки согласований (получаемые из сообщений)
+                        columns:
+                            -   column:
+                                    name: setting_type
+                                    type: varchar(31)
+                                    remarks: Тип настройки
+                            -   column:
+                                    name: id
+                                    type: uuid
+                                    remarks: ID
+                                    constraints:
+                                        primaryKey: true
+                                        primaryKeyName: approvals_settings_pkey
+                            -   column:
+                                    name: organization_id
+                                    type: uuid
+                                    remarks: ID корп.клиента
+                            -   column:
+                                    name: approval_active
+                                    type: boolean
+                                    remarks: Необходимость этапа согласования
+                            -   column:
+                                    name: min_cost_to_be_approved
+                                    type: int4
+                                    remarks: Сумма, не требующая согласования, коп.
+                            -   column:
+                                    name: transport_type
+                                    type: varchar(50)
+                                    remarks: Тип транспорта
+                            -   column:
+                                    name: trip_approval_active
+                                    type: boolean
+                                    remarks: Необходимость этапа утверждения поездки (кроме такси и ОТ)
+                            -   column:
+                                    name: approval_document_check
+                                    type: boolean
+                                    remarks: Необходимость прикрепления документа на этапе создания заявки (ОТ, для междугородних поездок)
+                            -   column:
+                                    name: trip_confirmation_document_check
+                                    type: boolean
+                                    remarks: Необходимость прикрепления документа на этапе подтверждения поездки (ОТ, для междугородних поездок)
+                            -   column:
+                                    name: trip_confirmation_active
+                                    type: boolean
+                                    remarks: Необходимость этапа подтверждения (ОТ)
+                            -   column:
+                                    name: affirmative_active
+                                    type: boolean
+                                    remarks: Необходимость этапа утверждения (ОТ)
+    -   changeSet:
+            id: "20210917-2"
+            author: palekseev
+            dbms: postgresql
+            preConditions:
+                -   onFail: MARK_RAN
+                -   not:
+                        -   tableExists:
+                                schemaName: request
+                                tableName: purpose_and_region_items
+            changes:
+                -   createTable:
+                        schemaName: request
+                        tableName: purpose_and_region_items
+                        remarks: Настройки согласований (получаемые из сообщений)
+                        columns:
+                            -   column:
+                                    name: setting_id
+                                    type: uuid
+                                    remarks: ID настройки согласования
+                                    constraints:
+                                        referencedTableSchemaName: request
+                                        referencedTableName: approvals_settings_message
+                                        referencedColumnNames: id
+                                        foreignKeyName: purpose_and_region_items_fk
+                            -   column:
+                                    name: trip_purpose_id
+                                    type: uuid
+                                    remarks: ID цели поездки
+                            -   column:
+                                    name: region_id
+                                    type: uuid
+                                    remarks: ID геозоны. В случае, если она не указана, действие настройки распространяется на все регионы
+                            -   column:
+                                    name: min_cost_to_be_approved
+                                    type: int4
+                                    remarks: Сумма, не требующая согласования

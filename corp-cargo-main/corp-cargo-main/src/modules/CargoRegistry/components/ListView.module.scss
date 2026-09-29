@@ -1,0 +1,26 @@
+.listView {
+  .buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    padding: 12px 0;
+  }
+
+  .placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 300px;
+    padding: 40px 20px;
+
+    .placeholderText {
+      color: var(--dark-grey);
+      font-family: "SB Sans Text", sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 26px;
+      text-align: center;
+    }
+  }
+}

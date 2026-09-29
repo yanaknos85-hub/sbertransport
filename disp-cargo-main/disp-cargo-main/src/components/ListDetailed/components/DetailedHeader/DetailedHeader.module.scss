@@ -1,0 +1,105 @@
+.container {
+  display: flex;
+
+  .avatar {
+    width: 138px;
+    height: 138px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    & > span,
+    svg {
+      width: 80%;
+      height: auto;
+    }
+  }
+}
+
+.contentSide {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 40px;
+
+  .contentHeader {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .textSide {
+      .rating {
+        background-color: var(--solitude);
+        border-radius: 19px;
+        padding: 7px 9px;
+        width: fit-content;
+        font-size: 14px;
+        line-height: 20px;
+        margin-top: 18px;
+
+        .star {
+          color: var(--jade);
+        }
+      }
+    }
+
+    .fullName {
+      font-size: 24px;
+      line-height: 32px;
+      font-weight: 600;
+    }
+
+    .controlGroup {
+      display: flex;
+      margin-left: 12px;
+
+      .action {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        background: var(--solitude);
+        flex: 1 0 40px;
+        border: none;
+        color: #909090;
+        cursor: pointer;
+
+        &:not(:first-child) {
+          margin-left: 12px;
+        }
+
+        svg {
+          width: 20px;
+          height: auto;
+        }
+      }
+    }
+  }
+
+  .uniqValues {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 12px;
+
+    .uniqValue {
+      display: flex;
+      flex-direction: column;
+      flex: 1 0;
+      margin: 0 12px 12px 0;
+
+      .label {
+        font-size: 12px;
+        line-height: 16px;
+        color: #909090;
+        font-weight: 400;
+      }
+      .value {
+        font-size: 14px;
+        line-height: 22px;
+        color: #262626;
+        white-space: nowrap;
+      }
+    }
+  }
+}

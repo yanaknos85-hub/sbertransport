@@ -1,0 +1,37 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230329"
+            author: shabrov-ie
+            changes:
+                -   tagDatabase:
+                        tag: "20230329"
+                -   createTable:
+                        tableName: carsharing_info
+                        schemaName: request
+                        columns:
+                            -   column:
+                                    name: id
+                                    type: uuid
+                                    constraints:
+                                        primaryKey: true
+                                        primaryKeyName: carsharing_info_pk
+                            -   column:
+                                    name: employee_id
+                                    type: uuid
+                                    constraints:
+                                        validateNullable: true
+                            -   column:
+                                    name: consent
+                                    type: boolean
+                                    constraints:
+                                        validateNullable: true
+                            -   column:
+                                    name: previously_used
+                                    type: boolean
+                                    constraints:
+                                        validateNullable: true
+        
+            rollback:
+                -   dropTable:
+                        schemaName: request
+                        tableName: carsharing_info

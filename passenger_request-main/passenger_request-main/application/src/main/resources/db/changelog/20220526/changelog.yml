@@ -1,0 +1,30 @@
+
+databaseChangeLog:
+    -   changeSet:
+            id: 20220526
+            author: smirnova
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/create_template_requests.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_template_requests.sql
+                        relativeToChangelogFile: true
+    -   changeSet:
+            id: 20220526-1
+            author: smirnova
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/add_constraint_template_requests.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/add_constraint_template_requests.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+                       

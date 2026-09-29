@@ -1,0 +1,15 @@
+databaseChangeLog:
+  -   changeSet:
+        id: 20260321-1
+        author: belov-av
+        dbms: postgresql
+        changes:
+          -   sqlFile:
+                path: change/add_columns.sql
+                relativeToChangelogFile: true
+          -   sqlFile:
+                path: change/drop_constraints.sql
+                relativeToChangelogFile: true
+          -   sqlFile:
+                path: change/drop_oversize.sql
+                relativeToChangelogFile: true

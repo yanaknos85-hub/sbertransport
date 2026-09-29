@@ -1,0 +1,44 @@
+{
+    "id": "1004917",
+    "newOrdersIds": [
+        "10005897"
+    ],
+    "passengers": 2,
+    "stops": [
+        {
+            "orderId": "10005897",
+            "state": "Active",
+            "address": "Street 1",
+            "latitude": 59.923854,
+            "longitude": 30.384503,
+            "startTime": "2030-11-30T13:20:00Z",
+            "endTime": "2030-11-30T13:21:00Z",
+            "eventType": "Посадка"
+        },
+        {
+            "orderId": "10005897",
+            "state": "Active",
+            "address": "Street 2",
+            "latitude": 59.927761,
+            "longitude": 30.345835,
+            "startTime": "2030-11-30T13:30:00Z",
+            "endTime": "2030-11-30T13:30:00Z",
+            "eventType": "Высадка"
+        }
+    ],
+    "kpi": {
+        "totalCost": 197.45,
+        "totalDistanceKm": 3.9454195499420166,
+        "totalTimeMin": 9.0,
+        "ordersKpi": [
+            {
+                "orderId": "10005897",
+                "costSharePart": 1.0,
+                "rideTimeMin": 9,
+                "savings": 0.0,
+                "savingsPct": 0.0,
+                "orderDistanceKm": 3
+            }
+        ]
+    }
+}

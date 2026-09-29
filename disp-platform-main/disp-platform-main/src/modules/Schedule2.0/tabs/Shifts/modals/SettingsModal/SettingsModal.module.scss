@@ -1,0 +1,95 @@
+$heightInput: 40px;
+
+.modal {
+  width: 450px !important;
+  border-radius: 12px;
+  overflow: hidden;
+
+  :global(.ant-modal-content) {
+    border-radius: 12px;
+  }
+
+  :global(.ant-modal-header),
+  :global(.ant-modal-footer) {
+    border: none;
+  }
+
+  :global(.ant-modal-header) {
+    padding: 20px 24px;
+  }
+
+  :global(.ant-modal-body) {
+    padding: 0 24px;
+  }
+
+  :global(.ant-modal-title) {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+    color: var(--dark-grey);
+  }
+
+  .modalDescription {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    color: var(--dark-grey);
+  }
+
+  :global(.ant-input-number-handler-wrap) {
+    display: none;
+  }
+
+  :global(.ant-input-number) {
+    width: 120px;
+    border-color: var(--silver);
+    border-radius: 8px;
+    box-shadow: none;
+  }
+
+  :global(.ant-input-number-input) {
+    height: 48px;
+    font-family: SB Sans Text;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+    color: var(--dark-grey);
+    padding: 0 16px;
+  }
+
+  :global(.ant-modal-footer) {
+    padding: 24px;
+  }
+
+  :global(.ant-btn) {
+    height: 40px;
+    padding: 0 22px;
+  }
+
+  .cancelButton {
+    border: none;
+    background-color: var(--solitude);
+    color: var(--dark-grey);
+    margin-right: 8px;
+  }
+
+  :global(.ant-checkbox) {
+    margin-top: 16px;
+
+    + span {
+      font-family: SB Sans Text;
+      font-size: 14px;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+      color: var(--dark-grey);
+      padding-right: 0;
+      padding-left: 8px;
+    }
+  }
+
+  :global(.ant-checkbox-inner) {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+  }
+}

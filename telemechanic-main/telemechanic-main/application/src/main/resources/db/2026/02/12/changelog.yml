@@ -1,0 +1,27 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20260212-1
+            author: blandin-ad
+            dbms: postgresql
+            changes:
+                - addColumn:
+                      schemaName: telemechanic
+                      tableName: transport
+                      columns:
+                          - column:
+                                name: contractor_id
+                                type: uuid
+                                remarks: Идентификатор автопарка
+                          - column:
+                                name: autopark_id
+                                type: uuid
+                                remarks: Идентификатор филиала автопарка
+            rollback:
+                - dropColumn:
+                      schemaName: telemechanic
+                      tableName: transport
+                      columns:
+                          - column:
+                                name: contractor_id
+                          - column:
+                                name: autopark_id

@@ -1,0 +1,23 @@
+.no-now-btn .ant-picker-now {
+  display: none !important;
+}
+
+:not(ant-switch-checked) .ant-switch-inner {
+  margin: 0 6px 0 24px;
+}
+
+.ant-select-item-option-content {
+  align-items: center;
+  display: flex;
+}
+
+.ant-select-show-search.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  margin: 0;
+}
+
+.ant-picker-cell-disabled.ant-picker-cell-today .ant-picker-cell-inner:before {
+  border-color: var(--green-color) !important;
+}

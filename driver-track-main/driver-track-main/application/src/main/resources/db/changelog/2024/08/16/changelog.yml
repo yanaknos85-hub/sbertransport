@@ -1,0 +1,43 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240816-1518"
+      author: ladeyshchikov_aa
+      changes:
+        - createTable:
+            schemaName: driver_track
+            tableName: route
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: trip_id
+                  type: uuid
+                  remarks: Идентификатор поездки
+              - column:
+                  name: coords
+                  type: json
+                  remarks: маршрут
+      rollback:
+        - dropTable:
+            schemaName: driver_track
+            tableName: route
+  - changeSet:
+      id: "20240826-1515"
+      author: ladeyshchikov_aa
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: trip_id
+            indexName: driver_track_route_trip_id_idx
+            schemaName: driver_track
+            tableName: route
+      rollback:
+        - dropIndex:
+            indexName: driver_track_route_trip_id_idx
+            schemaName: driver_track
+            tableName: route

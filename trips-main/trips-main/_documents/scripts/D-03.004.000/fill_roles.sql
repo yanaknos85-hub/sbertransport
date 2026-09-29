@@ -1,0 +1,1 @@
+call migrations.fill_roles('trips', 'POST /self/dispatcher/driver/busyness/', 'ROLE_DISPATCHER_CONTRACTOR', true);

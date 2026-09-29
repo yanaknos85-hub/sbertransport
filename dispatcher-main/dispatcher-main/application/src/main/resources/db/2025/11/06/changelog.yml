@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20251106-1
+      author: burlakov-sv
+      changes:
+        - addColumn:
+            schemaName: dispatcher
+            tableName: vehicle
+            columns:
+              - column:
+                  name: location_address
+                  type: varchar(255)
+        - addColumn:
+            schemaName: dispatcher
+            tableName: vehicle
+            columns:
+              - column:
+                  name: parking_address
+                  type: varchar(255)
+
+      rollback:
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: vehicle
+            columns:
+              - column:
+                  name: location_address
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: vehicle
+            columns:
+              - column:
+                  name: parking_address

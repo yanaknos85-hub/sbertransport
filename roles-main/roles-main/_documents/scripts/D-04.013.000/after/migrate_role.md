@@ -1,0 +1,2 @@
+# Скрипт, для синхронизации ролей автосервиса, на случай если не отработает кафка.
+Применить после *curl-скриптов* при условии. что в таблице *roles.role* появились роли с code ROLE_AUTOSERVICE_RECEPTION, ROLE_AUTOSERVICE_MECHANIC, а в таблице  *authentication.role* - нет.

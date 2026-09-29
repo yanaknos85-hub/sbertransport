@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250625-contact-link
+      author: rakhimov-di
+      changes:
+        - sqlFile:
+            path: changes/drop_column_contact_information_id.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            endDelimiter: ;

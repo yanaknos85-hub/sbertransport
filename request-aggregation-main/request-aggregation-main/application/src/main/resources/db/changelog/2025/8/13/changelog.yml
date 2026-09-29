@@ -1,0 +1,216 @@
+databaseChangeLog:
+  - changeSet:
+      id: request_aggregation/20250813-1
+      author: novikova-km
+      dbms: postgresql
+      changes:
+        - sqlFile:
+            path: changes/drop_lead_user_table.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - sqlFile:
+            path: changes/drop_user_address_table.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - sqlFile:
+            path: changes/drop_fk_user_address.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - sqlFile:
+            path: changes/drop_users_table.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - sqlFile:
+            path: changes/drop_contact_link_table.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+
+  - changeSet:
+      id: request_aggregation/20250813-2
+      author: novikova-km
+      dbms: postgresql
+      changes:
+        - sqlFile:
+            path: changes/create_basic_organization_structure.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+
+  - changeSet:
+      id: request_aggregation/20250813-3
+      author: novikova-km
+      dbms: postgresql
+      changes:
+        - sqlFile:
+            path: changes/create_data.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+
+  - changeSet:
+      id: request_aggregation/20250813-4
+      author: novikova-km
+      dbms: postgresql
+      changes:
+        - sqlFile:
+            path: changes/add_fk_address_employee.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+
+  - changeSet:
+      id: request_aggregation/20250813-5
+      author: novikova-km
+      dbms: postgresql
+      changes:
+        - sqlFile:
+            path: changes/drop_lead_table_foreign_keys.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+
+  - changeSet:
+      id: request_aggregation/20250813-6
+      author: novikova-km
+      dbms: postgresql
+      changes:
+        - sqlFile:
+            path: changes/drop_type_tables.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+
+  - changeSet:
+      id: request_aggregation/20250813-7
+      author: novikova-km
+      dbms: postgresql
+      changes:
+        - sqlFile:
+            path: changes/create_enum_types.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+
+  - changeSet:
+      id: request_aggregation/20250813-8
+      author: novikova-km
+      dbms: postgresql
+      changes:
+        - sqlFile:
+            path: changes/alter_lead_table.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+
+  - changeSet:
+      id: request_aggregation/20250813-9
+      author: novikova-km
+      dbms: postgresql
+      changes:
+        - sqlFile:
+            path: changes/alter_main_lead_table.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+
+  - changeSet:
+      id: request_aggregation/20250813-10
+      author: novikova-km
+      dbms: postgresql
+      changes:
+        - addColumn:
+            schemaName: request_aggregation
+            tableName: lead
+            columns:
+              - column:
+                  name: status
+                  type: request_aggregation.type_lead_status
+                  remarks: Статус пользовательской заявки
+                  defaultValue: 'PROCESSING'
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: transport_type
+                  type: request_aggregation.type_transport_type
+                  remarks: Тип транспорта
+                  defaultValue: 'TAXI'
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: trip_type
+                  type: request_aggregation.type_trip_type
+                  defaultValue: 'DAYTIME_TRIP'
+                  remarks: Цель поездки
+                  constraints:
+                    - nullable: false
+
+  - changeSet:
+      id: request_aggregation/20250813-11
+      author: novikova-km
+      dbms: postgresql
+      changes:
+        - addColumn:
+            schemaName: request_aggregation
+            tableName: main_lead
+            columns:
+              - column:
+                  name: status
+                  type: request_aggregation.type_main_lead_status
+                  remarks: Статус основной заявки
+                  defaultValue: 'GENERATING'
+                  constraints:
+                    - nullable: false
+
+  - changeSet:
+      id: request_aggregation/20250813-12
+      author: novikova-km
+      dbms: postgresql
+      changes:
+        - sqlFile:
+            path: changes/truncate_tables.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+
+  - changeSet:
+      id: request_aggregation/20250813-13
+      author: novikova-km
+      dbms: postgresql
+      changes:
+        - addColumn:
+            schemaName: request_aggregation
+            tableName: lead
+            columns:
+              - column:
+                  name: is_driver
+                  type: boolean
+                  constraints:
+                    - nullable: false
+                  remarks: Является ли пользователь водителем
+              - column:
+                  name: transport_class
+                  type: request_aggregation.type_transport_class
+                  constraints:
+                    - nullable: false
+                  remarks: Класс транспорта
+              - column:
+                  name: main_lead_id
+                  type: uuid
+                  remarks: Ссылка на основную заявку
+              - column:
+                  name: employee_id
+                  type: uuid
+                  constraints:
+                    - nullable: false
+                  remarks: Ссылка на пользователя
+
+  - changeSet:
+      id: request_aggregation/20250813-14
+      author: novikova-km
+      dbms: postgresql
+      changes:
+        - sqlFile:
+            path: changes/alter_lead_table_add_constraints.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+
+  - changeSet:
+      id: request_aggregation/20250813-15
+      author: novikova-km
+      dbms: postgresql
+      changes:
+        - sqlFile:
+            path: changes/drop_defaults.sql
+            relativeToChangelogFile: true
+            splitStatements: false

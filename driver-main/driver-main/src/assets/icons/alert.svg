@@ -1,0 +1,22 @@
+<svg width="44.000000" height="44.000000" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<filter id="filter_2055_151203_dd" x="0.000000" y="0.000000" width="44.000000" height="44.000000" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+			<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+			<feOffset dx="0" dy="5"/>
+			<feGaussianBlur stdDeviation="3.33333"/>
+			<feComposite in2="hardAlpha" operator="out" k2="-1" k3="1"/>
+			<feColorMatrix type="matrix" values="0 0 0 0 0.99608 0 0 0 0 0.35686 0 0 0 0 0.23137 0 0 0 0.1 0"/>
+			<feBlend mode="normal" in2="BackgroundImageFix" result="effect_dropShadow_1"/>
+			<feBlend mode="normal" in="SourceGraphic" in2="effect_dropShadow_1" result="shape"/>
+		</filter>
+	</defs>
+	<g filter="url(#filter_2055_151203_dd)">
+		<rect id="ic" rx="12.000000" width="24.000000" height="24.000000" transform="translate(10.000000 5.000000)" fill="#FF9A32" fill-opacity="1.000000"/>
+		<path id="Path (Stroke)" d="M21.98 9.62C22.46 9.62 22.84 10.01 22.84 10.48L22.84 19.26C22.84 19.73 22.46 20.12 21.98 20.12C21.51 20.12 21.13 19.73 21.13 19.26L21.13 10.48C21.13 10.01 21.51 9.62 21.98 9.62Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="evenodd"/>
+		<path id="Path (Stroke)" d="M20.99 22.74C20.99 22.18 21.44 21.74 21.98 21.74C22.53 21.74 22.98 22.19 22.98 22.73C22.98 23.28 22.53 23.73 21.98 23.73C21.44 23.73 20.99 23.28 20.99 22.74Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="evenodd"/>
+	</g>
+</svg>

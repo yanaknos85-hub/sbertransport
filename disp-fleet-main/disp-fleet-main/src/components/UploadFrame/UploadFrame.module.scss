@@ -1,0 +1,95 @@
+.fileDroppedContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  align-self: stretch;
+}
+
+.selectedFile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding: 16px;
+  width: 100%;
+  height: 70px;
+  background: var(--solitude);
+  border-radius: 14px;
+  gap: 15px;
+}
+
+.flex {
+  display: flex;
+  flex-grow: 1;
+  gap: 10px;
+  align-items: center;
+}
+
+.fileData {
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  flex-grow: 1;
+  font-family: 'SB Sans Text';
+
+  .fileName {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+    color: var(--dark-grey);
+  }
+}
+
+.redSpan {
+  color: #ff5743;
+}
+
+.fileSize {
+  color: gray;
+}
+
+.dropFileContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 64px;
+  border: 1px dashed rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  cursor: pointer;
+
+  span {
+    font-family: 'SB Sans Text';
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+    color: var(--dark-grey);
+
+    &.chooseFileText {
+      color: var(--jade);
+    }
+  }
+}
+
+.uploadInput[type='file'] {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.dropDisabled {
+  opacity: 0.5;
+
+  input[type='file'] {
+    cursor: no-drop;
+  }
+
+  + .helperText {
+    opacity: 0.5;
+  }
+}

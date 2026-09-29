@@ -1,0 +1,1 @@
+alter table exchange_request.request drop column if exists organization_id;

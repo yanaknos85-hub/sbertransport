@@ -1,0 +1,66 @@
+.taxiClass {
+  position: relative;
+  display: inline-block;
+  margin-left: 10px;
+  width: 32px;
+  height: 16px;
+
+  &::after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 32px;
+    height: 20px;
+    content: '';
+  }
+
+  &.ECONOMY::after,
+  &.economy::after {
+    background: url(../../../../../shared/components/Images/car_yellow.svg) no-repeat no-repeat center 0;
+    background-size: contain;
+  }
+
+  &.COMFORT::after,
+  &.comfort::after {
+    background: url(../../../../../shared/components/Images/car_yellow.svg) no-repeat no-repeat center 0;
+    background-size: contain;
+  }
+
+  &.COMFORT_PLUS::after,
+  &.comfort_plus::after {
+    background: url(../../../../../shared/components/Images/car_yellow.svg) no-repeat no-repeat center 0;
+    background-size: contain;
+  }
+
+  &.PERSONAL::after,
+  &.personal::after {
+    background: url(../../../../../shared/components/Images/android/red.png) no-repeat no-repeat center 0;
+    background-size: contain;
+  }
+
+  &.BUSINESS::after,
+  &.business::after {
+    background: url(../../../../../shared/components/Images/car_yellow.svg) no-repeat no-repeat center 0;
+    background-size: contain;
+  }
+
+  &.BICYCLE::after,
+  &.bicycle::after {
+    background: url(../../../../../shared/components/Images/bicycle.png) no-repeat no-repeat center 0;
+    background-size: 55%;
+    background-position-x: 46%;
+    background-position-y: 53%;
+  }
+
+  &.CARSHARING::after,
+  &.carsharing::after {
+    background: url(../../../../../shared/components/Images/android/blue.png) no-repeat no-repeat center 0;
+    background-size: contain;
+  }
+
+  &.WALK::after,
+  &.walk::after {
+    background: url(../../../../../shared/components/Images/walk.png) no-repeat no-repeat center 0;
+    background-size: contain;
+  }
+}

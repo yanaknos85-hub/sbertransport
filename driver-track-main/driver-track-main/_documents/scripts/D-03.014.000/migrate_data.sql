@@ -1,0 +1,2 @@
+insert into driver_track.driver_message (id, active, online, active_trip_id, consent, serving)
+    (select d.id, d.is_active, d.online, d.active_trip_id, d.consent, d.serving from contractors.driver d) on conflict do nothing;

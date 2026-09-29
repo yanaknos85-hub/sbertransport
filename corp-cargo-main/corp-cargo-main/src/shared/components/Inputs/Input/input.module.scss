@@ -1,0 +1,12 @@
+.input {
+  box-sizing: border-box;
+
+  .noBorder {
+    border: none;
+  }
+
+  &:global(.ant-input) {
+    height: 40px;
+    border-radius: 8px;
+  }
+}

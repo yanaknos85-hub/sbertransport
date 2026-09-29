@@ -1,0 +1,70 @@
+.orderExecutionContainer-section {
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.12), 0 4px 8px -4px rgba(0, 0, 0, 0.1);
+  padding: 24px 28px;
+
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 24px;
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+
+.orderExecutionContainer-item {
+  flex: 1 1;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.3px;
+  color: #262626;
+  max-width: 340px;
+
+  &__title {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    color: #737373;
+    margin-bottom: 12px;
+  }
+}
+
+.textarea-comment {
+  width: 50vw;
+}
+
+.comment-section {
+  display: flex;
+
+  Button {
+    margin-left: 20px;
+  }
+}
+
+.orderExecutionContainer-itemc {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.3px;
+  color: #262626;
+
+  &__title {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    color: #737373;
+    margin-bottom: 12px;
+  }
+}

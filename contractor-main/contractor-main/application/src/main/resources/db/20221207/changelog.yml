@@ -1,0 +1,16 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221207"
+            author: medvedev-ad
+            context: "20221207"
+            changes:
+                -   tagDatabase:
+                        tag: "20221207"
+                -   addColumn:
+                        schemaName: contractors
+                        tableName: trips
+                        columns:
+                            -   column:
+                                    name: arrived_date
+                                    remarks: Время прибытия водителя
+                                    type: datetime

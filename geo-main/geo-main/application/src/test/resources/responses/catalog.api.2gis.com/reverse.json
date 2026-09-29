@@ -1,0 +1,70 @@
+{
+    "meta": {
+        "api_version": "3.0.496128",
+        "code": 200,
+        "issue_date": "20201016"
+    },
+    "result": {
+        "items": [
+            {
+                "address": {
+                    "building_id": "9148572398279860",
+                    "components": [
+                        {
+                            "number": "85Б к21 стр32",
+                            "street": "Шереметевский проспект",
+                            "street_id": "9148675477471238",
+                            "type": "street_number"
+                        }
+                    ],
+                    "postcode": "153037"
+                },
+                "address_name": "Шереметевский проспект, 85Б",
+                "full_name": "Иваново, Шереметевский проспект, 85Б",
+                "geocoded_by": {
+                    "lat": 57.00815,
+                    "lon": 40.989292
+                },
+                "id": "9148572398279860_6hzjb6G6G7IH1H03HHA2f5yf6ij6A085AA788369muvhzH19058GB6892I1Glsx9t98158GB14B937AAHJJ1GJIJGJ287",
+                "name": "Шереметевский проспект, 85Б",
+                "point": {
+                    "lat": 57.008192,
+                    "lon": 40.989263
+                },
+                "purpose_name": "Торговый павильон",
+                "region_id": "65",
+                "type": "building"
+            },
+            {
+                "address": {
+                    "building_id": "9148572398279860",
+                    "components": [
+                        {
+                            "number": "85Б",
+                            "street": "Шереметевский проспект",
+                            "street_id": "9148675477471238",
+                            "type": "street_number"
+                        }
+                    ],
+                    "postcode": "153037"
+                },
+                "address_name": "Шереметевский проспект, 85Б",
+                "full_name": "Иваново, Шереметевский проспект, 85Б",
+                "geocoded_by": {
+                    "lat": 57.00815,
+                    "lon": 40.989292
+                },
+                "id": "9148572398279860_6hzjb6G6G7IH1H03HHA2f5yf6ij6A085AA788369muvhzH19058GB6892I1Glsx9t98158GB14B937AAHJJ1GJIJGJ287",
+                "name": "Шереметевский проспект, 85Б",
+                "point": {
+                    "lat": 57.008192,
+                    "lon": 40.989263
+                },
+                "purpose_name": "Торговый павильон",
+                "region_id": "65",
+                "type": "building"
+            }
+        ],
+        "total": 1
+    }
+}

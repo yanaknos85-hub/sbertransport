@@ -1,0 +1,29 @@
+@import 'styles/variables.scss';
+
+.profile {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .separator {
+    width: 100%;
+    height: 10px;
+    display: block;
+    background-color: $mist-gray;
+    opacity: 0.28;
+  }
+
+  .footer {
+    margin: 0 20px 24px;
+
+    .btnLogout {
+      font-family: 'SB Sans Text';
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 24px;
+      letter-spacing: -0.3px;
+      color: $dark-grey;
+    }
+  }
+}

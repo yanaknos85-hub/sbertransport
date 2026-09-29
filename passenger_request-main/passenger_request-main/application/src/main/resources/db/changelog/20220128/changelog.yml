@@ -1,0 +1,13 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220128"
+            author: nikulinsa
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_hri_in_driver.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: rollback/add_hri_in_driver.sql
+                        relativeToChangelogFile: true

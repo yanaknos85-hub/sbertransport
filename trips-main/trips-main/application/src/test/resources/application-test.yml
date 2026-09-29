@@ -1,0 +1,9 @@
+spring:
+  security.oauth2.resourceserver.jwt.jwk-set-uri: http://localhost
+  cloud.stream.default-binder: integration
+  datasource:
+    url: jdbc:postgresql://localhost:5432
+    username: postgres
+    password: changeit
+  main:
+    allow-bean-definition-overriding: true

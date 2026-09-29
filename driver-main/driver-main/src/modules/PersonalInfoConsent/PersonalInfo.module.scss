@@ -1,0 +1,53 @@
+@import 'styles/variables.scss';
+
+.modal {
+  :global(.adm-modal-body) {
+    max-height: 90vh;
+  }
+
+  :global(.adm-modal-title) {
+    font-size: 22px;
+    text-align: left;
+  }
+
+  :global(.adm-modal-content) {
+    padding: 12px;
+  }
+
+  :global(.adm-button) {
+    letter-spacing: -0.32px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    font-family: SB Sans Text;
+  }
+
+  :global(.adm-button-disabled) {
+    opacity: 1;
+    background-color: $light-grey;
+    border: none;
+  }
+
+  .content {
+    font-family: 'SB Sans Text';
+    font-size: 16px;
+    color: $dark-blue;
+
+    pre {
+      white-space: pre-line;
+      font-family: inherit;
+    }
+
+    :global(.adm-checkbox-icon) {
+      border-radius: 4px;
+    }
+  }
+
+  .spin {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

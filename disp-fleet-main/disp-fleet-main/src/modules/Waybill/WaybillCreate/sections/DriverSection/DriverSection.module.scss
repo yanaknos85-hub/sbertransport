@@ -1,0 +1,19 @@
+.container {
+  margin-top: 16px;
+  overflow: hidden;
+
+  &__title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  &__divider {
+    margin: 16px 0;
+    color: #26262614;
+  }
+
+  .field {
+    width: 100%;
+  }
+}

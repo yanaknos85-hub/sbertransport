@@ -1,0 +1,1 @@
+alter table telemechanic.check_photo alter column file_status set not null;

@@ -1,0 +1,1 @@
+drop table request.template_for_cargo_history;

@@ -1,0 +1,85 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20260304-1
+            author: blandin-ad
+            dbms: postgresql
+            changes:
+                - addColumn:
+                      schemaName: telemechanic
+                      tableName: organization
+                      columns:
+                          - column:
+                                name: contractor_external_id
+                                type: uuid
+                                remarks: Внешний идентификатор контрагента
+                - addColumn:
+                      schemaName: telemechanic
+                      tableName: department
+                      columns:
+                          - column:
+                                name: autopark_id
+                                type: uuid
+                                remarks: Идентификатор филиала контрагента
+            rollback:
+                - dropColumn:
+                      schemaName: telemechanic
+                      tableName: organization
+                      columns:
+                          - column:
+                                name: contractor_external_id
+                - dropColumn:
+                      schemaName: telemechanic
+                      tableName: department
+                      columns:
+                          - column:
+                                name: autopark_id
+    -   changeSet:
+            id: telemechanic/20260304-2
+            author: blandin-ad
+            dbms: postgresql
+            context: "!test"
+            changes:
+                -   sqlFile:
+                        path: changes/fill_contractor_external_id_and_autopark_id.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/rollback.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    - changeSet:
+          id: telemechanic/20260304-3
+          author: blandin-ad
+          dbms: postgresql
+          changes:
+              -   addColumn:
+                      schemaName: telemechanic
+                      tableName: department
+                      columns:
+                          -   column:
+                                  name: autopark_name
+                                  type: varchar
+                                  remarks: Наименование филиала контрагента
+          rollback:
+              -  dropColumn:
+                     schemaName: telemechanic
+                     tableName: department
+                     columns:
+                         -   column:
+                                 name: autopark_name
+    - changeSet:
+          id: telemechanic/20260304-4
+          author: blandin-ad
+          dbms: postgresql
+          context: "!test"
+          changes:
+              - sqlFile:
+                    path: changes/fill_autopark_name.sql
+                    relativeToChangelogFile: true
+                    splitStatements: false
+          rollback:
+              -   sqlFile:
+                      path: rollback/rollback_autopark_name.sql
+                      relativeToChangelogFile: true
+                      splitStatements: false

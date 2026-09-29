@@ -1,0 +1,86 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20260518-1200"
+      author: khalikov-ma
+      context: "TRANSPORT-42457"
+      changes:
+        - createTable:
+            schemaName: request_checks
+            tableName: trip_request
+            remarks: Заявка на поездку
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор заявки на поездку
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: request_checks_trip_request_pk
+              - column:
+                  name: human_readable_id
+                  type: varchar(100)
+                  remarks: Человекочитаемый идентификатор
+              - column:
+                  name: transport_type
+                  type: varchar(255)
+                  remarks: Тип транспорта
+              - column:
+                  name: passenger_id
+                  type: uuid
+                  remarks: Идентификатор пассажира
+              - column:
+                  name: desired_date
+                  type: timestamp with time zone
+                  remarks: Желаемая дата и время поездки
+              - column:
+                  name: time_zone
+                  type: varchar(100)
+                  remarks: Часовой пояс
+              - column:
+                  name: distance
+                  type: float
+                  remarks: Расстояние поездки
+              - column:
+                  name: duration
+                  type: bigint
+                  remarks: Плановое время поездки в секундах
+            indexes:
+              - index:
+                  - name: request_checks_transport_type_idx
+                    columns:
+                      - column:
+                          name: transport_type
+        - createTable:
+            schemaName: request_checks
+            tableName: waypoint
+            remarks: Путевые точки поездки
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор путевой точки
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: request_checks_waypoint_pk
+              - column:
+                  - name: trip_request_id
+                    type: uuid
+                    remarks: Идентификатор заявки на поездку
+              - column:
+                  name: ordering_index
+                  type: integer
+                  remarks: Порядковый номер точки
+              - column:
+                  name: latitude
+                  type: float8
+                  remarks: Широта
+              - column:
+                  name: longitude
+                  type: float8
+                  remarks: Долгота
+            indexes:
+              - index:
+                  name: request_checks_waypoint_trip_request_id_idx
+                  columns:
+                    - column:
+                        name: trip_request_id

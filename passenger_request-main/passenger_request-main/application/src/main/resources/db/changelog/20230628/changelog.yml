@@ -1,0 +1,13 @@
+databaseChangeLog:
+    -   changeSet:
+            id: requests/20230628
+            author: asigalov
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/tpc_request_change2.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: rollback/rollback_tpc_request_change2.sql
+                        relativeToChangelogFile: true

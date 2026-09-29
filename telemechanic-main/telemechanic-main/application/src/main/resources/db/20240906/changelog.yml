@@ -1,0 +1,95 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20240906-1
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/correct_granted_roles.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20240906-2
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   dropTable:
+                        cascadeConstraints: true
+                        schemaName: telemechanic
+                        tableName: title
+    -   changeSet:
+            id: telemechanic/20240906-3
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                - createTable:
+                      schemaName: telemechanic
+                      tableName: title
+                      columns:
+                          -   column:
+                                  name: id
+                                  type: uuid
+                                  remarks: ID записи
+                                  constraints:
+                                      primaryKey: true
+                                      primaryKeyName: telemechanic_ewb_title_file_pk
+                          -   column:
+                                  name: ewb_id
+                                  type: uuid
+                                  remarks: ID записи ЭПЛ
+                                  constraints:
+                                      nullable: false
+                                      foreignKeyName: ewb_id
+                          -   column:
+                                  name: type
+                                  type: varchar(20)
+                                  remarks: Номер титула
+                                  constraints:
+                                      nullable: false
+                          -   column:
+                                  name: file_name
+                                  type: varchar(255)
+                                  remarks: Название файла
+                                  constraints:
+                                      nullable: false
+                          -   column:
+                                  name: s3_file_name
+                                  type: varchar(37)
+                                  remarks: Название файла в s3
+                                  constraints:
+                                      nullable: false
+                          -   column:
+                                  name: status
+                                  type: varchar(20)
+                                  remarks: Статус
+                                  constraints:
+                                      nullable: false
+                          -   column:
+                                  name: created_at
+                                  type: timestamp
+                                  remarks: Дата создания файла
+                                  constraints:
+                                      nullable: false
+                          -   column:
+                                  name: sent_at
+                                  type: timestamp
+                                  remarks: Дата отправки файла
+                          -   column:
+                                  name: korus_id
+                                  type: uuid
+                                  remarks: Идентификатор документа в системе Корус
+                          -   column:
+                                  name: chain_id
+                                  type: uuid
+                                  remarks: Идентификатор цепочки документов в системе Корус
+
+                - createIndex:
+                      schemaName: telemechanic
+                      tableName: title
+                      indexName: telemechanic_title_ewb_id_type_udx
+                      unique: true
+                      columns:
+                          - column:
+                                name: ewb_id
+                          - column:
+                                name: type

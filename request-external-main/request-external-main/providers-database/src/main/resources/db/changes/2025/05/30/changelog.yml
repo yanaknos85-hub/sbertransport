@@ -1,0 +1,78 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250530-1657"
+      author: medvedev-ad
+      context: "TRANSPORT-32883"
+      changes:
+        - tagDatabase:
+            tag: "D-04.009.000"
+        - sql:
+            sql: create type ${schema_name}.assessment_type as enum ('SERVICE');
+        - sql:
+            dbms: postgresql
+            sql: comment on type ${schema_name}.assessment_type is 'Тип оценки (SERVICE - оценка за услугу)';
+        - createTable:
+            schemaName: ${schema_name}
+            tableName: assessments
+            remarks: "Оценки"
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: "Идентификатор оценки"
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: ${schema_name}_assessments_pk
+              - column:
+                  name: type
+                  type: ${schema_name}.assessment_type
+                  remarks: "Тип оценки"
+                  constraints:
+                    nullable: false
+                    nonNullableConstraintName: ${schema_name}_assessments_type_nn
+              - column:
+                  name: rating
+                  type: int2
+                  remarks: "Рейтинг оценки"
+                  constraints:
+                    nullable: false
+                    nonNullableConstraintName: ${schema_name}_assessments_rating_nn
+                    check: rating > 0 and rating <= 5
+              - column:
+                  name: comment
+                  type: varchar(1000)
+                  remarks: "Комментарий оценки"
+              - column:
+                  name: order_id
+                  type: uuid
+                  remarks: "Идентификатор заявки на поездку"
+                  constraints:
+                    nullable: false
+                    nonNullableConstraintName: ${schema_name}_assessments_order_id_nn
+                    referencedTableSchemaName: ${schema_name}
+                    referencedTableName: trip_order
+                    referencedColumnNames: id
+                    foreignKeyName: ${schema_name}_assessments_order_id_fk
+              - column:
+                  name: employee_id
+                  type: uuid
+                  remarks: "Идентификатор сотрудника"
+                  constraints:
+                    nullable: false
+                    nonNullableConstraintName: ${schema_name}_assessments_employee_id_nn
+                    referencedTableSchemaName: ${schema_name}
+                    referencedTableName: employee
+                    referencedColumnNames: id
+                    foreignKeyName: ${schema_name}_assessments_employee_id_fk
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  remarks: "Дата создания оценки"
+                  constraints:
+                    nullable: false
+                    nonNullableConstraintName: ${schema_name}_assessments_created_at_nn
+        - addUniqueConstraint:
+            schemaName: ${schema_name}
+            tableName: assessments
+            columnNames: order_id, employee_id
+            constraintName: ${schema_name}_assessments_order_id_employee_id_uk

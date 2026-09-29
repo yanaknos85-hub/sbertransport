@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230921-6"
+      author: blandin-ad
+      context: "20230921-6"
+      changes:
+        - tagDatabase:
+            tag: "20230921-6"
+        - addColumn:
+            schemaName: trips_cargo
+            tableName: trips_cargo
+            columns:
+              - column:
+                  name: driverId
+                  type: uuid
+                  remarks: Идентификатор водителя
+              - column:
+                  name: vehicleId
+                  type: uuid
+                  remarks: Идентификатор автомобиля
+  - changeSet:
+      id: "20230921-6-1"
+      author: blandin-ad
+      context: "20230921-6-1"
+      changes:
+        - tagDatabase:
+            tag: "20230921-6-1"
+        - renameColumn:
+            schemaName: trips_cargo
+            tableName: trips_cargo
+            oldColumnName: driverId
+            newColumnName: driver_id
+        - renameColumn:
+            schemaName: trips_cargo
+            tableName: trips_cargo
+            oldColumnName: vehicleId
+            newColumnName: vehicle_id

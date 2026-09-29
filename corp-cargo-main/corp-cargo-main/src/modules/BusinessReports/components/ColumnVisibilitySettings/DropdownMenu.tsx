@@ -1,0 +1,97 @@
+import {
+  Button, Checkbox, Menu
+} from 'antd';
+import React, {
+  Dispatch, FC, SetStateAction, useEffect, useState
+} from 'react';
+import { useTranslation } from 'i18n';
+import styles from './styles.module.scss';
+import { Props } from './ColumnVisibilitySettings';
+
+interface DropdownMenuProps {
+  localSetting: (Props['setting'] & { default?: boolean }) | undefined;
+  setLocalSetting: Dispatch<SetStateAction<(Props['setting'] & { default?: boolean }) | undefined>>;
+  setVisible: Dispatch<SetStateAction<boolean>>;
+  saveSettingChange: (key: Record<string, boolean | undefined> | undefined) => void;
+  defaultStateOnCancel: () => void;
+  defaultColumns?: Record<string, boolean | undefined>;
+}
+
+export const DropDownMenu: FC<DropdownMenuProps> = ({
+  localSetting,
+  setLocalSetting,
+  setVisible,
+  saveSettingChange,
+  defaultStateOnCancel,
+  defaultColumns,
+}) => {
+  const { t } = useTranslation();
+  const [isDefaultState, setDefaultState] = useState(true);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const isColumnVisible = (currentColumn: any) => defaultColumns && defaultColumns[currentColumn];
+  const handleSuccess = () => {
+    setVisible(false);
+    saveSettingChange(isDefaultState ? defaultColumns : localSetting);
+  };
+
+  useEffect(() => {
+    setDefaultState(is => !is);
+  }, []);
+
+  return (
+    <div className={styles.menuSetting}>
+      <section className={styles.menuHead}>
+        <strong className={styles.menuSettingTitle}>{t.global.tableSettings}</strong>
+        <button
+          className={styles.resetButton}
+          type="button"
+          onClick={() => setDefaultState(is => !is)}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="#10BF6A"
+            viewBox="0 0 64 64"
+            width="18px"
+            height="auto"
+          >
+            <path d="M 32 6 C 17.641 6 6 17.641 6 32 C 6 33.147 6.0844688 34.273859 6.2304688 35.380859 L 10.357422 35.865234 C 10.131422 34.608234 10 33.321 10 32 C 10 19.869 19.869 10 32 10 C 38.615909 10 44.551673 12.942341 48.587891 17.580078 L 45.505859 21.652344 L 58 22 L 54.275391 10.068359 L 51.050781 14.328125 C 46.302784 9.2111633 39.530462 6 32 6 z M 53.642578 28.134766 C 53.868578 29.391766 54 30.679 54 32 C 54 44.131 44.131 54 32 54 C 25.383867 54 19.447695 51.057454 15.412109 46.419922 L 18.494141 42.347656 L 6 42 L 9.7246094 53.931641 L 12.945312 49.675781 C 17.692812 54.79188 24.469735 58 32 58 C 46.359 58 58 46.359 58 32 C 58 30.853 57.914531 29.726141 57.769531 28.619141 L 53.642578 28.134766 z" />
+          </svg>
+          {t.Forms.PublicTransportTripRequestsSettings.default}
+        </button>
+      </section>
+
+      <section className={styles.itemHead}>
+        <p className={styles.itemsHeader}>{t.global.order}</p>
+        <p className={styles.itemsHeader}>{t.global.sorting}</p>
+      </section>
+
+      <Menu className={styles.listSetting}>
+        {localSetting
+        && Object.entries(localSetting).map(([key, value]) => {
+          const settingName = Object.entries(t.Forms.informationAttributesOfRegistries).find(
+            ([label]) => label === key
+          );
+          return (
+            <Menu.Item
+              key={key}
+              onClick={() => {
+                setDefaultState(false);
+                setLocalSetting({ ...localSetting, [key]: !value });
+              }}
+              icon={<Checkbox checked={isDefaultState ? isColumnVisible(key) : value} />}
+            >
+              <span>{settingName && settingName[1]}</span>
+            </Menu.Item>
+          );
+        })}
+      </Menu>
+
+      <div className={styles.menuButtons}>
+        <Button type="primary" onClick={handleSuccess}>
+          {t.global.success}
+        </Button>
+        <Button onClick={defaultStateOnCancel}>{t.global.cancellation}</Button>
+      </div>
+    </div>
+  );
+};

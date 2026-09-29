@@ -1,0 +1,102 @@
+.repairOrdersTable {
+  &__row {
+    &:hover {
+      z-index: 1;
+    }
+  }
+
+  :global {
+    .ant-table {
+      background-color: transparent;
+
+      tr {
+        td:first-child,
+        th:first-child {
+          border-radius: 10px 0 0 10px;
+          padding-right: 14px;
+        }
+
+        td:last-child,
+        th:last-child {
+          border-radius: 0 10px 10px 0;
+        }
+
+        td {
+          padding: 14px 16px;
+
+          table {
+            border-spacing: 0;
+          }
+
+          td {
+            padding: 0;
+          }
+
+          &:first-child + td {
+            padding-left: 0;
+          }
+        }
+      }
+    }
+
+    .ant-table-thead {
+      tr,
+      th {
+        background-color: #fff;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 22px;
+        letter-spacing: -0.3px;
+        color: #737373;
+      }
+    }
+
+    .ant-table-body {
+      table {
+        border-spacing: 0 10px;
+      }
+    }
+
+    .ant-table-row {
+      position: relative;
+      background-color: #fff;
+
+      .ant-table-cell {
+        background-color: #fff;
+      }
+    }
+
+    .ant-checkbox-inner {
+      &::after {
+        display: block;
+      }
+    }
+  }
+
+  & .outer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    .outerSpan {
+      word-break: break-all;
+    }
+
+    .link {
+      font-size: 14px;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+
+      &:hover {
+        color: var(--jade);
+        transition: color 0.5s;
+      }
+    }
+  }
+}
+
+.textArea {
+  margin-top: 16px;
+}

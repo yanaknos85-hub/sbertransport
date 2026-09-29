@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250501-1648"
+      author: medvedev-ad
+      context: "TRANSPORT-31818"
+      changes:
+        - tagDatabase:
+            tag: "D-04.008.000"
+        - modifyDataType:
+            schemaName: ${schema_name}
+            tableName: tokens
+            columnName: token
+            newDataType: varchar(4000)

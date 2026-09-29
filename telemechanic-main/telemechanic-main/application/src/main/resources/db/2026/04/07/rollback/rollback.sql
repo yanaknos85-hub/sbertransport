@@ -1,0 +1,1 @@
+update telemechanic.driver set contractor_id = null, autopark_id = null;

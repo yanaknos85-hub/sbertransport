@@ -1,0 +1,29 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20260324-1
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/ddl_department_time_zone.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/rollback_ddl_department_time_zone.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20260324-2
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/alter_ddl_ewb.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/rollback_alter_ddl_ewb.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

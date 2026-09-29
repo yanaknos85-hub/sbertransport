@@ -1,0 +1,56 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240301"
+      author: blandin-ad
+      changes:
+        - addColumn:
+            schemaName: trips
+            tableName: trip_history
+            columns:
+              - column:
+                  name: old_driver_id
+                  type: uuid
+                  remarks: Старый водитель
+              - column:
+                  name: new_driver_id
+                  type: uuid
+                  remarks: Новый водитель
+              - column:
+                  name: old_status
+                  type: varchar(32)
+                  remarks: Старый статус
+              - column:
+                  name: new_status
+                  type: varchar(32)
+                  remarks: Новый статус
+              - column:
+                  name: actor_id
+                  type: uuid
+                  remarks: ID инициатора
+              - column:
+                  name: actor_type
+                  type: varchar(16)
+                  remarks: Тип инициатора
+              - column:
+                  name: action
+                  type: varchar(32)
+                  remarks: Действие
+      rollback:
+        - dropColumn:
+            schemaName: trips
+            tableName: trip_history
+            columns:
+              - column:
+                  name: old_driver_id
+              - column:
+                  name: new_driver_id
+              - column:
+                  name: old_status
+              - column:
+                  name: new_status
+              - column:
+                  name: actor_id
+              - column:
+                  name: actor_type
+              - column:
+                  name: action

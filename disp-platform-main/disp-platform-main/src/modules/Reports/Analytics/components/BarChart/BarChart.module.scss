@@ -1,0 +1,93 @@
+.container {
+  width: 100%;
+
+  .wrapper {
+    position: relative;
+  }
+
+  .range {
+    width: auto;
+    height: calc(100% - 45px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    padding-right: 6px;
+
+    .scaleMark {
+      font-family: SB Sans Interface;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 0.2px;
+      color: var(--black);
+      text-align: right;
+      white-space: nowrap;
+    }
+  }
+
+  .text {
+    font-size: 9px;
+    line-height: 12px;
+    font-weight: 600;
+    text-anchor: middle;
+    fill: var(--black);
+  }
+
+  .periodLabel {
+    font-family: SB Sans Text;
+    font-size: 10px;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+    fill: var(--pale-grey);
+    text-anchor: middle;
+  }
+
+  .tooltip {
+    min-width: 195px;
+    position: absolute;
+    z-index: 1000;
+    pointer-events: 'none';
+    background-color: var(--dark-grey);
+    color: #c2c2c2;
+    padding: 8px 12px;
+    border-radius: 4px;
+
+    .item {
+      display: flex;
+      align-items: center;
+    }
+
+    .point {
+      width: 6px;
+      height: 6px;
+      display: inline-block;
+      border-radius: 50px;
+      margin-right: 4px;
+    }
+
+    .date {
+      display: block;
+      font-family: SB Sans Interface;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 0.2px;
+      color: #c2c2c2;
+      margin-bottom: 3px;
+    }
+
+    .text {
+      font-family: SB Sans Text;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+      color: var(--white);
+
+      &:last-child {
+        margin-left: auto;
+      }
+    }
+  }
+}

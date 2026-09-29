@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package ru.sber.transport.dispatcher.grpc.dto;
+
+option java_multiple_files = true;
+option java_package = "ru.sber.transport.dispatcher.grpc.dto";
+
+message GetOrganizationsForPenaltiesRequest {
+}
+
+message GetOrganizationsForPenaltiesResponse {
+  repeated string tins = 1;
+}

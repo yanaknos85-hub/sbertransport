@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250604-1429"
+      author: rakhimov-di
+      context: "TRANSPORT-32834"
+      changes:
+        - tagDatabase:
+            tag: "D-04.010.000"
+        - addColumn:
+            schemaName: ${schema_name}
+            tableName: employee
+            columns:
+              - column:
+                  name: personnel_number
+                  type: varchar(100)
+                  remarks: Табельный номер

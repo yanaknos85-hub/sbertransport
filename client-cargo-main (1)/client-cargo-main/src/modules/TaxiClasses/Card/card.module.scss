@@ -1,0 +1,357 @@
+.card {
+  padding-right: var(--padding-fourth) !important;
+
+  &:not(:last-child) {
+    margin-right: var(--margin-half) !important;
+  }
+
+  &__label {
+    height: auto;
+    width: 100%;
+    padding: var(--padding-half) var(--padding-half) 0;
+  }
+
+  & > span {
+    display: flex !important;
+    padding: 0 var(--padding-half) !important;
+  }
+
+  border: none !important;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.wrapperOpacity {
+  opacity: 0.5;
+}
+
+.card__disabled {
+  .taxi {
+    opacity: 0.2;
+  }
+}
+
+.limit_bar {
+  flex: 1;
+  align-items: center;
+  display: flex;
+}
+
+.name__corporate {
+  background: url(../../../../../shared/components/Images/sber.jpg) no-repeat no-repeat center 0;
+  background-size: contain;
+  width: 15px;
+  height: 15px;
+  margin-right: var(--margin-half);
+}
+
+.name__personal {
+  display: none;
+}
+
+.info {
+  position: absolute;
+  right: 253px;
+  top: 5px;
+}
+
+.info__ant_btn_circle {
+  background-color: inherit;
+  border: 0;
+}
+
+.waitingTime,
+.name {
+  flex: 1;
+}
+
+.personalClass,
+.publicClass {
+  font-weight: 600;
+  font-family: 'SB Sans Text Bold';
+  color: #262626;
+  padding: 0 12px;
+}
+
+.taxi {
+  flex: 1.5;
+  font-family: 'SB Sans Text Bold';
+}
+
+.waitingTime {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.bonusCost {
+  display: flex;
+  background-color: var(--font-green-color);
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  height: 21px;
+  border-radius: 4px;
+  font-family: 'SB Sans Text Bold', system-ui;
+  margin: 0 4px 0 0;
+}
+
+.request__btn {
+  width: 100%;
+  padding: 0 var(--padding-base) 0;
+  height: 32px;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.name__TAXI {
+  background: url(../../../../../shared/components/Images/sber.jpg) no-repeat no-repeat center 0;
+  background-size: contain;
+  background-position: center;
+  width: 15px;
+  height: 15px;
+  margin: 0 0 0 -5px;
+}
+
+.name__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  i {
+    margin-left: var(--margin-fourth);
+  }
+}
+
+.taxiClass {
+  width: 50px;
+  height: 30px;
+
+  &.TAXI,
+  &.taxi {
+    background: url(../../../../../shared/components/Images/car_yellow.svg) no-repeat no-repeat center 0;
+    background-size: contain;
+    width: 100%;
+  }
+
+  &.ECONOMY,
+  &.economy {
+    background: url(../../../../../shared/components/Images/car_yellow.svg) no-repeat no-repeat center 0;
+    background-size: contain;
+    width: 100%;
+  }
+
+  &.COMFORT,
+  &.comfort {
+    background: url(../../../../../shared/components/Images/car_yellow.svg) no-repeat no-repeat center 0;
+    background-size: contain;
+    width: 100%;
+  }
+
+  &.PERSONAL,
+  &.personal {
+    background: url(../../../../../shared/components/Images/android/red.png) no-repeat no-repeat center 0;
+    background-size: contain;
+    width: 100%;
+  }
+
+  &.BUSINESS,
+  &.business {
+    background: url(../../../../../shared/components/Images/car_yellow.svg) no-repeat no-repeat center 0;
+    background-size: contain;
+    width: 100%;
+  }
+
+  &.BICYCLE,
+  &.bicycle {
+    background: url(../../../../../shared/components/Images/bicycle.png) no-repeat no-repeat center 0;
+    background-size: 55%;
+    background-position-x: 46%;
+    background-position-y: 53%;
+  }
+
+  &.CARSHARING,
+  &.carsharing {
+    background: url(../../../../../shared/components/Images/android/blue.png) no-repeat no-repeat center 0;
+    background-size: contain;
+    width: 100%;
+  }
+
+  &.WALK,
+  &.walk {
+    background: url(../../../../../shared/components/Images/walk.png) no-repeat no-repeat center 0;
+    background-size: contain;
+    width: 100%;
+  }
+
+  &.PUBLIC,
+  &.public {
+    background: url(../Images/public.png) no-repeat no-repeat center 0;
+    background-size: contain;
+    width: 100%;
+  }
+
+  &.SCOOTER,
+  &.scooter {
+    background: url(../Images/scooter.svg) no-repeat no-repeat center 0;
+    background-size: contain;
+    width: 100%;
+  }
+
+  &.YANDEX,
+  &.yndex {
+    background: url(../../../../../shared/components/Images/external/yandex.jpeg) no-repeat no-repeat center 0;
+    background-size: contain;
+    width: 30px;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+
+  &.CITYMOBIL,
+  &.citymobil {
+    background: url(../../../../../shared/components/Images/external/citi.png) no-repeat no-repeat center 0;
+    background-size: contain;
+    width: 100%;
+  }
+
+  &.UBER,
+  &.uber {
+    background: url(../../../../../shared/components/Images/external/uber.png) no-repeat no-repeat center 0;
+    background-size: contain;
+    width: 30px;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+
+  &.VIP_BUS,
+  &.SMALL_BUS,
+  &.MIDDLE_BUS,
+  &.LARGE_BUS {
+    background: url(../../../../../shared/components/Images/orders/coop.png) no-repeat no-repeat center 0;
+    background-size: contain;
+    width: 55px;
+    margin: 0 auto;
+  }
+}
+
+.notifyButton {
+  width: 141px;
+}
+
+.additionalButton {
+  text-align: center;
+  margin: 8px;
+}
+
+.publicTransportCostInfoContainer {
+  width: 100%;
+  text-align: right;
+}
+
+.showToolTip {
+  display: block !important;
+}
+
+.toolTip {
+  flex-direction: column;
+  position: fixed;
+  left: 65.4%;
+  overflow: hidden;
+  text-align: left;
+  font-size: 14px;
+  margin-top: -8px;
+  color: #262626;
+  font-family: SB Sans Text, sans-serif;
+  z-index: 1000;
+  align-items: flex-start;
+  display: none;
+  justify-content: flex-start;
+
+  .title {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+    letter-spacing: -0.3px;
+    line-height: 22px;
+    font-weight: 600;
+  }
+  .desc,
+  .tipWrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .desc {
+    flex-direction: row;
+    color: #737373;
+    white-space: pre-line;
+    position: relative;
+    letter-spacing: -0.3px;
+    line-height: 24px;
+    display: inline-block;
+  }
+  .tipWrapper {
+    flex-direction: column;
+  }
+  .tipWrapper > * + * {
+    margin-top: 4px;
+  }
+  .rightIcon {
+    border-radius: 8px;
+    background-color: #fff;
+    flex-direction: row;
+    padding: 11px 16px;
+    filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.12));
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .tipImg {
+    position: relative;
+    width: 22px;
+    height: 25px;
+    flex-shrink: 0;
+    filter: drop-shadow(2px 0px 1px rgba(0, 0, 0, 0.04));
+  }
+  .rightIcon {
+    align-self: stretch;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    padding: 0 8px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    transform-origin: 0 0;
+    margin-left: -14px;
+    background: transparent;
+    filter: drop-shadow(2px 0px 1px rgba(0, 0, 0, 0.04));
+  }
+  .markup {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .tipContainer {
+    border-radius: 8px;
+    background: #fff;
+    flex-direction: row;
+    padding: 11px 16px;
+    box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.12);
+    filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.12));
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+}

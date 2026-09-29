@@ -1,0 +1,127 @@
+{
+    "meta": {
+        "api_version": "3.0.496128",
+        "code": 200,
+        "issue_date": "20201016"
+    },
+    "result": {
+        "ads": [
+            {
+                "branch_id": "70000001041151670_t23ylo8H190585992H0J225J3HI35vj6xbxG79815890033110323042j6A06G64I5GH0G40521638J7885H43uvhziAA24GB1H272JA12271598HHII58f",
+                "lat": 57.00815,
+                "lon": 40.989292,
+                "options": {
+                    "logo": {
+                        "img_url": "https://ams2-cdn.2gis.com/previews/1098005868051431424/e772fb56-cdff-4bea-9f16-d8926992145a/1/image.png"
+                    },
+                    "actions": [
+                        {
+                            "caption": "Смотреть меню",
+                            "name": "Смотреть меню",
+                            "platforms": [
+                                "ios",
+                                "android",
+                                "online"
+                            ],
+                            "type": "link",
+                            "value": "http://link.2gis.ru/1.2/D1A9CDB7/webapi/20201001/project65/70000001041151670/null/t23ylo8H190585992H0J225J7HI35vj6xbxG79815890033110323042j6A06G64I5GH1G40521638J7885H43uvhziAA24GB1H272JA12271598HH3IJ345?https://www.instagram.com/p/CB5e5EriSRY/"
+                        }
+                    ],
+                    "images": [
+                        {
+                            "url": "https://ams2-cdn.2gis.com/previews/1098005868051431424/e772fb56-cdff-4bea-9f16-d8926992145a/3/"
+                        }
+                    ],
+                    "color": "#FE3E77"
+                },
+                "org": {
+                    "id": "70000001041151669"
+                },
+                "stat": {
+                    "rubr": "161",
+                    "adsalg": 12
+                },
+                "text": "Шаурма в центре Иваново. Круглосуточно, доставка от 400 руб. бесплатно",
+                "title": "Golden Mangal, кафе",
+                "type": "recovery"
+            },
+            {
+                "branch_id": "70000001018525326_t23ylo8H190585648H1J225J3HI35vj6xbxG79815890033110323042j6A06G64I5GH0G40295378J70B7H43uvhziAA24GB1H272JA12271598HHII527",
+                "lat": 56.990996,
+                "lon": 40.990785,
+                "options": {
+                    "logo": {
+                        "img_url": "https://ams2-cdn.2gis.com/previews/1054931558940540950/bKQYp8lGq9DgMNpTos4A2QM523aQPVd/1/image.png"
+                    },
+                    "actions": [
+                        {
+                            "caption": "Заказать",
+                            "name": "Заказать",
+                            "platforms": [
+                                "ios",
+                                "android",
+                                "online"
+                            ],
+                            "type": "phone",
+                            "value": "+74932360650"
+                        }
+                    ],
+                    "images": [
+                        {
+                            "url": "https://ams2-cdn.2gis.com/previews/1054931558940540950/bKQYp8lGq9DgMNpTos4A2QM523aQPVd/3/"
+                        }
+                    ],
+                    "color": "#E41732"
+                },
+                "org": {
+                    "id": "70000001018525325"
+                },
+                "stat": {
+                    "rubr": "161",
+                    "adsalg": 12
+                },
+                "text": "Сочная и большая шаурма в обычном или сырном лаваше от 150 р.",
+                "title": "Кафе-шашлычная, ИП Катеринчук Т.В.",
+                "type": "recovery",
+                "warning": "ИП Катеренчук Т. В., ОГРНИП 312526317400020."
+            }
+        ],
+        "items": [
+            {
+                "full_name": "Иваново, Демидова",
+                "id": "9148675477471334_bxt236G6G7I5G2GJ1HH95vj6xij6A085AA2B78843uvhzH19054GB14656H0ylo84981580I917884837JJH0JIJGJI010",
+                "name": "Демидова",
+                "point": {
+                    "lat": 57.005947,
+                    "lon": 40.97225
+                },
+                "region_id": "65",
+                "type": "street"
+            },
+            {
+                "address": {
+                    "building_id": "9148572398260345",
+                    "components": [
+                        {
+                            "number": "87",
+                            "street": "Ташкентская",
+                            "street_id": "9148675477471236",
+                            "type": "street_number"
+                        }
+                    ],
+                    "postcode": "153035"
+                },
+                "address_name": "Ташкентская, 87",
+                "id": "70000001022715878_bxt236G6G7I5G2G4H1HH5vj6xij6A085AA2311313uvhzH19054GB148A99Gylo84981580I703132832JJH0JIJGJI0fc",
+                "name": "Магазин кондитерских изделий, ИП Демидова О.Ю.",
+                "point": {
+                    "lat": 56.972959,
+                    "lon": 40.965149
+                },
+                "region_id": "65",
+                "type": "branch"
+            }
+        ],
+        "total": 2
+    }
+}

@@ -1,0 +1,67 @@
+.routePanel {
+  padding: 2px 12px;
+
+  .title {
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .waypoint {
+    padding: 24px 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid rgba(112, 112, 112, 0.1);
+    }
+  }
+
+  .checkbox {
+    align-self: flex-start;
+    margin-top: 6px;
+
+    &.manual {
+      :global(.adm-checkbox-icon) {
+        background-color: #FF9A32;
+        border-color: #FF9A32;
+        color: white;
+      }
+    }
+
+    :global(.adm-checkbox-icon) {
+      border-radius: 3px;
+    }
+  }
+
+  .waypointInfo {
+    flex-grow: 1;
+  }
+
+  .waypointName {
+    font-size: 12px;
+    color: #A8ABB3;
+  }
+
+  .address {
+    margin-top: 2px;
+    font-size: 16px;
+  }
+
+  .checkin {
+    font-size: 10px;
+
+    &.auto {
+      color: #19B150;
+    }
+
+    &.manual {
+      color: #FF9A32;
+    }
+  }
+
+  .time {
+    font-size: 14px;
+    color: #A8ABB3;
+  }
+}

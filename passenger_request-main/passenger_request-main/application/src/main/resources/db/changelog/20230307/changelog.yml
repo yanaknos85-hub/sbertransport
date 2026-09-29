@@ -1,0 +1,66 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230307"
+            author: sigalovaa
+            dbms: postgresql
+            changes:
+                -   dropForeignKeyConstraint:
+                        baseTableSchemaName: request
+                        baseTableName: request_for_personal_history
+                        constraintName: fk_personal_history_employee
+                -   dropForeignKeyConstraint:
+                        baseTableSchemaName: request
+                        baseTableName: request_for_public_history
+                        constraintName: fk_public_history_employee
+                -   dropForeignKeyConstraint:
+                        baseTableSchemaName: request
+                        baseTableName: request_for_carsharing_history
+                        constraintName: fk_carsharing_history_employee
+            rollback:
+                -   addForeignKeyConstraint:
+                        baseTableSchemaName: request
+                        baseTableName: request_for_personal_history
+                        baseColumnNames: initiator_id
+                        constraintName: fk_personal_history_employee
+                        onDelete: CASCADE
+                        referencedColumnNames: id
+                        referencedTableName: employee
+                        referencedTableSchemaName: request
+                -   addForeignKeyConstraint:
+                        baseTableSchemaName: request
+                        baseTableName: request_for_public_history
+                        baseColumnNames: initiator_id
+                        constraintName: fk_public_history_employee
+                        onDelete: CASCADE
+                        referencedColumnNames: id
+                        referencedTableName: employee
+                        referencedTableSchemaName: request
+                -   addForeignKeyConstraint:
+                        baseTableSchemaName: request
+                        baseTableName: request_for_carsharing_history
+                        baseColumnNames: initiator_id
+                        constraintName: fk_carsharing_history_employee
+                        onDelete: CASCADE
+                        referencedColumnNames: id
+                        referencedTableName: employee
+                        referencedTableSchemaName: request
+    -   changeSet:
+            id: "20230315"
+            author: shabrov-ie
+            dbms: postgresql
+            changes:
+                -   tagDatabase:
+                        tag: "20230315"
+                -   addColumn:
+                        schemaName: request
+                        tableName: taxi_tariff
+                        columns:
+                            -   column:
+                                    name: min_ride_distance_cost
+                                    type: integer
+                                    remarks: Стоимость минимальной поездки с включенным расстоянием
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: taxi_tariff
+                        columnName: min_ride_distance_cost

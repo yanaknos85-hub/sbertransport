@@ -1,0 +1,109 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250702-1429"
+      author: zhirov_aa
+      preConditions:
+        - not:
+            tableExists:
+              schemaName: driver_track
+              tableName: expected_route
+              onFail: MARK_RAN
+      changes:
+        - createTable:
+            schemaName: driver_track
+            tableName: expected_route
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: trip_id
+                  type: uuid
+                  remarks: Идентификатор поездки
+              - column:
+                  name: coords
+                  type: json
+                  remarks: маршрут
+              - column:
+                  name: source
+                  type: varchar(7)
+                  remarks: Источник данных
+        - createIndex:
+            columns:
+              - column:
+                  name: trip_id
+            indexName: driver_track_expected_route_trip_id_idx
+            schemaName: driver_track
+            tableName: expected_route
+        - addUniqueConstraint:
+            schemaName: driver_track
+            tableName: expected_route
+            columnNames: trip_id,source
+            constraintName: driver_track_expected_route_trip_id_source_uk
+      rollback:
+        - dropUniqueConstraint:
+            schemaName: driver_track
+            tableName: route
+            constraintName: driver_track_route_trip_id_source_uk
+        - dropIndex:
+            indexName: driver_track_expected_route_trip_id_idx
+            schemaName: driver_track
+            tableName: expected_route
+        - dropTable:
+            schemaName: driver_track
+            tableName: expected_route
+
+  - changeSet:
+      id: "20250702-1430"
+      author: zhirov_aa
+      preConditions:
+        - not:
+            tableExists:
+              schemaName: driver_track
+              tableName: expected_waypoints_trip
+              onFail: MARK_RAN
+      changes:
+        - createTable:
+            schemaName: driver_track
+            tableName: expected_waypoints_trip
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: trip_id
+                  type: uuid
+                  remarks: Идентификатор поездки
+              - column:
+                  name: waypoints
+                  remarks: Плановые путевые точки
+                  type: json
+              - column:
+                  name: is_track_created
+                  type: boolean
+                  remarks: Флаг, что маршрут создан
+                  constraints:
+                    nullable: false
+                    defaultValueBoolean: false
+        - createIndex:
+            columns:
+              - column:
+                  name: trip_id
+            indexName: expected_waypoints_trip_id_idx
+            schemaName: driver_track
+            tableName: expected_waypoints_trip
+      rollback:
+        - dropIndex:
+            indexName: expected_waypoints_trip_id_idx
+            schemaName: driver_track
+            tableName: expected_waypoints_trip
+        - dropTable:
+            schemaName: driver_track
+            tableName: expected_waypoints_trip
+

@@ -1,0 +1,27 @@
+application: geo-zones
+repo: app_platform_geo_zones
+resources:
+  limits:
+    cpu: 500m
+    memory: 1G
+  requests:
+    cpu: 500m
+    memory: 1G
+port:
+  grpc:
+    number: 6565
+    target: 6565
+    name: geo-zones
+  http:
+    number: 8022
+    target: 8080
+    name: geo-zones
+secman:
+  type: none
+profiles: kafka,kafka-ssl,kafka-avro
+additional:
+  envs:
+    - name: SPRING_CLOUD_CONFIG_URI
+      value: http://http-config-server:8080
+    - name: INDEX_ROOT
+      value: /tmp/index

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package ru.sber.transport.srm.grpc.service;
+
+import "dto/SrmDescriptor.proto";
+
+service SrmService {
+    rpc cancelRequest(ru.sber.transport.srm.grpc.dto.SrmCancelRequest) returns (stream ru.sber.transport.srm.grpc.dto.SrmCancelResponse) {}
+
+    rpc getRequest(ru.sber.transport.srm.grpc.dto.SrmGetRequest) returns (ru.sber.transport.srm.grpc.dto.SrmGetResponse) {}
+
+    rpc addBunch(ru.sber.transport.srm.grpc.dto.SrmAddBunchRequest) returns (ru.sber.transport.srm.grpc.dto.SrmAddBunchResponse) {}
+}

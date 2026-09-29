@@ -1,0 +1,17 @@
+.formItem {
+  display: block !important;
+  margin-bottom: 0 !important;
+
+  :global(label) {
+    color: #737373!important;
+    font-size: 12px!important;
+  }
+
+  :global(.ant-row) {
+    flex-flow: column;
+  }
+
+  :global(.ant-form-item-label) {
+    text-align: left;
+  }
+}

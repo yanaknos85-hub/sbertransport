@@ -1,0 +1,130 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221108"
+            author: medvedev-ad
+            context: "20221108"
+            changes:
+                -   tagDatabase:
+                        tag: "20221108"
+                -   createIndex:
+                        schemaName: request
+                        tableName: employee
+                        column:
+                            name: user_id
+                        indexName: request_employee_user_id_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        column:
+                            name: request_status
+                        indexName: request_request_for_taxi_request_status_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: request_for_public
+                        column:
+                            name: request_status
+                        indexName: request_request_for_public_request_status_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: request_for_personal
+                        column:
+                            name: request_status
+                        indexName: request_request_for_personal_request_status_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        column:
+                            name: request_status
+                        indexName: request_request_for_carsharing_request_status_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: request_for_cargo
+                        column:
+                            name: request_status
+                        indexName: request_request_for_cargo_request_status_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        column:
+                            name: passenger_id
+                        indexName: request_request_for_taxi_passenger_id_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: request_for_public
+                        column:
+                            name: passenger_id
+                        indexName: request_request_for_public_passenger_id_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: request_for_personal
+                        column:
+                            name: passenger_id
+                        indexName: request_request_for_personal_passenger_id_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        column:
+                            name: passenger_id
+                        indexName: request_request_for_carsharing_passenger_id_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: request_for_cargo
+                        column:
+                            name: passenger_id
+                        indexName: request_request_for_cargo_passenger_id_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: drawbacks
+                        column:
+                            name: request_id
+                        indexName: request_drawbacks_request_id_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: transport_compensation
+                        column:
+                            name: request_id
+                        indexName: request_transport_compensation_request_id_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: advantages
+                        column:
+                            name: request_id
+                        indexName: request_advantages_request_id_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: compensation_document
+                        column:
+                            name: request_id
+                        indexName: request_compensation_document_request_id_idx
+                -   createIndex:
+                        schemaName: request
+                        tableName: address
+                        columns:
+                            -   column:
+                                    name: latitude
+                            -   column:
+                                    name: longitude
+                        indexName: request_address_latitude_longitude_id_idx
+    -   changeSet:
+            id: "20221108-1"
+            author: medvedev-ad
+            context: "20221108"
+            preConditions:
+                - onFail: MARK_RAN
+                  onError: HALT
+                  tableExists:
+                      tableName: urls
+                      schemaName: request
+            changes:
+                -   tagDatabase:
+                        tag: "20221108"
+                -   createIndex:
+                        schemaName: request
+                        tableName: roles
+                        columns:
+                            -   column:
+                                    name: url_id
+                        indexName: request_roles_url_id_idx
+            rollback:
+                -   sql:
+                        sql: select 1 #no need to rollback

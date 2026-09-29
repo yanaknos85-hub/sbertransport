@@ -1,0 +1,44 @@
+.input {
+  border: none !important;
+  box-sizing: border-box !important;
+  &::placeholder {
+    font-size: 14px !important;
+    line-height: 22px !important;
+    font-weight: 400 !important;
+    letter-spacing: -0.3px !important;
+    font-family: 'SB Sans Text', sans-serif !important;
+    color: #909090 !important;
+  }
+  &:hover {
+    border: none !important;
+  }
+  &:global(.ant-input-affix-wrapper) {
+    height: 48px !important;
+    padding: 13px 16px !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+  }
+  &:global(.ant-input-affix-wrapper-focused) {
+    border: 2px solid #10BF6A !important;
+    padding: 12px 15px !important;
+  }
+  input {
+    padding: 0 !important;
+
+    &::placeholder {
+      font-size: 14px !important;
+      line-height: 22px !important;
+      font-weight: 400 !important;
+      letter-spacing: -0.3px !important;
+      font-family: 'SB Sans Text', sans-serif !important;
+      color: #909090 !important;
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+databaseChangeLog:
+    -   changeSet:
+            id: requests/20220802
+            author: smirnova
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/add_column_template_requests.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_column_template_requests.sql
+                        relativeToChangelogFile: true

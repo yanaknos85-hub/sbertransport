@@ -1,0 +1,24 @@
+.tariffCard {
+  width: 150px;
+  font-size: 12px;
+  height: 200px;
+  border-radius: 8px;
+
+  h3 {
+  font-size: 14px;
+  font-weight: 600;
+  }
+}
+
+.container {
+  display: flex;
+}
+
+.row {
+  margin-right: 10px;
+}
+
+.active {
+  border: 2px solid green;
+  border-radius: 8px;
+}

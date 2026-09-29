@@ -1,0 +1,113 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  gap: 8px;
+
+  .items {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+    gap: 8px;
+
+    > * {
+      flex: 1 1 auto;
+    }
+  }
+
+  .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .wrapper {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+
+      :global(.ant-row) {
+        display: block;
+        margin-bottom: 0;
+      }
+
+      :global(.sbt-kit-select) {
+        min-width: 300px;
+      }
+
+      :global(.sbt-kit-select-selection-placeholder) {
+        color: var(--dark-grey);
+        padding-left: 3px;
+      }
+
+      :global(.sbt-kit-select-selection-overflow) {
+        gap: 4px;
+      }
+
+      :global(.sbt-kit-select-open .sbt-kit-select-selection-placeholder) {
+        color: var(--pale-grey);
+      }
+
+      :global(.ant-picker) {
+        width: 118px;
+        height: 40px;
+        padding: 9px 10px 9px 16px;
+      }
+
+      :global(.ant-picker-input > input) {
+        font-family: 'SB Sans Text', sans-serif;
+        letter-spacing: -0.3px;
+        color: var(--dark-grey);
+      }
+
+      :global(.ant-picker-suffix) {
+        margin: 0;
+
+        &::after {
+          content: '';
+          position: absolute;
+          right: 35px;
+          width: 1px;
+          height: 24px;
+          top: 50%;
+          transform: translateY(-50%);
+          background-color: rgba(38, 38, 38, 0.08);
+          visibility: visible;
+        }
+      }
+
+      .months {
+        width: 210px;
+        height: 40px;
+        min-width: 210px;
+
+        :global(.sbt-kit-select-selector) {
+          padding-left: 8px !important;
+          padding-right: 58px !important;
+        }
+
+        :global(.sbt-kit-select-selection-item-content) {
+          font-family: SB Sans Interface;
+          font-size: 12px;
+        }
+
+        :global(.anticon-close) {
+          height: 10px;
+        }
+
+        :global(.sbt-kit-select-selector::before) {
+          right: 49px;
+        }
+
+        :global(.sbt-kit-select-selection-search) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .growSelect { 
+    flex-grow: 1;
+  }
+}

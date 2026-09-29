@@ -1,0 +1,25 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="TripApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <module name="application" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="ru.sber.transport.trip_cargo.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
+      <option name="credential" />
+      <option name="region" />
+      <option name="useCurrentConnection" value="false" />
+    </extension>
+    <option name="SPRING_BOOT_MAIN_CLASS" value="TripCargoApplication" />
+    <option name="ACTIVE_PROFILES" value="consul,logging,kafka" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <envs>
+      <env name="KAFKA_BROKERS" value="120.0.0.1:9092,127.0.0.1:9093" />
+    </envs>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

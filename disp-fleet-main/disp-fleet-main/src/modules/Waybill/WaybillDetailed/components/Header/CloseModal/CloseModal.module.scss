@@ -1,0 +1,22 @@
+.itemBlock {
+  margin-bottom: 16px;
+
+  label, span {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+  }
+
+  label {
+    color: #262626;
+  }
+
+  span {
+    color: #909090;
+  }
+
+  input {
+    margin: 8px 0;
+    padding: 9px 16px;
+  }
+}

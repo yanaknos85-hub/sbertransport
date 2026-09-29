@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20231011"
+      author: blandin-ad
+      changes:
+        - addColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: dispatcher_id
+                  type: uuid
+                  remarks: Идентификатор диспетчера
+              - column:
+                  name: arrived_date
+                  type: timestamp
+                  remarks: Время прибытия
+      rollback:
+        - dropColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: dispatcher_id
+              - column:
+                  name: arrived_date

@@ -1,0 +1,3 @@
+alter table request.request_for_carsharing
+drop
+column status_comment;

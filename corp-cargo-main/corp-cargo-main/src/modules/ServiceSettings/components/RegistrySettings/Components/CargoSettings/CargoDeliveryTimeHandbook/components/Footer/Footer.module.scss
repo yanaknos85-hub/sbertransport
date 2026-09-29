@@ -1,0 +1,26 @@
+.buttonsLayout {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.button {
+  margin-right: 10px;
+}
+
+.backToDefaults {
+  background: var(--peach);
+  border-color: var(--peach);
+}
+
+.backToDefaults:hover {
+  background: var(--light-peach);
+  border-color: var(--light-peach);
+}
+
+.backToDefaults:active,
+.backToDefaults:focus {
+  background: var(--dark-peach);
+  border-color: var(--dark-peach);
+}

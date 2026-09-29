@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20231218"
+      author: blandin-ad
+      changes:
+        - sql:
+            sql: alter table contractors.contractor alter column autoassign set default false;
+      rollback:
+        - sql:
+            sql: alter table contractors.contractor alter column autoassign set default true;

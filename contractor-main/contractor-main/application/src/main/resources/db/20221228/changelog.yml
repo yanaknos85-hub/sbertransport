@@ -1,0 +1,57 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221228"
+            author: medvedev-ad
+            context: "20221228"
+            changes:
+                -   tagDatabase:
+                        tag: "20221228"
+                -   addColumn:
+                        schemaName: contractors
+                        tableName: trips
+                        columns:
+                            -   column:
+                                    name: digit_id
+                                    type: int8
+                                    remarks: Порядковый номер поездки
+                -   sql:
+                        dbms: postgresql
+                        sql: update "contractors"."trips" set digit_id = split_part(human_readable_id, '-', 3)::numeric
+                -   dropColumn:
+                        schemaName: contractors
+                        tableName: trips
+                        columnName: human_readable_id
+                -   addNotNullConstraint:
+                        schemaName: contractors
+                        tableName: trips
+                        columnName: digit_id
+                -   addUniqueConstraint:
+                        schemaName: contractors
+                        tableName: trips
+                        columnNames: digit_id,contractor_id
+                        constraintName: uk_trips_digit_id_contractor_id
+            rollback:
+                -   addColumn:
+                        schemaName: contractors
+                        tableName: trips
+                        columns:
+                            -   column:
+                                    name: human_readable_id
+                                    type: text
+                                    remarks: Человекочитаемый идентификатор
+                -   sql:
+                        dbms: postgresql
+                        sql: update "contractors"."trips" set human_readable_id = concat('TR-', (select(to_char(c.digit_id, 'FM0000')) from "contractors"."contractor" as c where c.id = trips.id), '-', to_char(digit_id, 'FM00000000'))
+                -   dropColumn:
+                        schemaName: contractors
+                        tableName: trips
+                        columnName: digit_id
+                -   addNotNullConstraint:
+                        schemaName: contractors
+                        tableName: trips
+                        columnName: human_readable_id
+                -   addUniqueConstraint:
+                        schemaName: contractors
+                        tableName: trips
+                        columnNames: human_readable_id
+                        constraintName: contractors_trips_human_readable_id_uk

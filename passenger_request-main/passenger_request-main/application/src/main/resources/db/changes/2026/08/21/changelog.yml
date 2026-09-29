@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20260821-add-taxi-waiting-time-to-fraud-type"
+      author: kyrakinev
+      dbms: postgresql
+      changes:
+        - sql:
+            sql: ALTER TYPE request.fraud_type ADD VALUE IF NOT EXISTS 'TAXI_WAITING_TIME'

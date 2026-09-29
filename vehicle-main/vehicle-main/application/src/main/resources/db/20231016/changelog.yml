@@ -1,0 +1,79 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20231016-1
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/create_engine_type_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/20231016-2
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_access_to_engine_types_operations.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/20231016-3
+            author: skakun-a
+            dbms: postgresql
+            context: "!test"
+            changes:
+                -   loadData:
+                        catalogName: vehicle
+                        columns:
+                            - column:
+                                  header: id
+                                  name: id
+                                  type: uuid
+                            - columm:
+                                  header: title
+                                  name: title
+                                  type: varchar
+                        file: dml/engine-types.csv
+                        relativeToChangelogFile: true
+                        schemaName: vehicle
+                        tableName: engine_type
+    -   changeSet:
+            id: vehicle/20231016-4
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/create_drive_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/20231016-5
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/grant_access_to_drive_operations.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/20231016-6
+            author: skakun-a
+            dbms: postgresql
+            context: "!test"
+            changes:
+                -   loadData:
+                        catalogName: vehicle
+                        columns:
+                            - column:
+                                  header: id
+                                  name: id
+                                  type: uuid
+                            - columm:
+                                  header: title
+                                  name: title
+                                  type: varchar
+                        file: dml/drives.csv
+                        relativeToChangelogFile: true
+                        schemaName: vehicle
+                        tableName: drive

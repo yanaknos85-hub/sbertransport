@@ -1,0 +1,77 @@
+@import 'styles/variables.scss';
+
+.container {
+  .title {
+    font-family: 'SB Sans Text';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.3px;
+    color: $black;
+    margin: 36px 20px 0;
+  }
+
+  .phone {
+    font-family: SB Sans Interface;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    color: $black;
+    margin: 5px 20px 0;
+  }
+
+  .pinCodeWrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 22px 20px 0;
+
+    .label {
+      font-family: 'SB Sans Text';
+      font-size: 14px;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+      color: $black;
+      margin-bottom: 12px;
+    }
+
+    .codeError {
+      :global(.adm-passcode-input-cell) {
+        border-color: $pale-red;
+        background-color: $light-beige;
+        box-shadow: none;
+
+        &::after {
+          background-color: $pale-red;
+        }
+      }
+    }
+
+    .error {
+      font-family: 'SB Sans Text';
+      font-size: 14px;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+      color: $pale-red;
+      margin-top: 12px;
+    }
+  }
+
+  .footer {
+    font-family: SB Sans Text;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+    color: $black;
+    margin: 12px 20px 0;
+
+    .count {
+      font-weight: 600;
+      margin-left: 12px;
+    }
+
+    .resend {
+      font-weight: 600;
+      margin-top: 28px;
+    }
+  }
+}

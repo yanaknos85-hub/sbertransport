@@ -1,0 +1,37 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20251009-1
+            author: tanini-v
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/set_not_in_use_transport_not_from_vehicle.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20251009-2
+            author: tanini-v
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/transport migration from vehicle to telemechanic.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20251009-3
+            author: tanini-v
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_transport_fuel_tank_volume_column.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: telemechanic/20251009-4
+            author: tanini-v
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/fill_transport_fuel_tank_volume_column.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

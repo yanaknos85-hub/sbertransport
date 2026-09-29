@@ -1,0 +1,13 @@
+databaseChangeLog:
+  -   include:
+        file: changelog/20251226/changelog.yml
+        relativeToChangelogFile: true
+  -   include:
+        file: changelog/20251230/changelog.yml
+        relativeToChangelogFile: true
+  -   include:
+        file: changelog/20260304/changelog.yml
+        relativeToChangelogFile: true
+  -   include:
+        file: changelog/20260401/changelog.yml
+        relativeToChangelogFile: true

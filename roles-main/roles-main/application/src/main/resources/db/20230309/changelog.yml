@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230309"
+      author: medvedev-ad
+      context: "20230309"
+      changes:
+        - tagDatabase:
+            tag: "20230309"
+        - addColumn: 
+            schemaName: roles
+            tableName: role
+            columns:
+              - column: 
+                  name: exclusive
+                  type: json
+                  defaultValue: "[]"
+                  constraints:
+                    nullable: false
+        - update:
+            schemaName: roles
+            tableName: role
+            columns:
+              - column:
+                  name: exclusive
+                  value: "[\"EXTERNAL\", \"INTERNAL\"]"
+      rollback:
+        - dropColumn:
+            schemaName: roles
+            tableName: role
+            columnName: exclusive

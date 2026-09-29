@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230606-0955"
+      author: medvedev-ad
+      context: "20230606"
+      changes:
+        - tagDatabase:
+            tag: "20230606"
+        - modifyDataType:
+            schemaName: contractors
+            tableName: contractor
+            columnName: digit_id
+            newDataType: bigint
+      rollback:
+        - modifyDataType:
+            schemaName: contractors
+            tableName: contractor
+            columnName: digit_id
+            newDataType: integer

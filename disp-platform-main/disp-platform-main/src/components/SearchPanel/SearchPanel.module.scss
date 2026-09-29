@@ -1,0 +1,34 @@
+.searchInput {
+  position: relative;
+  min-width: 340px;
+  color: #adadad;
+  height: fit-content;
+
+  &.short {
+    min-width: 190px;
+  }
+
+  .input {
+    height: 40px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 22px;
+    border-color: var(--solitude);
+    background-color: var(--solitude);
+  }
+
+  svg {
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+  :global {
+    .ant-input:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+}

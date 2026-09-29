@@ -1,0 +1,102 @@
+@import 'styles/variables.scss';
+
+.tripFinish {
+  padding: 5px 20px;
+  height: calc(100% - 40px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .title {
+    padding: 0 2px;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .card {
+    margin-top: 8px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px 4px rgba(0, 0, 0, 0.04), 0px 0px 1px 0px rgba(0, 0, 0, 0.04);
+    padding: 12px 16px 12px 16px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .cardTitle {
+    color: #A8ABB3;
+    font-size: 12px;
+  }
+
+  .cardValue {
+    display: flex;
+    gap: 12px;
+    font-size: 16px;
+    margin-top: 8px;
+  }
+
+  .waypoints {
+    margin-top: 10px;
+  }
+
+  .waypoint {
+    display: flex;
+    gap: 12px;
+
+    &:not(:first-child) {
+      .waypointInfo {
+        padding-top: 20px;
+      }
+    }
+
+    &:first-child {
+      .routeLine:first-child {
+        background: transparent;
+      }
+    }
+
+    &:last-child {
+      .routeLine:last-child {
+        background: transparent;
+      }
+    }
+  }
+
+  .waypointTitle {
+    color: #A8ABB3;
+    font-size: 12px;
+  }
+
+  .waypointAddress {
+    margin-top: 4px;
+    font-size: 16px;
+  }
+
+  .waypointTimes {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .waypointTime {
+    padding: 6px 8px;
+    background: #F2F2F2;
+  }
+
+  .route {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .routeLine {
+    flex: 1 1 0;
+    width: 3px;
+    background: $light-green;
+  }
+
+  .waypointIcon {
+    flex: 0 0 auto;
+  }
+}

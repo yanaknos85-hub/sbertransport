@@ -1,0 +1,24 @@
+{
+  "fromCity": "Москва",
+  "toCity": "Санкт-Петербург",
+  "loadingDateRange": {
+    "start": "2025-04-01",
+    "end": "2026-04-10"
+  },
+  "weightRange": {
+    "from": 500.0,
+    "to": 500.0
+  },
+  "bodyTypes": [
+    "refrigerator",
+    "temperature_controlled"
+  ],
+  "pageSetting": {
+    "page": 0,
+    "size": 20
+  },
+  "sortSetting": {
+    "property": "REQUEST_HUMAN_ID",
+    "directionAsc": true
+  }
+}

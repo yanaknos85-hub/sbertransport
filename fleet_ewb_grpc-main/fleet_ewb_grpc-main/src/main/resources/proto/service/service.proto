@@ -1,0 +1,14 @@
+syntax = "proto3";
+option java_package = "ru.sber.transport.ewb.grpc.service";
+import "dto/dto.proto";
+import "google/protobuf/wrappers.proto";
+
+package ru.sber.transport.ewb.grpc.service;
+
+service EwbService {
+  // Получение информации об активных ЭПЛ на определенную дату и время и по определенным подразделениям
+  rpc haveActiveEwb (ru.sber.transport.ewb.grpc.dto.HaveActiveEwbDto) returns (google.protobuf.BoolValue);
+
+  // Генерация первого титула ЭПЛ (синхронный метод)
+  rpc GenerateFirstTitle(ru.sber.transport.ewb.grpc.dto.FirstTitleRequestList) returns (ru.sber.transport.ewb.grpc.dto.FirstTitleResponseList);
+}

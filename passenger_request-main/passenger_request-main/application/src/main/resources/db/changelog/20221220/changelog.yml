@@ -1,0 +1,32 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221220"
+            author: blandin-ad
+            changes:
+                -   tagDatabase:
+                        tag: "20221220"
+                -   renameColumn:
+                        schemaName: request
+                        tableName: vehicle
+                        oldColumnName: contractor_id
+                        newColumnName: autopark_id
+            rollback:
+                -   renameColumn:
+                        schemaName: request
+                        tableName: vehicle
+                        oldColumnName: autopark_id
+                        newColumnName: contractor_id
+    -   changeSet:
+            id: "20221220-1"
+            author: delyukov-da
+            dbms: postgresql
+            changes:
+                -   tagDatabase:
+                        tag: "20221220-1"
+                -   sqlFile:
+                        path: change/create_eval_settings_table.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: rollback/create_eval_settings_table.sql
+                        relativeToChangelogFile: true

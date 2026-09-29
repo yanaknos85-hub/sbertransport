@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    username: postgres
+    password: root
+  cloud:
+    config:
+      uri: http://localhost
+    stream:
+      default-binder: integration
+      bindings:
+        rolesOutput-out-0:
+          destination: service.roles

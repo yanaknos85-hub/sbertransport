@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        rolesOutput-out-0:
+          destination: service.roles
+          binder: kafka

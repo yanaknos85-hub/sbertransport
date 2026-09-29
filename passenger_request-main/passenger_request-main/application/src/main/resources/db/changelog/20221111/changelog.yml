@@ -1,0 +1,54 @@
+databaseChangeLog:
+    - changeSet:
+        id: "20221111"
+        author: dudyrev-av
+        dbms: postgresql
+        context: "20221111"
+        changes:
+            - tagDatabase:
+                  tag: "20221111"
+            - dropColumn:
+                schemaName: request
+                tableName: request_for_taxi
+                columnName: contractor_login
+            - dropColumn:
+                schemaName: request
+                tableName: request_for_taxi
+                columnName: contractor_password
+            - dropColumn:
+                schemaName: request
+                tableName: request_for_taxi
+                columnName: contractor_url
+            - dropColumn:
+                schemaName: request
+                tableName: request_for_taxi
+                columnName: plan_start_time
+            - dropColumn:
+                schemaName: request
+                tableName: request_for_taxi
+                columnName: request_id
+        rollback:
+            - addColumn:
+                schemaName: request
+                tableName: request_for_taxi
+                columns:
+                    - column:
+                        name: contractor_login
+                        type: varchar(255)
+                        remarks: Логин для авторизации в системе контрагента
+                    - column:
+                        name: contractor_password
+                        type: varchar(255)
+                        remarks: Пароль для авторизации в системе
+                    - column:
+                        name: contractor_url
+                        type: varchar(255)
+                        remarks: URL системы контрагента
+                    - column:
+                        name: plan_start_time
+                        type: varchar(255)
+                        remarks: Плановое время начала поездки
+                    - column:
+                        name: request_id
+                        type: varchar(255)
+                        remarks: ID заявки в AC Сбертранспорт

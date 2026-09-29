@@ -1,0 +1,1 @@
+call migrations.fill_roles('driver_track', 'POST /batch', 'ROLE_DRIVER_CONTRACTOR', true);

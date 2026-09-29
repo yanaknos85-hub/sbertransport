@@ -1,0 +1,69 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20260205-1000"
+      author: zhirov_aa
+      preConditions:
+        - tableExists:
+            schemaName: driver_track
+            tableName: expected_waypoints_trip
+      changes:
+        - addColumn:
+            schemaName: driver_track
+            tableName: expected_waypoints_trip
+            columns:
+              - column:
+                  name: generation_attempts
+                  type: int
+                  remarks: Количество попыток генерации
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+              - column:
+                  name: generation_not_before
+                  type: timestamptz
+                  remarks: Генерация не будет совершена раньше указанного времени (NULL = можно сразу)
+                  constraints:
+                    nullable: true
+      rollback:
+        - dropColumn:
+            schemaName: driver_track
+            tableName: expected_waypoints_trip
+            columnName: generation_not_before
+        - dropColumn:
+            schemaName: driver_track
+            tableName: expected_waypoints_trip
+            columnName: generation_attempts
+  - changeSet:
+      id: "20260205-1100"
+      author: zhirov_aa
+      preConditions:
+        - tableExists:
+            schemaName: driver_track
+            tableName: fact_waypoints_trip
+      changes:
+        - addColumn:
+            schemaName: driver_track
+            tableName: fact_waypoints_trip
+            columns:
+              - column:
+                  name: generation_attempts
+                  type: int
+                  remarks: Количество попыток генерации
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+              - column:
+                  name: generation_not_before
+                  type: timestamptz
+                  remarks: Генерация не будет совершена раньше указанного времени (NULL = можно сразу)
+                  constraints:
+                    nullable: true
+      rollback:
+        - dropColumn:
+            schemaName: driver_track
+            tableName: fact_waypoints_trip
+            columnName: generation_not_before
+        - dropColumn:
+            schemaName: driver_track
+            tableName: fact_waypoints_trip
+            columnName: generation_attempts

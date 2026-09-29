@@ -1,0 +1,35 @@
+server:
+    port: -1
+spring:
+    cloud:
+        vault:
+            enabled: false
+    datasource:
+        username: postgres
+    config:
+        import: database.yml, management.yml, application-kafka-test.yml, import.yml
+    security:
+        user: #убираем запись в логах, по которой есть вопросы у безопасности
+            name: anonymous
+            password: ${random.uuid}
+            roles: anonymous
+        oauth2:
+            resourceserver:
+                jwt:
+                    jws-algorithms: RS512
+                    public-key-location: classpath:/key/jwt.key.pub
+    main:
+        banner-mode: off
+        cloud-platform: none
+        lazy-initialization: true
+        allow-bean-definition-overriding: true
+    jackson:
+        serialization:
+            write_dates_as_timestamps: false
+    application:
+        name: vehicle
+    liquibase:
+        contexts: test
+grpc:
+    server:
+        port: 6565

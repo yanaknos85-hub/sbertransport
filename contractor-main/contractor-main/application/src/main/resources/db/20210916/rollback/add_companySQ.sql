@@ -1,0 +1,1 @@
+drop TABLE contractors.company_sq;

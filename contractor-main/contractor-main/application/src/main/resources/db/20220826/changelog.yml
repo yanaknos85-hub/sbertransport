@@ -1,0 +1,28 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220826"
+            context: "20220826"
+            author: medvedev-ad
+            changes:
+                -   sql:
+                        sql: alter table contractors.autopark rename column autopark_name to "name";
+            rollback:
+                -   sql:
+                        sql: alter table contractors.autopark rename column "name" to autopark_name;
+    -   changeSet:
+            id: "20220826-1"
+            context: "20220826"
+            author: medvedev-ad
+            changes:
+                -   dropColumn:
+                        schemaName: contractors
+                        tableName: autopark
+                        columnName: active_cars
+            rollback:
+                -   addColumn:
+                        schemaName: contractors
+                        tableName: autopark
+                        columns:
+                            -   column:
+                                    name:  active_cars
+                                    type: integer

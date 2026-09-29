@@ -1,0 +1,60 @@
+.imgWrap {
+  height: 40px;
+  width: 40px;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid #F3F3F3;
+  display: flex;
+  align-items: center;
+  padding: 0 0 5px 5px;
+
+  > img {
+    width: 46px;
+    height: 27px;
+  }
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+
+  &__mainSection {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  &__addSection {
+    display: flex;
+    gap: 12px;
+
+    .divider {
+      width: 1px;
+      background-color: #c2c2c2;
+    }
+
+    .numberBlock {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #4D4D4D;
+    }
+
+    .typeBlock {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+      &__title {
+        font-family: SB Sans Text;
+        font-weight: 400;
+        color: #909090;
+      }
+    }
+  }
+}

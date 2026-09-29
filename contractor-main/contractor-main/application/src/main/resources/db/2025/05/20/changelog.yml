@@ -1,0 +1,69 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250520
+      author: shabrovie
+      changes:
+        - addColumn:
+            schemaName: contractors
+            tableName: contractor
+            columns:
+              - column:
+                  name: service_type
+                  type: text
+                  remarks: 'Тип услуги'
+        - addColumn:
+            schemaName: contractors
+            tableName: contractor
+            columns:
+              - column:
+                  name: contractor_type
+                  type: text
+                  remarks: 'Тип интеграции'
+        - addColumn:
+            schemaName: contractors
+            tableName: contractor
+            columns:
+              - column:
+                  name: contact_person_email
+                  type: text
+                  remarks: 'Контактная почта контрагента'
+  - changeSet:
+      id: 20250522
+      author: shabrovie
+      changes:
+        - addColumn:
+            schemaName: contractors
+            tableName: contractor
+            columns:
+              - column:
+                  name: contact_person_first_name
+                  type: text
+                  remarks: 'Имя контактного лица'
+        - addColumn:
+            schemaName: contractors
+            tableName: contractor
+            columns:
+              - column:
+                  name: contact_person_last_name
+                  type: text
+                  remarks: 'Фамилия контактного лица'
+        - addColumn:
+            schemaName: contractors
+            tableName: contractor
+            columns:
+              - column:
+                  name: contact_person_patronymic
+                  type: text
+                  remarks: 'Отчество контактного лица'
+  - changeSet:
+      id: 20250523
+      author: shabrovie
+      changes:
+        - addColumn:
+            schemaName: contractors
+            tableName: contractor
+            columns:
+              - column:
+                  name: external_id
+                  type: uuid
+                  remarks: 'id внешней диспетчерской/автосервиса'

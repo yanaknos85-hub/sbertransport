@@ -1,0 +1,8 @@
+**/target/
+.idea
+*.iml
+*.private.env.json
+/application/allure-results/
+.gigaide
+.sberstack
+/.gigacode/skills/

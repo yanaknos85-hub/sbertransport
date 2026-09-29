@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250203-1057"
+      author: ladeyshchikov_aa
+      changes:
+        - addColumn:
+            schemaName: driver_track
+            tableName: route
+            columns:
+              - column:
+                  name: source
+                  type: varchar(7)
+      rollback:
+        - dropColumn:
+            schemaName: driver_track
+            tableName: route
+            columnName: source

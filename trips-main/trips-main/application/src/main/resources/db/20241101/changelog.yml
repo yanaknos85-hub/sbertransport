@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20241101"
+      author: ladeyshchikov-aa
+      changes:
+        - addColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: information
+                  type: json
+                  remarks: Объект данных, который необходим для трансфера
+              - column:
+                  name: expected_vehicle_id
+                  type: uuid
+                  remarks: Идентификатор ожидаемого автомобиля
+      rollback:
+        - dropColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: information
+              - column:
+                  name: expected_vehicle_id

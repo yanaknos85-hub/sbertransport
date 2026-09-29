@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230927"
+      author: blandin-ad
+      changes:
+        - renameTable:
+            schemaName: trips_cargo
+            oldTableName: trips_cargo
+            newTableName: trips
+      rollback:
+        - renameTable:
+            schemaName: trips_cargo
+            oldTableName: trips
+            newTableName: trips_cargo

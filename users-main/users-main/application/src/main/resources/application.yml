@@ -1,0 +1,26 @@
+grpc:
+    client:
+      GLOBAL:
+        negotiation-type: plaintext
+      files:
+        address: discovery:/${grpc.files.address:grpc-files-v2}
+server:
+    port: 8002
+spring:
+  config:
+      import: optional:configserver:${spring.cloud.config.uri}
+  application:
+      name: users
+  servlet:
+    multipart:
+        max-file-size: ${FILE_SIZE:20MB}
+        max-request-size: ${REQUEST_SIZE:26MB}
+  cloud:
+    vault:
+      enabled: false
+avatar:
+    allowedTypes: ${AVATAR_ALLOWED_TYPES:image/bmp,image/gif,image/ico,image/jpg,image/jpeg,image/png,image/svg,image/tiff,image/webp}
+    path: ${AVATARS_PATH:images/avatars}
+openapi:
+  users:
+    base-path: /

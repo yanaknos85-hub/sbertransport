@@ -1,0 +1,118 @@
+spring.cloud:
+    stream:
+        kafka:
+            binder:
+                configuration:
+                    security.protocol: SSL
+                    ssl:
+                        endpoint.identification.algorithm: ""
+                        client.auth: required
+                        enabled.protocols: TLSv1.2
+                        truststore:
+                            location: ${KAFKA_SSL_TRUSTSTORE_LOCATION:}
+                            password: ${KAFKA_SSL_TRUSTSTORE_PASSWORD:}
+                        keystore:
+                            location: ${KAFKA_SSL_KEYSTORE_LOCATION:}
+                            password: ${KAFKA_SSL_KEYSTORE_PASSWORD:}Ssl
+                        key.password: ${KAFKA_SSL_KEY_PASSWORD:}
+                brokers:
+                    - ${KAFKA_SSL_BROKERS}
+                auto-alter-topics: true
+                autoAddPartitions: true
+                producer-properties:
+                    key.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+                consumer-properties:
+                    key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+                    dlqProducerProperties.key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+                    standardHeaders: both
+            default:
+                consumer:
+                    enableDlq: true
+                    topic.properties:
+                        cleanup.policy: compact,delete
+                        retention.ms: 604800000
+                producer:
+                    topic.properties:
+                        cleanup.policy: compact,delete
+                        retention.ms: 604800000
+            bindings:
+                employeesInputDlqSsl-in-0:
+                    consumer:
+                        enableDlq: false
+                departmentsInputDlqSsl-in-0:
+                    consumer:
+                        enableDlq: false
+                positionsInputDlqSsl-in-0:
+                    consumer:
+                        enableDlq: false
+                organizationsInputDlqSsl-in-0:
+                    consumer:
+                        enableDlq: false
+        binders:
+            kafka-ssl:
+                type: kafka
+                environment:
+                    spring.cloud.stream.kafka:
+                        binder:
+                            producerProperties:
+                                key.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+                            consumerProperties:
+                                key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+        default-binder: kafka-ssl
+        bindings:
+            organizationsInputSsl-in-0:
+                group: ${spring.application.name}-ssl
+                destination: service.organization
+            organizationsInputDlqSsl-in-0:
+                group: ${spring.application.name}-ssl
+                destination: error.${spring.cloud.stream.bindings.organizationsInputSsl-in-0.destination}.${spring.application.name}
+                consumer:
+                    maxAttempts: 10
+                    backOffInitialInterval: 30000
+                    backOffMultiplier: 2
+                    backOffMaxInterval: 3000000
+            positionsInputSsl-in-0:
+                group: ${spring.application.name}-ssl
+                destination: service.organization.position
+            positionsInputDlqSsl-in-0:
+                group: ${spring.application.name}-ssl
+                destination: error.${spring.cloud.stream.bindings.positionsInputSsl-in-0.destination}.${spring.application.name}
+                consumer:
+                    maxAttempts: 10
+                    backOffInitialInterval: 30000
+                    backOffMultiplier: 2
+                    backOffMaxInterval: 3000000
+            departmentsInputSsl-in-0:
+                group: ${spring.application.name}-ssl
+                destination: service.organization.department
+            departmentsInputDlqSsl-in-0:
+                group: ${spring.application.name}-ssl
+                destination: error.${spring.cloud.stream.bindings.departmentsInputSsl-in-0.destination}.${spring.application.name}
+                consumer:
+                    maxAttempts: 10
+                    backOffInitialInterval: 30000
+                    backOffMultiplier: 2
+                    backOffMaxInterval: 3000000
+            employeesInputSsl-in-0:
+                group: ${spring.application.name}-ssl
+                destination: service.organization.employee
+            employeesInputDlqSsl-in-0:
+                group: ${spring.application.name}-ssl
+                destination: error.${spring.cloud.stream.bindings.employeesInputSsl-in-0.destination}.${spring.application.name}
+                consumer:
+                    maxAttempts: 10
+                    backOffInitialInterval: 30000
+                    backOffMultiplier: 2
+                    backOffMaxInterval: 3000000
+            odometerHistoryValueInputSsl-in-0:
+                group: ${spring.application.name}-ssl
+                destination: service.odometer.history
+            transportOutputSsl-out-0:
+                group: ${spring.application.name}-ssl
+                destination: service.transport
+            engineTypeOutputSsl-out-0:
+                group: ${spring.application.name}-ssl
+                destination: service.vehicle.engine_type
+            fuelTypeOutputSsl-out-0:
+                group: ${spring.application.name}-ssl
+                destination: service.vehicle.fuel_type

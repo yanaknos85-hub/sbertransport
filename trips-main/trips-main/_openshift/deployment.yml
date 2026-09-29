@@ -1,0 +1,152 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: trips
+  namespace: ci02351878-edevgen-sbertransport-dev
+  labels:
+    app: trips
+    app.kubernetes.io/name: trips
+    app.kubernetes.io/part-of: transport
+    template: trips
+    version: 230125-6-17898164
+spec:
+  selector:
+    matchLabels:
+      app: trips
+  template:
+    metadata:
+      namespace: ci02351878-edevgen-sbertransport-dev
+      labels:
+        app: trips
+        secman-injector: enabled
+        version: 230628-1-17898164
+      annotations:
+        vault.hashicorp.com/agent-inject-secret-jwt.private: 'true'
+        vault.hashicorp.com/agent-inject-template-jwt.public: >-
+          {{- with secret
+          "A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/jwt" -}}
+              {{ base64Decode (index .Data "certificate.pub") }}
+          {{- end -}}
+        vault.hashicorp.com/agent-inject-template-application.properties: >-
+          {{- with secret
+          "A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/application"
+          -}}
+              {{ index .Data "application.properties" }}
+          {{- end -}}
+        vault.hashicorp.com/agent-inject-default-template: json
+        vault.hashicorp.com/namespace: CI02351878_CI02671580
+        vault.hashicorp.com/role: ci02351878-edevgen-sbertransport-dev
+        vault.hashicorp.com/agent-inject-template-jwt.private: >-
+          {{- with secret
+          "A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/jwt" -}}
+              {{ base64Decode (index .Data "certificate.key") }}
+          {{- end -}}
+        sidecar.istio.io/inject: 'true'
+        vault.hashicorp.com/agent-inject-secret-jwt.public: 'true'
+        vault.hashicorp.com/agent-inject: 'true'
+        vault.hashicorp.com/agent-inject-secret-application.properties: 'true'
+        vault.hashicorp.com/agent-init-first: 'false'
+        vault.hashicorp.com/agent-pre-populate: 'false'
+        vault.hashicorp.com/secret-volume-path-application.properties: /app/resources/config
+        traffic.sidecar.istio.io/excludeOutboundPorts: '6565'
+    spec:
+      volumes:
+        - name: logs
+          emptyDir: {}
+        - name: tmp
+          emptyDir: {}
+        - name: cm-fluentbit
+          configMap:
+            name: cm-fluentbit
+            defaultMode: 420
+            optional: true
+        - name: secman-list
+          configMap:
+            name: secman-list-common
+            defaultMode: 420
+            optional: true
+        - name: wait-script
+          configMap:
+            name: wait-script
+            defaultMode: 511
+            optional: true
+      containers:
+        - resources:
+            limits:
+              cpu: 500m
+              memory: 1G
+            requests:
+              cpu: 500m
+              memory: 1G
+          terminationMessagePath: /dev/termination-log
+          name: trips
+          env:
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: database
+                  key: url.jdbc
+            - name: KAFKA_BROKERS
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka
+                  key: brokers
+            - name: JAVA_TOOL_OPTIONS
+              valueFrom:
+                configMapKeyRef:
+                  name: jdk-java-options
+                  key: debug
+            - name: SPRING_PROFILES_INCLUDE
+              value: secman_
+            - name: SCHEMA_REGISTRY
+              value: 'http://10.53.122.234:8081'
+            - name: MIGRATION_SCHEMA
+              value: migrations
+            - name: spring.cloud.vault.enabled
+              value: 'false'
+          securityContext:
+            readOnlyRootFilesystem: true
+          ports:
+            - containerPort: 8050
+              protocol: TCP
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+            - name: wait-script
+              readOnly: true
+              mountPath: /tmp/waitscript
+            - name: secman-list
+              readOnly: true
+              mountPath: /tmp/secman/config
+          terminationMessagePolicy: File
+          image: >-
+            registry-ci.delta.sbrf.ru/dev/ci02351878/ci02353146_transport_dev/transport/trip:230628-1-17898164
+          command:
+            - /bin/sh
+          args:
+            - '-c'
+            - >-
+              /tmp/waitscript/waitScript.sh && java -Dfile.encoding=UTF-8
+              -Dsun.stderr.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8
+              -Dnative.encoding=UTF-8 -XX:MaxRAMPercentage=75 -cp
+              @/app/jib-classpath-file
+              ru.sber.transport.trip.TripApplication
+        - name: fluent-bit
+          image: >-
+            registry.sigma.sbrf.ru/ci00734898/ci00685811_synapse/fluent-bit@sha256:391be4b7b42d1374f6578e850e74bc4977a1d35cc3adad1fcf0940f74f0ac379
+          resources:
+            limits:
+              cpu: 200m
+              memory: 500Mi
+            requests:
+              cpu: 200m
+              memory: 300Mi
+          volumeMounts:
+            - name: logs
+              mountPath: /log
+            - name: cm-fluentbit
+              readOnly: true
+              mountPath: /fluent-bit/etc/
+      imagePullSecrets:
+        - name: cab-sa-ci000274

@@ -1,0 +1,18 @@
+.fieldBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .fieldTitle {
+    font-family: SB Sans Text;
+    font-weight: 400;
+    color: #737373;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  > span {
+    font-weight: 400;
+    color: #262626;
+  }
+}

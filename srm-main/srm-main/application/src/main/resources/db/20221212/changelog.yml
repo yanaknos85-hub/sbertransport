@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: 20221212
+            author: asigalov
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/alter_constraints.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

@@ -1,0 +1,20 @@
+spring:
+  liquibase:
+    enabled: false
+
+javers:
+  enabled:false
+
+logging:
+  level:
+    org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver: TRACE
+    org.springframework.web.servlet.DispatcherServlet: DEBUG
+    org.springframework.web.filter: DEBUG
+
+clients:
+  ai-draft-assistant:
+    base-url: http://localhost:8081
+  app-platform-corporate:
+    base-url: http://api.ift.transport.apps.a6gabrx6.k8s.delta.sbrf.ru/api/organizations
+  app-passenger-tariff:
+    base-url: http://api.ift.transport.apps.a6gabrx6.k8s.delta.sbrf.ru/api/tariffs

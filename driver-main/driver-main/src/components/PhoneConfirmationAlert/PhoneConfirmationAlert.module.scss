@@ -1,0 +1,27 @@
+@import 'styles/variables.scss';
+
+.warning {
+  max-width: 320px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  font-family: 'SB Sans Text';
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.15px;
+  color: $black;
+  border-radius: 10px;
+  border: 1px solid $pale-red;
+  cursor: pointer;
+  padding: 0 12px;
+
+  > span {
+    display: flex;
+    align-items: center;
+  }
+
+  svg {
+    position: relative;
+    top: 5px;
+  }
+}

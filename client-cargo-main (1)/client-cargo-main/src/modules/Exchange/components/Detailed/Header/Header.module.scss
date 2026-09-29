@@ -1,0 +1,105 @@
+.cargoMainInnerContent {
+  background: var(--pure-white);
+  border-radius: 8px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.12), 0 3px 10px -4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.arrow {
+  display: flex;
+}
+
+.arrowIcon {
+  font-size: 20px;
+}
+
+.title {
+  margin-left: 8px;
+  margin-bottom: 0;
+  font-size: 20px;
+  font-family: 'SB Sans Interface SemiBold', serif, sans-serif;
+  letter-spacing: 0;
+}
+
+.creationTime {
+  font-size: 14px;
+  line-height: 16px;
+  color: #909090;
+  font-family: 'SB Sans Interface', serif, sans-serif;
+}
+
+.headerCol {
+  display: flex;
+  justify-content: space-between;
+
+  .rateWrapper {
+    cursor: pointer;
+    margin-left: auto;
+  }
+
+  .rateWrapperMobile {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 0;
+  }
+
+  .rate {
+    font-size: 24px;
+    color: #fadb14;
+    &:global(.ant-rate-disabled .ant-rate-star) {
+      cursor: pointer;
+    }
+  }
+
+  @media(max-width: 767px) {
+    margin-bottom: 8px;
+  }
+}
+
+.statusContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.statusText {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.3px;
+  color: #262626;
+}
+
+.modalText {
+  font-family: 'SB Sans Text', serif, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: -0.24px;
+  color: #10bf6a;
+}
+
+.totalBlockTitle {
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.3px;
+  color: #adadad;
+}
+
+.totalBlockTitle span {
+  white-space: nowrap;
+}
+
+.totalBlockValue {
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.3px;
+  color: #000000;
+}

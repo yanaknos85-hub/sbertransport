@@ -1,0 +1,23 @@
+.filters {
+  white-space: nowrap;
+  display: inline-block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding-top: var(--padding-half);
+}
+
+.headerDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+}

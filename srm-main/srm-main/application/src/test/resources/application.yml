@@ -1,0 +1,95 @@
+grpc:
+  server:
+    port: -1
+server:
+  port: 0
+  tomcat:
+    relaxed-query-chars:
+      - "["
+      - "]"
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8080
+          jws-algorithms: RS512
+  jackson:
+    default-property-inclusion: non_null
+  application:
+    name: srm
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    username: postgres
+    hikari:
+      maximum-pool-size: 10
+      schema: ${spring.application.name}
+      minimum-idle: 1
+      idle-timeout: 10000
+      connection-timeout: 30000
+      max-lifetime: 60000
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    change-log: classpath:db/changelog-master.yml
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    database-change-log-table: changelog_${spring.application.name}
+    database-change-log-lock-table: changelog_${spring.application.name}_lock
+    liquibase-schema: public
+  cloud:
+    vault:
+      enabled: false
+    openfeign:
+      client:
+        config:
+          default:
+            connectTimeout: 10000
+            readTimeout: 60000
+          gis-feign-client:
+            url: ${TWOGIS_ROOT_URL:https://localhost:31137/get_dist_matrix}
+          gis-async-feign-client:
+            url: ${TWOGIS_ROOT_URL_ASYNC:https://localhost:31138/async_matrix/create_task/get_dist_matrix}
+          gis-async-result-feign-client:
+            url: ${TWOGIS_ROOT_URL_ASYNC_RESULT:https://localhost:31139/async_matrix/result/get_dist_matrix}
+          sowa-feign-client:
+            url: ${SOWA_URL:https://localhost:31140}
+  config:
+    import: optional:configserver:http://localhost:8888
+logging:
+  level.org.hibernate.type.BasicTypeRegistry: INFO
+  level.ru.sberbank.ditsib: INFO
+gisdata:
+  provider: yandex
+  providers:
+    yandex:
+      rootUrl: https://api.routing.yandex.net/v2/distancematrix
+      apiKey: 60036927-cfb4-401c-9b1b-5197e5c58539
+    twogis:
+      rootUrl: https://localhost:31137/get_dist_matrix
+      apiKey: ruexhj4805
+    twogisasync:
+      rootUrl: https://localhost:31138/async_matrix/create_task/get_dist_matrix
+      apiKey: ruexhj4805
+    twogisasyncresult:
+      rootUrl: https://localhost:31139/async_matrix/result/get_dist_matrix
+      apiKey: ruexhj4805
+  asyncLevel: 12
+  sowaUrl: ${SOWA_URL:https://localhost:31140}
+  timeout: ${GIS_DATA_TIMEOUT:10000}
+  sleepTime: ${GIS_DATA_SLEEP_TIME:1000}
+
+drug:
+  updateInfoUrl: ${DRUG_UPDATEINFOURL:http://updateinfodrug}
+  updateInfoLogin: ${DRUG_UPDATEINFOLOGIN:login}
+  updateInfoPassword: ${DRUG_UPDATEINFOPASSWORD:password}
+
+sharedride:
+  deactivate:
+    cron: ${SRM_DEACTIVATE_CRON:0 0 * * * *}
+javamelody:
+  enabled: ${JAVAMELODY_ENABLED:false}

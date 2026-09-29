@@ -1,0 +1,57 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211011"
+            author: medvedev-ad
+            dbms: postgresql
+            changes:
+                -   renameColumn:
+                        schemaName: geo_zones
+                        tableName: geo_zone
+                        oldColumnName: code
+                        newColumnName: old_code
+                -   addColumn:
+                        schemaName: geo_zones
+                        tableName: geo_zone
+                        columns:
+                            -   column:
+                                    name: code
+                                    type: text
+                -   sql:
+                        sql: update geo_zones.geo_zone set code = old_code
+                -   dropColumn:
+                        schemaName: geo_zones
+                        tableName: geo_zone
+                        columnName: old_code
+                -   addNotNullConstraint:
+                        schemaName: geo_zones
+                        tableName: geo_zone
+                        columnName: code
+            rollback:
+                -   dropNotNullConstraint:
+                      schemaName: geo_zones
+                      tableName: geo_zone
+                      columnName: code
+                -   addColumn:
+                      schemaName: geo_zones
+                      tableName: geo_zone
+                      columns:
+                        - column:
+                            name: old_code
+                            type: int8
+                            remarks: Код геозоны
+                            constraints:
+                              nullable: false
+                -   sql:
+                      sql: update geo_zones.geo_zone set old_code = code::bigint
+                -   dropColumn:
+                      schemaName: geo_zones
+                      tableName: geo_zone
+                      columns:
+                        -   column:
+                              name: code
+                              type: text
+                -   renameColumn:
+                      schemaName: geo_zones
+                      tableName: geo_zone
+                      oldColumnName: old_code
+                      newColumnName: code

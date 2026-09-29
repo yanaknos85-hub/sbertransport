@@ -1,0 +1,13 @@
+databaseChangeLog:
+    -   changeSet:
+            id: requests/20220713
+            author: shabrovie
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/personal_request_additional_sum.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: rollback/rollback_personal_request_addtional_sum.sql
+                        relativeToChangelogFile: true

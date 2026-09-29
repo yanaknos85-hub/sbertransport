@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: 20220512
+            author: smirnova
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/create_template_for_cargo.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_template_for_cargo.sql
+                        relativeToChangelogFile: true

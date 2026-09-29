@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        requestsSsl-in-0:
+          group: ${spring.application.name}-ssl
+          destination: service.request
+          binder: kafka-ssl
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false
+        externalRequestInputSsl-in-0:
+          group: ${spring.application.name}-ssl
+          destination: service.request.external
+          binder: kafka-ssl
+          consumer:
+            maxAttempts: 1
+            defaultRetryable: false

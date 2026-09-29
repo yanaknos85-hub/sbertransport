@@ -1,0 +1,28 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "urlPathTemplate": "/{task_id}",
+        "queryParameters": {
+          "key": {
+            "equalTo": "ruexhj4805"
+          }
+        }
+      },
+      "response": {
+        "status": "200",
+        "jsonBody": {
+          "task_id": "7b1e5722-aa76-11f0-b3bd-000000000001",
+          "status": "TASK_DONE",
+          "code": 200,
+          "message": "",
+          "result_link": "https://disk.2gis.com/prod-navi-dm-bucket/7b1e5722-aa76-11f0-b3bd-000000000001.response.json"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}

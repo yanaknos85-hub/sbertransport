@@ -1,0 +1,50 @@
+{
+  "id": "e940671b-0152-47b5-9609-aae3a758f143",
+  "firstName": "Павел",
+  "lastName": "Зырянов",
+  "patronymic": "Иванович",
+  "personnelNumber": "9988111",
+  "positionId": "445baee2-e8b5-4ebb-80ad-00f3153ebebd",
+  "mobilePhone": "+73521111111",
+  "email": "PIZyryanov@sberbank.ru",
+  "roles": [],
+  "userId": "f672b3bb-4bca-473c-ba1b-cb2daf21e043",
+  "humanReadableId": "US-0003-64",
+  "availableTransportTypes": [],
+  "personalCars": [
+    {
+      "id": "5948edd3-1aa2-4c51-a93d-3b6599066bfb",
+      "brandName": "12345678901234567890",
+      "model": "1234567890123456789012345678901234567890",
+      "color": "Серобуромалиновый",
+      "transportType": "CAR",
+      "registrationNumber": "12345678901234567890",
+      "registrationCertificate": "1234567890",
+      "engineVolume": 1000,
+      "insuranceNumber": "12345678901234567890",
+      "passengerSeatsCount": 12,
+      "ownerInfo": "USER"
+    },
+    {
+      "id": "381f9a9a-33a5-4712-a488-363f24a75a43",
+      "brandName": "Volvo",
+      "model": "XC60",
+      "color": "Серый",
+      "transportType": "CAR",
+      "registrationNumber": "123124125",
+      "registrationCertificate": "25113526rg",
+      "engineVolume": 200,
+      "insuranceNumber": "125dgf134twet32tr2tg",
+      "passengerSeatsCount": 3,
+      "ownerInfo": "USER"
+    }
+  ],
+  "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+  "status": "ACTIVE",
+  "consent": false,
+  "attributes": [],
+  "positionName": "Сотрудник_экон_комф",
+  "departmentId": "8779952e-4c1d-4c12-8675-3af9be16e501",
+  "approvals": 0,
+  "managedDepartments": []
+}

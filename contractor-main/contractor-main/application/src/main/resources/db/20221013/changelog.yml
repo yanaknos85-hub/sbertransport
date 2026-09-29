@@ -1,0 +1,10 @@
+databaseChangeLog:
+  -   changeSet:
+        id: "20221013"
+        context: "20221013"
+        author: dudyrev-av
+        dbms: postgresql
+                changes:
+          -   sqlFile:
+                path: change/add_remarks_contractor.sql
+                relativeToChangelogFile: true

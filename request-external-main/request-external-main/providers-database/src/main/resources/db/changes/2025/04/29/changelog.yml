@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250429-1133"
+      author: medvedev-ad
+      context: "TRANSPORT-31818"
+      dbms: postgresql
+      changes:
+        - tagDatabase:
+            tag: "D-04.008.000"
+        - sql:
+            sql: alter type ${schema_name}.order_state add value 'CONFIRMATION_NEEDED' after 'NEW'
+        - sql:
+            sql: "comment on type ${schema_name}.order_state is 'Состояние заявки на поездку: Новая (NEW), Требуется подтверждение (CONFIRMATION_NEEDED), Подтверждение (CONFIRMATION), Необходимы данные (DATA_NEEDED), Подтверждена (CONFIRMED), Отклонена (DECLINED), Отменена (CANCELLED)'"
+  - changeSet:
+      id: "20250429-1133"
+      author: medvedev-ad
+      context: "TRANSPORT-31818"
+      dbms: h2
+      changes:
+        - tagDatabase:
+            tag: "D-04.008.000"
+        - modifyDataType:
+            schemaName: ${schema_name}
+            tableName: trip_order
+            columnName: status
+            newDataType: varchar(255)
+        - sql:
+            sql: drop type ${schema_name}.order_state
+        - sql:
+            sql: create type ${schema_name}.order_state as enum('NEW', 'CONFIRMATION_NEEDED', 'CONFIRMATION', 'DATA_NEEDED', 'CONFIRMED', 'DECLINED', 'CANCELLED')
+        - modifyDataType:
+            schemaName: ${schema_name}
+            tableName: trip_order
+            columnName: status
+            newDataType: ${schema_name}.order_state

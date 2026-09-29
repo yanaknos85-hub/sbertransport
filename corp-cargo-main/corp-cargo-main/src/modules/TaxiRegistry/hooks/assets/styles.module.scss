@@ -1,0 +1,13 @@
+.formItem {
+  grid-column: 1/-1;
+  width: 100%;
+  justify-self: start;
+  max-width: none !important;
+}
+.select {
+  display: flex;
+  align-items: center;
+}
+.block {
+  display: block !important;
+}

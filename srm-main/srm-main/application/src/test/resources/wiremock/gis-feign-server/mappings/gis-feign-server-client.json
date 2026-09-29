@@ -1,0 +1,92 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "POST"
+      },
+      "response": {
+        "status": "200",
+        "jsonBody": {
+          "generation_time": 13,
+          "routes": [
+            {
+              "distance": 0,
+              "duration": 0,
+              "reliability": 1,
+              "source_id": 0,
+              "status": "OK",
+              "target_id": 0
+            },
+            {
+              "distance": 4954,
+              "duration": 1235,
+              "reliability": 0,
+              "source_id": 0,
+              "status": "OK",
+              "target_id": 1
+            },
+            {
+              "distance": 7816,
+              "duration": 1564,
+              "reliability": 0,
+              "source_id": 0,
+              "status": "OK",
+              "target_id": 2
+            },
+            {
+              "distance": 4515,
+              "duration": 580,
+              "reliability": 0,
+              "source_id": 1,
+              "status": "OK",
+              "target_id": 0
+            },
+            {
+              "distance": 0,
+              "duration": 0,
+              "reliability": 1,
+              "source_id": 1,
+              "status": "OK",
+              "target_id": 1
+            },
+            {
+              "distance": 7392,
+              "duration": 1004,
+              "reliability": 0,
+              "source_id": 1,
+              "status": "OK",
+              "target_id": 2
+            },
+            {
+              "distance": 9061,
+              "duration": 1374,
+              "reliability": 0,
+              "source_id": 2,
+              "status": "OK",
+              "target_id": 0
+            },
+            {
+              "distance": 7441,
+              "duration": 1006,
+              "reliability": 0,
+              "source_id": 2,
+              "status": "OK",
+              "target_id": 1
+            },
+            {
+              "distance": 0,
+              "duration": 0,
+              "reliability": 1,
+              "source_id": 2,
+              "status": "OK",
+              "target_id": 2
+            }
+          ]
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}

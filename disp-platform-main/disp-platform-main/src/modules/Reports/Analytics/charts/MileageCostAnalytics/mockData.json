@@ -1,0 +1,102 @@
+{
+    "fuel": [
+        {
+            "month": 1,
+            "mileageMonthCost": 25
+        },
+        {
+            "month": 2,
+            "mileageMonthCost": 21
+        },
+        {
+            "month": 3,
+            "mileageMonthCost": 76
+        },
+        {
+            "month": 4,
+            "mileageMonthCost": 67
+        },
+        {
+            "month": 5,
+            "mileageMonthCost": 59
+        },
+        {
+            "month": 6,
+            "mileageMonthCost": 78
+        },
+        {
+            "month": 7,
+            "mileageMonthCost": 61
+        },
+        {
+            "month": 8,
+            "mileageMonthCost": 71
+        },
+        {
+            "month": 9,
+            "mileageMonthCost": 100
+        },
+        {
+            "month": 10,
+            "mileageMonthCost": 84
+        },
+        {
+            "month": 11,
+            "mileageMonthCost": 67
+        },
+        {
+            "month": 12,
+            "mileageMonthCost": 44
+        }
+    ],
+    "maintenance": [
+        {
+            "month": 1,
+            "mileageMonthCost": 5
+        },
+        {
+            "month": 2,
+            "mileageMonthCost": 15
+        },
+        {
+            "month": 3,
+            "mileageMonthCost": 30
+        },
+        {
+            "month": 4,
+            "mileageMonthCost": 20
+        },
+        {
+            "month": 5,
+            "mileageMonthCost": 25
+        },
+        {
+            "month": 6,
+            "mileageMonthCost": 10
+        },
+        {
+            "month": 7,
+            "mileageMonthCost": 13
+        },
+        {
+            "month": 8,
+            "mileageMonthCost": 50
+        },
+        {
+            "month": 9,
+            "mileageMonthCost": 48
+        },
+        {
+            "month": 10,
+            "mileageMonthCost": 75
+        },
+        {
+            "month": 11,
+            "mileageMonthCost": 10
+        },
+        {
+            "month": 12,
+            "mileageMonthCost": 10
+        }
+    ]
+} 

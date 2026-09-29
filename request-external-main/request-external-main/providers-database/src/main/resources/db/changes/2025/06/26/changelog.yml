@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id:  "20250626-1030"
+      author: khalikov-ma
+      context: "TRANSPORT-32834"
+      changes:
+        - tagDatabase:
+            tag: "D-04.010.000"
+        - sql:
+            sql: |
+              CREATE TEMPORARY TABLE temp_updated_orders AS
+              SELECT id FROM ${schema_name}.trip_order 
+              WHERE status = 'CONFIRMED';
+        - sql:
+            sql: |
+              UPDATE ${schema_name}.trip_order 
+              SET status = 'ORDER_PAYMENT_FORMATION',
+                  modified_at = CURRENT_TIMESTAMP
+              WHERE id IN (SELECT id FROM temp_updated_orders);
+        - sql:
+            sql: |
+              -- Добавляем записи в историю
+              INSERT INTO ${schema_name}.trip_order_history
+                (order_id, modified_at, modified_by, status, comment, reason, receipt)
+              SELECT 
+                t.id, 
+                t.modified_at, 
+                NULL,
+                'ORDER_PAYMENT_FORMATION',
+                'Status changed from CONFIRMED to ORDER_PAYMENT_FORMATION',
+                NULL,
+                t.receipt
+              FROM ${schema_name}.trip_order t
+              WHERE t.id IN (SELECT id FROM temp_updated_orders);
+        - sql:
+            sql: |
+              DROP TABLE temp_updated_orders;

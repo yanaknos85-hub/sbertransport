@@ -1,0 +1,38 @@
+$card-tab-background: rgba(0, 0, 0, 0.06);
+$card-tab-background-active: #000;
+$card-tab-color: #000;
+$card-tab-color-active: #fff;
+
+.tab-pane {
+  &_card {
+    .ant-tabs-ink-bar {
+      display: none;
+    }
+
+    & .ant-tabs-nav {
+      &::before {
+        display: none;
+      }
+
+      .ant-tabs-tab {
+        color: $card-tab-color;
+
+        .ant-tabs-tab-btn {
+          background-color: $card-tab-background;
+          padding: 8px;
+          border-radius: 8px;
+        }
+      }
+
+      .ant-tabs-tab-active {
+        &::before {
+          display: none;
+        }
+        .ant-tabs-tab-btn {
+          color: $card-tab-color-active;
+          background-color: $card-tab-background-active;
+        }
+      }
+    }
+  }
+}

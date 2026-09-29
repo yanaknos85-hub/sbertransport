@@ -1,0 +1,65 @@
+server:
+  port: @server.port@
+grpc:
+  client:
+    geo:
+      address: discovery:/grpc-geo
+      negotiationType: plaintext
+spring:
+  config:
+    import: optional:configserver:${spring.cloud.config.uri}
+  threads.virtual: enabled
+  application:
+    name: driver_track
+    version: @project.version@
+  cloud:
+    grpc:
+      discovery:
+        server: grpc-service-discovery:6565
+    vault.enabled: false
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: root
+    type: com.zaxxer.hikari.HikariDataSource
+  liquibase:
+    change-log: db/changelog-master.yml
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    database-change-log-table: changelog_${spring.application.name}
+    database-change-log-lock-table: changelog_${spring.application.name}_lock
+    default-schema: ${spring.application.name}
+    liquibase-schema: ${MIGRATION_SCHEMA:public}
+  jackson:
+    deserialization:
+      read-date-timestamps-as-nanoseconds: false
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          jws-algorithms: RS512
+#          jwk-set-uri: ${JWK_URL}
+
+authorization:
+  consent-check: ${CHECK_CONSENT:true}
+
+route:
+  scheduler:
+    isEnabled: ${ROUTE_SCHEDULER_ENABLED:true}
+    rate: ${ROUTE_SCHEDULER_RATE:0 */1 * * * *}
+  max-generation-attempts: ${ROUTE_MAX_GENERATION_ATTEMPTS:4}
+
+geo:
+  batch-size: ${GEO_BATCH_SIZE:500}
+
+driver-track:
+  gps-spoofing-filter:
+    enabled: ${GPS_SPOOFING_FILTER_ENABLED:true}
+    interval-seconds: ${GPS_INTERVAL_SECONDS:5}
+    max-intervals: ${GPS_MAX_INTERVALS:6}
+    jump-threshold-km: ${GPS_JUMP_THRESHOLD_KM:0.04}
+    low-speed-increment-km: ${GPS_LOW_SPEED_INCREMENT_KM:0.015}
+    medium-speed-increment-km: ${GPS_MEDIUM_SPEED_INCREMENT_KM:0.025}
+    high-speed-increment-km: ${GPS_HIGH_SPEED_INCREMENT_KM:0.05}
+    min-distance-between-points-km: ${GPS_MIN_DISTANCE_BETWEEN_POINTS_KM:0.01}

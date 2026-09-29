@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230619-1045"
+      author: medvedev-ad
+      context: "20230619"
+      changes:
+        - tagDatabase:
+            tag: "20230619"
+        - sql:
+            sql: update contractors.trips set driver_waiting_time = NULL where driver_waiting_time = 'PTHM.S';
+      rollback:
+        - sql:
+            sql: select 1 #no need to rollback

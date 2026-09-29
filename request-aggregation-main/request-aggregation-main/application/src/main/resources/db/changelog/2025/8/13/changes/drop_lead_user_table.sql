@@ -1,0 +1,1 @@
+drop table if exists request_aggregation.lead_user;

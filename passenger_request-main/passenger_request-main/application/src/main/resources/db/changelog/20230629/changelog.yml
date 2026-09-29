@@ -1,0 +1,16 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230629"
+            author: shabrov-ie
+            changes:
+                -   tagDatabase:
+                        tag: "20230629"
+                -   renameTable:
+                        schemaName: request
+                        oldTableName: carsharing_data
+                        newTableName: carsharing_trip
+            rollback:
+                -   renameTable:
+                        schemaName: request
+                        oldTableName: carsharing_trip
+                        newTableName: carsharing_data

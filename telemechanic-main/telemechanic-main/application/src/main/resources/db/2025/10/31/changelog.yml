@@ -1,0 +1,11 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20251031-1
+            author: MakarovM-D
+            dbms: postgresql
+            logicalFilePath: db/02025/10/31/changelog.yml
+            changes:
+                -   sqlFile:
+                        path: changes/alter_table_medic_contract.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

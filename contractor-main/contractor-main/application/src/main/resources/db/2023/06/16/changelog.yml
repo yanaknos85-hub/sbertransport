@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230616-0906"
+      author: medvedev-ad
+      context: "20230616"
+      changes:
+        - tagDatabase:
+            tag: "20230616"
+        - modifyDataType:
+            schemaName: contractors
+            tableName: trips
+            columnName: driver_waiting_time
+            newDataType: text
+        - sql:
+            dbms: postgresql
+            sql: update contractors.trips set driver_waiting_time = concat('PT', driver_waiting_time::int8 / 1000 / 60 / 60, 'H', driver_waiting_time::int8 / 1000 / 60 % 60, 'M', driver_waiting_time::int8 / 1000 % 60, '.', to_char(driver_waiting_time::int8 % 1000, 'FM000') , 'S');
+      rollback:
+        - sql:
+            dbms: postgresql
+            sql: update contractors.trips set driver_waiting_time = (regexp_split_to_array(driver_waiting_time, 'PT|H|M|\.|S'))[2]::int8 * 1000 * 60 * 60 + (regexp_split_to_array(driver_waiting_time, 'PT|H|M|\.|S'))[3]::int8 * 1000 * 60 + (regexp_split_to_array(driver_waiting_time, 'PT|H|M|\.|S'))[4]::int8 * 1000 + (regexp_split_to_array(driver_waiting_time, 'PT|H|M|\.|S'))[5]::int8;
+        - modifyDataType:
+            schemaName: contractors
+            tableName: trips
+            columnName: driver_waiting_time
+            newDataType: bigint

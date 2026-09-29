@@ -1,0 +1,33 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20240515-1
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: vehicle
+                        tableName: department
+                        columns:
+                            -   column:
+                                    name: easup_id
+                                    type: text
+                                    remarks: Орг. единица
+    -   changeSet:
+            id: vehicle/20240515-2
+            author: klyunkov-va
+            dbms: postgresql
+            context: "!test"
+            changes:
+                -   sqlFile:
+                        path: changes/enrich_department_easup_id.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/20240515-3
+            author: klyunkov-va
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/update_roles.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

@@ -1,0 +1,24 @@
+databaseChangeLog:
+    -   changeSet:
+            id: contractor/20200402
+            context: "20200402"
+            author: mad
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: create_profiles_table.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: create_drivers_table.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: rollback_drivers_table.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: rollback_profiles_table.sql
+                        relativeToChangelogFile: true

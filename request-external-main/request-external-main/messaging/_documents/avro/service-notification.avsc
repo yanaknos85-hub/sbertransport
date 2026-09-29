@@ -1,0 +1,86 @@
+{
+  "namespace": "ru.sber.transport.messages.notification_900.avro",
+  "name": "NotificationMessage",
+  "type": "record",
+  "doc": "Модель сообщения для отправки через собаку-900",
+  "fields": [
+    {
+      "name": "id",
+      "doc": "Идентификатор",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      },
+      "aliases": [
+        "headerId"
+      ]
+    },
+    {
+      "name": "receivers",
+      "doc": "Идентификаторы получателей",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "logicalType": "uuid"
+        }
+      }
+    },
+    {
+      "name": "messageType",
+      "doc": "Тип сообщения",
+      "type": "string"
+    },
+    {
+      "name": "applicationType",
+      "doc": "Тип приложения",
+      "type": "string"
+    },
+    {
+      "name": "data",
+      "type": [ "null", {
+        "type": "record",
+        "name": "DataList",
+        "doc": "Данные для шаблона",
+        "fields": [
+          {
+            "name": "values",
+            "doc": "Список значений",
+            "type": {
+              "type": "array",
+              "items": {
+                "type": "record",
+                "name": "Data",
+                "doc": "Данные для шаблона",
+                "fields": [
+                  {
+                    "name": "key",
+                    "type": "string",
+                    "doc": "Ключ"
+                  },
+                  {
+                    "name": "value",
+                    "type": [
+                      "null",
+                      "int",
+                      "boolean",
+                      "long",
+                      "double",
+                      "string",
+                      "bytes",
+                      "Data",
+                      "DataList"
+                    ],
+                    "doc": "Значение"
+                  }
+                ]
+              }
+            },
+            "default": []
+          }
+        ]
+      }],
+      "default": null
+    }
+  ]
+}

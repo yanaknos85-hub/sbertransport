@@ -1,0 +1,100 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250610-0814"
+      author: medvedev-ad
+      context: "TRANSPORT-32978"
+      changes:
+        - tagDatabase:
+            tag: "D-04.011.000"
+        - addColumn:
+            schemaName: ${schema_name}
+            tableName: trip_order
+            columns:
+              - column:
+                  name: approver_id
+                  type: uuid
+                  remarks: Идентификатор пользователя, который одобрил заявку
+        - sql:
+            dbms: postgresql
+            sql: update ${schema_name}.trip_order tor set approver_id = dep.head_id from ${schema_name}.employee emp inner join ${schema_name}.department dep on emp.department_id = dep.id where emp.id = tor.passenger_id and tor.approver_id is null and tor.status in ('CONFIRMED', 'DECLINED', 'DATA_NEEDED')
+        - addColumn:
+            schemaName: ${schema_name}
+            tableName: trip_order_history
+            columns:
+              - column:
+                  name: approver_id
+                  type: uuid
+                  remarks: Идентификатор пользователя, который одобрил заявку
+        - sql:
+            dbms: postgresql
+            sql: update ${schema_name}.trip_order_history toh set approver_id = tor.approver_id from ${schema_name}.trip_order tor where tor.id = toh.order_id;
+        - dropNotNullConstraint:
+            schemaName: ${schema_name}
+            tableName: trip_order_history
+            columnName: modified_by
+        - update:
+            schemaName: ${schema_name}
+            tableName: trip_order_history
+            columns:
+              - column:
+                  name: modified_by
+                  valueComputed: 'null'
+            where: modified_by = '00000000-0000-0000-0000-000000000000'
+        - addForeignKeyConstraint:
+            baseTableSchemaName: ${schema_name}
+            baseTableName: trip_order_history
+            baseColumnNames: modified_by
+            referencedTableSchemaName: ${schema_name}
+            referencedTableName: employee
+            referencedColumnNames: id
+            constraintName: ${schema_name}_trip_order_history_modified_by_fk
+        - addForeignKeyConstraint:
+            baseTableSchemaName: ${schema_name}
+            baseTableName: trip_order_history
+            baseColumnNames: approver_id
+            referencedTableSchemaName: ${schema_name}
+            referencedTableName: employee
+            referencedColumnNames: id
+            constraintName: ${schema_name}_trip_order_history_approver_fk
+        - addForeignKeyConstraint:
+            baseTableSchemaName: ${schema_name}
+            baseTableName: trip_order
+            baseColumnNames: approver_id
+            referencedTableSchemaName: ${schema_name}
+            referencedTableName: employee
+            referencedColumnNames: id
+            constraintName: ${schema_name}_trip_order_approver_fk
+      rollback:
+        - dropColumn:
+            schemaName: ${schema_name}
+            tableName: trip_order
+            columns:
+              - column:
+                  name: approver_id
+        - dropColumn:
+            schemaName: ${schema_name}
+            tableName: trip_order_history
+            columns:
+              - column:
+                  name: approver_id
+        - dropForeignKeyConstraint:
+            baseTableSchemaName: ${schema_name}
+            baseTableName: trip_order_history
+            baseColumnNames: modified_by
+            referencedTableSchemaName: ${schema_name}
+            referencedTableName: employee
+            referencedColumnNames: id
+            constraintName: ${schema_name}_trip_order_history_modified_by_fk
+        - update:
+            schemaName: ${schema_name}
+            tableName: trip_order_history
+            columns:
+              - column:
+                  name: modified_by
+                  value: '00000000-0000-0000-0000-000000000000'
+            where: modified_by is null
+        - addNotNullConstraint:
+            schemaName: ${schema_name}
+            tableName: trip_order_history
+            columnName: modified_by
+            constraintName: ${schema_name}_trip_order_history_modified_by_nn

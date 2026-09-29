@@ -1,0 +1,136 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250724-1"
+      author: chizhov-nd
+      context: "20250724-1"
+      changes:
+        - tagDatabase:
+            tag: "20250724-1"
+        - addColumn:
+            schemaName: notifications_contractor
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: phone_confirmed
+                  type: boolean
+                  remarks: Признак подтверждения номера телефона
+                  defaultValueBoolean: false
+                  defaultOnNull: false
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: notifications_contractor_dispatcher_phone_confirmed_nnc
+      rollback:
+        - dropColumn:
+            schemaName: notifications_contractor
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: phone_confirmed
+  - changeSet:
+      id: "20250724-2"
+      author: chizhov-nd
+      context: "20250724-2"
+      changes:
+        - tagDatabase:
+            tag: "20250724-2"
+        - addColumn:
+            schemaName: notifications_contractor
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: phone
+                  type: text
+                  remarks: Номер телефона
+      rollback:
+        - dropColumn:
+            schemaName: notifications_contractor
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: phone
+  - changeSet:
+      id: "20250724-3"
+      author: chizhov-nd
+      context: "20250724-3"
+      changes:
+        - tagDatabase:
+            tag: "20250724-3"
+        - addColumn:
+            schemaName: notifications_contractor
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: email
+                  type: text
+                  remarks: Почта
+      rollback:
+        - dropColumn:
+            schemaName: notifications_contractor
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: email
+  - changeSet:
+      id: "20250724-4"
+      author: chizhov-nd
+      context: "20250724-4"
+      changes:
+        - tagDatabase:
+            tag: "20250724-4"
+        - dropColumn:
+            schemaName: notifications_contractor
+            tableName: dispatcher
+            columnName: employee_id
+      rollback:
+        - addColumn:
+            schemaName: notifications_contractor
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: employee_id
+                  type: uuid
+                  remarks: Идентификатор сотрудника
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: tokens_employee_id_nn
+  - changeSet:
+      id: "20250724-5"
+      author: chizhov-nd
+      context: "20250724-5"
+      changes:
+        - tagDatabase:
+            tag: "20250724-5"
+        - createTable:
+            schemaName: notifications
+            tableName: contacts
+            remarks: Контакты для уведомлений
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор пользователя
+                  constraints:
+                    nullable: false
+                    primaryKeyName: contacts_pkey
+                    primaryKey: true
+              - column:
+                  name: phone
+                  type: text
+                  remarks: Телефон
+              - column:
+                  name: email
+                  type: text
+                  remarks: Электронная почта
+              - column:
+                  name: phone_confirmed
+                  type: boolean
+                  remarks: Признак подтверждения номера телефона
+                  defaultValueBoolean: false
+                  defaultOnNull: false
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: notifications_contacts_phone_confirmed_nnc
+      rollback:
+        - dropTable:
+            schemaName: notifications
+            tableName: contacts

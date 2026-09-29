@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    username: postgres
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost
+grpc:
+  server:
+    port: -1
+integration:
+  isInternal: true

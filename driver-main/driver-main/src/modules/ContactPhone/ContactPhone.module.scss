@@ -1,0 +1,23 @@
+@import 'styles/variables.scss';
+
+.container {
+  height: 100%;
+
+  .form {
+    height: calc(100% - 30px);
+    margin: 32px 20px 58px;
+
+    :global(.adm-list),
+    :global(.adm-list-body),
+    :global(.adm-list-body-inner) {
+      height: inherit;
+    }
+
+    :global(.adm-list-body-inner) {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-top: 1px;
+    }
+  }
+}

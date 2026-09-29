@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250807-1451
+      author: blandin-ad
+      changes:
+        - addColumn:
+            schemaName: dispatcher
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: oauth_id
+                  type: uuid
+                  remarks: Идентификатор пользователя во внешней системе
+      rollback:
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: oauth_id
+  - changeSet:
+      id: 20250811-1346
+      author: blandin-ad
+      changes:
+        - addUniqueConstraint:
+            schemaName: dispatcher
+            tableName: dispatcher
+            columnNames: oauth_id
+            constraintName: dispatcher_dispatcher_oauth_id_uc
+      rollback:
+        - dropUniqueConstraint:
+            schemaName: dispatcher
+            tableName: dispatcher
+            constraintName: dispatcher_dispatcher_oauth_id_uc

@@ -1,0 +1,52 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250731-1112"
+      author: zhirov_aa
+      preConditions:
+        - not:
+            tableExists:
+              schemaName: driver_track
+              tableName: fact_waypoints_trip
+              onFail: MARK_RAN
+      changes:
+        - createTable:
+            schemaName: driver_track
+            tableName: fact_waypoints_trip
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: trip_id
+                  type: uuid
+                  remarks: Идентификатор поездки
+              - column:
+                  name: waypoints
+                  remarks: Фактические координаты путевых точек
+                  type: json
+              - column:
+                  name: is_track_created
+                  type: boolean
+                  remarks: Флаг, что маршруты созданы
+                  constraints:
+                    nullable: false
+                    defaultValueBoolean: false
+        - createIndex:
+            columns:
+              - column:
+                  name: trip_id
+            indexName: fact_waypoints_trip_id_idx
+            schemaName: driver_track
+            tableName: fact_waypoints_trip
+      rollback:
+        - dropIndex:
+            indexName: fact_waypoints_trip_id_idx
+            schemaName: driver_track
+            tableName: fact_waypoints_trip
+        - dropTable:
+            schemaName: driver_track
+            tableName: fact_waypoints_trip
+

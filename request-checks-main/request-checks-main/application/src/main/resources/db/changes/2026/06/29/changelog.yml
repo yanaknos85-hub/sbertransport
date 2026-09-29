@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20260629-1200"
+      author: voronovskii
+      context: "TRANSPORT-43520"
+      changes:
+        - addColumn:
+            schemaName: request_checks
+            tableName: trip_request
+            columns:
+              - column:
+                  name: status
+                  type: varchar(255)
+                  remarks: Статус поездки

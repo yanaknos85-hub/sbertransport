@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20231006"
+      author: blandin-ad
+      changes:
+        - createTable:
+            schemaName: trips
+            tableName: trip_history
+            remarks: История изменения поездки
+            columns:
+                - column:
+                    name: change_time
+                    type: timestamp
+                    constraints:
+                      nullable: false
+                    remarks: Время изменения данных
+                - column:
+                    name: trip_id
+                    type: uuid
+                    remarks: Измененная поездка
+                    constraints:
+                      nullable: false
+                      foreignKeyName: fk_trip_history_trip
+                      referencedTableSchemaName: trips
+                      referencedTableName: trips
+                      referencedColumnNames: id
+                - column:
+                    name: old_dispatcher_id
+                    type: uuid
+                    remarks: Предыдущий диспетчер
+                    constraints:
+                      foreignKeyName: fk_trip_history_old_dispatcher
+                      referencedTableSchemaName: trips
+                      referencedTableName: dispatcher
+                      referencedColumnNames: id
+                - column:
+                    name: new_dispatcher_id
+                    type: uuid
+                    remarks: Новый диспетчер
+                    constraints:
+                      foreignKeyName: fk_trip_history_new_dispatcher
+                      referencedTableSchemaName: trips
+                      referencedTableName: dispatcher
+                      referencedColumnNames: id
+        - addPrimaryKey:
+            schemaName: trips
+            tableName: trip_history
+            constraintName: trip_history_item_pk
+            columnNames: change_time,trip_id
+      rollback:
+        - dropTable:
+            schemaName: trips
+            tableName: trip_history

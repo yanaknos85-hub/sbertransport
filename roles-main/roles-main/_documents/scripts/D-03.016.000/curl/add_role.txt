@@ -1,0 +1,27 @@
+curl --X POST \
+--location '{url}/api/roles/' \
+--header 'Authorization: Bearer {token}' \
+--header 'Content-Type: application/json' \
+--data '{
+        	"code": "ROLE_MEDIC",
+        	"name": "Медик",
+        	"description": "Роль предоставляет право доступа в монитор МЕДИКА",
+        	"data_master": false,
+        	"scopes": [
+        		"EMPLOYEE"
+        	]
+        }'
+
+curl --X POST \
+--location '{url}/api/roles/' \
+--header 'Authorization: Bearer {token}' \
+--header 'Content-Type: application/json' \
+--data '{
+        	"code": "ROLE_TELEMECHANIC_ORGANIZATION",
+        	"name": "Телемеханик организации",
+        	"description": "Роль предоставляет право доступа в монитор телемеханика",
+        	"data_master": false,
+        	"scopes": [
+        		"EMPLOYEE"
+        	]
+        }'

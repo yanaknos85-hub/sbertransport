@@ -1,0 +1,2 @@
+alter table request_aggregation.contact_link
+drop column contact_information_id;

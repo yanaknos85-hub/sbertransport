@@ -1,0 +1,4 @@
+
+AUTHENTICATION_SBID
+
+Version: ${application.version}

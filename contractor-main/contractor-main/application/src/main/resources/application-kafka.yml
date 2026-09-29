@@ -1,0 +1,46 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        contractorOutput-out-0:
+          destination: service.contractor
+          binder: kafka
+        contractorTripUpdateOutput-out-0:
+          destination: service.contractor.update.trip
+          binder: kafka
+        dispatcherOutput-out-0:
+          destination: service.contractor.dispatcher
+          binder: kafka
+        vehicleOutput-out-0:
+          destination: service.contractor.vehicle
+          binder: kafka
+        shiftOutput-out-0:
+          destination: service.contractor.shift
+          binder: kafka
+        cargoPackageOutput-out-0:
+          destination: service.contractor.cargo.package
+          binder: kafka
+        usersOutput-out-0:
+          destination: service.users
+          binder: kafka
+        driverOutput-out-0:
+          destination: service.contractor.driver
+          binder: kafka
+        requestOutput-out-0:
+          destination: service.contractor.request
+          binder: kafka
+        employeeRoleOutput-out-0:
+          destination: service.contractor.employee.role
+          binder: kafka
+        employeesInput-in-0:
+          group: ${spring.application.name}
+          destination: service.organization.employee
+          binder: kafka
+        driverInput-in-0:
+          destination: service.trip.driver
+          group: ${spring.application.name}
+          binder: kafka
+        shiftInput-in-0:
+          destination: service.trip.shift
+          group: ${spring.application.name}
+          binder: kafka

@@ -1,0 +1,97 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250423-0825"
+      author: medvedev-ad
+      context: "TRANSPORT-31816"
+      changes:
+        - tagDatabase:
+            tag: "D-04.008.000"
+        - createTable:
+            schemaName: ${schema_name}
+            tableName: employee
+            remarks: Сотрудники
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор сотрудника
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: ${schema_name}_employee_pk
+              - column:
+                  name: organization_id
+                  type: uuid
+                  remarks: Идентификатор организации, которой принадлежит сотрудник
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_employee_organization_id_nn
+              - column:
+                  name: department_id
+                  type: uuid
+                  remarks: Идентификатор подразделения, которому принадлежит сотрудник
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_employee_department_id_nn
+        - createTable:
+            schemaName: ${schema_name}
+            tableName: organization
+            remarks: Организации
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор организации
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: ${schema_name}_organization_pk
+              - column:
+                  name: digit_id
+                  type: integer
+                  remarks: Порядковый номер организации
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: ${schema_name}_organization_digit_id_nn
+        - createTable:
+            schemaName: ${schema_name}
+            tableName: department
+            remarks: Подразделения
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор подразделения
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: ${schema_name}_department_pk
+              - column:
+                  name: head_id
+                  type: uuid
+                  remarks: Идентификатор руководителя подразделения
+        - createIndex:
+            schemaName: ${schema_name}
+            tableName: trip_order
+            indexName: ${schema_name}_trip_order_employee_id_idx
+            columns:
+              - column:
+                  name: passenger_id
+        - createIndex:
+            schemaName: ${schema_name}
+            tableName: employee
+            indexName: ${schema_name}_employee_organization_id_idx
+            columns:
+              - column:
+                  name: organization_id
+        - createIndex:
+            schemaName: ${schema_name}
+            tableName: employee
+            indexName: ${schema_name}_employee_department_id_idx
+            columns:
+              - column:
+                  name: department_id
+        - createIndex:
+            schemaName: ${schema_name}
+            tableName: department
+            indexName: ${schema_name}_department_head_id_idx
+            columns:
+              - column:
+                  name: head_id

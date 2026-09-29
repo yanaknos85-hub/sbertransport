@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: request_aggregation/20250819-1
+      author: novikova-km
+      dbms: postgresql
+      changes:
+        - sqlFile:
+            path: changes/add_planner_role.sql
+            relativeToChangelogFile: true
+            splitStatements: false

@@ -1,0 +1,6 @@
+<svg width="24.000000" height="24.000000" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs/>
+	<rect id="Rectangle" y="24.000000" width="24.000000" height="24.000000" transform="rotate(-90 0.000000 24.000000)" fill="#D8D8D8" fill-opacity="0"/>
+	<rect id="Rectangle" y="24.000000" width="24.000000" height="24.000000" transform="rotate(-90 0.000000 24.000000)" stroke="#979797" stroke-opacity="0" stroke-width="0.000000"/>
+	<path id="Path" d="M10 16L14 12L10 8" stroke="#000000" stroke-opacity="0.200000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

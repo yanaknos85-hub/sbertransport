@@ -1,0 +1,151 @@
+server:
+  port: -1
+spring:
+  profiles:
+    active: test
+  config:
+    import:
+      - optional:configserver:${SPRING_CLOUD_CONFIG_URI}
+      - kafka-test.yml
+  main:
+    cloud-platform: none
+    allow-bean-definition-overriding: true
+  application:
+    name: request
+  security:
+    user: #убираем запись в логах, по которой есть вопросы у безопасности
+      name: anonymous
+      password: ${random.uuid}
+      roles: anonymous
+    oauth2:
+      resourceserver:
+        jwt:
+          jws-algorithms: RS512
+          public-key-location: classpath:/key/jwt.key.pub
+  messages:
+    encoding: UTF-8
+  datasource:
+    url: jdbc:postgresql://localhost:5432/transport
+    password: root
+    username: postgres
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 10
+      schema: request
+      minimum-idle: 3
+      idle-timeout: 3000
+      connection-timeout: 30000
+      max-lifetime: 60000
+  jpa:
+    properties:
+      org:
+        hibernate:
+          envers:
+            store_data_at_delete: true
+      hibernate:
+        search:
+          enabled: false
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        order_updates: true
+        batch_versioned_data: true
+        generate_statistics: ${HIBERNATE_GENERATE_STATISTICS:false}
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog-master.yml
+    drop-first: false
+    test-rollback-on-update: false
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    database-change-log-table: changelog_${spring.application.name}
+    database-change-log-lock-table: changelog_${spring.application.name}_lock
+  servlet:
+    multipart:
+      enabled: true
+      #file-size-threshold: 1B
+      max-file-size: 20MB
+      max-request-size: 20MB
+  cloud:
+    vault:
+      enabled: false
+magenta:
+  rootUrl: dryg.magenta-technology.com
+  authPort: 443
+  authProtocol: https
+  user: user
+  password: g3f$67GHf#%6
+  headerSenderName: sender_service
+  headerSenderValue: TRANSPORT_AS
+  saveTariffsUrl: https://dryg.magenta-technology.com/api/v1/shared_rides/1/save_tariffs
+  postNewSharedRideUrl: https://dryg.magenta-technology.com/api/v1/shared_rides/1/plan_order/ride/-1
+  getSuitableRidesUrl: https://dryg.magenta-technology.com/api/v1/shared_rides/1/plan_order/
+  cancelOrderUrl: https://dryg.magenta-technology.com/api/v1/shared_rides/1/plan_order/
+  addRequestToRideUrl: https://dryg.magenta-technology.com/api/v1/shared_rides/1/plan_order/ride/
+request.maxFileSize: 20971520 #500000
+file:
+  upload-dir: "${FILE_UPLOAD_DIR:${classpath:src/test/resources/upload/publicTransport}}"
+  test.source-dir: publicTransportFiles
+  max-size: 20971520
+dispatcher:
+  updateDeadlineTimeout: ${DISPATCHER_UPDATE_DEADLINE_TIMEOUT:1000}
+embedded.postgres.enable: true
+request:
+  validation:
+    others:
+      enabled: ${VALIDATION_OTHERS_ENABLED:true}
+      enabled-for: TAXI, PERSONAL, CARSHARING
+    multipoint:
+      enabled: ${MULTIPOINT_VALIDATOR_ENABLED:false}
+    corporate-documents:
+      carsharing:
+        enabled: ${CORPORATE_DOCUMENTS_CARSHARING_VALIDATOR_ENABLED:false}
+      personalTransport:
+        enabled: ${CORPORATE_DOCUMENTS_PERSONAL_TRANSPORT_VALIDATOR_ENABLED:false}
+    travel-card:
+      one-time-trip:
+        enabled: ${TRAVEL_CARD_ONE_TIME_TRIP_VALIDATOR_ENABLED:false}
+      overlap:
+        enabled: ${TRAVEL_CARD_OVERLAP_VALIDATOR_ENABLED:false}
+    all-points-max-wait-time:
+      taxi:
+        limit-in-minutes: ${MAX_WAIT_TIME_AT_ALL_POINTS:60}
+        distance-threshold: ${DISTANCE_THRESHOLD:50000}
+  triggerTime: { REQUEST_TRIGGERTIME:15 }
+sharedride:
+  service: magenta
+feign.url.corporate: ${FEIGN_URL_CORPORATE:http://localhost:8007}
+feign.url.geo: ${FEIGN_URL_GEO:http://localhost:8006}
+scheduler:
+  car-location:
+    cron: ${CAR_LOCATION_CRON:0 0 0 * * *}
+    lock-at-least-for: ${CAR_LOCATION_LOCK_AT_LEAST_FOR:PT30S}
+    lock-at-most-for: ${CAR_LOCATION_LOCK_AT_MOST_FOR:PT1M}
+  car-location-task-expiration:
+    cron: ${CAR_LOCATION_TASK_EXPIRATION_CRON:0 0 3 * * *}
+    lock-at-least-for: ${CAR_LOCATION_TASK_EXPIRATION_LOCK_AT_LEAST_FOR:PT30M}
+    lock-at-most-for: ${CAR_LOCATION_TASK_EXPIRATION_LOCK_AT_MOST_FOR:PT1H}
+  new-trip:
+    cron: ${NEW_TRIP_CRON:0 */2 * * * *}
+    lock-at-least-for: ${NEW_TRIP_LOCK_AT_LEAST_FOR:PT1M}
+    lock-at-most-for: ${NEW_TRIP_LOCK_AT_MOST_FOR:PT5M}
+  in-progress-trip:
+    cron: ${IN_PROGRESS_TRIP_CRON:0 * * * * *}
+    lock-at-least-for: ${IN_PROGRESS_TRIP_LOCK_AT_LEAST_FOR:PT1M}
+    lock-at-most-for: ${IN_PROGRESS_TRIP_LOCK_AT_MOST_FOR:PT5M}
+  driver-arrived-deadline:
+    cron: ${DRIVER_ARRIVED_DEADLINE_CRON:* */15 * * * *}
+    lock-at-least-for: ${DRIVER_ARRIVED_DEADLINE_LOCK_AT_LEAST_FOR:PT1M}
+    lock-at-most-for: ${DRIVER_ARRIVED_DEADLINE_LOCK_AT_MOST_FOR:PT5M}
+split-check:
+  personal:
+    cost-threshold: ${PERSONAL_REQUEST_SPLIT_CHECK_COST_THRESHOLD:10000.00} # в копейках
+    duration-threshold: ${PERSONAL_REQUEST_SPLIT_CHECK_DURATION_THRESHOLD:60} # в минутах
+    request-count-threshold: ${PERSONAL_REQUEST_SPLIT_CHECK_REQUEST_COUNT_THRESHOLD:2}
+    ignore-statuses: ${PERSONAL_REQUEST_SPLIT_CHECK_IGNORE_STATUSES:PERSONAL_CANCELLED,PERSONAL_AWAITING_TRIP_DECLINED}

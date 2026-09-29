@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20250626-1
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/drop_column_dispatcher_region_code.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

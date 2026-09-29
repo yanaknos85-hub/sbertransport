@@ -1,0 +1,11 @@
+spring.cloud.consul:
+  enabled: true
+  host: ${DISCOVERY_HOST:localhost}
+  port: ${DISCOVERY_PORT:8500}
+  discovery:
+    tags:
+      - version=@project.version@
+      - platform=java @java.version@
+      - source=java @maven.compiler.target@
+      - release=v@project.release@
+      - description=Сервис грузовых поездок

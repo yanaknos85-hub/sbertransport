@@ -1,0 +1,11 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20240725-1
+            author: skakun-a
+            dbms: postgresql
+            runInTransaction: false
+            changes:
+                -   sqlFile:
+                        path: changes/add_indexes_on_vehicle_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

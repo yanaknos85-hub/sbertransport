@@ -1,0 +1,38 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230921"
+            author: blandin-ad
+            context: "20230921"
+            changes:
+                -   tagDatabase:
+                        tag: "20230921"
+                -   sql:
+                        sql: create schema trips_cargo;
+                -   sql:
+                        sql: comment on schema trips_cargo is 'Грузовые поездки';
+            rollback:
+                -   sql:
+                        sql: drop schema trips_cargo cascade;
+    -   changeSet:
+            id: "20230921-1"
+            author: blandin-ad
+            context: "20230921"
+            changes:
+                -   createTable:
+                        schemaName: trips_cargo
+                        tableName: trips_cargo
+                        remarks: Поездки
+                        columns:
+                            -   column:
+                                    name: id
+                                    type: uuid
+                                    remarks: Идентификатор
+                                    constraints:
+                                        primaryKey: true
+                            -   column:
+                                    name: status
+                                    type: text
+                                    remarks: Статус
+                                    defaultValue: WAITING_FOR_ASSIGNMENT
+                                    constraints:
+                                        nullable: false

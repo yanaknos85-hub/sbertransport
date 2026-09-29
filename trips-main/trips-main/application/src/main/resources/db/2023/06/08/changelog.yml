@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230608-1438"
+      author: medvedev-ad
+      context: "20230608"
+      changes:
+        - tagDatabase:
+            tag: "20230608"
+        - addColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: driverId
+                  type: uuid
+                  remarks: Идентификатор водителя
+              - column:
+                  name: vehicleId
+                  type: uuid
+                  remarks: Идентификатор автомобиля
+  - changeSet:
+      id: "20230608-1610"
+      author: medvedev-ad
+      context: "20230608"
+      changes:
+        - tagDatabase:
+            tag: "20230608"
+        - renameColumn:
+            schemaName: trips
+            tableName: trips
+            oldColumnName: driverId
+            newColumnName: driver_id
+        - renameColumn:
+            schemaName: trips
+            tableName: trips
+            oldColumnName: vehicleId
+            newColumnName: vehicle_id

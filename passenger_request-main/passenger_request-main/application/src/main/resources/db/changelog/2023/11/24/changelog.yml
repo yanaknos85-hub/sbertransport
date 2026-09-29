@@ -1,0 +1,49 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20231124-1136"
+            author: AALadeyshchikov
+            changes:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: tariff
+                        columns:
+                            -   column:
+                                    name: deleted
+            rollback:
+                -   addColumn:
+                        schemaName: request
+                        tableName: tariff
+                        columns:
+                            -   column:
+                                    type: boolean
+                                    name: deleted
+                                    remarks: Флаг удаления
+    -   changeSet:
+            id: "20231124-1233"
+            author: AALadeyshchikov
+            changes:
+                -   dropNotNullConstraint:
+                        schemaName: request
+                        tableName: tariff
+                        columnName: humanreadableid
+                -   dropNotNullConstraint:
+                        schemaName: request
+                        tableName: tariff
+                        columnName: department_id
+                -   dropNotNullConstraint:
+                        schemaName: request
+                        tableName: tariff
+                        columnName: transport_type
+            rollback:
+                -   addNotNullConstraint:
+                        schemaName: request
+                        tableName: tariff
+                        columnName: humanreadableid
+                -   addNotNullConstraint:
+                        schemaName: request
+                        tableName: tariff
+                        columnName: department_id
+                -   addNotNullConstraint:
+                        schemaName: request
+                        tableName: tariff
+                        columnName: transport_type

@@ -1,0 +1,28 @@
+syntax = "proto3";
+option java_package = "ru.sber.transport.deadline.grpc.dto";
+option java_multiple_files = true;
+package ru.sber.transport.deadline.grpc.dto;
+
+import "google/protobuf/timestamp.proto";
+
+enum GrpcUnit {
+    CALENDAR_DAY = 0;
+    BUSINESS_DAY = 1;
+    BUSINESS_HOUR = 2;
+}
+
+message DeadlineRequest {
+    GrpcUnit unit = 1;
+    google.protobuf.Timestamp startDateTime = 2;
+    int32 count = 3;
+}
+
+message ProlongationRequest {
+    GrpcUnit unit = 1;
+    google.protobuf.Timestamp dateTime = 2;
+    int32 count = 3;
+}
+
+message DeadlineResponse {
+    google.protobuf.Timestamp deadlineDateTime = 1;
+}

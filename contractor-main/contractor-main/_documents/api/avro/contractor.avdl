@@ -1,0 +1,49 @@
+@namespace("ru.sber.transport.contractor.messages.avro")
+protocol Contractor {
+
+	@aliases(["contractor"])
+	record ContractorMessage {
+		@logicalType("uuid") string @aliases(["headerId"]) id;
+		string name;
+		string msrn;
+		string tin;
+		int? rating = null;
+		string? contactPersonInfo = null;
+		string? contactPersonPhone = null;
+		string? contactPersonEmail = null;
+		array<@logicalType("uuid") string> regionIds = [];
+		string? contractorName = null;
+		string? contractorRusName = null;
+		string? integrationEmail = null;
+		boolean deleted = false;
+		IntegrationType integrationType;
+		string? url = null;
+		string? login = null;
+		string? password = null;
+		DispatcherMessage? mainDispatcher = null;
+		long digitId;
+		boolean autoassign;
+	}
+
+	record DispatcherMessage {
+		@logicalType("uuid") string id;
+		string humanReadableId;
+		string lastName;
+		string firstName;
+		string? patroymic = null;
+		string phone;
+		string email;
+		@logicalType("uuid") string contractorId;
+		boolean active;
+		boolean consent;
+	}
+
+	enum IntegrationType {
+		EMAIL_XML_API,
+		JSON_API_1_0,
+		DISPATCHER,
+		EMAIL_XML_WOUR_API,
+		NONE
+	}
+
+}

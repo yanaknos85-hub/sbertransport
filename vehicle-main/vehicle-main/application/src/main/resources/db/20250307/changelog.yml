@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20250307-1
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/not_null_transport_inventory_number.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

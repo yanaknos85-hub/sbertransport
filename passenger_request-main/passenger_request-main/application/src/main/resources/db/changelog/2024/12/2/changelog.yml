@@ -1,0 +1,220 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "241202-1"
+            author: morgan-nm
+            changes:
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_personal
+                        columns:
+                            -   column:
+                                    type: uuid
+                                    name: executor_group_id
+                                    remarks: Идентификатор группы исполнителей
+                -   addColumn:
+                       schemaName: request
+                       tableName: request_for_personal
+                       columns:
+                         - column:
+                             type: varchar(255)
+                             name: executor_group_name
+                             remarks: Наименование группы исполнителей
+                -   createIndex:
+                      schemaName: request
+                      tableName: request_for_personal
+                      columns:
+                        - column:
+                            name: executor_group_id
+                      indexName: request_request_for_personal_executor_group_id_idx
+                -   createIndex:
+                      schemaName: request
+                      tableName: request_for_personal
+                      columns:
+                        - column:
+                            name: executor_group_name
+                      indexName: request_request_for_personal_executor_group_name_idx
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columns:
+                            -   column:
+                                  type: uuid
+                                  name: executor_group_id
+                                  remarks: Идентификатор группы исполнителей
+                -   addColumn:
+                      schemaName: request
+                      tableName: request_for_taxi
+                      columns:
+                        - column:
+                            type: varchar(255)
+                            name: executor_group_name
+                            remarks: Наименование группы исполнителей
+                -   createIndex:
+                      schemaName: request
+                      tableName: request_for_taxi
+                      columns:
+                        - column:
+                            name: executor_group_id
+                      indexName: request_request_for_taxi_executor_group_id_idx
+                -   createIndex:
+                      schemaName: request
+                      tableName: request_for_taxi
+                      columns:
+                        - column:
+                            name: executor_group_name
+                      indexName: request_request_for_taxi_executor_group_name_idx
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columns:
+                            -   column:
+                                  type: uuid
+                                  name: executor_group_id
+                                  remarks: Идентификатор группы исполнителей
+                -   addColumn:
+                      schemaName: request
+                      tableName: request_for_carsharing
+                      columns:
+                        - column:
+                            type: varchar(255)
+                            name: executor_group_name
+                            remarks: Наименование группы исполнителей
+                -   createIndex:
+                      schemaName: request
+                      tableName: request_for_carsharing
+                      columns:
+                        - column:
+                            name: executor_group_id
+                      indexName: request_request_for_carsharing_executor_group_id_idx
+                -   createIndex:
+                      schemaName: request
+                      tableName: request_for_carsharing
+                      columns:
+                        - column:
+                            name: executor_group_name
+                      indexName: request_request_for_carsharing_executor_group_name_idx
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        columns:
+                            -   column:
+                                  type: uuid
+                                  name: executor_group_id
+                                  remarks: Идентификатор группы исполнителей
+                -   addColumn:
+                      schemaName: request
+                      tableName: request_for_public
+                      columns:
+                        - column:
+                            type: varchar(255)
+                            name: executor_group_name
+                            remarks: Наименование группы исполнителей
+                -   createIndex:
+                      schemaName: request
+                      tableName: request_for_public
+                      columns:
+                        - column:
+                            name: executor_group_id
+                      indexName: request_request_for_public_executor_group_id_idx
+                -   createIndex:
+                      schemaName: request
+                      tableName: request_for_public
+                      columns:
+                        - column:
+                            name: executor_group_name
+                      indexName: request_request_for_public_executor_group_name_idx
+                -   addColumn:
+                        schemaName: request
+                        tableName: request_for_group_transfer
+                        columns:
+                            -   column:
+                                  type: uuid
+                                  name: executor_group_id
+                                  remarks: Идентификатор группы исполнителей
+                -   addColumn:
+                      schemaName: request
+                      tableName: request_for_group_transfer
+                      columns:
+                        - column:
+                            type: varchar(255)
+                            name: executor_group_name
+                            remarks: Наименование группы исполнителей
+                -   createIndex:
+                      schemaName: request
+                      tableName: request_for_group_transfer
+                      columns:
+                        - column:
+                            name: executor_group_id
+                      indexName: request_request_for_group_transfer_executor_group_id_idx
+                -   createIndex:
+                      schemaName: request
+                      tableName: request_for_group_transfer
+                      columns:
+                        - column:
+                            name: executor_group_name
+                      indexName: request_request_for_group_transfer_executor_group_name_idx
+                -   addColumn:
+                      schemaName: request_audit
+                      tableName: request_for_public
+                      columns:
+                        -   column:
+                              type: uuid
+                              name: executor_group_id
+                              remarks: Идентификатор группы исполнителей
+                -   addColumn:
+                      schemaName: request_audit
+                      tableName: request_for_public
+                      columns:
+                        -   column:
+                              type: varchar(255)
+                              name: executor_group_name
+                              remarks: Наименование группы исполнителей
+            rollback:
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_personal
+                        columnName: executor_group_id
+                -   dropColumn:
+                      schemaName: request
+                      tableName: request_for_personal
+                      columnName: executor_group_name
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_taxi
+                        columnName: executor_group_id
+                -   dropColumn:
+                      schemaName: request
+                      tableName: request_for_taxi
+                      columnName: executor_group_name
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_carsharing
+                        columnName: executor_group_id
+                -   dropColumn:
+                      schemaName: request
+                      tableName: request_for_carsharing
+                      columnName: executor_group_name
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_public
+                        columnName: executor_group_id
+                -   dropColumn:
+                      schemaName: request
+                      tableName: request_for_public
+                      columnName: executor_group_name
+                -   dropColumn:
+                        schemaName: request
+                        tableName: request_for_group_transfer
+                        columnName: executor_group_id
+                -   dropColumn:
+                      schemaName: request
+                      tableName: request_for_group_transfer
+                      columnName: executor_group_name
+                -   dropColumn:
+                      schemaName: request_audit
+                      tableName: request_for_public
+                      columnName: executor_group_id
+                -   dropColumn:
+                      schemaName: request_audit
+                      tableName: request_for_public
+                      columnName: executor_group_name

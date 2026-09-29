@@ -1,0 +1,35 @@
+{
+    "summary": {
+        "queryTime": 17,
+        "numResults": 1
+    },
+    "addresses": [
+        {
+            "address": {
+                "buildingNumber": "12731",
+                "streetNumber": "12731",
+                "routeNumbers": [],
+                "street": "Ashley Melisse Boulevard",
+                "streetName": "Ashley Melisse Boulevard",
+                "streetNameAndNumber": "12731 Ashley Melisse Boulevard",
+                "countryCode": "US",
+                "countrySubdivision": "FL",
+                "countrySecondarySubdivision": "Duval",
+                "municipality": "Jacksonville",
+                "postalCode": "32225",
+                "municipalitySubdivision": "Arlington",
+                "country": "United States",
+                "countryCodeISO3": "USA",
+                "freeformAddress": "12731 Ashley Melisse Boulevard, Jacksonville, FL 32225",
+                "boundingBox": {
+                    "northEast": "30.333395,-81.468967",
+                    "southWest": "30.332949,-81.470086",
+                    "entity": "position"
+                },
+                "countrySubdivisionName": "Florida",
+                "localName": "Jacksonville"
+            },
+            "position": "30.333300,-81.469803"
+        }
+    ]
+}

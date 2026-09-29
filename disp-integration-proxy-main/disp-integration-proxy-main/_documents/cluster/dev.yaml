@@ -1,0 +1,31 @@
+application: disp-integration-proxy
+repo: app_platform_disp_integration_proxy
+resources:
+  limits:
+    cpu: 600m
+    memory: 2G
+  requests:
+    cpu: 600m
+    memory: 2G
+port:
+  http:
+    number: 8080
+    name: disp-int-proxy
+    target: 8080
+routing:
+  match:
+    prefix: /api/disp-integration-proxy
+  rewrite:
+    uri: ' '
+profiles: prod
+secman:
+  type: built_in
+additional:
+  envs:
+    - name: JAVA_TOOL_OPTIONS
+      valueFrom:
+        configMapKeyRef:
+          name: jdk-java-options
+          key: debug
+    - name: JWK_URL
+      value: 'http://jwks:8080'

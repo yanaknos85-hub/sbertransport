@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240717-0855"
+      author: blandin-ad
+      context: "TRANSPORT-23603"
+      changes:
+        - tagDatabase:
+            tag: "03.016.000"
+        - dropColumn:
+            schemaName: dispatcher
+            tableName: driver
+            columns:
+              - column:
+                  name: serving
+              - column:
+                  name: online
+              - column:
+                  name: active_trip_id
+              - column:
+                  name: shift_id
+      rollback:
+        - addColumn:
+            schemaName: dispatcher
+            tableName: driver
+            columns:
+              - column:
+                  name: serving
+                  type: boolean
+                  remarks: Признак выполнения заказа водителем
+              - column:
+                  name: online
+                  type: boolean
+                  remarks: Признак нахождения водителя на смене
+              - column:
+                  name: active_trip_id
+                  type: uuid
+                  remarks: ID выполняемой водителем поездки
+              - column:
+                  name: shift_id
+                  type: uuid
+                  remarks: ID активной смены водителя

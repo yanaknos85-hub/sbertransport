@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250603
+      author: shabrov-ie
+      changes:
+        - addColumn:
+            schemaName: dispatcher
+            tableName: contractor
+            columns:
+              - column:
+                  name: msrn
+                  type: text
+                  remarks: ОГРН

@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20221205"
+      author: blandin-ad
+      changes:
+          - tagDatabase:
+                tag: "20221205"
+          - addColumn:
+                schemaName: contractors
+                tableName: driver
+                columns:
+                    - column:
+                        name: shift_id
+                        type: uuid
+                        remarks: Текущая смена
+      rollback:
+          - dropColumn:
+                schemaName: contractors
+                tableName: driver
+                columns:
+                    - column:
+                        name: shift_id

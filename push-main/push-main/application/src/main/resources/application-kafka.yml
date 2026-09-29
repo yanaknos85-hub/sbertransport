@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        pushInput-in-0:
+          group: ${spring.application.name}
+          destination: service.push
+          binder: kafka

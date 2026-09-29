@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: dispatcher
+  namespace: ci02351878-edevgen-sbertransport-dev
+spec:
+  ports:
+    - name: http-dispatcher
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: dispatcher

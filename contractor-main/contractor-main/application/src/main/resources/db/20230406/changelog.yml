@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230406"
+      author: blandin-ad
+      changes:
+          - tagDatabase:
+                tag: "20230406"
+          - dropNotNullConstraint:
+                schemaName: contractors
+                tableName: vehicle
+                columnName: vin
+          - dropNotNullConstraint:
+                schemaName: contractors
+                tableName: vehicle
+                columnName: model_name
+      rollback:
+          - addNotNullConstraint:
+                schemaName: contractors
+                tableName: vehicle
+                columnName: vin
+          - addNotNullConstraint:
+                schemaName: contractors
+                tableName: vehicle
+                columnName: model_name

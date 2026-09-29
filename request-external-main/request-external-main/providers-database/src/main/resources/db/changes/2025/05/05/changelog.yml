@@ -1,0 +1,81 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250505-1059"
+      author: medvedev-ad
+      context: "TRANSPORT-31820"
+      dbms: postgresql
+      changes:
+        - tagDatabase:
+            tag: "D-04.008.000"
+        - sql:
+            splitStatements: false
+            sql: >
+              create function ${schema_name}.translit(source text) returns text language plpgsql as
+              $$
+              declare
+                _out text;
+              begin
+                _out := translate(trim(both ' ' from lower(coalesce(source, ''))), 
+                'абвгдеёзийклмнопрстуфхыэ',
+                'abvgdeeziyklmnoprstufhie'
+                );
+
+                _out := replace(_out, 'ж', 'zh');
+                _out := replace(_out, 'ц', 'ts');
+                _out := replace(_out, 'ч', 'ch');
+                _out := replace(_out, 'ш', 'sh');
+                _out := replace(_out, 'щ', 'sch');
+                _out := replace(_out, 'ъ', '');
+                _out := replace(_out, 'ь', '');
+                _out := replace(_out, 'ю', 'ju');
+                _out := replace(_out, 'я', 'ja');
+                return _out;
+              end;
+              $$;
+        - addColumn:
+            schemaName: ${schema_name}
+            tableName: employee
+            columns:
+               - column:
+                   name: document
+                   type: tsvector
+                   remarks: Документ для полнотекстного поиска
+  - changeSet:
+      id: "20250505-1059"
+      author: medvedev-ad
+      context: "TRANSPORT-31820"
+      dbms: h2
+      changes:
+        - tagDatabase:
+            tag: "D-04.008.000"
+        - addColumn:
+            schemaName: ${schema_name}
+            tableName: employee
+            columns:
+              - column:
+                  name: document
+                  type: java_object
+                  remarks: Документ для полнотекстного поиска
+  - changeSet:
+      id: "20250505-1102"
+      author: medvedev-ad
+      context: "TRANSPORT-31820"
+      changes:
+        - tagDatabase:
+            tag: "D-04.008.000"
+        - addColumn:
+            schemaName: ${schema_name}
+            tableName: employee
+            columns:
+              - column:
+                  name: last_name
+                  type: text
+                  remarks: Фамилия сотрудника
+              - column:
+                  name: first_name
+                  type: text
+                  remarks: Имя сотрудника
+              - column:
+                  name: patronymic
+                  type: text
+                  remarks: Отчество сотрудника

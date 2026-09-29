@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package ru.sber.transport.tariff.grpc.dto;
+option java_package = "ru.sber.transport.tariff.grpc.dto";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+
+//Тело запроса для пересчёт стоимости поездки по изменённой заявке (пока только точки)
+message CalculateRequest {
+    // Организация
+    string organizationId = 1;
+    // Пассажир
+    string employeeId = 2;
+    // Тайм зона заявки
+    string timeZone = 3;
+    // Желаемая дата поезки
+    google.protobuf.Timestamp desireDate = 4;
+    // Тип транспорта
+    string transportType = 5;
+    // Активные точки
+    repeated Waypoint waypoints = 6;
+}
+
+//Тело ответа для пересчёт стоимости поездки по изменённой заявке (пока только точки)
+//Содержит новые данные по новому маршруту поездки
+message CalculateResponse {
+    //Новая цена
+    int64 cost = 1;
+    //Время в пути
+    int64 time = 2;
+    // Расстояние
+    double distance = 3;
+    // Тариф, по которому был произведён расчёт
+    string tariffId = 4;
+    // Пока не перешли на 2гис на фронте, приходится таскать сегменты
+    repeated Segment segments = 5;
+}
+
+message Segment {
+    double distance = 1;
+    uint64 time = 2;
+    repeated Coordinate coordinates = 3;
+}
+
+message Coordinate {
+    double latitude = 1;
+    double longitude = 2;
+}
+
+message Waypoint {
+    string country = 1;
+    string region = 2;
+    string city = 3;
+    NullableString district = 4;
+    NullableString street = 5;
+    NullableString house = 6;
+    NullableString building = 7;
+    NullableString structure = 8;
+    double latitude = 9;
+    double longitude = 10;
+}
+
+message NullableString {
+    oneof kind {
+        google.protobuf.NullValue null = 1;
+        string data = 2;
+    }
+}

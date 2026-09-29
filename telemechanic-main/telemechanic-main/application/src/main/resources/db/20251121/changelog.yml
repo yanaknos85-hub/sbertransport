@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: telemechanic/20251121-1
+            author: gusevea
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/edit_driver_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

@@ -1,0 +1,239 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230613-0808"
+      author: medvedev-ad
+      context: "20230613"
+      changes:
+        - tagDatabase:
+            tag: "20230613"
+        - dropTable:
+            schemaName: contractors
+            tableName: contract
+            cascadeConstraints: true
+        - dropTable:
+            schemaName: contractors
+            tableName: organization
+            cascadeConstraints: true
+        - dropTable:
+            schemaName: contractors
+            tableName: methods
+            cascadeConstraints: true
+        - dropTable:
+            schemaName: contractors
+            tableName: method_roles
+            cascadeConstraints: true
+        - dropTable:
+            schemaName: contractors
+            tableName: trip_service
+            cascadeConstraints: true
+        - dropTable:
+            schemaName: contractors
+            tableName: trip_service_attribute
+            cascadeConstraints: true
+        - createTable:
+            schemaName: contractors
+            tableName: contractor_organization
+            remarks: Связи контрагентов и организаций
+            columns:
+              - column:
+                  name: contractor_id
+                  type: uuid
+                  remarks: Идентификатор контрагента
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: contractors_contractor_organization_contractor_id_nn
+                    referencedTableSchemaName: contractors
+                    referencedTableName: contractor
+                    referencedColumnNames: id
+                    foreignKeyName: contractors_contractor_organization_contractor_fk
+              - column:
+                  name: organization_id
+                  type: uuid
+                  remarks: Идентификатор привязанной организации
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: contractors_contractor_organization_organization_id_nn
+        - addPrimaryKey:
+            schemaName: contractors
+            tableName: contractor_organization
+            columnNames: contractor_id,organization_id
+            constraintName: contractors_contractor_organization_pk
+        - dropColumn:
+            schemaName: contractors
+            tableName: employee
+            columns:
+              - column:
+                  name: humanreadableid
+              - column:
+                  name: personnel_number
+        - addColumn:
+            schemaName: contractors
+            tableName: employee
+            columns:
+              - column:
+                  name: mobile_phone
+                  type: varchar(20)
+                  remarks: Номер телефона
+        - addUniqueConstraint:
+            schemaName: contractors
+            tableName: contractor
+            columnNames: tin,name
+            constraintName: contractors_contractor_tin_name_uk
+      rollback:
+        - createTable:
+            schemaName: contractors
+            tableName: contract
+            remarks: Контракты из модуля тарифов
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор контракта
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: contract_pkey
+              - column:
+                  name: contractor_id
+                  type: uuid
+                  remarks: Идентификатор контрагента
+              - column:
+                  name: organizations
+                  type: text
+                  remarks: Организации
+              - column:
+                  name: active
+                  type: boolean
+                  defaultValueBoolean: true
+                  defaultOnNull: true
+                  remarks: Флаг активности
+                  constraints:
+                    nullable: false
+        - createTable:
+            schemaName: contractors
+            tableName: organization
+            remarks: Организации
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: organization_pkey
+              - column:
+                  name: digit_id
+                  type: numeric
+                  remarks: Уникальный идентификатор (числовой ID)
+              - column:
+                  name: name
+                  type: text
+                  remarks: Название
+              - column:
+                  name: active
+                  type: boolean
+                  defaultValueBoolean: true
+                  defaultOnNull: true
+                  remarks: Флаг активности
+                  constraints:
+                    nullable: false
+        - createTable:
+            schemaName: contractors
+            tableName: methods
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: methods_pkey
+              - column:
+                  name: name
+                  type: varchar
+                  constraints:
+                    unique: true
+                    uniqueConstraintName: methods_name_key
+              - column:
+                  name: description
+                  type: varchar
+        - createTable:
+            schemaName: contractors
+            tableName: method_roles
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: method_roles_pkey
+              - column:
+                  name: method_id
+                  type: uuid
+                  constraints:
+                    referencedTableSchemaName: contractors
+                    referencedColumnNames: id
+                    referencedTableName: methods
+                    foreignKeyName: method_roles_method_id_fkey
+                    unique: true
+                    uniqueConstraintName: method_roles_role_method_uk
+              - column:
+                  name: role_code
+                  type: varchar
+        - createTable:
+            schemaName: contractors
+            tableName: trip_service
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: trip_classes_pkey
+              - column:
+                  name: trip_class
+                  type: varchar(255)
+              - column:
+                  name: contractor_id
+                  type: uuid
+                  constraints:
+                    referencedTableSchemaName: contractors
+                    referencedColumnNames: id
+                    referencedTableName: contractor
+                    foreignKeyName: contractor_trip_class
+              - column:
+                  name: status
+                  type: varchar(255)
+        - createTable:
+            schemaName: contractors
+            tableName: trip_service_attribute
+            columns:
+              - column:
+                  name: trip_service
+                  type: uuid
+              - column:
+                  name: attribute
+                  type: uuid
+        - dropTable:
+            schemaName: contractors
+            tableName: contractor_organization
+            cascadeConstraints: true
+        - addColumn:
+            schemaName: contractors
+            tableName: employee
+            columns:
+              - column:
+                  name: humanreadableid
+                  type: varchar(100)
+              - column:
+                  name: personnel_number
+                  type: varchar(255)
+        - dropColumn:
+            schemaName: contractors
+            tableName: employee
+            columns:
+              - column:
+                  name: mobile_phone
+        - dropUniqueConstraint:
+            schemaName: contractors
+            tableName: contractor
+            columnNames: tin,name
+            constraintName: contractors_contractor_tin_name_uk

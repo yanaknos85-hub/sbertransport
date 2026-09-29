@@ -1,0 +1,64 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20241216"
+      author: blandin-ad
+      changes:
+        - addColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: fact_start_time
+                  type: timestamp with time zone
+                  remarks: Фактическое время начала поездки
+              - column:
+                  name: fact_end_time
+                  type: timestamp with time zone
+                  remarks: Фактическое время окончания поездки
+              - column:
+                  name: expected_start_time
+                  type: timestamp with time zone
+                  remarks: Плановое время начала поездки
+              - column:
+                  name: expected_end_time
+                  type: timestamp with time zone
+                  remarks: Плановое время окончания поездки
+        - sql:
+            sql: update trips.trips set fact_start_time = start_time, fact_end_time = end_time, expected_start_time = start_time, expected_end_time = end_time;
+        - dropColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: start_time
+              - column:
+                  name: end_time
+      rollback:
+        - addColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: start_time
+                  type: timestamp with time zone
+                  remarks: Время начала поездки
+              - column:
+                  name: end_time
+                  type: timestamp with time zone
+                  remarks: Время окончания поездки
+        - sql:
+            sql: update trips.trips set start_time = expected_start_time, end_time = expected_end_time;
+        - dropColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: fact_start_time
+              - column:
+                  name: fact_end_time
+              - column:
+                  name: expected_start_time
+              - column:
+                  name: expected_end_time
+
+

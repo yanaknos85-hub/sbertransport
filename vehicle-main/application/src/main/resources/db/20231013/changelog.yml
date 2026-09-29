@@ -1,0 +1,19 @@
+databaseChangeLog:
+    -   changeSet:
+            id: vehicle/20231013-1
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/create_basic_organization_strusture.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: vehicle/20231013-2
+            author: skakun-a
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/create_data.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

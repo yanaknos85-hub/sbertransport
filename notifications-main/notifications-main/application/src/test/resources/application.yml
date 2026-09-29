@@ -1,0 +1,46 @@
+server:
+  port: 0
+spring:
+  profiles:
+    active: logging
+  main:
+    lazy-initialization: true
+  application:
+    name: notifications
+  cloud.config:
+    enabled: false
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 100
+      connection-test-query: SELECT 1
+      schema: notifications
+    username: postgres
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 25
+          lob:
+            non_contextual_creation: true
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+  liquibase:
+    enabled: true
+    change-log: db/changelog-master.yml
+    drop-first: false
+    test-rollback-on-update: true
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    database-change-log-table: changelog_${spring.application.name}
+    database-change-log-lock-table: changelog_${spring.application.name}_lock
+  cloud:
+    vault:
+      enabled: false
+notification:
+  settings:
+    schedule: '-'

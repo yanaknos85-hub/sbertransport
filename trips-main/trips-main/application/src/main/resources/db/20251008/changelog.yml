@@ -1,0 +1,129 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20251008"
+      author: blandin-ad
+      changes:
+        - tagDatabase:
+            tag: "D-04.019.000"
+        - createTable:
+            schemaName: trips
+            tableName: autopark
+            remarks: Филиал автопарка контрагента
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор филиала
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: contractor_id
+                  type: uuid
+                  remarks: Идентификатор контрагента
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: trips_autopark_contractor_id_nnc
+              - column:
+                  name: routing_id
+                  type: uuid
+                  remarks: Идентификатор филиала для маршрутизации поездок
+      rollback:
+        - dropTable:
+            schemaName: trips
+            tableName: autopark
+  - changeSet:
+      id: "20251009"
+      author: blandin-ad
+      changes:
+        - tagDatabase:
+            tag: "D-04.020.000"
+        - addColumn:
+            schemaName: trips
+            tableName: driver
+            columns:
+              - column:
+                  name: autopark_id
+                  type: uuid
+                  remarks: Идентификатор филиала автопарка водителя
+        - addColumn:
+            schemaName: trips
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: autopark_id
+                  type: uuid
+                  remarks: Идентификатор филиала автопарка диспетчера
+        - addColumn:
+            schemaName: trips
+            tableName: vehicle
+            columns:
+              - column:
+                  name: autopark_id
+                  type: uuid
+                  remarks: Идентификатор филиала автопарка автомобиля
+        - addColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: autopark_id
+                  type: uuid
+                  remarks: Идентификатор филиала автопарка поездки
+      rollback:
+        - dropColumn:
+            schemaName: trips
+            tableName: driver
+            columns:
+              - column:
+                  name: autopark_id
+        - dropColumn:
+            schemaName: trips
+            tableName: dispatcher
+            columns:
+              - column:
+                  name: autopark_id
+        - dropColumn:
+            schemaName: trips
+            tableName: vehicle
+            columns:
+              - column:
+                  name: autopark_id
+        - dropColumn:
+            schemaName: trips
+            tableName: trips
+            columns:
+              - column:
+                  name: autopark_id
+  - changeSet:
+      id: "20251409"
+      author: blandin-ad
+      changes:
+        - tagDatabase:
+            tag: "D-04.020.000"
+        - addColumn:
+            schemaName: trips
+            tableName: autopark
+            columns:
+              - column:
+                  name: active
+                  type: boolean
+                  remarks: Признак активности филиала
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: trips_autopark_active_nnc
+        - addUniqueConstraint:
+            schemaName: trips
+            tableName: autopark
+            columnNames: routing_id
+            constraintName: trips_autopark_routing_id_uc
+      rollback:
+        - dropColumn:
+            schemaName: trips
+            tableName: autopark
+            columns:
+              - column:
+                  name: active
+        - dropUniqueConstraint:
+            schemaName: trips
+            tableName: autopark
+            constraintName: trips_autopark_routing_id_uc

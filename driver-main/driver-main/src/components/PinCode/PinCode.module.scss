@@ -1,0 +1,22 @@
+@import 'styles/variables.scss';
+
+.passcode {
+  :global(.adm-passcode-input-cell) {
+    width: 50px;
+    height: 50px;
+  }
+
+  &:global(.adm-passcode-input.adm-passcode-input-seperated .adm-passcode-input-cell:not(:last-child)) {
+    margin-right: 12px;
+  }
+
+  &:global(.adm-passcode-input:not(.adm-passcode-input-seperated) .adm-passcode-input-cell:not(:last-child)),
+  &:global(.adm-passcode-input.adm-passcode-input-seperated .adm-passcode-input-cell) {
+    border-color: $gray;
+  }
+
+  &:global(.adm-passcode-input.adm-passcode-input-seperated .adm-passcode-input-cell-focused) {
+    border-color: $jade;
+    box-shadow: 0 0 2px 0 $jade;
+  }
+}

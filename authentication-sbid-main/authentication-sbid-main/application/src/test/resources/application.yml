@@ -1,0 +1,33 @@
+app:
+  truststore: ${APP_TRUSTSTORE:truststore.jks}
+  truststore-password: ${APP_TRUSTSTORE_PASSWORD:changeit}
+  keystore: ${APP_KEYSTORE:client.p12}
+  keystore-password: ${APP_KEYSTORE_PASSWORD:changeit}
+  privateKey: ${APP_PRIVATE_KEY:jwt.key}
+server:
+  port: 0
+spring:
+  application:
+      name: authentication_sbid
+  config:
+    import: database.yml
+  cloud:
+    discovery.enabled: false
+    vault.enabled: false
+    stream.default-binder: integration
+  main:
+    cloud-platform: none
+    banner-mode: off
+    allow-bean-definition-overriding: true
+  profiles:
+    active: prod, kafka, test
+  liquibase:
+    contexts: test
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: ${file.max-size:30MB}
+      max-request-size: ${file.max-size:30MB}
+
+
+

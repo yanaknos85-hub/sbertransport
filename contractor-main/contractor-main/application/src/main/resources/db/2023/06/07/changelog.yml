@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230607-1340"
+      author: medvedev-ad
+      context: "20230607"
+      changes:
+        - tagDatabase:
+            tag: "20230607"
+        - addColumn:
+            schemaName: contractors
+            tableName: contractor
+            columns:
+              - column:
+                  name: employee_count
+                  type: integer
+                  remarks: Количество сотрудников КА
+                  defaultOnNull: true
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: contractors_contractor_employee_count_nn
+  - changeSet:
+      id: "20230607-1500"
+      author: medvedev-ad
+      context: "20230607"
+      changes:
+        - tagDatabase:
+            tag: "20230607"
+        - sqlFile:
+            dbms: postgresql
+            path: change/update_count.sql
+            splitStatements: false
+            relativeToChangelogFile: true
+      rollback:
+        - sql:
+            sql: select 1 #no need to rollback

@@ -1,0 +1,24 @@
+databaseChangeLog:
+    -   changeSet:
+            id: contractor/20211222
+            context: "20211222"
+            author: chuprin
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/add_vehicle_active.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+                -   sqlFile:
+                        path: change/add_autopark_active.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/add_vehicle_active.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+                -   sqlFile:
+                        path: rollback/add_autopark_active.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

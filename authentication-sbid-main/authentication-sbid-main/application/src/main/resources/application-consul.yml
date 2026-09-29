@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    consul:
+      enabled: true
+      host: ${DISCOVERY_HOST:@discovery.host@}
+      port: ${DISCOVERY_PORT:@discovery.port@}
+      discovery:
+        prefer-ip-address: true
+        tags:
+          - version=@project.version@
+          - platform=java @java.version@
+          - source=java @maven.compiler.target@
+          - release=v@project.release@

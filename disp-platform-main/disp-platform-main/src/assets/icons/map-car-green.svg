@@ -1,0 +1,38 @@
+<svg width="14.000000" height="38.000000" viewBox="0 0 14 38" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<linearGradient x1="7.000000" y1="0.000000" x2="7.000000" y2="38.000000" id="paint_linear_74_233383_0" gradientUnits="userSpaceOnUse">
+			<stop offset="0.007634" stop-color="#48B51F"/>
+			<stop offset="1.000000" stop-color="#069550"/>
+		</linearGradient>
+		<linearGradient x1="7.000000" y1="1.000000" x2="7.000000" y2="37.000000" id="paint_linear_74_233384_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#9ECC3A"/>
+			<stop offset="1.000000" stop-color="#1DB24F"/>
+		</linearGradient>
+		<linearGradient x1="7.000244" y1="8.000000" x2="7.000244" y2="16.000000" id="paint_linear_74_233385_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#515151"/>
+			<stop offset="1.000000" stop-color="#000000"/>
+		</linearGradient>
+		<linearGradient x1="7.000122" y1="26.500061" x2="7.000122" y2="32.000061" id="paint_linear_74_233386_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#515151"/>
+			<stop offset="1.000000" stop-color="#000000"/>
+		</linearGradient>
+		<linearGradient x1="2.044649" y1="13.500000" x2="2.044649" y2="29.000000" id="paint_linear_74_233388_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#515151"/>
+			<stop offset="1.000000" stop-color="#000000"/>
+		</linearGradient>
+		<linearGradient x1="11.900297" y1="13.500000" x2="11.900297" y2="29.000000" id="paint_linear_74_233389_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#515151"/>
+			<stop offset="1.000000" stop-color="#000000"/>
+		</linearGradient>
+	</defs>
+	<path id="Rectangle 340" d="M5.12 0L7 0L8.87 0C11.27 0 13.33 1.69 13.64 4.07C13.83 5.58 14 7.28 14 8.72C14 11.42 14 26.63 14 34C14 36.2 12.2 38 10 38L4 38C1.79 38 0 36.2 0 34C0 26.63 0 11.42 0 8.72C0 7.28 0.16 5.58 0.35 4.07C0.66 1.69 2.72 0 5.12 0Z" fill="url(#paint_linear_74_233383_0)" fill-opacity="1.000000" fill-rule="evenodd"/>
+	<path id="Rectangle 340" d="M5.28 1L8.7 1C10.62 1 12.27 2.35 12.55 4.24C12.78 5.76 13 7.5 13 8.71C13 10.77 13 27.14 13 34C13 35.65 11.65 37 10 37L4 37C2.34 37 1 35.65 1 34C1 27.15 1 10.79 1 8.71C1 7.49 1.21 5.75 1.44 4.24C1.72 2.35 3.37 1 5.28 1Z" fill="url(#paint_linear_74_233384_0)" fill-opacity="1.000000" fill-rule="evenodd"/>
+	<path id="Rectangle 341" d="M1.5 10C1.5 10 3 8 7 8C11 8 12.5 10 12.5 10C11.5 12.5 11 16 11 16C11 16 10 15 7 15C4 15 3 16 3 16C3 16 2.5 12.41 1.5 10Z" fill="url(#paint_linear_74_233385_0)" fill-opacity="1.000000" fill-rule="evenodd"/>
+	<path id="Vector 35" d="M3.5 26.5L10.5 26.5C10.5 29 12 32 12 32L2 32C2 32 3.5 29 3.5 26.5Z" fill="url(#paint_linear_74_233386_0)" fill-opacity="1.000000" fill-rule="evenodd"/>
+	<rect id="Rectangle 342" x="3.000244" y="20.000000" rx="0.300000" width="8.000000" height="2.500000" fill="#FFFFFF" fill-opacity="1.000000"/>
+	<path id="Vector 36" d="M1.5 13.5C1.5 13.5 2.25 14.25 2.5 17.5C2.75 20.75 2.62 23.62 2.5 26.5C2.5 27.5 2 29 2 29C2 29 1.5 27.5 1.5 26.5C1.37 22.62 1.5 13.5 1.5 13.5Z" fill="url(#paint_linear_74_233388_0)" fill-opacity="1.000000" fill-rule="evenodd"/>
+	<path id="Vector 37" d="M12.44 13.5C12.44 13.5 11.69 14.25 11.44 17.5C11.19 20.75 11.31 23.62 11.44 26.5C11.44 27.5 11.94 29 11.94 29C11.94 29 12.44 27.5 12.44 26.5C12.56 22.62 12.44 13.5 12.44 13.5Z" fill="url(#paint_linear_74_233389_0)" fill-opacity="1.000000" fill-rule="evenodd"/>
+</svg>

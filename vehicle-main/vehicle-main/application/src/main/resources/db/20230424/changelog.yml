@@ -1,0 +1,13 @@
+databaseChangeLog:
+    -   changeSet:
+            id: 20230424
+            author: vostrikov-da
+            dbms: postgresql
+            changes:
+                -   sql:
+                        sql: create schema vehicle;
+                -   sql:
+                        sql: comment on schema vehicle is 'Транспортные средства';
+            rollback:
+                -   sql:
+                        sql: drop schema vehicle;

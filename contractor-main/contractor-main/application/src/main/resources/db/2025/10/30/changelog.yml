@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20251030-1600
+      author: gusevea
+      changes:
+        - addColumn:
+            schemaName: contractors
+            tableName: contractor
+            columns:
+              - column:
+                  name: vehicle_count_norm
+                  type: int4
+                  remarks: 'Нормативное количество автомобилей'

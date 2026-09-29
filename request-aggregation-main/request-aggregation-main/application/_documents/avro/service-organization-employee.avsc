@@ -1,0 +1,198 @@
+{
+    "namespace": "ru.sber.transport.messages.corporate.avro",
+    "name": "EmployeeMessage",
+    "type": "record",
+    "doc": "Данные сотрудника",
+    "fields": [
+        {
+            "name": "id",
+            "doc": "Идентификатор",
+            "type": {
+                "type": "string",
+                "logicalType": "uuid"
+            },
+            "aliases": [
+                "headerId"
+            ]
+        },
+        {
+            "name": "userId",
+            "doc": "Идентификатор пользователя",
+            "type": {
+                "type": "string",
+                "logicalType": "uuid"
+            }
+        },
+        {
+            "name": "humanReadableId",
+            "doc": "Человекочитаемый идентификатор",
+            "type": "string"
+        },
+        {
+            "name": "firstName",
+            "doc": "Имя",
+            "type": "string"
+        },
+        {
+            "name": "lastName",
+            "doc": "Фамилия",
+            "type": "string"
+        },
+        {
+            "name": "patronymic",
+            "doc": "Отчество",
+            "type": [
+                "null",
+                "string"
+            ],
+            "default": null
+        },
+        {
+            "name": "personnelNumber",
+            "doc": "Табельный номер",
+            "type": "string"
+        },
+        {
+            "doc": "Идентификатор подразделения",
+            "name": "departmentId",
+            "type": {
+                "type": "string",
+                "logicalType": "uuid"
+            }
+        },
+        {
+            "doc": "МВЗ",
+            "name": "costCenter",
+            "type": [
+                "null",
+                "string"
+            ],
+            "default": null
+        },
+        {
+            "doc": "Разъездной характер работы",
+            "name": "itinerantType",
+            "type": {
+                "type": "enum",
+                "name": "ItinerantType",
+                "symbols": [
+                    "NONE",
+                    "FULL",
+                    "PARTIAL"
+                ]
+            },
+            "default": "NONE"
+        },
+        {
+            "doc": "Идентификатор организации",
+            "name": "organizationId",
+            "type": {
+                "type": "string",
+                "logicalType": "uuid"
+            }
+        },
+        {
+            "doc": "Идентификатор должности",
+            "name": "positionId",
+            "type": {
+                "type": "string",
+                "logicalType": "uuid"
+            }
+        },
+        {
+            "doc": "Контакты",
+            "name": "contacts",
+            "type": {
+                "type": "array",
+                "items": {
+                    "type": "record",
+                    "name": "Contact",
+                    "fields": [
+                        {
+                            "doc": "Тип контактных данных",
+                            "name": "type",
+                            "type": {
+                                "type": "enum",
+                                "name": "ContactEmployeeType",
+                                "symbols": [
+                                    "MOBILE",
+                                    "EMAIL"
+                                ]
+                            }
+                        },
+                        {
+                            "doc": "Значение контактных данных",
+                            "name": "value",
+                            "type": "string"
+                        },
+                        {
+                            "doc": "Флаг корпоративности данных",
+                            "name": "internal",
+                            "type": "boolean"
+                        }
+                    ]
+                }
+            },
+            "default": []
+        },
+        {
+            "doc": "Идентификатор руководителя",
+            "name": "supervisorId",
+            "type": [
+                "null",
+                {
+                    "type": "string",
+                    "logicalType": "uuid"
+                }
+            ],
+            "default": null
+        },
+        {
+            "doc": "Тип сотрудника (внешний/внутренний)",
+            "name": "employeeType",
+            "type": {
+                "type": "enum",
+                "name": "EmployeeType",
+                "symbols": [
+                    "INTERNAL",
+                    "EXTERNAL"
+                ]
+            }
+        },
+        {
+            "doc": "Пол",
+            "name": "gender",
+            "type": [
+                "null",
+                {
+                    "type": "enum",
+                    "name": "Gender",
+                    "symbols": [
+                        "MALE",
+                        "FEMALE"
+                    ]
+                }
+            ],
+            "default": null
+        },
+        {
+            "doc": "Факт подписания ПДн",
+            "name": "consent",
+            "type": "boolean"
+        },
+        {
+            "doc": "Признак удаления",
+            "name": "deleted",
+            "type": "boolean"
+        },
+        {
+            "doc": "Прочие атрибуты",
+            "name": "attributes",
+            "type": {
+                "type": "array",
+                "items": "string"
+            },
+            "default": []
+        }
+    ]
+}

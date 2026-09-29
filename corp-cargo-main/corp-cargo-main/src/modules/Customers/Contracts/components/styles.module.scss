@@ -1,0 +1,22 @@
+.ndsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.vatInput {
+  width: 100%;
+}
+
+.contractsTable {
+  :global {
+    .ant-table-fixed {
+      table-layout: fixed;
+    }
+
+    .ant-table-tbody > tr > td {
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+  }
+}
