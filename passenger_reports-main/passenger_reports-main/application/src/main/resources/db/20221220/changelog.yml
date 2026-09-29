@@ -1,0 +1,67 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221220"
+            author: blandin-ad
+            changes:
+                -   tagDatabase:
+                        tag: "20221220"
+                -   createTable:
+                        schemaName: reports
+                        tableName: vehicle
+                        remarks: Автомобили
+                        columns:
+                            -   column:
+                                    name: id
+                                    type: uuid
+                                    remarks: Идентификатор
+                                    constraints:
+                                            primaryKey: true
+                                            primaryKeyName: reports_vehicle_pk
+                            -   column:
+                                    name: brand
+                                    type: text
+                                    remarks: Бренд
+                            -   column:
+                                    name: model
+                                    type: text
+                                    remarks: Модель
+                            -   column:
+                                    name: state_number
+                                    type: text
+                                    remarks: Номер
+                            -   column:
+                                    name: color
+                                    type: text
+                                    remarks: Цвет
+                            -   column:
+                                    name: autopark_id
+                                    type: uuid
+                                    remarks: Идентификатор автопарка
+                            -   column:
+                                    name: deleted
+                                    type: boolean
+                                    remarks: Признак удаленности автомобиля
+                                    defaultValueBoolean: false
+                                    constraints:
+                                            nullable: false
+    -   changeSet:
+            id: "20221220-1"
+            author: blandin-ad
+            changes:
+                -   tagDatabase:
+                        tag: "20221220"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    name: vehicle_id
+                                    type: uuid
+                                    remarks: Идентификатор автомобиля
+            rollback:
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    name: vehicle_id

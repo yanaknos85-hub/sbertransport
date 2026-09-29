@@ -1,0 +1,13 @@
+databaseChangeLog:
+    -   changeSet:
+            id: authentication/20210629
+            author: aas
+            changes:
+                -   addColumn:
+                        schemaName: authentication
+                        tableName: account
+                        columns:
+                            -   column:
+                                    name: personnel_number
+                                    type: varchar(255)
+                                    remarks: Табельный номер

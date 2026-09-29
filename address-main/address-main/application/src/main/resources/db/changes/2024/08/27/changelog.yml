@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240827-0911"
+      author: medvedev-ad
+      context: "TRANSPORT-24495"
+      changes:
+        - tagDatabase:
+            tag: "D-03.016.000"
+        - createTable:
+            schemaName: addresses
+            tableName: employee
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор сотрудника
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: addresses_employee_pk
+              - column:
+                  name: user_id
+                  type: uuid
+                  remarks: Идентификатор пользователя
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: addresses_employee_user_id_nn
+              - column:
+                  name: organization_id
+                  type: uuid
+                  remarks: Ссылка на организацию
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: addresses_employee_organization_id_nn
+        - createIndex:
+            schemaName: addresses
+            tableName: employee
+            columns:
+              - column:
+                  name: organization_id
+            indexName: addresses_employee_organization_idx
+        - createIndex:
+            schemaName: addresses
+            tableName: employee
+            columns:
+              - column:
+                  name: user_id
+            indexName: addresses_employee_user_idx

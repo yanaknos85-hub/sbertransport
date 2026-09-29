@@ -1,0 +1,16 @@
+[
+  {
+    "id": "e9aa5684-33e0-44a4-9acb-e6d44cd9dfde",
+    "transportType": {
+      "id": "296c1c60-0aa3-4e06-85a0-f5efc021d8c9",
+      "name": "COURIER"
+    },
+    "cost": 165,
+    "time":  11789072,
+    "priceDetails": {
+      "baseCost": 280,
+      "loaderCost": 120,
+      "expressCost": 600
+    }
+  }
+]

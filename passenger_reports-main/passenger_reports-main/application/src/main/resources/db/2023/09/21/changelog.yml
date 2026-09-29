@@ -1,0 +1,22 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230921"
+            author: delyukov-da
+            changes:
+                -   tagDatabase:
+                        tag: "20230921"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    type: timestamp
+                                    name: driver_arrived_datetime
+                                    remarks: Время перехода заявки в статус Водитель ожидает в точке отправления
+            rollback:
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    name: driver_arrived_datetime

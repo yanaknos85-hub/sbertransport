@@ -1,4 +1,0 @@
-JWKS_URI: http://localhost:8080
-spring:
-  liquibase:
-    liquibase-schema: public

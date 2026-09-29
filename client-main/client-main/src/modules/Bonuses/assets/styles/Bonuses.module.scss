@@ -1,0 +1,278 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+
+  @media (max-width: 500px) {
+    padding: 0 8px;
+    margin-bottom: 16px;
+  }
+}
+
+.firstBloc {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  border-color: transparent;
+  font-family: "SB Sans Text", sans-serif;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.07999999821186066);
+  background-color: rgba(255, 255, 255, 1);
+  padding: 8px;
+
+  @media (min-width: 501px) {
+    padding: 20px 24px;
+  }
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  .headerTitle {
+    white-space: pre-line;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 35px;
+    letter-spacing: -0.3px;
+  }
+
+  .headerDesc {
+    margin: 16px 0 0;
+    font-size: 20px;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+
+    @media (min-width: 501px) {
+      line-height: 40px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    svg {
+      display: none;
+    }
+  }
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  @media (max-width: 500px) {
+    margin-top: 16px;
+    justify-content: center;
+  }
+
+  .gridImage {
+    width: 88px;
+    height: 88px;
+    position: absolute;
+    top: 3px;
+    right: 6px;
+  }
+
+  .gridTitle {
+    width: 100%;
+    display: inline-block;
+    font-family: "SB Sans Interface", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    color: #000000;
+  }
+
+  .frame {
+    min-height: 200px;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow:
+      0 4px 20px rgba(0, 0, 0, 0.08),
+      0 0 1px rgba(0, 0, 0, 0.04);
+    border-radius: 12px;
+    position: relative;
+    min-width: 300px;
+    max-width: 355px;
+
+    @media (max-width: 500px) {
+      flex: 1;
+      max-width: 100%;
+    }
+  }
+
+  .desc {
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+    color: #737373;
+    display: inline-block;
+    margin-top: 10px;
+
+    &:not(:last-child) {
+      max-width: 240px;
+    }
+  }
+}
+
+.secondBloc {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: "SB Sans Text", sans-serif;
+  padding: 8px;
+  grid-gap: 20px;
+  background: #ffffff;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.08),
+    0 0 1px rgba(0, 0, 0, 0.04);
+  border-radius: 12px;
+  margin-top: 16px;
+
+  @media (min-width: 501px) {
+    padding: 24px;
+  }
+
+  .bonusContent {
+    width: 100%;
+    min-height: 74px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .bonusHeader {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .bonusIcon {
+    display: flex;
+  }
+  .bonusText {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.3px;
+  }
+  .bonusCash {
+    font-family: "SB Sans Interface", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+  }
+  .progressBar {
+    width: 100%;
+    max-width: 400px;
+    min-height: 74px;
+  }
+  .buttonFrame {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    min-height: 40px;
+    flex-grow: 1;
+    position: relative;
+  }
+  .button {
+    padding: 9px 20px;
+    width: 119px;
+    background: #10bf6a;
+    border-radius: 8px;
+    border: 0;
+    color: white;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+  }
+
+  .table {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .tableTitle {
+    font-family: "SB Sans Interface", sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+  }
+  .tableContent {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    border-color: rgba(238, 238, 238, 1);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 12px;
+    flex-direction: column;
+  }
+  .tableRow {
+    min-height: 56px;
+    display: flex;
+    position: relative;
+  }
+  .tableRowTd {
+    display: flex;
+    padding: 10px 16px;
+    align-items: center;
+    border-color: rgba(238, 238, 238, 1);
+    border-style: solid;
+    border-width: 1px;
+    background-color: rgba(255, 255, 255, 1);
+
+    @media (max-width: 500px) {
+      padding: 4px;
+    }
+  }
+  .tableColumn {
+    color: rgba(115, 115, 115, 1);
+    font-size: 12px;
+    align-self: auto;
+    font-family:
+      SB Sans Interface,
+      sans-serif;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+
+    &:first-child {
+      padding: 0;
+      display: inline-flex;
+      justify-content: center;
+    }
+  }
+  .tableColumnText {
+    font-family: "SB Sans Text", sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    align-items: center;
+    letter-spacing: -0.3px;
+    color: #262626;
+    word-break: break-all;
+  }
+  .tableColumn1 {
+    @extend .tableColumn;
+    text-align: center;
+    width: 30px;
+  }
+  .tableColumn2 {
+    @extend .tableColumn;
+    width: 60%;
+
+    @media (max-width: 500px) {
+      width: 50%;
+    }
+  }
+  .tableColumn3 {
+    @extend .tableColumn;
+    width: 33%;
+  }
+}

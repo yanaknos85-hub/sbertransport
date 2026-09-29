@@ -1,0 +1,19 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220224"
+            author: medvedev-ad
+            dbms: postgres
+            changes:
+                -   sqlFile:
+                        relativeToChangelogFile: true
+                        path: changes/set_autoincrement.sql
+                        splitStatements: false
+    -   changeSet:
+            id: "20220224-1"
+            author: medvedev-ad
+            dbms: postgres
+            changes:
+                -   sqlFile:
+                        relativeToChangelogFile: true
+                        path: changes/set_autoincrement_corrected.sql
+                        splitStatements: false

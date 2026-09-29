@@ -1,0 +1,15 @@
+.table:global(.ant-table-wrapper) {
+  margin: var(--margin-large);
+  width: calc(100% - 2 * var(--margin-large));
+
+  :global(.ant-table-footer) .footer {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.model_detailed_wrapper {
+  width: 700px;
+  padding: 16px 24px;
+}

@@ -1,0 +1,40 @@
+@import '../styles.module.scss';
+
+.economyIndicationSettings {
+  min-width: 350px;
+  max-width: 500px;
+  padding: 0 var(--padding-large);
+
+  .coloredSlider {
+    margin: var(--margin-large) 0;
+  }
+
+  .colorRangeDescriptions {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .colorRangeDescription {
+    display: flex;
+    align-items: center;
+    margin: var(--margin-base) 0;
+
+    .color {
+      height: 40px;
+      width: 0;
+      border: 2px solid;
+      border-radius: 3px;
+      margin: 0 var(--margin-half);
+    }
+  }
+
+  .buttonBar {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--margin-base);
+
+    button {
+      margin: 0 var(--margin-base);
+    }
+  }
+}

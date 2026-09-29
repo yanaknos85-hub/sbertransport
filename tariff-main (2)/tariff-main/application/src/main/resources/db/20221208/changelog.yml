@@ -1,0 +1,19 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221208"
+            author: medvedev-ad
+            changes:
+                -   tagDatabase:
+                        tag: "20221208"
+                -   addColumn:
+                        schemaName: tariff
+                        tableName: contractor
+                        columns:
+                            -   column:
+                                    name: login
+                                    type: text
+                                    remarks: Логин для интеграции
+                            -   column:
+                                    name: password
+                                    type: text
+                                    remarks: Пароль для интеграции

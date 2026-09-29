@@ -1,0 +1,38 @@
+.container {
+  :global(.ant-tabs-ink-bar) {
+    height: 3px !important;
+    border-radius: 4px 4px 0px 0px;
+  }
+
+  :global(.ant-tabs) {
+    overflow: inherit;
+  }
+
+  :global(.ant-tabs-tab-active) {
+
+    & > div {
+      font-family: SB Sans Text;
+      font-size: 16px;
+      font-weight: 400 !important;
+      line-height: 24px;
+      letter-spacing: -0.3px;
+    }
+  }
+
+  :global(.ant-tabs-tab) {
+    margin: 0px 0px 10px 12px !important;
+
+    & > div {
+      color: rgb(115, 115, 115);
+      font-family: SB Sans Text;
+      font-size: 16px;
+      font-weight: 400 !important;
+      line-height: 24px;
+      letter-spacing: -0.3px;
+    }
+  }
+
+  :global(.ant-tabs-tab):first-child {
+    margin: 0px 0px 10px 0px !important;
+  }
+}

@@ -1,0 +1,12 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20250707"
+            author: burlakovsv
+            changes:
+                -   createIndex:
+                        schemaName: reports
+                        tableName: inbox_message
+                        indexName: inbox_message_received_at_idx
+                        columns:
+                            -   column:
+                                    name: received_at

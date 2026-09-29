@@ -1,0 +1,21 @@
+.container { 
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background-color: rgb(230, 244, 255);
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid rgb(179, 222, 255);
+}
+
+.title { 
+    color: rgb(77, 77, 77);
+    letter-spacing: -0.3px;
+    font-size: 14px;
+    margin: 0;
+}
+
+.icon { 
+    max-width: 24px;
+    max-height: 24px;
+}

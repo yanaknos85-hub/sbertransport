@@ -1,0 +1,30 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        blackListOutputSsl-out-0:
+          destination: service.authentication.blackList
+          binder: kafka-ssl
+        usersInputSsl-in-0:
+          group: ${spring.application.name}-ssl
+          destination: service.users
+          binder: kafka-ssl
+          consumer:
+            batchMode: true
+        rolesInputSsl-in-0:
+          group: ${spring.application.name}-ssl
+          destination: service.roles
+          binder: kafka-ssl
+        userRolesInputSsl-in-0:
+          group: ${spring.application.name}-ssl
+          destination: service.users.roles
+          binder: kafka-ssl
+        emailOutputSsl-out-0:
+          destination: service.email.output
+          binder: kafka-ssl
+        smsOutputSsl-out-0:
+          destination: service.sms
+          binder: kafka-ssl
+        userAgentOutputSsl-out-0:
+          destination: service.user.agent
+          binder: kafka-ssl

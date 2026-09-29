@@ -1,0 +1,14 @@
+button.styledButton {
+  padding: 9px 20px;
+  font-size: 14px;
+  line-height: 22px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  height: 40px;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}

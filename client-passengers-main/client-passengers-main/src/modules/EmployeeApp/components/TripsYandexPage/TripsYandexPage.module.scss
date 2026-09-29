@@ -1,0 +1,197 @@
+.wrapper {
+  padding: 16px 16px 0px 16px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding-top: var(--padding-half);
+}
+
+.transportType {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+
+  .transportTypeWrapper {
+    display: flex;
+    align-items: center;
+
+    .TransportPictureWrapper {
+      display: flex;
+      flex-direction: row;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      overflow: hidden;
+      margin-right: 12px;
+      border: 1px solid rgb(236, 236, 236);
+    }
+
+    span {
+      color: rgb(17, 17, 21);
+      font-family: "SB Sans Text";
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 18px;
+      letter-spacing: 0.12px;
+    }
+  }
+}
+
+.yandexTaxiImage {
+    background: url(../../../../shared/components/Images/cars/yandex-taxi.png) no-repeat no-repeat center 0;    
+    display: inline-block;
+    background-size: cover;
+    width: 36px;
+    height: 23px;
+    transform: translateY(4px);
+}
+
+.routeTitle { 
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.buttonsWrapper { 
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+}
+
+.input { 
+  height: 56px;
+}
+
+.tripDrawer { 
+  :global { 
+    .ant-drawer-body {
+      padding: 0 !important;
+    }
+
+    .ant-drawer-wrapper-body { 
+      max-height: 100dvh;
+    }
+
+    .ant-divider { 
+      width: 100% !important;
+      margin: 10px 0 !important;
+    }
+
+    .ant-drawer-content-wrapper { 
+      height: auto !important;
+    }
+  }
+}
+
+.bottomWrapper { 
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+}
+
+.mapWrapper { 
+  padding: 16px;
+}
+
+.title { 
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+.date { 
+ color: rgb(144, 144, 144);
+ font-size: 16px; 
+ margin: 0;
+}
+
+.header { 
+  padding: 20px;
+}
+
+.inputContainer { 
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+
+  :global { 
+    .ant-form-item { 
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  }
+}
+
+.modalTitle { 
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.modalWrapper { 
+  text-align: center;
+}
+
+.inputNumberPrice { 
+  width: 100% !important;
+  height: 56px;
+  display: flex !important;
+  align-items: center !important;
+
+  :global { 
+    .ant-input-number { 
+      display: flex !important;
+      width: 100% !important;
+      align-items: center !important;
+    }
+
+    .ant-input-number-input:placeholder-shown { 
+      text-overflow: unset !important;
+    }
+  }
+}
+
+.costInputSubtitle { 
+  color: rgb(115, 115, 115);
+  font-size: 12px;
+}
+
+.plannedCostTitle, .factCostTitle { 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(168, 171, 179);
+}
+
+.costContainer { 
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.plannedCostTitle { 
+  font-size: 14px;
+  
+  span { 
+    color: rgb(33, 33, 42);
+  }
+}
+
+.factCostTitle { 
+  font-size: 16px;
+  
+  span { 
+    font-weight: 700;
+    font-size: 24px;
+    color: rgb(33, 33, 42);
+  }
+}
+
+.approverFraud { 
+  margin: 0 0 12px 0;
+}
+
+.fraudDivider { 
+  margin-bottom: 12px !important;
+}

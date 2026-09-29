@@ -1,0 +1,17 @@
+.col {
+  width: 100%;
+  margin-left: 8px;
+  margin-right: 8px;
+
+  &_small {
+    max-width: 128px;
+  }
+}
+
+.big {
+  width: 100%;
+}
+
+.small {
+  max-width: 150px;
+}

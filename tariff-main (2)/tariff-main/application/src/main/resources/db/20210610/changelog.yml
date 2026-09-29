@@ -1,0 +1,15 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20210610
+            tag: "20210610"
+            author: medvedev-ad
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: tariff
+                        tableName: tariff
+                        columns:
+                            -   column:
+                                    name: region_id
+                                    type: uuid
+                                    remarks: Идентификатор региона

@@ -1,0 +1,24 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221014"
+            author: dudyrev-av
+            dbms: postgresql
+            changes:
+                -   dropColumn:
+                        schemaName: tariff
+                        tableName: tariff
+                        columns:
+                            -   column:
+                                    name: integration_type
+            rollback:
+                -   addColumn:
+                        schemaName: tariff
+                        tableName: tariff
+                        columns:
+                            -   column:
+                                    name: integration_type
+                                    type: text
+                                    remarks: 'Тип интеграции'
+                                    defaultValue: EMAIL_XML_API
+                                    constraints:
+                                        nullable: false

@@ -1,0 +1,21 @@
+.title {
+  font-size: 44px;
+  font-weight: 600;
+}
+
+.container {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.tabContainer {
+  &:global(.ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap) {
+    margin-left: 20px;
+  }
+}
+
+.form {
+  &:global(.ant-form) {
+    width: 100%;
+  }
+}

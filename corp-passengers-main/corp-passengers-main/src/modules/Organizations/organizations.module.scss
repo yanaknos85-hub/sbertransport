@@ -1,0 +1,16 @@
+.table {
+  margin: var(--margin-large);
+  width: calc(100% - 2 * var(--margin-large));
+
+  :global(.ant-table-footer) {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.container {
+  :global(.ant-tabs-ink-bar) {
+    height: 4px !important;
+    border-radius: 4px;
+  }
+}

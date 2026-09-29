@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>ic/favroutes</title>
+    <g id="ic/favroutes" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Arrow,-Location,-Direction-Copy" transform="translate(6.000000, 7.000000)" stroke="#595959" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+            <path d="M4.37417877,4.16470588 L13.8657412,4.1518295 C15.5091765,4.14889412 16.8423059,5.484 16.8353882,7.12743529 L16.8353882,7.14127059 C16.8284706,8.77383529 15.5032471,10.0941176 13.8716706,10.0941176 L5.96371765,10.0941176 C4.3272,10.0941176 3,11.4213176 3,13.0578353 C3,14.6953412 4.32818824,16.0225412 5.96569412,16.0216227 L18.8,16.0185882" id="Path"></path>
+            <path d="M19.8,16.0185882 L17.8264941,17.9920941 M17.8264941,14.0440941 L19.8,16.0185882" id="Combined-Shape"></path>
+        </g>
+        <circle id="Oval" stroke="#595959" stroke-width="2" cx="8" cy="11" r="2"></circle>
+    </g>
+</svg>

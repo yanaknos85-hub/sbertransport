@@ -1,0 +1,100 @@
+syntax = "proto3";
+
+package ru.sber.transport.notifications.sync.grpc.service;
+
+import "google/protobuf/struct.proto";
+import "google/protobuf/empty.proto";
+
+/*
+ * Сервис для работы с уведомлениями
+ */
+service Notifications {
+
+  /*
+   * Отправить уведомление.
+   */
+  rpc Send(NotificationData) returns (google.protobuf.Empty);
+
+}
+
+/*
+ * Запрос данных.
+ */
+message NotificationData {
+
+  /*
+  * Идентификатор пользователя.
+  */
+  string userId = 1;
+
+  /*
+  * Канал связи.
+  */
+  Channel channel = 2;
+
+  /*
+  * Шаблон сообщения.
+  */
+  string template = 3;
+
+  /*
+  * Данные шаблона.
+  */
+  map<string, Object> data = 4;
+}
+
+
+/*
+ * Канал связи.
+ */
+enum Channel {
+  /*
+  * СМС.
+  */
+  SMS = 0;
+
+  /*
+  * ПУШ.
+  */
+  PUSH = 1;
+
+  /*
+  * ПОЧТА.
+  */
+  EMAIL = 2;
+}
+
+message Object {
+  oneof kind {
+    string string = 1;
+    int32 int = 2;
+    int64 long = 3;
+    double double = 4;
+    bytes bytes = 5;
+    Object object = 6;
+    google.protobuf.NullValue null = 7;
+    List list = 8;
+  }
+}
+
+message List {
+  repeated Object item = 1;
+}
+
+/*
+ * Обнуляемая строка.
+ */
+message NullableString {
+  oneof Kind {
+
+    /*
+     * Признак отсутствия значения.
+     */
+    google.protobuf.NullValue null = 1;
+
+    /*
+     * Значение.
+     */
+    string value = 2;
+  }
+}

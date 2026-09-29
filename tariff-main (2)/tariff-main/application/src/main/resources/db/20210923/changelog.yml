@@ -1,0 +1,22 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20210923
+            tag: "20210923"
+            author: goloshchapov
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/drop_organization_id.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+                -   sqlFile:
+                        path: change/create_department_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/rollback_organization_id.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        path: rollback/drop_department_table.sql
+                        relativeToChangelogFile: true

@@ -1,0 +1,152 @@
+.repeatRouteAndAtriumModal {
+    width: 880px !important;
+
+    .buttons {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 24px;
+
+        & > button:last-child {
+            margin-left: 16px;
+        }
+    }
+
+    .wrapper_additionalInformation {
+        display: flex;
+        flex-direction: column;
+        margin-top: 24px;
+
+        .wrapperinfoTrip {
+            width: 100%;
+            display: flex;
+            flex-direction: column ;
+            justify-content: space-between;
+            margin-top: 16px;
+
+            .infoTripTitle {
+              color: rgb(38, 38, 38);
+              font-family: SB Sans Interface;
+              font-size: 20px;
+              font-weight: 600;
+              line-height: 24px;
+              letter-spacing: 0%;
+            }
+
+            .tripTitleItemsWrapper {
+              display: flex;
+              flex-wrap: wrap;
+              width: 100%;
+
+              @media screen and (max-width: 600px) {
+                gap: 16px;
+              }
+
+              .tripTitleItemWrapper {
+                display: flex;
+                flex-direction: column;
+                width: 23%;
+                margin: 16px 16px 16px 0px;
+
+                @media screen and (max-width: 600px) {
+                  min-width: 200px;
+                  margin: 0;
+                }
+
+                .titleInformation {
+                  color: rgb(168, 171, 179);
+                  font-family: SB Sans Text;
+                  font-size: 14px;
+                  font-weight: 400;
+                  line-height: 18px;
+                  letter-spacing: -0.15px;
+                  margin-bottom: 10px;
+
+                  @media screen and (max-width: 600px) {
+                    margin-bottom: 6px;
+                  }
+                }
+
+                .textInfo {
+                  color: rgb(0, 0, 0);
+                  font-family: SB Sans Text;
+                  font-size: 12px;
+                  font-weight: 400;
+                  line-height: 18px;
+                  letter-spacing: 0px;
+                }
+              }
+            }
+        }
+
+        .additionalInformation {
+            display: flex;
+
+            .additionalInformation_title {
+                color: rgb(38, 38, 38);
+                font-family: SB Sans Interface;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 28px;
+                letter-spacing: 0px;
+            }
+
+            .additionalInformation_img {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+
+                .img_up {
+                    margin: 3px 0 0 8px;
+                }
+
+                .img_down {
+                    margin-left: 8px;
+                    transform: rotate(180deg);
+                    margin: 3px 0 0 8px;
+                }
+            }
+        }
+    }
+
+    .wrapper_choosingTimeAndRoute {
+        margin-top: 20px;
+        border-radius: 8px;
+        background: rgb(248, 248, 248);
+        padding: 16px;
+
+        .wrapper_choosingTime {
+
+            .choosingTime_title {
+                display: block;
+                color: rgb(38, 38, 38);
+                font-family: SB Sans Interface;
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 16px;
+                letter-spacing: 0.2px;
+                margin-bottom: 8px;
+            }
+
+            .choosingTime {
+                width: 300px;
+                height: 40px;
+
+                @media screen and (max-width: 600px) {
+                  width: 100%;
+                }
+            }
+
+            @media screen and (max-width: 600px) {
+              width: 100%;
+            }
+        }
+
+        .wrapper_rout {
+
+            & > div {
+                margin-top: 16px !important;
+            }
+        }
+    }
+}

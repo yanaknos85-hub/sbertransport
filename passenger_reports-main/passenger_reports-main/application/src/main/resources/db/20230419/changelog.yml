@@ -1,0 +1,28 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230419"
+            author: blandin-ad
+            changes:
+                -   tagDatabase:
+                        tag: "20230419"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    name: payment_type_code_insurance
+                                    type: integer
+                                    remarks: Код вида страховой оплаты
+                            -   column:
+                                    name: payment_price_insurance
+                                    type: bigint
+                                    remarks: Сумма страховой оплаты, коп
+            rollback:
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    name: payment_type_code_insurance
+                            -   column:
+                                    name: payment_price_insurance

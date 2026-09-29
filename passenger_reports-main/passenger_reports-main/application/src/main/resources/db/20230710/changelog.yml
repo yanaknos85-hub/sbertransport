@@ -1,0 +1,28 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230710"
+            author: delyukov-da
+            changes:
+                -   tagDatabase:
+                        tag: "20230710"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    type: bigint
+                                    name: additional_sum
+                                    remarks: Сумма доплаты за всех пассажиров в копейках
+                            -   column:
+                                    type: integer
+                                    name: number_passengers_joined
+                                    remarks: Количество присоединившихся пассажиров (заявок)
+            rollback:
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    name: number_passengers_joined
+                            -   column:
+                                    name: additional_sum

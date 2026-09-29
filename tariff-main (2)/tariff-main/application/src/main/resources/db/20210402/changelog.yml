@@ -1,0 +1,11 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20210402
+            tag: "20210402"
+            author: aas
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: add_columns_contract.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

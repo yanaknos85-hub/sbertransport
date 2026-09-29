@@ -1,0 +1,159 @@
+server:
+    port: 0
+spring:
+    config:
+        import: optional:configserver:http://localhost:8888
+    profiles:
+        active: test
+    jackson:
+        serialization:
+            write_dates_as_timestamps: false
+        default-property-inclusion: non_null
+    application:
+        name: reports_test
+    cloud:
+        stream:
+            default-binder: integration
+            bindings:
+                updateRequestStatusFromReportsOutput-out-0:
+                    destination: service.request.status.update.from.reports
+                tripRequestInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.request
+                #                cargoRequestInput: Грузы говорят, что этот топик нам не нужен. Требуется задача по отпиливанию груза 2023-05-17
+                #                    group: ${spring.application.name}
+                #                    destination: service.request.cargo
+                departmentsInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.organization.department
+                employeesInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.organization.employee
+                personalCarsInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.organization.personalCar
+                organizationsInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.organization
+                tripPurposeInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.organization.trip.purpose
+                positionsInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.organization.position
+                tripLimitInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.limits.action.result
+                taxiTripInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.request.taxi.trip
+                taxiTariffInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.tariff.taxi
+                tariffInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.tariff
+                sharedRideInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.sharedride
+                contractorInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.contractor
+                contractInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.contract
+                requestRatingInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.request.rating
+                autoparksInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.autopark
+                limitInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.limits
+                requestStatusOverdueInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.request.statusOverdue
+                statsInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.reports.stats
+                carsharingTripInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.integrations.carsharing.trip
+    datasource:
+        password: root
+        username: postgres
+        driver-class-name: org.postgresql.Driver
+        type: com.zaxxer.hikari.HikariDataSource
+        hikari:
+            minimum-idle: 0
+            maximum-pool-size: 5
+            schema: reports
+            idle-timeout: 10000
+            connection-timeout: 5000
+            max-lifetime: 30000
+    security:
+        user: #убираем запись в логах, по которой есть вопросы у безопасности
+            name: anonymous
+            password: ${random.uuid}
+            roles: anonymous
+        oauth2:
+            resourceserver:
+                jwt:
+                    jws-algorithms: RS512
+                    public-key-location: classpath:/key/jwt.key.pub
+    jpa:
+        properties:
+            hibernate:
+                jdbc:
+                    batch_size: 25
+                    lob:
+                        non_contextual_creation: true
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+        hibernate:
+            ddl-auto: validate
+            search:
+                enabled: false
+        show-sql: false
+    liquibase:
+        enabled: true
+        change-log: classpath:db/changelog-master.yml
+        drop-first: false
+        test-rollback-on-update: false
+        url: ${spring.datasource.url}
+        user: ${spring.datasource.username}
+        password: ${spring.datasource.password}
+        database-change-log-table: changelog_reports
+        database-change-log-lock-table: changelog_reports_lock
+        contexts: test
+    main:
+        allow-bean-definition-overriding: true
+    servlet:
+        multipart:
+            enabled: true
+            max-file-size: 20MB
+            max-request-size: 20MB
+taxi-trip-registry:
+    header-size: 6
+    footer-size: 1
+    left-indent: 1
+    column-names-row: 4
+address:
+    catalog:
+        file:
+            path: classpath:address-catalog/VSP_09_12_2020.xlsx
+file:
+    upload-dir: target/upload/temp
+    test.source-dir: xlsx
+    max-size: 20971520
+embedded.postgres.enable: true
+cargo:
+    template:
+        path: classpath:jrtemplates/Template_report_TTN.jrxml
+javamelody:
+    enabled: false
+logging:
+    level.org.hibernate.type.BasicTypeRegistry: INFO
+grpc:
+    enabled: false
+extlogging.kafka: false

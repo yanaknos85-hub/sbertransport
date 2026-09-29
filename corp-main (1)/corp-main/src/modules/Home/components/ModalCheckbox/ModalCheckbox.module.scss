@@ -1,0 +1,72 @@
+.modal {
+  color: #000;
+  border-radius: 12px;
+  overflow: hidden;
+
+  & :global(.ant-modal-title) {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+  }
+
+  & :global(.ant-modal-close-x) {
+    svg {
+      color: #000;
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  & :global(.ant-modal-header),
+  & :global(.ant-modal-footer) {
+    border: none;
+  }
+
+  & :global(.ant-modal-footer) {
+    padding-bottom: 24px;
+  }
+
+  & :global(.ant-modal-header) {
+    padding-top: 24px;
+  }
+
+  & :global(.ant-modal-body) {
+    padding-top: 0;
+  }
+
+  & :global(.ant-btn) {
+    padding: 9px 20px;
+    width: 116px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 22px;
+    border: none;
+  }
+
+  & :global(.ant-modal-content) {
+    border-radius: 12px;
+  }
+}
+
+.modalDescription {
+  font-size: 14px;
+  line-height: 22px;
+  color: #737373;
+}
+
+.checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .checkbox {
+    .checkboxMark {
+      margin-right: 8px;
+    }
+    .checkboxLabel {
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
+}

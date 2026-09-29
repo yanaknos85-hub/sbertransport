@@ -1,0 +1,79 @@
+{
+  "content": [
+    {
+      "id": "bed18e71-0d5a-4c1d-a868-9106255367cf",
+      "humanReadableId": "YA-0001-00000219",
+      "transportType": "YANDEX",
+      "fraudMarkers": [
+        {
+          "id": "5d3d0bbc-df4c-4c6f-a337-4948a4cdc37e",
+          "comment": "Есть повторяющиеся заявки"
+        },
+        {
+          "id": "9e951f3f-54c6-4084-8580-f965e61fb7ff",
+          "comment": "Проверка не пройдена: приложенный документ не является транспортным чеком"
+        }
+      ],
+      "desiredDate": "2024-01-01T10:05:10.023+0300",
+      "passenger": {
+        "id": "e6d206cd-515c-4a22-b04c-136299f1e279",
+        "firstName": "Екатерина",
+        "lastName": "Культина",
+        "patronymic": "Владимировна"
+      },
+      "approvalDate": "2024-01-01T10:05:10.023+0300",
+      "approver": {
+        "id": "e6d206cd-515c-4a22-b04c-136299f1e279",
+        "firstName": "Екатерина",
+        "lastName": "Культина",
+        "patronymic": "Владимировна"
+      },
+      "autoApproval": true,
+      "departureAddress": "Москва, Красная площадь",
+      "destinationAddress": "Санкт-Петербург, Дворцовая набережная",
+      "plannedCost": 160,
+      "factCost": 150,
+      "status": "NEW",
+      "purpose": {
+        "id": "5e0e56f4-b3a3-45c1-a30e-d6213bce6238",
+        "purpose": "Выезды на аварии"
+      },
+      "department": "Тестовый_департамент_01"
+    }
+  ],
+  "pageable": {
+    "pageNumber": 0,
+    "pageSize": 20,
+    "sort": [
+      {
+        "direction": "ASC",
+        "property": "humanReadableId",
+        "ignoreCase": false,
+        "nullHandling": "NATIVE",
+        "descending": false,
+        "ascending": true
+      }
+    ],
+    "offset": 0,
+    "unpaged": false,
+    "paged": true
+  },
+  "totalPages": 1,
+  "totalElements": 1,
+  "last": true,
+  "numberOfElements": 1,
+  "first": true,
+  "sort": [
+    {
+      "direction": "ASC",
+      "property": "humanReadableId",
+      "ignoreCase": false,
+      "nullHandling": "NATIVE",
+      "descending": false,
+      "ascending": true
+    }
+  ],
+  "number": 0,
+  "size": 20,
+  "empty": false
+}

@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230421"
+      author: medvedev-ad
+      context: "20230421"
+      changes:
+        - tagDatabase:
+            tag: "20230421"
+        - addColumn:
+            schemaName: authentication
+            tableName: account
+            columns:
+              - column:
+                  name: auth_type
+                  remarks: Тип авторизации (обычная, 2-х факторная или прочие)
+                  type: varchar(20)
+                  defaultOnNull: true
+                  defaultValue: BASIC
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: authentication_account_auth_type_nn
+        - dropColumn:
+            schemaName: authentication
+            tableName: account
+            columns:
+              - column:
+                  name: org_structure_type
+              - column:
+                  name: personnel_number

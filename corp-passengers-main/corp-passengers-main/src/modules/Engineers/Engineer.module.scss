@@ -1,0 +1,91 @@
+.outer {
+  display: flex;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  align-items: center;
+
+  .outerSpan {
+    word-break: break-all;
+  }
+
+  .link {
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+
+    &:hover {
+      color: var(--jade);
+      transition: color 0.5s;
+    }
+  }
+}
+
+.outerHigh {
+  display: flex;
+  height: 90px;
+  overflow: hidden;
+  text-align: center;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.split {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  :global(.gutter-horizontal) {
+    background-color: rgb(240, 240, 240);
+    cursor: col-resize;
+  }
+}
+
+.paginationContainer {
+  margin: var(--margin-large) 0 var(--margin-half) 0;
+  text-align: right;
+}
+
+.tableRow {
+  background-color: var(--white);
+
+  td {
+    background-color: var(--white);
+
+    &:first-child,
+    &:last-child {
+      background-color: inherit;
+    }
+  }
+
+  &:nth-child(2n),
+  &:nth-child(2n) td {
+    background-color: var(--light-grey);
+  }
+
+  &:hover td {
+    background-color: var(--white) !important;
+  }
+
+  &:nth-child(2n):hover td {
+    background-color: var(--light-grey) !important;
+  }
+}
+
+.rowDeadline,
+.rowDeadline > td,
+.rowDeadline:hover > td,
+.rowDeadline:nth-child(2n):hover > td {
+  background-color: var(--deadline) !important;
+}
+
+.rowDistance,
+.rowDistance > td,
+.rowDistance:hover > td,
+.rowDistance:nth-child(2n):hover > td {
+  background-color: var(--distance) !important;
+}
+
+.rowDeadline:hover > td,
+.rowDistance:hover > td {
+  background-color: inherit !important;
+}

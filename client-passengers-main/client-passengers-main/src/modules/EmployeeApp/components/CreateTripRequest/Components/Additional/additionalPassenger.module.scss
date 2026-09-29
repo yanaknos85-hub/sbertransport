@@ -1,0 +1,24 @@
+.radio_date {
+  
+  :global(.ant-radio-inner::after) {
+    background-color: white !important;
+  }
+  
+  :global(.ant-radio-checked) {
+
+    :global(.ant-radio-inner) {
+      border-width: 4.5px !important;
+    }
+  }
+}
+
+.stylesPassenger {
+  font-family: SB Sans Text;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.3px;
+  color: #262626;
+  margin-bottom: 0;
+}

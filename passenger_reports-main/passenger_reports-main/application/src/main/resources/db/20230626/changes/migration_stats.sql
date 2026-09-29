@@ -1,0 +1,1 @@
+update reports.stats s set month = s.month - 1;

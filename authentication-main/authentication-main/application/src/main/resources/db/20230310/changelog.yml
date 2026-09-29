@@ -1,0 +1,186 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230310"
+      author: medvedev-ad
+      context: "20230310"
+      changes:
+        - tagDatabase:
+            tag: "20230310"
+        - sql:
+            sql: drop schema authentication_aud cascade;
+      rollback:
+        - sql:
+            sql: create schema authentication_aud;
+        - createSequence:
+            schemaName: authentication_aud
+            sequenceName: hibernate_sequence
+        - createTable:
+            schemaName: authentication_aud
+            tableName: revinfo
+            remarks: Информация о ревизии
+            columns:
+              - column:
+                  name: user_id
+                  type: uuid
+                  remarks: Информация о пользователе
+              - column:
+                  name: id
+                  type: serial
+                  remarks: Идентификатор ревизии
+              - column:
+                  name: timestamp
+                  type: int8
+                  remarks: Временная метка ревизии
+        - createTable:
+            schemaName: authentication_aud
+            tableName: account_aud
+            remarks: Аудит УЗ
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор УЗ
+              - column:
+                  name: login
+                  type: text
+                  remarks: Логин
+              - column:
+                  name: hash
+                  type: text
+                  remarks: Хэш
+              - column:
+                  name: active
+                  type: boolean
+                  remarks: Признак активности
+              - column:
+                  name: transfer_password
+                  type: boolean
+                  remarks: Транспортный пароль
+              - column:
+                  name: email
+                  type: text
+                  remarks: E-mail
+              - column:
+                  name: id_mod
+                  type: boolean
+                  remarks: Признак изменения - Идентификатор УЗ
+              - column:
+                  name: login_mod
+                  type: boolean
+                  remarks: Признак изменения - Логин
+              - column:
+                  name: hash_mod
+                  type: boolean
+                  remarks: Признак изменения - Хэш
+              - column:
+                  name: active_mod
+                  type: boolean
+                  remarks: Признак изменения - Признак активности
+              - column:
+                  name: transfer_password_mod
+                  type: boolean
+                  remarks: Признак изменения - Транспортный пароль
+              - column:
+                  name: email_mod
+                  type: boolean
+                  remarks: Признак изменения - E-mail
+              - column:
+                  name: roles_mod
+                  type: boolean
+                  remarks: Признак изменения - Роли
+              - column:
+                  name: rev
+                  type: serial
+                  remarks: Идентификатор ревизии
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: authentication_account_revision_pkey
+              - column:
+                  name: revtype
+                  type: smallint
+                  remarks: Тип ревизии
+        - createTable:
+            schemaName: authentication_aud
+            tableName: role_aud
+            remarks: Аудит ролей
+            columns:
+              - column:
+                  name: rev
+                  type: serial
+                  remarks: Идентификатор ревизии
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: authentication_role_revision_pkey
+              - column:
+                  name: revtype
+                  type: smallint
+                  remarks: Тип ревизии
+              - column:
+                  name: code
+                  type: text
+                  remarks: Код
+              - column:
+                  name: default
+                  type: boolean
+                  remarks: Роль по-умолчанию
+              - column:
+                  name: name
+                  type: text
+                  remarks: Название роли
+              - column:
+                  name: description
+                  type: text
+                  remarks: Описание
+              - column:
+                  name: code_mod
+                  type: boolean
+                  remarks: Признак изменения - Код
+              - column:
+                  name: is_default_mod
+                  type: boolean
+                  remarks: Признак изменения - Роль по-умолчанию
+              - column:
+                  name: name_mod
+                  type: boolean
+                  remarks: Признак изменения - Название роли
+              - column:
+                  name: description_mod
+                  type: boolean
+                  remarks: Признак изменения - Описание
+        - addUniqueConstraint:
+            schemaName: authentication
+            tableName: audit
+            columnNames: timestamp
+            constraintName: authentication_audit_timestamp_uk
+        - createTable:
+            schemaName: authentication_aud
+            tableName: account_roles_aud
+            remarks: Связь роли и пользователя
+            columns:
+              - column:
+                  name: rev
+                  type: serial
+                  remarks: Идентификатор ревизии
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: authentication_account_role_revision_pkey
+              - column:
+                  name: revtype
+                  type: smallint
+                  remarks: Тип ревизии
+              - column:
+                  name: account_id
+                  type: uuid
+                  remarks: Идентификатор УЗ
+              - column:
+                  name: role_code
+                  type: text
+                  remarks: Код роли
+              - column:
+                  name: account_id_mod
+                  type: boolean
+                  remarks: Признак изменения - Идентификатор УЗ
+              - column:
+                  name: role_code_mod
+                  type: boolean
+                  remarks: Признак изменения - Код роли

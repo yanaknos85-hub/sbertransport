@@ -1,0 +1,28 @@
+.limitStatus {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 14px;
+  letter-spacing: 0.12px;
+  font-family: SB Sans Text;
+  padding: 2px 8px;
+  border-radius: 16px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  background-color: var(--solitude);
+}
+
+.limitStatusWait {
+  color: #ff9a32;
+  background-color: #fff5eb;
+}
+
+.limitStatusCompleted {
+  color: #10bf6a;
+  background-color: #e7f9f0;
+}
+
+.limitStatusCanceled {
+  color: #ff5743;
+  background-color: #ffeeec;
+}

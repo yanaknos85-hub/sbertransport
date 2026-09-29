@@ -1,0 +1,21 @@
+.tabs {
+  :global(.ant-tabs-tab-btn) {
+    color: #737373;
+
+    &:hover {
+      font-weight: 600;
+    }
+  }
+
+  :global(.ant-tabs-tab-active) {
+    :global(.ant-tabs-tab-btn) {
+      color: #262626;
+      font-weight: 600;
+    }
+  }
+
+  :global(.ant-tabs-ink-bar) {
+    height: 3px !important;
+    border-radius: 4px 4px 0 0;
+  }
+}

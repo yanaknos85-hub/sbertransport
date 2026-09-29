@@ -1,0 +1,1 @@
+alter table tariff.tariff rename column dept_id to department_id;

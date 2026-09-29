@@ -1,0 +1,17 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220222"
+            author: medvedev-ad
+            changes:
+                -   dropUniqueConstraint:
+                        schemaName: authentication_aud
+                        tableName: account_roles_aud
+                        constraintName: authentication_account_role_revision_pkey
+                -   dropUniqueConstraint:
+                        schemaName: authentication_aud
+                        tableName: account_aud
+                        constraintName: authentication_account_revision_pkey
+                -   dropUniqueConstraint:
+                        schemaName: authentication_aud
+                        tableName: role_aud
+                        constraintName: authentication_role_revision_pkey

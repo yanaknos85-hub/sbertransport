@@ -1,0 +1,195 @@
+{
+  "type": "record",
+  "name": "ContractMessage",
+  "namespace": "ru.sber.transport.messages.contract.avro",
+  "doc": "Данные о договоре",
+  "fields": [
+    {
+      "name": "id",
+      "doc": "Идентификатор договора",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      },
+      "aliases": [
+        "headerId"
+      ]
+    },
+    {
+      "name": "serviceType",
+      "doc": "Тип услуги (TransportServiceType)",
+      "type": "string"
+    },
+    {
+      "name": "regionIds",
+      "doc": "Регионы заключения договора",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "logicalType": "uuid"
+        }
+      },
+      "default": []
+    },
+    {
+      "name": "transportType",
+      "doc": "Тип транспорта (TransportTypeEnum)",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    },
+    {
+      "name": "contractorId",
+      "doc": "Контрагент",
+      "type": [
+        "null",
+        {
+          "type": "string",
+          "logicalType": "uuid"
+        }
+      ]
+    },
+    {
+      "name": "sum",
+      "doc": "Сумма",
+      "type": "long"
+    },
+    {
+      "name": "startDate",
+      "doc": "Дата начала",
+      "type": {
+        "type": "int",
+        "logicalType": "date"
+      }
+    },
+    {
+      "name": "endDate",
+      "doc": "Дата конца",
+      "type": {
+        "type": "int",
+        "logicalType": "date"
+      }
+    },
+    {
+      "name": "responsibleEmployeeId",
+      "doc": "Id ответственного за договор",
+      "type": [
+        "null",
+        {
+          "type": "string",
+          "logicalType": "uuid"
+        }
+      ]
+    },
+    {
+      "name": "userId",
+      "doc": "Автор записи",
+      "type": [
+        "null",
+        {
+          "type": "string",
+          "logicalType": "uuid"
+        }
+      ]
+    },
+    {
+      "name": "creationTime",
+      "doc": "Время создания",
+      "type": {
+        "type": "long",
+        "logicalType": "local-timestamp-millis"
+      }
+    },
+    {
+      "name": "organizations",
+      "doc": "Организации",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "logicalType": "uuid"
+        }
+      },
+      "default": []
+    },
+    {
+      "name": "uvhd",
+      "doc": "УВХД",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "active",
+      "doc": "Флаг активности",
+      "type": "boolean"
+    },
+    {
+      "name": "deleted",
+      "doc": "Флаг удаления",
+      "type": "boolean"
+    },
+    {
+      "name": "includeVat",
+      "doc": "Флаг наличия НДС",
+      "type": "boolean"
+    },
+    {
+      "name": "contractNumber",
+      "doc": "Номер контракта",
+      "type": "string"
+    },
+    {
+      "name": "contractType",
+      "doc": "Тип контракта (ContractType)",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    },
+    {
+      "name": "vatValue",
+      "doc": "НДС",
+      "type": [
+        "null",
+        "int"
+      ],
+      "default": null
+    },
+    {
+      "name": "driverLatePickupPenalty",
+      "doc": "Штраф за опоздание водителей ко времени подачи",
+      "type": {
+        "type": "bytes",
+        "logicalType": "decimal",
+        "precision": 3,
+        "scale": 2
+      }
+    },
+    {
+      "name": "poorServiceQualityPenalty",
+      "doc": "Штраф за ненадлежащее качество услуг",
+      "type": {
+        "type": "bytes",
+        "logicalType": "decimal",
+        "precision": 3,
+        "scale": 2
+      }
+    },
+    {
+      "name": "driverOrderCancellationPenalty",
+      "doc": "Штраф за отмену заявок водителями",
+      "type": {
+        "type": "bytes",
+        "logicalType": "decimal",
+        "precision": 3,
+        "scale": 2
+      }
+    }
+  ]
+}

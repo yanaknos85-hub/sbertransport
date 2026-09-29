@@ -1,0 +1,28 @@
+.container {
+  height: 76px;
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 12px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+
+  .backIcon {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .order {
+    margin: 0;
+
+    font-family: 'SB Sans Interface';
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    text-align: left;
+    color: #000000;
+  }
+}

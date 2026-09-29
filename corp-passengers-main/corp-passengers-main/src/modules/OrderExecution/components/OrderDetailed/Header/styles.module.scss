@@ -1,0 +1,18 @@
+.orderDetailedHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 44px;
+
+  &__title {
+    a {
+      color: inherit;
+    }
+
+    :global {
+      .anticon-arrow-left {
+        margin-right: 18px;
+      }
+    }
+  }
+}

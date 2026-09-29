@@ -1,0 +1,145 @@
+.wrapperMain {
+  margin-top: 33px;
+  min-width: 370px;
+  cursor: pointer;
+
+  @media screen and (max-width: 600px) {
+    min-width: 0;
+  }
+
+  .wrapperAddresses {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 15px;
+
+    .startMarker {
+      width: 18px;
+      height: 18px;
+      font-size: 10px;
+      border-radius: 50%;
+      background-color: rgb(25, 177, 80);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .endMarker {
+      width: 18px;
+      height: 18px;
+      font-size: 10px;
+      border-radius: 50%;
+      background-color: rgb(105, 121, 247);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .stopMarker {
+      width: 18px;
+      height: 18px;
+      font-size: 10px;
+      border-radius: 50%;
+      background-color: rgb(168, 171, 179);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .startLine {
+      position: absolute;
+      top: 26px;
+      left: 9px;
+      width: 2px;
+      height: 95%;
+      background: linear-gradient(180deg, rgb(25, 177, 80), rgb(168, 171, 179) 100%);
+      transform: translateX(-50%);
+
+      @media screen and (max-width: 600px) {
+        top: 37px;
+      }
+    }
+
+    .endLine {
+      position: absolute;
+      top: 26px;
+      left: 9px;
+      width: 2px;
+      height: 95%;
+      background: linear-gradient(180deg, rgb(168, 171, 179), rgb(105, 121, 247) 100%);
+      transform: translateX(-50%);
+
+      @media screen and (max-width: 600px) {
+        top: 37px;
+      }
+    }
+
+    .stopLine {
+      position: absolute;
+      top: 26px;
+      left: 9px;
+      width: 2px;
+      height: 95%;
+      background-color: #a8abb3;
+      transform: translateX(-50%);
+
+      @media screen and (max-width: 600px) {
+        top: 37px;
+      }
+    }
+
+    .LineNonStop {
+      position: absolute;
+      top: 26px;
+      left: 9px;
+      width: 2px;
+      height: 95%;
+      background: linear-gradient(180deg, rgb(25, 177, 80), rgb(105, 121, 247) 100%);
+      transform: translateX(-50%);
+
+      @media screen and (max-width: 600px) {
+        top: 65%;
+      }
+    }
+
+    .routeTitle {
+      display: flex;
+      flex-direction: column;
+      line-height: initial;
+      margin-left: 12px;
+      min-width: 370px;
+
+      @media screen and (max-width: 600px) {
+        min-width: 0;
+      }
+
+      & span:first-child {
+        color: rgb(168, 171, 179);
+        font-family: SB Sans Interface;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 16px;
+        letter-spacing: 0.2px;
+      }
+
+      & span:last-child {
+        color: rgb(0, 0, 0);
+        font-family: "SB Sans Text";
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: -0.32px;
+
+        @media screen and (max-width: 600px) {
+          overflow-x: auto;
+        }
+      }
+    }
+  }
+}

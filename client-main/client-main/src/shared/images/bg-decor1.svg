@@ -1,0 +1,19 @@
+<svg width="1145.314453" height="433.048584" viewBox="0 0 1145.31 433.049" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<filter id="filter_31_10967_dd" x="0.000000" y="0.000000" width="1145.314453" height="433.048584" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+			<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+			<feGaussianBlur stdDeviation="18.3333" result="effect_layerBlur_1"/>
+		</filter>
+		<linearGradient x1="55.000000" y1="378.145996" x2="923.729431" y2="101.129639" id="paint_linear_31_10967_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#00FFF6"/>
+			<stop offset="1.000000" stop-color="#B9FFE0" stop-opacity="0.000000"/>
+		</linearGradient>
+	</defs>
+	<g filter="url(#filter_31_10967_dd)">
+		<path id="Vector 103" d="M581.18 189.38C339.58 178.35 115.55 281.62 55 341.91C269.83 36.06 561.9 30.48 839.94 75.46C1117.69 120.39 1089.55 406.54 1089.49 375.73C1089.49 344.21 822.77 200.41 581.18 189.38Z" fill="url(#paint_linear_31_10967_0)" fill-opacity="1.000000" fill-rule="evenodd"/>
+	</g>
+</svg>

@@ -1,0 +1,9 @@
+<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20.000000" height="20.000000" fill="none" customFrame="#000000">
+	<g id="Group">
+		<g id="Group">
+			<path id="Path" d="M17.5 9.16667L17.5 15.8333C17.5 16.7542 16.7542 17.5 15.8333 17.5L4.16667 17.5C3.24583 17.5 2.5 16.7542 2.5 15.8333L2.5 4.16667C2.5 3.24583 3.24583 2.5 4.16667 2.5L10 2.5" fill-rule="evenodd" stroke="rgb(214,214,214)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.500000" />
+			<path id="Path" d="M10.125 12.1759C10.3092 12.1534 10.4808 12.0692 10.6125 11.9384L16.9717 5.5792C17.6758 4.87504 17.6758 3.73337 16.9717 3.02837C16.2675 2.3242 15.1258 2.3242 14.4208 3.02837L8.12083 9.32837C7.99333 9.45587 7.91083 9.62087 7.885 9.80004L7.5 12.5L10.125 12.1759Z" fill-rule="evenodd" stroke="rgb(214,214,214)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.500000" />
+		</g>
+		<path id="Path" d="M0 0L20 0L20 20L0 20L0 0Z" fill-rule="evenodd" />
+	</g>
+</svg>

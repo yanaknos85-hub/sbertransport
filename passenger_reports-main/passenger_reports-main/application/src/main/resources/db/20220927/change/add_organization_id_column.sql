@@ -1,0 +1,1 @@
+alter table reports.request add column organization_id UUID;

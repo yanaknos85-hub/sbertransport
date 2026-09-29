@@ -1,0 +1,25 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20240619"
+            author: shabrov-ie
+            changes:
+                -   tagDatabase:
+                        tag: "20240619"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    type: text
+                                    name: joined_passengers
+                                    remarks: Присоединённые пассажиры
+                                    defaultValue: ""
+                                    constraints:
+                                        nullable: false
+            rollback:
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    name: joined_passengers

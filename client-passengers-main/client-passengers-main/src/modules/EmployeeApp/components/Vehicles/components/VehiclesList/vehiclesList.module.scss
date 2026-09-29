@@ -1,0 +1,52 @@
+.container {
+  margin-top: 30px;
+  overflow: hidden;
+}
+
+.viewport {
+  max-width: 1136px;
+}
+
+.content {
+  background: #FFF;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.title {
+  color: rgb(0, 0, 0);
+  font-family: SB Sans Interface;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0%;
+  padding-bottom: 12px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -9px;
+}
+
+.item {
+  margin: 0 9px 9px 9px;
+}
+
+.itemAdd {
+  margin: 0 9px 9px 9px;
+  min-width: 350px;
+  min-height: 118px;
+  border: 1px dashed rgb(191, 197, 202);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: rgb(38, 38, 38);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: -0.3px;
+  cursor: pointer;
+}

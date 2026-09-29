@@ -1,0 +1,16 @@
+<svg width="48.000000" height="48.000000" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip37_6782">
+			<rect id="Property 1=good mood" width="48.000000" height="48.000000" fill="white"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip37_6782)">
+		<path id="Vector" d="M35.8745 36.8745C29.04 43.7085 17.96 43.7085 11.1255 36.8745C4.2915 30.04 4.2915 18.96 11.1255 12.1255C17.96 5.2915 29.04 5.2915 35.8745 12.1255C42.7085 18.96 42.7085 30.04 35.8745 36.8745Z" stroke="#262626" stroke-width="2.000000" stroke-linejoin="round"/>
+		<path id="Vector" d="M29.3335 28.3887L17.667 28.3887C17.667 31.6299 20.2588 34.2222 23.5005 34.2222C26.7417 34.2222 29.3335 31.6299 29.3335 28.3887Z" stroke="#262626" stroke-width="2.000000" stroke-linejoin="round"/>
+		<path id="Vector" d="M16.6943 18.6665L16.6943 20.6108" stroke="#262626" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Vector" d="M30.3057 18.6665L30.3057 20.6108" stroke="#262626" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+	</g>
+</svg>

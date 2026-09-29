@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20250422"
+            author: burlakovsv
+            changes:
+                - modifyDataType:
+                    schemaName: reports
+                    tableName: inbox_message
+                    columnName: error_reason
+                    newDataType: text

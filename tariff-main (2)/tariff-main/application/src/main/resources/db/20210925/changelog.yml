@@ -1,0 +1,57 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/202109252
+            tag: "202109252"
+            author: smirnova
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/create_table_cargo_cities.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_table_cargo_cities.sql
+                        relativeToChangelogFile: true
+    -   changeSet:
+            id: tariff/202109253
+            tag: "202109253"
+            author: smirnova
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/create_table_cargo_intervals.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_table_cargo_intervals.sql
+                        relativeToChangelogFile: true
+    -   changeSet:
+            id: tariff/202109255
+            tag: "202109255"
+            author: smirnova
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/create_table_cargo_tariff_courier.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_table_cargo_tariff_courier.sql
+                        relativeToChangelogFile: true
+    -   changeSet:
+            id: tariff/202109259
+            tag: "202109259"
+            author: smirnova
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/create_table_cargo_cities_zone.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_table_cargo_zone.sql
+                        relativeToChangelogFile: true

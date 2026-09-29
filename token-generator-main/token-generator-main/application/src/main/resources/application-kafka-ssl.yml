@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        rolesInputSsl-in-0:
+          group: ${spring.application.name}-ssl
+          destination: service.roles
+          binder: kafka
+        accountsInputSsl-in-0:
+          group: ${spring.application.name}-ssl
+          destination: service.sudir.account
+          binder: kafka

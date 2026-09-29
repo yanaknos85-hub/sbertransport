@@ -1,0 +1,12 @@
+.progress {
+  width: 95%;
+}
+.controls {
+  margin-top: var(--margin-half);
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+
+  justify-content: space-between;
+  align-items: center;
+}

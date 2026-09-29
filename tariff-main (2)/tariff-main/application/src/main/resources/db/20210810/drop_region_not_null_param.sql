@@ -1,0 +1,1 @@
+ALTER TABLE tariff.tariff ALTER COLUMN region DROP NOT NULL;

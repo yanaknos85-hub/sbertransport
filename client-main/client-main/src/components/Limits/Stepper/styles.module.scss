@@ -1,0 +1,151 @@
+.stepper {
+    :global {
+        .ant-steps {
+            &-item {
+                &:last-child {
+                    margin-top: 53px;
+                }
+
+                &-icon {
+                    width: 20px !important;
+                    height: 20px !important;
+                    margin-right: 12px !important;
+                    border-radius: 10px !important;
+                    border-width: 2px;
+                }
+
+                &-content {
+                    min-height: 20px !important;
+                    height: 20px;
+                }
+
+                &-container .ant-steps-item-tail {
+                    height: 53px !important;
+                    padding: 0 !important;
+                    left: 9px !important;
+                    top: 20px !important;
+
+                    &::after {
+                        width: 2px !important;
+                    }
+                }
+
+                &-title {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    font-weight: 600;
+                    line-height: 14px !important;
+                    letter-spacing: 0.12px;
+                    color: #1f202b !important;
+                }
+
+                &-subtitle {
+                    line-height: 22px;
+                    letter-spacing: -0.3px;
+                    color: var(--gray9);
+                }
+
+                &-wait {
+                    &:first-child .ant-steps-item-icon {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-color: var(--neon-carrot);
+
+                        .ant-steps-icon {
+                            width: 10px;
+                            height: 10px;
+                            display: block;
+                            background: var(--neon-carrot);
+                            color: transparent;
+                            opacity: 1;
+                            border-radius: 10px;
+                        }
+                    }
+
+                    .ant-steps-item-container .ant-steps-item-tail::after {
+                        background-image: linear-gradient(93deg, rgb(255, 154, 50) 0%, rgb(214, 214, 214) 60%);
+                    }
+                }
+
+                &-finish {
+                    &:first-child .ant-steps-item-icon {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-color: var(--font-green-color);
+
+                        .ant-steps-icon {
+                            width: 10px;
+                            height: 10px;
+                            display: block;
+                            background: var(--font-green-color);
+                            color: transparent;
+                            opacity: 1;
+                            border-radius: 10px;
+                        }
+                    }
+
+                    &:last-child .ant-steps-item-icon {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border: none;
+                        background-color: var(--font-green-color);
+
+                        .ant-steps-icon {
+                            opacity: 1;
+                        }
+
+                        .anticon {
+                            vertical-align: baseline;
+
+                            svg {
+                                fill: var(--pure-white);
+                            }
+                        }
+                    }
+
+                    .ant-steps-item-container .ant-steps-item-tail::after {
+                        background-color: var(--font-green-color);
+                    }
+                }
+
+                &-error {
+                    .ant-steps-item-icon {
+                        border: none;
+                        background-color: var(--font-red-color);
+
+                        .ant-steps-icon {
+                            opacity: 1;
+                        }
+
+                        .anticon {
+                            vertical-align: baseline;
+
+                            svg {
+                                fill: var(--pure-white);
+                            }
+                        }
+                    }
+
+                    .ant-steps-item-tail::after {
+                        background-color: var(--font-red-color) !important;
+                        background-image: none !important;
+                    }
+
+                    &:first-child .ant-steps-item-icon .anticon svg {
+                        fill: var(--font-red-color);
+                    }
+                }
+            }
+
+            &-icon {
+                opacity: 0;
+                height: 12px;
+            }
+        }
+    }
+}

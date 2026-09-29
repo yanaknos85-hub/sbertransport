@@ -1,0 +1,433 @@
+works:
+    files:
+        -   url: /workgroup
+            fileType:
+                - xlsx
+                - xls
+            collections:
+                -   name: Рабочие группы
+                    type: ru.sberbank.ditsib.transport.tariff.dto.files.WorkGroupFileDto
+                    mappings:
+                        -   from: Рабочая группа
+                            to: name
+                        -   from: Корп. клиент
+                            to: organizationName
+                        -   from: Идентификатор геозоны
+                            to: geoZoneId
+                        -   from: Название геозоны
+                            to: geoZoneName
+                        -   from: Контрагент
+                            to: contractorName
+                        -   from: EMAIL контрагента
+                            to: integrationEmail
+                        -   from: № Договора
+                            to: contractNumber
+        -   url: /contract
+            fileType:
+                - xlsx
+                - xls
+            collections:
+                -   name: Договоры
+                    type: ru.sberbank.ditsib.transport.tariff.dto.files.ContractFileDto
+                    mappings:
+                        -   from: Организация
+                            to: organization
+                        -   from: Активность
+                            to: active
+                        -   from: Номер договора
+                            to: contractNumber
+                        -   from: Дата окончания
+                            to: endDate
+                        -   from: НДС включены
+                            to: includeVat
+                        -   from: Регион
+                            to: region
+                        -   from: Тип услуги
+                            to: serviceType
+                        -   from: Дата начала
+                            to: startDate
+                        -   from: Сумма
+                            to: sum
+                        -   from: Тип транспорта
+                            to: transportType
+                        -   from: НДС (%)
+                            to: vatValue
+                        -   from: Контрагент
+                            to: contractor
+                        -   from: Номер договора УВХД
+                            to: uvhd
+        -   url: /tariff
+            fileType:
+                - xlsx
+                - xls
+            collections:
+                -   name: Велосипед
+                    type: ru.sberbank.ditsib.transport.tariff.dto.files.BicycleFileDto
+                    mappings:
+                        -   from: Идентификатор
+                            to: id
+                        -   from: Активен
+                            to: active
+                        -   from: Контрагент
+                            to: contractor
+                        -   from: Договор
+                            to: contract
+                        -   from: Организация
+                            to: organization
+                        -   from: Регион
+                            to: region
+                        -   from: Стоимость|Бронь
+                            to: cost.book
+                        -   from: Стоимость|За км
+                            to: cost.distance
+                        -   from: Стоимость|За мин
+                            to: cost.time
+                        -   from: Коэффициенты|Страхование
+                            to: coefficients.insurance
+                        -   from: Коэффициенты|07:00 - 10:00
+                            to: coefficients.morning
+                        -   from: Коэффициенты|10:00 - 18:00
+                            to: coefficients.day
+                        -   from: Коэффициенты|18:00 - 22:00
+                            to: coefficients.evening
+                        -   from: Коэффициенты|22:00 - 07:00
+                            to: coefficients.night
+                        -   from: Коэффициенты|Вых. дни
+                            to: coefficients.weekend
+                -   name: Каршеринг
+                    type: ru.sberbank.ditsib.transport.tariff.dto.files.CarsharingFileDto
+                    mappings:
+                        -   from: Идентификатор
+                            to: id
+                        -   from: Активен
+                            to: active
+                        -   from: Контрагент
+                            to: contractor
+                        -   from: Договор
+                            to: contract
+                        -   from: Организация
+                            to: organization
+                        -   from: Регион
+                            to: region
+                        -   from: Тип услуги
+                            to: serviceType
+                        -   from: Стоимость|За км
+                            to: cost.distance
+                        -   from: Стоимость|За мин
+                            to: cost.time
+                        -   from: Стоимость|За мин. ожидания
+                            to: cost.waitTime
+                        -   from: Коэффициенты|Коэф. КАСКО
+                            to: coefficients.insurance
+                        -   from: Коэффициенты|Коэф. детские кресла
+                            to: coefficients.children
+                        -   from: Коэффициенты|Коэф. животные
+                            to: coefficients.pet
+                        -   from: Коэффициенты|Коэф. загруженности дорог
+                            to: coefficients.traffic
+                        -   from: Коэффициенты|07:00 - 10:00
+                            to: coefficients.morning
+                        -   from: Коэффициенты|10:00 - 18:00
+                            to: coefficients.day
+                        -   from: Коэффициенты|18:00 - 22:00
+                            to: coefficients.evening
+                        -   from: Коэффициенты|22:00 - 07:00
+                            to: coefficients.night
+                        -   from: Коэффициенты|Вых. дни
+                            to: coefficients.weekend
+                -   name: Личный транспорт
+                    type: ru.sberbank.ditsib.transport.tariff.dto.files.PersonalFileDto
+                    mappings:
+                        -   from: Идентификатор
+                            to: id
+                        -   from: Активен
+                            to: active
+                        -   from: Организация
+                            to: organization
+                        -   from: Регион
+                            to: region
+                        -   from: Тип услуги
+                            to: serviceType
+                        -   from: Стоимость|Минимальная за расстояние
+                            to: cost.minRideDistance
+                        -   from: Стоимость|Минимальная за время
+                            to: cost.minRideTime
+                        -   from: Стоимость|За км
+                            to: cost.distance
+                        -   from: Стоимость|За мин
+                            to: cost.time
+                        -   from: Стоимость|Ожидание в промеж. точке, за мин
+                            to: cost.waitIntermediateTime
+                        -   from: Стоимость|За городом|За км
+                            to: cost.suburb.distance
+                        -   from: Стоимость|За городом|За мин
+                            to: cost.suburb.time
+                        -   from: Стоимость|За городом|За км подачи
+                            to: cost.suburb.submissionDistance
+                        -   from: Стоимость|За городом|За мин подачи
+                            to: cost.suburb.submissionTime
+                        -   from: Стоимость|Между регионами|За км
+                            to: cost.interregional.distance
+                        -   from: Стоимость|Между регионами|За мин
+                            to: cost.interregional.time
+                        -   from: Коэффициенты|Коэф. перевозки ТМЦ
+                            to: coefficients.goods
+                        -   from: Коэффициенты|Коэф. загруженности
+                            to: coefficients.traffic
+                        -   from: Коэффициенты|07:00 - 10:00
+                            to: coefficients.morning
+                        -   from: Коэффициенты|10:00 - 18:00
+                            to: coefficients.day
+                        -   from: Коэффициенты|18:00 - 22:00
+                            to: coefficients.evening
+                        -   from: Коэффициенты|22:00 - 07:00
+                            to: coefficients.night
+                        -   from: Коэффициенты|Вых. дни
+                            to: coefficients.weekend
+                        -   from: Коэффициенты|Сезон|Коэффициент
+                            to: coefficients.season.value
+                        -   from: Коэффициенты|Сезон|Начало
+                            to: coefficients.season.start
+                        -   from: Коэффициенты|Сезон|Окончание
+                            to: coefficients.season.end
+                        -   from: Коэффициенты|Двигатель|Меньше 1.6
+                            to: coefficients.engine.small
+                        -   from: Коэффициенты|Двигатель|1.6 - 2.0
+                            to: coefficients.engine.medium
+                        -   from: Коэффициенты|Двигатель|2.0 - 2.5
+                            to: coefficients.engine.large
+                        -   from: Коэффициенты|Индекс затрат страх.
+                            to: coefficients.trustIdx
+                        -   from: Совместные поездки|Экономии от поездки
+                            to: coops.savingsDeviationPct
+                        -   from: Совместные поездки|Максимальное, км
+                            to: coops.distanceDeviationKm
+                        -   from: Совместные поездки|Максимальное, мин
+                            to: coops.timeDeviationMin
+                        -   from: Совместные поездки|Триггерное время (мин)
+                            to: coops.minCancelTimeMin
+                -   name: Общественный транспорт
+                    type: ru.sberbank.ditsib.transport.tariff.dto.files.PublicFileDto
+                    mappings:
+                        -   from: Идентификатор
+                            to: id
+                        -   from: Активен
+                            to: active
+                        -   from: Организация
+                            to: organization
+                        -   from: Регион
+                            to: region
+                        -   from: Тип услуги
+                            to: serviceType
+                        -   from: Стоимость|Автобус
+                            to: cost.bus
+                        -   from: Стоимость|Троллейбус
+                            to: cost.trolleybus
+                        -   from: Стоимость|Трамвай
+                            to: cost.tram
+                        -   from: Стоимость|Метро
+                            to: cost.metro
+                        -   from: Стоимость проездного|Автобус
+                            to: cost.travelCardBus
+                        -   from: Стоимость проездного|Троллейбус
+                            to: cost.travelCardTrolleybus
+                        -   from: Стоимость проездного|Трамвай
+                            to: cost.travelCardTram
+                        -   from: Стоимость проездного|Метро
+                            to: cost.travelCardMetro
+                -   name: Самокат
+                    type: ru.sberbank.ditsib.transport.tariff.dto.files.ScooterFileDto
+                    mappings:
+                        -   from: Идентификатор
+                            to: id
+                        -   from: Активен
+                            to: active
+                        -   from: Контрагент
+                            to: contractor
+                        -   from: Договор
+                            to: contract
+                        -   from: Организация
+                            to: organization
+                        -   from: Регион
+                            to: region
+                        -   from: Стоимость|Бронь
+                            to: cost.book
+                        -   from: Стоимость|За км
+                            to: cost.distance
+                        -   from: Стоимость|За мин
+                            to: cost.time
+                        -   from: Коэффициенты|Страхование
+                            to: coefficients.insurance
+                        -   from: Коэффициенты|07:00 - 10:00
+                            to: coefficients.morning
+                        -   from: Коэффициенты|10:00 - 18:00
+                            to: coefficients.day
+                        -   from: Коэффициенты|18:00 - 22:00
+                            to: coefficients.evening
+                        -   from: Коэффициенты|22:00 - 07:00
+                            to: coefficients.night
+                        -   from: Коэффициенты|Вых. дни
+                            to: coefficients.weekend
+                -   name: Такси
+                    type: ru.sberbank.ditsib.transport.tariff.dto.files.TaxiFileDto
+                    mappings:
+                        -   from: Идентификатор
+                            to: id
+                        -   from: Активен
+                            to: active
+                        -   from: Контрагент
+                            to: contractor
+                        -   from: Договор
+                            to: contract
+                        -   from: Организация
+                            to: organization
+                        -   from: Регион
+                            to: region
+                        -   from: Подразделение
+                            to: departmentHumanReadableId
+                        -   from: Класс
+                            to: taxiClass
+                        -   from: Тип услуги
+                            to: serviceType
+                        -   from: Рабочая группа
+                            to: workGroup
+                        -   from: В тарифе|Включенное расстояние (км)
+                            to: includes.distance
+                        -   from: В тарифе|Включенное время (мин)
+                            to: includes.time
+                        -   from: В тарифе|Бесплатное время ожидания (мин)
+                            to: includes.waitingTime
+                        -   from: В тарифе|Минимальное расстояние (км)
+                            to: includes.minimumDistance
+                        -   from: В тарифе|Минимальное время (мин)
+                            to: includes.minimumTime
+                        -   from: В тарифе|Минимальное время отмены заказа (мин)
+                            to: includes.minimumCancelTime
+                        -   from: Стоимость|За км
+                            to: cost.distance
+                        -   from: Стоимость|За мин
+                            to: cost.time
+                        -   from: Стоимость|Ожидание, за мин
+                            to: cost.waitTime
+                        -   from: Стоимость|Ожидание в промеж. точке, за мин
+                            to: cost.waitIntermediateTime
+                        -   from: Стоимость|За городом|За км
+                            to: cost.suburb.distance
+                        -   from: Стоимость|За городом|За мин
+                            to: cost.suburb.time
+                        -   from: Стоимость|За городом|За км подачи
+                            to: cost.suburb.submissionDistance
+                        -   from: Стоимость|За городом|За мин подачи
+                            to: cost.suburb.submissionTime
+                        -   from: Стоимость|Между регионами|За км
+                            to: cost.interregional.distance
+                        -   from: Стоимость|Между регионами|За мин
+                            to: cost.interregional.time
+                        -   from: Коэффициенты|За велосипед/лыжи/сноуборд
+                            to: coefficients.oversized
+                        -   from: Коэффициенты|Организации
+                            to: coefficients.organization
+                        -   from: Коэффициенты|За животное
+                            to: coefficients.pet
+                        -   from: Коэффициенты|За дет. кресло
+                            to: coefficients.children
+                        -   from: Коэффициенты|За загруженность
+                            to: coefficients.traffic
+                        -   from: Коэффициенты|07:00 - 10:00
+                            to: coefficients.morning
+                        -   from: Коэффициенты|10:00 - 18:00
+                            to: coefficients.day
+                        -   from: Коэффициенты|18:00 - 22:00
+                            to: coefficients.evening
+                        -   from: Коэффициенты|22:00 - 07:00
+                            to: coefficients.night
+                        -   from: Коэффициенты|Вых. дни
+                            to: coefficients.weekend
+                        -   from: Совместные поездки|Экономии от поездки
+                            to: coops.savingsDeviationPct
+                        -   from: Совместные поездки|Максимальное, км
+                            to: coops.distanceDeviationKm
+                        -   from: Совместные поездки|Максимальное, мин
+                            to: coops.timeDeviationMin
+                        -   from: Совместные поездки|Триггерное время (мин)
+                            to: coops.minCancelTimeMin
+                        -   from: Отклонения контрагента|Расчетная протяженность
+                            to: deviations.maxDiffComputedDistancePercent
+                        -   from: Отклонения контрагента|Фактическая протяженность
+                            to: deviations.maxDiffFactDistancePercent
+                        -   from: Отклонения контрагента|Расчетная стоимость
+                            to: deviations.maxDiffComputedCostPercent
+                        -   from: Отклонения контрагента|Фактическая стоимость
+                            to: deviations.maxDiffContractorCostPercent
+                        -   from: Отклонения контрагента|Время ожидания
+                            to: deviations.maxDiffComputedWaitingPercent
+                        -   from: Ночной тариф
+                            to: isNightTariff
+                -   name: Трансфер
+                    type: ru.sberbank.ditsib.transport.tariff.dto.files.TransferFileDto
+                    mappings:
+                        -   from: Идентификатор тарифа
+                            to: id
+                        -   from: Статус тарифа
+                            to: tariffStatus
+                        -   from: Наименование контрагента
+                            to: contractor
+                        -   from: Номер договора
+                            to: contract
+                        -   from: Организация заказчика
+                            to: organization
+                        -   from: Регион/геозона
+                            to: region
+                        -   from: Подразделение
+                            to: departmentHumanReadableId
+                        -   from: Тип интеграции
+                            to: integrationType
+                        -   from: Период действия тарифа с
+                            to: tariffPeriodFrom
+                        -   from: Период действия тарифа по
+                            to: tariffPeriodTo
+                        -   from: Тип услуги
+                            to: serviceType
+                        -   from: Класс тарифа
+                            to: tariffClass
+                        -   from: Рабочая группа
+                            to: workGroup
+                        -   from: Атрибуты для минимальной поездки/подачи ТС|Минимальное расстояние (км)
+                            to: minimumTripAttributes.minKm
+                        -   from: Атрибуты для минимальной поездки/подачи ТС|Стоимость минимального расстояния
+                            to: minimumTripAttributes.minRideCost
+                        -   from: Атрибуты для минимальной поездки/подачи ТС|Бесплатное время ожидания (мин)
+                            to: minimumTripAttributes.freeWaitingTime
+                        -   from: Общие значения тарифа|Стоимость 1 км поездки, руб
+                            to: generalTariffValues.rideCostPerKm
+                        -   from: Общие значения тарифа|Стоимость 1 мин поездки, руб
+                            to: generalTariffValues.rideCostPerMin
+                        -   from: Общие значения тарифа|Ожидание в промеж. точке, за 1 мин
+                            to: generalTariffValues.waitIntermediateTime
+                        -   from: Расширенные значения тарифа|В городе|За 1 км, руб
+                            to: extendedTariffValues.urb.costPerKm
+                        -   from: Расширенные значения тарифа|В городе|За 1 мин, руб
+                            to: extendedTariffValues.urb.costPerMin
+                        -   from: Расширенные значения тарифа|За городом|За 1 км, руб
+                            to: extendedTariffValues.suburb.costPerKm
+                        -   from: Расширенные значения тарифа|За городом|За 1 мин, руб
+                            to: extendedTariffValues.suburb.costPerMin
+                        -   from: Расширенные значения тарифа|Цена за 1 мин. ожидания, руб
+                            to: extendedTariffValues.waitCostPerMin
+                        -   from: Условия|Минимальное время формирования заказа, мин
+                            to: conditions.minCreateTime
+                        -   from: Условия|Минимальное время отмены заявки, мин
+                            to: conditions.minCancelTime
+                        -   from: Условия|Триггерное время, мин
+                            to: conditions.triggerTime
+                -   name: Пешком
+                    type: ru.sberbank.ditsib.transport.tariff.dto.files.WalkFileDto
+                    mappings:
+                        -   from: Идентификатор
+                            to: id
+                        -   from: Активен
+                            to: active
+                        -   from: Организация
+                            to: organization
+                        -   from: Регион
+                            to: region

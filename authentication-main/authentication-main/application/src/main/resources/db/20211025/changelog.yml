@@ -1,0 +1,22 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211025"
+            author: medvedev-ad
+            changes:
+                -   dropColumn:
+                        schemaName: authentication
+                        tableName: role
+                        columnName: data_master
+                -   addColumn:
+                        schemaName: authentication
+                        tableName: role
+                        columns:
+                            -   column:
+                                    name: data_master
+                                    type: boolean
+                                    remarks: Флаг о том, что роль является СМД
+                                    defaultOnNull: true
+                                    defaultValueBoolean: false
+                                    constraints:
+                                        nullable: false
+                        

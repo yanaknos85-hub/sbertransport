@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>ic/close</title>
+    <g id="ic/close" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic/route">
+            <circle id="Oval" stroke="#ECECEC" stroke-width="1.5" cx="16" cy="16" r="15.25"></circle>
+            <g id="Group-17" transform="translate(2.285714, 2.285714)">
+                <rect id="Rectangle" x="0" y="0" width="27.4285714" height="27.4285714"></rect>
+                <g id="Group" transform="translate(0.714286, 0.714286)">
+                    <rect id="Rectangle" x="0" y="0" width="26" height="26"></rect>
+                    <path d="M13,19.5 L13,6.5 M6.5,13 L19.5,13" id="Combined-Shape" stroke="#595959" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(13.000000, 13.000000) rotate(-315.000000) translate(-13.000000, -13.000000) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

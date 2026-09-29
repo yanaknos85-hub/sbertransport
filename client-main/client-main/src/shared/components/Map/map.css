@@ -1,0 +1,49 @@
+.leaflet-container {
+  overflow: hidden;
+
+  border-radius: 10px;
+}
+
+.leaflet-bottom .leaflet-control {
+  margin-bottom: 16px;
+}
+
+/* Переопределение ширины маркера, чтобы он не был овальным, а больше похож на круг */
+img.leaflet-marker-icon.leaflet-zoom-animated.leaflet-interactive {
+  /* 24px */
+  width: var(--margin-large) !important;
+}
+
+.leaflet-bottom .leaflet-control {
+  border: none;
+}
+
+.leaflet-touch .leaflet-bar a {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.leaflet-touch .leaflet-bar a:first-child {
+  margin-bottom: 12px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  line-height: 36px;
+}
+
+.leaflet-touch .leaflet-bar a:first-child:hover {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.leaflet-touch .leaflet-bar a:last-child {
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  line-height: 39px;
+}
+
+.leaflet-touch .leaflet-bar a:last-child:hover {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+}

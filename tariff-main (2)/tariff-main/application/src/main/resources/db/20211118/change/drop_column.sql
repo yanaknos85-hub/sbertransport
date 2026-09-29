@@ -1,0 +1,1 @@
+alter table tariff.cargo_tariff_region drop column value_step;

@@ -1,0 +1,28 @@
+.badge { 
+    padding: 2px 8px;
+    border-radius: 16px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12px;
+    line-height: 14px;
+}
+
+.positive { 
+    background-color: rgb(231, 249, 240);
+    color: rgb(16, 191, 106);
+}
+
+.error { 
+    background-color: rgb(255, 238, 236);
+    color: rgb(255, 87, 67);
+}
+
+.change { 
+    background-color: rgb(255, 245, 235);
+    color: rgb(255, 154, 50);
+}
+
+.none { 
+    background-color: rgb(242, 242, 242);
+    color: rgb(77, 77, 77);
+}

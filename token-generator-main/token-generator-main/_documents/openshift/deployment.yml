@@ -1,0 +1,85 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: token-generator
+  namespace: ci02351878-edevgen-sbertransport-dev
+  labels:
+    app: token-generator
+    template: token-generator
+    version: D-02.026.000
+spec:
+  selector:
+    matchLabels:
+      app: token-generator
+  template:
+    metadata:
+      namespace: ci02351878-edevgen-sbertransport-dev
+      labels:
+        app: token-generator
+        istio-injection: enabled
+        version: D-02.026.000
+      annotations:
+        sidecar.istio.io/inject: 'true'
+    spec:
+      volumes:
+        - name: logs
+          emptyDir: {}
+        - name: cm-fluentbit
+          configMap:
+            name: cm-fluentbit
+            defaultMode: 420
+            optional: true
+        - name: secman
+          configMap:
+            name: secman
+            defaultMode: 420
+            optional: true
+        - name: logging
+          configMap:
+            name: logging
+            defaultMode: 420
+            optional: true
+      containers:
+        - resources:
+            limits:
+              cpu: 500m
+              memory: 1G
+          terminationMessagePath: /dev/termination-log
+          name: token-generator
+          env:
+            - name: KAFKA_BROKERS
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka
+                  key: brokers
+            - name: SPRING_PROFILES_INCLUDE
+              value: secman,logging
+            - name: JDK_JAVA_OPTIONS
+              valueFrom:
+                configMapKeyRef:
+                  name: jdk-java-options
+                  key: debug
+            - name: JWK_PATH_PRIVATE_DIR
+              value: vault://CI02351878_CI02671580/A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/jwt
+            - name: JWK_PATH_PRIVATE_NAME
+              value: jwt.private
+            - name: JWK_PATH_PUBLIC_DIR
+              value: vault://CI02351878_CI02671580/A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/jwt
+            - name: JWK_PATH_PUBLIC_NAME
+              value: jwt.public
+          ports:
+            - containerPort: 6565
+              protocol: TCP
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: logs
+              mountPath: /log
+            - name: secman
+              mountPath: /app/resources/application-secman.yml
+              subPath: application-secman.yml
+            - name: logging
+              mountPath: /app/resources/application-logging.yml
+              subPath: application-logging.yml
+          terminationMessagePolicy: File
+          image: >-
+            registry.sigma.sbrf.ru/dev/ci02351878/ci02353146_transport_dev/transport/token-generator:230802-1-17898164

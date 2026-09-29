@@ -1,0 +1,28 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20210528
+            tag: "20210528"
+            author: medvedev-ad
+            dbms: postgresql
+            changes:
+                - createTable:
+                      schemaName: tariff
+                      tableName: contractor_region
+                      remarks: Связь контрагентов и регионов
+                      columns:
+                          - column:
+                                name: contractor_id
+                                type: uuid
+                                remarks: Идентификатор контрагента
+                                constraints:
+                                    nullable: false
+                                    foreignKeyName: contractor_region_fkey
+                                    referencedTableSchemaName: tariff
+                                    referencedTableName: contractor
+                                    referencedColumnNames: id
+                          - column:
+                                name: region_id
+                                type: uuid
+                                remarks: Идентификатор региона
+                                constraints:
+                                    nullable: false

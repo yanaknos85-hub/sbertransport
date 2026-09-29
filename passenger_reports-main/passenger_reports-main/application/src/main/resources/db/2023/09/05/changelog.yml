@@ -1,0 +1,17 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230905-0848"
+            author: blandin-ad
+            changes:
+                -   tagDatabase:
+                        tag: "20230905"
+                -   addUniqueConstraint:
+                        schemaName: reports
+                        tableName: stats
+                        constraintName: stats_unique_constraint
+                        columnNames: organization_id,year,month,service_type,transport_type
+            rollback:
+                -   dropUniqueConstraint:
+                        schemaName: reports
+                        tableName: stats
+                        constraintName: stats_unique_constraint

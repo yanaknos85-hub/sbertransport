@@ -1,0 +1,165 @@
+.form { 
+    :global { 
+        .ant-form-item { 
+            margin-bottom: 0 !important;
+        }
+        .ant-divider {
+            margin: 16px 0;
+        }
+    }
+}
+
+.transportOption { 
+    &Item { 
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 48px;
+        max-height: 48px;
+        padding: 16px 13px;
+    }
+}
+
+.tariffTooltip { 
+    :global { 
+        .ant-tooltip-inner { 
+            background-color: white;
+            color: black;
+            padding: 16px 11px;
+            box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.12), 0 0 1px 0 rgba(0, 0, 0, 0.12);
+        }
+
+        .ant-tooltip-arrow-content { 
+            background-color: white;
+        }
+    }
+}
+
+.optionTitle { 
+    .accentTariffLink { 
+        color: rgb(0, 145, 255);
+        text-decoration: underline;
+    }
+}
+
+.formBlock { 
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &Title {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 22px;
+        letter-spacing: -0.3px;
+    }
+}
+
+.hidden { 
+    display: none;
+}
+
+.carsOption { 
+    width: 100%;
+    background-color: black;
+    display: block;
+}
+
+.dateRangePicker { 
+    height: 40px;
+
+    :global { 
+        .ant-picker-clear { 
+            right: 50px !important;
+            display: block !important;
+        }
+    }
+}
+
+.attributesContainer { 
+    :global {
+        .ant-col { 
+            width: 100%;
+            display: flex;
+            align-self: flex-start;
+        }
+    }
+}
+
+.inputWithSelect { 
+    :global { 
+        .ant-input {
+            border-right: none !important;
+            height: 40px !important;
+            position: relative;
+        }
+
+        .ant-input-group-addon { 
+            background-color: transparent;
+        }
+    }
+}
+
+.input { 
+    width: 100% !important;
+    height: 40px !important;
+
+    :global {
+        .ant-input-number-input-wrap {
+            height: 100%;
+
+            input { 
+                height: 100%;
+            }
+        }
+    }
+}
+
+.tariffTransportSelect { 
+    :global { 
+        .ant-select-item-option-selected:not(.ant-select-item-option-disabled), .ant-select-item-option-selected { 
+            background-color: rgb(242, 243, 246) !important;
+        }
+
+        .ant-select-item-option-state { 
+            margin-right: 18px;
+            color: black !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+.selectItem { 
+    :global { 
+        .ant-select-selector {
+            padding: 9px 16px !important;
+        }
+
+        .ant-select-arrow { 
+            top: 13px !important;
+        }
+
+        .ant-select-selection-item { 
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+
+.formItem {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px;
+
+    :global {
+        .ant-form-item { 
+            margin-bottom: 0;
+        }
+
+        .ant-form-item-label {
+          text-align: left;
+        }
+      }
+}

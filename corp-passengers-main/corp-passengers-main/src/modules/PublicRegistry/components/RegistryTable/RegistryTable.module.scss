@@ -1,0 +1,11 @@
+.inlineButtonsWrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 var(--padding-large);
+}
+
+.rightSideButtons {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: var(--margin-base);
+}

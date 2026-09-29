@@ -1,0 +1,117 @@
+.stepIcon {
+  font-weight: 600;
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
+  border: 1.5px solid #e0e0e0;
+  color: #c2c2c2;
+  text-align: center;
+}
+
+.title {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+  color: #000000;
+}
+
+.subtitle {
+  font-family: 'SB Sans Text', sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  letter-spacing: -0.3px;
+  color: #909090;
+
+  margin-top: 10px;
+}
+
+.headerDivider {
+  background-color: rgba(38, 38, 38, 0.08);
+  height: 1px;
+  border: none;
+  margin: 20px -20px 0;
+}
+
+.settingsSteps {
+  color: #262626;
+  max-width: 970px;
+
+  & :global {
+    margin-bottom: 0px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(38, 38, 38, 0.08);
+
+    .ant-steps-item::before {
+      visibility: hidden;
+    }
+
+    .ant-steps-item {
+      font-family: 'SB Sans Text', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: -0.3px;
+
+      &.ant-steps-item-process {
+        font-weight: 600;
+
+        .ant-steps-item-title {
+          color: #000000;
+        }
+        .stepIcon {
+          background-color: #10bf6a;
+          width: 40px;
+          height: 40px;
+          border: solid 6px red;
+          border-radius: 20px;
+        }
+      }
+
+      &.ant-steps-item-finish {
+        .ant-steps-item-title {
+          color: #262626;
+        }
+        .stepIcon {
+          background-color: blue; //#10BF6A;
+          border: none;
+        }
+      }
+
+      &.ant-steps-item-wait {
+        .ant-steps-item-title,
+        .ant-steps-item-icon {
+          color: #c2c2c2;
+        }
+        .stepIcon {
+          background-color: green; //#10BF6A;
+          border: solid 1px #c2c2c2;
+        }
+      }
+    }
+  }
+}
+
+.stepsContainer {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.04);
+  margin-right: 20px;
+  padding: 20px;
+}
+
+.buttonBlock {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  margin-right: var(--margin-base);
+
+  .buttonBack {
+    margin-right: var(--margin-base);
+  }
+}
+
+.stepContent {
+  position: relative;
+}

@@ -1,0 +1,16 @@
+.modal {
+  :global(.ant-modal-close) {
+      display: block !important;
+  }
+
+  :global(.ant-modal-close) {
+      top: 12px;
+      right: 12px;
+
+      span {
+          width: 24px;
+          height: 24px;
+          line-height: 24px;
+      }
+  }
+}

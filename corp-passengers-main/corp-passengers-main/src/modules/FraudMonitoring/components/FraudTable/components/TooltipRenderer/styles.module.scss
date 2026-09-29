@@ -1,0 +1,23 @@
+@use '../../mixins.scss' as *;
+
+.text {
+  margin: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  background-color: inherit;
+
+  font-family: 'SB Sans Text';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.3px;
+  color: #262626;
+}
+
+.tooltip {
+  :global {
+    @include tooltipStyles;
+  }
+}

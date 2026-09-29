@@ -1,0 +1,110 @@
+.orderDetailed {
+  border-right: 10px solid transparent;
+
+  &__head {
+    .orderExecutionContainer-section__title {
+      border-bottom: 1px solid rgba(38, 38, 38, 0.08);
+      color: #1c1c1c;
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+  }
+
+  &__edit-button {
+    background: #f2f3f6;
+    padding: 11px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  .orderExecutionContainer-item {
+    min-width: 320px;
+  }
+}
+
+.OrderHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 44px;
+
+  &__title {
+    a {
+      color: inherit;
+    }
+
+    .anticon-arrow-left {
+      margin-right: 18px;
+    }
+  }
+
+  &__control {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.passengersDetailed {
+  .orderExecutionContainer {
+    &-section {
+      padding: 20px 24px;
+
+      &__content {
+        gap: 22px 58px;
+      }
+    }
+
+    &-item {
+      min-width: 228px;
+      max-width: 228px;
+    }
+  }
+}
+
+.relatedOrder {
+  color: rgb(0, 145, 255);
+  text-decoration: underline;
+}
+
+.informationPassengersCount {
+  color: rgb(151, 151, 151);
+  margin-left: 5px;
+}
+
+.informationPassengersList {
+  display: flex;
+  flex-direction: column;
+
+  & > span:last-child {
+    color: rgb(115, 115, 115);
+    font-family: SB Sans Interface;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    margin-top: 12px;
+  }
+}
+
+.editIcon { 
+  padding: 10px;
+  border-radius: 8px;
+  background-color: rgb(242, 243, 246);
+  cursor: pointer;
+}
+
+.headerTitle { 
+  color: rgb(29, 29, 29);
+}

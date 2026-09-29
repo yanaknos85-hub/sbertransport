@@ -1,0 +1,72 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20250221-1046"
+            author: ladeyshchikov-aa
+            changes:
+                -   createTable:
+                        schemaName: tariff
+                        tableName: connection_restriction
+                        columns:
+                            -   column:
+                                    name: id
+                                    type: uuid
+                                    remarks: Идентификатор объекта
+                                    constraints:
+                                        primaryKey: true
+                            -   column:
+                                    name: organization_id
+                                    type: uuid
+                                    remarks: Идентификатор огранизации
+                                    constraints:
+                                        nullable: false
+                                        foreignKeyName: tariff_connections_restriction_organization_fk
+                                        referencedTableSchemaName: tariff
+                                        referencedTableName: organization
+                                        referencedColumnNames: id
+                            -   column:
+                                    name: contractor_id
+                                    type: uuid
+                                    remarks: Идентификатор контрагента
+                                    constraints:
+                                        nullable: false
+                                        foreignKeyName: tariff_connections_restriction_contractor_fk
+                                        referencedTableSchemaName: tariff
+                                        referencedTableName: contractor
+                                        referencedColumnNames: id
+                            -   column:
+                                    name: restriction_source
+                                    type: VARCHAR(255)
+                                    remarks: Источник ограничения
+                                    constraints:
+                                        nullable: false
+                -   addColumn:
+                        schemaName: tariff
+                        tableName: contract
+                        columns:
+                            -   column:
+                                    name: contract_type
+                                    type: VARCHAR(255)
+                                    remarks: Тип договора
+                                    defaultValue: TRANSITIONAL
+                                    constraints:
+                                        nullable: false
+                            -   column:
+                                    name: restriction_type
+                                    type: VARCHAR(255)
+                                    remarks: Тип ограничения связи между договорами
+                                    defaultValue: NONE
+                                    constraints:
+                                        nullable: false
+            rollback:
+                -   dropTable:
+                        schemaName: tariff
+                        tableName: connection_restriction
+                -   dropColumn:
+                        schemaName: tariff
+                        tableName: contract
+                        columns:
+                            -   column:
+                                    name: contract_type
+                            -   column:
+                                    name: restriction_type
+                      

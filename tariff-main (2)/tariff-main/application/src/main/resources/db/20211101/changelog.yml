@@ -1,0 +1,11 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20211101
+            tag: "20211101"
+            author: palekseev
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/add_default_season_borders.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

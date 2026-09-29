@@ -1,0 +1,28 @@
+application: address
+repo: app_platform_address
+resources:
+  limits:
+    cpu: '1'
+    memory: 2G
+  requests:
+    cpu: '1'
+    memory: 2G
+port:
+  http:
+    number: 8008
+    name: address
+    target: 8080
+routing:
+  match:
+    prefix: /api/addresses
+  rewrite:
+    uri: ' '
+secman:
+  type: none
+profiles: kafka,kafka-ssl,kafka-avro
+additional:
+  envs:
+    - name: JWKS_URI
+      value: 'http://jwks:8080'
+    - name: SPRING_CLOUD_CONFIG_URI
+      value: 'http://http-config-server:8080'

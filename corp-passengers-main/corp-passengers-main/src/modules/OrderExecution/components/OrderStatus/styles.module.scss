@@ -1,0 +1,26 @@
+.status.status {
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  letter-spacing: -0.3px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  max-width: 236px;
+  white-space: normal;
+  text-align: left;
+
+  svg {
+    width: 14px;
+    height: 14px;
+    background: #FFFFFFB3;
+    border-radius: 50%;
+  }
+
+  &:hover {
+    color: #fff;
+  }
+}

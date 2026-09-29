@@ -1,0 +1,15 @@
+databaseChangeLog:
+    -   changeSet:
+            id: request/20201025
+            tag: "20201025"
+            author: apa
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: add_columns.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;
+                -   sqlFile:
+                        path: drop_price_details.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

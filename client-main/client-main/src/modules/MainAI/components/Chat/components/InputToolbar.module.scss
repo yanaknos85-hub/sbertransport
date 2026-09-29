@@ -1,0 +1,149 @@
+.inputPanel {
+  padding: 8px 16px 8px 8px;
+  background: #fff;
+  border-radius: 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.inputDisabled {
+  cursor: not-allowed;
+  user-select: none;
+  background: transparent;
+}
+
+.recordingBadge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+.audioVisualizer {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 16px;
+}
+
+.audioBar {
+  display: block;
+  width: 2px;
+  border-radius: 1px;
+  background: #3B5DE7;
+  transition: height 0.05s ease, opacity 0.05s ease;
+}
+
+.recordingTimer {
+  font-size: 12px;
+  line-height: 16px;
+  color: #000000;
+  font-family: 'SB Sans Interface', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: 0.2px;
+}
+
+.stopBtn {
+  background: linear-gradient(135deg, #3395FFFF, #4900C0FF);
+
+  svg {
+    display: block;
+  }
+}
+
+.processingBtn {
+  background: transparent;
+  border: 2px solid #FF5743;
+  cursor: not-allowed;
+  opacity: 1;
+
+  svg {
+    display: block;
+  }
+}
+
+.input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333;
+  font-family: 'SB Sans Interface', sans-serif;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 16px;
+  min-height: 40px;
+  max-height: calc(1.5em * 6 + 18px);
+  resize: none;
+
+  &::placeholder {
+    color: #909090;
+  }
+}
+
+.clearBtn {
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  svg {
+    display: block;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.actionBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.sendBtn {
+  background: linear-gradient(135deg, #33FFDC, #42C000);
+
+  svg {
+    display: block;
+  }
+}
+
+.microBtn {
+  background: linear-gradient(135deg, #3395FFFF, #4900C0FF);
+
+  svg {
+    display: block;
+  }
+}

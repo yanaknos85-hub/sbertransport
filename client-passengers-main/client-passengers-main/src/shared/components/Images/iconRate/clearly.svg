@@ -1,0 +1,24 @@
+<svg width="48.000000" height="48.000000" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip33_3043">
+			<rect id="Property 1=ic 48 func" width="48.000000" height="48.000000" fill="white"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip33_3043)">
+		<path id="Path" d="M39.5 39L19.5 39" stroke="#000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M30.5 35L19.5 35" stroke="#000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M39.5 26L19.5 26" stroke="#000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M30.5 22L19.5 22" stroke="#000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M39.5 13L19.5 13" stroke="#000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M30.5 9L19.5 9" stroke="#000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M15.0356 14.5355C13.083 16.4882 9.91699 16.4882 7.96436 14.5355C6.01172 12.5829 6.01172 9.41711 7.96436 7.46448C9.91699 5.51184 13.083 5.51184 15.0356 7.46448C16.9883 9.41711 16.9883 12.5829 15.0356 14.5355Z" stroke="#262626" stroke-width="2.000000" stroke-linejoin="round"/>
+		<path id="Path" d="M13.7217 9.89124L10.9438 12.6692L9.27783 11.0022" stroke="#262626" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M15.0356 27.5355C13.083 29.4882 9.91699 29.4882 7.96436 27.5355C6.01172 25.5829 6.01172 22.4171 7.96436 20.4645C9.91699 18.5118 13.083 18.5118 15.0356 20.4645C16.9883 22.4171 16.9883 25.5829 15.0356 27.5355Z" stroke="#262626" stroke-width="2.000000" stroke-linejoin="round"/>
+		<path id="Path" d="M13.7217 22.8911L10.9438 25.6691L9.27783 24.0021" stroke="#262626" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M13.7217 36L10.9438 38.778L9.27783 37.111" stroke="#262626" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M15.0356 40.5355C13.083 42.4882 9.91699 42.4882 7.96436 40.5355C6.01172 38.5829 6.01172 35.4171 7.96436 33.4645C9.91699 31.5118 13.083 31.5118 15.0356 33.4645C16.9883 35.4171 16.9883 38.5829 15.0356 40.5355Z" stroke="#262626" stroke-width="2.000000" stroke-linejoin="round"/>
+	</g>
+</svg>

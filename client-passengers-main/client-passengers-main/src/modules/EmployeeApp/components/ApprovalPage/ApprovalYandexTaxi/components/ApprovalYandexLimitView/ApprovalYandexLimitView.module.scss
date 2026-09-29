@@ -1,0 +1,45 @@
+.limitsContainer { 
+    max-width: 400px;
+    
+    :global { 
+        .ant-progress-inner, .ant-progress-bg { 
+            max-height: 4px;
+        }
+    }
+}
+
+.limitsHeader { 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &Title {
+        font-weight: 600;
+        font-size: 16px;
+    }
+
+    &Cost { 
+        font-size: 24px;
+        font-weight: 600;
+    }
+}
+
+.limitsFooter { 
+    color: rgb(144, 144, 144);
+    font-size: 12px;
+}
+
+.plannedCost { 
+    display: flex;
+    justify-content: space-between;
+    font-weight: 400;
+    font-size: 14px;
+    
+    &Title { 
+        color: rgb(168, 171, 179);
+    }
+
+    &Price { 
+        color: rgb(33, 33, 42);
+    }
+}

@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250423"
+      author: raygorodsky-pa
+      changes:
+        - modifyDataType:
+            schemaName: authentication
+            tableName: account
+            columnName: scope
+            newDataType: varchar(22)

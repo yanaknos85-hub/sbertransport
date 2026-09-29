@@ -1,0 +1,30 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220401"
+            author: sigalovaa
+            changes:
+                -   addColumn:
+                        schemaName: authentication
+                        tableName: account
+                        columns:
+                            -   column:
+                                    name: org_structure_type
+                                    type: varchar(10)
+                                    remarks: тип пользователя
+                -   addColumn:
+                        schemaName: authentication_aud
+                        tableName: account_aud
+                        columns:
+                            -   column:
+                                    name: org_structure_type
+                                    type: varchar(10)
+                                    remarks: тип пользователя
+                -   addColumn:
+                        schemaName: authentication_aud
+                        tableName: account_aud
+                        columns:
+                            -   column:
+                                    name: org_structure_type_mod
+                                    type: boolean
+                                    remarks: тип пользователя
+

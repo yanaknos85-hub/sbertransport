@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic/target</title>
+    <defs>
+        <circle id="path-1" cx="24" cy="24" r="24"></circle>
+        <filter x="-37.5%" y="-31.3%" width="175.0%" height="175.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="3" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.08 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="ic/target" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <g id="Oval">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+            <g id="Group-2" transform="translate(10.285714, 10.285714)">
+                <rect id="Rectangle" x="0" y="0" width="27.4285714" height="27.4285714"></rect>
+                <path d="M15.9879959,22.8063193 L21.6244864,7.59346025 C22.0379956,6.47737861 20.9514933,5.39044835 19.8358512,5.8041204 L4.62204462,11.4469959 C3.33988872,11.9231352 3.44118459,13.7693896 4.76635654,14.1025483 L11.6211727,15.8252564 L13.3321015,22.6605624 C13.665129,23.9876445 15.5120441,24.0889803 15.9879959,22.8063193 L15.9879959,22.8063193 Z" id="Path" stroke="#595959" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>

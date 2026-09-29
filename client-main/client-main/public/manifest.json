@@ -1,0 +1,72 @@
+{
+  "id": "SberTransport",
+  "name": "АС Сбертранспорт",
+  "short_name": "Сбер Транспорт",
+  "description": "СберТранспорт - это первый в России маркетплейс транспортных услуг.\nВсе транспортные сервисы в одном приложении. Включает удобные инструменты для решения задач, связанных с производственными выездами.\nЕсли Вам нужно заказать такси, компенсировать поездку на личном, общественном транспорте.",
+  "icons": [
+    {
+      "src": "assets/favicon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/favicon/android-chrome-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/favicon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/favicon/apple-touch-icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/favicon/apple-touch-icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/favicon/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/promo/screen-mobile-1.png",
+      "sizes": "925x1930",
+      "type": "image/png",
+      "label": "Услуги",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "assets/promo/screen-mobile-2.png",
+      "sizes": "925x1930",
+      "type": "image/png",
+      "label": "Выплаты",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "assets/promo/screen-mobile-3.png",
+      "sizes": "925x1930",
+      "type": "image/png",
+      "label": "Заказать поездку",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "assets/promo/screen-mobile-4.png",
+      "sizes": "925x1930",
+      "type": "image/png",
+      "label": "Активные поездки",
+      "form_factor": "narrow"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#595959",
+  "background_color": "#ffffff"
+}

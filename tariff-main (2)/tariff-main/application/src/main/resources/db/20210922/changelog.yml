@@ -1,0 +1,15 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20210922
+            tag: "20210922"
+            author: goloshchapov
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/add_employee.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/rollback_employee.sql
+                        relativeToChangelogFile: true

@@ -1,0 +1,65 @@
+.form {
+  margin-top: 30px;
+}
+
+.blockTitle {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 600;
+  font-family: 'SB Sans Interface', sans-serif;
+  color: #262626;
+  margin-top: 20px;
+  margin-bottom: 16px;
+}
+
+.blockRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(312px, 1fr));
+  column-gap: 5%;
+  row-gap: 16px;
+}
+
+.formFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.saveFilter {
+  font-family: "SB Sans Text", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  color: #262626;
+  cursor: pointer;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.resetFilter {
+  padding: 9px 20px;
+  font-family: "SB Sans Text", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  color: #ff5743;
+  cursor: pointer;
+}
+
+.acceptFilter {
+  padding: 9px 20px !important;
+  border-radius: 8px !important;
+  height: 40px !important;
+  font-family: "SB Sans Text", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}

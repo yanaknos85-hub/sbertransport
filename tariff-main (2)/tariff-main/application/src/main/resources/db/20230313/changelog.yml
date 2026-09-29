@@ -1,0 +1,20 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230313"
+            author: delyukov-da
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: tariff
+                        tableName: tariff
+                        columns:
+                            -   column:
+                                    name: is_night_tariff
+                                    type: boolean
+                                    defaultValueBoolean: false
+                                    remarks: Признак ночного тарифа
+            rollback:
+                -   dropColumn:
+                        schemaName: tariff
+                        tableName: tariff
+                        columnName: is_night_tariff

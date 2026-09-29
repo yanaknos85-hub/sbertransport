@@ -1,0 +1,45 @@
+.formItem,
+.tabItem {
+  margin-top: 5px;
+  padding-right: 10px;
+  flex-direction: column;
+
+  :global {
+    .ant-form-item-label {
+      text-align: left;
+    }
+
+    .ant-input-number {
+      width: 100%;
+    }
+  }
+}
+
+.tabItem {
+  padding-right: 5px;
+}
+
+.fieldMargin {
+  margin-top: 5px;
+}
+
+.rowWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.formWrapper {
+  margin-top: 20px;
+}
+
+.dateRange {
+  padding-right: 20px;
+}
+
+.sectionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  margin-bottom: 8px;
+}

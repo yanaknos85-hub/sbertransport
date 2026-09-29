@@ -1,0 +1,51 @@
+.selectTransportType {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.filters {
+  min-width: 400px;
+  display: flex;
+  justify-content: flex-end;
+
+  @media screen and (max-width: 600px) {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+.wrapperFilter {
+  display: flex;
+  justify-content: space-between;
+
+  @media screen and (max-width: 600px) {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .select {
+    width: 141px;
+
+    & > div {
+      height: 35px !important;
+      border-radius: 8px !important;
+      background: rgba(0, 0, 0, 0.1) !important;
+    }
+
+    & > div > span:last-child {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .DatePicker {
+    width: 245px;
+    min-width: 226px;
+    height: 35px;
+    margin: 0px 10px 0px 0px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+}

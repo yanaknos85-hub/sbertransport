@@ -1,0 +1,63 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230913-1325"
+            author: blandin-ad
+            changes:
+                -   tagDatabase:
+                        tag: "20230913"
+                -   createTable:
+                        schemaName: reports
+                        tableName: organization_group
+                        columns:
+                            -   column:
+                                    name: id
+                                    type: uuid
+                                    remarks: ID группы организаций
+                                    constraints:
+                                        primaryKey: true
+                                        primaryKeyName: organization_group_pk
+                                        nullable: false
+                            -   column:
+                                    name: name
+                                    type: varchar(255)
+                                    remarks: Наименование группы организаций
+                                    constraints:
+                                        unique: true
+                                        uniqueConstraintName: organization_group_name_uk
+                                        nullable: false
+                            -   column:
+                                    name: internal
+                                    type: boolean
+                                    remarks: Принадлежность к внутренней группе компаний
+                                    constraints:
+                                        nullable: false
+                -   addColumn:
+                        schemaName: reports
+                        tableName: organization
+                        columns:
+                            -   column:
+                                    name: organization_group_id
+                                    type: uuid
+                                    remarks: ID группы организаций
+                -   addForeignKeyConstraint:
+                        baseTableSchemaName: reports
+                        baseTableName: organization
+                        baseColumnNames: organization_group_id
+                        constraintName: ogranization_group_organization_fk
+                        referencedTableSchemaName: reports
+                        referencedTableName: organization_group
+                        referencedColumnNames: id
+            rollback:
+                -   dropForeignKeyConstraint:
+                        baseTableSchemaName: reports
+                        baseTableName: organization
+                        constraintName: ogranization_group_organization_fk
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: organization
+                        columns:
+                            -   column:
+                                    name: organization_group_id
+                -   dropTable:
+                        schemaName: reports
+                        tableName: organization_group

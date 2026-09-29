@@ -1,0 +1,25 @@
+application: token-generator
+repo: app_platform_token_generator
+resources:
+  limits:
+    cpu: '1'
+    memory: 2G
+  requests:
+    cpu: '1'
+    memory: 2G
+port:
+  http:
+    number: 8052
+    name: token-gen
+    target: 8080
+  grpc:
+    number: 6565
+routing:
+  internal: true
+secman:
+  type: none
+profiles: kafka,kafka-ssl
+additional:
+  envs:
+    - name: SPRING_CLOUD_CONFIG_URI
+      value: http://http-config-server:8080

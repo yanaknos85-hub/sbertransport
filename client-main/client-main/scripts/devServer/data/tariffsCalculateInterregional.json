@@ -1,0 +1,17 @@
+[
+  {
+    "id": "b696aace-0c16-47fd-b456-db3b4e320eb5",
+    "transportType": {
+      "id": "e2722f95-1043-41d0-8a57-09182c6410c6",
+      "name": "INTERREGIONAL"
+    },
+    "cost": 432,
+    "time": 1178923472,
+    "priceDetails": {
+      "baseCost": 280,
+      "loaderCost": 120,
+      "expressCost": 600
+    }
+  }
+]
+

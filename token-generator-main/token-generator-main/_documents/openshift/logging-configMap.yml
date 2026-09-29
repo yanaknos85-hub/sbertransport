@@ -1,0 +1,42 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: logging
+  namespace: ci02351878-edevgen-sbertransport-dev
+  labels:
+    config-map: logging
+data:
+  application-logging.yml: |-
+    logging:
+      level:
+        liquibase:
+          database: warn
+          changelog: warn
+        ru.sberbank.ditsib: "${LOG_LEVEL:INFO}"
+        org:
+          apache:
+            poi.xssf.streaming.SXSSFCreationHelper: ERROR
+          springframework.cloud.stream.messaging.DirectWithAttributesChannel: warn
+          apache.kafka.clients.admin.AdminClientConfig: warn
+          jooq:
+            Constants: ERROR
+            tools.LoggerListener: ${SQL_LEVEL:INFO}
+      pattern:
+        file:
+          "{
+                    \"service\": \"${spring.application.name}\",
+                    \"date\": \"%d{yyyy-MM-dd}\",
+                    \"time\": \"%d{HH:mm:ss.SSS}\",
+                    \"level\": \"%level\",
+                    \"traceId\": \"%X{traceId:-no trace}\",
+                    \"spanId\": \"%X{spanId:-no span}\",
+                    \"parentSpanId\": \"%X{parentSpanId:-no parent}\",
+                    \"message\": \"%replace(%replace(%msg){'\"', '\\\\\"'}){'[\n\t]', ' '}\",
+                    \"thread\": \"%thread\",
+                    \"logger\": \"%logger\",
+                    \"stack\": [\"%replace(%replace(%replace(%ex){'\"', '\\''}){'\n\t', '\",\"'}){'\n', ''}\"]
+                }%nopex%n"
+        console: "%level | %d{yyyy-MM-dd} %d{HH:mm:ss.SSSZZZ} | %X{traceId:-} | %thread | %logger{36} | %msg %throwable %nopex%n"
+      file:
+        path: "${LOG_PATH:/var/log/services}"
+        name: "${logging.file.path}/${spring.application.name}/server.log"

@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240809-1324"
+      author: medvedev-ad
+      context: "TRANSPORT-25118"
+      changes:
+        - tagDatabase:
+            tag: "D-03.014.000"
+        - sql:
+            sql: alter table addresses.frequently add constraint addresses_frequently_latitude_chk check (latitude >= -90 and latitude <= 90)
+        - sql:
+            sql: alter table addresses.frequently add constraint addresses_frequently_longitude_chk check (longitude >= -180 and longitude <= 180)
+        - sql:
+            sql: alter table addresses.favorite add constraint addresses_favorite_latitude_chk check (latitude >= -90 and latitude <= 90)
+        - sql:
+            sql: alter table addresses.favorite add constraint addresses_favorite_longitude_chk check (longitude >= -180 and longitude <= 180)
+        - sql:
+            sql: alter table addresses.meetings add constraint addresses_meetings_latitude_chk check (latitude >= -90 and latitude <= 90)
+        - sql:
+            sql: alter table addresses.meetings add constraint addresses_meetings_longitude_chk check (longitude >= -180 and longitude <= 180)
+      rollback:
+        - sql:
+            sql: alter table addresses.frequently drop constraint addresses_frequently_latitude_chk
+        - sql:
+            sql: alter table addresses.frequently drop constraint addresses_frequently_longitude_chk
+        - sql:
+            sql: alter table addresses.favorite drop constraint addresses_favorite_latitude_chk
+        - sql:
+            sql: alter table addresses.favorite drop constraint addresses_favorite_longitude_chk
+        - sql:
+            sql: alter table addresses.meetings drop constraint addresses_meetings_latitude_chk
+        - sql:
+            sql: alter table addresses.meetings drop constraint addresses_meetings_longitude_chk

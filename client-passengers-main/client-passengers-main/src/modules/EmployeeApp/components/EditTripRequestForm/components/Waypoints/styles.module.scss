@@ -1,0 +1,53 @@
+.waypoints {
+  @mixin border-mixin {
+    border-top-color: transparent !important;
+    border-left-color: transparent !important;
+    border-right-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  & :global .ant-select-selector,
+  & :global .ant-picker,
+  & :global .ant-select-selector-focused,
+  & :global .ant-picker-focused & :global .ant-select-selector:hover,
+  & :global .ant-picker:hover,
+  & :global .ant-input-affix-wrapper,
+  & :global .ant-input-affix-wrapper-focused {
+    @include border-mixin;
+  }
+}
+
+.mrgnBtm {
+  --gray: var(--border-color-base);
+  padding-top: 5px;
+  padding-bottom: 4px;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0px;
+    width: 110%;
+    border-bottom: 1px solid var(--gray);
+  }
+}
+
+:global {
+  .ant-picker-panels {
+    @media (max-width: 500px) {
+      flex-direction: column;
+    }
+  }
+  .ant-picker-date-panel {
+    @media (max-width: 500px) {
+      width: 265px;
+    }
+  }
+
+  .ant-picker-time-panel-column {
+    @media (max-width: 500px) {
+      width: 45px;
+    }
+  }
+}

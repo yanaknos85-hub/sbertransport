@@ -1,0 +1,29 @@
+.wrapper_form_filters {
+
+  & > div:first-child {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  & > div:last-child {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+
+    .button_reload {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 15%;
+      height: 40px;
+      padding: 12px 24px 12px 24px;
+      border-radius: 8px;
+      background: rgb(16, 191, 106);
+      color: rgb(255, 255, 255);
+      font-family: SB Sans Text;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 22px;
+    }
+  }
+}

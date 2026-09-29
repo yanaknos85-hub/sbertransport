@@ -1,0 +1,24 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221111-1"
+            author: medvedev-ad
+            preConditions:
+                -   onFail: MARK_RAN
+                -   sqlCheck:
+                        expectedResult: 0
+                        sql: select count(column_name) from information_schema.columns where table_schema = 'tariff' and table_name = 'contractor' and column_name = 'tin'
+            changes:
+                -   tagDatabase:
+                        tag: "20221111"
+                -   addColumn:
+                        schemaName: tariff
+                        tableName: contractor
+                        columns:
+                            -   column:
+                                    name: tin
+                                    type: text
+                                    remarks: ИНН
+                            -   column:
+                                    name: msrn
+                                    type: text
+                                    remarks: ОГРН

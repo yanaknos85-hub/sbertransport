@@ -1,0 +1,65 @@
+.item {
+  margin: 24px 0;
+}
+
+.form {
+  height: inherit;
+  position: relative;
+}
+
+.formWrapper {
+  height: inherit;
+}
+
+.formContent {
+  border-radius: var(--indent-large);
+  background: white;
+  padding: var(--indent-large) 0;
+}
+
+.routeInfo {
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: row nowrap;
+  font-style: italic;
+  padding: var(--indent-base) 0;
+
+  span {
+    padding: 0 10px;
+  }
+}
+
+.waypoints {
+  @mixin border-mixin {
+    border-top-color: transparent !important;
+    border-left-color: transparent !important;
+    border-right-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  & :global .ant-select-selector,
+  & :global .ant-picker,
+  & :global .ant-select-selector-focused,
+  & :global .ant-picker-focused & :global .ant-select-selector:hover,
+  & :global .ant-picker:hover,
+  & :global .ant-input-affix-wrapper,
+  & :global .ant-input-affix-wrapper-focused {
+    @include border-mixin;
+  }
+}
+
+:global(.ant-btn).submit {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  height: 48px;
+
+  button {
+    margin-bottom: 20px;
+    border-radius: 15px;
+    height: 48px;
+  }
+}

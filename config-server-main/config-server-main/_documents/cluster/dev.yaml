@@ -1,0 +1,18 @@
+application: config-server
+repo: app_platform_config_server
+resources:
+  limits:
+    cpu: 500m
+    memory: 1G
+  requests:
+    cpu: 500m
+    memory: 1G
+port:
+  http:
+    number: 8080
+    name: cfg-srvr
+    target: 8080
+routing:
+  internal: true
+secman:
+  type: built_in

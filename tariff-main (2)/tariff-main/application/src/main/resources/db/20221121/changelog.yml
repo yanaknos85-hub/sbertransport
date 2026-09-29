@@ -1,0 +1,53 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221121-4"
+            author: blandin-ad
+            preConditions:
+                -   onFail: MARK_RAN
+                -   not:
+                        -   columnExists:
+                                schemaName: tariff
+                                tableName: tariff
+                                columnName: code
+            changes:
+                - addColumn:
+                        schemaName: tariff
+                        tableName: tariff
+                        columns:
+                            - column:
+                                name: code
+                                type: text
+                                remarks: Код подразделения
+            rollback:
+                - dropColumn:
+                        schemaName: tariff
+                        tableName: tariff
+                        columns:
+                            - column:
+                                name: code
+    -   changeSet:
+            id: "20221121-5"
+            author: blandin-ad
+            preConditions:
+                -   onFail: MARK_RAN
+                -   not:
+                        -   columnExists:
+                                schemaName: tariff
+                                tableName: message_department
+                                columnName: code
+            changes:
+                - addColumn:
+                        schemaName: tariff
+                        tableName: message_department
+                        columns:
+                            - column:
+                                name: code
+                                type: text
+                                remarks: Код подразделения
+            rollback:
+                - dropColumn:
+                        schemaName: tariff
+                        tableName: message_department
+                        columns:
+                            - column:
+                                name: code

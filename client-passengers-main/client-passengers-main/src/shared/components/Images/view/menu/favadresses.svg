@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>ic/favadresses</title>
+    <g id="ic/favadresses" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" stroke="#595959" stroke-width="2" cx="16" cy="13" r="9"></circle>
+        <line x1="16" y1="22" x2="16" y2="28" id="Line" stroke="#595959" stroke-width="2" stroke-linecap="round"></line>
+        <circle id="Oval" stroke="#595959" stroke-width="2" cx="16" cy="13" r="3"></circle>
+    </g>
+</svg>

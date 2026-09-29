@@ -1,0 +1,61 @@
+:root {
+  --modal-margin: 3%;
+  --modal-button-width: 200px;
+  --show-title-margin: 20px;
+}
+
+.showModalButton {
+  margin-right: var(--modal-margin);
+}
+
+.modalFooter {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  .uploadButton {
+    width: 100%;
+    :global(.ant-upload-select-text) {
+      width: 100%;
+    }
+  }
+}
+.modalTitle {
+  text-align: center;
+}
+
+.downloadFooter {
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  .uploadButton {
+    margin: 0 auto;
+    padding-bottom: var(--indent-half);
+    :global(.ant-upload-select-text) {
+      width: 100%;
+    }
+  }
+}
+.buttonCancel {
+  margin-left: var(--indent-half);
+}
+.buttonUpload {
+  display: flex;
+  width: 100%;
+}
+
+.showModalButton {
+  display: flex;
+  justify-content: center;
+  & .showButton {
+    width: var(--modal-button-width);
+  }
+}
+.showModalTitle {
+  text-align: center;
+  margin-top: var(--show-title-margin);
+  margin-bottom: 0px;
+}
+.showModalSubtitle {
+  color: red;
+}

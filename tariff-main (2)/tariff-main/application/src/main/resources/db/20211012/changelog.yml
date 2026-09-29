@@ -1,0 +1,24 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211012"
+            author: medvedev-ad
+            dbms: postgresql
+            changes:
+                -   renameColumn:
+                        schemaName: tariff
+                        tableName: messages_geo_zone
+                        oldColumnName: code
+                        newColumnName: old_code
+                -   addColumn:
+                        schemaName: tariff
+                        tableName: messages_geo_zone
+                        columns:
+                            -   column:
+                                    name: code
+                                    type: text
+                -   sql:
+                        sql: update tariff.messages_geo_zone set code = old_code
+                -   dropColumn:
+                        schemaName: tariff
+                        tableName: messages_geo_zone
+                        columnName: old_code

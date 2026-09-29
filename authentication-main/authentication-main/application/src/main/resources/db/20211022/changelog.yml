@@ -1,0 +1,24 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211022"
+            author: medvedev-ad
+            changes:
+                -   addColumn:
+                        schemaName: authentication
+                        tableName: role
+                        columns:
+                            -   column:
+                                    name: data_master
+                                    type: boolean
+                                    remarks: Флаг о том, что роль является СМД
+                -   addColumn:
+                        schemaName: authentication_aud
+                        tableName: role_aud
+                        columns:
+                            -   column:
+                                    name: data_master
+                                    type: boolean
+                                    remarks: Флаг о том, что роль является СМД
+                            -   column:
+                                    name: data_master_mod
+                                    type: boolean

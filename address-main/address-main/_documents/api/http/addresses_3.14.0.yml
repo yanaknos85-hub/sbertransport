@@ -1,0 +1,2269 @@
+openapi: 3.0.3
+info:
+  title: Платформа - Адреса
+  version: 3.16.0
+  description: Сервис для работы с адресами
+servers:
+  - url: '{scheme}://{host}:{port}{api}'
+    description: Адрес для вызова
+    variables:
+      scheme:
+        enum:
+          - http
+          - https
+        default: http
+      host:
+        default: localhost
+      api:
+        default: /api/v3.16/address
+      port:
+        enum:
+          - '80'
+          - '8080'
+          - '443'
+          - '8443'
+        default: '80'
+paths:
+  /:
+    summary: Адреса
+    description: Операции для работы с адресами
+    get:
+      operationId: getMap
+      tags:
+        - Addresses
+      summary: Получить список адресов
+      description: |
+        Получить список адресовПолучить список адресов с разбивкой на частые, предпочтительные и остальные. Адреса не дублируются: если адрес есть в частых, его не будет в списке остальных.
+      parameters:
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Поисковая строка
+        - in: query
+          name: latitude
+          schema:
+            type: number
+            format: double
+            minimum: -90
+            maximum: 90
+            multipleOf: 0.000001
+          description: Широта в десятичном формате
+        - in: query
+          name: longitude
+          schema:
+            type: number
+            format: double
+            minimum: -180
+            maximum: 180
+            multipleOf: 0.000001
+          description: Долгота в десятичном формате
+        - in: query
+          name: viewport_top_left_latitude
+          schema:
+            type: number
+            format: double
+            minimum: -90
+            maximum: 90
+            multipleOf: 0.000001
+          description: |
+            Верхняя левая граница области. Широта. Используется для сужения квадрата поиска.
+        - in: query
+          name: viewport_top_left_longitude
+          schema:
+            type: number
+            format: double
+            minimum: -180
+            maximum: 180
+            multipleOf: 0.000001
+          description: |
+            Верхняя левая граница области. Долгота. Используется для сужения квадрата поиска.
+        - in: query
+          name: viewport_bottom_right_latitude
+          schema:
+            type: number
+            format: double
+            minimum: -90
+            maximum: 90
+            multipleOf: 0.000001
+          description: |
+            Нижняя правая граница области. Широта. Используется для сужения квадрата поиска.
+        - in: query
+          name: viewport_bottom_right_longitude
+          schema:
+            type: number
+            format: double
+            minimum: -180
+            maximum: 180
+            multipleOf: 0.000001
+          description: |
+            Нижняя правая граница области. Долгота. Используется для сужения квадрата поиска.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Список адресов
+                additionalProperties:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Address'
+        '400':
+          content:
+            application/json:
+              schema:
+                description: Формат запроса сформированный клиентом не корректен
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+                  path:
+                    title: Путь запроса
+                    type: string
+                  problems:
+                    title: Список проблем
+                    description: Список выявленных нестыковок с форматом
+                    type: array
+                    items:
+                      description: Описание проблемы запроса
+                      type: object
+                      properties:
+                        field:
+                          title: Поле
+                          description: Наименование поля с проблемой
+                          type: string
+                        value:
+                          title: Значение
+                          description: Полученное от клиента значение
+                          type: string
+                        constraints:
+                          title: Ограничения
+                          description: Список ограничений на поле
+                          type: array
+                          items:
+                            description: Описание ограничения
+                            type: object
+                            properties:
+                              type:
+                                title: Тип
+                                description: Тип ограничения. Не ограничивается перечисленным списком. От него зависит value <table border='1'> <caption>Ограничения</caption> <tr><th>Значение</th><th>Описание</th><th>Список полей</th></tr> <tr><td>AssertFalse</td><td>Ожидается только false</td><td></td></tr> <tr><td>AssertTrue</td><td>Ожидается только false</td><td></td></tr> <tr><td>DecimalMax</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>DecimalMin</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Digits</td><td>Значение должно быть в указанном диапазоне</td><td><ul><li>integer - Максимальное количество цифр в целой части</li><li>fraction - Максимальное количество цифр в дробной части</li></ul></td></tr> <tr><td>Email</td><td>Значение должно быть действующий Email</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Enum</td><td></td><td><ul><li>values - Массив допустимых значений</li></ul></td></tr> <tr><td>Future</td><td>Значение должно быть в будущем</td><td></td></tr> <tr><td>FutureOrPresent</td><td>Значение не должно быть в прошлом</td><td></td></tr> <tr><td>Max</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>Min</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Negative</td><td>Значение должно быть отрицательным</td><td></td></tr> <tr><td>NegativeOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>NotBlank</td><td>Значение не должно состоять из пробелов</td><td></td></tr> <tr><td>NotEmpty</td><td>Значение не должно быть пустым</td><td></td></tr> <tr><td>NotNull</td><td>Значение должно быть определено</td><td></td></tr> <tr><td>Past</td><td>Значение должно быть в прошлом</td><td></td></tr> <tr><td>PastOrPresent</td><td>Значение не должно быть в будущем</td><td></td></tr> <tr><td>Pattern</td><td>Значение должно соответствовать шаблону</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Positive</td><td>Значение должно быть положительным</td><td></td></tr> <tr><td>PositiveOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>Size</td><td>Значение должно соответствовать размеру</td><td><ul><li>min - Минимальный размер</li><li>max - Максимальный размер</li></ul></td></tr> </table>
+                                type: string
+                                format: enum
+                                enum:
+                                  - AssertFalse
+                                  - AssertTrue
+                                  - DecimalMax
+                                  - DecimalMin
+                                  - Digits
+                                  - Email
+                                  - Enum
+                                  - Future
+                                  - FutureOrPresent
+                                  - Max
+                                  - Min
+                                  - Negative
+                                  - NegativeOrZero
+                                  - NotBlank
+                                  - NotEmpty
+                                  - NotNull
+                                  - 'Null'
+                                  - Past
+                                  - PastOrPresent
+                                  - Pattern
+                                  - Positive
+                                  - PositiveOrZero
+                                  - Size
+                              value:
+                                title: Допустимое значение
+                                description: Описание допустимых значений. Зависит от type
+                                type: object
+          description: Запрос неверно сформирован
+        '401':
+          content:
+            application/json:
+              schema:
+                description: Пользователь не авторизован или токен истек/отозван
+          description: Запрос не авторизован
+        '403':
+          content:
+            application/json:
+              schema:
+                description: Пользователь авторизован, но у него нет прав доступа к ресурсу
+          description: Не достаточно прав
+        '404':
+          content:
+            application/json:
+              schema:
+                description: По указанному URL не найден ресурс
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  path:
+                    title: Путь запроса
+                    type: string
+                  entity:
+                    description: Запрашиваемая сущность
+                    properties:
+                      id:
+                        title: Идентификатор
+                        description: Идентификатор запрашиваемой сущности
+                        type: string
+                      name:
+                        title: Название
+                        description: Название запрашиваемой сущности
+                        type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+          description: Ресурс не найден
+  /self:
+    summary: Адреса пользователя
+    description: Операции над адресами вошедшего пользователя
+    get:
+      operationId: getAll
+      tags:
+        - SelfAddresses
+      summary: Получить список адресов
+      description: Получить список адресов вошедшего пользователя
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                description: Список адресов
+                items:
+                  $ref: '#/components/schemas/UserAddress'
+        '400':
+          content:
+            application/json:
+              schema:
+                description: Формат запроса сформированный клиентом не корректен
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+                  path:
+                    title: Путь запроса
+                    type: string
+                  problems:
+                    title: Список проблем
+                    description: Список выявленных нестыковок с форматом
+                    type: array
+                    items:
+                      description: Описание проблемы запроса
+                      type: object
+                      properties:
+                        field:
+                          title: Поле
+                          description: Наименование поля с проблемой
+                          type: string
+                        value:
+                          title: Значение
+                          description: Полученное от клиента значение
+                          type: string
+                        constraints:
+                          title: Ограничения
+                          description: Список ограничений на поле
+                          type: array
+                          items:
+                            description: Описание ограничения
+                            type: object
+                            properties:
+                              type:
+                                title: Тип
+                                description: Тип ограничения. Не ограничивается перечисленным списком. От него зависит value <table border='1'> <caption>Ограничения</caption> <tr><th>Значение</th><th>Описание</th><th>Список полей</th></tr> <tr><td>AssertFalse</td><td>Ожидается только false</td><td></td></tr> <tr><td>AssertTrue</td><td>Ожидается только false</td><td></td></tr> <tr><td>DecimalMax</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>DecimalMin</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Digits</td><td>Значение должно быть в указанном диапазоне</td><td><ul><li>integer - Максимальное количество цифр в целой части</li><li>fraction - Максимальное количество цифр в дробной части</li></ul></td></tr> <tr><td>Email</td><td>Значение должно быть действующий Email</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Enum</td><td></td><td><ul><li>values - Массив допустимых значений</li></ul></td></tr> <tr><td>Future</td><td>Значение должно быть в будущем</td><td></td></tr> <tr><td>FutureOrPresent</td><td>Значение не должно быть в прошлом</td><td></td></tr> <tr><td>Max</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>Min</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Negative</td><td>Значение должно быть отрицательным</td><td></td></tr> <tr><td>NegativeOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>NotBlank</td><td>Значение не должно состоять из пробелов</td><td></td></tr> <tr><td>NotEmpty</td><td>Значение не должно быть пустым</td><td></td></tr> <tr><td>NotNull</td><td>Значение должно быть определено</td><td></td></tr> <tr><td>Past</td><td>Значение должно быть в прошлом</td><td></td></tr> <tr><td>PastOrPresent</td><td>Значение не должно быть в будущем</td><td></td></tr> <tr><td>Pattern</td><td>Значение должно соответствовать шаблону</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Positive</td><td>Значение должно быть положительным</td><td></td></tr> <tr><td>PositiveOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>Size</td><td>Значение должно соответствовать размеру</td><td><ul><li>min - Минимальный размер</li><li>max - Максимальный размер</li></ul></td></tr> </table>
+                                type: string
+                                format: enum
+                                enum:
+                                  - AssertFalse
+                                  - AssertTrue
+                                  - DecimalMax
+                                  - DecimalMin
+                                  - Digits
+                                  - Email
+                                  - Enum
+                                  - Future
+                                  - FutureOrPresent
+                                  - Max
+                                  - Min
+                                  - Negative
+                                  - NegativeOrZero
+                                  - NotBlank
+                                  - NotEmpty
+                                  - NotNull
+                                  - 'Null'
+                                  - Past
+                                  - PastOrPresent
+                                  - Pattern
+                                  - Positive
+                                  - PositiveOrZero
+                                  - Size
+                              value:
+                                title: Допустимое значение
+                                description: Описание допустимых значений. Зависит от type
+                                type: object
+          description: Запрос неверно сформирован
+        '401':
+          content:
+            application/json:
+              schema:
+                description: Пользователь не авторизован или токен истек/отозван
+          description: Запрос не авторизован
+        '403':
+          content:
+            application/json:
+              schema:
+                description: Пользователь авторизован, но у него нет прав доступа к ресурсу
+          description: Не достаточно прав
+        '404':
+          content:
+            application/json:
+              schema:
+                description: По указанному URL не найден ресурс
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  path:
+                    title: Путь запроса
+                    type: string
+                  entity:
+                    description: Запрашиваемая сущность
+                    properties:
+                      id:
+                        title: Идентификатор
+                        description: Идентификатор запрашиваемой сущности
+                        type: string
+                      name:
+                        title: Название
+                        description: Название запрашиваемой сущности
+                        type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+          description: Ресурс не найден
+  /favorite:
+    summary: Избранные адреса пользователя
+    description: Операции над избранными адресами вошедшего пользователя
+    post:
+      operationId: postFavorite
+      tags:
+        - SelfAddressesFavorite
+      summary: Добавить избранный адрес
+      description: Добавить избранный адрес к вошедшему пользователю
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewFavoriteAddress'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAddress'
+        '400':
+          content:
+            application/json:
+              schema:
+                description: Формат запроса сформированный клиентом не корректен
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+                  path:
+                    title: Путь запроса
+                    type: string
+                  problems:
+                    title: Список проблем
+                    description: Список выявленных нестыковок с форматом
+                    type: array
+                    items:
+                      description: Описание проблемы запроса
+                      type: object
+                      properties:
+                        field:
+                          title: Поле
+                          description: Наименование поля с проблемой
+                          type: string
+                        value:
+                          title: Значение
+                          description: Полученное от клиента значение
+                          type: string
+                        constraints:
+                          title: Ограничения
+                          description: Список ограничений на поле
+                          type: array
+                          items:
+                            description: Описание ограничения
+                            type: object
+                            properties:
+                              type:
+                                title: Тип
+                                description: Тип ограничения. Не ограничивается перечисленным списком. От него зависит value <table border='1'> <caption>Ограничения</caption> <tr><th>Значение</th><th>Описание</th><th>Список полей</th></tr> <tr><td>AssertFalse</td><td>Ожидается только false</td><td></td></tr> <tr><td>AssertTrue</td><td>Ожидается только false</td><td></td></tr> <tr><td>DecimalMax</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>DecimalMin</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Digits</td><td>Значение должно быть в указанном диапазоне</td><td><ul><li>integer - Максимальное количество цифр в целой части</li><li>fraction - Максимальное количество цифр в дробной части</li></ul></td></tr> <tr><td>Email</td><td>Значение должно быть действующий Email</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Enum</td><td></td><td><ul><li>values - Массив допустимых значений</li></ul></td></tr> <tr><td>Future</td><td>Значение должно быть в будущем</td><td></td></tr> <tr><td>FutureOrPresent</td><td>Значение не должно быть в прошлом</td><td></td></tr> <tr><td>Max</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>Min</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Negative</td><td>Значение должно быть отрицательным</td><td></td></tr> <tr><td>NegativeOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>NotBlank</td><td>Значение не должно состоять из пробелов</td><td></td></tr> <tr><td>NotEmpty</td><td>Значение не должно быть пустым</td><td></td></tr> <tr><td>NotNull</td><td>Значение должно быть определено</td><td></td></tr> <tr><td>Past</td><td>Значение должно быть в прошлом</td><td></td></tr> <tr><td>PastOrPresent</td><td>Значение не должно быть в будущем</td><td></td></tr> <tr><td>Pattern</td><td>Значение должно соответствовать шаблону</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Positive</td><td>Значение должно быть положительным</td><td></td></tr> <tr><td>PositiveOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>Size</td><td>Значение должно соответствовать размеру</td><td><ul><li>min - Минимальный размер</li><li>max - Максимальный размер</li></ul></td></tr> </table>
+                                type: string
+                                format: enum
+                                enum:
+                                  - AssertFalse
+                                  - AssertTrue
+                                  - DecimalMax
+                                  - DecimalMin
+                                  - Digits
+                                  - Email
+                                  - Enum
+                                  - Future
+                                  - FutureOrPresent
+                                  - Max
+                                  - Min
+                                  - Negative
+                                  - NegativeOrZero
+                                  - NotBlank
+                                  - NotEmpty
+                                  - NotNull
+                                  - 'Null'
+                                  - Past
+                                  - PastOrPresent
+                                  - Pattern
+                                  - Positive
+                                  - PositiveOrZero
+                                  - Size
+                              value:
+                                title: Допустимое значение
+                                description: Описание допустимых значений. Зависит от type
+                                type: object
+          description: Запрос неверно сформирован
+        '401':
+          content:
+            application/json:
+              schema:
+                description: Пользователь не авторизован или токен истек/отозван
+          description: Запрос не авторизован
+        '403':
+          content:
+            application/json:
+              schema:
+                description: Пользователь авторизован, но у него нет прав доступа к ресурсу
+          description: Не достаточно прав
+        '404':
+          content:
+            application/json:
+              schema:
+                description: По указанному URL не найден ресурс
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  path:
+                    title: Путь запроса
+                    type: string
+                  entity:
+                    description: Запрашиваемая сущность
+                    properties:
+                      id:
+                        title: Идентификатор
+                        description: Идентификатор запрашиваемой сущности
+                        type: string
+                      name:
+                        title: Название
+                        description: Название запрашиваемой сущности
+                        type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+          description: Ресурс не найден
+        '409':
+          content:
+            application/json:
+              schema:
+                description: Данные запроса конфликтуют с существующими в системе данными
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+                  path:
+                    title: Путь запроса
+                    type: string
+                  entity:
+                    description: Запрашиваемая сущность
+                    properties:
+                      id:
+                        title: Идентификатор
+                        description: Идентификатор запрашиваемой сущности
+                        type: string
+                      name:
+                        title: Название
+                        description: Название запрашиваемой сущности
+                        type: string
+                  problems:
+                    title: Конфликтующие сущности
+                    description: Список конфликтов
+                    type: array
+                    items:
+                      description: Описание проблемы запроса
+                      type: object
+                      properties:
+                        field:
+                          title: Поле
+                          description: Наименование поля с проблемой
+                          type: string
+                        value:
+                          title: Значение
+                          description: Полученное от клиента значение
+                          type: string
+          description: Адрес уже был добавлен
+    get:
+      tags:
+        - SelfAddressesFavorite
+      operationId: getAllFavorites
+      summary: Получить избранные адреса пользователя
+      description: Получить избранные адреса пользователя
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                description: Список адресов
+                items:
+                  $ref: '#/components/schemas/UserAddress'
+        '400':
+          content:
+            application/json:
+              schema:
+                description: Формат запроса сформированный клиентом не корректен
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+                  path:
+                    title: Путь запроса
+                    type: string
+                  problems:
+                    title: Список проблем
+                    description: Список выявленных нестыковок с форматом
+                    type: array
+                    items:
+                      description: Описание проблемы запроса
+                      type: object
+                      properties:
+                        field:
+                          title: Поле
+                          description: Наименование поля с проблемой
+                          type: string
+                        value:
+                          title: Значение
+                          description: Полученное от клиента значение
+                          type: string
+                        constraints:
+                          title: Ограничения
+                          description: Список ограничений на поле
+                          type: array
+                          items:
+                            description: Описание ограничения
+                            type: object
+                            properties:
+                              type:
+                                title: Тип
+                                description: Тип ограничения. Не ограничивается перечисленным списком. От него зависит value <table border='1'> <caption>Ограничения</caption> <tr><th>Значение</th><th>Описание</th><th>Список полей</th></tr> <tr><td>AssertFalse</td><td>Ожидается только false</td><td></td></tr> <tr><td>AssertTrue</td><td>Ожидается только false</td><td></td></tr> <tr><td>DecimalMax</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>DecimalMin</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Digits</td><td>Значение должно быть в указанном диапазоне</td><td><ul><li>integer - Максимальное количество цифр в целой части</li><li>fraction - Максимальное количество цифр в дробной части</li></ul></td></tr> <tr><td>Email</td><td>Значение должно быть действующий Email</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Enum</td><td></td><td><ul><li>values - Массив допустимых значений</li></ul></td></tr> <tr><td>Future</td><td>Значение должно быть в будущем</td><td></td></tr> <tr><td>FutureOrPresent</td><td>Значение не должно быть в прошлом</td><td></td></tr> <tr><td>Max</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>Min</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Negative</td><td>Значение должно быть отрицательным</td><td></td></tr> <tr><td>NegativeOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>NotBlank</td><td>Значение не должно состоять из пробелов</td><td></td></tr> <tr><td>NotEmpty</td><td>Значение не должно быть пустым</td><td></td></tr> <tr><td>NotNull</td><td>Значение должно быть определено</td><td></td></tr> <tr><td>Past</td><td>Значение должно быть в прошлом</td><td></td></tr> <tr><td>PastOrPresent</td><td>Значение не должно быть в будущем</td><td></td></tr> <tr><td>Pattern</td><td>Значение должно соответствовать шаблону</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Positive</td><td>Значение должно быть положительным</td><td></td></tr> <tr><td>PositiveOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>Size</td><td>Значение должно соответствовать размеру</td><td><ul><li>min - Минимальный размер</li><li>max - Максимальный размер</li></ul></td></tr> </table>
+                                type: string
+                                format: enum
+                                enum:
+                                  - AssertFalse
+                                  - AssertTrue
+                                  - DecimalMax
+                                  - DecimalMin
+                                  - Digits
+                                  - Email
+                                  - Enum
+                                  - Future
+                                  - FutureOrPresent
+                                  - Max
+                                  - Min
+                                  - Negative
+                                  - NegativeOrZero
+                                  - NotBlank
+                                  - NotEmpty
+                                  - NotNull
+                                  - 'Null'
+                                  - Past
+                                  - PastOrPresent
+                                  - Pattern
+                                  - Positive
+                                  - PositiveOrZero
+                                  - Size
+                              value:
+                                title: Допустимое значение
+                                description: Описание допустимых значений. Зависит от type
+                                type: object
+          description: Запрос неверно сформирован
+        '401':
+          content:
+            application/json:
+              schema:
+                description: Пользователь не авторизован или токен истек/отозван
+          description: Запрос не авторизован
+        '403':
+          content:
+            application/json:
+              schema:
+                description: Пользователь авторизован, но у него нет прав доступа к ресурсу
+          description: Не достаточно прав
+        '404':
+          content:
+            application/json:
+              schema:
+                description: По указанному URL не найден ресурс
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  path:
+                    title: Путь запроса
+                    type: string
+                  entity:
+                    description: Запрашиваемая сущность
+                    properties:
+                      id:
+                        title: Идентификатор
+                        description: Идентификатор запрашиваемой сущности
+                        type: string
+                      name:
+                        title: Название
+                        description: Название запрашиваемой сущности
+                        type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+          description: Ресурс не найден
+        '409':
+          content:
+            application/json:
+              schema:
+                description: Данные запроса конфликтуют с существующими в системе данными
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+                  path:
+                    title: Путь запроса
+                    type: string
+                  entity:
+                    description: Запрашиваемая сущность
+                    properties:
+                      id:
+                        title: Идентификатор
+                        description: Идентификатор запрашиваемой сущности
+                        type: string
+                      name:
+                        title: Название
+                        description: Название запрашиваемой сущности
+                        type: string
+                  problems:
+                    title: Конфликтующие сущности
+                    description: Список конфликтов
+                    type: array
+                    items:
+                      description: Описание проблемы запроса
+                      type: object
+                      properties:
+                        field:
+                          title: Поле
+                          description: Наименование поля с проблемой
+                          type: string
+                        value:
+                          title: Значение
+                          description: Полученное от клиента значение
+                          type: string
+          description: Адрес уже был добавлен
+  /favorite/{id}:
+    summary: Избранный адрес пользователя
+    description: Операции над избранным адресом вошедшего пользователя
+    parameters:
+      - in: path
+        name: id
+        schema:
+          $ref: '#/components/schemas/UUID'
+        required: true
+        description: Идентификатор адреса
+    get:
+      tags:
+        - SelfAddressesFavorite
+      operationId: getFavorite
+      summary: Получить избранный адрес
+      description: Получить избранный адрес вошедшего пользователя
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAddress'
+        '400':
+          content:
+            application/json:
+              schema:
+                description: Формат запроса сформированный клиентом не корректен
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+                  path:
+                    title: Путь запроса
+                    type: string
+                  problems:
+                    title: Список проблем
+                    description: Список выявленных нестыковок с форматом
+                    type: array
+                    items:
+                      description: Описание проблемы запроса
+                      type: object
+                      properties:
+                        field:
+                          title: Поле
+                          description: Наименование поля с проблемой
+                          type: string
+                        value:
+                          title: Значение
+                          description: Полученное от клиента значение
+                          type: string
+                        constraints:
+                          title: Ограничения
+                          description: Список ограничений на поле
+                          type: array
+                          items:
+                            description: Описание ограничения
+                            type: object
+                            properties:
+                              type:
+                                title: Тип
+                                description: Тип ограничения. Не ограничивается перечисленным списком. От него зависит value <table border='1'> <caption>Ограничения</caption> <tr><th>Значение</th><th>Описание</th><th>Список полей</th></tr> <tr><td>AssertFalse</td><td>Ожидается только false</td><td></td></tr> <tr><td>AssertTrue</td><td>Ожидается только false</td><td></td></tr> <tr><td>DecimalMax</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>DecimalMin</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Digits</td><td>Значение должно быть в указанном диапазоне</td><td><ul><li>integer - Максимальное количество цифр в целой части</li><li>fraction - Максимальное количество цифр в дробной части</li></ul></td></tr> <tr><td>Email</td><td>Значение должно быть действующий Email</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Enum</td><td></td><td><ul><li>values - Массив допустимых значений</li></ul></td></tr> <tr><td>Future</td><td>Значение должно быть в будущем</td><td></td></tr> <tr><td>FutureOrPresent</td><td>Значение не должно быть в прошлом</td><td></td></tr> <tr><td>Max</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>Min</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Negative</td><td>Значение должно быть отрицательным</td><td></td></tr> <tr><td>NegativeOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>NotBlank</td><td>Значение не должно состоять из пробелов</td><td></td></tr> <tr><td>NotEmpty</td><td>Значение не должно быть пустым</td><td></td></tr> <tr><td>NotNull</td><td>Значение должно быть определено</td><td></td></tr> <tr><td>Past</td><td>Значение должно быть в прошлом</td><td></td></tr> <tr><td>PastOrPresent</td><td>Значение не должно быть в будущем</td><td></td></tr> <tr><td>Pattern</td><td>Значение должно соответствовать шаблону</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Positive</td><td>Значение должно быть положительным</td><td></td></tr> <tr><td>PositiveOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>Size</td><td>Значение должно соответствовать размеру</td><td><ul><li>min - Минимальный размер</li><li>max - Максимальный размер</li></ul></td></tr> </table>
+                                type: string
+                                format: enum
+                                enum:
+                                  - AssertFalse
+                                  - AssertTrue
+                                  - DecimalMax
+                                  - DecimalMin
+                                  - Digits
+                                  - Email
+                                  - Enum
+                                  - Future
+                                  - FutureOrPresent
+                                  - Max
+                                  - Min
+                                  - Negative
+                                  - NegativeOrZero
+                                  - NotBlank
+                                  - NotEmpty
+                                  - NotNull
+                                  - 'Null'
+                                  - Past
+                                  - PastOrPresent
+                                  - Pattern
+                                  - Positive
+                                  - PositiveOrZero
+                                  - Size
+                              value:
+                                title: Допустимое значение
+                                description: Описание допустимых значений. Зависит от type
+                                type: object
+          description: Запрос неверно сформирован
+        '401':
+          content:
+            application/json:
+              schema:
+                description: Пользователь не авторизован или токен истек/отозван
+          description: Запрос не авторизован
+        '403':
+          content:
+            application/json:
+              schema:
+                description: Пользователь авторизован, но у него нет прав доступа к ресурсу
+          description: Не достаточно прав
+        '404':
+          content:
+            application/json:
+              schema:
+                description: По указанному URL не найден ресурс
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  path:
+                    title: Путь запроса
+                    type: string
+                  entity:
+                    description: Запрашиваемая сущность
+                    properties:
+                      id:
+                        title: Идентификатор
+                        description: Идентификатор запрашиваемой сущности
+                        type: string
+                      name:
+                        title: Название
+                        description: Название запрашиваемой сущности
+                        type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+          description: Ресурс не найден
+    delete:
+      operationId: deleteFavorite
+      tags:
+        - SelfAddressesFavorite
+      summary: Удалить избранный адрес
+      description: Удалить избранный адрес вошедшего пользователя
+      responses:
+        '200':
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                description: Формат запроса сформированный клиентом не корректен
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+                  path:
+                    title: Путь запроса
+                    type: string
+                  problems:
+                    title: Список проблем
+                    description: Список выявленных нестыковок с форматом
+                    type: array
+                    items:
+                      description: Описание проблемы запроса
+                      type: object
+                      properties:
+                        field:
+                          title: Поле
+                          description: Наименование поля с проблемой
+                          type: string
+                        value:
+                          title: Значение
+                          description: Полученное от клиента значение
+                          type: string
+                        constraints:
+                          title: Ограничения
+                          description: Список ограничений на поле
+                          type: array
+                          items:
+                            description: Описание ограничения
+                            type: object
+                            properties:
+                              type:
+                                title: Тип
+                                description: Тип ограничения. Не ограничивается перечисленным списком. От него зависит value <table border='1'> <caption>Ограничения</caption> <tr><th>Значение</th><th>Описание</th><th>Список полей</th></tr> <tr><td>AssertFalse</td><td>Ожидается только false</td><td></td></tr> <tr><td>AssertTrue</td><td>Ожидается только false</td><td></td></tr> <tr><td>DecimalMax</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>DecimalMin</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Digits</td><td>Значение должно быть в указанном диапазоне</td><td><ul><li>integer - Максимальное количество цифр в целой части</li><li>fraction - Максимальное количество цифр в дробной части</li></ul></td></tr> <tr><td>Email</td><td>Значение должно быть действующий Email</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Enum</td><td></td><td><ul><li>values - Массив допустимых значений</li></ul></td></tr> <tr><td>Future</td><td>Значение должно быть в будущем</td><td></td></tr> <tr><td>FutureOrPresent</td><td>Значение не должно быть в прошлом</td><td></td></tr> <tr><td>Max</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>Min</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Negative</td><td>Значение должно быть отрицательным</td><td></td></tr> <tr><td>NegativeOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>NotBlank</td><td>Значение не должно состоять из пробелов</td><td></td></tr> <tr><td>NotEmpty</td><td>Значение не должно быть пустым</td><td></td></tr> <tr><td>NotNull</td><td>Значение должно быть определено</td><td></td></tr> <tr><td>Past</td><td>Значение должно быть в прошлом</td><td></td></tr> <tr><td>PastOrPresent</td><td>Значение не должно быть в будущем</td><td></td></tr> <tr><td>Pattern</td><td>Значение должно соответствовать шаблону</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Positive</td><td>Значение должно быть положительным</td><td></td></tr> <tr><td>PositiveOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>Size</td><td>Значение должно соответствовать размеру</td><td><ul><li>min - Минимальный размер</li><li>max - Максимальный размер</li></ul></td></tr> </table>
+                                type: string
+                                format: enum
+                                enum:
+                                  - AssertFalse
+                                  - AssertTrue
+                                  - DecimalMax
+                                  - DecimalMin
+                                  - Digits
+                                  - Email
+                                  - Enum
+                                  - Future
+                                  - FutureOrPresent
+                                  - Max
+                                  - Min
+                                  - Negative
+                                  - NegativeOrZero
+                                  - NotBlank
+                                  - NotEmpty
+                                  - NotNull
+                                  - 'Null'
+                                  - Past
+                                  - PastOrPresent
+                                  - Pattern
+                                  - Positive
+                                  - PositiveOrZero
+                                  - Size
+                              value:
+                                title: Допустимое значение
+                                description: Описание допустимых значений. Зависит от type
+                                type: object
+          description: Запрос неверно сформирован
+        '401':
+          content:
+            application/json:
+              schema:
+                description: Пользователь не авторизован или токен истек/отозван
+          description: Запрос не авторизован
+        '403':
+          content:
+            application/json:
+              schema:
+                description: Пользователь авторизован, но у него нет прав доступа к ресурсу
+          description: Не достаточно прав
+        '404':
+          content:
+            application/json:
+              schema:
+                description: По указанному URL не найден ресурс
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  path:
+                    title: Путь запроса
+                    type: string
+                  entity:
+                    description: Запрашиваемая сущность
+                    properties:
+                      id:
+                        title: Идентификатор
+                        description: Идентификатор запрашиваемой сущности
+                        type: string
+                      name:
+                        title: Название
+                        description: Название запрашиваемой сущности
+                        type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+          description: Ресурс не найден
+    put:
+      operationId: putFavorite
+      tags:
+        - SelfAddressesFavorite
+      summary: Изменить избранный адрес
+      description: Изменить избранный адрес вошедшего пользователя
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewFavoriteAddress'
+      responses:
+        '200':
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                description: Формат запроса сформированный клиентом не корректен
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+                  path:
+                    title: Путь запроса
+                    type: string
+                  problems:
+                    title: Список проблем
+                    description: Список выявленных нестыковок с форматом
+                    type: array
+                    items:
+                      description: Описание проблемы запроса
+                      type: object
+                      properties:
+                        field:
+                          title: Поле
+                          description: Наименование поля с проблемой
+                          type: string
+                        value:
+                          title: Значение
+                          description: Полученное от клиента значение
+                          type: string
+                        constraints:
+                          title: Ограничения
+                          description: Список ограничений на поле
+                          type: array
+                          items:
+                            description: Описание ограничения
+                            type: object
+                            properties:
+                              type:
+                                title: Тип
+                                description: Тип ограничения. Не ограничивается перечисленным списком. От него зависит value <table border='1'> <caption>Ограничения</caption> <tr><th>Значение</th><th>Описание</th><th>Список полей</th></tr> <tr><td>AssertFalse</td><td>Ожидается только false</td><td></td></tr> <tr><td>AssertTrue</td><td>Ожидается только false</td><td></td></tr> <tr><td>DecimalMax</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>DecimalMin</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Digits</td><td>Значение должно быть в указанном диапазоне</td><td><ul><li>integer - Максимальное количество цифр в целой части</li><li>fraction - Максимальное количество цифр в дробной части</li></ul></td></tr> <tr><td>Email</td><td>Значение должно быть действующий Email</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Enum</td><td></td><td><ul><li>values - Массив допустимых значений</li></ul></td></tr> <tr><td>Future</td><td>Значение должно быть в будущем</td><td></td></tr> <tr><td>FutureOrPresent</td><td>Значение не должно быть в прошлом</td><td></td></tr> <tr><td>Max</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>Min</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Negative</td><td>Значение должно быть отрицательным</td><td></td></tr> <tr><td>NegativeOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>NotBlank</td><td>Значение не должно состоять из пробелов</td><td></td></tr> <tr><td>NotEmpty</td><td>Значение не должно быть пустым</td><td></td></tr> <tr><td>NotNull</td><td>Значение должно быть определено</td><td></td></tr> <tr><td>Past</td><td>Значение должно быть в прошлом</td><td></td></tr> <tr><td>PastOrPresent</td><td>Значение не должно быть в будущем</td><td></td></tr> <tr><td>Pattern</td><td>Значение должно соответствовать шаблону</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Positive</td><td>Значение должно быть положительным</td><td></td></tr> <tr><td>PositiveOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>Size</td><td>Значение должно соответствовать размеру</td><td><ul><li>min - Минимальный размер</li><li>max - Максимальный размер</li></ul></td></tr> </table>
+                                type: string
+                                format: enum
+                                enum:
+                                  - AssertFalse
+                                  - AssertTrue
+                                  - DecimalMax
+                                  - DecimalMin
+                                  - Digits
+                                  - Email
+                                  - Enum
+                                  - Future
+                                  - FutureOrPresent
+                                  - Max
+                                  - Min
+                                  - Negative
+                                  - NegativeOrZero
+                                  - NotBlank
+                                  - NotEmpty
+                                  - NotNull
+                                  - 'Null'
+                                  - Past
+                                  - PastOrPresent
+                                  - Pattern
+                                  - Positive
+                                  - PositiveOrZero
+                                  - Size
+                              value:
+                                title: Допустимое значение
+                                description: Описание допустимых значений. Зависит от type
+                                type: object
+          description: Запрос неверно сформирован
+        '401':
+          content:
+            application/json:
+              schema:
+                description: Пользователь не авторизован или токен истек/отозван
+          description: Запрос не авторизован
+        '403':
+          content:
+            application/json:
+              schema:
+                description: Пользователь авторизован, но у него нет прав доступа к ресурсу
+          description: Не достаточно прав
+        '404':
+          content:
+            application/json:
+              schema:
+                description: По указанному URL не найден ресурс
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  path:
+                    title: Путь запроса
+                    type: string
+                  entity:
+                    description: Запрашиваемая сущность
+                    properties:
+                      id:
+                        title: Идентификатор
+                        description: Идентификатор запрашиваемой сущности
+                        type: string
+                      name:
+                        title: Название
+                        description: Название запрашиваемой сущности
+                        type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+          description: Ресурс не найден
+        '409':
+          content:
+            application/json:
+              schema:
+                description: Данные запроса конфликтуют с существующими в системе данными
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+                  path:
+                    title: Путь запроса
+                    type: string
+                  entity:
+                    description: Запрашиваемая сущность
+                    properties:
+                      id:
+                        title: Идентификатор
+                        description: Идентификатор запрашиваемой сущности
+                        type: string
+                      name:
+                        title: Название
+                        description: Название запрашиваемой сущности
+                        type: string
+                  problems:
+                    title: Конфликтующие сущности
+                    description: Список конфликтов
+                    type: array
+                    items:
+                      description: Описание проблемы запроса
+                      type: object
+                      properties:
+                        field:
+                          title: Поле
+                          description: Наименование поля с проблемой
+                          type: string
+                        value:
+                          title: Значение
+                          description: Полученное от клиента значение
+                          type: string
+          description: Адрес уже был добавлен
+  /frequently:
+    summary: Популярные адреса пользователя
+    description: Операции над популярными адресами вошедшего пользователя
+    get:
+      tags:
+        - SelfAddressesFrequently
+      operationId: getAllFrequently
+      summary: Получить популярные адреса
+      description: Получить популярные адреса пользователя
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                description: Список адресов
+                items:
+                  $ref: '#/components/schemas/UserAddress'
+        '400':
+          content:
+            application/json:
+              schema:
+                description: Формат запроса сформированный клиентом не корректен
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+                  path:
+                    title: Путь запроса
+                    type: string
+                  problems:
+                    title: Список проблем
+                    description: Список выявленных нестыковок с форматом
+                    type: array
+                    items:
+                      description: Описание проблемы запроса
+                      type: object
+                      properties:
+                        field:
+                          title: Поле
+                          description: Наименование поля с проблемой
+                          type: string
+                        value:
+                          title: Значение
+                          description: Полученное от клиента значение
+                          type: string
+                        constraints:
+                          title: Ограничения
+                          description: Список ограничений на поле
+                          type: array
+                          items:
+                            description: Описание ограничения
+                            type: object
+                            properties:
+                              type:
+                                title: Тип
+                                description: Тип ограничения. Не ограничивается перечисленным списком. От него зависит value <table border='1'> <caption>Ограничения</caption> <tr><th>Значение</th><th>Описание</th><th>Список полей</th></tr> <tr><td>AssertFalse</td><td>Ожидается только false</td><td></td></tr> <tr><td>AssertTrue</td><td>Ожидается только false</td><td></td></tr> <tr><td>DecimalMax</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>DecimalMin</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Digits</td><td>Значение должно быть в указанном диапазоне</td><td><ul><li>integer - Максимальное количество цифр в целой части</li><li>fraction - Максимальное количество цифр в дробной части</li></ul></td></tr> <tr><td>Email</td><td>Значение должно быть действующий Email</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Enum</td><td></td><td><ul><li>values - Массив допустимых значений</li></ul></td></tr> <tr><td>Future</td><td>Значение должно быть в будущем</td><td></td></tr> <tr><td>FutureOrPresent</td><td>Значение не должно быть в прошлом</td><td></td></tr> <tr><td>Max</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>Min</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Negative</td><td>Значение должно быть отрицательным</td><td></td></tr> <tr><td>NegativeOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>NotBlank</td><td>Значение не должно состоять из пробелов</td><td></td></tr> <tr><td>NotEmpty</td><td>Значение не должно быть пустым</td><td></td></tr> <tr><td>NotNull</td><td>Значение должно быть определено</td><td></td></tr> <tr><td>Past</td><td>Значение должно быть в прошлом</td><td></td></tr> <tr><td>PastOrPresent</td><td>Значение не должно быть в будущем</td><td></td></tr> <tr><td>Pattern</td><td>Значение должно соответствовать шаблону</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Positive</td><td>Значение должно быть положительным</td><td></td></tr> <tr><td>PositiveOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>Size</td><td>Значение должно соответствовать размеру</td><td><ul><li>min - Минимальный размер</li><li>max - Максимальный размер</li></ul></td></tr> </table>
+                                type: string
+                                format: enum
+                                enum:
+                                  - AssertFalse
+                                  - AssertTrue
+                                  - DecimalMax
+                                  - DecimalMin
+                                  - Digits
+                                  - Email
+                                  - Enum
+                                  - Future
+                                  - FutureOrPresent
+                                  - Max
+                                  - Min
+                                  - Negative
+                                  - NegativeOrZero
+                                  - NotBlank
+                                  - NotEmpty
+                                  - NotNull
+                                  - 'Null'
+                                  - Past
+                                  - PastOrPresent
+                                  - Pattern
+                                  - Positive
+                                  - PositiveOrZero
+                                  - Size
+                              value:
+                                title: Допустимое значение
+                                description: Описание допустимых значений. Зависит от type
+                                type: object
+          description: Запрос неверно сформирован
+        '401':
+          content:
+            application/json:
+              schema:
+                description: Пользователь не авторизован или токен истек/отозван
+          description: Запрос не авторизован
+        '403':
+          content:
+            application/json:
+              schema:
+                description: Пользователь авторизован, но у него нет прав доступа к ресурсу
+          description: Не достаточно прав
+        '404':
+          content:
+            application/json:
+              schema:
+                description: По указанному URL не найден ресурс
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  path:
+                    title: Путь запроса
+                    type: string
+                  entity:
+                    description: Запрашиваемая сущность
+                    properties:
+                      id:
+                        title: Идентификатор
+                        description: Идентификатор запрашиваемой сущности
+                        type: string
+                      name:
+                        title: Название
+                        description: Название запрашиваемой сущности
+                        type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+          description: Ресурс не найден
+  /frequently/{id}:
+    summary: Популярный адрес
+    description: Операции над популярным адресом вошедшего пользователя
+    parameters:
+      - in: path
+        name: id
+        schema:
+          $ref: '#/components/schemas/UUID'
+        required: true
+        description: Идентификатор адреса
+    delete:
+      tags:
+        - SelfAddressesFrequently
+      operationId: deleteFrequently
+      summary: Удалить популярный адрес
+      description: Удалить популярный адрес пользователя
+      responses:
+        '200':
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                description: Пользователь не авторизован или токен истек/отозван
+          description: Запрос не авторизован
+        '403':
+          content:
+            application/json:
+              schema:
+                description: Пользователь авторизован, но у него нет прав доступа к ресурсу
+          description: Не достаточно прав
+        '404':
+          content:
+            application/json:
+              schema:
+                description: По указанному URL не найден ресурс
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  path:
+                    title: Путь запроса
+                    type: string
+                  entity:
+                    description: Запрашиваемая сущность
+                    properties:
+                      id:
+                        title: Идентификатор
+                        description: Идентификатор запрашиваемой сущности
+                        type: string
+                      name:
+                        title: Название
+                        description: Название запрашиваемой сущности
+                        type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+          description: Ресурс не найден
+  /meeting/{organizationId}:
+    summary: Адрес встреч
+    description: Операции над адресом встреч
+    parameters:
+      - in: path
+        name: organizationId
+        schema:
+          $ref: '#/components/schemas/UUID'
+        required: true
+        description: Идентификатор адреса
+    get:
+      tags:
+        - SelfAddressesMeeting
+      operationId: getAllMeetings
+      summary: Получить адреса встреч
+      description: Получить адреса встреч пользователя
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MeetingAddress'
+        '400':
+          content:
+            application/json:
+              schema:
+                description: Формат запроса сформированный клиентом не корректен
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+                  path:
+                    title: Путь запроса
+                    type: string
+                  problems:
+                    title: Список проблем
+                    description: Список выявленных нестыковок с форматом
+                    type: array
+                    items:
+                      description: Описание проблемы запроса
+                      type: object
+                      properties:
+                        field:
+                          title: Поле
+                          description: Наименование поля с проблемой
+                          type: string
+                        value:
+                          title: Значение
+                          description: Полученное от клиента значение
+                          type: string
+                        constraints:
+                          title: Ограничения
+                          description: Список ограничений на поле
+                          type: array
+                          items:
+                            description: Описание ограничения
+                            type: object
+                            properties:
+                              type:
+                                title: Тип
+                                description: Тип ограничения. Не ограничивается перечисленным списком. От него зависит value <table border='1'> <caption>Ограничения</caption> <tr><th>Значение</th><th>Описание</th><th>Список полей</th></tr> <tr><td>AssertFalse</td><td>Ожидается только false</td><td></td></tr> <tr><td>AssertTrue</td><td>Ожидается только false</td><td></td></tr> <tr><td>DecimalMax</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>DecimalMin</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Digits</td><td>Значение должно быть в указанном диапазоне</td><td><ul><li>integer - Максимальное количество цифр в целой части</li><li>fraction - Максимальное количество цифр в дробной части</li></ul></td></tr> <tr><td>Email</td><td>Значение должно быть действующий Email</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Enum</td><td></td><td><ul><li>values - Массив допустимых значений</li></ul></td></tr> <tr><td>Future</td><td>Значение должно быть в будущем</td><td></td></tr> <tr><td>FutureOrPresent</td><td>Значение не должно быть в прошлом</td><td></td></tr> <tr><td>Max</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>Min</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Negative</td><td>Значение должно быть отрицательным</td><td></td></tr> <tr><td>NegativeOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>NotBlank</td><td>Значение не должно состоять из пробелов</td><td></td></tr> <tr><td>NotEmpty</td><td>Значение не должно быть пустым</td><td></td></tr> <tr><td>NotNull</td><td>Значение должно быть определено</td><td></td></tr> <tr><td>Past</td><td>Значение должно быть в прошлом</td><td></td></tr> <tr><td>PastOrPresent</td><td>Значение не должно быть в будущем</td><td></td></tr> <tr><td>Pattern</td><td>Значение должно соответствовать шаблону</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Positive</td><td>Значение должно быть положительным</td><td></td></tr> <tr><td>PositiveOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>Size</td><td>Значение должно соответствовать размеру</td><td><ul><li>min - Минимальный размер</li><li>max - Максимальный размер</li></ul></td></tr> </table>
+                                type: string
+                                format: enum
+                                enum:
+                                  - AssertFalse
+                                  - AssertTrue
+                                  - DecimalMax
+                                  - DecimalMin
+                                  - Digits
+                                  - Email
+                                  - Enum
+                                  - Future
+                                  - FutureOrPresent
+                                  - Max
+                                  - Min
+                                  - Negative
+                                  - NegativeOrZero
+                                  - NotBlank
+                                  - NotEmpty
+                                  - NotNull
+                                  - 'Null'
+                                  - Past
+                                  - PastOrPresent
+                                  - Pattern
+                                  - Positive
+                                  - PositiveOrZero
+                                  - Size
+                              value:
+                                title: Допустимое значение
+                                description: Описание допустимых значений. Зависит от type
+                                type: object
+          description: Запрос неверно сформирован
+        '401':
+          content:
+            application/json:
+              schema:
+                description: Пользователь не авторизован или токен истек/отозван
+          description: Запрос не авторизован
+        '403':
+          content:
+            application/json:
+              schema:
+                description: Пользователь авторизован, но у него нет прав доступа к ресурсу
+          description: Не достаточно прав
+        '404':
+          content:
+            application/json:
+              schema:
+                description: По указанному URL не найден ресурс
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  path:
+                    title: Путь запроса
+                    type: string
+                  entity:
+                    description: Запрашиваемая сущность
+                    properties:
+                      id:
+                        title: Идентификатор
+                        description: Идентификатор запрашиваемой сущности
+                        type: string
+                      name:
+                        title: Название
+                        description: Название запрашиваемой сущности
+                        type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+          description: Ресурс не найден
+  /meeting:
+    post:
+      tags:
+        - SelfAddressesMeeting
+      operationId: postMeeting
+      summary: Добавить адрес встречи
+      description: Добавить адрес встречи
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewMeetingAddress'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeetingAddress'
+        '400':
+          content:
+            application/json:
+              schema:
+                description: Формат запроса сформированный клиентом не корректен
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+                  path:
+                    title: Путь запроса
+                    type: string
+                  problems:
+                    title: Список проблем
+                    description: Список выявленных нестыковок с форматом
+                    type: array
+                    items:
+                      description: Описание проблемы запроса
+                      type: object
+                      properties:
+                        field:
+                          title: Поле
+                          description: Наименование поля с проблемой
+                          type: string
+                        value:
+                          title: Значение
+                          description: Полученное от клиента значение
+                          type: string
+                        constraints:
+                          title: Ограничения
+                          description: Список ограничений на поле
+                          type: array
+                          items:
+                            description: Описание ограничения
+                            type: object
+                            properties:
+                              type:
+                                title: Тип
+                                description: Тип ограничения. Не ограничивается перечисленным списком. От него зависит value <table border='1'> <caption>Ограничения</caption> <tr><th>Значение</th><th>Описание</th><th>Список полей</th></tr> <tr><td>AssertFalse</td><td>Ожидается только false</td><td></td></tr> <tr><td>AssertTrue</td><td>Ожидается только false</td><td></td></tr> <tr><td>DecimalMax</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>DecimalMin</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Digits</td><td>Значение должно быть в указанном диапазоне</td><td><ul><li>integer - Максимальное количество цифр в целой части</li><li>fraction - Максимальное количество цифр в дробной части</li></ul></td></tr> <tr><td>Email</td><td>Значение должно быть действующий Email</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Enum</td><td></td><td><ul><li>values - Массив допустимых значений</li></ul></td></tr> <tr><td>Future</td><td>Значение должно быть в будущем</td><td></td></tr> <tr><td>FutureOrPresent</td><td>Значение не должно быть в прошлом</td><td></td></tr> <tr><td>Max</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>Min</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Negative</td><td>Значение должно быть отрицательным</td><td></td></tr> <tr><td>NegativeOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>NotBlank</td><td>Значение не должно состоять из пробелов</td><td></td></tr> <tr><td>NotEmpty</td><td>Значение не должно быть пустым</td><td></td></tr> <tr><td>NotNull</td><td>Значение должно быть определено</td><td></td></tr> <tr><td>Past</td><td>Значение должно быть в прошлом</td><td></td></tr> <tr><td>PastOrPresent</td><td>Значение не должно быть в будущем</td><td></td></tr> <tr><td>Pattern</td><td>Значение должно соответствовать шаблону</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Positive</td><td>Значение должно быть положительным</td><td></td></tr> <tr><td>PositiveOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>Size</td><td>Значение должно соответствовать размеру</td><td><ul><li>min - Минимальный размер</li><li>max - Максимальный размер</li></ul></td></tr> </table>
+                                type: string
+                                format: enum
+                                enum:
+                                  - AssertFalse
+                                  - AssertTrue
+                                  - DecimalMax
+                                  - DecimalMin
+                                  - Digits
+                                  - Email
+                                  - Enum
+                                  - Future
+                                  - FutureOrPresent
+                                  - Max
+                                  - Min
+                                  - Negative
+                                  - NegativeOrZero
+                                  - NotBlank
+                                  - NotEmpty
+                                  - NotNull
+                                  - 'Null'
+                                  - Past
+                                  - PastOrPresent
+                                  - Pattern
+                                  - Positive
+                                  - PositiveOrZero
+                                  - Size
+                              value:
+                                title: Допустимое значение
+                                description: Описание допустимых значений. Зависит от type
+                                type: object
+          description: Запрос неверно сформирован
+        '401':
+          content:
+            application/json:
+              schema:
+                description: Пользователь не авторизован или токен истек/отозван
+          description: Запрос не авторизован
+        '403':
+          content:
+            application/json:
+              schema:
+                description: Пользователь авторизован, но у него нет прав доступа к ресурсу
+          description: Не достаточно прав
+        '404':
+          content:
+            application/json:
+              schema:
+                description: По указанному URL не найден ресурс
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  path:
+                    title: Путь запроса
+                    type: string
+                  entity:
+                    description: Запрашиваемая сущность
+                    properties:
+                      id:
+                        title: Идентификатор
+                        description: Идентификатор запрашиваемой сущности
+                        type: string
+                      name:
+                        title: Название
+                        description: Название запрашиваемой сущности
+                        type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+          description: Ресурс не найден
+        '409':
+          content:
+            application/json:
+              schema:
+                description: Данные запроса конфликтуют с существующими в системе данными
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+                  path:
+                    title: Путь запроса
+                    type: string
+                  entity:
+                    description: Запрашиваемая сущность
+                    properties:
+                      id:
+                        title: Идентификатор
+                        description: Идентификатор запрашиваемой сущности
+                        type: string
+                      name:
+                        title: Название
+                        description: Название запрашиваемой сущности
+                        type: string
+                  problems:
+                    title: Конфликтующие сущности
+                    description: Список конфликтов
+                    type: array
+                    items:
+                      description: Описание проблемы запроса
+                      type: object
+                      properties:
+                        field:
+                          title: Поле
+                          description: Наименование поля с проблемой
+                          type: string
+                        value:
+                          title: Значение
+                          description: Полученное от клиента значение
+                          type: string
+          description: Адрес уже был добавлен
+  /meeting/{id}:
+    summary: Адрес встреч
+    description: Операции над адресом встреч
+    parameters:
+      - in: path
+        name: id
+        schema:
+          $ref: '#/components/schemas/UUID'
+        required: true
+        description: Идентификатор адреса
+    put:
+      tags:
+        - SelfAddressesMeeting
+      operationId: putMeeting
+      summary: Изменить адрес встречи
+      description: Изменить адрес встречи пользователя
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewMeetingAddress'
+      responses:
+        '400':
+          content:
+            application/json:
+              schema:
+                description: Формат запроса сформированный клиентом не корректен
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+                  path:
+                    title: Путь запроса
+                    type: string
+                  problems:
+                    title: Список проблем
+                    description: Список выявленных нестыковок с форматом
+                    type: array
+                    items:
+                      description: Описание проблемы запроса
+                      type: object
+                      properties:
+                        field:
+                          title: Поле
+                          description: Наименование поля с проблемой
+                          type: string
+                        value:
+                          title: Значение
+                          description: Полученное от клиента значение
+                          type: string
+                        constraints:
+                          title: Ограничения
+                          description: Список ограничений на поле
+                          type: array
+                          items:
+                            description: Описание ограничения
+                            type: object
+                            properties:
+                              type:
+                                title: Тип
+                                description: Тип ограничения. Не ограничивается перечисленным списком. От него зависит value <table border='1'> <caption>Ограничения</caption> <tr><th>Значение</th><th>Описание</th><th>Список полей</th></tr> <tr><td>AssertFalse</td><td>Ожидается только false</td><td></td></tr> <tr><td>AssertTrue</td><td>Ожидается только false</td><td></td></tr> <tr><td>DecimalMax</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>DecimalMin</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Digits</td><td>Значение должно быть в указанном диапазоне</td><td><ul><li>integer - Максимальное количество цифр в целой части</li><li>fraction - Максимальное количество цифр в дробной части</li></ul></td></tr> <tr><td>Email</td><td>Значение должно быть действующий Email</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Enum</td><td></td><td><ul><li>values - Массив допустимых значений</li></ul></td></tr> <tr><td>Future</td><td>Значение должно быть в будущем</td><td></td></tr> <tr><td>FutureOrPresent</td><td>Значение не должно быть в прошлом</td><td></td></tr> <tr><td>Max</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>Min</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Negative</td><td>Значение должно быть отрицательным</td><td></td></tr> <tr><td>NegativeOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>NotBlank</td><td>Значение не должно состоять из пробелов</td><td></td></tr> <tr><td>NotEmpty</td><td>Значение не должно быть пустым</td><td></td></tr> <tr><td>NotNull</td><td>Значение должно быть определено</td><td></td></tr> <tr><td>Past</td><td>Значение должно быть в прошлом</td><td></td></tr> <tr><td>PastOrPresent</td><td>Значение не должно быть в будущем</td><td></td></tr> <tr><td>Pattern</td><td>Значение должно соответствовать шаблону</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Positive</td><td>Значение должно быть положительным</td><td></td></tr> <tr><td>PositiveOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>Size</td><td>Значение должно соответствовать размеру</td><td><ul><li>min - Минимальный размер</li><li>max - Максимальный размер</li></ul></td></tr> </table>
+                                type: string
+                                format: enum
+                                enum:
+                                  - AssertFalse
+                                  - AssertTrue
+                                  - DecimalMax
+                                  - DecimalMin
+                                  - Digits
+                                  - Email
+                                  - Enum
+                                  - Future
+                                  - FutureOrPresent
+                                  - Max
+                                  - Min
+                                  - Negative
+                                  - NegativeOrZero
+                                  - NotBlank
+                                  - NotEmpty
+                                  - NotNull
+                                  - 'Null'
+                                  - Past
+                                  - PastOrPresent
+                                  - Pattern
+                                  - Positive
+                                  - PositiveOrZero
+                                  - Size
+                              value:
+                                title: Допустимое значение
+                                description: Описание допустимых значений. Зависит от type
+                                type: object
+          description: Запрос неверно сформирован
+        '401':
+          content:
+            application/json:
+              schema:
+                description: Пользователь не авторизован или токен истек/отозван
+          description: Запрос не авторизован
+        '403':
+          content:
+            application/json:
+              schema:
+                description: Пользователь авторизован, но у него нет прав доступа к ресурсу
+          description: Не достаточно прав
+        '404':
+          content:
+            application/json:
+              schema:
+                description: По указанному URL не найден ресурс
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  path:
+                    title: Путь запроса
+                    type: string
+                  entity:
+                    description: Запрашиваемая сущность
+                    properties:
+                      id:
+                        title: Идентификатор
+                        description: Идентификатор запрашиваемой сущности
+                        type: string
+                      name:
+                        title: Название
+                        description: Название запрашиваемой сущности
+                        type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+          description: Ресурс не найден
+        '409':
+          content:
+            application/json:
+              schema:
+                description: Данные запроса конфликтуют с существующими в системе данными
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+                  path:
+                    title: Путь запроса
+                    type: string
+                  entity:
+                    description: Запрашиваемая сущность
+                    properties:
+                      id:
+                        title: Идентификатор
+                        description: Идентификатор запрашиваемой сущности
+                        type: string
+                      name:
+                        title: Название
+                        description: Название запрашиваемой сущности
+                        type: string
+                  problems:
+                    title: Конфликтующие сущности
+                    description: Список конфликтов
+                    type: array
+                    items:
+                      description: Описание проблемы запроса
+                      type: object
+                      properties:
+                        field:
+                          title: Поле
+                          description: Наименование поля с проблемой
+                          type: string
+                        value:
+                          title: Значение
+                          description: Полученное от клиента значение
+                          type: string
+          description: Адрес уже был добавлен
+    delete:
+      tags:
+        - SelfAddressesMeeting
+      operationId: deleteMeeting
+      summary: Удалить адрес встречи
+      description: Удалить адрес встречи пользователя
+      responses:
+        '200':
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                description: Формат запроса сформированный клиентом не корректен
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+                  path:
+                    title: Путь запроса
+                    type: string
+                  problems:
+                    title: Список проблем
+                    description: Список выявленных нестыковок с форматом
+                    type: array
+                    items:
+                      description: Описание проблемы запроса
+                      type: object
+                      properties:
+                        field:
+                          title: Поле
+                          description: Наименование поля с проблемой
+                          type: string
+                        value:
+                          title: Значение
+                          description: Полученное от клиента значение
+                          type: string
+                        constraints:
+                          title: Ограничения
+                          description: Список ограничений на поле
+                          type: array
+                          items:
+                            description: Описание ограничения
+                            type: object
+                            properties:
+                              type:
+                                title: Тип
+                                description: Тип ограничения. Не ограничивается перечисленным списком. От него зависит value <table border='1'> <caption>Ограничения</caption> <tr><th>Значение</th><th>Описание</th><th>Список полей</th></tr> <tr><td>AssertFalse</td><td>Ожидается только false</td><td></td></tr> <tr><td>AssertTrue</td><td>Ожидается только false</td><td></td></tr> <tr><td>DecimalMax</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>DecimalMin</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Digits</td><td>Значение должно быть в указанном диапазоне</td><td><ul><li>integer - Максимальное количество цифр в целой части</li><li>fraction - Максимальное количество цифр в дробной части</li></ul></td></tr> <tr><td>Email</td><td>Значение должно быть действующий Email</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Enum</td><td></td><td><ul><li>values - Массив допустимых значений</li></ul></td></tr> <tr><td>Future</td><td>Значение должно быть в будущем</td><td></td></tr> <tr><td>FutureOrPresent</td><td>Значение не должно быть в прошлом</td><td></td></tr> <tr><td>Max</td><td>Значение должно быть не больше указанного</td><td><ul><li>value - Максимальное значение</li></ul></td></tr> <tr><td>Min</td><td>Значение должно быть не меньше указанного</td><td><ul><li>value - Минимальное значение</li></ul></td></tr> <tr><td>Negative</td><td>Значение должно быть отрицательным</td><td></td></tr> <tr><td>NegativeOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>NotBlank</td><td>Значение не должно состоять из пробелов</td><td></td></tr> <tr><td>NotEmpty</td><td>Значение не должно быть пустым</td><td></td></tr> <tr><td>NotNull</td><td>Значение должно быть определено</td><td></td></tr> <tr><td>Past</td><td>Значение должно быть в прошлом</td><td></td></tr> <tr><td>PastOrPresent</td><td>Значение не должно быть в будущем</td><td></td></tr> <tr><td>Pattern</td><td>Значение должно соответствовать шаблону</td><td><ul><li>pattern - Допустимый шаблон в формате RegExp</li></ul></td></tr> <tr><td>Positive</td><td>Значение должно быть положительным</td><td></td></tr> <tr><td>PositiveOrZero</td><td>Значение не должно быть отрицательным</td><td></td></tr> <tr><td>Size</td><td>Значение должно соответствовать размеру</td><td><ul><li>min - Минимальный размер</li><li>max - Максимальный размер</li></ul></td></tr> </table>
+                                type: string
+                                format: enum
+                                enum:
+                                  - AssertFalse
+                                  - AssertTrue
+                                  - DecimalMax
+                                  - DecimalMin
+                                  - Digits
+                                  - Email
+                                  - Enum
+                                  - Future
+                                  - FutureOrPresent
+                                  - Max
+                                  - Min
+                                  - Negative
+                                  - NegativeOrZero
+                                  - NotBlank
+                                  - NotEmpty
+                                  - NotNull
+                                  - 'Null'
+                                  - Past
+                                  - PastOrPresent
+                                  - Pattern
+                                  - Positive
+                                  - PositiveOrZero
+                                  - Size
+                              value:
+                                title: Допустимое значение
+                                description: Описание допустимых значений. Зависит от type
+                                type: object
+          description: Запрос неверно сформирован
+        '401':
+          content:
+            application/json:
+              schema:
+                description: Пользователь не авторизован или токен истек/отозван
+          description: Запрос не авторизован
+        '403':
+          content:
+            application/json:
+              schema:
+                description: Пользователь авторизован, но у него нет прав доступа к ресурсу
+          description: Не достаточно прав
+        '404':
+          content:
+            application/json:
+              schema:
+                description: По указанному URL не найден ресурс
+                type: object
+                properties:
+                  message:
+                    title: Сообщение об ошибке
+                    description: Общее сообщение об ошибке
+                    type: string
+                  path:
+                    title: Путь запроса
+                    type: string
+                  entity:
+                    description: Запрашиваемая сущность
+                    properties:
+                      id:
+                        title: Идентификатор
+                        description: Идентификатор запрашиваемой сущности
+                        type: string
+                      name:
+                        title: Название
+                        description: Название запрашиваемой сущности
+                        type: string
+                  timestamp:
+                    title: Дата-время
+                    type: string
+                    format: date-time
+          description: Ресурс не найден
+components:
+  schemas:
+    Address:
+      type: object
+      description: Данные адреса
+      required:
+        - id
+        - country
+        - region
+        - latitude
+        - longitude
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        country:
+          type: string
+          description: Страна
+        region:
+          type: string
+          description: Регион или область
+        city:
+          type: string
+          description: Город или населенный пункт
+        street:
+          type: string
+          description: Улица
+        house:
+          type: string
+          description: Номер дома
+        building:
+          type: string
+          description: Номер корпуса
+        structure:
+          type: string
+          description: Номер строения
+        latitude:
+          type: number
+          format: double
+          description: Широта
+          minimum: -90
+          maximum: 90
+          multipleOf: 0.000001
+        longitude:
+          type: number
+          format: double
+          description: Долгота
+          minimum: -180
+          maximum: 180
+          multipleOf: 0.000001
+        count:
+          type: integer
+          description: Количество использований адреса. Указывается если адрес в списке часто используемых
+          format: int32
+        label:
+          type: string
+          description: Краткое описание адреса. Указывается если адрес в списке предпочитаемых.
+    UserAddress:
+      type: object
+      description: Данные адреса вошедшего сотрудника
+      required:
+        - id
+        - country
+        - region
+        - latitude
+        - longitude
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        country:
+          type: string
+          description: Страна
+        region:
+          type: string
+          description: Регион или область
+        city:
+          type: string
+          description: Город или населенный пункт
+        street:
+          type: string
+          description: Улица
+        house:
+          type: string
+          description: Номер дома
+        building:
+          type: string
+          description: Номер корпуса
+        structure:
+          type: string
+          description: Номер строения
+        latitude:
+          type: number
+          format: double
+          description: Широта
+          minimum: -90
+          maximum: 90
+          multipleOf: 0.000001
+        longitude:
+          type: number
+          format: double
+          description: Долгота
+          minimum: -180
+          maximum: 180
+          multipleOf: 0.000001
+        usages:
+          type: integer
+          description: Количество использований адреса. Указывается если адрес в списке часто используемых
+          format: int32
+        first:
+          type: boolean
+          description: Флаг, указывающий на то, что адрес был первым в одной из поездок
+        label:
+          type: string
+          description: Краткое описание адреса. Указывается если адрес в списке предпочитаемых.
+    NewAddress:
+      type: object
+      description: Новые данные адреса
+      required:
+        - country
+        - region
+        - label
+      properties:
+        country:
+          type: string
+          description: Страна
+        region:
+          type: string
+          description: Регион или область
+        city:
+          type: string
+          description: Город или населенный пункт
+        street:
+          type: string
+          description: Улица
+        house:
+          type: string
+          description: Номер дома
+        building:
+          type: string
+          description: Номер корпуса
+        structure:
+          type: string
+          description: Номер строения
+        latitude:
+          type: number
+          format: double
+          description: Широта
+          minimum: -90
+          maximum: 90
+          multipleOf: 0.000001
+        longitude:
+          type: number
+          format: double
+          description: Долгота
+          minimum: -180
+          maximum: 180
+          multipleOf: 0.000001
+    NewFavoriteAddress:
+      type: object
+      description: Новые данные адреса
+      required:
+        - country
+        - region
+        - latitude
+        - longitude
+        - label
+      properties:
+        country:
+          type: string
+          description: Страна
+        region:
+          type: string
+          description: Регион или область
+        city:
+          type: string
+          description: Город или населенный пункт
+        street:
+          type: string
+          description: Улица
+        house:
+          type: string
+          description: Номер дома
+        building:
+          type: string
+          description: Номер корпуса
+        structure:
+          type: string
+          description: Номер строения
+        latitude:
+          type: number
+          format: double
+          description: Широта
+          minimum: -90
+          maximum: 90
+          multipleOf: 0.000001
+        longitude:
+          type: number
+          format: double
+          description: Долгота
+          minimum: -180
+          maximum: 180
+          multipleOf: 0.000001
+        label:
+          type: string
+          description: Краткое описание адреса. Указывается если адрес в списке предпочитаемых.
+    NewMeetingAddress:
+      description: Новые данные адреса встречи
+      required:
+        - organizationId
+        - label
+        - address
+      properties:
+        organizationId:
+          description: Идентификатор организации
+          type: string
+          format: uuid
+        label:
+          description: Краткое описание адреса
+          type: string
+        address:
+          $ref: '#/components/schemas/NewAddress'
+    MeetingAddress:
+      description: Данные адреса встречи
+      required:
+        - label
+        - address
+        - id
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        organizationId:
+          $ref: '#/components/schemas/UUID'
+        label:
+          description: Краткое описание адреса
+          type: string
+        address:
+          $ref: '#/components/schemas/NewAddress'
+    UUID:
+      title: Идентификатор
+      type: string
+      format: uuid
+  securitySchemes:
+    BearerToken:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
+      description: Токен доступа
+security:
+  - BearerToken: []
+
+# Powered by APIStudio

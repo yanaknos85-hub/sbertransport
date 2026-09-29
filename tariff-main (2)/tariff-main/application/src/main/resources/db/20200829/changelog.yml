@@ -1,0 +1,11 @@
+databaseChangeLog:
+    -   changeSet:
+            id: request/20200829
+            tag: "20200829"
+            author: apa
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path:  alter_comments.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

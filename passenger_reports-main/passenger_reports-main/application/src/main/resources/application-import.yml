@@ -1,0 +1,1350 @@
+works:
+    files:
+        -   url: /payment-report-personal
+            fileType:
+                - xlsx
+                - xls
+            collections:
+                -   name: Реестр поездок (ЛТ)
+                    type: ru.sberbank.ditsib.transport.reports.dto.files.PersonalPaymentDTO
+                    mappings:
+                        -   from: ID заявки
+                            to: humanReadableId
+                        -   from: Вид оплаты
+                            to: paymentCode
+                        -   from: Ресурс
+                            to: resource
+                        -   from: Стоимость
+                            to: money
+                        -   from: Табельный номер
+                            to: personnelNumber
+                        -   from: ФИО пользователя
+                            to: fio
+                        -   from: Период формирования приказа на выплату
+                            to: periodFormationForPayment
+                -   name: Агрегированный (ЛТ)
+                    type: ru.sberbank.ditsib.transport.reports.dto.files.AggregationPersonalDTO
+                    mappings:
+                        -   from: Вид оплаты
+                            to: paymentType
+                        -   from: Ресурс
+                            to: resource
+                        -   from: Стоимость
+                            to: money
+                        -   from: Табельный номер
+                            to: personnelNumber
+                        -   from: ФИО пользователя
+                            to: fio
+        -   url: /payment-report-public
+            fileType:
+                - xlsx
+                - xls
+            collections:
+                -   name: Реестр поездок (ОТ)
+                    type: ru.sberbank.ditsib.transport.reports.dto.files.PublicPaymentDTO
+                    mappings:
+                        -   from: ID заявки
+                            to: humanReadableId
+                        -   from: Вид оплаты
+                            to: paymentCode
+                        -   from: Ресурс
+                            to: resource
+                        -   from: Стоимость
+                            to: money
+                        -   from: Табельный номер
+                            to: personnelNumber
+                        -   from: ФИО пользователя
+                            to: fio
+                        -   from: Период формирования приказа на выплату
+                            to: periodFormationForPayment
+                -   name: Агрегированный (ОТ)
+                    type: ru.sberbank.ditsib.transport.reports.dto.files.AggregationPublicDTO
+                    mappings:
+                        -   from: Вид оплаты
+                            to: paymentType
+                        -   from: Ресурс
+                            to: resource
+                        -   from: Стоимость
+                            to: money
+                        -   from: Табельный номер
+                            to: personnelNumber
+                        -   from: ФИО пользователя
+                            to: fio
+        -   url: /trip-requests-public
+            fileType:
+                - xlsx
+                - xls
+            collections:
+                -   name: Отчет по поездкам (ОТ)
+                    type: ru.sberbank.ditsib.transport.reports.dto.files.PublicReportRegisterDTO
+                    mappings:
+                        -   from: МВЗ
+                            to: mvz
+                        -   from: ID поездки
+                            to: humanReadableId
+                        -   from: Дата и время создания поездки
+                            to: creationTime
+                        -   from: Дата согласования поездки
+                            to: approvalDate
+                        -   from: Дата и время выполнения заявки
+                            to: paymentDate
+                        -   from: Табельный номер пассажира
+                            to: passengerPersonnelNumber
+                        -   from: ФИО пользователя
+                            to: fio
+                        -   from: Разъездной характер деятельности
+                            to: passengerActivity
+                        -   from: Цель поездки
+                            to: purpose
+                        -   from: Комментарий к цели
+                            to: commentForPurpose
+                        -   from: Выбранный вид транспорта
+                            to: transportType
+                        -   from: Статус поездки
+                            to: status
+                        -   from: Стоимость поездки, руб
+                            to: requestExpectedCost
+                        -   from: Фиксированная стоимость минимально расчетного тарифа по такси
+                            to: minTaxiTariffCost
+                        -   from: Сумма к выплате, руб.
+                            to: paymentCost
+                        -   from: Сумма к выплате по коду 4664
+                            to: sum4664
+                        -   from: Сумма к выплате по коду 4666
+                            to: sum4666
+                        -   from: Расстояние, км
+                            to: requestExpectedDistance
+                        -   from: Есть вложение (в заявку вложен билет/картинка)
+                            to: hasAttachment
+                        -   from: Период выплаты
+                            to: paymentPeriod
+                        -   from: Код подразделения
+                            to: departmentCode
+                        -   from: Подразделение 1 уровня
+                            to: passengerDepartment1
+                        -   from: Подразделение 2 уровня
+                            to: passengerDepartment2
+                        -   from: Подразделение 3 уровня
+                            to: passengerDepartment3
+                        -   from: Подразделение 4 уровня
+                            to: passengerDepartment4
+                        -   from: Подразделение 5 уровня
+                            to: passengerDepartment5
+                        -   from: Подразделение 6 уровня
+                            to: passengerDepartment6
+                        -   from: Выбранный вид компенсации
+                            to: compensationType
+                        -   from: Адрес отправления
+                            to: departureAddress
+                        -   from: Адрес назначения
+                            to: destinationAddress
+                        -   from: Промежуточные адреса
+                            to: intermediateAddresses
+                        -   from: Дата утверждения поездки
+                            to: orderPaymentFormationStartDate
+                        -   from: Оценка поездки пользователем
+                            to: rating
+                        -   from: Комментарий пользователя к оценке
+                            to: ratingComment
+                        -   from: Источник данных
+                            to: source
+                        -   from: Контрольный срок
+                            to: deadline
+                        -   from: Нарушен контрольный срок
+                            to: deadlineState
+                        -   from: Количество точек с авто чек-ином
+                            to: waypointsCountWithAutoCheckIn
+                        -   from: Количество точек с ручным чек-ином
+                            to: waypointsCountWithManualCheckIn
+                        -   from: Количество точек удаленных из маршрута
+                            to: waypointsCountWithoutCheckIn
+                        -   from: Кол-во пунктов маршрута общее
+                            to: waypointsCount
+                        -   from: ID группы исполнителей
+                            to: executorGroupId
+                        -   from: Наименование группы исполнителей
+                            to: executorGroupName
+        -   url: /trip-requests-personal
+            fileType:
+                - xlsx
+                - xls
+            collections:
+                -   name: Отчет по поездкам (ЛТ)
+                    type: ru.sberbank.ditsib.transport.reports.dto.files.PersonalReportRegisterDTO
+                    mappings:
+                        -   from: МВЗ
+                            to: mvz
+                        -   from: Код подразделения
+                            to: departmentCode
+                        -   from: ID заявки
+                            to: humanReadableId
+                        -   from: Табельный номер заявителя
+                            to: passengerPersonnelNumber
+                        -   from: ФИО заявителя
+                            to: fio
+                        -   from: Признак водитель/пассажир
+                            to: driverOrPassenger
+                        -   from: Статус поездки
+                            to: status
+                        -   from: Статус поездки (причина отмены)
+                            to: statusCode
+                        -   from: Желаемая дата отправления
+                            to: desiredDate
+                        -   from: Желаемое время отправления
+                            to: desiredTime
+                        -   from: Дата утверждения заявки
+                            to: orderPaymentFormationStartDate
+                        -   from: Дата и время закрытия заявки
+                            to: paymentDate
+                        -   from: Тип поездки
+                            to: tripType
+                        -   from: Сумма к выплате, руб.
+                            to: paymentCost
+                        -   from: Сумма к выплате по коду 4661
+                            to: sum4661
+                        -   from: Сумма к выплате по коду 4664
+                            to: sum4664
+                        -   from: Сумма к выплате по коду 4665
+                            to: sum4665
+                        -   from: Сумма доплаты за пассажиров, руб.
+                            to: additionalSum
+                        -   from: Количество забронированных мест (без учета водителя)
+                            to: passengerCount
+                        -   from: Список пассажиров Фамилия Имя Отчество (табельный номер)
+                            to: joinedPassengers
+                        -   from: Общее расстояние, км
+                            to: requestExpectedDistance
+                        -   from: Период выплаты
+                            to: paymentPeriod
+                        -   from: Разъездной характер деятельности
+                            to: passengerActivity
+                        -   from: Цель поездки
+                            to: purpose
+                        -   from: Комментарий к цели
+                            to: commentForPurpose
+                        -   from: Объем двигателя автомобиля
+                            to: carEngineVolume
+                        -   from: Право собственности на автомобиль
+                            to: ownershipOfCar
+                        -   from: Марка автомобиля
+                            to: carBrandName
+                        -   from: Номер свидетельства о браке
+                            to: marriageCertificateNumber
+                        -   from: Регистрационный номер автомобиля
+                            to: carRegistrationNumber
+                        -   from: Номер полиса ОСАГО
+                            to: osagoNumber
+                        -   from: Кол-во пунктов маршрута общее
+                            to: waypointsCount
+                        -   from: Кол-во пунктов маршрута поездки с пройденным чек-ином
+                            to: waypointsCountWithCheckIn
+                        -   from: Кол-во пунктов поездки с не пройденным чек-ином
+                            to: waypointsCountWithoutCheckIn
+                        -   from: Подразделение 1 уровня
+                            to: passengerDepartment1
+                        -   from: Подразделение 2 уровня
+                            to: passengerDepartment2
+                        -   from: Подразделение 3 уровня
+                            to: passengerDepartment3
+                        -   from: Подразделение 4 уровня
+                            to: passengerDepartment4
+                        -   from: Подразделение 5 уровня
+                            to: passengerDepartment5
+                        -   from: Подразделение 6 уровня
+                            to: passengerDepartment6
+                        -   from: Номер тарифа
+                            to: tariff
+                        -   from: Адрес отправления
+                            to: departureAddress
+                        -   from: Промежуточные адреса
+                            to: intermediateAddresses
+                        -   from: Адрес назначения
+                            to: destinationAddress
+                        -   from: ФИО водителя совместной поездки
+                            to: driverFIO
+                        -   from: Дата и время создания поездки
+                            to: creationTime
+                        -   from: Фактическая дата и время поездки
+                            to: actualDepartureDatetime
+                        -   from: Дата согласования поездки
+                            to: approvalDate
+                        -   from: Плановая стоимость, руб.
+                            to: requestExpectedCost
+                        -   from: Фиксированная стоимость минимально расчетного тарифа по такси
+                            to: minTaxiTariffCost
+                        -   from: Плановое расстояние, км
+                            to: requestExpectedDistance
+                        -   from: Фактическая стоимость, руб.
+                            to: requestExpectedCost
+                        -   from: Фактическое расстояние, км
+                            to: requestExpectedDistance
+                        -   from: Количество присоединенных заявок
+                            to: totalSharedRequestCount
+                        -   from: Сумма к списанию с лимита, руб
+                            to: limitDebit
+                        -   from: Экономия бюджета для подразделения, руб
+                            to: departmentEconomy
+                        -   from: Финансовый эффект для организации (присоединённые заявки), руб
+                            to: financialImpactShared
+                        -   from: Финансовый эффект для организации (забронированные места), руб
+                            to: financialImpactJoined
+                        -   from: Итоговый финансовый эффект для организации, руб
+                            to: financialImpact
+                        -   from: Оценка поездки пользователем
+                            to: rating
+                        -   from: Комментарий пользователя к оценке
+                            to: ratingComment
+                        -   from: Источник данных
+                            to: source
+                        -   from: Контрольный срок
+                            to: deadline
+                        -   from: Нарушен контрольный срок
+                            to: deadlineState
+                        -   from: Количество точек с авто чек-ином
+                            to: waypointsCountWithAutoCheckIn
+                        -   from: Количество точек с ручным чек-ином
+                            to: waypointsCountWithManualCheckIn
+                        -   from: ID группы исполнителей
+                            to: executorGroupId
+                        -   from: Наименование группы исполнителей
+                            to: executorGroupName
+        -   url: /trip-requests-taxi
+            fileType:
+                - xlsx
+                - xls
+            collections:
+                -   name: Отчет по поездкам (TAXI)
+                    type: ru.sberbank.ditsib.transport.reports.dto.files.TaxiReportRegisterDTO
+                    mappings:
+                        -   from: Наименование организации
+                            to: organizationOfficialName
+                        -   from: Номер заявки
+                            to: requestId
+                        -   from: МВЗ
+                            to: mvz
+                        -   from: Дата и время создания заявки
+                            to: creationDateTime
+                        -   from: Статус поездки
+                            to: requestStatus
+                        -   from: Статус поездки (причина отмены)
+                            to: statusCode
+                        -   from: Тип поездки
+                            to: tripType
+                        -   from: Вид тарифа
+                            to: taxiClass
+                        -   from: Адрес отправления
+                            to: departureAddress
+                        -   from: Промежуточные адреса
+                            to: intermediateAddresses
+                        -   from: Количество точек в маршруте
+                            to: waypointsCount
+                        -   from: Время ожидания в промежуточной точке, мин
+                            to: waypointWaitTime
+                        -   from: Адрес прибытия
+                            to: destinationAddress
+                        -   from: Дата и время выполнения заявки
+                            to: finishedTime
+                        -   from: Дата закрытия обращения АС (в нашей системе)
+                            to: requestClosedDatetime
+                        -   from: Желаемое время отправления
+                            to: desiredTime
+                        -   from: Желаемая дата отправления
+                            to: desiredDate
+                        -   from: Контрольный срок подачи ТС (расчетный)
+                            to: deadline
+                        -   from: Фактическое дата и время прибытия ТС
+                            to: driverArrivedDatetime
+                        -   from: Нарушение КС
+                            to: deadlineViolation
+                        -   from: Табельный номер заявителя
+                            to: customerPersonnelNumber
+                        -   from: ФИО заявителя
+                            to: customerFio
+                        -   from: Разъездной характер деятельности
+                            to: passengerActivity
+                        -   from: Количество забронированных мест (без учета водителя)
+                            to: passengerCount
+                        -   from: Список пассажиров Фамилия Имя Отчество (табельный номер)
+                            to: joinedPassengers
+                        -   from: Цель поездки
+                            to: tripPurpose
+                        -   from: Комментарий к цели
+                            to: commentForPurpose
+                        -   from: ID лимита
+                            to: limitId
+                        -   from: Код подразделения. ОЕ
+                            to: departmentCode
+                        -   from: Подразделение 1 уровня
+                            to: passengerDepartment1
+                        -   from: Подразделение 2 уровня
+                            to: passengerDepartment2
+                        -   from: Подразделение 3 уровня
+                            to: passengerDepartment3
+                        -   from: Подразделение 4 уровня
+                            to: passengerDepartment4
+                        -   from: Подразделение 5 уровня
+                            to: passengerDepartment5
+                        -   from: Подразделение 6 уровня
+                            to: passengerDepartment6
+                        -   from: Должность пассажира
+                            to: passengerPosition
+                        -   from: Табельный номер пассажира
+                            to: passengerPersonnelNumber
+                        -   from: ФИО пассажира
+                            to: passengerFio
+                        -   from: Табельный номер Согласующего
+                            to: approverPersonnelNumber
+                        -   from: Согласующий ФИО
+                            to: approverFio
+                        -   from: ID тарифа
+                            to: tariffId
+                        -   from: Мобильный телефон ВК-пассажира
+                            to: passengerMobilePhone
+                        -   from: Рабочая группа
+                            to: workGroup
+                        -   from: Исполнитель
+                            to: contractorName
+                        -   from: Предварительный километраж в заявке, км
+                            to: requestExpectedDistance
+                        -   from: Фактический километраж в поездке, км
+                            to: tripFactDistance
+                        -   from: Предварительная стоимость в заявке, руб
+                            to: requestExpectedCost
+                        -   from: Фиксированная стоимость минимально расчетного тарифа по такси
+                            to: minTaxiTariffCost
+                        -   from: Фактическая стоимость в поездке, руб
+                            to: tripFactPrice
+                        -   from: Предварительное время в заявке, час/мин
+                            to: requestExpectedTime
+                        -   from: Фактическое время поездки в поездке, час/мин
+                            to: tripFactDuration
+                        -   from: Суммарное фактическое время ожидания, мин.
+                            to: actualWaitingTime
+                        -   from: Инициатор совместной поездки
+                            to: sharedRideOwner
+                        -   from: Количество присоединенных заявок
+                            to: numberPassengersJoined
+                        -   from: Сумма к списанию с лимита, руб
+                            to: limitDebit
+                        -   from: Экономия бюджета для подразделения, руб
+                            to: departmentEconomy
+                        -   from: Финансовый эффект для организации (присоединённые заявки), руб
+                            to: financialImpactShared
+                        -   from: Финансовый эффект для организации (забронированные места), руб
+                            to: financialImpactJoined
+                        -   from: Итоговый финансовый эффект для организации, руб
+                            to: financialImpact
+                        -   from: Оценка поездки пользователем
+                            to: rating
+                        -   from: Комментарий пользователя к оценке
+                            to: ratingComment
+                        -   from: ID Совместной поездки
+                            to: sharedRideId
+                        -   from: Источник данных
+                            to: source
+                        -   from: ID группы исполнителей
+                            to: executorGroupId
+                        -   from: Наименование группы исполнителей
+                            to: executorGroupName
+                        -   from: Время ожидания в реестре контрагента, мин.
+                            to: registryFactWaitingTime
+                        -   from: Дистанция в реестре контрагента, км
+                            to: registryFactDistance
+                        -   from: Стоимость в реестре контрагента , руб
+                            to: registryFactCost
+                        -   from: Номер реестра оплаты
+                            to: registryHumanReadableId
+                        -   from: Статус оплаты
+                            to: registryFactPayment
+        -   url: /trip-requests-carsharing
+            fileType:
+                - xlsx
+                - xls
+            collections:
+                -   name: Отчет по поездкам (Каршеринг)
+                    type: ru.sberbank.ditsib.transport.reports.dto.files.CarsharingReportRegisterDTO
+                    mappings:
+                        -   from: Номер заявки
+                            to: humanReadableId
+                        -   from: Организация
+                            to: organization
+                        -   from: Желаемая дата и время поездки
+                            to: desiredDate
+                        -   from: МВЗ
+                            to: mvz
+                        -   from: Статус заявки
+                            to: status
+                        -   from: Комментарий к цели
+                            to: commentForPurpose
+                        -   from: Код подразделения
+                            to: departmentCode
+                        -   from: Подразделение 1 уровня
+                            to: passengerDepartment1
+                        -   from: Подразделение 2 уровня
+                            to: passengerDepartment2
+                        -   from: Подразделение 3 уровня
+                            to: passengerDepartment3
+                        -   from: Подразделение 4 уровня
+                            to: passengerDepartment4
+                        -   from: Подразделение 5 уровня
+                            to: passengerDepartment5
+                        -   from: Подразделение 6 уровня
+                            to: passengerDepartment6
+                        -   from: Контрагент
+                            to: contractor
+                        -   from: id аренды во внешней системе
+                            to: rentId
+                        -   from: ФИО сотрудника
+                            to: fio
+                        -   from: Табельный номер сотрудника
+                            to: personnelNumber
+                        -   from: Должность
+                            to: position
+                        -   from: Телефон
+                            to: phoneNumber
+                        -   from: Время создания заявки
+                            to: creationTime
+                        -   from: Транспортное средство
+                            to: car
+                        -   from: Количество забронированных мест (без учета водителя)
+                            to: passengerCount
+                        -   from: Список пассажиров Фамилия Имя Отчество (табельный номер)
+                            to: joinedPassengers
+                        -   from: Адрес отправления
+                            to: departureAddress
+                        -   from: Промежуточные адреса маршрута
+                            to: intermediateAddresses
+                        -   from: Адрес прибытия
+                            to: destinationAddress
+                        -   from: Адрес начала аренды
+                            to: startAddress
+                        -   from: Адрес завершения аренды
+                            to: finishAddress
+                        -   from: Время начала аренды (с учетом 20 минут бесплатного времени)
+                            to: rentCreatedTime
+                        -   from: Время завершения аренды/поездки
+                            to: rentFinishedTime
+                        -   from: Общее время брони/аренды (мин) план
+                            to: expectedTime
+                        -   from: Общее время брони (мин) факт
+                            to: reserveTime
+                        -   from: Общее время поездки (мин) факт
+                            to: drivingTime
+                        -   from: Общее время ожидания (мин) факт
+                            to: parkingTime
+                        -   from: Общий пробег (км) план
+                            to: expectedDistance
+                        -   from: Общий пробег (км) факт
+                            to: drivingLength
+                        -   from: Общая стоимость брони (руб) факт
+                            to: reserveTimeCost
+                        -   from: Общая стоимость поездки (руб) факт
+                            to: drivingTimeCost
+                        -   from: Общая стоимость ожидания (руб) факт
+                            to: parkingTimeCost
+                        -   from: Дополнительная стоимость за пробег (руб) факт
+                            to: drivingLengthCost
+                        -   from: Итоговая стоимость аренды (руб) план
+                            to: expectedCost
+                        -   from: Фиксированная стоимость минимально расчетного тарифа по такси
+                            to: minTaxiTariffCost
+                        -   from: Итоговая стоимость аренды (руб) (Заявки)
+                            to: totalCost
+                        -   from: Сумма к списанию с лимита, руб
+                            to: limitDebit
+                        -   from: Экономия бюджета для подразделения, руб
+                            to: departmentEconomy
+                        -   from: Финансовый эффект для организации (забронированные места), руб
+                            to: financialImpactJoined
+                        -   from: Итоговый финансовый эффект для организации, руб
+                            to: financialImpact
+                        -   from: Источник данных
+                            to: source
+                        -   from: ID группы исполнителей
+                            to: executorGroupId
+                        -   from: Наименование группы исполнителей
+                            to: executorGroupName
+        -   url: /trip-requests-group_transfer
+            fileType:
+                - xlsx
+                - xls
+            collections:
+                -   name: Отчет по поездкам (GROUP_TRANSFER)
+                    type: ru.sberbank.ditsib.transport.reports.dto.files.GroupTransferReportRegisterDTO
+                    mappings:
+                        -   from: Наименование организации
+                            to: organizationOfficialName
+                        -   from: Номер заявки
+                            to: requestId
+                        -   from: МВЗ
+                            to: mvz
+                        -   from: Дата и время создания заявки
+                            to: creationDateTime
+                        -   from: Статус поездки
+                            to: requestStatus
+                        -   from: Статус поездки (причина отмены)
+                            to: statusCode
+                        -   from: Тип поездки
+                            to: tripType
+                        -   from: Класс услуги
+                            to: groupTransferClass
+                        -   from: Адрес отправления
+                            to: departureAddress
+                        -   from: Промежуточные адреса
+                            to: intermediateAddresses
+                        -   from: Количество точек в маршруте
+                            to: waypointsCount
+                        -   from: Время ожидания в промежуточной точке, мин
+                            to: waypointWaitTime
+                        -   from: Адрес прибытия
+                            to: destinationAddress
+                        -   from: Дата и время выполнения заявки
+                            to: finishedTime
+                        -   from: Дата закрытия обращения АС (в нашей системе)
+                            to: requestClosedDatetime
+                        -   from: Желаемое время отправления
+                            to: desiredTime
+                        -   from: Желаемая дата отправления
+                            to: desiredDate
+                        -   from: Контрольный срок подачи ТС (расчетный)
+                            to: deadline
+                        -   from: Фактическое дата и время прибытия ТС
+                            to: driverArrivedDatetime
+                        -   from: Нарушение КС
+                            to: deadlineViolation
+                        -   from: Табельный номер заявителя
+                            to: customerPersonnelNumber
+                        -   from: ФИО заявителя
+                            to: customerFio
+                        -   from: Разъездной характер деятельности
+                            to: passengerActivity
+                        -   from: Количество присоединенных заявок
+                            to: numberPassengersJoined
+                        -   from: Количество забронированных мест (без учета водителя)
+                            to: passengerCount
+                        -   from: Цель поездки
+                            to: tripPurpose
+                        -   from: Комментарий к цели
+                            to: commentForPurpose
+                        -   from: ID лимита
+                            to: limitId
+                        -   from: Код подразделения. ОЕ
+                            to: departmentCode
+                        -   from: Подразделение 1 уровня
+                            to: passengerDepartment1
+                        -   from: Подразделение 2 уровня
+                            to: passengerDepartment2
+                        -   from: Подразделение 3 уровня
+                            to: passengerDepartment3
+                        -   from: Подразделение 4 уровня
+                            to: passengerDepartment4
+                        -   from: Подразделение 5 уровня
+                            to: passengerDepartment5
+                        -   from: Подразделение 6 уровня
+                            to: passengerDepartment6
+                        -   from: Должность пассажира
+                            to: passengerPosition
+                        -   from: Табельный номер пассажира
+                            to: passengerPersonnelNumber
+                        -   from: ФИО пассажира
+                            to: passengerFio
+                        -   from: Табельный номер Согласующего
+                            to: approverPersonnelNumber
+                        -   from: Согласующий ФИО
+                            to: approverFio
+                        -   from: ID тарифа
+                            to: tariffId
+                        -   from: Мобильный телефон ВК-пассажира
+                            to: passengerMobilePhone
+                        -   from: Рабочая группа
+                            to: workGroup
+                        -   from: Исполнитель
+                            to: contractorName
+                        -   from: Предварительный километраж в заявке, км
+                            to: requestExpectedDistance
+                        -   from: Фактический километраж в поездке, км
+                            to: tripFactDistance
+                        -   from: Предварительная стоимость в заявке, руб
+                            to: requestExpectedCost
+                        -   from: Фактическая стоимость в поездке, руб
+                            to: tripFactPrice
+                        -   from: Предварительное время в заявке, час/мин
+                            to: requestExpectedTime
+                        -   from: Фактическое время поездки в поездке, час/мин
+                            to: tripFactDuration
+                        -   from: Суммарное фактическое время ожидания, мин.
+                            to: actualWaitingTime
+                        -   from: Оценка поездки пользователем
+                            to: rating
+                        -   from: Комментарий пользователя к оценке
+                            to: ratingComment
+                        -   from: Источник данных
+                            to: source
+                        -   from: ID группы исполнителей
+                            to: executorGroupId
+                        -   from: Наименование группы исполнителей
+                            to: executorGroupName
+        -   url: /trip-requests-taxi-analytics
+            fileType:
+                - xlsx
+                - xls
+            collections:
+                -   name: Отчет по поездкам (TAXI)
+                    type: ru.sberbank.ditsib.transport.reports.dto.files.TaxiReportDTO
+                    mappings:
+                        -   from: Наименование организации
+                            to: organizationOfficialName
+                        -   from: Номер заявки
+                            to: requestId
+                        -   from: МВЗ
+                            to: mvz
+                        -   from: Дата и время создания заявки
+                            to: creationDateTime
+                        -   from: Статус поездки
+                            to: requestStatus
+                        -   from: Статус поездки (причина отмены)
+                            to: statusCode
+                        -   from: Тип поездки
+                            to: tripType
+                        -   from: Вид тарифа
+                            to: taxiClass
+                        -   from: Адрес отправления
+                            to: departureAddress
+                        -   from: Промежуточные адреса
+                            to: intermediateAddresses
+                        -   from: Количество точек в маршруте
+                            to: waypointsCount
+                        -   from: Время ожидания в промежуточной точке, мин
+                            to: waypointWaitTime
+                        -   from: Адрес прибытия
+                            to: destinationAddress
+                        -   from: Дата и время выполнения заявки
+                            to: finishedTime
+                        -   from: Желаемое время отправления
+                            to: desiredTime
+                        -   from: Желаемая дата отправления
+                            to: desiredDate
+                        -   from: Контрольный срок подачи ТС (расчетный)
+                            to: deadline
+                        -   from: Фактическое дата и время прибытия ТС
+                            to: driverArrivedDatetime
+                        -   from: Нарушение КС
+                            to: deadlineViolation
+                        -   from: Табельный номер заявителя
+                            to: customerPersonnelNumber
+                        -   from: ФИО заявителя
+                            to: customerFio
+                        -   from: Разъездной характер деятельности
+                            to: passengerActivity
+                        -   from: Количество забронированных мест (без учета водителя)
+                            to: passengerCount
+                        -   from: Список пассажиров Фамилия Имя Отчество (табельный номер)
+                            to: joinedPassengers
+                        -   from: Цель поездки
+                            to: tripPurpose
+                        -   from: ID лимита
+                            to: limitId
+                        -   from: Комментарий для водителя
+                            to: commentForDriver
+                        -   from: Код подразделения. ОЕ
+                            to: departmentCode
+                        -   from: Подразделение 1 уровня
+                            to: passengerDepartment1
+                        -   from: Подразделение 2 уровня
+                            to: passengerDepartment2
+                        -   from: Подразделение 3 уровня
+                            to: passengerDepartment3
+                        -   from: Подразделение 4 уровня
+                            to: passengerDepartment4
+                        -   from: Подразделение 5 уровня
+                            to: passengerDepartment5
+                        -   from: Подразделение 6 уровня
+                            to: passengerDepartment6
+                        -   from: Должность пассажира
+                            to: passengerPosition
+                        -   from: Табельный номер пассажира
+                            to: passengerPersonnelNumber
+                        -   from: ФИО пассажира
+                            to: passengerFio
+                        -   from: Табельный номер Согласующего
+                            to: approverPersonnelNumber
+                        -   from: Согласующий ФИО
+                            to: approverFio
+                        -   from: ID тарифа
+                            to: tariffId
+                        -   from: Мобильный телефон ВК-пассажира
+                            to: passengerMobilePhone
+                        -   from: Рабочая группа
+                            to: workGroup
+                        -   from: Исполнитель
+                            to: contractorName
+                        -   from: Предварительный километраж в заявке, км
+                            to: requestExpectedDistance
+                        -   from: Фактический километраж в поездке, км
+                            to: tripFactDistance
+                        -   from: Предварительная стоимость в заявке, руб
+                            to: requestExpectedCost
+                        -   from: Стоимость минимальной поездки на такси
+                            to: minTaxiTariffCost
+                        -   from: Фактическая стоимость в поездке, руб
+                            to: tripFactPrice
+                        -   from: Предварительное время в заявке, час/мин
+                            to: requestExpectedTime
+                        -   from: Фактическое время поездки в поездке, час/мин
+                            to: tripFactDuration
+                        -   from: Суммарное фактическое время ожидания, мин.
+                            to: actualWaitingTime
+                        -   from: Инициатор совместной поездки
+                            to: sharedRideOwner
+                        -   from: Количество присоединенных заявок
+                            to: numberPassengersJoined
+                        -   from: Сумма к списанию с лимита, руб
+                            to: limitDebit
+                        -   from: Экономия бюджета для подразделения, руб
+                            to: departmentEconomy
+                        -   from: Финансовый эффект для организации (присоединённые заявки), руб
+                            to: financialImpactShared
+                        -   from: Финансовый эффект для организации (забронированные места), руб
+                            to: financialImpactJoined
+                        -   from: Итоговый финансовый эффект для организации, руб
+                            to: financialImpact
+                        -   from: Оценка поездки пользователем
+                            to: rating
+                        -   from: Комментарий пользователя к оценке
+                            to: ratingComment
+                        -   from: ID Совместной поездки
+                            to: sharedRideId
+                        -   from: Источник данных
+                            to: source
+                        -   from: Причина отмены
+                            to: requestStatusCode
+                        -   from: Дата закрытия обращения
+                            to: requestClosedDatetime
+                        -   from: Контрольный срок
+                            to: deadlineState
+                        -   from: Экономия
+                            to: savings
+                        -   from: Номер договора
+                            to: contractNumber
+                        -   from: Экономия от совместные поездки, руб.
+                            to: sharedSaving
+                        -   from: Экономия при указании пассажиров, руб.
+                            to: passengerSaving
+                        -   from: Вид тарифа
+                            to: tripClass
+                        -   from: ID группы исполнителей
+                            to: executorGroupId
+                        -   from: Наименование группы исполнителей
+                            to: executorGroupName
+        -   url: /trip-requests-carsharing-analytics
+            fileType:
+                - xlsx
+                - xls
+            collections:
+                -   name: Отчет по поездкам (Каршеринг)
+                    type: ru.sberbank.ditsib.transport.reports.dto.files.CarsharingReportDTO
+                    mappings:
+                        -   from: Номер заявки
+                            to: humanReadableId
+                        -   from: Организация
+                            to: organization
+                        -   from: Желаемая дата и время поездки
+                            to: desiredDate
+                        -   from: МВЗ
+                            to: mvz
+                        -   from: Статус заявки
+                            to: status
+                        -   from: Код подразделения
+                            to: departmentCode
+                        -   from: Подразделение 1 уровня
+                            to: passengerDepartment1
+                        -   from: Подразделение 2 уровня
+                            to: passengerDepartment2
+                        -   from: Подразделение 3 уровня
+                            to: passengerDepartment3
+                        -   from: Подразделение 4 уровня
+                            to: passengerDepartment4
+                        -   from: Подразделение 5 уровня
+                            to: passengerDepartment5
+                        -   from: Подразделение 6 уровня
+                            to: passengerDepartment6
+                        -   from: Контрагент
+                            to: contractor
+                        -   from: id аренды во внешней системе
+                            to: rentId
+                        -   from: ФИО сотрудника
+                            to: fio
+                        -   from: Табельный номер сотрудника
+                            to: personnelNumber
+                        -   from: Должность
+                            to: position
+                        -   from: Телефон
+                            to: phoneNumber
+                        -   from: Время создания заявки
+                            to: creationTime
+                        -   from: Транспортное средство
+                            to: car
+                        -   from: Количество забронированных мест (без учета водителя)
+                            to: passengerCount
+                        -   from: Список пассажиров Фамилия Имя Отчество (табельный номер)
+                            to: joinedPassengers
+                        -   from: Адрес отправления
+                            to: departureAddress
+                        -   from: Промежуточные адреса маршрута
+                            to: intermediateAddresses
+                        -   from: Адрес прибытия
+                            to: destinationAddress
+                        -   from: Адрес начала аренды
+                            to: startAddress
+                        -   from: Адрес завершения аренды
+                            to: finishAddress
+                        -   from: Время начала аренды (с учетом 20 минут бесплатного времени)
+                            to: rentCreatedTime
+                        -   from: Время завершения аренды/поездки
+                            to: rentFinishedTime
+                        -   from: Общее время брони/аренды (мин) план
+                            to: expectedTime
+                        -   from: Общее время брони (мин) факт
+                            to: reserveTime
+                        -   from: Общее время поездки (мин) факт
+                            to: drivingTime
+                        -   from: Общее время ожидания (мин) факт
+                            to: parkingTime
+                        -   from: Общий пробег (км) план
+                            to: expectedDistance
+                        -   from: Общий пробег (км) факт
+                            to: drivingLength
+                        -   from: Общая стоимость брони (руб) факт
+                            to: reserveTimeCost
+                        -   from: Общая стоимость поездки (руб) факт
+                            to: drivingTimeCost
+                        -   from: Общая стоимость ожидания (руб) факт
+                            to: parkingTimeCost
+                        -   from: Дополнительная стоимость за пробег (руб) факт
+                            to: drivingLengthCost
+                        -   from: Итоговая стоимость аренды (руб) план
+                            to: expectedCost
+                        -   from: Стоимость минимальной поездки на такси
+                            to: minTaxiTariffCost
+                        -   from: Итоговая стоимость аренды (руб) (Заявки)
+                            to: totalCost
+                        -   from: Наименование тарифа
+                            to: tariffName
+                        -   from: Источник данных
+                            to: source
+                        -   from: Причина отмены
+                            to: requestStatusCode
+                        -   from: Дата закрытия обращения
+                            to: requestClosedDatetime
+                        -   from: Контрольный срок
+                            to: deadlineState
+                        -   from: Экономия
+                            to: savings
+                        -   from: Номер договора
+                            to: contractNumber
+                        -   from: ID группы исполнителей
+                            to: executorGroupId
+                        -   from: Наименование группы исполнителей
+                            to: executorGroupName
+        -   url: /trip-requests-group_transfer-analytics
+            fileType:
+                - xlsx
+                - xls
+            collections:
+                -   name: Отчет по поездкам (GROUP_TRANSFER)
+                    type: ru.sberbank.ditsib.transport.reports.dto.files.GroupTransferReportDTO
+                    mappings:
+                        -   from: Наименование организации
+                            to: organizationOfficialName
+                        -   from: Номер заявки
+                            to: requestId
+                        -   from: МВЗ
+                            to: mvz
+                        -   from: Дата и время создания заявки
+                            to: creationDateTime
+                        -   from: Статус поездки
+                            to: requestStatus
+                        -   from: Статус поездки (причина отмены)
+                            to: statusCode
+                        -   from: Тип поездки
+                            to: tripType
+                        -   from: Класс услуги
+                            to: groupTransferClass
+                        -   from: Адрес отправления
+                            to: departureAddress
+                        -   from: Промежуточные адреса
+                            to: intermediateAddresses
+                        -   from: Количество точек в маршруте
+                            to: waypointsCount
+                        -   from: Время ожидания в промежуточной точке, мин
+                            to: waypointWaitTime
+                        -   from: Адрес прибытия
+                            to: destinationAddress
+                        -   from: Дата и время выполнения заявки
+                            to: finishedTime
+                        -   from: Желаемое время отправления
+                            to: desiredTime
+                        -   from: Желаемая дата отправления
+                            to: desiredDate
+                        -   from: Контрольный срок подачи ТС (расчетный)
+                            to: deadline
+                        -   from: Фактическое дата и время прибытия ТС
+                            to: driverArrivedDatetime
+                        -   from: Нарушение КС
+                            to: deadlineViolation
+                        -   from: Табельный номер заявителя
+                            to: customerPersonnelNumber
+                        -   from: ФИО заявителя
+                            to: customerFio
+                        -   from: Разъездной характер деятельности
+                            to: passengerActivity
+                        -   from: Количество присоединенных заявок
+                            to: numberPassengersJoined
+                        -   from: Количество забронированных мест (без учета водителя)
+                            to: passengerCount
+                        -   from: Цель поездки
+                            to: tripPurpose
+                        -   from: ID лимита
+                            to: limitId
+                        -   from: Комментарий для водителя
+                            to: commentForDriver
+                        -   from: Код подразделения. ОЕ
+                            to: departmentCode
+                        -   from: Подразделение 1 уровня
+                            to: passengerDepartment1
+                        -   from: Подразделение 2 уровня
+                            to: passengerDepartment2
+                        -   from: Подразделение 3 уровня
+                            to: passengerDepartment3
+                        -   from: Подразделение 4 уровня
+                            to: passengerDepartment4
+                        -   from: Подразделение 5 уровня
+                            to: passengerDepartment5
+                        -   from: Подразделение 6 уровня
+                            to: passengerDepartment6
+                        -   from: Должность пассажира
+                            to: passengerPosition
+                        -   from: Табельный номер пассажира
+                            to: passengerPersonnelNumber
+                        -   from: ФИО пассажира
+                            to: passengerFio
+                        -   from: Табельный номер Согласующего
+                            to: approverPersonnelNumber
+                        -   from: Согласующий ФИО
+                            to: approverFio
+                        -   from: ID тарифа
+                            to: tariffId
+                        -   from: Мобильный телефон ВК-пассажира
+                            to: passengerMobilePhone
+                        -   from: Рабочая группа
+                            to: workGroup
+                        -   from: Исполнитель
+                            to: contractorName
+                        -   from: Предварительный километраж в заявке, км
+                            to: requestExpectedDistance
+                        -   from: Фактический километраж в поездке, км
+                            to: tripFactDistance
+                        -   from: Предварительная стоимость в заявке, руб
+                            to: requestExpectedCost
+                        -   from: Фактическая стоимость в поездке, руб
+                            to: tripFactPrice
+                        -   from: Предварительное время в заявке, час/мин
+                            to: requestExpectedTime
+                        -   from: Фактическое время поездки в поездке, час/мин
+                            to: tripFactDuration
+                        -   from: Суммарное фактическое время ожидания, мин.
+                            to: actualWaitingTime
+                        -   from: Оценка поездки пользователем
+                            to: rating
+                        -   from: Комментарий пользователя к оценке
+                            to: ratingComment
+                        -   from: Источник данных
+                            to: source
+                        -   from: Причина отмены
+                            to: requestStatusCode
+                        -   from: Дата закрытия обращения
+                            to: requestClosedDatetime
+                        -   from: Контрольный срок
+                            to: deadlineState
+                        -   from: Экономия
+                            to: savings
+                        -   from: Номер договора
+                            to: contractNumber
+                        -   from: Стоимость минимальной поездки на такси
+                            to: minTaxiTariffCost
+                        -   from: ID группы исполнителей
+                            to: executorGroupId
+                        -   from: Наименование группы исполнителей
+                            to: executorGroupName
+        -   url: /trip-requests-public-analytics
+            fileType:
+                - xlsx
+                - xls
+            collections:
+                -   name: Отчет по поездкам (ОТ)
+                    type: ru.sberbank.ditsib.transport.reports.dto.files.PublicReportDTO
+                    mappings:
+                        -   from: МВЗ
+                            to: mvz
+                        -   from: ID поездки
+                            to: humanReadableId
+                        -   from: Дата и время создания поездки
+                            to: creationTime
+                        -   from: Дата согласования поездки
+                            to: approvalDate
+                        -   from: Дата и время выполнения заявки
+                            to: paymentDate
+                        -   from: Табельный номер пассажира
+                            to: passengerPersonnelNumber
+                        -   from: ФИО пользователя
+                            to: fio
+                        -   from: Разъездной характер деятельности
+                            to: passengerActivity
+                        -   from: Цель поездки
+                            to: purpose
+                        -   from: Выбранный вид транспорта
+                            to: transportType
+                        -   from: Статус поездки
+                            to: status
+                        -   from: Стоимость поездки, руб
+                            to: requestExpectedCost
+                        -   from: Сумма к выплате, руб.
+                            to: paymentCost
+                        -   from: Сумма к выплате по коду 4664
+                            to: sum4664
+                        -   from: Сумма к выплате по коду 4666
+                            to: sum4666
+                        -   from: Расстояние, км
+                            to: requestExpectedDistance
+                        -   from: Есть вложение (в заявку вложен билет/картинка)
+                            to: hasAttachment
+                        -   from: Период выплаты
+                            to: paymentPeriod
+                        -   from: Код подразделения
+                            to: departmentCode
+                        -   from: Подразделение 1 уровня
+                            to: passengerDepartment1
+                        -   from: Подразделение 2 уровня
+                            to: passengerDepartment2
+                        -   from: Подразделение 3 уровня
+                            to: passengerDepartment3
+                        -   from: Подразделение 4 уровня
+                            to: passengerDepartment4
+                        -   from: Подразделение 5 уровня
+                            to: passengerDepartment5
+                        -   from: Подразделение 6 уровня
+                            to: passengerDepartment6
+                        -   from: Выбранный вид компенсации
+                            to: compensationType
+                        -   from: Адрес отправления
+                            to: departureAddress
+                        -   from: Адрес назначения
+                            to: destinationAddress
+                        -   from: Промежуточные адреса
+                            to: intermediateAddresses
+                        -   from: Дата утверждения поездки
+                            to: orderPaymentFormationStartDate
+                        -   from: Оценка поездки пользователем
+                            to: rating
+                        -   from: Комментарий пользователя к оценке
+                            to: ratingComment
+                        -   from: Источник данных
+                            to: source
+                        -   from: Причина отмены
+                            to: requestStatusCode
+                        -   from: Дата закрытия обращения
+                            to: requestClosedDatetime
+                        -   from: Вид общественного транспорта в ОТ
+                            to: publicTransportType
+                        -   from: Фиксированная стоимость минимально расчетного тарифа по такси
+                            to: minTaxiTariffCost
+                        -   from: Наименование тарифа
+                            to: tariffName
+                        -   from: Экономия
+                            to: savings
+                        -   from: Есть вложение
+                            to: publicCompensationDocumentExist
+                        -   from: Количество вложений
+                            to: attachedDocuments
+                        -   from: Идентификатор подразделения
+                            to: departmentIndex
+                        -   from: Контрольный срок
+                            to: deadline
+                        -   from: Нарушен контрольный срок
+                            to: deadlineState
+                        -   from: Количество точек с авто чек-ином
+                            to: waypointsCountWithAutoCheckIn
+                        -   from: Количество точек с ручным чек-ином
+                            to: waypointsCountWithManualCheckIn
+                        -   from: Количество точек удаленных из маршрута
+                            to: waypointsCountWithoutCheckIn
+                        -   from: Кол-во пунктов маршрута общее
+                            to: waypointsCount
+                        -   from: ID группы исполнителей
+                            to: executorGroupId
+                        -   from: Наименование группы исполнителей
+                            to: executorGroupName
+        -   url: /trip-requests-personal-analytics
+            fileType:
+                - xlsx
+                - xls
+            collections:
+                -   name: Отчет по поездкам (ЛТ)
+                    type: ru.sberbank.ditsib.transport.reports.dto.files.PersonalReportDTO
+                    mappings:
+                        -   from: МВЗ
+                            to: mvz
+                        -   from: Код подразделения
+                            to: departmentCode
+                        -   from: ID заявки
+                            to: humanReadableId
+                        -   from: Табельный номер заявителя
+                            to: passengerPersonnelNumber
+                        -   from: ФИО заявителя
+                            to: fio
+                        -   from: Признак водитель/пассажир
+                            to: driverOrPassenger
+                        -   from: Статус поездки
+                            to: status
+                        -   from: Статус поездки (причина отмены)
+                            to: statusCode
+                        -   from: Желаемая дата отправления
+                            to: desiredDate
+                        -   from: Желаемое время отправления
+                            to: desiredTime
+                        -   from: Дата утверждения заявки
+                            to: orderPaymentFormationStartDate
+                        -   from: Дата и время закрытия заявки
+                            to: paymentDate
+                        -   from: Тип поездки
+                            to: tripType
+                        -   from: Сумма к выплате, руб.
+                            to: paymentCost
+                        -   from: Сумма к выплате по коду 4661
+                            to: sum4661
+                        -   from: Сумма к выплате по коду 4664
+                            to: sum4664
+                        -   from: Сумма к выплате по коду 4665
+                            to: sum4665
+                        -   from: Сумма доплаты за пассажиров, руб.
+                            to: additionalSum
+                        -   from: Количество присоединённых заявок
+                            to: numberPassengersJoined
+                        -   from: Количество забронированных мест (без учета водителя)
+                            to: passengerCount
+                        -   from: Список пассажиров Фамилия Имя Отчество (табельный номер)
+                            to: joinedPassengers
+                        -   from: Общее расстояние, км
+                            to: requestExpectedDistance
+                        -   from: Период выплаты
+                            to: paymentPeriod
+                        -   from: Разъездной характер деятельности
+                            to: passengerActivity
+                        -   from: Цель поездки
+                            to: purpose
+                        -   from: Объем двигателя автомобиля
+                            to: carEngineVolume
+                        -   from: Право собственности на автомобиль
+                            to: ownershipOfCar
+                        -   from: Марка автомобиля
+                            to: carBrandName
+                        -   from: Номер свидетельства о браке
+                            to: marriageCertificateNumber
+                        -   from: Регистрационный номер автомобиля
+                            to: carRegistrationNumber
+                        -   from: Номер полиса ОСАГО
+                            to: osagoNumber
+                        -   from: Кол-во пунктов маршрута общее
+                            to: waypointsCount
+                        -   from: Кол-во пунктов маршрута поездки с пройденным чек-ином
+                            to: waypointsCountWithCheckIn
+                        -   from: Кол-во пунктов поездки с не пройденным чек-ином
+                            to: waypointsCountWithoutCheckIn
+                        -   from: Подразделение 1 уровня
+                            to: passengerDepartment1
+                        -   from: Подразделение 2 уровня
+                            to: passengerDepartment2
+                        -   from: Подразделение 3 уровня
+                            to: passengerDepartment3
+                        -   from: Подразделение 4 уровня
+                            to: passengerDepartment4
+                        -   from: Подразделение 5 уровня
+                            to: passengerDepartment5
+                        -   from: Подразделение 6 уровня
+                            to: passengerDepartment6
+                        -   from: Номер тарифа
+                            to: tariff
+                        -   from: Адрес отправления
+                            to: departureAddress
+                        -   from: Промежуточные адреса
+                            to: intermediateAddresses
+                        -   from: Адрес назначения
+                            to: destinationAddress
+                        -   from: Экономия в рублях
+                            to: savingsCash
+                        -   from: Экономия в процентах
+                            to: savingsProcent
+                        -   from: ФИО водителя совместной поездки
+                            to: driverFIO
+                        -   from: Дата и время создания поездки
+                            to: creationTime
+                        -   from: Фактическая дата и время поездки
+                            to: actualDepartureDatetime
+                        -   from: Дата согласования поездки
+                            to: approvalDate
+                        -   from: Плановая стоимость, руб.
+                            to: requestExpectedCost
+                        -   from: Плановое расстояние, км
+                            to: requestExpectedDistance
+                        -   from: Фактическая стоимость, руб.
+                            to: requestExpectedCost
+                        -   from: Фактическое расстояние, км
+                            to: requestExpectedDistance
+                        -   from: Количество присоединенных заявок
+                            to: totalSharedRequestCount
+                        -   from: Сумма к списанию с лимита, руб
+                            to: limitDebit
+                        -   from: Экономия бюджета для подразделения, руб
+                            to: departmentEconomy
+                        -   from: Финансовый эффект для организации (присоединённые заявки), руб
+                            to: financialImpactShared
+                        -   from: Финансовый эффект для организации (забронированные места), руб
+                            to: financialImpactJoined
+                        -   from: Итоговый финансовый эффект для организации, руб
+                            to: financialImpact
+                        -   from: Оценка поездки пользователем
+                            to: rating
+                        -   from: Комментарий пользователя к оценке
+                            to: ratingComment
+                        -   from: Источник данных
+                            to: source
+                        -   from: Причина отмены
+                            to: requestStatusCode
+                        -   from: Дата закрытия обращения
+                            to: requestClosedDatetime
+                        -   from: Фиксированная стоимость минимально расчетного тарифа по такси
+                            to: minTaxiTariffCost
+                        -   from: Экономия
+                            to: savings
+                        -   from: Экономия от совместные поездки, руб.
+                            to: sharedSaving
+                        -   from: Экономия при указании пассажиров, руб.
+                            to: passengerSaving
+                        -   from: Количество присоединённых заявок
+                            to: attachedOrderCount
+                        -   from: Идентификатор подразделения
+                            to: departmentIndex
+                        -   from: Контрольный срок
+                            to: deadline
+                        -   from: Нарушен контрольный срок
+                            to: deadlineState
+                        -   from: Количество точек с авто чек-ином
+                            to: waypointsCountWithAutoCheckIn
+                        -   from: Количество точек с ручным чек-ином
+                            to: waypointsCountWithManualCheckIn
+                        -   from: ID группы исполнителей
+                            to: executorGroupId
+                        -   from: Наименование группы исполнителей
+                            to: executorGroupName
+                        
+                        

@@ -1,0 +1,8 @@
+.row {
+  display: flex;
+  margin: 0 -7px;
+
+  @media (max-width: 1136px) {
+    flex-wrap: wrap;
+  }
+}

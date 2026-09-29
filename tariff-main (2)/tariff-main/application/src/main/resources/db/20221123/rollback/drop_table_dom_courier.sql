@@ -1,0 +1,1 @@
+drop table tariff.cargo_tariff_domestic_courier;

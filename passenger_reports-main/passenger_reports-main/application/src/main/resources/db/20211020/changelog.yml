@@ -1,0 +1,9 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211020"
+            author: alekseev-pa
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/replace_passengers_constraint.sql
+                        relativeToChangelogFile: true

@@ -1,0 +1,20 @@
+.costDeviation {
+  height: 40px;
+  padding: 8px;
+  border: 1px solid #FFE1C2;
+  border-radius: 8px;
+  background: #FFF5EB;
+
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+
+  .costDeviationTitle {
+    color: #000;
+    font-family: SB Sans Text;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+  }
+}

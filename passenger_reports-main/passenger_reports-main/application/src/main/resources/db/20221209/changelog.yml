@@ -1,0 +1,23 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221209"
+            author: blandin-ad
+            changes:
+                -   tagDatabase:
+                        tag: "20221209"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: limit
+                        columns:
+                            -   column:
+                                    name: active
+                                    type: boolean
+                                    defaultValueBoolean: true
+                                    remarks: Признак активности лимита
+            rollback:
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: limit
+                        columns:
+                            -   column:
+                                    name: active

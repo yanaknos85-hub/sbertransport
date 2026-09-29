@@ -1,0 +1,40 @@
+.container {
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.04);
+  padding: 20px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+  margin: 20px 0 10px 20px;
+}
+
+.description {
+  color: #909090;
+  font-weight: 400;
+  font-size: 14px;
+  margin: 20px 0 20px 20px;
+}
+
+.steps {
+  &:global(.ant-steps) {
+    margin-bottom: 53px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(38, 38, 38, 0.08);
+    .stepItem::before {
+      display: none;
+    }
+  }
+}
+
+.divider {
+  background: rgba(38, 38, 38, 0.08);
+  height: 1px;
+}
+
+.settingsStepper {
+  margin-bottom: 20px;
+}

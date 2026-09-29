@@ -1,0 +1,8 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20210907"
+            author: medvedev-ad
+            changes:
+                -   createSequence:
+                        schemaName: authentication
+                        sequenceName: hibernate_sequence

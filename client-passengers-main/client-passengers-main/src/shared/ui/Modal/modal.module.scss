@@ -1,0 +1,140 @@
+.modalContainer {
+    z-index: 99999;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.spin {
+    width: 98px;
+    height: 40px;
+}
+
+.frame {
+    font-family: 'SB Sans Interface';
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.12), 0 12px 24px -6px rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: max-content;
+    text-align: left;
+    font-size: 20px;
+    color: #262626;
+    float: left;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #f2f3f6;
+    height: 80%;
+
+    @media screen and (max-width: 600px) {
+        width: 350px;
+    }
+
+    &__poppup {
+        border: none;
+    }
+
+    &__isReadOnly {
+        height: auto;
+    }
+
+    &__header {
+        width: 500px;
+        display: flex;
+        flex-direction: row;
+        padding: 12px 12px 0 24px;
+        box-sizing: border-box;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        span {
+            flex: 1;
+            position: relative;
+            line-height: 28px;
+            font-weight: 600;
+            display: inline-block;
+            flex-direction: row;
+            padding: 8px 0;
+            box-sizing: border-box;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        svg {
+            position: relative;
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+    }
+
+    &__content {
+        position: relative;
+        width: 100%;
+        top: 0;
+        height: max-content;
+        padding: 0 24px;
+    }
+
+    &__buttonGroup {
+        width: 508px;
+        display: flex;
+        padding: 24px 0;
+        box-sizing: border-box;
+        align-items: flex-end;
+        justify-content: right;
+        font-size: 14px;
+        flex-direction: row;
+        grid-gap: 16px;
+        gap: 16px;
+
+        @media screen and (max-width: 600px) {
+            width: 350px;
+        }
+
+        button {
+            @extend .spin;
+            border-radius: 8px;
+            font-family: 'SB Sans Text';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 22px;
+            letter-spacing: -0.3px;
+            cursor: pointer;
+            margin-top: 12px;
+        }
+    }
+
+    &__cancelButton {
+        background-color: white !important;
+        border-color: white !important;
+        color: black !important;
+
+        &:hover {
+            border: 1px solid #f2f3f6;
+            color: #262626;
+            opacity: 0.8;
+        }
+    }
+
+    &__confirmButton {
+        background-color: var(--jade);
+        margin-top: 12px;
+        color: white;
+        border-color: var(--jade);
+        border-style: inherit;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}

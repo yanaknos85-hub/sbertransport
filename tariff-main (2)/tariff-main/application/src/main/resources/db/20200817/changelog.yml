@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: tariff/20200817
+      tag: "20200817"
+      author: uas
+      dbms: postgresql
+      changes:
+          -   sqlFile:
+                  path: create_organization.sql
+                  relativeToChangelogFile: true
+                  endDelimiter: ;
+          -   sqlFile:
+                  path: create_sq_table.sql
+                  relativeToChangelogFile: true
+                  endDelimiter: ;
+          -   sqlFile:
+                  path: add_human_readableId.sql
+                  relativeToChangelogFile: true
+                  endDelimiter: ;

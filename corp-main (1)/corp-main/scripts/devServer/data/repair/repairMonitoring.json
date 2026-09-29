@@ -1,0 +1,679 @@
+{
+  "content": [
+    {
+      "id": "9637797d-aba5-d325-03cc-b71158274cdf",
+      "humanReadableId": "0030c3a1-e86c-482a-8d21-1072cca8a4dd",
+      "author": {
+        "id": "6e8add45-2629-edd8-f8a4-3c3d5f729d78",
+        "firstName": "Мусор",
+        "lastName": "Удаляемый",
+        "patronymic": "Мусорович",
+        "personnelNumber": "a25ac41c-10f0-9b92-2874-11a0ae417be2",
+        "departmentId": "63896491-a484-35c4-bcf5-6d074a218fb0",
+        "userId": "74ece6e4-1194-52fc-9669-9be43d529a06",
+        "positionId": "8b7bf8a6-04ee-4e6b-b30f-afd9ea79a1f5",
+        "positionName": "Разнорабочий",
+        "organizationId": "00c724c5-c116-4edf-a228-7a68cbe5b19b",
+        "departmentName": "Потомок_удаляемый_2",
+        "humanReadableId": "23337acf-cd94-95ea-78ad-97c1c063e372",
+        "mobilePhone": null
+      },
+      "transportType": "SPECIAL",
+      "tariffId": "71b49fbb-ee0c-4b9d-9121-f9f8c392e979",
+      "pickupTime": 1681108295149,
+      "comment": null,
+      "approvedBy": null,
+      "approvalState": "AWAITING_APPROVAL",
+      "approvalDate": null,
+      "status": "REPAIR_SEARCH_FOR_A_TOW_TRUCK",
+      "creationTime": 1681108295149,
+      "vehicle": {
+        "stateNumber": "К045ЕУ174",
+        "brand": "Lada",
+        "model": "2101",
+        "vin": "111",
+        "year": 2010,
+        "mileage": 240000
+      },
+      "address": {
+        "latitude": 53.720644,
+        "longitude": 91.44247,
+        "country": "Россия",
+        "region": "Республика Хакасия",
+        "city": "Абакан",
+        "street": null,
+        "house": null,
+        "building": null,
+        "structure": null
+      },
+      "problems": [
+        {
+          "problemName": "DOORS_AND_WINDOWS",
+          "defects": ["DOOR_CLOSING_SENSOR", "DOOR_LOCK"]
+        }
+      ],
+      "finishedTime": null,
+      "takeToWorkTime": null,
+      "transferToRepairTime": null,
+      "deadlineTime": 1662854400000,
+      "evaluation": {
+        "requestId": null,
+        "rating": 3,
+        "comment": "все хорошо",
+        "receivingTime": 1681108295149
+      },
+      "deadlineTimeChanger": null,
+      "deadlineTimeChange": null
+    },
+    {
+      "id": "9663976a-7ee0-d07b-d6c3-55d6bb3c6b91",
+      "humanReadableId": "005504de-ffeb-2fe1-de6d-e307c54bd6f7",
+      "author": {
+        "id": "3bb97f3a-81e7-132a-0d98-bd530298bc17",
+        "firstName": "Мусор",
+        "lastName": "Удаляемый",
+        "patronymic": "Мусорович",
+        "personnelNumber": "06b8b37d-59fe-2b4c-80bc-339f738fa383",
+        "departmentId": "fc94a270-1c50-b425-6ad6-e64ee3cc4402",
+        "userId": "cc805487-c788-bd8b-9792-19d333942fc0",
+        "positionId": "8b7bf8a6-04ee-4e6b-b30f-afd9ea79a1f5",
+        "positionName": "Разнорабочий",
+        "organizationId": "00c724c5-c116-4edf-a228-7a68cbe5b19b",
+        "departmentName": "Потомок_удаляемый_1",
+        "humanReadableId": "1ea216be-d36f-415e-df99-f55a08570852",
+        "mobilePhone": null
+      },
+      "transportType": "SPECIAL",
+      "tariffId": "71b49fbb-ee0c-4b9d-9121-f9f8c392e979",
+      "pickupTime": null,
+      "comment": null,
+      "approvedBy": null,
+      "approvalState": "AWAITING_APPROVAL",
+      "approvalDate": null,
+      "status": "REPAIR_REGISTRATION_AT_THE_SERVICE_STATION",
+      "creationTime": 1681108295149,
+      "vehicle": {
+        "stateNumber": "Н291ХР799",
+        "brand": "Lada",
+        "model": "2101",
+        "vin": "111",
+        "year": 2010,
+        "mileage": 240000
+      },
+      "address": {
+        "latitude": 53.720644,
+        "longitude": 91.44247,
+        "country": "Россия",
+        "region": "Республика Хакасия",
+        "city": "Абакан",
+        "street": null,
+        "house": null,
+        "building": null,
+        "structure": null
+      },
+      "problems": [
+        {
+          "problemName": "DOORS_AND_WINDOWS",
+          "defects": ["DOOR_CLOSING_SENSOR", "DOOR_LOCK"]
+        }
+      ],
+      "finishedTime": null,
+      "takeToWorkTime": null,
+      "transferToRepairTime": 1681108295149,
+      "deadlineTime": 1662854400000,
+      "evaluation": {
+        "requestId": null,
+        "rating": 3,
+        "comment": "все хорошо",
+        "receivingTime": 1681108295149
+      },
+      "deadlineTimeChanger": null,
+      "deadlineTimeChange": null
+    },
+    {
+      "id": "14495bb4-ee5b-caef-58ac-9eebd6015606",
+      "humanReadableId": "005810ca-18ab-4886-c9d6-0b39f137d4d7",
+      "author": {
+        "id": "9f040cb0-b0e6-68c6-3634-6e72c35bfa44",
+        "firstName": "Мусор",
+        "lastName": "Удаляемый",
+        "patronymic": "Мусорович",
+        "personnelNumber": "51b33fed-57c0-42ea-c5f2-63ef555109a8",
+        "departmentId": "1d6e6684-67bd-ddf2-f48c-da52685ec44e",
+        "userId": "95d600dc-2203-6e4e-5c81-e02b1145b496",
+        "positionId": "8b7bf8a6-04ee-4e6b-b30f-afd9ea79a1f5",
+        "positionName": "Разнорабочий",
+        "organizationId": "00c724c5-c116-4edf-a228-7a68cbe5b19b",
+        "departmentName": "Потомок_удаляемый_6",
+        "humanReadableId": "b9d90d5e-7c52-b424-fb7f-1d3d88865a82",
+        "mobilePhone": null
+      },
+      "transportType": "SPECIAL",
+      "tariffId": "71b49fbb-ee0c-4b9d-9121-f9f8c392e979",
+      "pickupTime": null,
+      "comment": null,
+      "approvedBy": null,
+      "approvalState": "AWAITING_APPROVAL",
+      "approvalDate": null,
+      "status": "REPAIR_REGISTRATION_AT_THE_SERVICE_STATION",
+      "creationTime": 1681108437924,
+      "vehicle": {
+        "stateNumber": "Х176МН515",
+        "brand": "Lada",
+        "model": "2101",
+        "vin": "111",
+        "year": 2010,
+        "mileage": 240000
+      },
+      "address": {
+        "latitude": 53.720644,
+        "longitude": 91.44247,
+        "country": "Россия",
+        "region": "Республика Хакасия",
+        "city": "Абакан",
+        "street": null,
+        "house": null,
+        "building": null,
+        "structure": null
+      },
+      "problems": [
+        {
+          "problemName": "DOORS_AND_WINDOWS",
+          "defects": ["DOOR_CLOSING_SENSOR", "DOOR_LOCK"]
+        }
+      ],
+      "finishedTime": null,
+      "takeToWorkTime": null,
+      "transferToRepairTime": 1681108437924,
+      "deadlineTime": 1662854400000,
+      "evaluation": {
+        "requestId": null,
+        "rating": 3,
+        "comment": "все хорошо",
+        "receivingTime": 1681108437924
+      },
+      "deadlineTimeChanger": null,
+      "deadlineTimeChange": null
+    },
+    {
+      "id": "6e5338e4-91e7-74f7-e8a9-659c978dd683",
+      "humanReadableId": "007dd6fb-d784-f159-50df-def3d9103e9c",
+      "author": {
+        "id": "31e56e83-b793-6188-3a63-bb7c885f0501",
+        "firstName": "Мусор",
+        "lastName": "Удаляемый",
+        "patronymic": "Мусорович",
+        "personnelNumber": "4a80ddd0-b4e3-1496-9298-2a4afd30952a",
+        "departmentId": "c934c764-adc5-f228-3fcf-c7a84d4b9329",
+        "userId": "fa26ebd7-2887-3eac-7050-859ad34ac670",
+        "positionId": "8b7bf8a6-04ee-4e6b-b30f-afd9ea79a1f5",
+        "positionName": "Разнорабочий",
+        "organizationId": "00c724c5-c116-4edf-a228-7a68cbe5b19b",
+        "departmentName": "Потомок_удаляемый_7",
+        "humanReadableId": "03175404-fc34-712f-d9c3-6de5bde2624a",
+        "mobilePhone": null
+      },
+      "transportType": "SPECIAL",
+      "tariffId": "71b49fbb-ee0c-4b9d-9121-f9f8c392e979",
+      "pickupTime": null,
+      "comment": null,
+      "approvedBy": null,
+      "approvalState": "AWAITING_APPROVAL",
+      "approvalDate": null,
+      "status": "REPAIR_REGISTRATION_AT_THE_SERVICE_STATION",
+      "creationTime": 1681108419492,
+      "vehicle": {
+        "stateNumber": "У827УМ629",
+        "brand": "Lada",
+        "model": "2101",
+        "vin": "111",
+        "year": 2010,
+        "mileage": 240000
+      },
+      "address": {
+        "latitude": 53.720644,
+        "longitude": 91.44247,
+        "country": "Россия",
+        "region": "Республика Хакасия",
+        "city": "Абакан",
+        "street": null,
+        "house": null,
+        "building": null,
+        "structure": null
+      },
+      "problems": [
+        {
+          "problemName": "DOORS_AND_WINDOWS",
+          "defects": ["DOOR_CLOSING_SENSOR", "DOOR_LOCK"]
+        }
+      ],
+      "finishedTime": null,
+      "takeToWorkTime": null,
+      "transferToRepairTime": 1681108419492,
+      "deadlineTime": 1662854400000,
+      "evaluation": {
+        "requestId": null,
+        "rating": 3,
+        "comment": "все хорошо",
+        "receivingTime": 1681108419492
+      },
+      "deadlineTimeChanger": null,
+      "deadlineTimeChange": null
+    },
+    {
+      "id": "ef834d36-80bb-fef6-f138-10d516a4c2ec",
+      "humanReadableId": "0081420e-ab8f-0024-5ddb-4a0acfa5ef66",
+      "author": {
+        "id": "3bb5f4dc-1d0f-3b31-d2bf-1b40016d5ffb",
+        "firstName": "Мусор",
+        "lastName": "Удаляемый",
+        "patronymic": "Мусорович",
+        "personnelNumber": "07c21cac-1caf-c82c-9b72-e7354de75665",
+        "departmentId": "9ebdf2a1-f077-4e69-4313-a392d1b32066",
+        "userId": "54259fe7-2a3b-cb88-d097-b657bf7bcbd8",
+        "positionId": "8b7bf8a6-04ee-4e6b-b30f-afd9ea79a1f5",
+        "positionName": "Разнорабочий",
+        "organizationId": "00c724c5-c116-4edf-a228-7a68cbe5b19b",
+        "departmentName": "Потомок_удаляемый_2",
+        "humanReadableId": "6ff3df35-a2bf-0352-080b-023249c0554d",
+        "mobilePhone": null
+      },
+      "transportType": "SPECIAL",
+      "tariffId": "71b49fbb-ee0c-4b9d-9121-f9f8c392e979",
+      "pickupTime": 1680019890490,
+      "comment": null,
+      "approvedBy": null,
+      "approvalState": "AWAITING_APPROVAL",
+      "approvalDate": null,
+      "status": "REPAIR_SEARCH_FOR_A_TOW_TRUCK",
+      "creationTime": 1680019890490,
+      "vehicle": {
+        "stateNumber": "У733РС46",
+        "brand": "Lada",
+        "model": "2101",
+        "vin": "111",
+        "year": 2010,
+        "mileage": 240000
+      },
+      "address": {
+        "latitude": 53.720644,
+        "longitude": 91.44247,
+        "country": "Россия",
+        "region": "Республика Хакасия",
+        "city": "Абакан",
+        "street": null,
+        "house": null,
+        "building": null,
+        "structure": null
+      },
+      "problems": [
+        {
+          "problemName": "DOORS_AND_WINDOWS",
+          "defects": ["DOOR_CLOSING_SENSOR", "DOOR_LOCK"]
+        }
+      ],
+      "finishedTime": null,
+      "takeToWorkTime": null,
+      "transferToRepairTime": null,
+      "deadlineTime": 1662854400000,
+      "evaluation": {
+        "requestId": null,
+        "rating": 3,
+        "comment": "все хорошо",
+        "receivingTime": 1680019890490
+      },
+      "deadlineTimeChanger": null,
+      "deadlineTimeChange": null
+    },
+    {
+      "id": "f1822fb6-e656-e377-b54b-e1d9954b71d6",
+      "humanReadableId": "00828074-00c0-9b67-05eb-73e391255d25",
+      "author": {
+        "id": "33130ab4-312d-78e5-407f-deb87d7ea92a",
+        "firstName": "Мусор",
+        "lastName": "Удаляемый",
+        "patronymic": "Мусорович",
+        "personnelNumber": "20f975e9-5012-a662-5644-c8ed8fc873d9",
+        "departmentId": "38fc5231-da56-59e7-cbe4-91b9fc7853f8",
+        "userId": "b30fb3e7-452e-cc18-cd98-6244df1ec71d",
+        "positionId": "8b7bf8a6-04ee-4e6b-b30f-afd9ea79a1f5",
+        "positionName": "Разнорабочий",
+        "organizationId": "00c724c5-c116-4edf-a228-7a68cbe5b19b",
+        "departmentName": "Потомок_удаляемый_4",
+        "humanReadableId": "ea046b32-9cea-4460-2810-7df490f61e19",
+        "mobilePhone": null
+      },
+      "transportType": "SPECIAL",
+      "tariffId": "71b49fbb-ee0c-4b9d-9121-f9f8c392e979",
+      "pickupTime": 1681108378832,
+      "comment": null,
+      "approvedBy": null,
+      "approvalState": "AWAITING_APPROVAL",
+      "approvalDate": null,
+      "status": "REPAIR_SEARCH_FOR_A_TOW_TRUCK",
+      "creationTime": 1681108378832,
+      "vehicle": {
+        "stateNumber": "С264МН926",
+        "brand": "Lada",
+        "model": "2101",
+        "vin": "111",
+        "year": 2010,
+        "mileage": 240000
+      },
+      "address": {
+        "latitude": 53.720644,
+        "longitude": 91.44247,
+        "country": "Россия",
+        "region": "Республика Хакасия",
+        "city": "Абакан",
+        "street": null,
+        "house": null,
+        "building": null,
+        "structure": null
+      },
+      "problems": [
+        {
+          "problemName": "DOORS_AND_WINDOWS",
+          "defects": ["DOOR_CLOSING_SENSOR", "DOOR_LOCK"]
+        }
+      ],
+      "finishedTime": null,
+      "takeToWorkTime": null,
+      "transferToRepairTime": null,
+      "deadlineTime": 1662854400000,
+      "evaluation": {
+        "requestId": null,
+        "rating": 3,
+        "comment": "все хорошо",
+        "receivingTime": 1681108378832
+      },
+      "deadlineTimeChanger": null,
+      "deadlineTimeChange": null
+    },
+    {
+      "id": "b90be8c7-6b81-fccf-6063-80dbf7e67eef",
+      "humanReadableId": "0092225b-16a9-becb-ce02-1ec32b3b11e1",
+      "author": {
+        "id": "de739d60-83b5-d0e7-329d-4dc3d5a44721",
+        "firstName": "Мусор",
+        "lastName": "Удаляемый",
+        "patronymic": "Мусорович",
+        "personnelNumber": "9ab3b33c-2ea1-a882-f651-2b8bc8f552f8",
+        "departmentId": "c0b88c56-5c4e-03e6-5af8-f59472555237",
+        "userId": "378cc66b-e6b9-4650-6773-8a8e695a24e3",
+        "positionId": "8b7bf8a6-04ee-4e6b-b30f-afd9ea79a1f5",
+        "positionName": "Разнорабочий",
+        "organizationId": "00c724c5-c116-4edf-a228-7a68cbe5b19b",
+        "departmentName": "Потомок_удаляемый_5",
+        "humanReadableId": "2c420ad5-fc55-347e-66bf-bc92398b779c",
+        "mobilePhone": null
+      },
+      "transportType": "SPECIAL",
+      "tariffId": "71b49fbb-ee0c-4b9d-9121-f9f8c392e979",
+      "pickupTime": null,
+      "comment": null,
+      "approvedBy": null,
+      "approvalState": "AWAITING_APPROVAL",
+      "approvalDate": null,
+      "status": "REPAIR_REGISTRATION_AT_THE_SERVICE_STATION",
+      "creationTime": 1681108295149,
+      "vehicle": {
+        "stateNumber": "Т904НК526",
+        "brand": "Lada",
+        "model": "2101",
+        "vin": "111",
+        "year": 2010,
+        "mileage": 240000
+      },
+      "address": {
+        "latitude": 53.720644,
+        "longitude": 91.44247,
+        "country": "Россия",
+        "region": "Республика Хакасия",
+        "city": "Абакан",
+        "street": null,
+        "house": null,
+        "building": null,
+        "structure": null
+      },
+      "problems": [
+        {
+          "problemName": "DOORS_AND_WINDOWS",
+          "defects": ["DOOR_CLOSING_SENSOR", "DOOR_LOCK"]
+        }
+      ],
+      "finishedTime": null,
+      "takeToWorkTime": null,
+      "transferToRepairTime": 1681108295149,
+      "deadlineTime": 1662854400000,
+      "evaluation": {
+        "requestId": null,
+        "rating": 3,
+        "comment": "все хорошо",
+        "receivingTime": 1681108295149
+      },
+      "deadlineTimeChanger": null,
+      "deadlineTimeChange": null
+    },
+    {
+      "id": "e1ea7172-10ee-79f6-b4ee-30a817aee85d",
+      "humanReadableId": "009d0ca5-858b-cd7b-44fa-4b5f7301da8b",
+      "author": {
+        "id": "29ff9504-4f0e-354c-1c89-5f9047351000",
+        "firstName": "Мусор",
+        "lastName": "Удаляемый",
+        "patronymic": "Мусорович",
+        "personnelNumber": "866742b8-5df8-e285-b267-69dc21eab441",
+        "departmentId": "44fe155c-cdd4-4f41-9d17-3bde18a5c037",
+        "userId": "1cecea9f-50ee-36ed-ca4b-f18f8a42d6e8",
+        "positionId": "8b7bf8a6-04ee-4e6b-b30f-afd9ea79a1f5",
+        "positionName": "Разнорабочий",
+        "organizationId": "00c724c5-c116-4edf-a228-7a68cbe5b19b",
+        "departmentName": "Потомок_удаляемый_7",
+        "humanReadableId": "07a33d52-d071-8871-2a4d-b85c793b66e6",
+        "mobilePhone": null
+      },
+      "transportType": "SPECIAL",
+      "tariffId": "71b49fbb-ee0c-4b9d-9121-f9f8c392e979",
+      "pickupTime": null,
+      "comment": null,
+      "approvedBy": null,
+      "approvalState": "AWAITING_APPROVAL",
+      "approvalDate": null,
+      "status": "REPAIR_REGISTRATION_AT_THE_SERVICE_STATION",
+      "creationTime": 1680019890490,
+      "vehicle": {
+        "stateNumber": "Р974МН722",
+        "brand": "Lada",
+        "model": "2101",
+        "vin": "111",
+        "year": 2010,
+        "mileage": 240000
+      },
+      "address": {
+        "latitude": 53.720644,
+        "longitude": 91.44247,
+        "country": "Россия",
+        "region": "Республика Хакасия",
+        "city": "Абакан",
+        "street": null,
+        "house": null,
+        "building": null,
+        "structure": null
+      },
+      "problems": [
+        {
+          "problemName": "DOORS_AND_WINDOWS",
+          "defects": ["DOOR_CLOSING_SENSOR", "DOOR_LOCK"]
+        }
+      ],
+      "finishedTime": null,
+      "takeToWorkTime": null,
+      "transferToRepairTime": 1680019890490,
+      "deadlineTime": 1662854400000,
+      "evaluation": {
+        "requestId": null,
+        "rating": 3,
+        "comment": "все хорошо",
+        "receivingTime": 1680019890490
+      },
+      "deadlineTimeChanger": null,
+      "deadlineTimeChange": null
+    },
+    {
+      "id": "61fe9995-ad3e-e54e-cba6-0ab4f9747674",
+      "humanReadableId": "00a0a152-19ce-b04c-03ee-6b5f179ae4bf",
+      "author": {
+        "id": "1bf9a670-13f5-6732-9c59-a60d9ca79515",
+        "firstName": "Мусор",
+        "lastName": "Удаляемый",
+        "patronymic": "Мусорович",
+        "personnelNumber": "32d97e97-fabb-c2fa-3682-2a60ffa91a06",
+        "departmentId": "c6d1ffb8-9763-c5ab-e632-7c46297bad84",
+        "userId": "1a4e0de7-8992-5d93-bc5b-ae4da32f5f91",
+        "positionId": "8b7bf8a6-04ee-4e6b-b30f-afd9ea79a1f5",
+        "positionName": "Разнорабочий",
+        "organizationId": "00c724c5-c116-4edf-a228-7a68cbe5b19b",
+        "departmentName": "Потомок_удаляемый_4",
+        "humanReadableId": "b6938037-4968-304a-2cf6-fdae20ec5b70",
+        "mobilePhone": null
+      },
+      "transportType": "SPECIAL",
+      "tariffId": "71b49fbb-ee0c-4b9d-9121-f9f8c392e979",
+      "pickupTime": 1680019890490,
+      "comment": null,
+      "approvedBy": null,
+      "approvalState": "AWAITING_APPROVAL",
+      "approvalDate": null,
+      "status": "REPAIR_SEARCH_FOR_A_TOW_TRUCK",
+      "creationTime": 1680019890490,
+      "vehicle": {
+        "stateNumber": "Н495МЕ966",
+        "brand": "Lada",
+        "model": "2101",
+        "vin": "111",
+        "year": 2010,
+        "mileage": 240000
+      },
+      "address": {
+        "latitude": 53.720644,
+        "longitude": 91.44247,
+        "country": "Россия",
+        "region": "Республика Хакасия",
+        "city": "Абакан",
+        "street": null,
+        "house": null,
+        "building": null,
+        "structure": null
+      },
+      "problems": [
+        {
+          "problemName": "DOORS_AND_WINDOWS",
+          "defects": ["DOOR_CLOSING_SENSOR", "DOOR_LOCK"]
+        }
+      ],
+      "finishedTime": null,
+      "takeToWorkTime": null,
+      "transferToRepairTime": null,
+      "deadlineTime": 1662854400000,
+      "evaluation": {
+        "requestId": null,
+        "rating": 3,
+        "comment": "все хорошо",
+        "receivingTime": 1680019890490
+      },
+      "deadlineTimeChanger": null,
+      "deadlineTimeChange": null
+    },
+    {
+      "id": "a1acdd4c-f8fa-31f2-bf0e-6b952ba41504",
+      "humanReadableId": "00adb210-6ad2-2a5c-511e-8b38c38948f9",
+      "author": {
+        "id": "15863c2f-ed5d-1ecd-5f2d-670f1f0f3973",
+        "firstName": "Мусор",
+        "lastName": "Удаляемый",
+        "patronymic": "Мусорович",
+        "personnelNumber": "52a227b8-aba8-7179-7b0b-33a00ef65257",
+        "departmentId": "4d82db9e-6532-fba0-410e-07d05299eab1",
+        "userId": "6940a645-ecf9-afcd-a166-726ddaa757db",
+        "positionId": "8b7bf8a6-04ee-4e6b-b30f-afd9ea79a1f5",
+        "positionName": "Разнорабочий",
+        "organizationId": "00c724c5-c116-4edf-a228-7a68cbe5b19b",
+        "departmentName": "Потомок_удаляемый_10",
+        "humanReadableId": "c1b9d719-0dc8-bedf-3b83-cb3dc60f0fbc",
+        "mobilePhone": null
+      },
+      "transportType": "SPECIAL",
+      "tariffId": "71b49fbb-ee0c-4b9d-9121-f9f8c392e979",
+      "pickupTime": 1681108437924,
+      "comment": null,
+      "approvedBy": null,
+      "approvalState": "AWAITING_APPROVAL",
+      "approvalDate": null,
+      "status": "REPAIR_SEARCH_FOR_A_TOW_TRUCK",
+      "creationTime": 1681108437924,
+      "vehicle": {
+        "stateNumber": "К228ЕР281",
+        "brand": "Lada",
+        "model": "2101",
+        "vin": "111",
+        "year": 2010,
+        "mileage": 240000
+      },
+      "address": {
+        "latitude": 53.720644,
+        "longitude": 91.44247,
+        "country": "Россия",
+        "region": "Республика Хакасия",
+        "city": "Абакан",
+        "street": null,
+        "house": null,
+        "building": null,
+        "structure": null
+      },
+      "problems": [
+        {
+          "problemName": "DOORS_AND_WINDOWS",
+          "defects": ["DOOR_CLOSING_SENSOR", "DOOR_LOCK"]
+        }
+      ],
+      "finishedTime": null,
+      "takeToWorkTime": null,
+      "transferToRepairTime": null,
+      "deadlineTime": 1662854400000,
+      "evaluation": {
+        "requestId": null,
+        "rating": 3,
+        "comment": "все хорошо",
+        "receivingTime": 1681108437924
+      },
+      "deadlineTimeChanger": null,
+      "deadlineTimeChange": null
+    }
+  ],
+  "pageable": {
+    "sort": {
+      "sorted": true,
+      "unsorted": false,
+      "empty": false
+    },
+    "pageSize": 10,
+    "pageNumber": 0,
+    "offset": 0,
+    "paged": true,
+    "unpaged": false
+  },
+  "totalElements": 10018,
+  "totalPages": 1002,
+  "last": false,
+  "numberOfElements": 10,
+  "first": true,
+  "sort": {
+    "sorted": true,
+    "unsorted": false,
+    "empty": false
+  },
+  "number": 0,
+  "size": 10,
+  "empty": false
+}

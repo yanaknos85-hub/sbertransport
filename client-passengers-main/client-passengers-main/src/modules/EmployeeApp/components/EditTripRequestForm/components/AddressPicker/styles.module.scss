@@ -1,0 +1,22 @@
+.wrapper {
+  width: 100%;
+  padding-bottom: 2px;
+  overflow-x: scroll !important;
+
+  display: grid;
+  grid-gap: var(--padding-half);
+
+  grid-template-columns: repeat(5, auto);
+}
+
+.buttonsDiv {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+}
+
+.item {
+  cursor: pointer;
+
+  &Span {
+    width: 100%;
+  }
+}

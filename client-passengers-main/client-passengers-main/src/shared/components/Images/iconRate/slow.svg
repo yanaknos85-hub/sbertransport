@@ -1,0 +1,24 @@
+<svg width="48.000000" height="48.000000" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip33_3089">
+			<rect id="Property 1=low speed" width="48.000000" height="48.000000" fill="white"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip33_3089)">
+		<mask id="mask_33_3091" fill="white">
+			<path id="Subtract" d="M23.8206 6.99976C11.7693 6.99976 2 16.7692 2 28.8203C2 32.9921 3.17065 36.8905 5.20166 40.2048L42.4395 40.2048C44.4702 36.8905 45.6411 32.9921 45.6411 28.8203C45.6411 16.7692 35.8716 6.99976 23.8206 6.99976ZM23.8496 50.6407L23.7913 50.6407L23.8206 50.6407L23.8496 50.6407Z" clip-rule="evenodd" fill-rule="evenodd" fill-opacity="1.000000"/>
+		</mask>
+		<path id="Subtract" d="M23.8206 6.99976C11.7693 6.99976 2 16.7692 2 28.8203C2 32.9921 3.17065 36.8905 5.20166 40.2048L42.4395 40.2048C44.4702 36.8905 45.6411 32.9921 45.6411 28.8203C45.6411 16.7692 35.8716 6.99976 23.8206 6.99976ZM23.8496 50.6407L23.7913 50.6407L23.8206 50.6407L23.8496 50.6407Z" clip-rule="evenodd" fill-rule="evenodd" fill="#FFFFFF" fill-opacity="1.000000" mask="url(#mask_33_3091)"/>
+		<path id="Subtract" d="M2 28.8203C2 16.7692 11.7693 6.99976 23.8206 6.99976C35.8716 6.99976 45.6411 16.7692 45.6411 28.8203C45.6411 32.9921 44.4702 36.8905 42.4395 40.2048L5.20166 40.2048C3.17065 36.8905 2 32.9921 2 28.8203ZM6.35588 38.2048L41.2852 38.2048Q42.2823 36.365 42.8574 34.4016Q43.6411 31.7257 43.6411 28.8203C43.6411 23.3469 41.7058 18.6753 37.8357 14.8051C33.9656 10.9348 29.2937 8.99976 23.8206 8.99976C18.3472 8.99976 13.6755 10.9348 9.80518 14.8051C5.93506 18.6753 4 23.3469 4 28.8203Q4 31.7257 4.78374 34.4016Q5.35882 36.365 6.35588 38.2048Z" clip-rule="evenodd" fill-rule="evenodd" fill="#000000" fill-opacity="1.000000"/>
+		<circle id="Ellipse 71" r="2.846153" transform="matrix(1 0 0 1 23.8208 33.5641)" fill="#FFFFFF"/>
+		<circle id="Ellipse 71" r="1.846153" transform="matrix(1 0 0 1 23.8208 33.5641)" stroke="#000000" stroke-width="2.000000"/>
+		<path id="Vector 20" d="M22.3845 32.3335L11 20.0001" stroke="#000000" stroke-width="2.000000" stroke-linecap="round"/>
+		<path id="Ellipse 70" d="" fill-rule="nonzero" fill="#D9D9D9"/>
+		<path id="Ellipse 70" d="M8.17163 26.6622Q7.52246 31.0582 9.22632 35.1434L7.38062 35.9133Q5.46265 31.3156 6.19312 26.3701L8.17163 26.6622Z" fill-rule="evenodd" fill="#000000"/>
+		<path id="Ellipse 72" d="" fill-rule="nonzero" fill="#D9D9D9"/>
+		<path id="Ellipse 72" d="M12.1753 31.0432Q12.5417 33.1635 13.6096 35.0033L11.8799 36.0074Q10.6318 33.8574 10.2046 31.3838L12.1753 31.0432Z" fill-rule="evenodd" fill="#000000"/>
+	</g>
+</svg>

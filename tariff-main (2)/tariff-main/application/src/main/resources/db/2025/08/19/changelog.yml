@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250305-0929"
+      author: chizhov-nd
+      changes:
+        - addColumn:
+            schemaName: tariff
+            tableName: contract
+            columns:
+              - column:
+                  name: driver_late_pickup_penalty
+                  type: numeric(3, 2)
+                  remarks: Процент взимаемый с контрагента из общей суммы реестра за опоздание водителей к времени подачи
+                  defaultValue: 0.01
+                  defaultOnNull: true
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: contract_driver_late_pickup_penalty_nn
+              - column:
+                  name: poor_service_quality_penalty
+                  type: numeric(3, 2)
+                  remarks: Процент взимаемый с контрагента из общей суммы реестра  за ненадлежащее качество услуг
+                  defaultValue: 0.01
+                  defaultOnNull: true
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: contract_poor_service_quality_penalty_nn
+              - column:
+                  name: driver_order_cancellation_penalty
+                  type: numeric(3, 2)
+                  remarks: Процент взимаемый с контрагента из общей суммы реестра за отмену заявок водителями
+                  defaultValue: 0.01
+                  defaultOnNull: true
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: contract_order_cancellation_penalty_nn
+      rollback:
+        - dropColumn:
+            schemaName: tariff
+            tableName: contract
+            columnName: driver_late_pickup_penalty
+        - dropColumn:
+            schemaName: tariff
+            tableName: contract
+            columnName: poor_service_quality_penalty
+        - dropColumn:
+            schemaName: tariff
+            tableName: contract
+            columnName: driver_order_cancellation_penalty

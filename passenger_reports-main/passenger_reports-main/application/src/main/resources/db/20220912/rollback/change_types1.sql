@@ -1,0 +1,1 @@
+alter table reports.tariff drop column if exists trust_idx;

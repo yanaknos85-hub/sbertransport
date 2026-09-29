@@ -1,0 +1,22 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230428"
+            author: blandin-ad
+            changes:
+                -   tagDatabase:
+                        tag: "20230428"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: taxi_trip
+                        columns:
+                            -   column:
+                                    name: human_readable_id
+                                    type: text
+                                    remarks: Человекочитаемый ID поездки
+            rollback:
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: taxi_trip
+                        columns:
+                            -   column:
+                                    name: human_readable_id

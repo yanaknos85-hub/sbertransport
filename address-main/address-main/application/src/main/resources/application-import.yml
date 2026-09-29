@@ -1,0 +1,26 @@
+works:
+    files:
+        -   url: /meeting
+            fileType:
+                - xlsx
+                - xls
+            collections:
+                -   name: Филиалы
+                    type: ru.sber.transport.address.web.resolver.model.MeetingAddressFileDTO
+                    mappings:
+                        -   from: Страна
+                            to: country
+                        -   from: Регион
+                            to: region
+                        -   from: Город
+                            to: city
+                        -   from: Улица
+                            to: street
+                        -   from: Дом
+                            to: house
+                        -   from: Корпус
+                            to: structure
+                        -   from: Строение
+                            to: building
+                        -   from: Название
+                            to: label

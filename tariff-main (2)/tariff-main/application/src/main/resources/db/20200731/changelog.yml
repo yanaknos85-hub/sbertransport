@@ -1,0 +1,11 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20200731
+            tag: "20200731"
+            author: apa
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: add_coments.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

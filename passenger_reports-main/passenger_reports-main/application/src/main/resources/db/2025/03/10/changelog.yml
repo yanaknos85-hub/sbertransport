@@ -1,0 +1,46 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20250310"
+            author: rakhimov-di
+            changes:
+                -   tagDatabase:
+                        tag: "20250310"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: taxi_trip
+                        columns:
+                            -   column:
+                                    type: double precision
+                                    name: registry_fact_waiting_time
+                                    remarks: Фактическое время ожидания в минутах
+                            -   column:
+                                    type: varchar
+                                    name: registry_human_readable_id
+                                    remarks: Человекочитаемый идентификатор реестра
+                            -   column:
+                                    type: double precision
+                                    name: registry_fact_cost
+                                    remarks: Фактическая стоимость
+                            -   column:
+                                    type: double precision
+                                    name: registry_fact_distance
+                                    remarks: Фактическое расстояние
+                            -   column:
+                                    type: boolean
+                                    name: registry_fact_payment
+                                    remarks: Факт оплаты
+            rollback:
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: taxi_trip
+                        columns:
+                            -   column:
+                                    name: registry_fact_waiting_time
+                            -   column:
+                                    name: registry_human_readable_id
+                            -   column:
+                                    name: registry_fact_cost
+                            -   column:
+                                    name: registry_fact_distance
+                            -   column:
+                                    name: registry_fact_payment

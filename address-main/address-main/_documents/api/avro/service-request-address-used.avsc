@@ -1,0 +1,92 @@
+{
+  "type" : "record",
+  "name" : "UsedAddressMessage",
+  "namespace" : "ru.sber.transport.messages.addresses.avro",
+  "fields": [
+    {
+      "name": "id",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      },
+      "aliases":[
+        "headerId"
+      ]
+    },
+    {
+      "name": "employeeId",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "first",
+      "type": "boolean"
+    },
+    {
+      "name": "coordinates",
+      "type": {
+        "type": "record",
+        "name": "Coordinates",
+        "fields": [
+          {
+            "name": "latitude",
+            "type": {
+              "type": "bytes",
+              "logicalType": "decimal",
+              "precision": 9,
+              "scale": 6
+            }
+          },
+          {
+            "name": "longitude",
+            "type": {
+              "type": "bytes",
+              "logicalType": "decimal",
+              "precision": 9,
+              "scale": 6
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "address",
+      "type": {
+        "type": "record",
+        "name": "Address",
+        "fields":[
+          {
+            "name": "country",
+            "type": "string"
+          },
+          {
+            "name": "region",
+            "type": "string"
+          },
+          {
+            "name": "city",
+            "type": [ "null", "string"]
+          },
+          {
+            "name": "street",
+            "type": [ "null", "string"]
+          },
+          {
+            "name": "house",
+            "type": [ "null", "string"]
+          },
+          {
+            "name": "building",
+            "type": [ "null", "string"]
+          },
+          {
+            "name": "structure",
+            "type": [ "null", "string"]
+          }
+        ]
+      }
+    }
+  ]
+}

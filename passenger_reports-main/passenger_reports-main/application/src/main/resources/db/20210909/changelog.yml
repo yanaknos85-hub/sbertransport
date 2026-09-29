@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20210909"
+            author: medvedev-ad
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    name: resolution
+                                    type: text
+                                    remarks: Решение перевозчика

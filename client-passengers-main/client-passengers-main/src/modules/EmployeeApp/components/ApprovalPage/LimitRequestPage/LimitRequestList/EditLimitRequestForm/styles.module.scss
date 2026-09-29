@@ -1,0 +1,46 @@
+.month {
+  width: 20ex;
+}
+
+.input {
+  max-width: 10em;
+}
+
+.inputs {
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pin {
+  color: gray;
+  width: 32px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.pinned {
+  color: var(--success-color);
+}
+
+.field {
+  display: flex;
+  flex-direction: row;
+  margin: 6px;
+}
+
+.total {
+  color: var(--success-color);
+}
+
+.total.error {
+  color: var(--error-color);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

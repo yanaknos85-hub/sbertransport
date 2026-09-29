@@ -1,0 +1,25 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211102"
+            author: medvedev-ad
+            changes:
+                -   createTable:
+                        schemaName: authentication
+                        tableName: audit
+                        columns:
+                            -   column:
+                                    name: timestamp
+                                    type: timestamp
+                                    remarks: Время выполнения операции
+                            -   column:
+                                    name: result
+                                    type: text
+                                    remarks: Результат выполнения
+                            -   column:
+                                    name: action
+                                    type: text
+                                    remarks: Операция
+                            -   column:
+                                    name: login
+                                    type: text
+                                    remarks: Инициатор

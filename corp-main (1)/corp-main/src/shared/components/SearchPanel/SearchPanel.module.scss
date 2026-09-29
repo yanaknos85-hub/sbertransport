@@ -1,0 +1,42 @@
+.searchInput {
+  display: flex;
+  align-items: center;
+  position: relative;
+  min-width: 340px;
+  width: 100%;
+  color: #adadad;
+  height: fit-content;
+  background-color: var(--solitude);
+  border-radius: 8px;
+
+  &.short {
+    min-width: 220px;
+    width: auto;
+  }
+
+  .input {
+    height: 40px;
+    font-size: 14px;
+    line-height: 22px;
+    border: none;
+    outline: none;
+    background-color: var(--solitude);
+    border-radius: 8px;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .divider {
+    background: rgba(38, 38, 38, 0.08);
+    width: 1px;
+    height: 20px;
+    margin-right: 13px;
+  }
+
+  svg {
+    margin-right: 14px;
+    stroke-width: 4px;
+  }
+}

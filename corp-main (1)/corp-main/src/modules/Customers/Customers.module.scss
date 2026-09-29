@@ -1,0 +1,16 @@
+.container {
+  width: 100%;
+  position: relative;
+  font-family: "SB Sans Text", sans-serif;
+  padding-top: 24px;
+
+  :global(.ant-tabs-tab) {
+    font-size: 16px;
+    letter-spacing: -0.3px;
+    color: #737373;
+  }
+
+  :global(.ant-tabs-top > .ant-tabs-nav::before) {
+    display: none;
+  }
+}

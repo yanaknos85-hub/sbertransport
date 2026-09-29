@@ -1,0 +1,8 @@
+server:
+  port: 0
+spring:
+  cloud:
+    kubernetes.enabled: false
+    consul.enabled: false
+https:
+    enabled: false

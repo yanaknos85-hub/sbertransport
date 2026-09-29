@@ -1,0 +1,39 @@
+.table_edit_buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .ant-list-item {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .ant-table-footer {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .ant-btn {
+    width: 100%;
+    margin-top: var(--margin-half);
+  }
+
+  .anticon-edit {
+    color: var(--link-color);
+  }
+
+  .ant-list-item-action-split {
+    display: none;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+}

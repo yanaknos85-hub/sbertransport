@@ -1,0 +1,22 @@
+@mixin tooltipStyles {
+  .ant-tooltip-inner {
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.12), 0 0 1px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+    padding: 11px 16px;
+
+    font-family: 'SB Sans Text';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+    color: #262626;
+  }
+
+  .ant-tooltip-arrow-content {
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.12), 0 0 1px 0 rgba(0, 0, 0, 0.12) !important;
+    width: 10px;
+    height: 10px;
+  }
+}

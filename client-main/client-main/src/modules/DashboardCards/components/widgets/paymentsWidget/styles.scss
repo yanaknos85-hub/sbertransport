@@ -1,0 +1,40 @@
+.ant-select-selector:after {
+    content: url(../../../../../shared/components/Images/Filter2.png) !important;
+    width: 10px;
+    height: 10px;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: none !important;
+    margin: 3px 12px 0px 0px !important;
+}
+
+.ant-table-tbody > tr > td {
+  padding: 9px 12px !important;
+}
+
+.ant-table-thead > tr > th {
+  padding: 7.5px 12px !important;
+  color: rgb(144, 144, 144) !important;
+  font-family: SB Sans Interface;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+}
+
+.ant-table-wrapper {
+  border: 1px solid rgb(242, 242, 242);
+  border-radius: 8px;
+}
+
+.ant-table-tbody > tr:last-child > td {
+  border: none !important;
+}
+
+.ant-table-thead > tr > th:not(:first-of-type) {
+  text-align: center;
+}
+
+.ant-table-thead > tr > th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
+  display: none;
+}

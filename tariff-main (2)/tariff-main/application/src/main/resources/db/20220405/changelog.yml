@@ -1,0 +1,15 @@
+databaseChangeLog:
+    -   changeSet:
+            id: 20220405
+            tag: "20220405"
+            author: aenikandrov
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/alter_cargo_tariff_courier.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/rollback_cargo_tariff_courier.sql
+                        relativeToChangelogFile: true

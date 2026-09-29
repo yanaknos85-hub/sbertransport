@@ -1,0 +1,55 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20210527
+            tag: "20210527"
+            author: medvedev-ad
+            dbms: postgresql
+            changes:
+                - createTable:
+                      schemaName: tariff
+                      tableName: messages_geo_zone
+                      columns:
+                          - column:
+                                name: id
+                                type: uuid
+                                remarks: Идентификатор
+                                constraints:
+                                    primaryKey: true
+                                    primaryKeyName: geo_zone_pkey
+                          - column:
+                                name: code
+                                type: int8
+                                remarks: Код геозоны
+                          - column:
+                                name: name
+                                type: text
+                                remarks: Название геозоны
+                          - column:
+                                name: parent_id
+                                type: uuid
+                                remarks: Идентификатор родительской геозоны
+                - createTable:
+                      schemaName: tariff
+                      tableName: contract_region
+                      remarks: Связь договоров и регионов
+                      columns:
+                          - column:
+                                name: contract_id
+                                type: uuid
+                                remarks: Идентификатор договора
+                                constraints:
+                                    nullable: false
+                                    foreignKeyName: contract_region_fkey
+                                    referencedTableSchemaName: tariff
+                                    referencedTableName: contract
+                                    referencedColumnNames: id
+                          - column:
+                                remarks: Идентификатор региона
+                                name: region_id
+                                type: uuid
+                                constraints:
+                                    nullable: false
+                -   dropNotNullConstraint:
+                        schemaName: tariff
+                        tableName: contract
+                        columnName: region

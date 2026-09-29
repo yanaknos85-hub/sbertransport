@@ -1,0 +1,23 @@
+databaseChangeLog:
+    -   changeSet:
+            id: authentication/20210812
+            author: medvedev-ad
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/change_changelog_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: authentication/20210812-1
+            author: medvedev-ad
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/drop_old_changelog_records.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_old_changelog_records.sql
+                        relativeToChangelogFile: true

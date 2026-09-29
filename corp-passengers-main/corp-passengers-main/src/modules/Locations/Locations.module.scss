@@ -1,0 +1,24 @@
+.buttonGroup {
+  position: absolute;
+  width: 90px;
+  right: 30px;
+  top: -55px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tableWrapper {
+  position: relative;
+}
+
+.iconButton {
+  background-color: #f2f3f6;
+  color: #4d4d4d;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

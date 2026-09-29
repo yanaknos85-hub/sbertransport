@@ -1,0 +1,44 @@
+.savingStatuses {
+    border: 2px solid rgb(16, 191, 106);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    color: rgb(38, 38, 38);
+    font-family: SB Sans Text;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+  }
+  
+  .cancelPayment {
+    border: 2px solid rgb(255, 87, 67);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    color: rgb(38, 38, 38);
+    font-family: SB Sans Text;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+  }
+  
+  .cancelStatuses {
+    border: 2px solid rgb(194, 194, 194);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    color: rgb(38, 38, 38);
+    font-family: SB Sans Text;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+  
+    &:hover {
+      color: rgb(194, 194, 194);
+      border-color: rgb(194, 194, 194);
+    }
+  }
+  

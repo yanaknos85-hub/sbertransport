@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20260127-1001"
+      author: zhirov-aa
+      preConditions:
+        - not:
+            columnExists:
+              schemaName: tariff
+              tableName: contract
+              columnName: payment_organization_id
+              onFail: MARK_RAN
+      changes:
+        - addColumn:
+            schemaName: tariff
+            tableName: contract
+            columns:
+              - column:
+                  name: payment_organization_id
+                  type: uuid
+                  remarks: ID организации, которая будет производить оплату
+        - addForeignKeyConstraint:
+            constraintName: fk_contract_payment_organization
+            baseTableSchemaName: tariff
+            baseTableName: contract
+            baseColumnNames: payment_organization_id
+            referencedTableSchemaName: tariff
+            referencedTableName: organization
+            referencedColumnNames: id
+            onDelete: RESTRICT
+            onUpdate: CASCADE
+      rollback:
+        - dropForeignKeyConstraint:
+            baseTableSchemaName: tariff
+            baseTableName: contract
+            constraintName: fk_contract_payment_organization
+        - dropColumn:
+            schemaName: tariff
+            tableName: contract
+            columnName: payment_organization_id

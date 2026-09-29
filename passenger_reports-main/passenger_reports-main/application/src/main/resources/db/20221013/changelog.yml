@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221013"
+            author: medvedev-ad
+            changes:
+                -   dropIndex:
+                        schemaName: reports
+                        tableName: taxi_trip
+                        indexName: reports_taxi_trip_request_id_idx
+                -   addUniqueConstraint:
+                        schemaName: reports
+                        tableName: taxi_trip
+                        columnNames: request_id
+                        constraintName: reports_taxi_trip_request_id_uk

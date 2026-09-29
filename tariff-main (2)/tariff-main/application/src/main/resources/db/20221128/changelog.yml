@@ -1,0 +1,28 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221128"
+            author: blandin-ad
+            changes:
+                -   tagDatabase:
+                        tag: "20221128"
+                -   dropColumn:
+                        schemaName: tariff
+                        tableName: tariff
+                        columns:
+                            -   column:
+                                    name: department_human_readable_id
+                            -   column:
+                                    name: code
+            rollback:
+                -   addColumn:
+                        schemaName: tariff
+                        tableName: tariff
+                        columns:
+                            -   column:
+                                    name: department_human_readable_id
+                                    type: text
+                                    remarks: Человекочитаемый ID подразделения
+                            -   column:
+                                    name: code
+                                    type: text
+                                    remarks: Код подразделения

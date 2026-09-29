@@ -1,0 +1,112 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230810"
+            author: delyukov-da
+            changes:
+                -   tagDatabase:
+                        tag: "20230810"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    type: text
+                                    name: passenger_department1
+                                    remarks: Подразделение 1 уровня
+                            -   column:
+                                    type: text
+                                    name: passenger_department2
+                                    remarks: Подразделение 2 уровня
+                            -   column:
+                                    type: text
+                                    name: passenger_department3
+                                    remarks: Подразделение 3 уровня
+                            -   column:
+                                    type: text
+                                    name: passenger_department4
+                                    remarks: Подразделение 4 уровня
+                            -   column:
+                                    type: text
+                                    name: passenger_department5
+                                    remarks: Подразделение 5 уровня
+                            -   column:
+                                    type: text
+                                    name: passenger_department6
+                                    remarks: Подразделение 6 уровня
+                            -   column:
+                                    type: text
+                                    name: departure_address
+                                    remarks: Адрес отправления
+                            -   column:
+                                    type: text
+                                    name: intermediate_addresses
+                                    remarks: Промежуточные адреса
+                            -   column:
+                                    type: text
+                                    name: destination_address
+                                    remarks: Адрес назначения
+                -   createIndex:
+                        columns:
+                            -   column:
+                                    name: passenger_department1
+                        schemaName: reports
+                        tableName: request
+                        indexName: reports_request_passenger_department1_idx
+                -   createIndex:
+                        columns:
+                            -   column:
+                                    name: passenger_department2
+                        schemaName: reports
+                        tableName: request
+                        indexName: reports_request_passenger_department2_idx
+                -   createIndex:
+                        columns:
+                            -   column:
+                                    name: passenger_department3
+                        schemaName: reports
+                        tableName: request
+                        indexName: reports_request_passenger_department3_idx
+                -   createIndex:
+                        columns:
+                            -   column:
+                                    name: passenger_department4
+                        schemaName: reports
+                        tableName: request
+                        indexName: reports_request_passenger_department4_idx
+                -   createIndex:
+                        columns:
+                            -   column:
+                                    name: passenger_department5
+                        schemaName: reports
+                        tableName: request
+                        indexName: reports_request_passenger_department5_idx
+                -   createIndex:
+                        columns:
+                            -   column:
+                                    name: passenger_department6
+                        schemaName: reports
+                        tableName: request
+                        indexName: reports_request_passenger_department6_idx
+            rollback:
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    name: passenger_department1
+                            -   column:
+                                    name: passenger_department2
+                            -   column:
+                                    name: passenger_department3
+                            -   column:
+                                    name: passenger_department4
+                            -   column:
+                                    name: passenger_department5
+                            -   column:
+                                    name: passenger_department6
+                            -   column:
+                                    name: departure_address
+                            -   column:
+                                    name: intermediate_addresses
+                            -   column:
+                                    name: destination_address

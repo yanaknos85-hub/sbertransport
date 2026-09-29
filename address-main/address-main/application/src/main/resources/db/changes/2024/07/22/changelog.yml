@@ -1,0 +1,100 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240722-0819"
+      author: medvedev-ad
+      context: "TRANSPORT-24438"
+      dbms: postgresql
+      changes:
+        - tagDatabase:
+            tag: "D-03.014.000"
+        - sql:
+            splitStatements: false
+            sql: >
+              create function addresses.translit(source text) returns text language plpgsql as
+              $$
+              declare
+                _out text;
+              begin
+                _out := translate(trim(both ' ' from lower(coalesce(source, ''))), 
+                'абвгдеёзийклмнопрстуфхыэ',
+                'abvgdeeziyklmnoprstufhie'
+                );
+
+                _out := replace(_out, 'ж', 'zh');
+                _out := replace(_out, 'ц', 'ts');
+                _out := replace(_out, 'ч', 'ch');
+                _out := replace(_out, 'ш', 'sh');
+                _out := replace(_out, 'щ', 'sch');
+                _out := replace(_out, 'ъ', '');
+                _out := replace(_out, 'ь', '');
+                _out := replace(_out, 'ю', 'ju');
+                _out := replace(_out, 'я', 'ja');
+                return _out;
+              end;
+              $$;
+        - update:
+            schemaName: addresses
+            tableName: frequently
+            columns:
+              - column:
+                  name: document
+                  valueComputed: to_tsvector(addresses.translit(country) || ' ' || addresses.translit(region) || ' ' || addresses.translit(city) || ' ' || addresses.translit(street) || ' ' || addresses.translit(house) || ' ' || addresses.translit(building) || ' ' || addresses.translit("structure") )
+        - update:
+            schemaName: addresses
+            tableName: favorite
+            columns:
+              - column:
+                  name: document
+                  valueComputed: to_tsvector(addresses.translit(country) || ' ' || addresses.translit(region) || ' ' || addresses.translit(city) || ' ' || addresses.translit(street) || ' ' || addresses.translit(house) || ' ' || addresses.translit(building) || ' ' || addresses.translit("structure") )
+        - sql:
+            sql: drop function addresses.translit;
+      rollback:
+        - sql:
+            sql: select 1; #no need to rollback
+  - changeSet:
+      id: "20240722-1628"
+      author: medvedev-ad
+      context: "TRANSPORT-24438"
+      changes:
+        - tagDatabase:
+            tag: "D-03.014.000"
+        - dropUniqueConstraint:
+            schemaName: addresses
+            tableName: meetings
+            constraintName: addresses_meeting_address_owner_label_uk
+        - dropIndex:
+            schemaName: addresses
+            tableName: meetings
+            indexName: addresses_meetings_owner_id_label_idx
+        - dropColumn:
+            schemaName: addresses
+            tableName: meetings
+            columns:
+              - column:
+                  name: owner_id
+      rollback:
+        - addColumn:
+            schemaName: addresses
+            tableName: meetings
+            columns:
+              - column:
+                  name: owner_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: addresses_meetings_owner_nn
+        - addUniqueConstraint:
+            schemaName: addresses
+            tableName: meetings
+            columnNames: owner_id,label
+            constraintName: addresses_meeting_address_owner_label_uk
+        - createIndex:
+            schemaName: addresses
+            tableName: meetings
+            unique: true
+            columns:
+              - column:
+                  name: owner_id
+              - column:
+                  name: label
+            indexName: addresses_meetings_owner_id_label_idx

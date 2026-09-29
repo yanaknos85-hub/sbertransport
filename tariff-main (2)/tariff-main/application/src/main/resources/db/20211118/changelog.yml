@@ -1,0 +1,21 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20211118
+            tag: "20211118"
+            author: smirnova
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/rename_column.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: tariff/202111181
+            tag: "202111181"
+            author: smirnova
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/drop_column.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

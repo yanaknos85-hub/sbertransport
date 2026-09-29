@@ -1,0 +1,607 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240716-0826"
+      author: medvedev-ad
+      context: "TRANSPORT-24438"
+      preConditions:
+        - tableExists:
+            schemaName: addresses
+            tableName: address
+          onFail: MARK_RAN
+          onError: MARK_RAN
+      changes:
+        - tagDatabase:
+            tag: "D-03.014.000"
+        - renameTable:
+            schemaName: addresses
+            oldTableName: address
+            newTableName: address_old
+        - renameTable:
+            schemaName: addresses
+            oldTableName: favorite_address
+            newTableName: favorite_address_old
+        - renameTable:
+            schemaName: addresses
+            oldTableName: frequently_address
+            newTableName: frequently_address_old
+        - renameTable:
+            schemaName: addresses
+            oldTableName: meeting_address
+            newTableName: meeting_address_old
+      rollback:
+        - renameTable:
+            schemaName: addresses
+            oldTableName: address_old
+            newTableName: address
+        - renameTable:
+            schemaName: addresses
+            oldTableName: favorite_address_old
+            newTableName: favorite_address
+        - renameTable:
+            schemaName: addresses
+            oldTableName: frequently_address_old
+            newTableName: frequently_address
+        - renameTable:
+            schemaName: addresses
+            oldTableName: meeting_address_old
+            newTableName: meeting_address
+  - changeSet:
+      id: "20240716-0830"
+      author: medvedev-ad
+      context: "TRANSPORT-24438"
+      changes:
+        - tagDatabase:
+            tag: "D-03.014.000"
+        - createTable:
+            schemaName: addresses
+            tableName: address
+            remarks: Адреса в системе
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор адреса
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: addresses_address_pk
+              - column:
+                  name: country
+                  type: varchar(60)
+                  remarks: Страна
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: addresses_address_country_nn
+              - column:
+                  name: region
+                  type: varchar(255)
+                  remarks: Регион
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: addresses_address_region_nn
+              - column:
+                  name: city
+                  type: varchar(100)
+                  remarks: Населенный пункт
+              - column:
+                  name: street
+                  type: varchar(150)
+                  remarks: Улица
+              - column:
+                  name: house
+                  type: varchar(50)
+                  remarks: Дом
+              - column:
+                  name: building
+                  type: varchar(50)
+                  remarks: Корпус
+              - column:
+                  name: structure
+                  type: varchar(50)
+                  remarks: Строение
+              - column:
+                  name: latitude
+                  type: numeric(15, 11)
+                  remarks: Широта
+              - column:
+                  name: longitude
+                  type: numeric(15, 11)
+                  remarks: Долгота
+        - createTable:
+            schemaName: addresses
+            tableName: favorite_address
+            remarks: Любимые адреса
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор записи
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: addresses_favorite_address_pk
+              - column:
+                  name: address_id
+                  type: uuid
+                  remarks: Идентификатор адреса
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: addresses_favorite_address_nn
+                    referencedTableSchemaName: addresses
+                    referencedTableName: address
+                    referencedColumnNames: id
+                    foreignKeyName: addresses_favorite_address_fk
+              - column:
+                  name: label
+                  type: varchar(255)
+                  remarks: Метка адреса
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: addresses_favorite_address_label_nn
+              - column:
+                  name: owner_id
+                  type: uuid
+                  remarks: Идентификатор владельца записи
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: addresses_favorite_address_owner_nn
+        - addUniqueConstraint:
+            schemaName: addresses
+            tableName: favorite_address
+            columnNames: owner_id,label
+            constraintName: addresses_favorite_address_owner_label_uk
+        - createTable:
+            schemaName: addresses
+            tableName: frequently_address
+            remarks: Часто используемые адреса
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор записи
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: addresses_frequently_address_pk
+              - column:
+                  name: address_id
+                  type: uuid
+                  remarks: Идентификатор адреса
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: addresses_frequently_address_nn
+                    referencedTableSchemaName: addresses
+                    referencedTableName: address
+                    referencedColumnNames: id
+                    foreignKeyName: addresses_frequently_address_fk
+              - column:
+                  name: owner_id
+                  type: uuid
+                  remarks: Идентификатор владельца записи
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: addresses_frequently_address_owner_nn
+              - column:
+                  name: usages
+                  type: integer
+                  remarks: Количество использований
+                  defaultOnNull: true
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: addresses_frequently_address_usages_nn
+              - column:
+                  name: first
+                  type: boolean
+                  remarks: Адрес использовался в последней заявке
+                  defaultOnNull: true
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: addresses_frequently_address_first_nn
+        - createTable:
+            schemaName: addresses
+            tableName: meeting_address
+            remarks: Адреса встреч
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор записи
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: addresses_meeting_address_pk
+              - column:
+                  name: address_id
+                  type: uuid
+                  remarks: Идентификатор адреса
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: addresses_meeting_address_nn
+                    referencedTableSchemaName: addresses
+                    referencedTableName: address
+                    referencedColumnNames: id
+                    foreignKeyName: addresses_meeting_address_fk
+              - column:
+                  name: label
+                  type: varchar(255)
+                  remarks: Метка адреса
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: addresses_meeting_address_label_nn
+              - column:
+                  name: owner_id
+                  type: uuid
+                  remarks: Идентификатор организации владельца записи
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: addresses_meeting_address_owner_nn
+        - addUniqueConstraint:
+            schemaName: addresses
+            tableName: meeting_address
+            columnNames: owner_id,label
+            constraintName: addresses_meeting_address_owner_label_uk
+      rollback:
+        - dropTable:
+            schemaName: addresses
+            tableName: address
+            cascadeConstraints: true
+        - dropTable:
+            schemaName: addresses
+            tableName: favorite_address
+            cascadeConstraints: true
+        - dropTable:
+            schemaName: addresses
+            tableName: frequently_address
+            cascadeConstraints: true
+        - dropTable:
+            schemaName: addresses
+            tableName: meeting_address
+            cascadeConstraints: true
+  - changeSet:
+      id: "20240716-0910"
+      author: medvedev-ad
+      context: "TRANSPORT-24438"
+      preConditions:
+        - tableExists:
+            schemaName: addresses
+            tableName: address_old
+          onFail: MARK_RAN
+          onError: MARK_RAN
+      changes:
+        - tagDatabase:
+            tag: "D-03.014.000"
+        - sql:
+            sql: >
+              insert into addresses.address (country, region, city, street, house, building, structure, id, latitude, longitude)
+                  (select coalesce(country, 'Россия'),
+                          region,
+                          city,
+                          street,
+                          house,
+                          building,
+                          structure,
+                          id,
+                          latitude,
+                          longitude
+                   from addresses.address_old) on conflict do nothing;
+
+              insert into addresses.favorite_address (id, address_id, "label", "owner_id")
+                  (select id, address_id, "label", "owner" from addresses.favorite_address_old) on conflict do nothing;
+
+              insert into addresses.frequently_address (id, "owner_id", address_id, usages, "first")
+                  (select id, "owner", address_id, usage_count, "first" from addresses.frequently_address_old) on conflict do nothing;
+
+              insert into addresses.meeting_address (id, "label", address_id, owner_id)
+                  (select id, "label", address_id, coalesce(owner, address_id) from addresses.meeting_address_old) on conflict do nothing;
+        - dropTable:
+            schemaName: addresses
+            tableName: address_old
+            cascadeConstraints: true
+        - dropTable:
+            schemaName: addresses
+            tableName: frequently_address_old
+            cascadeConstraints: true
+        - dropTable:
+            schemaName: addresses
+            tableName: favorite_address_old
+            cascadeConstraints: true
+        - dropTable:
+            schemaName: addresses
+            tableName: meeting_address_old
+            cascadeConstraints: true
+      rollback:
+        - createTable:
+            schemaName: addresses
+            tableName: address_old
+            remarks: Адреса
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: addresses_address_old_pk
+              - column:
+                  name: country
+                  type: varchar(255)
+              - column:
+                  name: region
+                  type: varchar(255)
+              - column:
+                  name: city
+                  type: varchar(255)
+              - column:
+                  name: street
+                  type: varchar(255)
+              - column:
+                  name: house
+                  type: varchar(255)
+              - column:
+                  name: building
+                  type: varchar(255)
+              - column:
+                  name: structure
+                  type: varchar(255)
+              - column:
+                  name: latitude
+                  type: float8
+              - column:
+                  name: longitude
+                  type: float8
+        - createTable:
+            schemaName: addresses
+            tableName: frequently_address_old
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: addresses_frequently_address_old_pk
+              - column:
+                  name: owner
+                  type: uuid
+              - column:
+                  name: usage_count
+                  type: int4
+                  defaultValueNumeric: 0
+                  defaultOnNull: true
+              - column:
+                  name: first
+                  type: boolean
+                  defaultValueBoolean: true
+                  defaultOnNull: true
+              - column:
+                  name: address_id
+                  type: uuid
+                  remarks: Связь с адресом
+                  constraints:
+                    referencedTableSchemaName: addresses
+                    referencedTableName: address
+                    referencedColumnNames: id
+                    foreignKeyName: addresses_frequently_address_old_fk
+        - createTable:
+            schemaName: addresses
+            tableName: favorite_address_old
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: addresses_favorite_address_old_pk
+              - column:
+                  name: owner
+                  type: uuid
+              - column:
+                  name: label
+                  type: text
+                  constraints:
+                    nullable: false
+                    nonNullConstraintName: addresses_favorite_address_old_label_nn
+              - column:
+                  name: address_id
+                  type: uuid
+                  remarks: Связь с адресом
+                  constraints:
+                    referencedTableSchemaName: addresses
+                    referencedTableName: address
+                    referencedColumnNames: id
+                    foreignKeyName: addresses_favorite_address_old_fk
+        - createTable:
+            schemaName: addresses
+            tableName: meeting_address_old
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: addresses_meeting_address_old_pk
+              - column:
+                  name: owner
+                  type: uuid
+              - column:
+                  name: label
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    nonNullConstraintName: addresses_meeting_address_old_label_nn
+              - column:
+                  name: address_id
+                  type: uuid
+                  remarks: Связь с адресом
+                  constraints:
+                    referencedTableSchemaName: addresses
+                    referencedTableName: address
+                    referencedColumnNames: id
+                    foreignKeyName: addresses_meeting_address_old_fk
+        - sql:
+            sql: >
+              insert into addresses.address_old (country, region, city, street, house, building, structure, id, latitude, longitude)
+                  (select country,
+                          region,
+                          city,
+                          street,
+                          house,
+                          building,
+                          structure,
+                          id,
+                          latitude,
+                          longitude
+                   from addresses.address) on conflict do nothing;
+        - sql:
+            sql: >
+              insert into addresses.favorite_address_old (id, address_id, "label")
+              (select id, address_id, "label" from addresses.favorite_address) on conflict do nothing;
+        - sql:
+            sql: >
+              update addresses.favorite_address_old
+              set owner = source.owner_id
+              from addresses.favorite_address as source where source.id = favorite_address_old.id
+        - sql:
+            sql: >
+              insert into addresses.frequently_address_old (id, address_id, "first")
+                  (select id, address_id, "first" from addresses.frequently_address) on conflict do nothing;
+        - sql:
+            sql: >
+              update addresses.frequently_address_old
+              set owner = source.owner_id, usage_count = source.usages
+              from addresses.frequently_address as source where source.id = frequently_address_old.id
+        - sql:
+            sql: >
+              insert into addresses.meeting_address_old (id, "label", address_id)
+                  (select id, "label", address_id from addresses.meeting_address) on conflict do nothing;
+  - changeSet:
+      id: "20240716-0913"
+      author: medvedev-ad
+      context: "TRANSPORT-24438"
+      changes:
+        - tagDatabase:
+            tag: "D-03.014.000"
+        - dropTable:
+            schemaName: addresses
+            tableName: frequently
+        - dropTable:
+            schemaName: addresses
+            tableName: favorite
+      rollback:
+        - sql:
+            sql: >
+              create table addresses.frequently
+              (
+                  id        uuid not null
+                      constraint frequently_addres_fkey
+                          primary key,
+                  country   text,
+                  region    text,
+                  city      text,
+                  street    text,
+                  house     text,
+                  building  text,
+                  structure text,
+                  latitude  numeric,
+                  longitude numeric,
+                  owner     uuid,
+                  count     numeric
+              );
+
+              comment on table addresses.frequently is 'Таблица с частыми адресами';
+
+              comment on column addresses.frequently.id is 'Идентификатор';
+
+              comment on column addresses.frequently.country is 'Страна';
+
+              comment on column addresses.frequently.region is 'Регион';
+
+              comment on column addresses.frequently.city is 'Город';
+
+              comment on column addresses.frequently.street is 'Улица';
+
+              comment on column addresses.frequently.house is 'Дом';
+
+              comment on column addresses.frequently.building is 'Корпус';
+
+              comment on column addresses.frequently.structure is 'Строение';
+
+              comment on column addresses.frequently.latitude is 'Широта';
+
+              comment on column addresses.frequently.longitude is 'Долгота';
+
+              comment on column addresses.frequently.owner is 'Владелец';
+
+              comment on column addresses.frequently.count is 'Количество использований';
+
+              create table addresses.favorite
+              (
+                  id        uuid not null
+                      constraint favorite_addres_fkey
+                          primary key,
+                  country   text,
+                  region    text,
+                  city      text,
+                  street    text,
+                  house     text,
+                  building  text,
+                  structure text,
+                  latitude  numeric,
+                  longitude numeric,
+                  owner     uuid,
+                  label     text
+              );
+
+              comment on table addresses.favorite is 'Таблица с любимыми адресами';
+
+              comment on column addresses.favorite.id is 'Идентификатор';
+
+              comment on column addresses.favorite.country is 'Страна';
+
+              comment on column addresses.favorite.region is 'Регион';
+
+              comment on column addresses.favorite.city is 'Город';
+
+              comment on column addresses.favorite.street is 'Улица';
+
+              comment on column addresses.favorite.house is 'Дом';
+
+              comment on column addresses.favorite.building is 'Корпус';
+
+              comment on column addresses.favorite.structure is 'Строение';
+
+              comment on column addresses.favorite.latitude is 'Широта';
+
+              comment on column addresses.favorite.longitude is 'Долгота';
+
+              comment on column addresses.favorite.owner is 'Владелец';
+
+              comment on column addresses.favorite.label is 'Метка';
+  - changeSet:
+      id: "20240716-0916"
+      author: medvedev-ad
+      context: "TRANSPORT-24438"
+      changes:
+        - tagDatabase:
+            tag: "D-03.014.000"
+        - renameTable:
+            schemaName: addresses
+            oldTableName: frequently_address
+            newTableName: frequently
+        - renameTable:
+            schemaName: addresses
+            oldTableName: favorite_address
+            newTableName: favorite
+        - renameTable:
+            schemaName: addresses
+            oldTableName: meeting_address
+            newTableName: meetings
+      rollback:
+        - renameTable:
+            schemaName: addresses
+            oldTableName: frequently
+            newTableName: frequently_address
+        - renameTable:
+            schemaName: addresses
+            oldTableName: favorite
+            newTableName: favorite_address
+        - renameTable:
+            schemaName: addresses
+            oldTableName: meetings
+            newTableName: meeting_address

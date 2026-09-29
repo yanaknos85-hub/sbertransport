@@ -1,0 +1,9 @@
+databaseChangeLog:
+    -   changeSet:
+            id: authentication/20210608
+            author: aas
+            changes:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: add_column_transferpassword.sql
+                        relativeToChangelogFile: true

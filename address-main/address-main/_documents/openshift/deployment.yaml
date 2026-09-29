@@ -1,0 +1,98 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: address
+  namespace: ci02351878-edevgen-sbertransport-dev
+  labels:
+    app: address
+    app.kubernetes.io/name: address
+    app.kubernetes.io/part-of: transport
+    template: address
+    version: D-02.038.000
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: address
+  template:
+    metadata:
+      namespace: ci02351878-edevgen-sbertransport-dev
+      labels:
+        app: address
+        version: D-02.038.000
+      annotations:
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+        sidecar.istio.io/inject: 'true'
+        traffic.sidecar.istio.io/excludeOutboundPorts: '6565'
+    spec:
+      volumes:
+        - name: data
+          emptyDir: {}
+        - name: logs
+          emptyDir: {}
+        - name: tmp
+          emptyDir: {}
+        - name: kubernetes
+          configMap:
+            name: kubernetes
+            defaultMode: 420
+        - name: logging
+          configMap:
+            name: logging
+            defaultMode: 420
+        - name: secman
+          configMap:
+            name: secman
+            defaultMode: 420
+            optional: true
+      containers:
+        - resources:
+            limits:
+              cpu: 500m
+              memory: 1G
+            requests:
+              cpu: 500m
+              memory: 1G
+          terminationMessagePath: /dev/termination-log
+          name: address
+          env:
+            - name: KAFKA_BROKERS
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka
+                  key: brokers
+            - name: JWKS_URI
+              value: http://jwks:8080
+            - name: INDEX_ROOT
+              value: /mnt/index
+            - name: SPRING_PROFILES_INCLUDE
+              value: secman
+            - name: JDK_JAVA_OPTIONS
+              value: >-
+                -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:9001
+          securityContext:
+            readOnlyRootFilesystem: true
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: data
+              mountPath: /mnt
+            - name: logs
+              mountPath: /log
+            - name: tmp
+              mountPath: /tmp
+            - name: kubernetes
+              mountPath: /app/resources/application-kubernetes.yml
+              subPath: application-kubernetes.yml
+            - name: logging
+              mountPath: /app/resources/application-logging.yml
+              subPath: application-logging.yml
+            - name: secman
+              mountPath: /app/resources/application-secman.yml
+              subPath: application-secman.yml
+          ports:
+            - containerPort: 8008
+              name: http-address
+          image: >-
+            registry.sigma.sbrf.ru/dev/ci02351878/ci02353146_transport_dev/transport/address:231108-3-17898164
+      imagePullSecrets:
+        - name: cab-sa-ci000274

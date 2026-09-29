@@ -1,0 +1,12 @@
+.modal {
+  :global(.ant-modal-body) {
+    text-align: center;
+  }
+  :global(.ant-modal-footer) {
+    display: flex;
+    justify-content: space-around;
+    & :global(.ant-btn) {
+      width: 100%;
+    }
+  }
+}

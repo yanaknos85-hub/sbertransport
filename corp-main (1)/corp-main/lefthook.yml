@@ -1,0 +1,28 @@
+source_dir: node_modules/@sber-sbertransport/tool-kit/lefthook
+
+commit-msg:
+  commands:
+    check-conventional-commit:
+      tags: git conventional
+      run: commitlint --edit
+
+pre-commit:
+  parallel: false
+  commands:
+    check-ts-eslint-staged:
+      tags: lint ts
+      run: yarn lint
+  scripts:
+    "check-branch.js":
+      tags: git conventional
+      runner: node
+
+pre-push:
+  parallel: false
+  scripts:
+    "package-ok.js":
+      tags: npm consistent
+      runner: node
+    "node-version.js":
+      tags: npm consistent
+      runner: node

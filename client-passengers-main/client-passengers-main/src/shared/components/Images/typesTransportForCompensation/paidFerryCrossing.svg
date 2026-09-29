@@ -1,0 +1,18 @@
+<svg width="32.000000" height="32.000000" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip814_140705">
+			<rect id="Name=PAID_FERRY_CROSSING" rx="8.000000" width="32.000000" height="32.000000" fill="white"/>
+		</clipPath>
+	</defs>
+	<rect id="Name=PAID_FERRY_CROSSING" rx="8.000000" width="32.000000" height="32.000000" fill="#637F8E" fill-opacity="0.08"/>
+	<g clip-path="url(#clip814_140705)">
+		<path id="Path" d="M11.0029 11.0029L11.0029 8.50183C11.0029 8.22559 11.2269 8.00165 11.5032 8.00165L13.6437 8.00165C13.859 8.00165 14.05 8.1394 14.1182 8.34369L15.0046 11.0029L11.0029 11.0029Z" stroke="#637F8E" stroke-width="1.500000" stroke-linejoin="round"/>
+		<path id="Path" d="M7.00122 21.0071C8.14966 20.5069 9.45435 20.5069 10.6027 21.0071C11.7511 21.5073 13.0558 21.5073 14.2042 21.0071C15.3527 20.5069 16.6573 20.5069 17.8057 21.0071C18.9541 21.5073 20.2588 21.5073 21.4072 21.0071C22.5557 20.5069 23.8604 20.5069 25.0087 21.0071" stroke="#637F8E" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M10.6028 24.0083C11.7512 24.5085 13.0559 24.5085 14.2042 24.0083C15.3527 23.5081 16.6573 23.5081 17.8058 24.0083C18.9542 24.5085 20.2589 24.5085 21.4072 24.0083" stroke="#637F8E" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M9.00208 15.0046L9.81299 11.7607C9.92444 11.3154 10.3246 11.0029 10.7836 11.0029L17.7697 11.0029C18.5275 11.0029 19.2203 11.4311 19.5592 12.1089L21.0071 15.0046" stroke="#637F8E" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M7.92407 20.7161L7.021 16.2012C6.96228 15.9073 7.03833 15.6025 7.22839 15.3708C7.41833 15.139 7.70227 15.0046 8.00208 15.0046L24.0068 15.0046C24.3672 15.0046 24.6998 15.1984 24.8773 15.5121C25.0549 15.8257 25.05 16.2106 24.8646 16.5197L22.3492 20.7121" stroke="#637F8E" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+	</g>
+</svg>

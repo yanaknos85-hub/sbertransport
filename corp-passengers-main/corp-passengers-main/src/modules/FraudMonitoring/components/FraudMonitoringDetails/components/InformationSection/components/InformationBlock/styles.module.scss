@@ -1,0 +1,61 @@
+.infomationBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  break-inside: avoid;
+  padding-bottom: 12px;
+
+  .header {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      margin: 0;
+
+      font-family: 'SB Sans Interface';
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 24px;
+      text-align: left;
+      color: #262626;
+    }
+
+    .description {
+      margin: 0;
+      font-family: 'SB Sans Text';
+      font-weight: 400;
+      font-size: 14px;
+      color: #909090;
+    }
+  }
+
+  .body {
+    .field {
+      padding: 12px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      border-bottom: 1px solid #e0e0e0;
+
+      font-family: 'SB Sans Text';
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+      color: #262626;
+
+      &_title {
+        margin: 0;
+        color: #909090;
+        place-self: center start;
+      }
+
+      &_value {
+        margin: 0;
+        place-self: center end;
+        text-align: right;
+      }
+    }
+  }
+}

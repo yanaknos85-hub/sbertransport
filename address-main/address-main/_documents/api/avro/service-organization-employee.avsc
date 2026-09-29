@@ -1,0 +1,207 @@
+{
+  "namespace": "ru.sber.transport.messages.corporate.avro",
+  "name": "EmployeeMessage",
+  "type": "record",
+  "doc": "Данные сотрудника",
+  "fields": [
+    {
+      "name": "id",
+      "doc": "Идентификатор",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      },
+      "aliases": [
+        "headerId"
+      ]
+    },
+    {
+      "name": "userId",
+      "doc": "Идентификатор пользователя",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "humanReadableId",
+      "doc": "Человекочитаемый идентификатор",
+      "type": "string"
+    },
+    {
+      "name": "firstName",
+      "doc": "Имя",
+      "type": "string"
+    },
+    {
+      "name": "lastName",
+      "doc": "Фамилия",
+      "type": "string"
+    },
+    {
+      "name": "patronymic",
+      "doc": "Отчество",
+      "type": "string"
+    },
+    {
+      "name": "personnelNumber",
+      "doc": "Табельный номер",
+      "type": "string"
+    },
+    {
+      "doc": "Идентификатор подразделения",
+      "name": "departmentId",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "doc": "МВЗ",
+      "name": "costCenter",
+      "type": "string"
+    },
+    {
+      "doc": "Разъездной характер работы",
+      "name": "itinerantType",
+      "type": {
+        "type": "enum",
+        "name": "ItinerantType",
+        "symbols": [
+          "NONE",
+          "FULL",
+          "PARTIAL"
+        ]
+      }
+    },
+    {
+      "doc": "Идентификатор организации",
+      "name": "organizationId",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "doc": "Идентификатор должности",
+      "name": "positionId",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "doc": "Информация о делегировании",
+      "name": "delegation",
+      "type": {
+        "type": "record",
+        "name": "DelegateData",
+        "fields": [
+          {
+            "doc": "Сотрудник, делегировавший текущему свои полномочия",
+            "name": "delegatedById",
+            "type": {
+              "type": "string",
+              "logicalType": "uuid"
+            }
+          },
+          {
+            "doc": "",
+            "name": "trait",
+            "type": "boolean"
+          },
+          {
+            "doc": "Делегигованные типы транспорта",
+            "name": "transportTypes",
+            "type": {
+              "type": "array",
+              "items": "string"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "doc": "Контакты",
+      "name": "contacts",
+      "type": {
+        "type": "record",
+        "name": "Contact",
+        "fields": [
+          {
+            "doc": "Тип контактных данных",
+            "name": "type",
+            "type": {
+              "type": "enum",
+              "name": "ContactType",
+              "symbols":[
+                "MOBILE",
+                "EMAIL"
+              ]
+            }
+          },
+          {
+            "doc": "Значение контактных данных",
+            "name": "value",
+            "type": "string"
+          },
+          {
+            "doc": "Флаг корпоративности данных",
+            "name": "internal",
+            "type": "boolean"
+          }
+        ]
+      }
+    },
+    {
+      "doc": "Идентификатор руководителя",
+      "name": "supervisorId",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "doc": "Тип сотрудника (внешний/внутренний)",
+      "name": "employeeType",
+      "type": {
+        "type": "enum",
+        "name": "EmployeeType",
+        "symbols": [
+          "INTERNAL",
+          "EXTERNAL"
+        ]
+      }
+    },
+    {
+      "doc": "Пол",
+      "name": "gender",
+      "type": {
+        "type": "enum",
+        "name": "Gender",
+        "symbols": [
+          "MALE",
+          "FEMALE"
+        ]
+      }
+    },
+    {
+      "doc": "Факт подписания ПДн",
+      "name": "consent",
+      "type": "boolean"
+    },
+    {
+      "doc": "Признак удаления",
+      "name": "deleted",
+      "type": "boolean"
+    },
+    {
+      "doc": "Прочие атрибуты",
+      "name": "attributes",
+      "type": {
+        "type": "array",
+        "items": "string"
+      }
+    }
+  ]
+}

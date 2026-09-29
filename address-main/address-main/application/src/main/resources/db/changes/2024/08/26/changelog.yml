@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240826-1323"
+      author: medvedev-ad
+      context: "TRANSPORT-24495"
+      changes:
+        - tagDatabase:
+            tag: "D-03.016.000"
+        - addColumn:
+            schemaName: addresses
+            tableName: meetings
+            columns:
+              - column:
+                  name: organization_id
+                  type: uuid
+                  remarks: Ссылка на организацию
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: addresses_meetings_organization_id_nn
+        - createIndex:
+            schemaName: addresses
+            tableName: meetings
+            columns:
+              - column:
+                  name: organization_id
+            indexName: addresses_meetings_organization_idx

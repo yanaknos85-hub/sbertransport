@@ -1,0 +1,61 @@
+.TransportTypesWrapper {
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  justify-content: space-between;
+  margin: 16px 0 0 0;
+
+  & :global {
+    .ant-tabs {
+      width: 100%;
+
+      .ant-tabs-tab-btn {
+        color: #737373;
+        &:hover {
+          font-weight: 600;
+        }
+      }
+      .ant-tabs-tab-active {
+        border-bottom: solid 3px #10bf6a;
+        .ant-tabs-tab-btn {
+          color: #262626;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+.categoryColumn {
+  min-width: 224px;
+  margin: 0 auto;
+}
+
+.switchesColumn {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  gap: 12px;
+  padding-left: 4px;
+  :global(.ant-form-item) {
+    margin-bottom: 0;
+  }
+}
+
+.Switch {
+  margin-right: 12px;
+}
+
+.SwitchGroup {
+  display: flex;
+  align-items: center;
+  height: 36px;
+}
+
+.title {
+  font-family: 'SB Sans Text', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  margin-top: 36px;
+}

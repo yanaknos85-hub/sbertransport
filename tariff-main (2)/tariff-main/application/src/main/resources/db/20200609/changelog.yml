@@ -1,0 +1,11 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20200609
+            tag: "20200609"
+            author: mad
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: correct_taxi_class.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

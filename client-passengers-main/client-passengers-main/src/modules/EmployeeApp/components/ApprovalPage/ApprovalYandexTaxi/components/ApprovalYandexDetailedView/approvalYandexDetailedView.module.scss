@@ -1,0 +1,339 @@
+.buttonBlock {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.container {
+  border-radius: 12px;
+
+  :global {
+    .ant-page-header {
+      padding: 20px 24px 24px !important;
+    }
+  }
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.tariffDescription {
+  display: flex;
+  align-items: center;
+  background-color: rgb(248, 248, 248);
+  color: black;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.headerBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pageHeader {
+  background-color: white;
+  border-radius: 12px;
+  margin-bottom: 16px;
+
+  @media screen and (max-width: 600px) {
+    width: auto;
+    margin: 16px 24px 0 24px;
+  }
+
+  :global {
+    .ant-page-header-heading-title {
+      font-size: 18px;
+    }
+
+    .ant-page-header-heading-sub-title {
+      font-size: 12px;
+      overflow: visible;
+    }
+  }
+}
+
+.accentDescriptionTitle {
+  color: rgb(115, 115, 115);
+}
+
+.accentDescriptionTitleClass {
+  color: black;
+}
+
+.commentForPurpose {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-top: 8px;
+  background-color: rgb(231, 249, 240);
+  font-size: 12px;
+  padding: 8px;
+  border-radius: 12px;
+
+  & > span {
+
+    @media screen and (max-width: 600px) {
+      word-break: break-all;
+    }
+  }
+
+  .purposeIcon {
+    height: 16px;
+
+    path {
+      fill: rgb(16, 191, 106);
+    }
+  }
+}
+
+.transportWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &Title {
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 24px;
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+
+.leftSide,
+.rightSide {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+
+.transportIcon {
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+}
+
+.commonButton {
+  padding: 9px 20px;
+  text-shadow: unset;
+  font-weight: 600;
+  line-height: 20px;
+  font-size: 14px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.submitButton {
+  background-color: rgb(16, 191, 106);
+  border-color: rgb(16, 191, 106);
+  color: white;
+}
+
+.declineButton {
+  background-color: rgb(242, 243, 246);
+  border-color: rgb(242, 243, 246);
+  color: black;
+}
+
+.declineButton {
+  padding: 9px 20px;
+  text-shadow: unset;
+  background-color: rgb(242, 243, 246);
+  color: black;
+  border-radius: 8px;
+}
+
+.titleText {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+.approvalWrapper {
+  padding: 20px 24px 24px;
+  background-color: white;
+  border-radius: 12px;
+  height: 100%;
+
+  @media screen and (max-width: 600px) {
+    width: auto;
+    margin: 16px 24px 0 24px;
+  }
+}
+
+.tripDescription {
+  display: flex;
+  gap: 16px;
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+  }
+
+  > div {
+    height: auto;
+    flex: 1;
+  }
+}
+
+.personDataContainer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.userAvatarWrapper {
+  display: flex;
+  align-items: center;
+  img {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+.personalInfoBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.accentText {
+  font-weight: 400;
+  line-height: 20px;
+  font-size: 16px;
+}
+
+.subTitle {
+  font-size: 14px;
+  color: rgb(168, 171, 179);
+  line-height: 18px;
+}
+
+.pageWrapper {
+  margin: 0 !important;
+  max-width: 100% !important;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contentContainer {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+}
+
+.passengerAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #F2F3F6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.costWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  width: 400px;
+
+  @media screen and (max-width: 600px) {
+    align-items: flex-start;
+  }
+
+  .withWarning {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+  }
+
+  &Title {
+    color: #262626;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+  }
+
+  &Price {
+    font-size: 32px;
+    color: #262626;
+    line-height: 32px;
+    font-weight: 600;
+  }
+
+  .plannedCostWrapperTitle,
+  .plannedCostWrapperPrice {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+  }
+
+  .plannedCostWrapperTitle {
+    color: #A8ABB3;
+  }
+
+  .plannedCostWrapperPrice {
+    color: #21212A;
+  }
+}
+
+.headerBreadcrumbs {
+  margin-bottom: 11px;
+  display: flex;
+  align-items: center;
+
+  span {
+    color: rgb(38, 38, 38);
+    font-family: SB Sans Text;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+    cursor: pointer;
+
+    @media screen and (max-width: 600px) {
+      line-height: 18px;
+    }
+  }
+  .foolBreadcrumb {
+    cursor: default;
+  }
+
+  img {
+    margin: 0 16px;
+  }
+
+  @media screen and (max-width: 600px) {
+    span:first-child {
+      margin-left: 16px;
+    }
+  }
+}

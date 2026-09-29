@@ -1,0 +1,18 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${JWKS_URI}
+  cloud:
+    stream:
+      default-binder: kafka
+management:
+  health:
+    readinessstate:
+      enabled: true
+    livenessstate:
+      enabled: true
+logging:
+  register-shutdown-hook: false
+

@@ -1,0 +1,9 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211028"
+            author: nikulinsa
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_timezone_in_reports.sql
+                        relativeToChangelogFile: true

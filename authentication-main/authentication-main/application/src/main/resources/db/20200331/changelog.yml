@@ -1,0 +1,23 @@
+databaseChangeLog:
+    -   changeSet:
+            id: authentication/20200331
+            author: mad
+            dbms: postgres
+            changes:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: decrease_role_table.sql
+                        relativeToChangelogFile: true
+    -   changeSet:
+          id: authentication/20200331
+          author: mad
+          dbms: h2
+          changes:
+            - dropColumn:
+                schemaName: authentication
+                tableName: role
+                columns:
+                  - column:
+                      name: name
+                  - column:
+                      name: description

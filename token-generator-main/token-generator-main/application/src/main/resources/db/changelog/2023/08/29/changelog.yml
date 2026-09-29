@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230829-1408"
+      author: medvedev-ad
+      context: "TRANSPORT-16436"
+      changes:
+        - tagDatabase:
+            tag: "D-02.026.000"
+        - createTable:
+            schemaName: token_generator
+            tableName: account_roles
+            remarks: Связь УЗ и ролей
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор пользователя
+              - column:
+                  name: role
+                  type: varchar(255)
+                  remarks: Роль
+      rollback:
+        - dropTable:
+            schemaName: token_generator
+            tableName: account_roles
+            cascadeConstraints: true

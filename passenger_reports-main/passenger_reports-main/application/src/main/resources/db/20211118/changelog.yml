@@ -1,0 +1,12 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211118"
+            author: nikulinsa
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_intermediate_wait_time_in_taxi_trip_registry_string.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        path: changes/add_intermediate_wait_time_in_taxi_trip.sql
+                        relativeToChangelogFile: true

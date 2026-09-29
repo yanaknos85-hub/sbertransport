@@ -1,0 +1,34 @@
+.buttons_wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: var(--margin-half) 0;
+
+  button {
+    margin-bottom: var(--margin-half);
+
+    &:first-child {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+  }
+}
+
+.personal_cars_pop_confirm {
+  display: flex;
+  justify-content: space-between;
+  color: #007ad9;
+
+  &__delete {
+    cursor: 'pointer';
+  }
+}
+
+.assign_button {
+  width: 100%;
+  margin-top: var(--margin-half);
+}
+
+.save_button {
+  width: 100%;
+  margin-top: var(--margin-half);
+}

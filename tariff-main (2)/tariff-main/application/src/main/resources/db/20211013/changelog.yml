@@ -1,0 +1,25 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20211012
+            tag: "20211012"
+            author: palekseev
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/update_broken_region_ids.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: tariff/20211013_1
+            tag: "20211013"
+            author: smirnova
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/create_table_cargo_tariff_region.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_table_cargo_department.sql
+                        relativeToChangelogFile: true

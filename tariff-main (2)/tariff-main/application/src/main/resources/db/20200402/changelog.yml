@@ -1,0 +1,19 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20200402
+            tag: "20200402"
+            author: mad
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: create_schema.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: create_tariff_taxi_table.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: create_tariff_personal_table.sql
+                        relativeToChangelogFile: true

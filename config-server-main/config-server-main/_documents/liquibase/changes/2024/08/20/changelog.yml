@@ -1,0 +1,106 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240820-1200"
+      author: medvedev-ad
+      context: "TRANSPORT-25247"
+      changes:
+        - tagDatabase:
+            tag: "D-03.016.000"
+        - sql:
+            sql: create schema configs
+        - sql:
+            sql: comment on schema configs is 'Конфигурации'
+      rollback:
+        - sql:
+            sql: drop schema configs cascade
+  - changeSet:
+      id: "20240820-1201"
+      author: medvedev-ad
+      context: "TRANSPORT-25247"
+      changes:
+        - tagDatabase:
+            tag: "D-03.016.000"
+        - createTable:
+            schemaName: configs
+            tableName: properties
+            remarks: Настройки приложений
+            columns:
+              - column:
+                  name: key
+                  type: text
+                  remarks: Ключ параметра
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: configs_properties_key_nn
+              - column:
+                  name: value
+                  type: text
+                  remarks: Значение параметра
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: configs_properties_value_nn
+              - column:
+                  name: application
+                  type: varchar(255)
+                  remarks: Приложение
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: configs_properties_application_nn
+              - column:
+                  name: profile
+                  type: varchar(255)
+                  remarks: Профиль
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: configs_properties_profile_nn
+              - column:
+                  name: label
+                  type: varchar(255)
+                  remarks: Метка
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: configs_properties_label_nn
+  - changeSet:
+      id: "20240820-1325"
+      author: medvedev-ad
+      context: "TRANSPORT-25247"
+      changes:
+        - tagDatabase:
+            tag: "D-03.016.000"
+        - dropNotNullConstraint:
+            schemaName: configs
+            tableName: properties
+            columnName: profile
+        - dropNotNullConstraint:
+            schemaName: configs
+            tableName: properties
+            columnName: label
+      rollback:
+        - addNotNullConstraint:
+            schemaName: configs
+            tableName: properties
+            columnName: profile
+            constraintName: configs_properties_profile_nn
+        - addNotNullConstraint:
+            schemaName: configs
+            tableName: properties
+            columnName: label
+            constraintName: configs_properties_label_nn
+  - changeSet:
+      id: "20240820-1641"
+      author: medvedev-ad
+      context: "TRANSPORT-25247"
+      changes:
+        - tagDatabase:
+            tag: "D-03.016.000"
+        - createIndex:
+            schemaName: configs
+            tableName: properties
+            columns:
+              - column:
+                  name: label
+              - column:
+                  name: profile
+              - column:
+                  name: application
+            indexName: configs_properties_label_profile_application_idx

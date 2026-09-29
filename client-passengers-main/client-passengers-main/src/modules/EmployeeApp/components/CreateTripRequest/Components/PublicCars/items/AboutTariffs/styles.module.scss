@@ -1,0 +1,41 @@
+.button {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #0091FF;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+}
+
+.content {
+  font-family: SB Sans Text, sans-serif;
+  letter-spacing: -0.3px;
+
+  a {
+    color: #10BF6A;
+    text-decoration: underline;
+  }
+}
+
+.overlay.overlay {
+  width: 360px;
+  height: 88px;
+  box-sizing: content-box;
+  border-radius: 8px;
+  padding: 11px 16px;
+  box-shadow: 0 4px 12px 4px rgba(4, 0, 58, 0.04), 0 0 1px 0 rgba(3, 0, 27, 0.04);
+  background: #FFF;
+
+  :global{
+    .ant-popover-content {
+      width: 100%;
+
+      .ant-popover-inner-content {
+        padding: 0;
+      }
+    }
+  }
+}

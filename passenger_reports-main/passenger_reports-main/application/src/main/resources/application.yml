@@ -1,0 +1,187 @@
+server:
+    port: @server.port@
+    tomcat:
+        relaxed-query-chars:
+            - "["
+            - "]"
+
+spring:
+    config:
+        import: optional:configserver:${SPRING_CLOUD_CONFIG_URI}
+    jackson:
+        serialization:
+            write_dates_as_timestamps: false
+    application:
+        name: reports
+        version: @project.version@
+    cloud:
+        stream:
+            kafka:
+                binder:
+                    brokers:
+                        - ${KAFKA_BROKERS:@kafka.default.broker@}
+                    producerProperties:
+                        key.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+                    consumerProperties:
+                        key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+            default-binder: kafka
+            default:
+                consumer:
+                    enableDlq: true
+                    ackEachRecord: true
+                    standardHeaders: both
+                    autoCommitOnError: true
+            bindings:
+                updateRequestStatusFromReportsOutput-out-0:
+                    destination: service.request.status.update.from.reports
+                tripRequestInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.request
+                #                cargoRequestInput: Грузы говорят, что этот топик нам не нужен. Требуется задача по отпиливанию груза 2023-05-17
+                #                    group: ${spring.application.name}
+                #                    destination: service.request.cargo
+                departmentsInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.organization.department
+                employeesInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.organization.employee
+                personalCarsInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.organization.personalCar
+                organizationsInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.organization
+                tripPurposeInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.organization.trip.purpose
+                positionsInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.organization.position
+                tripLimitInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.limits.action.result
+                taxiTripInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.request.taxi.trip
+                taxiTariffInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.tariff.taxi
+                tariffInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.tariff
+                sharedRideInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.sharedride
+                contractorInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.contractor
+                contractInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.contract
+                requestRatingInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.request.rating
+                autoparksInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.autopark
+                limitInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.limits
+                requestStatusOverdueInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.request.statusOverdue
+                statsInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.reports.stats
+                carsharingTripInput-in-0:
+                    group: ${spring.application.name}
+                    destination: service.integrations.carsharing.trip
+    datasource:
+        url: jdbc:postgresql://localhost:5432/transport
+        password: root
+        username: postgres
+        driver-class-name: org.postgresql.Driver
+        type: com.zaxxer.hikari.HikariDataSource
+        hikari:
+            maximum-pool-size: 25
+            connection-test-query: SELECT 1
+            schema: reports
+    jpa:
+        properties:
+            hibernate:
+                search:
+                    enabled: ${SEARCH_ENGINE_ENABLE:false}
+                    automatic_indexing:
+                        strategy: session
+                    schema_management:
+                        strategy: drop-and-create
+                jdbc:
+                    batch_size: 25
+                    lob:
+                        non_contextual_creation: true
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+        hibernate:
+            ddl-auto: validate
+        show-sql: ${SHOW_SQL:false}
+        open-in-view: false
+    liquibase:
+        enabled: true
+        change-log: classpath:db/changelog-master.yml
+        drop-first: false
+        test-rollback-on-update: false
+        url: ${spring.datasource.url}
+        user: ${spring.datasource.username}
+        password: ${spring.datasource.password}
+        database-change-log-table: changelog_reports
+        database-change-log-lock-table: changelog_reports_lock
+        liquibase-schema: ${MIGRATIONS_SCHEMA:public}
+    profiles:
+        active: prod
+        include: import
+    servlet:
+        multipart:
+            enabled: true
+            max-file-size: ${file.max-size}
+            max-request-size: ${file.max-size}
+management:
+    health:
+        elasticsearch:
+            enabled: false
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+taxi-trip-registry:
+    header-size: ${TAXI_TRIP_REGISTRY_HEADER_SIZE:6}
+    footer-size: ${TAXI_TRIP_REGISTRY_FOOTER_SIZE:0}
+    left-indent: ${TAXI_TRIP_REGISTRY_LEFT_INDENT:1}
+    column-names-row: ${TAXI_TRIP_REGISTRY_COLUMN_NAMES_ROW:4}
+address:
+    catalog:
+        file:
+            path: ${ADDRESS_CATALOG_FILE_PATH:classpath:address-catalog/VSP_09_12_2020.xlsx}
+file:
+    upload-dir: ${FILE_UPLOAD_DIR_REPORTS:reports/src/upload/registry}
+    max-size: ${FILE_MAX_SIZE_REPORTS:20971520}
+files:
+    path: ${FILES_PATH:./}
+    schedulers:
+        waypoints: ${FILES_SCHEDULERS_WAYPOINTS:-}
+        vehicle: ${FILES_SCHEDULERS_VEHICLE:-}
+        taxi: ${FILES_SCHEDULERS_TAXI:-}
+        shared: ${FILES_SCHEDULERS_SHARED:-}
+        personalPublic: ${FILES_SCHEDULERS_PERSONAL_PUBLIC:-}
+        limits: ${FILES_SCHEDULERS_LIMITS:-}
+        general: ${FILES_SCHEDULERS_GENERAL:-}
+cargo:
+    template:
+        path: classpath:jrtemplates/Template_report_TTN.jrxml
+feign.url.limits: ${FEIGN_URL_LIMITS:http://localhost:8009}
+security:
+    roles:
+        enabled: true
+scheduler:
+    inbox-messages:
+        read: ${SCHEDULER_INBOX_MESSAGES_READ:-}
+        delete: ${SCHEDULER_INBOX_MESSAGES_DELETE:-}

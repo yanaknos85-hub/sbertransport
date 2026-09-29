@@ -1,0 +1,49 @@
+.container {
+  position: relative;
+  padding: 24px;
+  background-color: #fff;
+  height: 100%;
+  font-family: "SB Sans Text", sans-serif;
+  border-radius: 12px;
+  width: 100%;
+
+  :global(.ant-tabs-ink-bar) {
+    height: 4px !important;
+    border-radius: 4px;
+  }
+
+  :global(.ant-tabs-content-holder) {
+    :global(.ant-tabs-nav-wrap) {
+      max-width: calc(100% - 280px);
+      overflow: auto !important;
+    }
+  }
+
+  :global(.tab-pane_card .ant-tabs-tab-btn) {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #4d4d4d;
+    padding: 6px 16px !important;
+  }
+
+  :global(.tab-pane_card .ant-tabs-tab-active .ant-tabs-tab-btn) {
+    background-color: #262c31;
+  }
+
+  :global(.tab-pane_card .ant-tabs-nav .ant-tabs-tab) {
+    margin: 0 8px 0 0;
+  }
+}
+
+.publicContainer {
+  :global(.ant-tabs-content-holder .ant-tabs-nav-wrap) {
+    max-width: calc(100% - 330px);
+  }
+}
+
+.tabMargins {
+  :global(.ant-tabs-tab) {
+    margin: 0 0 0 14px;
+  }
+}

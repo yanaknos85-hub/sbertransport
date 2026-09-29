@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221019"
+            author: medvedev-ad
+            changes:
+                -   dropUniqueConstraint:
+                        schemaName: reports
+                        tableName: request
+                        constraintName: request_humanreadableid_key
+                -   addUniqueConstraint:
+                        schemaName: reports
+                        tableName: request
+                        constraintName: request_humanreadableid_transport_type_uk
+                        columnNames: humanreadableid,transport_type

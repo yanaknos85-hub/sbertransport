@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240304-1149"
+      author: ladeishchikov-aa
+      changes:
+        - addColumn:
+            schemaName: authentication
+            tableName: account
+            columns:
+              - column:
+                  name: number_of_login_attempts
+                  type: integer
+                  remarks: Количество попыток входа
+                  defaultValueNumeric: 0
+                  defaultOnNull: true
+                  constraints:
+                    nullable: false
+      rollback:
+        - dropColumn:
+            schemaName: authentication
+            tableName: account
+            columns:
+              - column:
+                  name: number_of_login_attempts

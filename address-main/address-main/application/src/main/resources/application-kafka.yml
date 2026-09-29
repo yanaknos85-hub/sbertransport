@@ -1,0 +1,27 @@
+spring:
+  cloud:
+    stream:
+      kafka:
+      binders:
+        kafka:
+          type: kafka
+          environment.spring.cloud.stream.kafka:
+            default.consumer.enableDlq: true
+            binder:
+              brokers:
+                - ${KAFKA_BROKERS}
+              autoAddPartitions: true
+              producerProperties.key.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+              consumerProperties:
+                key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+                dlqProducerProperties.key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+                standardHeaders: both
+      bindings:
+        userAddressInput-in-0:
+          group: ${spring.application.name}
+          destination: service.request.address.used
+          binder: kafka
+        employeeInput-in-0:
+          group: ${spring.application.name}
+          destination: service.organization.employee
+          binder: kafka

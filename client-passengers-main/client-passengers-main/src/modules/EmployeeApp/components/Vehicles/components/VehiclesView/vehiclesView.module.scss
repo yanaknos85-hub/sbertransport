@@ -1,0 +1,115 @@
+.headerTripRequest {
+  margin: 11px 0;
+  display: flex;
+  align-items: center;
+
+  span {
+    color: rgb(38, 38, 38);
+    font-family: SB Sans Text;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+    cursor: pointer;
+  }
+
+  a {
+    color: rgb(38, 38, 38);
+    font-family: SB Sans Text;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+    cursor: pointer;
+  }
+
+  a:hover {
+    color: rgb(38, 38, 38);
+  }
+
+  img {
+    margin: 0 16px;
+  }
+}
+
+.viewport {
+  max-width: 1136px;
+}
+
+.content {
+  background: #FFF;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  color: rgb(28, 28, 28);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  padding-bottom: 36px;
+
+  svg {
+    min-width: 28px;
+    min-height: 28px;
+    margin-right: 12px;
+    cursor: pointer;
+  }
+}
+
+.ownershipNote {
+  color: rgb(255, 154, 50);
+  font-size: 14px;
+}
+
+.alert {
+  &:global(.ant-alert) {
+    margin-bottom: 10px;
+
+    :global(.ant-alert-description) {
+      font-family: SB Sans Text, sans-serif;
+      font-size: 14px;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+    }
+  }
+}
+
+.agreements {
+  margin-bottom: 0;
+}
+
+.fileLabel {
+  color: rgb(0, 145, 255);
+}
+
+.error {
+  color: #ff7459;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.buttons {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: space-between;
+
+  button:first-child {
+    margin-right: 16px;
+  }
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column-reverse;
+    gap: 24px;
+    align-items: center;
+  }
+}
+
+.btnDanger {
+  color: red;
+  cursor: pointer;
+}

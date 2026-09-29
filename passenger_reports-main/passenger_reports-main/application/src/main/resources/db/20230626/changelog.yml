@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: 20230626
+            author: aasigalov
+            context: "!test"
+            changes:
+                -   sqlFile:
+                        path: changes/migration_stats.sql
+                        relativeToChangelogFile: true
+                        

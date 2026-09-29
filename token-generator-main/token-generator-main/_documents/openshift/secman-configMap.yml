@@ -1,0 +1,21 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: secman
+  namespace: ci02351878-edevgen-sbertransport-dev
+data:
+  application-secman.yml: |-
+    spring:
+      cloud:
+        vault:
+          namespace: CI02351878_CI02671580
+          authentication: kubernetes
+          kubernetes:
+            role: ci02351878-edevgen-sbertransport-dev
+            kubernetes-path: os/dev-terra000003-ids.ocp.delta.sbrf.ru
+          enabled: true
+          port: 443
+          host: t.secrets.delta.sbrf.ru
+      config:
+        import:
+          - optional:vault://A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/application

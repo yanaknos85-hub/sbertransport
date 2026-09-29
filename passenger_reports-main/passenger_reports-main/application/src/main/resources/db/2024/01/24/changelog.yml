@@ -1,0 +1,22 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20240124"
+            author: shabrov-ie
+            changes:
+                -   tagDatabase:
+                        tag: "20240124"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    type: timestamp
+                                    name: request_closed_datetime
+                                    remarks: Дата закрытия в АС
+            rollback:
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    name: request_closed_datetime

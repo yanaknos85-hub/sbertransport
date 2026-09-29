@@ -1,0 +1,8 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220926"
+            author: blandin-ad
+            changes:
+                -   sqlFile:
+                        path: change/add_columns_to_request_table.sql
+                        relativeToChangelogFile: true

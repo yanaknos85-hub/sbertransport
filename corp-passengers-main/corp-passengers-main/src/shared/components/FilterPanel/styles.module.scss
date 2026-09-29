@@ -1,0 +1,125 @@
+.filterPanel {
+  width: calc(100% - 2 * var(--margin-large));
+  margin: var(--margin-large);
+  padding: var(--padding-base);
+  border: 1px solid var(--text-color-minor);
+  border-radius: var(--border-radius-base);
+  box-shadow: 0 0 10px -3px var(--card-shadow);
+
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: stretch;
+    justify-items: center;
+    column-gap: var(--margin-large);
+
+    :global(.ant-row) {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 480px;
+      width: 100%;
+    }
+
+    .buttonBar {
+      height: 40px;
+      grid-column: span 4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & > * {
+        margin-right: var(--margin-base);
+      }
+    }
+
+    .saveFilter {
+      color: var(--dark-grey);
+      font-family: SB Sans Text;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+      padding: 0;
+      border: none;
+      margin-right: auto;
+    }
+  }
+
+  @media screen and (max-width: 1400px) {
+    form {
+      grid-template-columns: 1fr 1fr 1fr;
+
+      .buttonBar {
+        grid-column: span 3;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    form {
+      grid-template-columns: 1fr 1fr;
+
+      .buttonBar {
+        grid-column: span 2;
+      }
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    form {
+      grid-template-columns: 1fr;
+
+      .buttonBar {
+        grid-column: 1;
+      }
+    }
+  }
+}
+
+.sectionPanel {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  border: none;
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    .formSection:not(:first-child) {
+      margin-top: 36px;
+    }
+
+    .sectionName {
+      color: var(--dark-grey);
+      font-family: SB Sans Text;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 24px;
+      letter-spacing: -0.3px;
+      margin-bottom: 16px;
+    }
+
+    .sectionFields {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 76px;
+
+      > div {
+        min-width: 312px;
+      }
+    }
+
+    .sectionLine {
+      border-top: 1px solid rgba(38, 38, 38, 0.08);
+      margin-top: 16px !important;
+      padding-top: 16px;
+    }
+
+    :global(.ant-form-item) {
+      width: auto;
+      margin: 0;
+    }
+  }
+}

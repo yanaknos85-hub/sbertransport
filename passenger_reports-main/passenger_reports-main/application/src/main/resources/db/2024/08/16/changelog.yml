@@ -1,0 +1,82 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20240816"
+            author: polozov-ap
+            changes:
+                -   tagDatabase:
+                        tag: "20240816"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: contract
+                        columns:
+                            -   column:
+                                    name: transport_type
+                                    type: text
+                                    remarks: Тип транспорта
+                            -   column:
+                                    name: service_type
+                                    type: text
+                                    remarks: Тип сервиса
+                            -   column:
+                                    name: sum
+                                    type: int8
+                                    remarks: Сумма
+                            -   column:
+                                    name: user_id
+                                    type: uuid
+                                    remarks: Пользователь создатель записи
+                            -   column:
+                                    name: creation_time
+                                    type: timestamp
+                                    remarks: Время создания записи
+                            -   column:
+                                    name: start_date
+                                    type: date
+                                    remarks: Дата начала договора
+                            -   column:
+                                    name: end_date
+                                    type: date
+                                    remarks: Дата окончания договора
+                            -   column:
+                                    name: contract_number
+                                    type: text
+                                    remarks: Номер контракта
+                            -   column:
+                                    name: include_vat
+                                    type: bool
+                                    remarks: Флаг наличия НДС
+                            -   column:
+                                    name: vat_value
+                                    type: int4
+                                    remarks: НДС значение
+                            -   column:
+                                    name: uvhd
+                                    type: text
+                                    remarks: Номер договора УВХД
+            rollback:
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: contract
+                        columns:
+                            -   column:
+                                    name: transport_type
+                            -   column:
+                                    name: service_type
+                            -   column:
+                                    name: sum
+                            -   column:
+                                    name: user_id
+                            -   column:
+                                    name: creation_time
+                            -   column:
+                                    name: start_date
+                            -   column:
+                                    name: end_date
+                            -   column:
+                                    name: contract_number
+                            -   column:
+                                    name: include_vat
+                            -   column:
+                                    name: vat_value
+                            -   column:
+                                    name: uvhd

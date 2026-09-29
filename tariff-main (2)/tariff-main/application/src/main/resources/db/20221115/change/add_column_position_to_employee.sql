@@ -1,0 +1,1 @@
+alter table tariff.message_employee add column if not exists position_id uuid;

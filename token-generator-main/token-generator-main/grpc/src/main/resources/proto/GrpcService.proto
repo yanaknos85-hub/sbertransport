@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package ru.sber.transport.token_generator.grpc.service;
+
+import "GrpcDto.proto";
+
+service JwtGeneratingService {
+
+  rpc generate(ru.sber.transport.token_generator.grpc.dto.UserRequest) returns(ru.sber.transport.token_generator.grpc.dto.JwtData) {};
+
+}

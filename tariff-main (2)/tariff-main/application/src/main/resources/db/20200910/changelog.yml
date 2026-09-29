@@ -1,0 +1,11 @@
+databaseChangeLog:
+    -   changeSet:
+            id: request/20200910
+            tag: "20200910"
+            author: apa
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: add_active.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

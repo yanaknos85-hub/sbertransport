@@ -1,0 +1,225 @@
+.title {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+  color: #000000;
+}
+
+.subtitle {
+  font-family: 'SB Sans Text', sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  letter-spacing: -0.3px;
+  color: #909090;
+
+  margin-top: 10px;
+}
+
+.headerDivider {
+  background-color: rgba(38, 38, 38, 0.08);
+  height: 1px;
+  border: none;
+  margin: 20px -16px 0;
+}
+
+.tripRulesSteps {
+  color: #262626;
+
+  &:global {
+    &.ant-steps {
+      margin-bottom: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(38, 38, 38, 0.08);
+
+      .ant-steps-item::before {
+        display: none;
+      }
+
+      .ant-steps-item {
+        font-family: 'SB Sans Text', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: -0.3px;
+
+        .ant-steps-item-icon {
+          font-weight: 600;
+          color: #ffffff;
+        }
+
+        &.ant-steps-item-process {
+          font-weight: 600;
+
+          .ant-steps-item-title {
+            color: #000000;
+          }
+        }
+
+        &.ant-steps-item-finish {
+          .ant-steps-item-title {
+            color: #262626;
+          }
+        }
+
+        &.ant-steps-item-wait {
+          .ant-steps-item-title,
+          .ant-steps-item-icon {
+            color: #c2c2c2;
+          }
+        }
+      }
+    }
+  }
+}
+
+.container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.04);
+  margin-right: 20px;
+  padding: 20px;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 16px;
+  margin-right: 20px;
+}
+
+.buttonBlock {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  margin-right: var(--margin-base);
+
+  .buttonBack {
+    margin-right: var(--margin-base);
+  }
+}
+
+.panelWrapper {
+  position: relative;
+}
+
+.controlButtons {
+  position: absolute;
+  bottom: -50px;
+  right: 30px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.serviceTypesWrapper {
+  color: #262626;
+
+  & :global {
+    .ant-tabs-tab-btn {
+      color: #737373;
+    }
+
+    .ant-tabs-tab-active .ant-tabs-tab-btn {
+      font-weight: 600;
+    }
+  }
+}
+
+.tripPurposesWrapper,
+.approvalsSettingsWrapper,
+.ApprovalsSettingsWrapper {
+  margin: 16px 12px 0 12px;
+  min-height: 500px;
+
+  & :global {
+    .ant-tabs {
+      width: 100%;
+
+      .ant-tabs-tab-btn {
+        color: #737373;
+        &:hover {
+          font-weight: 600;
+        }
+      }
+      .ant-tabs-tab-active {
+        border-bottom: solid 3px #10bf6a;
+        .ant-tabs-tab-btn {
+          color: #262626;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+.tabButtons {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+
+  .tabButton {
+    border-radius: 8px;
+    background-color: #f2f3f6;
+    color: #4d4d4d;
+    border: none;
+    &:hover {
+      background-color: #eeeeee;
+      color: #000000;
+    }
+    &:focus {
+      background-color: #262c31;
+      color: #ffffff;
+    }
+  }
+}
+
+.noServicesEnabledWarning {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.panel {
+  margin: 8px 0;
+  padding-right: 0;
+}
+
+.tabs {
+  margin-top: 8px !important;
+  :global {
+    .ant-tabs-nav {
+      margin-bottom: 0 !important;
+    }
+    .ant-tabs-nav:before {
+      display: none;
+    }
+    .ant-tabs-nav-list:after {
+      display: none;
+    }
+    .ant-tabs-tab {
+      background-color: #f2f3f6;
+      padding: 6px 16px;
+      border-radius: 8px;
+
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 400;
+      color: #4d4d4d;
+      letter-spacing: -0.3px;
+    }
+    .ant-tabs-tab-active {
+      background-color: #262c31;
+      .ant-tabs-tab-btn {
+        color: #ffffff !important;
+        border: none !important;
+      }
+      border-bottom: none !important;
+    }
+
+    .ant-tabs-ink-bar {
+      display: none;
+    }
+  }
+}

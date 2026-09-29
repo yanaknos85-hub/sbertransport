@@ -1,0 +1,34 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20210503"
+            tag: "20210503"
+            author: medvedev-ad
+            preConditions:
+                -   not:
+                        -   tableExists:
+                                schemaName: tariff
+                                tableName: contractor
+                    onFail: MARK_RAN
+            changes:
+                -   tagDatabase:
+                        tag: "20210503"
+                -   createTable:
+                        schemaName: tariff
+                        tableName: contractor
+                        remarks: Контрагент
+                        columns:
+                            - column:
+                                  name: id
+                                  type: uuid
+                                  remarks: Идентификатор
+                                  constraints:
+                                      primaryKey: true
+                                      primaryKeyName: contractor_pkey
+                            - column:
+                                  name: name
+                                  type: text
+                                  remarks: Название
+            rollback:
+                -   dropTable:
+                        schemaName: tariff
+                        tableName: contractor

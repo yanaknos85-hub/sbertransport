@@ -1,0 +1,17 @@
+spring.cloud.stream.default-binder: integration
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost
+  datasource:
+    username: postgres
+  liquibase.test-rollback-on-update: true
+logging:
+  level:
+    org:
+      jooq:
+        tools:
+          LoggerListener: DEBUG
+grpc.enabled: false

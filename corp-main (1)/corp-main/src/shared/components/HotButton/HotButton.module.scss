@@ -1,0 +1,67 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  box-shadow: 0 0 1px rgba($color: #000000, $alpha: 0.12), 0 4px 8px -2px rgba($color: #000000, $alpha: 0.12);
+  width: fit-content;
+  height: 76px;
+  padding: 16px 16px 16px 10px;
+  border-radius: 12px;
+  gap: 8px;
+}
+
+.cardTitle {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  flex: 1 0;
+  min-width: 130px;
+  color: #4c4c4c;
+}
+
+.cardImage {
+  $size: 42px;
+
+  width: $size;
+  height: $size;
+  flex: 0 0 $size;
+}
+
+.containerAdd {
+  @extend .container;
+  box-shadow: none;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  flex: 1 0 110px;
+  .cardTitle {
+    flex: 0 0 110px;
+  }
+}
+
+.add {
+  $size: 20px;
+  width: $size;
+  height: $size;
+  position: relative;
+  flex: 0 0 $size;
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: 100%;
+    background: #000;
+  }
+
+  &::before {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+}

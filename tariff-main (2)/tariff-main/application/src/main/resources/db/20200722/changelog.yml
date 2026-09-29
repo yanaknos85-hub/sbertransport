@@ -1,0 +1,11 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20200722
+            tag: "20200722"
+            author: apa
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: update_tables.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

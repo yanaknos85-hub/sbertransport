@@ -1,0 +1,58 @@
+.radio_date {
+  
+  :global(.ant-radio-inner::after) {
+    background-color: white !important;
+  }
+  
+  :global(.ant-radio-checked) {
+
+    :global(.ant-radio-inner) {
+      border-width: 4.5px !important;
+    }
+  }
+}
+
+.tripRequestDate {
+
+  .radioGroup {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-bottom: 12px;
+
+    .radio_date {
+
+      .ic_info {
+        margin-left: 8px;
+      }
+
+      & > span:last-child {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    & > .radio_date:last-child {
+      margin-bottom: 8px;
+    }
+  }
+}
+
+.chemodanColorTest {
+  input {
+    &::placeholder {
+      color: #000 !important;
+    }
+    &:-ms-input-placeholder {
+      color: #000 !important;
+    }
+    &::-ms-input-placeholder {
+      color: #000 !important;
+    }
+    &::-webkit-input-placeholder {
+      color: #000 !important;
+    }
+    &::-moz-placeholder {
+      color: #000 !important;
+    }
+  }
+}

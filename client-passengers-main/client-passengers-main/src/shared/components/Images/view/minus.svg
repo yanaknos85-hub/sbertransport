@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TODO: Выравнить стороны, сделать нормальный scale -->
+<svg width="18px" height="24px" viewBox="0 0 30 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>ic/minus@1x</title>
+    <g id="ic/minus" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group">
+            <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+        </g>
+        <path d="M6,12 L18,12" id="Combined-Shape" stroke="#595959" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    </g>
+</svg>

@@ -1,0 +1,34 @@
+.modal {
+  :global(.ant-modal-close) {
+    display: flex !important;
+  }
+
+  :global(.ant-modal-close) {
+    top: 12px;
+    right: 12px;
+
+    span {
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+    }
+  }
+}
+
+.textContainer {
+  margin-bottom: 24px;
+}
+
+.boldTitle {
+  font-weight: 700;
+}
+
+.boldSubtitle {
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.boldCheckbox {
+  font-weight: 700;
+  margin-left: 8px;
+}

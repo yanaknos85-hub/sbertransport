@@ -1,0 +1,38 @@
+[
+  {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa1",
+    "name": "Офисный стул",
+    "type": "FURNITURE",
+    "category": "OTHER",
+    "length": 700,
+    "width": 700,
+    "height": 700,
+    "weight": 700,
+    "volume": 24000000,
+    "active": true
+  },
+  {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa2",
+    "name": "ноутбук асус",
+    "type": "TECHNIQUE",
+    "category": "OTHER",
+    "length": 700,
+    "width": 700,
+    "height": 700,
+    "weight": 700,
+    "volume": 24000000,
+    "active": true
+  },
+  {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa3",
+    "name": "Набор одноразовой посуды(био)",
+    "type": "TABLEWARE",
+    "category": "OTHER",
+    "length": 700,
+    "width": 700,
+    "height": 700,
+    "weight": 700,
+    "volume": 24000000,
+    "active": true
+  }
+]

@@ -1,0 +1,83 @@
+$width: 550px;
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+.detailedView {
+  width: calc(100% - 2 * var(--margin-large));
+  min-width: $width;
+  margin: var(--margin-large);
+  padding: var(--padding-base);
+  padding-left: var(--padding-large);
+  border: 1px solid var(--text-color-minor);
+  border-radius: var(--border-radius-base);
+  box-shadow: 0 0 10px -3px var(--card-shadow);
+
+  .mapWrapper {
+    width: 100%;
+    height: 300px;
+  }
+
+  .descriptions {
+    width: 100%;
+    padding: var(--padding-base);
+  }
+}
+
+.descriptionLabel {
+  margin-right: var(--margin-half);
+}
+
+.changeFieldsForm {
+  width: max-content;
+  margin: var(--margin-half) 0;
+  padding: var(--padding-half);
+  border: 1px solid var(--text-color-minor);
+  border-radius: var(--border-radius-base);
+  box-shadow: 0 0 10px -3px var(--card-shadow);
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  justify-items: left;
+
+  .selectContainer {
+    padding: var(--padding-half) var(--padding-half);
+  }
+
+  .select {
+    min-width: var(--width-inner);
+    max-width: max-content;
+  }
+
+  .vehicleInfo {
+    display: grid;
+    justify-items: start;
+
+    .vehicleInfoInput {
+      margin-top: var(--margin-half);
+      width: calc(var(--width-inner) + 3.5 * var(--margin-base));
+
+      :global(.ant-input) {
+        background-color: transparent;
+      }
+    }
+  }
+
+  .radioGroup {
+    display: grid;
+
+    :global(.ant-radio-wrapper) {
+      margin-bottom: var(--margin-base);
+    }
+  }
+
+  .buttonBar {
+    justify-self: center;
+
+    & > * {
+      margin-right: var(--margin-base);
+      margin-bottom: var(--margin-base);
+    }
+  }
+}

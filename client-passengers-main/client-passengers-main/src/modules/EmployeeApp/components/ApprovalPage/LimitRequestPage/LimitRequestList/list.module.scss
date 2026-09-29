@@ -1,0 +1,29 @@
+$content-indent: 400px; // Отступы вокруг контентной части (заголок, паддинги)
+
+.request {
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+
+  &:hover {
+    border-bottom: 1px solid var(--primary-color);
+  }
+}
+
+.content {
+  width: 100%;
+  max-width: 900px;
+  // margin: 0 0 0 115px;
+}
+
+.list {
+  :global(.ant-spin-nested-loading) {
+    max-height: calc(100vh - #{$content-indent});
+    min-height: 300px;
+    overflow: auto;
+  }
+}
+
+.requestsCountInfo {
+  margin-top: 1%;
+  margin-bottom: 1%;
+}

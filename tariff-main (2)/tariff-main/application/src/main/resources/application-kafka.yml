@@ -1,0 +1,59 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        organizationsInput-in-0:
+          group: ${spring.application.name}
+          destination: service.organization
+          binder: kafka
+        positionsInput-in-0:
+          group: ${spring.application.name}
+          destination: service.organization.position
+          binder: kafka
+        departmentsInput-in-0:
+          group: ${spring.application.name}
+          destination: service.organization.department
+          binder: kafka
+        employeesInput-in-0:
+          group: ${spring.application.name}
+          destination: service.organization.employee
+          binder: kafka
+        tariffOutput-out-0:
+          destination: service.tariff
+          binder: kafka
+        taxiTariffOutput-out-0:
+          destination: service.tariff.taxi
+          binder: kafka
+        personalTariffOutput-out-0:
+          destination: service.tariff.personal
+          binder: kafka
+        carSharingTariffOutput-out-0:
+          destination: service.tariff.carSharing
+          binder: kafka
+        publicTariffOutput-out-0:
+          destination: service.tariff.public
+          binder: kafka
+        groupTransferTariffOutput-out-0:
+          destination: service.tariff.groupTransfer
+          binder: kafka
+        contractOutput-out-0:
+          destination: service.contract
+          binder: kafka
+        contractorInput-in-0:
+          group: ${spring.application.name}
+          destination: service.contractor
+          binder: kafka
+        geoZoneInput-in-0:
+          group: ${spring.application.name}
+          destination: service.geo.zones
+          binder: kafka
+      binders:
+        kafka:
+          type: kafka
+          environment:
+            spring.cloud.stream.kafka:
+              binder:
+                producerProperties:
+                  key.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+                consumerProperties:
+                  key.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer

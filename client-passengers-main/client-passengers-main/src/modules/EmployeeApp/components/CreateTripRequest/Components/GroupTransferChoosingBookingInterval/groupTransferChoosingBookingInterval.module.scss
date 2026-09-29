@@ -1,0 +1,96 @@
+.wrapper_bookingInterval {
+
+    .wrapper_bookingIntervalDate {
+        margin-bottom: 8px;
+
+        .title_bookingIntervalDate {
+            color: rgb(0, 0, 0);
+            font-family: SB Sans Text;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            letter-spacing: -0.15px;
+            margin: 8px 0;
+        }
+
+        .bookingIntervalDate_picker {
+            width: 100%;
+            height: 40px;
+        }
+    }
+
+    .title_validationError {
+        margin-top: 8px;
+        color: rgb(255, 87, 67);
+        font-family: SB Sans Interface;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 16px;
+        letter-spacing: 0.2px;
+    }
+
+    .wrapper_buttonNextStep {
+        margin-top: 16px;
+
+        & > button {
+            color: rgb(255, 255, 255);
+            font-family: SB Sans Text;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 22px;
+            letter-spacing: -0.3px;
+        }
+    }
+    
+    .wrapper_cost {
+        margin-top: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        & > span:first-child {
+            color: rgba(0, 0, 0, 0.9);
+            font-family: SB Sans Text;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 24px;
+            letter-spacing: -0.3px;
+        }
+
+        & > span:last-child {
+            color: rgba(0, 0, 0, 0.9);
+            font-family: SB Sans Interface;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            letter-spacing: 0px;
+        }
+    }
+
+    .wrapper_rangePicker {
+        display: flex;
+        flex-direction: column;
+
+        .bookingInterval_rangePicker {
+            height: 40px;
+        }
+
+        .title_rangePicker {
+            color: rgb(38, 38, 38);
+            font-family: SB Sans Interface;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 16px;
+            letter-spacing: 0.2px;
+            margin: 8px 0;
+        }
+    }
+
+    .bookingInterval {
+        display: flex;
+        flex-wrap: wrap;
+        border-radius: 8px;
+        background: rgb(248, 248, 248);
+        padding: 4px;
+    }
+}

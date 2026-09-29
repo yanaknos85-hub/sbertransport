@@ -1,0 +1,115 @@
+.selectField {
+    width: 100%;
+
+    :global {
+      .ant-select {
+        &-selector {
+          min-height: 48px;
+          border-radius: 8px;
+          border-color: var(--silver);
+          box-shadow: none;
+          overflow-y: auto;
+
+          &:before {
+            content: "";
+            position: absolute;
+            right: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: calc(100% - 15px);
+            border-radius: 2px;
+            background-color: rgba(38, 38, 38, 0.08);
+          }
+        }
+
+        &-dropdown {
+          border: 1px solid rgb(242, 242, 242);
+          box-shadow:
+            0px 8px 16px -4px rgba(0, 0, 0, 0.12),
+            0px 0px 1px 0px rgba(0, 0, 0, 0.12);
+          border-radius: 8px;
+          padding: 8px 0;
+        }
+
+        &-item {
+          padding: 12px 16px;
+
+          &-option {
+            &-content {
+              color: var(--dark-grey);
+              font-family: SB Sans Text;
+              font-size: 14px;
+              font-weight: 400;
+              line-height: 22px;
+              letter-spacing: -0.3px;
+              white-space: normal;
+            }
+
+            &-selected:not(.ant-select-item-option-disabled) {
+              background-color: var(--white);
+
+              svg {
+                fill: var(--concrete);
+              }
+            }
+
+            &-active:not(.ant-select-item-option-disabled) {
+              background: var(--solitude);
+            }
+          }
+        }
+
+        &-selection {
+          &-overflow {
+            padding-right: 50px;
+
+            &-item {
+              max-width: 98%;
+            }
+          }
+
+          &-search-input,
+          &-item,
+          &-placeholder {
+            color: var(--dark-grey);
+            font-family: SB Sans Text;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 22px;
+            letter-spacing: -0.3px;
+          }
+
+          &-placeholder {
+            color: var(--pale-grey);
+          }
+
+          &-search,
+          &-item,
+          &-placeholder {
+            display: inline-flex;
+            align-items: center;
+          }
+
+          &-placeholder {
+            padding-left: 5px;
+          }
+        }
+
+        &-arrow,
+        &-clear {
+          width: 16px;
+          height: 16px;
+          right: 24px;
+
+          svg {
+            width: 16px;
+          }
+        }
+
+        &-arrow {
+          top: 50%;
+        }
+      }
+    }
+  }

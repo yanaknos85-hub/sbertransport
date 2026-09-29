@@ -1,0 +1,114 @@
+{
+  "success": true,
+  "body": {
+    "status": true,
+    "orientation": "0",
+    "entities": [
+      {
+        "entity_name": "vehicleInfo.vehicleMark",
+        "entity_value": "SsangYong",
+        "confidence": 0.981
+      },
+      {
+        "entity_name": "vehicleInfo.vehicleModel",
+        "entity_value": "ACTYON",
+        "confidence": 0.981
+      },
+      {
+        "entity_name": "owner.personalData.lastName",
+        "entity_value": "Ведор",
+        "confidence": 0.982
+      },
+      {
+        "entity_name": "owner.personalData.firstName",
+        "entity_value": "Владимир",
+        "confidence": 0.982
+      },
+      {
+        "entity_name": "owner.personalData.middleName",
+        "entity_value": "Анатольевич",
+        "confidence": 0.982
+      },
+      {
+        "entity_name": "contractConditions.endDate",
+        "entity_value": "2022-07-03",
+        "confidence": 0.998
+      },
+      {
+        "entity_name": "insurer.personalData.lastName",
+        "entity_value": "ВедорВладимир",
+        "confidence": 0.993
+      },
+      {
+        "entity_name": "insurer.personalData.firstName",
+        "entity_value": "Анатольевич",
+        "confidence": 0.993
+      },
+      {
+        "entity_name": "vehicleInfo.vehicleDocuments.number",
+        "entity_value": "626669",
+        "confidence": 0.999
+      },
+      {
+        "entity_name": "contractSeries",
+        "entity_value": "ХХХ",
+        "confidence": 1
+      },
+      {
+        "entity_name": "contractNumber",
+        "entity_value": "0180982470",
+        "confidence": 1
+      },
+      {
+        "entity_name": "vehicleInfo.vehicleDocuments.series",
+        "entity_value": "7704",
+        "confidence": 0.999
+      },
+      {
+        "entity_name": "vehicleInfo.plateNumber",
+        "entity_value": "В561СН717",
+        "confidence": 0.94
+      },
+      {
+        "entity_name": "vehicleInfo.vehicleDocuments.type",
+        "entity_value": "VEHICLE_REGISTRATION_CERTIFICATE",
+        "confidence": 0.942
+      },
+      {
+        "entity_name": "vehicleInfo.vinNumber",
+        "entity_value": "DUMM0A18SD0005290",
+        "confidence": 0.994
+      },
+      {
+        "entity_name": "drivers.personalData.lastName",
+        "entity_value": "Ведор",
+        "confidence": 0.998,
+        "entity_id": 1
+      },
+      {
+        "entity_name": "drivers.personalData.firstName",
+        "entity_value": "Владимир",
+        "confidence": 0.998,
+        "entity_id": 1
+      },
+      {
+        "entity_name": "drivers.personalData.middleName",
+        "entity_value": "Анатольевич",
+        "confidence": 0.998,
+        "entity_id": 1
+      },
+      {
+        "entity_name": "drivers.driverLicenses.series",
+        "entity_value": "7704",
+        "confidence": 0.993,
+        "entity_id": 1
+      },
+      {
+        "entity_name": "drivers.driverLicenses.number",
+        "entity_value": "626669",
+        "confidence": 0.993,
+        "entity_id": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+.delegateCard {
+    width: 100%;
+    background-color: var(--pure-white);
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.08),
+        0 0 1px rgba(0, 0, 0, 0.04);
+    border-radius: 12px;
+    padding: 16px;
+
+    &:first-of-type,
+    .transportType,
+    .period {
+        margin-top: 8px;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 8px;
+    }
+
+    .cardHeader {
+        display: flex;
+        align-items: flex-start;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(38, 38, 38, 0.08);
+
+        :global(.ant-avatar) {
+            min-width: 48px;
+        }
+    }
+
+    .employee {
+        display: flex;
+        flex-direction: column;
+        margin-left: 16px;
+
+        .fullName {
+            font-weight: 600;
+        }
+
+        .personnelNumber {
+            color: #737373;
+            letter-spacing: -0.3px;
+        }
+    }
+
+    .period {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .actions {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        gap: 16px;
+
+        .button {
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

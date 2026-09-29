@@ -1,0 +1,74 @@
+application: tariff
+repo: app_passenger_tariff
+resources:
+  limits:
+    cpu: 400m
+    memory: 1300Mi
+  requests:
+    cpu: 300m
+    memory: 700Mi
+port:
+  http:
+    number: 8005
+    target: 8080
+    name: easup
+  grpc:
+    number: 6565
+    target: 6565
+    name: easup
+profiles: kafka-ssl,kafka-avro
+secman:
+  type: built_in
+additional:
+  envs:
+    - name: SR_PROVIDER
+      value: srm
+    - name: SCHEDULER_CONTRACT_CHECK
+      value: 0 0 21 * * *
+    - name: SPRING_CLOUD_CONFIG_URI
+      value: 'http://http-config-server:8080'
+  configMap:
+    - name: kafka-secman
+      data:
+        application-kafka-ssl.yml: |-
+          spring:
+            cloud:
+              vault:
+                namespace: CI02351878_CI02671580
+                authentication: kubernetes
+                kubernetes:
+                  role: ci02351878-edevgen-sbertransport-dev
+                  kubernetes-path: os/dev-terra000003-ids.ocp.delta.sbrf.ru
+                enabled: true
+                port: 443
+                host: t.secrets.delta.sbrf.ru
+            config:
+              import: 
+                - optional:vault://A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/application,kafka-ssl
+        application-kafka-avro.yml: |-
+          spring:
+            cloud:
+              vault:
+                namespace: CI02351878_CI02671580
+                authentication: kubernetes
+                kubernetes:
+                  role: ci02351878-edevgen-sbertransport-dev
+                  kubernetes-path: os/dev-terra000003-ids.ocp.delta.sbrf.ru
+                enabled: true
+                port: 443
+                host: t.secrets.delta.sbrf.ru
+            config:
+              import: 
+                - optional:vault://A/TRANSP/OSH/MAIN/KV/ci02351878-edevgen-sbertransport-dev/application,kafka-avro
+  volumes:
+    - name: kafka-secman
+      configMap:
+        name: kafka-secman
+        defaultMode: 420
+  mounts:
+    - name: kafka-secman
+      mountPath: /app/resources/application-kafka-ssl.yml
+      subPath: application-kafka-ssl.yml
+    - name: kafka-secman
+      mountPath: /app/resources/application-kafka-avro.yml
+      subPath: application-kafka-avro.yml

@@ -1,0 +1,30 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        blackListOutput-out-0:
+          destination: service.authentication.blackList
+          binder: kafka
+        usersInput-in-0:
+          group: ${spring.application.name}
+          destination: service.users
+          binder: kafka
+          consumer:
+            batchMode: true
+        rolesInput-in-0:
+          group: ${spring.application.name}
+          destination: service.roles
+          binder: kafka
+        userRolesInput-in-0:
+          group: ${spring.application.name}
+          destination: service.users.roles
+          binder: kafka
+        emailOutput-out-0:
+          destination: service.email.output
+          binder: kafka
+        smsOutput-out-0:
+          destination: service.sms
+          binder: kafka
+        userAgentOutput-out-0:
+          destination: service.user.agent
+          binder: kafka

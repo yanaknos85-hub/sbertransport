@@ -1,0 +1,30 @@
+.personal-cars-list-table {
+  .ant-table-footer {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .anticon-edit {
+    color: var(--link-color);
+  }
+
+  .anticon-delete {
+    color: var(--error-color);
+  }
+
+  .ant-page-header-heading {
+    justify-content: center;
+    padding: 14px 76px 14px 0;
+  }
+}
+
+.ant-popover-content {
+  width: 300px;
+}
+
+//  переопределение ширины таблицы с личным транспортом для того, чтобы вмещались загололовки в header
+div.layout_layout__1RxgH {
+  // ширина подобрана таким образом, чтобы в таблицу лучше влезали названия
+  width: 1100px;
+}

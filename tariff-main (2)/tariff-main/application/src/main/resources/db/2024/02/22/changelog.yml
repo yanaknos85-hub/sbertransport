@@ -1,0 +1,20 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20240222"
+            author: shabrovie
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: tariff
+                        tableName: tariff
+                        columns:
+                            -   column:
+                                    name: vip
+                                    type: boolean
+                                    remarks: Приснак вип
+                                    defaultValueBoolean: false
+            rollback:
+                -   dropColumn:
+                        schemaName: tariff
+                        tableName: tariff
+                        columnName: vip

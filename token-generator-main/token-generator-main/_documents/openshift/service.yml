@@ -1,0 +1,17 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: grpc-token-generator
+  namespace: ci02351878-edevgen-sbertransport-dev
+  labels:
+    app.kubernetes.io/name: token-generator
+    app.kubernetes.io/part-of: transport
+    template: token-generator
+spec:
+  ports:
+    - name: grpc-token-generator
+      protocol: TCP
+      port: 6565
+      targetPort: 6565
+  selector:
+    app: token-generator

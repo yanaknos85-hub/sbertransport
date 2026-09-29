@@ -1,0 +1,58 @@
+.input {
+  box-sizing: border-box;
+
+  .noBorder {
+    border: none;
+  }
+
+  &:global(.ant-input) {
+    height: 40px;
+    border-radius: 8px;
+  }
+
+  &.search {
+    $height: 40px;
+    display: flex;
+    grid-template-columns: repeat(2, 50%);
+    -moz-column-gap: 10px;
+    column-gap: 10px;
+    grid-row-gap: 20px;
+    row-gap: 20px;
+    width: 100%;
+    justify-content: space-between;
+
+    :global(.ant-input) {
+      height: $height;
+      border-radius: 8px 0 0 8px;
+      border: none;
+
+      &:focus, &.ant-input-focused {
+        box-shadow: none;
+      }
+    }
+
+    :global(.ant-input-wrapper) {
+      border-radius: 8px;
+    }
+
+    & * {
+      background-color: var(--solitude);
+    }
+
+    :global(.ant-btn) {
+      height: $height;
+      border-radius: 0 8px 8px 0 !important;
+      border-left-width: 0;
+      background-color: var(--solitude);
+
+      &:hover,
+      &:focus {
+        border-left-width: 1px;
+      }
+    }
+
+    :global(.ant-input-search-button) {
+      border: none;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+debug: true
+spring:
+  datasource:
+    username: postgres
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jws-algorithms: RS512
+          public-key-location: classpath:/key/jwt.key.pub
+jwt:
+  private:
+    path: classpath:/key/jwt.key

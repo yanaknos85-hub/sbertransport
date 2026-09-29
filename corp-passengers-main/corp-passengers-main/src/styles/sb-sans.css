@@ -1,0 +1,65 @@
+@font-face {
+  font-family: 'SB Sans Interface';
+  src: url(../fonts/SBSansUI-Light.otf);
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: 'SB Sans Interface';
+  src: url(../fonts/SBSansUI-Regular.otf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'SB Sans Interface';
+  src: url(../fonts/SBSansUI-Semibold.otf);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'SB Sans Interface';
+  src: url(../fonts/SBSansUI-Bold.otf);
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: 'SB Sans Text Mono';
+  src: url(../fonts/SBSansTextMono-Regular.ttf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'SB Sans Text Mono';
+  src: url(../fonts/SBSansTextMono-Bold.ttf);
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: 'SB Sans Text Regular';
+  src: url(../fonts/SBSansText-Regular.otf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'SB Sans Text';
+  src: url(../fonts/SBSansText-Regular.otf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'SB Sans Text';
+  src: url(../fonts/SBSansText-Medium.otf);
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'SB Sans Text';
+  src: url(../fonts/SBSansText-Semibold.otf);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'SB Sans Text Semibold';
+  src: url(../fonts/SBSansText-Semibold.otf);
+  font-weight: 400;
+}

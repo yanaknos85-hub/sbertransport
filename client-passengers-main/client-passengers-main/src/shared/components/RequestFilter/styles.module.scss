@@ -1,0 +1,40 @@
+.selectTransportType {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.filters {
+  min-width: 400px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.wrapperFilter {
+  display: flex;
+  justify-content: space-between;
+
+  .select {
+    width: 141px;
+
+    & > div {
+      height: 35px !important;
+      border-radius: 8px !important;
+      background: rgba(0, 0, 0, 0.1) !important;
+    }
+
+    & > div > span:last-child {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .DatePicker {
+    width: 245px;
+    min-width: 226px;
+    height: 35px;
+    margin: 0px 10px 0px 0px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+}

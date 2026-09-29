@@ -1,0 +1,23 @@
+.modal {
+    :global(.ant-modal-footer) {
+      display: flex;
+      justify-content: space-around;
+      & :global(.ant-btn) {
+        width: 100%;
+      }
+    }
+  }
+  
+  .showModalButton {
+    margin-right: var(--margin-large);
+  }
+  
+  .warning {
+    color: red;
+    text-align: center;
+  }
+  
+  .text {
+    text-align: center;
+  }
+  

@@ -1,0 +1,28 @@
+$notificationsHeaderHeight: 96px + 43px + 24px;
+
+.notificationButton {
+  line-height: normal;
+
+  &:hover {
+    path {
+      stroke: #31cc7c;
+    }
+  }
+}
+
+.notificationContent {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 100%;
+}
+
+.notificationsEmpty {
+  margin-top: -$notificationsHeaderHeight;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

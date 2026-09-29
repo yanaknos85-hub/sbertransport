@@ -1,0 +1,21 @@
+databaseChangeLog:
+    -   changeSet:
+            id: authentication/20200323
+            author: mad
+            changes:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: create_role_table.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: link_accounts_and_roles.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: change_session_expiration_column.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: delete_session_creation_column.sql
+                        relativeToChangelogFile: true
