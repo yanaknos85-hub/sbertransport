@@ -1,0 +1,74 @@
+.root {
+  height: 60px;
+  background: #000000;
+  color: #ffffff;
+  margin: 16px 8px 36px 8px;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  text-decoration: none;
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('../../../../shared/images/ai-card-bg.png');
+    background-repeat: no-repeat;
+    background-position: left -15px center;
+    z-index: -1;
+  }
+}
+
+.decorLeft {
+  position: absolute;
+  right: 262px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 471.078px;
+  height: 334.761px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.decorRight {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 252px;
+  height: 244px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.title {
+  font-family: 'SB Sans Interface';
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0px;
+}
+
+.rightBlock {
+  width: 66%;
+  height: 100%;
+  background: #ffffff;
+  color: #909090;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}

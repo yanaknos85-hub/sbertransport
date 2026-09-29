@@ -1,0 +1,33 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20221115
+            tag: "20221115"
+            author: delyukov-da
+            dbms: postgresql
+            changes:
+                -   tagDatabase:
+                        tag: "20221115"
+                -   sqlFile:
+                        path: change/create_position_tables.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_position_tables.sql
+                        relativeToChangelogFile: true
+    -   changeSet:
+            id: tariff/20221115-2
+            tag: "20221115-2"
+            author: delyukov-da
+            dbms: postgresql
+            changes:
+                -   tagDatabase:
+                        tag: "20221115"
+                -   sqlFile:
+                        path: change/add_column_position_to_employee.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_column_position_from_employee.sql
+                        relativeToChangelogFile: true

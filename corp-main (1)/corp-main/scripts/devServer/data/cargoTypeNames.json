@@ -1,0 +1,37 @@
+[
+  {
+    "id": "1",
+    "name": "TECHNIQUE",
+    "value": "Техника"
+  },
+  {
+    "id": "2",
+    "name": "DOCUMENT",
+    "value": "Документы"
+  },
+  {
+    "id": "4",
+    "name": "FURNITURE",
+    "value": "Мебель"
+  },
+  {
+    "id": "5",
+    "name": "TABLEWARE",
+    "value": "Посуда"
+  },
+  {
+    "id": "6",
+    "name": "CONSTRUCTION_MATERIALS",
+    "value": "Строительные материалы"
+  },
+  {
+    "id": "7",
+    "name": "HOUSEHOLD_GOODS",
+    "value": "Хозяйственные товары"
+  },
+  {
+    "id": "8",
+    "name": "FOOD_PRODUCTS",
+    "value": "Продовольственные товары"
+  }
+]

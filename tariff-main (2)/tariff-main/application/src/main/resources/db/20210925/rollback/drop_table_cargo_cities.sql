@@ -1,0 +1,1 @@
+drop table tariff.cargo_cities;

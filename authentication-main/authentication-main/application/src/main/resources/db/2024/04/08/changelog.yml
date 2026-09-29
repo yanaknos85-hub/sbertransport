@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240408-0828"
+      author: blandin-ad
+      context: "20240408"
+      changes:
+        - tagDatabase:
+            tag: "20240408"
+        - addColumn:
+            schemaName: authentication
+            tableName: session
+            columns:
+              - column:
+                  name: creation_time
+                  type: timestamp
+                  remarks: Время создания сессии
+      rollback:
+        - dropColumn:
+            schemaName: authentication
+            tableName: session
+            columns:
+              - column:
+                  name: creation_time

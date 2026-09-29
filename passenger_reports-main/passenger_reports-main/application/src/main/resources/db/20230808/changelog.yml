@@ -1,0 +1,42 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230808"
+            author: delyukov-da
+            changes:
+                -   tagDatabase:
+                        tag: "20230808"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    type: integer
+                                    name: balance_unit
+                                    remarks: Балансовая единица
+                            -   column:
+                                    type: text
+                                    name: cost_center
+                                    remarks: Место возникновения затрат
+                -   createIndex:
+                        columns:
+                            -   column:
+                                    name: balance_unit
+                        schemaName: reports
+                        tableName: request
+                        indexName: reports_request_balance_unit_idx
+                -   createIndex:
+                        columns:
+                            -   column:
+                                    name: cost_center
+                        schemaName: reports
+                        tableName: request
+                        indexName: reports_request_cost_center_idx
+            rollback:
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    name: cost_center
+                            -   column:
+                                    name: balance_unit

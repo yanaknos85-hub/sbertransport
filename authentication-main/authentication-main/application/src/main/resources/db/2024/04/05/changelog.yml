@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240405-1156"
+      author: blandin-ad
+      context: "20240405"
+      changes:
+        - tagDatabase:
+            tag: "20240405"
+        - addColumn:
+            schemaName: authentication
+            tableName: audit
+            columns:
+              - column:
+                  name: session_id
+                  type: uuid
+                  remarks: ID сессии
+      rollback:
+        - dropColumn:
+            schemaName: authentication
+            tableName: audit
+            columns:
+              - column:
+                  name: session_id

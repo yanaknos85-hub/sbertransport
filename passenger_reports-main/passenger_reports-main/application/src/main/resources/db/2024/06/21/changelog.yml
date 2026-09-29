@@ -1,0 +1,22 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20240621"
+            author: shabrov-ie
+            changes:
+                -   tagDatabase:
+                        tag: "20240621"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    type: text
+                                    name: source
+                                    remarks: Источник создания заявки
+            rollback:
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    name: source

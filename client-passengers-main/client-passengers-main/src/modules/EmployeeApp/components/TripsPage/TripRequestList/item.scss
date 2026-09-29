@@ -1,0 +1,63 @@
+.TAXI {
+    background: url(../../../../../shared/components/Images/cars/taxi.svg) no-repeat no-repeat center 0;
+    display: inline-block;
+    background-size: cover;
+    width: 36px;
+    height: 23px;
+    transform: translateX(7px);
+}
+
+.PERSONAL {
+    background: url(../../../../../shared/components/Images/cars/pers.svg) no-repeat no-repeat center 0;
+    display: inline-block;
+    background-size: cover;
+    width: 36px;
+    height: 23px;
+    transform: translateX(7px);
+}
+
+.CARSHARING {
+    background: url(../../../../../shared/components/Images/orders/carsh.png) no-repeat no-repeat center 0;
+    display: inline-block;
+    background-size: cover;
+    width: 36px;
+    height: 23px;
+    transform: translateX(7px);
+}
+
+.DEDICATED {
+    background: url(../../../../../shared/components/Images/cars/truck.svg) no-repeat no-repeat center 0;
+    display: inline-block;
+    background-size: cover;
+    width: 36px;
+    height: 23px;
+    transform: translateX(7px);
+}
+
+.PUBLIC {
+    background: url(../../../../../shared/components/Images/cars/public.svg) no-repeat no-repeat center 0;
+    display: inline-block;
+    background-size: cover;
+    width: 36px;
+    height: 23px;
+    transform: translateX(7px);
+}
+
+.GROUP_TRANSFER {
+    background: url(../../../../../shared/components/Images/transfer.svg) no-repeat no-repeat center 0;
+    display: inline-block;
+    background-size: cover;
+    width: 34px;
+    height: 46px;
+    transform: translateX(6px) translateY(-10px);
+}
+
+.BUS {
+    background: url(../../../../../shared/components/Images/busIcons/MIDDLE_BUS.svg) no-repeat no-repeat center 0;
+    display: inline-block;
+    background-size: cover;
+    width: 36px;
+    height: 26px;
+    transform: translateX(-6px) translateY(-1px);
+    background-position: -48px 1px;
+}

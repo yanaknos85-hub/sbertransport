@@ -1,0 +1,40 @@
+.table {
+  margin: var(--margin-large);
+  width: calc(100% - 2 * var(--margin-large));
+
+  :global(.ant-table-footer) {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.paginationContainer {
+  margin-top: 15px;
+}
+
+.tableLayout {
+  margin: 0 auto;
+  width: 100%;
+
+  :global(.ant-table-container table > thead) {
+    background: none;
+    height: 52px;
+
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.12), 0 4px 8px -2px rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+    margin: 0 2px;
+  }
+
+  :global(.ant-table-container table > thead > tr:first-child th) {
+    background: white;
+    height: 52px;
+  }
+}
+
+.rowDark {
+  background-color: #f6f7f9;
+
+  :global(.ant-table-cell) {
+    background-color: #f6f7f9;
+  }
+}

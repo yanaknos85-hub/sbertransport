@@ -1,0 +1,53 @@
+.fullScreen {
+  width: 100% !important;
+  display: flex;
+  justify-content: space-between;
+
+  .deleteImage {
+    display: flex;
+    margin-right: 16px;
+  }
+
+  & > img:first-child {
+    margin-left: 16px;
+  }
+
+  .fullScreen_info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-start;
+    
+    & > div {
+      display: flex;
+      margin-left: 17px;
+      font-family: 'SB Sans Text';
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+      color: rgb(38, 38, 38);
+    }
+
+    & > span {
+      display: flex;
+      margin-left: 17px;
+      font-family: 'SB Sans Text';
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+      color: rgb(38, 38, 38);
+    }
+  }
+}
+
+.deleteIcon {
+  float: right;
+  color: var(--red-color) !important;
+}
+
+.imageSize {
+  height: 90%;
+  max-width: 90%;
+}

@@ -1,0 +1,11 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20201221
+            tag: "20201221"
+            author: kireev
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: add_enum_column_public_tariff.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

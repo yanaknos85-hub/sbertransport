@@ -1,0 +1,60 @@
+.addButton {
+  border: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: 'SB Sans Text', sans-serif;
+}
+
+.header_radioButtons {
+  margin-bottom: 24px;
+
+  :global {
+    .ant-radio-button-wrapper-checked {
+      border-radius: 8px;
+      border: 2px solid rgb(16, 191, 106) !important;
+      background: rgb(231, 249, 240) !important;
+      height: 32px;
+    }
+
+    .ant-radio-button-wrapper-checked > span:last-child  {
+      color: rgb(38, 38, 38) !important;
+      font-family: SB Sans Text;
+      font-size: 14px;
+      font-weight: 400 !important;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+    }
+
+    .ant-radio-button-wrapper {
+      border-radius: 8px;
+      background: rgb(242, 243, 246);
+      border: 1px solid rgb(242, 243, 246);
+      height: 32px;
+      margin-right: 8px;
+    }
+
+    .ant-radio-button-wrapper > span:last-child  {
+      color: rgb(77, 77, 77);
+      font-family: SB Sans Text;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+    }
+
+    .ant-radio-button-wrapper:not(:first-child)::before {
+      display: none;
+    }
+
+    .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):focus-within {
+      box-shadow: none;
+    }
+  }
+}

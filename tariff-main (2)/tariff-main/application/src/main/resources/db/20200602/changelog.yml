@@ -1,0 +1,27 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20200602
+            tag: "20200602"
+            author: mad
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: add_transport_type_table.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: full_fill_transport_type.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: add_tariff_table.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: full_fill_tariff_table.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: drop_old_tables.sql
+                        relativeToChangelogFile: true

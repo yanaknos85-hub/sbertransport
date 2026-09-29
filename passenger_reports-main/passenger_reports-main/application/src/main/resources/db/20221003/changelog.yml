@@ -1,0 +1,16 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221003"
+            author: medvedev-ad
+            preConditions:
+                -   onFail: CONTINUE
+                    onError: HALT
+                    sqlCheck:
+                        expectedResult: 1
+                        sql: select count(table_name) from information_schema.tables where table_schema = 'reports' and table_name = 'urls'
+            changes:
+                -   addUniqueConstraint:
+                        schemaName: reports
+                        tableName: urls
+                        columnNames: method,url
+                        constraintName: reports_urls_method_url_uk

@@ -1,0 +1,49 @@
+databaseChangeLog:
+    -   changeSet:
+            id: 20230619-1447
+            author: medvedev-ad
+            changes:
+                - tagDatabase:
+                      tag: "20230619"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    name: driver
+                                    type: jsonb
+                                    remarks: Отпечаток водителя
+                            -   column:
+                                    name: vehicle
+                                    type: jsonb
+                                    remarks: Отпечаток автомобиля
+                -   sqlFile:
+                        path: changes/driver_link_to_json.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        path: changes/vehicle_link_to_json.sql
+                        relativeToChangelogFile: true
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    name: driver_id
+                            -   column:
+                                    name: vehicle_id
+                -   dropTable:
+                        schemaName: reports
+                        tableName: driver_license_classes
+                -   dropTable:
+                        schemaName: reports
+                        tableName: driver_tag_connector
+                -   dropTable:
+                        schemaName: reports
+                        tableName: driver_tag
+                -   dropTable:
+                        schemaName: reports
+                        tableName: driver
+                -   dropTable:
+                        schemaName: reports
+                        tableName: vehicle
+                        

@@ -1,0 +1,1042 @@
+.info {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row nowrap;
+
+  padding-bottom: var(--padding-half);
+  color: var(--text-color-secondary);
+
+  div {
+    margin-right: var(--margin-base);
+    flex-grow: 1;
+  }
+}
+
+.address {
+  width: 100%;
+  display: inline-block;
+
+  &Icon {
+    margin-right: var(--margin-half);
+    color: var(--text-color-minor);
+  }
+}
+
+.btnSettings {
+  margin-bottom: var(--margin-half);
+}
+
+.map {
+  height: 300px;
+  margin-bottom: var(--margin-base);
+  border-radius: calc(var(--border-radius-base) * 2);
+}
+
+.detailsList :global .ant-descriptions-row > td {
+  padding-bottom: var(--padding-half);
+}
+
+.fieldsContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  .timeline {
+    :global(.ant-descriptions) {
+      // custom width and height for alignment
+      $timeline-width: 240px;
+      $timeline-height: 490px;
+      width: $timeline-width;
+      min-height: $timeline-height;
+    }
+
+    .statusContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      position: relative;
+
+      .steps {
+        // custom width and margin to align div to the left
+        $steps-width: 230px;
+        $steps-left-margin: calc(-2 * var(--margin-large));
+        margin-top: var(--margin-base);
+        overflow: auto;
+        word-wrap: break-word;
+        width: $steps-width;
+        margin-left: $steps-left-margin;
+      }
+    }
+  }
+
+  .descriptionFields {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  font-family: SB Sans Interface;
+
+  &__title {
+    text-align: center;
+    vertical-align: top;
+    font-size: 16px;
+    letter-spacing: -0.3px;
+    line-height: 24px;
+    color: #909090;
+    font-family: SB Sans Text;
+    padding: 16px 0 0 0;
+    width: 400px;
+  }
+}
+
+.wrapperTripRequest {
+  width: 100%;
+
+  .headerTripRequest {
+    margin-bottom: 11px;
+    display: flex;
+    align-items: center;
+
+    span {
+      color: rgb(38, 38, 38);
+      font-family: SB Sans Text;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+      cursor: pointer;
+    }
+
+    img {
+      margin: 0 16px;
+    }
+  }
+
+  .generalInformationTripRequest {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 20px 24px 24px 24px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.04),0px 4px 20px 0px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+
+    @media screen and (max-width: 600px) {
+      margin: 0 24px;
+      width: auto;
+    }
+
+    .approvedBy {
+      color: rgb(16, 191, 106);
+      font-family: SB Sans Interface;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 14px;
+      letter-spacing: 0px;
+      margin-top: 13px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      width: fit-content;
+
+      img {
+        margin-right: 8px;
+      }
+    }
+
+    .wrapperTransportType {
+      margin-top: 28px;
+
+      .transportType {
+        display: flex;
+        align-items: center;
+
+        @media screen and (max-width: 600px) {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .date {
+
+          @media screen and (max-width: 600px) {
+            margin-left: 8px;
+          }
+
+          & span {
+            color: rgb(115, 115, 115);
+            font-family: SB Sans Text;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 22px;
+            letter-spacing: -0.3px;
+          }
+        }
+
+        .coopTrip {
+          color: rgb(144, 144, 144);
+          font-family: "SB Sans Text";
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 16px;
+          letter-spacing: 0px;
+          margin-left: 8px;
+        }
+
+        .transportTypeWrapper {
+          display: flex;
+          align-items: center;
+          margin-right: 8px;
+
+          .TransportPictureWrapper {
+            display: flex;
+            flex-direction: row;
+            border-radius: 50%;
+            width: 36px;
+            height: 24px;
+            overflow: hidden;
+            margin-right: 12px;
+          }
+
+          span {
+            color: rgb(17, 17, 21);
+            font-family: "SB Sans Text";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 18px;
+            letter-spacing: 0.12px;
+          }
+        }
+      }
+    }
+
+    .wrapperGeneralInformationTripRequest {
+      display: flex;
+      justify-content: space-between;
+
+      @media screen and (max-width: 600px) {
+        flex-direction: column;
+      }
+
+      .headerGeneralInformationTripRequest {
+        display: flex;
+        align-items: center;
+
+        @media screen and (max-width: 600px) {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        img {
+          cursor: pointer;
+        }
+
+        .humanReadableId {
+          color: rgb(28, 28, 28);
+          font-family: SB Sans Interface;
+          font-size: 20px;
+          font-weight: 600;
+          line-height: 28px;
+          letter-spacing: 0px;
+          margin: 0 12px;
+
+          @media screen and (max-width: 600px) {
+            margin: 10px 0 0 0;
+          }
+        }
+
+        & span:last-child {
+          border: 1px solid rgba(38, 38, 38, 0.08);
+          border-radius: 20px;
+          padding: 4px 12px 4px 12px;
+          color: rgb(0, 0, 0);
+          font-family: SB Sans Text;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 20px;
+          letter-spacing: -0.15px;
+
+          @media screen and (max-width: 600px) {
+            margin-top: 10px;
+          }
+        }
+      }
+
+      .buttons {
+        display: flex;
+
+        @media screen and (max-width: 600px) {
+          margin-top: 10px;
+          flex-wrap: wrap;
+        }
+
+
+        .rate {
+          width: 100%;
+          min-width: 135px;
+          margin-left: 5px;
+        }
+
+        .button {
+          background: rgb(242, 243, 246) !important;
+          border: none !important;
+          border-radius: 8px !important;
+          color: rgb(38, 38, 38) !important;
+          padding: 9px 20px 9px 20px !important;
+          display: flex !important;
+          align-items: center;
+          margin-left: 5px !important;
+          font-weight: 600 !important;
+
+          @media screen and (max-width: 600px) {
+            width: auto;
+            margin: 0 10px 10px 0;
+          }
+        }
+
+        .buttonReload {
+          background: rgb(242, 243, 246) !important;
+          border: none !important;
+          border-radius: 8px !important;
+          color: rgb(38, 38, 38) !important;
+          padding: 6px 8px 6px 8px !important;
+          display: flex !important;
+          align-items: center;
+          justify-content: center;
+          font-weight: 600 !important;
+          margin-right: 5px;
+
+          @media screen and (max-width: 600px) {
+            width: auto;
+          }
+        }
+      }
+    }
+
+    .line {
+      border: 1px solid rgba(38, 38, 38, 0.08);
+      margin-top: 24px;
+    }
+
+    .footerGeneralInformationTripRequest {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 26px;
+
+      @media screen and (max-width: 600px) {
+        flex-direction: column;
+      }
+
+      .statusLabel {
+        margin-bottom: 8px;
+        color: rgb(0, 0, 0);
+        font-family: SB Sans Text;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 22px;
+        letter-spacing: -0.3px;
+      }
+
+      .wrapperBriefInformationTrip {
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: column;
+        align-items: flex-end;
+
+        .briefInformationTrip {
+          display: flex;
+
+          @media screen and (max-width: 600px) {
+            flex-wrap: wrap;
+          }
+        }
+
+        .wrapperDataTrip {
+          display: flex;
+          justify-content: flex-start;
+          color: rgb(38, 38, 38);
+          font-family: SB Sans Text;
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 22px;
+          letter-spacing: -0.3px;
+          margin: 8px 0px;
+        }
+
+        .wrapperInformation {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 0 16px;
+          border-right: 1px solid rgba(38, 38, 38, 0.08);
+
+          @media screen and (max-width: 600px) {
+            padding: 0 16px 10px 0;
+            border-right: none;
+          }
+
+          & span:first-child {
+            color: rgb(144, 144, 144);
+            font-family: SB Sans Interface;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 16px;
+            letter-spacing: 0.2px;
+          }
+
+          & span:last-child {
+            margin-top: 2px;
+            color: rgb(38, 38, 38);
+            font-family: SB Sans Text;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 24px;
+            letter-spacing: -0.3px;
+          }
+        }
+
+        .wrapperInformation:first-child {
+          padding: 0 16px 0 0;
+        }
+
+        .wrapperInformation:last-child {
+          padding: 0 0 0 16px;
+          border: none;
+
+          @media screen and (max-width: 600px) {
+            padding: 0 16px 10px 0;
+          }
+        }
+      }
+    }
+  }
+
+  .wrapperinfoTrip {
+    width: 100%;
+    display: flex;
+    flex-direction: column ;
+    justify-content: space-between;
+    padding: 20px 24px 24px 24px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.04),0px 4px 20px 0px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    margin-top: 16px;
+
+    @media screen and (max-width: 600px) {
+      width: auto;
+      margin: 16px 24px 0 24px;
+    }
+
+    .infoTripTitle {
+      color: rgb(38, 38, 38);
+      font-family: SB Sans Interface;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 24px;
+      letter-spacing: 0%;
+    }
+
+    .tripTitleItemsWrapper {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+
+      .tripTitleItemWrapper {
+        display: flex;
+        flex-direction: column;
+        width: 23%;
+        margin: 16px 16px 16px 0px;
+
+        @media screen and (max-width: 600px) {
+          width: 46%;
+          margin: 16px 10px 16px 0px;
+        }
+
+        .titleInformation {
+          color: rgb(168, 171, 179);
+          font-family: SB Sans Text;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 18px;
+          letter-spacing: -0.15px;
+          margin-bottom: 10px;
+        }
+
+        .textInfo {
+          color: rgb(0, 0, 0);
+          font-family: SB Sans Text;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 18px;
+          letter-spacing: 0px;
+        }
+      }
+    }
+  }
+
+  .routTripRequest {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 20px 24px 24px 24px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.04),0px 4px 20px 0px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    margin-top: 16px;
+
+    @media screen and (max-width: 600px) {
+      margin: 16px 24px 0 24px;
+      width: auto;
+      flex-direction: column;
+    }
+
+    .rout {
+      width: 100%;
+
+      .routTitle {
+        color: rgb(38, 38, 38);
+        font-family: SB Sans Interface;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 28px;
+        letter-spacing: 0px;
+      }
+
+      & > div {
+        margin-top: 16px !important;
+      }
+    }
+
+    .routMap {
+      width: 100%;
+      height: 214px;
+      display: flex;
+      justify-content: flex-end;
+
+      & > div {
+        border-radius: 8px;
+        width: 500px;
+        height: 214px;
+      }
+    }
+  }
+
+  .carTripRequest {
+    display: flex;
+
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+    }
+
+    & > div {
+      margin-right: 16px;
+
+      @media screen and (max-width: 600px) {
+        margin-right: 24px;
+      }
+    }
+
+    & > div:last-child {
+      margin-right: 0px;
+
+      @media screen and (max-width: 600px) {
+        margin-right: 24px;
+      }
+    }
+
+    .informationCar {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .informationCarTitle {
+        color: rgb(38, 38, 38);
+        font-family: SB Sans Interface;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 24px;
+        letter-spacing: 0%;
+        margin-bottom: 24px;
+      }
+
+      .informationCarWrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 75%;
+
+        @media screen and (max-width: 600px) {
+          justify-content: flex-start;
+        }
+
+        .informationCarMain {
+          display: flex;
+
+          .TransportPictureWrapper {
+            display: flex;
+            flex-direction: row;
+            border-radius: 50%;
+            width: 36px;
+            height: 24px;
+            overflow: hidden;
+            margin-right: 12px;
+          }
+
+          img {
+            width: 32px;
+          }
+
+          .informationCarModel {
+            display: flex;
+            flex-direction: column;
+            margin-left: 12px;
+
+            & span:first-child {
+              color: rgb(168, 171, 179);
+              font-family: "SB Sans Text";
+              font-size: 12px;
+              font-weight: 400;
+              line-height: 15px;
+              letter-spacing: 0px;
+            }
+
+            & span:last-child {
+              color: rgb(0, 0, 0);
+              font-family: "SB Sans Text";
+              font-size: 14px;
+              font-weight: 400;
+              line-height: 18px;
+              letter-spacing: -0.15px;
+            }
+          }
+        }
+
+        .informationCarNumber {
+          display: flex;
+          flex-direction: column;
+
+          & span:first-child {
+            color: rgb(0, 0, 0);
+            font-family: SB Sans Text;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 20px;
+            letter-spacing: -0.32px;
+          }
+
+          & span:last-child {
+            color: rgb(0, 0, 0);
+            font-family: SB Sans Text;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 18px;
+            letter-spacing: 0px;
+          }
+        }
+      }
+    }
+
+    .informationDriver {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+
+      .informationDriverTitle {
+        color: rgb(38, 38, 38);
+        font-family: SB Sans Interface;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 24px;
+        letter-spacing: 0%;
+        margin-bottom: 24px;
+      }
+
+      .informationDriverWrapper {
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        .informationDriverMain {
+          display: flex;
+
+          .TransportPictureWrapper {
+            display: flex;
+            flex-direction: row;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            overflow: hidden;
+            margin-right: 12px;
+
+              img {
+                height: 32px;
+                width: 32px;
+                border-radius: 50%;
+                object-fit: cover;
+              }
+          }
+
+          .informationDriverModel {
+            display: flex;
+            flex-direction: column;
+            margin-left: 12px;
+
+            & span:first-child {
+              color: rgb(168, 171, 179);
+              font-family: "SB Sans Text";
+              font-size: 12px;
+              font-weight: 400;
+              line-height: 15px;
+              letter-spacing: 0px;
+            }
+
+            & span:last-child {
+              color: rgb(0, 0, 0);
+              font-family: "SB Sans Text";
+              font-size: 14px;
+              font-weight: 400;
+              line-height: 18px;
+              letter-spacing: -0.15px;
+            }
+          }
+        }
+
+        .informationDriverNumber {
+          display: flex;
+          flex-direction: column;
+
+          & span:first-child {
+            color: rgb(0, 0, 0);
+            font-family: SB Sans Text;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 20px;
+            letter-spacing: -0.32px;
+          }
+
+          & span:last-child {
+            color: rgb(0, 0, 0);
+            font-family: SB Sans Text;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 18px;
+            letter-spacing: 0px;
+          }
+        }
+      }
+    }
+  }
+
+  .informationinInitiator {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .informationinInitiatorTitle {
+      color: rgb(38, 38, 38);
+      font-family: SB Sans Interface;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 24px;
+      letter-spacing: 0%;
+      margin-bottom: 12px;
+    }
+
+    .informationinInitiatorWrapper {
+      display: flex;
+      justify-content: space-between;
+
+      .informationinInitiatorMain {
+        display: flex;
+        align-items: center;
+
+        img {
+          height: 32px;
+          width: 32px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        .informationinInitiatorInfo {
+          display: flex;
+          flex-direction: column;
+          margin-left: 12px;
+
+          .informationinInitiatorInfoName {
+            color: rgb(0, 0, 0);
+            font-family: SB Sans Text;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 20px;
+            letter-spacing: -0.32px;
+          }
+
+          .informationinInitiatorInfoPosition {
+            color: rgb(168, 171, 179);
+            font-family: "SB Sans Text";
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 15px;
+            letter-spacing: 0px;
+          }
+
+          .informationinInitiatorInfoNumber {
+            color: rgb(0, 0, 0);
+            font-family: "SB Sans Text";
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 18px;
+            letter-spacing: 0px;
+          }
+        }
+      }
+
+      .informationinInitiatorNumber {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        & span:first-child {
+          color: rgb(168, 171, 179);
+          font-family: "SB Sans Text";
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 15px;
+          letter-spacing: 0px;
+        }
+
+        & span:last-child {
+          color: rgb(0, 0, 0);
+          font-family: "SB Sans Text";
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 18px;
+          letter-spacing: -0.15px;
+        }
+      }
+    }
+  }
+
+  .informationPassengers {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+
+    .informationPassengersList {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+
+      .informationPassengersWrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 25%;
+
+        .informationPassengersMain {
+          display: flex;
+          align-items: center;
+
+          img {
+            height: 32px;
+            width: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+
+          .informationPassengersInfo {
+            display: flex;
+            flex-direction: column;
+            margin-left: 12px;
+
+            .informationPassengersInfoName {
+              color: rgb(0, 0, 0);
+              font-family: SB Sans Text;
+              font-size: 16px;
+              font-weight: 400;
+              line-height: 20px;
+              letter-spacing: -0.32px;
+            }
+
+            .informationPassengersInfoPosition {
+              color: rgb(168, 171, 179);
+              font-family: "SB Sans Text";
+              font-size: 14px;
+              font-weight: 400;
+              line-height: 18px;
+              letter-spacing: 0px;
+            }
+
+            .informationPassengersInfoNumber {
+              color: rgb(0, 0, 0);
+              font-family: "SB Sans Text";
+              font-size: 12px;
+              font-weight: 400;
+              line-height: 18px;
+              letter-spacing: 0px;
+            }
+          }
+        }
+
+        .informationPassengersNumber {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+
+          & span:first-child {
+            color: rgb(168, 171, 179);
+            font-family: "SB Sans Text";
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 15px;
+            letter-spacing: 0px;
+          }
+
+          & span:last-child {
+            color: rgb(0, 0, 0);
+            font-family: "SB Sans Text";
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 18px;
+            letter-spacing: -0.15px;
+          }
+        }
+      }
+    }
+
+    .informationPassengersTitle {
+      font-family: SB Sans Interface;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 24px;
+      letter-spacing: 0%;
+      margin-bottom: 12px;
+
+      .informationPassengersCount {
+        color: rgb(151, 151, 151);
+        margin-left: 5px;
+      }
+    }
+  }
+
+  .commentForDriver {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .comments {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 12px;
+
+      @media screen and (max-width: 600px) {
+        flex-direction: column;
+      }
+    }
+
+    .mainCommentForPurpose {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      border-right: 1px solid rgba(38, 38, 38, 0.08);
+      margin-right: 32px;
+
+      @media screen and (max-width: 600px) {
+        border: none;
+        width: 100%;
+      }
+
+      & span:first-child {
+        color: rgb(0, 0, 0);
+        font-family: SB Sans Text;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 22px;
+        letter-spacing: -0.3px;
+
+        @media screen and (max-width: 600px) {
+          word-break: break-all;
+        }
+      }
+
+      & span:last-child {
+        color: rgb(0, 0, 0);
+        font-family: SB Sans Text;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 28px;
+        letter-spacing: -0.56px;
+
+        @media screen and (max-width: 600px) {
+          word-break: break-all;
+        }
+      }
+    }
+
+    .mainCommentForDriver {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+
+      @media screen and (max-width: 600px) {
+        width: 100%;
+      }
+
+      & span:first-child {
+        color: rgb(0, 0, 0);
+        font-family: SB Sans Text;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 22px;
+        letter-spacing: -0.3px;
+      }
+
+      & span:last-child {
+        color: rgb(0, 0, 0);
+        font-family: SB Sans Text;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 28px;
+        letter-spacing: -0.56px;
+
+        @media screen and (max-width: 600px) {
+          word-break: break-all;
+        }
+      }
+    }
+
+    & > span:first-child {
+      color: rgb(38, 38, 38);
+      font-family: SB Sans Interface;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+      letter-spacing: 0px;
+    }
+
+    & > span:last-child {
+      color: rgb(0, 0, 0);
+      font-family: SB Sans Text;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 28px;
+      letter-spacing: -0.56px;
+      margin-top: 12px;
+
+      @media screen and (max-width: 600px) {
+        word-break: break-all;
+      }
+    }
+  }
+}

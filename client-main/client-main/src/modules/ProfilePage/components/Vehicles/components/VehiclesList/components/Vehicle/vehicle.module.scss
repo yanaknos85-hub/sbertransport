@@ -1,0 +1,68 @@
+.container {
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(236, 236, 236);
+  border-radius: 12px;
+  display: flex;
+  padding: 12px 16px;
+  min-width: 350px;
+  cursor: pointer;
+  transition: background 0.3s ease-in;
+
+  &:hover {
+    background: rgb(242, 243, 246);
+  }
+}
+
+.icon {
+  min-width: 32px;
+  min-height: 32px;
+}
+
+.content {
+  width: 100%;
+  padding: 0 12px 0 24px;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+}
+
+.col {
+  width: 50%;
+}
+
+.brandName {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.3px;
+}
+
+.model {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.3px;
+}
+
+.label {
+  color: rgb(144, 144, 144);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+  margin-top: 8px;
+}
+
+.value {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.3px;
+}
+
+.menu {
+  min-width: 20px;
+  min-height: 20px;
+}

@@ -1,0 +1,23 @@
+.button {
+  background: rgb(242, 243, 246) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  color: rgb(38, 38, 38) !important;
+  padding: 9px 20px 9px 20px !important;
+  display: flex !important;
+  align-items: center;
+  font-weight: 600 !important;
+  margin-left: 5px;
+
+  @media screen and (max-width: 600px) {
+    margin-left: 0;
+  }
+}
+
+.modal {
+  :global {
+    .ant-modal-close {
+      display: block !important;
+    }
+  }
+}

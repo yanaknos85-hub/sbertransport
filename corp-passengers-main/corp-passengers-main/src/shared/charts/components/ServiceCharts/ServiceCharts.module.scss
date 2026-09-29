@@ -1,0 +1,102 @@
+.legend {
+  position: relative;
+  margin-top: 20px;
+  height: 60px;
+
+  :global {
+    .recharts-legend-wrapper {
+      width: 100% !important;
+    }
+  }
+}
+
+.legendWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.customLegend {
+  display: flex;
+  align-items: center;
+  height: 35px;
+}
+
+.customWrapLegend {
+  width: 50%;
+}
+
+.wrapper {
+  position: relative;
+  margin: 20px auto 0;
+  height: 15vw;
+  width: 15vw;
+
+  .outerLegend {
+    position: absolute;
+    top: 85%;
+    left: 85%;
+    color: #c2c2c2;
+  }
+
+  .outerLegendTotal {
+    top: -16px;
+    left: 50%;
+    transform: translate(-50%);
+    color: #c2c2c2;
+    font-size: 18px;
+  }
+
+  .labels {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    overflow: hidden;
+    color: #10bf6a;
+
+    .customLabel {
+      margin: 0;
+      font-size: 18px;
+      line-height: 24px;
+      font-weight: 600;
+      text-align: center;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .customLabelGray {
+      color: #c2c2c2;
+    }
+
+    .customLabelGrayLight {
+      color: #ebebeb;
+    }
+
+    .customLabelOrange {
+      color: #ffc914;
+    }
+
+    .customLabelOrangeLight {
+      color: #fdd756;
+    }
+
+    .customLabelRed {
+      color: #ff5743;
+    }
+
+    .customLabelBlue {
+      color: #0091ff;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    height: 40vw;
+    width: 40vw;
+  }
+}

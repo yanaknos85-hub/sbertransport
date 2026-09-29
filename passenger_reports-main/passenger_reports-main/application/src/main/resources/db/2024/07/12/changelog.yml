@@ -1,0 +1,22 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20240712"
+            author: shabrov-ie
+            changes:
+                -   tagDatabase:
+                        tag: "20240712"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    type: bigint
+                                    name: min_taxi_tariff_cost
+                                    remarks: Минимальная стоимость такси на момент формирования заявки
+            rollback:
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    name: min_taxi_tariff_cost

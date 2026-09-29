@@ -1,0 +1,314 @@
+.buttonBlock { 
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.container {
+    border-radius: 12px;
+
+    :global { 
+        .ant-page-header { 
+            padding: 20px 24px 24px !important;
+        }
+    }
+}
+
+.title { 
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;  
+}
+
+.tariffDescription { 
+    display: flex;
+    align-items: center;
+    background-color: rgb(248, 248, 248);
+    color: black;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.headerBottom {  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pageHeader { 
+    background-color: white;
+    border-radius: 12px;
+    margin-bottom: 16px;
+
+    @media screen and (max-width: 600px) {
+        width: auto;
+        margin: 16px 24px 0 24px;
+    }
+    
+    :global { 
+        .ant-page-header-heading-title { 
+            font-size: 18px;
+        }
+
+        .ant-page-header-heading-sub-title { 
+            font-size: 12px;
+            overflow: visible;
+        }
+    }
+}
+
+.accentDescriptionTitle { 
+    color: rgb(115, 115, 115);
+
+    &Class { 
+        color: black;
+    }
+}
+
+.commentForPurpose { 
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-top: 8px;
+    background-color: rgb(231, 249, 240);
+    font-size: 12px;
+    padding: 8px;
+    border-radius: 12px;
+
+    & > span {
+
+        @media screen and (max-width: 600px) {
+            word-break: break-all;
+        }
+    }
+
+    .purposeIcon { 
+        height: 16px;
+
+        path { 
+            fill: rgb(16, 191, 106);
+        }
+    }
+}
+
+.transportWrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &Title { 
+        font-size: 14px;
+        font-weight: 600;
+    }
+}
+
+.approvedBy {
+    font-family: "SB Sans Text";
+    font-size: 16px;
+}
+
+.headerContainer { 
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (max-width: 600px) {
+        flex-direction: column;
+    }
+}
+
+.leftSide { 
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+}
+
+.rightSide { 
+    align-self: flex-end;
+}
+
+.transportIcon { 
+    display: flex;
+    flex-direction: row;
+    border-radius: 50%;
+    width: 36px;
+    height: 24px;
+    overflow: hidden;
+    margin-right: 12px;
+}
+
+.commonButton { 
+    padding: 9px 20px;
+    text-shadow: unset;
+    font-weight: 600;
+    line-height: 20px;
+    font-size: 14px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.submitButton { 
+    background-color: rgb(16, 191, 106);
+    border-color: rgb(16, 191, 106);
+    color: white;
+}
+
+.declineButton { 
+    background-color: rgb(242, 243, 246);
+    border-color: rgb(242, 243, 246);
+    color: black;
+}
+
+.declineButton { 
+    padding: 9px 20px;
+    text-shadow: unset;
+    background-color: rgb(242, 243, 246);
+    color: black;
+    border-radius: 8px;
+}
+
+.titleText { 
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    margin: 0;
+    padding: 0;
+}
+
+.approvalWrapper { 
+    padding: 20px 24px 24px;
+    background-color: white;
+    border-radius: 12px;
+    height: 100%;
+
+    @media screen and (max-width: 600px) {
+        width: auto;
+        margin: 16px 24px 0 24px;
+    }
+}
+
+.tripDescription { 
+    display: flex;
+    gap: 16px;
+
+    @media screen and (max-width: 600px) {
+        flex-direction: column;
+    }
+    
+    > div { 
+        height: auto;
+        flex: 1;
+    }
+}
+
+.personDataContainer { 
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.userAvatarWrapper { 
+    display: flex;
+    align-items: center;
+    img { 
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+}
+
+.personalInfoBlock { 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.accentText { 
+    font-weight: 400;
+    line-height: 20px;
+    font-size: 16px;
+}
+
+.subTitle { 
+    font-size: 14px;
+    color: rgb(168, 171, 179);
+    line-height: 18px;
+}
+
+.pageWrapper { 
+    margin: 0 !important;
+    max-width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contentContainer { 
+    width: 100%;
+    display: flex;
+    gap: 16px;
+}
+
+.TAXI {
+    background: url(../../../../../../../../shared/components/Images/cars/taxi.svg) no-repeat no-repeat center 0;
+    display: inline-block;
+    background-size: cover;
+    width: 36px;
+    height: 23px;
+    transform: translateX(7px);
+}
+
+.PERSONAL {
+    background: url(../../../../../../../../shared/components/Images/cars/pers.svg) no-repeat no-repeat center 0;
+    display: inline-block;
+    background-size: cover;
+    width: 36px;
+    height: 23px;
+    transform: translateX(7px);
+}
+
+.CARSHARING {
+    background: url(../../../../../../../../shared/components/Images/orders/carsh.png) no-repeat no-repeat center 0;
+    display: inline-block;
+    background-size: cover;
+    width: 36px;
+    height: 23px;
+    transform: translateX(7px);
+}
+
+.DEDICATED {
+    background: url(../../../../../../../../shared/components/Images/cars/truck.svg) no-repeat no-repeat center 0;
+    display: inline-block;
+    background-size: cover;
+    width: 36px;
+    height: 23px;
+    transform: translateX(7px);
+}
+
+.PUBLIC {
+    background: url(../../../../../../../../shared/components/Images/cars/public.svg) no-repeat no-repeat center 0;
+    display: inline-block;
+    background-size: cover;
+    width: 36px;
+    height: 23px;
+    transform: translateX(7px);
+}
+
+.GROUP_TRANSFER {
+    background: url(../../../../../../../../shared/components/Images/transfer.svg) no-repeat no-repeat center 0;
+    display: inline-block;
+    background-size: cover;
+    width: 34px;
+    height: 46px;
+    transform: translateX(6px) translateY(-10px);
+}
+
+.BUS {
+    background: url(../../../../../../../../shared/components/Images/busIcons/MIDDLE_BUS.svg) no-repeat no-repeat center 0;
+    display: inline-block;
+    background-size: cover;
+    width: 36px;
+    height: 26px;
+    transform: translateX(-6px) translateY(-1px);
+    background-position: -48px 1px;
+}

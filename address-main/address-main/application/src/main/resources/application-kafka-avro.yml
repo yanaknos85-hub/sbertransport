@@ -1,0 +1,74 @@
+spring:
+  cloud:
+    stream:
+      binders:
+        kafka-avro:
+          type: kafka
+          environment:
+            spring.cloud.stream.kafka:
+              default.consumer.enableDlq: true
+              binder:
+                configuration:
+                  security.protocol: ${KAFKA_SECURITY_PROTOCOL:SSL}
+                  ssl:
+                    endpoint.identification.algorithm: ""
+                    client.auth: required
+                    enabled.protocols: TLSv1.2
+                    truststore:
+                      location: ${KAFKA_SSL_TRUSTSTORE_LOCATION:}
+                      password: ${KAFKA_SSL_TRUSTSTORE_PASSWORD:}
+                    keystore:
+                      location: ${KAFKA_SSL_KEYSTORE_LOCATION:}
+                      password: ${KAFKA_SSL_KEYSTORE_PASSWORD:}
+                    key.password: ${KAFKA_SSL_KEY_PASSWORD:}
+                auto-alter-topics: true
+                autoAddPartitions: true
+                brokers:
+                  - ${KAFKA_SSL_BROKERS}
+                producerProperties:
+                  auto.register.schemas: true
+                  key.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+                  value.serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+                  compression.type: gzip
+                  schema.reflection: true
+                  schema.registry.url: ${SCHEMA_REGISTRY_URL}
+                consumerProperties:
+                  key.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+                  value.deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+                  standardHeaders: both
+                  compression.type: gzip
+                  schema.registry.url: ${SCHEMA_REGISTRY_URL}
+                  specific.avro.reader: true
+      bindings:
+        favoriteAddressOutputAvro-out-0:
+          destination: service-address-favorite
+          content-type: application/*+avro
+          binder: kafka-avro
+          producer:
+            useNativeEncoding: true
+        frequentlyAddressOutputAvro-out-0:
+          destination: service-address-frequently
+          content-type: application/*+avro
+          binder: kafka-avro
+          producer:
+            useNativeEncoding: true
+        addressMessageOutputAvro-out-0:
+          destination: service-address-meetings
+          content-type: application/*+avro
+          binder: kafka-avro
+          producer:
+            useNativeEncoding: true
+        userAddressInputAvro-in-0:
+          group: ${spring.application.name}-avro
+          destination: service-request-address-used
+          content-type: application/*+avro
+          binder: kafka-avro
+          consumer:
+            useNativeDecoding: true
+        employeeInputAvro-in-0:
+          group: ${spring.application.name}-avro
+          destination: service-organization-employee
+          binder: kafka-avro
+          content-type: application/*+avro
+          consumer:
+            useNativeDecoding: true

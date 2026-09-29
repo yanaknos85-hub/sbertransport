@@ -1,0 +1,22 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20240409"
+            author: shabrov-ie
+            changes:
+                -   tagDatabase:
+                        tag: "20240409"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    type: boolean
+                                    name: vip
+                                    remarks: Признак вип
+            rollback:
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    name: vip

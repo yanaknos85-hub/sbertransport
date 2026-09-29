@@ -1,0 +1,13 @@
+.monthSelect {
+  border: 1px solid rgb(224, 224, 224);
+  border-radius: 8px;
+  width: 103px;
+  
+  .ant-select-selector {
+    height: 24px !important;
+
+    .ant-select-selection-item {
+      line-height: 23px !important;
+    }
+  }
+}

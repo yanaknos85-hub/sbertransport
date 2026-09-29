@@ -1,0 +1,43 @@
+.codeSendText {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.codeText {
+  margin: 22px 0 12px 0;
+  text-align: center;
+}
+
+.phone {
+  width: 100%;
+  font-family: "SB Sans Interface", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--black-text);
+  display: inline-block;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+
+.resend {
+  width: 100%;
+  padding: 0 20px;
+}
+
+.count {
+  font-weight: 600;
+  font-family: SB Sans Text;
+  letter-spacing: -0.3px;
+  color: var(--black-text);
+  margin-left: 12px;
+}
+
+.pinCode {
+  justify-content: center;
+}

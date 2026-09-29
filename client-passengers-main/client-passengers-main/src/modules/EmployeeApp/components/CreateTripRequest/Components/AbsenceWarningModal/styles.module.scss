@@ -1,0 +1,92 @@
+$modal-width: 400px;
+$img-size: 130px;
+
+.modal {
+  .footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+
+    :global {
+      .sbt-kit-btn-primary {
+        padding: 9px 20px;
+        border-radius: 8px;
+        background-color: #10bf6a;
+
+        font-family: "SB Sans Text";
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 22px;
+        letter-spacing: -0.3px;
+        color: #ffffff;
+      }
+
+      .sbt-kit-btn-text {
+        @extend .sbt-kit-btn-primary;
+        color: inherit;
+        background-color: inherit;
+      }
+    }
+  }
+
+  :global {
+    .sbt-kit-modal-content {
+      padding: 0;
+      width: $modal-width;
+      box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.12), 0 0 1px 0 rgba(0, 0, 0, 0.12);
+      color: #262626;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .sbt-kit-modal-header {
+        padding: 12px 12px 0 24px;
+        margin-bottom: 0;
+
+        .sbt-kit-modal-title {
+          font-family: "SB Sans Interface";
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 28px;
+        }
+      }
+
+      .sbt-kit-modal-close {
+        width: 24px;
+        height: 24px;
+      }
+
+      .sbt-kit-modal-body {
+        padding: 0 24px;
+
+        font-family: "SB Sans Text";
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: -0.3px;
+        text-align: left;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+
+        & img {
+          width: $img-size;
+          height: $img-size;
+        }
+
+        & p {
+          margin: 0;
+          text-align: left;
+        }
+      }
+
+      .sbt-kit-modal-footer {
+        margin-top: 0;
+        padding: 24px 24px 24px 0;
+      }
+    }
+  }
+}

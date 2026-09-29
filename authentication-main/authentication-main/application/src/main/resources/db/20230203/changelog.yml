@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230203"
+      author: blandin-ad
+      dbms: postgresql
+      changes:
+          - tagDatabase:
+              tag: "20230203"
+          - sqlFile:
+              path: change/set_not_null_and_default_value.sql
+              relativeToChangelogFile: true
+      rollback:
+          - sqlFile:
+              path: rollback/rollback.sql
+              relativeToChangelogFile: true

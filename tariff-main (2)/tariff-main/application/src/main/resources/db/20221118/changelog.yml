@@ -1,0 +1,27 @@
+databaseChangeLog:
+    - changeSet:
+          id: "20221118-3"
+          author: blandin-ad
+          preConditions:
+              -   onFail: MARK_RAN
+              -   not:
+                      - columnExists:
+                            schemaName: tariff
+                            tableName: tariff
+                            columnName: department_human_readable_id
+          changes:
+                - addColumn:
+                        schemaName: tariff
+                        tableName: tariff
+                        columns:
+                            - column:
+                                name: department_human_readable_id
+                                type: text
+                                remarks: Человекочитаемый ID подразделения
+          rollback:
+                - dropColumn:
+                        schemaName: tariff
+                        tableName: tariff
+                        columns:
+                            - column:
+                                name: department_human_readable_id

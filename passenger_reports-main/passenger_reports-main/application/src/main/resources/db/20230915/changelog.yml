@@ -1,0 +1,122 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230915"
+            author: shabrov-ie
+            changes:
+                -   tagDatabase:
+                        tag: "20230915"
+                -   createTable:
+                        schemaName: reports
+                        tableName: carsharing_trip
+                        columns:
+                            -   column:
+                                    type: uuid
+                                    name: id
+                                    constraints:
+                                        primaryKey: true
+                            -   column:
+                                    type: integer
+                                    name: rent_id
+                            -   column:
+                                    type: text
+                                    name: car_model
+                            -   column:
+                                    type: text
+                                    name: car_number
+                            -   column:
+                                    type: jsonb
+                                    name: start_point
+                            -   column:
+                                    type: timestamp
+                                    name: rent_created_at
+                            -   column:
+                                    type: double precision
+                                    name: total_cost
+                            -   column:
+                                    type: integer
+                                    name: driving_time
+                            -   column:
+                                    type: double precision
+                                    name: driving_time_cost
+                            -   column:
+                                    type: integer
+                                    name: driving_length
+                            -   column:
+                                    type: double precision
+                                    name: driving_length_cost
+                            -   column:
+                                    type: integer
+                                    name: parking_time
+                            -   column:
+                                    type: double precision
+                                    name: parking_time_cost
+                            -   column:
+                                    type: integer
+                                    name: reserve_time
+                            -   column:
+                                    type: double precision
+                                    name: reserve_time_cost
+                            -   column:
+                                    type: jsonb
+                                    name: finish_point
+                            -   column:
+                                    type: timestamp
+                                    name: rent_finished_at
+                            -   column:
+                                    type: text
+                                    name: start_address
+                            -   column:
+                                    type: text
+                                    name: finish_address
+                            -   column:
+                                    type: timestamp
+                                    name: created
+                            -   column:
+                                    type: timestamp
+                                    name: updated
+                -   createIndex:
+                        columns:
+                            -   column:
+                                    name: rent_id
+                        schemaName: reports
+                        tableName: carsharing_trip
+                        indexName: carsharing_trip_rent_id_idx
+                -   addColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    type: integer
+                                    name: rent_id
+                                    remarks: Ид аренды (каршеринг)
+            rollback:
+                -   dropTable:
+                        schemaName: reports
+                        tableName: carsharing_trip
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    name: rent_id
+    -   changeSet:
+            id: "20230919"
+            author: shabrov-ie
+            changes:
+                -   tagDatabase:
+                        tag: "20230919"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    type: text
+                                    name: phone_number
+                                    remarks: Телефон, который использовался при формирования заявки на каршеринг
+            rollback:
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    name: phone_number

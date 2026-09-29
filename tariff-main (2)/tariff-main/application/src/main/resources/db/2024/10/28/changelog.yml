@@ -1,0 +1,23 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20241028"
+            author: shabrovie
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: alter_tariff.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+    -   changeSet:
+            id: "20241030"
+            author: shabrovie
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: tariff
+                        tableName: tariff
+                        columns:
+                            -   column:
+                                    name: contractor_id
+                                    type: uuid
+                                    remarks: id контрагента

@@ -1,0 +1,27 @@
+.wrapper_availableCars {
+  margin-top: 16px;
+  width: 100%;
+
+  .title_availableCars {
+    color: rgb(0, 0, 0);
+    font-family: SB Sans Text;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+  }
+
+  .search_availableCars {
+    display: flex;
+    margin: 8px 0;
+  }
+
+  .ant-input-affix-wrapper {
+      border-top: 1px solid rgb(224, 224, 224);
+      border-bottom: 1px solid rgb(224, 224, 224);
+      border-left: 1px solid rgb(224, 224, 224);
+      border-right: 1px solid rgb(224, 224, 224);
+      border-radius: 8px;
+      height: 40px;
+  }
+}

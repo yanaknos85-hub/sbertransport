@@ -1,0 +1,71 @@
+{
+  "content": [
+    {
+      "id": "36559d98-87a1-4ea7-9343-804620c66418",
+      "firstName": "Сергей",
+      "lastName": "Лебедев",
+      "patronymic": "Николаевич",
+      "personnelNumber": "1898468",
+      "positionId": "88a52dca-7494-4b50-a98f-299391935ac4",
+      "mobilePhone": "+78001503021",
+      "roles": [],
+      "userId": "88596d13-c671-4990-bf2b-fb41e399b859",
+      "humanReadableId": "US-0002-21",
+      "availableTransportTypes": [],
+      "personalCars": [],
+      "organizationId": "0040f12f-57a2-48a3-b153-15e418e625f9",
+      "status": "ACTIVE",
+      "externalEmail": "",
+      "consent": false,
+      "attributes": [],
+      "positionName": "Дев-должность_01",
+      "departmentId": "e7131b12-73bc-4d6e-9159-47961b6dd4e2"
+    },
+    {
+      "id": "a4f7f690-4a38-4419-95a9-a44a0587eecd",
+      "firstName": "Василий",
+      "lastName": "Поляков",
+      "patronymic": "Сергеевич",
+      "personnelNumber": "1729581",
+      "positionId": "88a52dca-7494-4b50-a98f-299391935ac4",
+      "mobilePhone": "+78001503022",
+      "roles": [],
+      "userId": "0656c26a-833c-46e2-b4b3-28aff3befefe",
+      "humanReadableId": "US-0002-22",
+      "availableTransportTypes": [],
+      "personalCars": [],
+      "organizationId": "0040f12f-57a2-48a3-b153-15e418e625f9",
+      "status": "ACTIVE",
+      "externalEmail": "",
+      "consent": false,
+      "attributes": [],
+      "positionName": "Дев-должность_01",
+      "departmentId": "e7131b12-73bc-4d6e-9159-47961b6dd4e2"
+    }
+  ],
+  "pageable": {
+    "sort": {
+      "sorted": true,
+      "unsorted": false,
+      "empty": false
+    },
+    "offset": 0,
+    "pageNumber": 0,
+    "pageSize": 20,
+    "paged": true,
+    "unpaged": false
+  },
+  "last": true,
+  "totalPages": 1,
+  "totalElements": 8,
+  "first": true,
+  "sort": {
+    "sorted": true,
+    "unsorted": false,
+    "empty": false
+  },
+  "size": 20,
+  "number": 0,
+  "numberOfElements": 8,
+  "empty": false
+}

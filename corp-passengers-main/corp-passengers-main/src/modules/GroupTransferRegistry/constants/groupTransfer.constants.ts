@@ -1,0 +1,27 @@
+export const VALUE_NOT_FOUND = '-';
+
+export enum GroupTransferStatuses {
+  GROUP_TRANSFER_AWAITING_APPROVAL = 'GROUP_TRANSFER_AWAITING_APPROVAL',
+  GROUP_TRANSFER_APPROVED = 'GROUP_TRANSFER_APPROVED',
+  GROUP_TRANSFER_AWAITING_SEARCH = 'GROUP_TRANSFER_AWAITING_SEARCH',
+  GROUP_TRANSFER_DRIVER_SEARCH = 'GROUP_TRANSFER_DRIVER_SEARCH',
+  GROUP_TRANSFER_DRIVER_FOUND = 'GROUP_TRANSFER_DRIVER_FOUND',
+  GROUP_TRANSFER_DRIVER_ON_THE_WAY = 'GROUP_TRANSFER_DRIVER_ON_THE_WAY',
+  GROUP_TRANSFER_DRIVER_ARRIVED = 'GROUP_TRANSFER_DRIVER_ARRIVED',
+  GROUP_TRANSFER_TRIP_IN_PROGRESS = 'GROUP_TRANSFER_TRIP_IN_PROGRESS',
+  GROUP_TRANSFER_TRIP_FINISHED = 'GROUP_TRANSFER_TRIP_FINISHED',
+  GROUP_TRANSFER_CANCELLED = 'GROUP_TRANSFER_CANCELLED',
+}
+
+export const GroupTransferStatusNames: Record<GroupTransferStatuses, string> = {
+  [GroupTransferStatuses.GROUP_TRANSFER_AWAITING_APPROVAL]: 'На согласовании',
+  [GroupTransferStatuses.GROUP_TRANSFER_APPROVED]: 'Согласована',
+  [GroupTransferStatuses.GROUP_TRANSFER_AWAITING_SEARCH]: 'Ожидайте назначения водителя',
+  [GroupTransferStatuses.GROUP_TRANSFER_DRIVER_SEARCH]: 'Поиск водителя',
+  [GroupTransferStatuses.GROUP_TRANSFER_DRIVER_FOUND]: 'Водитель назначен',
+  [GroupTransferStatuses.GROUP_TRANSFER_DRIVER_ON_THE_WAY]: 'Водитель в пути',
+  [GroupTransferStatuses.GROUP_TRANSFER_DRIVER_ARRIVED]: 'Водитель ожидает в точке отправления',
+  [GroupTransferStatuses.GROUP_TRANSFER_TRIP_IN_PROGRESS]: 'Поездка началась',
+  [GroupTransferStatuses.GROUP_TRANSFER_TRIP_FINISHED]: 'Поездка завершена',
+  [GroupTransferStatuses.GROUP_TRANSFER_CANCELLED]: 'Отменено',
+};

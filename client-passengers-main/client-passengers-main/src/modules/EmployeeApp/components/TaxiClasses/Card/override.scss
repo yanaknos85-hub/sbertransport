@@ -1,0 +1,58 @@
+.no-input-radio .ant-radio {
+  display: none !important;
+  height: 0;
+
+  & ~ span {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-flow: column nowrap;
+    margin: 3px 0;
+    padding: 14px 16px !important;
+    border: 2px solid #eff0f1;
+    border-radius: 10px;
+
+    height: 100% !important;
+    overflow: hidden;
+    width: 100%;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  &.ant-radio-checked ~ span {
+    border: 2px solid var(--jade);
+    border-radius: 10px;
+    width: 100%;
+    background: rgba(16, 191, 106, 0.02);
+    box-sizing: border-box;
+  }
+}
+
+.personal-cars {
+  .ant-radio-group {
+    flex-direction: column !important;
+  }
+}
+
+.personalCarsItem {
+
+  .ant-radio-wrapper {
+    margin-right: 0px !important;
+    padding-right: 0px !important;
+  }
+}
+
+.switchCar {
+  margin: 0px 0 20px 0;
+  display: flex;
+  cursor: pointer;
+  
+  span {
+    color: rgb(16, 191, 106);
+    font-family: "SB Sans Text";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+    margin-left: 5px;
+  }
+}

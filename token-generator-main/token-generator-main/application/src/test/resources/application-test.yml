@@ -1,0 +1,9 @@
+spring:
+  liquibase:
+    test-rollback-on-update: true
+  datasource:
+    username: postgres
+    password: root
+jwk:
+  private:
+    path: src/test/resources/key/jwt.key

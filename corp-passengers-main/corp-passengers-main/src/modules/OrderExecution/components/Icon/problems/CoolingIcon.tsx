@@ -1,0 +1,84 @@
+import React from 'react';
+
+const CoolingIcon = () => (
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect
+      width="32"
+      height="32"
+      rx="8"
+      fill="#FF9081"
+      fillOpacity="0.08"
+    />
+    <rect
+      x="10.75"
+      y="10.75"
+      width="3.5"
+      height="11.5"
+      rx="1.25"
+      stroke="#FF9081"
+      strokeWidth="1.5"
+    />
+    <rect
+      x="7.75"
+      y="12.25"
+      width="2.25"
+      height="2.25"
+      rx="1.125"
+      stroke="#FF9081"
+      strokeWidth="1.5"
+    />
+    <rect
+      x="8"
+      y="18.25"
+      width="2.25"
+      height="2.25"
+      rx="1.125"
+      stroke="#FF9081"
+      strokeWidth="1.5"
+    />
+    <rect
+      x="21.75"
+      y="18.25"
+      width="2.25"
+      height="2.25"
+      rx="1.125"
+      stroke="#FF9081"
+      strokeWidth="1.5"
+    />
+    <rect
+      x="22"
+      y="12.25"
+      width="2.25"
+      height="2.25"
+      rx="1.125"
+      stroke="#FF9081"
+      strokeWidth="1.5"
+    />
+    <rect
+      x="13.75"
+      y="10.75"
+      width="4.5"
+      height="11.5"
+      rx="1.25"
+      stroke="#FF9081"
+      strokeWidth="1.5"
+    />
+    <rect
+      x="17.75"
+      y="10.75"
+      width="3.5"
+      height="11.5"
+      rx="1.25"
+      stroke="#FF9081"
+      strokeWidth="1.5"
+    />
+  </svg>
+);
+
+export default CoolingIcon;

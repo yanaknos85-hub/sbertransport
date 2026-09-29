@@ -1,0 +1,1 @@
+alter table tariff.message_employee drop column if exists organization_id;

@@ -1,0 +1,57 @@
+{
+  "id": "1f2a3b4c-d5e6-7f89-g0h1-j2k3l4m5n6op",
+  "humanReadableId": "OT-0001-00014844",
+  "costCenter": "0001L00001",
+  "transportType": "YANDEX",
+  "fraudMarkers": [
+    {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "comment": "Поездка в ночное время"
+    },
+    {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa7",
+      "comment": "Поездка выходной день"
+    }
+  ],
+  "intermediateAddresses": [
+    {
+      "address": "Красная площадь, Москва",
+      "waitTime": 15
+    },
+    {
+      "address": "Невский проспект, Санкт-Петербург",
+      "waitTime": 30
+    }
+  ],
+  "desiredDate": "2025-11-07T11:14:44.703Z",
+  "passenger": {
+    "id": "1f2a3b4c-d5e6-7f89-g0h1-j2k3l4m5n6oq",
+    "lastName": "Иванов",
+    "firstName": "Иван",
+    "patronymic": "Иванович",
+    "personnelNumber": "EMP-001"
+  },
+  "approvalDate": "2025-11-07T11:14:44.703Z",
+  "approver": {
+    "id": "1f2a3b4c-d5e6-7f89-g0h1-j2k3l4m5n6or",
+    "lastName": "Петров",
+    "firstName": "Петр",
+    "patronymic": "Петрович",
+    "personnelNumber": "MAN-001"
+  },
+  "autoApproval": true,
+  "waypointsCount": 2,
+  "departureAddress": "Москва, ул. Тверская, д. 1",
+  "destinationAddress": "Санкт-Петербург, Невский проспект, д. 35",
+  "plannedCost": 5000,
+  "actualCost": 4800,
+  "distance": 700,
+  "status": "COMPLETED",
+  "compensationType": "PARTIAL",
+  "purpose": {
+    "id": "1f2a3b4c-d5e6-7f89-g0h1-j2k3l4m5n6os",
+    "purpose": "Бизнес-командировка"
+  },
+  "department": "IT-отдел",
+  "departmentCode": "ITD-001"
+}

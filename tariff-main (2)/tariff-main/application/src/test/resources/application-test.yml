@@ -1,0 +1,41 @@
+grpc:
+  server:
+    port: -1
+server:
+  port: 0
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: tariff_test
+  datasource:
+    password: root
+    username: postgres
+    driver-class-name: org.postgresql.Driver
+    hibernate:
+      ddl-auto: validate
+  liquibase:
+    liquibase-schema: public
+    contexts: test
+  config:
+    import: optional:configserver:http://localhost:8888
+magenta:
+  rootUrl: dryg.magenta-technology.com
+  authPort: 443
+  authProtocol: https
+  user: user
+  password: g3f$67GHf#%6
+  headerSenderName: sender_service
+  headerSenderValue: TRANSPORT_AS
+  saveTariffsUrl: https://dryg.magenta-technology.com/api/v1/shared_rides/1/save_tariffs
+  postNewSharedRideUrl: https://dryg.magenta-technology.com/api/v1/shared_rides/1/plan_order/ride/-1
+  getSuitableRidesUrl: https://dryg.magenta-technology.com/api/v1/shared_rides/1/plan_order/
+  cancelOrderUrl: https://dryg.magenta-technology.com/api/v1/shared_rides/1/plan_order/
+  addRequestToRideUrl: https://dryg.magenta-technology.com/api/v1/shared_rides/1/plan_order/ride/
+traffic:
+  threshold: 7
+javamelody:
+  enabled: false
+tariff.export.onlyActive: false
+contractorClient:
+  url: ${CONTRACTOR_URL:localhost}

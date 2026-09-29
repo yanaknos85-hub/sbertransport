@@ -1,0 +1,11 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20210810
+            tag: "20210810"
+            author: goloschapov
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: drop_region_not_null_param.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

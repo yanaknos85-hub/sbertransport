@@ -1,0 +1,15 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20200416
+            tag: "20200416"
+            author: mad
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: create_trip_class_column.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: drop_trip_class_table.sql
+                        relativeToChangelogFile: true

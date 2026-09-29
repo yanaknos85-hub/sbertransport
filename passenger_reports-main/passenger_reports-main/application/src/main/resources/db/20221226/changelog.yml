@@ -1,0 +1,22 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221226"
+            author: shabrov-ie
+            changes:
+                -   tagDatabase:
+                        tag: "20221226"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    name: order_payment_formation_start_date
+                                    type: timestamp
+                                    remarks: Дата и время начала формирования приказа на выплату
+            rollback:
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    name: order_payment_formation_start_date

@@ -1,0 +1,24 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221108-5"
+            author: blandin-ad
+            dbms: postgresql
+            changes:
+                addColumn:
+                    schemaName: tariff
+                    tableName: contractor
+                    columns:
+                        column:
+                            name: integration_type
+                            type: text
+                            remarks: 'Тип интеграции'
+                            defaultValue: EMAIL_XML_API
+                            constraints:
+                                nullable: false
+            rollback:
+                dropColumn:
+                    schemaName: tariff
+                    tableName: contractor
+                    columns:
+                        column:
+                            name: integration_type

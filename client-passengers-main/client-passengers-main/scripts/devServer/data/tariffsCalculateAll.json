@@ -1,0 +1,44 @@
+[
+  {
+    "id": "e9aa5684-33e0-44a4-9acb-e6d44cd9dfde",
+    "transportType": {
+      "id": "296c1c60-0aa3-4e06-85a0-f5efc021d8c9",
+      "name": "COURIER"
+    },
+    "cost": 8200,
+    "time": 11789072,
+    "priceDetails": {
+      "baseCost": 1000,
+      "loaderCost": 1200,
+      "expressCost": 6000
+    }
+  },
+  {
+    "id": "6f566b36-301a-449a-9c55-310785678c31",
+    "transportType": {
+      "id": "c6ab83a2-0637-11ec-9a03-0242ac130003",
+      "name": "DEDICATED"
+    },
+    "cost": 9000,
+    "time": 1178972,
+    "priceDetails": {
+      "baseCost": 1800,
+      "loaderCost": 1200,
+      "expressCost": 6000
+    }
+  },
+  {
+    "id": "b696aace-0c16-47fd-b456-db3b4e320eb5",
+    "transportType": {
+      "id": "e2722f95-1043-41d0-8a57-09182c6410c6",
+      "name": "INTERREGIONAL"
+    },
+    "cost": 10000,
+    "time": 1178923472,
+    "priceDetails": {
+      "baseCost": 2800,
+      "loaderCost": 1200,
+      "expressCost": 6000
+    }
+  }
+]

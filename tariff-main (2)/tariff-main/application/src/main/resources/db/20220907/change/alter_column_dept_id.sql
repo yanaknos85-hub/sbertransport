@@ -1,0 +1,1 @@
+alter table tariff.tariff alter column dept_id type uuid USING dept_id::uuid;

@@ -1,0 +1,107 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20240222"
+            author: shabrovie
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: tariff
+                        tableName: tariff
+                        columns:
+                            -   column:
+                                    name: start
+                                    type: timestamp
+                                    remarks: Дата начала действия тарифа
+                            -   column:
+                                    name: end
+                                    type: timestamp
+                                    remarks: Дата окончания действия тарифа
+                            -   column:
+                                    name: min_min
+                                    type: integer
+                                    remarks: Минимальное время поездки в минутах
+                            -   column:
+                                    name: min_km
+                                    type: integer
+                                    remarks: Минимальная протяженность маршрута в км
+                            -   column:
+                                    name: cost_per_km_city
+                                    type: integer
+                                    remarks: Цена за км в городе, коп
+                            -   column:
+                                    name: cost_per_min_city
+                                    type: integer
+                                    remarks: Цена за минуту в городе, коп
+                            -   column:
+                                    name: child_seat
+                                    type: boolean
+                                    remarks: Детское кресло
+                            -   column:
+                                    name: bug_oversized
+                                    type: boolean
+                                    remarks: Негабаритный багаж
+                            -   column:
+                                    name: animal
+                                    type: boolean
+                                    remarks: Животные
+                            -   column:
+                                    name: min_create_time
+                                    type: integer
+                                    remarks: Минимальное время для формирования заказа в минутах.
+                            -   column:
+                                    name: min_cancel_time
+                                    type: integer
+                                    remarks: Минимальное время отмены поездки в минутах
+            rollback:
+                -   dropColumn:
+                        schemaName: tariff
+                        tableName: tariff
+                        columns:
+                            -   column:
+                                    name: start
+                            -   column:
+                                    name: end
+                            -   column:
+                                    name: min_min
+                            -   column:
+                                    name: min_km
+                            -   column:
+                                    name: cost_per_km_city
+                            -   column:
+                                    name: cost_per_min_city
+                            -   column:
+                                    name: child_seat
+                            -   column:
+                                    name: bug_oversized
+                            -   column:
+                                    name: animal
+                            -   column:
+                                    name: min_create_time
+                            -   column:
+                                    name: min_cancel_time
+    -   changeSet:
+            id: "20240315"
+            author: shabrovie
+            dbms: postgresql
+            changes:
+                -   renameColumn:
+                        schemaName: tariff
+                        tableName: tariff
+                        newColumnName: tariff_start_date
+                        oldColumnName: start
+                -   renameColumn:
+                        schemaName: tariff
+                        tableName: tariff
+                        newColumnName: tariff_end_date
+                        oldColumnName: end
+            rollback:
+                -   renameColumn:
+                        schemaName: tariff
+                        tableName: tariff
+                        newColumnName: start
+                        oldColumnName: tariff_start_date
+                -   renameColumn:
+                        schemaName: tariff
+                        tableName: tariff
+                        newColumnName: end
+                        oldColumnName: tariff_end_date

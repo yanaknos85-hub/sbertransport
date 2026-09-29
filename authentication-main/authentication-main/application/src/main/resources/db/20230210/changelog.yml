@@ -1,0 +1,45 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230210"
+      author: blandin-ad
+      changes:
+          - tagDatabase:
+                tag: "20230210"
+          - createTable:
+                schemaName: authentication
+                tableName: reset_code
+                remarks: Коды для сброса пароля
+                columns:
+                  - column:
+                      name: account_id
+                      type: uuid
+                      remarks: Идентификатор аккаунта
+                      constraints:
+                          primaryKey: true
+                  - column:
+                      name: hash
+                      type: text
+                      remarks: Хэш
+      rollback:
+        - dropTable:
+              schemaName: authentication
+              tableName: reset_code
+  - changeSet:
+      id: "20230213"
+      author: blandin-ad
+      changes:
+          - tagDatabase:
+              tag: "20230213"
+          - addColumn:
+              schemaName: authentication
+              tableName: reset_code
+              columns:
+                - column:
+                    name: email
+                    type: text
+                    remarks: Почта
+      rollback:
+        - dropColumn:
+            schemaName: authentication
+            tableName: reset_code
+            columnName: email

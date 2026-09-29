@@ -1,0 +1,14 @@
+databaseChangeLog:
+    - changeSet:
+          id: "20211112"
+          author: vbisenov
+          dbms: postgresql
+          changes:
+              -   addColumn:
+                      schemaName: reports
+                      tableName: request
+                      columns:
+                          -   column:
+                                  name: order_payment_formation_finishing_date
+                                  type: timestamp
+                                  remarks: Дата и время окончания формирования приказа на выплату

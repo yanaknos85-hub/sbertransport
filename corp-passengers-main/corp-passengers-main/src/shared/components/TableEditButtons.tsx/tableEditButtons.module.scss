@@ -1,0 +1,23 @@
+.tableEdit {
+  &Buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &Delete {
+      cursor: pointer;
+      margin: 0 auto;
+    }
+  }
+
+  &Tooltip {
+    width: 300px;
+
+    :global(.ant-popover-buttons .ant-btn) {
+      &:first-child {
+        // Changes the order of buttons for requirements (work for all TableEditButtons tooltip!!!)
+        float: right;
+      }
+    }
+  }
+}

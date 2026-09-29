@@ -1,0 +1,385 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240717-0845"
+      author: medvedev-ad
+      context: "TRANSPORT-24438"
+      changes:
+        - tagDatabase:
+            tag: "D-03.014.000"
+        - addColumn:
+            schemaName: addresses
+            tableName: frequently
+            columns:
+              - column:
+                  name: country
+                  type: varchar(60)
+                  remarks: Страна
+              - column:
+                  name: region
+                  type: varchar(255)
+                  remarks: Регион
+              - column:
+                  name: city
+                  type: varchar(100)
+                  remarks: Населенный пункт
+              - column:
+                  name: street
+                  type: varchar(150)
+                  remarks: Улица
+              - column:
+                  name: house
+                  type: varchar(50)
+                  remarks: Дом
+              - column:
+                  name: building
+                  type: varchar(50)
+                  remarks: Корпус
+              - column:
+                  name: structure
+                  type: varchar(50)
+                  remarks: Строение
+              - column:
+                  name: latitude
+                  type: numeric(15, 11)
+                  remarks: Широта
+              - column:
+                  name: longitude
+                  type: numeric(15, 11)
+                  remarks: Долгота
+        - addColumn:
+            schemaName: addresses
+            tableName: favorite
+            columns:
+              - column:
+                  name: country
+                  type: varchar(60)
+                  remarks: Страна
+              - column:
+                  name: region
+                  type: varchar(255)
+                  remarks: Регион
+              - column:
+                  name: city
+                  type: varchar(100)
+                  remarks: Населенный пункт
+              - column:
+                  name: street
+                  type: varchar(150)
+                  remarks: Улица
+              - column:
+                  name: house
+                  type: varchar(50)
+                  remarks: Дом
+              - column:
+                  name: building
+                  type: varchar(50)
+                  remarks: Корпус
+              - column:
+                  name: structure
+                  type: varchar(50)
+                  remarks: Строение
+              - column:
+                  name: latitude
+                  type: numeric(15, 11)
+                  remarks: Широта
+              - column:
+                  name: longitude
+                  type: numeric(15, 11)
+                  remarks: Долгота
+        - addColumn:
+            schemaName: addresses
+            tableName: meetings
+            columns:
+              - column:
+                  name: country
+                  type: varchar(60)
+                  remarks: Страна
+              - column:
+                  name: region
+                  type: varchar(255)
+                  remarks: Регион
+              - column:
+                  name: city
+                  type: varchar(100)
+                  remarks: Населенный пункт
+              - column:
+                  name: street
+                  type: varchar(150)
+                  remarks: Улица
+              - column:
+                  name: house
+                  type: varchar(50)
+                  remarks: Дом
+              - column:
+                  name: building
+                  type: varchar(50)
+                  remarks: Корпус
+              - column:
+                  name: structure
+                  type: varchar(50)
+                  remarks: Строение
+              - column:
+                  name: latitude
+                  type: numeric(15, 11)
+                  remarks: Широта
+              - column:
+                  name: longitude
+                  type: numeric(15, 11)
+                  remarks: Долгота
+  - changeSet:
+      id: "20240717-0848"
+      author: medvedev-ad
+      context: "TRANSPORT-24438"
+      dbms: postgresql
+      changes:
+        - tagDatabase:
+            tag: "D-03.014.000"
+        - sql:
+            sql: >
+              update addresses.favorite
+              set country = address.country, 
+              region = address.region, 
+              city = address.city, 
+              street = address.street, 
+              house = address.house, 
+              building = address.building, 
+              structure = address.structure, 
+              latitude = address.latitude, 
+              longitude = address.longitude 
+              from addresses.address where address.id = address_id
+        - sql:
+            sql: >
+              update addresses.frequently
+              set country = address.country, 
+              region = address.region, 
+              city = address.city, 
+              street = address.street, 
+              house = address.house, 
+              building = address.building, 
+              structure = address.structure, 
+              latitude = address.latitude, 
+              longitude = address.longitude 
+              from addresses.address where address.id = address_id
+        - sql:
+            sql: >
+              update addresses.meetings
+              set country = address.country, 
+              region = address.region, 
+              city = address.city, 
+              street = address.street, 
+              house = address.house, 
+              building = address.building, 
+              structure = address.structure, 
+              latitude = address.latitude, 
+              longitude = address.longitude 
+              from addresses.address where address.id = address_id
+      rollback:
+        - sql:
+            sql: select 1 #no need to rollback
+  - changeSet:
+      id: "20240717-0851"
+      author: medvedev-ad
+      context: "TRANSPORT-24438"
+      changes:
+        - tagDatabase:
+            tag: "D-03.014.000"
+        - dropColumn:
+            schemaName: addresses
+            tableName: meetings
+            columnName: address_id
+        - dropColumn:
+            schemaName: addresses
+            tableName: favorite
+            columnName: address_id
+        - dropColumn:
+            schemaName: addresses
+            tableName: frequently
+            columnName: address_id
+        - dropTable:
+            schemaName: addresses
+            tableName: address
+      rollback:
+        - createTable:
+            schemaName: addresses
+            tableName: address
+            remarks: Адреса в системе
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор адреса
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: addresses_address_pk
+              - column:
+                  name: country
+                  type: varchar(60)
+                  remarks: Страна
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: addresses_address_country_nn
+              - column:
+                  name: region
+                  type: varchar(255)
+                  remarks: Регион
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: addresses_address_region_nn
+              - column:
+                  name: city
+                  type: varchar(100)
+                  remarks: Населенный пункт
+              - column:
+                  name: street
+                  type: varchar(150)
+                  remarks: Улица
+              - column:
+                  name: house
+                  type: varchar(50)
+                  remarks: Дом
+              - column:
+                  name: building
+                  type: varchar(50)
+                  remarks: Корпус
+              - column:
+                  name: structure
+                  type: varchar(50)
+                  remarks: Строение
+              - column:
+                  name: latitude
+                  type: numeric(15, 11)
+                  remarks: Широта
+              - column:
+                  name: longitude
+                  type: numeric(15, 11)
+                  remarks: Долгота
+        - addColumn:
+            schemaName: addresses
+            tableName: favorite
+            columns:
+              - column:
+                  name: address_id
+                  type: uuid
+                  remarks: Связь с адресом
+                  constraints:
+                    referencedTableSchemaName: addresses
+                    referencedTableName: address
+                    referencedColumnNames: id
+                    foreignKeyName: addresses_favorite_address_fk
+        - addColumn:
+            schemaName: addresses
+            tableName: frequently
+            columns:
+              - column:
+                  name: address_id
+                  type: uuid
+                  remarks: Связь с адресом
+                  constraints:
+                    referencedTableSchemaName: addresses
+                    referencedTableName: address
+                    referencedColumnNames: id
+                    foreignKeyName: addresses_frequently_address_fk
+        - addColumn:
+            schemaName: addresses
+            tableName: meetings
+            columns:
+              - column:
+                  name: address_id
+                  type: uuid
+                  remarks: Связь с адресом
+                  constraints:
+                    referencedTableSchemaName: addresses
+                    referencedTableName: address
+                    referencedColumnNames: id
+                    foreignKeyName: addresses_meetings_address_fk
+        - sql:
+            sql: >
+              insert into addresses.address (country, region, city, street, house, building, structure, id, latitude, longitude)
+                  (select country,
+                          region,
+                          city,
+                          street,
+                          house,
+                          building,
+                          structure,
+                          id,
+                          latitude,
+                          longitude
+                   from addresses.favorite) on conflict do nothing;
+        - sql:
+            sql: >
+              insert into addresses.address (country, region, city, street, house, building, structure, id, latitude, longitude)
+                  (select country,
+                          region,
+                          city,
+                          street,
+                          house,
+                          building,
+                          structure,
+                          id,
+                          latitude,
+                          longitude
+                   from addresses.frequently) on conflict do nothing;
+        - sql:
+            sql: >
+              insert into addresses.address (country, region, city, street, house, building, structure, id, latitude, longitude)
+                  (select country,
+                          region,
+                          city,
+                          street,
+                          house,
+                          building,
+                          structure,
+                          id,
+                          latitude,
+                          longitude
+                   from addresses.meetings) on conflict do nothing;
+        - sql:
+            sql: >
+              update addresses.favorite
+              set address_id = address.id
+              from addresses.address where address.latitude = favorite.latitude and address.longitude = favorite.longitude
+        - sql:
+            sql: >
+              update addresses.frequently
+              set address_id = address.id
+              from addresses.address where address.latitude = frequently.latitude and address.longitude = frequently.longitude
+        - sql:
+            sql: >
+              update addresses.meetings
+              set address_id = address.id
+              from addresses.address where address.latitude = meetings.latitude and address.longitude = meetings.longitude
+  - changeSet:
+      id: "20240717-1130"
+      author: medvedev-ad
+      context: "TRANSPORT-24438"
+      changes:
+        - tagDatabase:
+            tag: "D-03.014.000"
+        - createIndex:
+            schemaName: addresses
+            tableName: meetings
+            unique: true
+            columns:
+              - column:
+                  name: owner_id
+              - column:
+                  name: label
+            indexName: addresses_meetings_owner_id_label_idx
+        - createIndex:
+            schemaName: addresses
+            tableName: frequently
+            columns:
+              - column:
+                  name: owner_id
+            indexName: addresses_frequently_owner_id_idx
+        - createIndex:
+            schemaName: addresses
+            tableName: favorite
+            unique: true
+            columns:
+              - column:
+                  name: owner_id
+              - column:
+                  name: label
+            indexName: addresses_favorite_owner_id_label_idx

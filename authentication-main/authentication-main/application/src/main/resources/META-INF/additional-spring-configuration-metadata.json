@@ -1,0 +1,79 @@
+{
+    "properties": [
+        {
+            "name": "jwt.issuer",
+            "type": "java.lang.String",
+            "description": "JWT token issuer."
+        },
+        {
+            "name": "jwt.expire.seconds",
+            "type": "java.lang.Integer",
+            "description": "Seconds of expiration of JWT-token."
+        },
+        {
+            "name": "jwt.expire.minutes",
+            "type": "java.lang.Integer",
+            "description": "Minutes of expiration of JWT-token."
+        },
+        {
+            "name": "jwt.expire.hours",
+            "type": "java.lang.Integer",
+            "description": "Hours of expiration of JWT-token."
+        },
+        {
+            "name": "jwt.expire.days",
+            "type": "java.lang.Integer",
+            "description": "Days of expiration of JWT-token."
+        },
+        {
+            "name": "jwt.expire.months",
+            "type": "java.lang.Integer",
+            "description": "Months of expiration of JWT-token."
+        },
+        {
+            "name": "jwt.expire.years",
+            "type": "java.lang.Integer",
+            "description": "Years of expiration of JWT-token."
+        },
+        {
+            "name": "rt.expire.seconds",
+            "type": "java.lang.Integer",
+            "description": "Seconds of expiration of token to re-login."
+        },
+        {
+            "name": "rt.expire.minutes",
+            "type": "java.lang.Integer",
+            "description": "Minutes of expiration of token to re-login."
+        },
+        {
+            "name": "rt.expire.hours",
+            "type": "java.lang.Integer",
+            "description": "Hours of expiration of token to re-login."
+        },
+        {
+            "name": "rt.expire.days",
+            "type": "java.lang.Integer",
+            "description": "Days of expiration of token to re-login."
+        },
+        {
+            "name": "rt.expire.months",
+            "type": "java.lang.Integer",
+            "description": "Months of expiration of token to re-login."
+        },
+        {
+            "name": "rt.expire.years",
+            "type": "java.lang.Integer",
+            "description": "Years of expiration of token to re-login."
+        },
+        {
+            "name": "spring.application.version",
+            "type": "java.lang.String",
+            "description": "Displayable version of application."
+        },
+        {
+            "name": "users.max-number-of-attempts",
+            "type": "java.lang.Integer",
+            "description": "Количество попыток входа."
+        }
+    ]
+}

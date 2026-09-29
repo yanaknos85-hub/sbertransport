@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250827-0922"
+      author: chizhov-nd
+      changes:
+        - dropDefaultValue:
+            schemaName: tariff
+            tableName: contract
+            columnName: driver_late_pickup_penalty
+        - dropDefaultValue:
+            schemaName: tariff
+            tableName: contract
+            columnName: poor_service_quality_penalty
+        - dropDefaultValue:
+            schemaName: tariff
+            tableName: contract
+            columnName: driver_order_cancellation_penalty
+        - addDefaultValue:
+            schemaName: tariff
+            tableName: contract
+            columnName: driver_late_pickup_penalty
+            defaultValue: 0.1
+        - addDefaultValue:
+            schemaName: tariff
+            tableName: contract
+            columnName: poor_service_quality_penalty
+            defaultValue: 0.1
+        - addDefaultValue:
+            schemaName: tariff
+            tableName: contract
+            columnName: driver_order_cancellation_penalty
+            defaultValue: 0.1

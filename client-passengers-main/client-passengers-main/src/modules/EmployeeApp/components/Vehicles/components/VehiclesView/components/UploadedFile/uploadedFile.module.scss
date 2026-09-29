@@ -1,0 +1,44 @@
+.file {
+  height: 72px;
+  padding: 12px 16px 12px 16px;
+  border-radius: 12px;
+  background: rgb(242, 243, 246);
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.desc {
+  padding: 0 12px;
+  flex-grow: 1;
+}
+
+.name {
+  color: rgb(38, 38, 38);
+  font-family: SB Sans Text;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.3px;
+  max-width: 600px;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  overflow: hidden;
+}
+
+.size {
+  color: rgb(115, 115, 115);
+  font-family: SB Sans Text;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.3px;
+}
+
+.cross {
+  cursor: pointer;
+}
+
+.imageFullScreen {
+  width: 100%;
+}

@@ -1,0 +1,15 @@
+databaseChangeLog:
+    -   changeSet:
+            id: reports/20210824
+            author: chuprin
+            dbms: postgresql
+            changes:
+                - sqlFile:
+                        path: changes/add_waypoint_checkin.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_waypoint_checkin.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

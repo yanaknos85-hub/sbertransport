@@ -1,0 +1,11 @@
+databaseChangeLog:
+    -   changeSet:
+            id: reports/20251124-1
+            author: klyunkov-va
+            dbms: postgresql
+            context: "!test"
+            changes:
+              - sqlFile:
+                  path: changes/alter_data.sql
+                  relativeToChangelogFile: true
+                  splitStatements: false

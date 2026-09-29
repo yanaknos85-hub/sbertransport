@@ -1,0 +1,268 @@
+.wrapperBudget {
+  box-sizing: border-box;
+  border: 1px solid rgb(214, 214, 214);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  width: 49.5%;
+  min-width: 450px;
+  position: relative;
+
+  .inDevelopment_wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgb(255 253 253 / 70%);
+    backdrop-filter: blur(1.2px);
+    -webkit-backdrop-filter: blur(1.2px);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .inDevelopment {
+      border: 1px solid rgba(0, 0, 0, 0.12),rgb(242, 243, 246);
+      border-radius: 16px;
+      box-shadow: 0px 4px 8px -2px rgba(0, 0, 0, 0.12),0px 0px 1px 0px rgba(0, 0, 0, 0.12);
+      background: rgb(255, 255, 255);
+      padding: 0 32px 0 16px;
+
+      span {
+        color: rgb(0, 0, 0);
+        font-family: SB Sans Interface;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 24px;
+        letter-spacing: 0%;
+      }
+
+      img { 
+        width: 150px;
+        height: 150px;
+      }
+    }
+  }
+
+  .header {
+
+    & > p:first-child {
+      color: rgb(0, 0, 0);
+      font-family: SB Sans Interface;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 24px;
+      letter-spacing: 0%;
+      margin: 0;
+    }
+
+    & > p:last-child {
+      color: rgb(115, 115, 115);
+      font-family: SB Sans Interface;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 16px;
+      letter-spacing: 0.2px;
+      margin: 8px 0 0 0;
+    }
+  }
+
+  .main {
+    display: flex;
+    margin-top: 24px;
+
+    :global(.ant-progress-inner) {
+      width: 152px !important;
+      height: 152px !important;
+
+      svg {
+
+      }
+    }
+
+    .chart {
+
+      .chartCircle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100px;
+
+        .notAll {
+          color: rgb(173, 173, 173);
+          font-family: SB Sans Text;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 24px;
+          letter-spacing: -0.3px;
+          margin: 0;
+        }
+      }
+    }
+
+    .detailedInformation {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-left: 16px;
+      justify-content: center;
+
+      .activeMarker {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        border-radius: 8px;
+        background: rgba(50, 191, 84, 0.1);
+        padding: 4px 8px 4px 8px;
+        margin-bottom: 8px;
+
+        & > div:first-child {
+          display: flex;
+          align-items: center;
+
+          div {
+            border-radius: 2px;
+            background: rgb(50, 191, 84);
+            width: 12px;
+            height: 12px;
+            margin-right: 8px;
+          }
+
+          p {
+            color: rgb(38, 38, 38);
+            font-family: SB Sans Text;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 22px;
+            letter-spacing: -0.3px;
+          }
+        }
+
+        & > div:last-child {
+          display: flex;
+          align-items: center;
+
+          & > p {
+            color: rgb(38, 38, 38);
+            font-family: SB Sans Text;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 24px;
+            letter-spacing: -0.3px;
+          }
+        }
+      }
+
+      .workingMarker {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        border-radius: 8px;
+        background: rgba(203, 234, 16, 0.1);
+        padding: 4px 8px 4px 8px;
+        margin-bottom: 8px;
+
+        & > div:first-child {
+          display: flex;
+          align-items: center;
+
+          div {
+            border-radius: 2px;
+            background: rgb(203, 234, 16);
+            width: 12px;
+            height: 12px;
+            margin-right: 8px;
+          }
+
+          p {
+            color: rgb(38, 38, 38);
+            font-family: SB Sans Text;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 22px;
+            letter-spacing: -0.3px;
+          }
+        }
+
+        & > div:last-child {
+          display: flex;
+          align-items: center;
+
+          & > p {
+            color: rgb(38, 38, 38);
+            font-family: SB Sans Text;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 24px;
+            letter-spacing: -0.3px;
+          }
+        }
+      }
+
+      .reservedMarker {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        border-radius: 8px;
+        background: rgba(11, 147, 198, 0.1);
+        padding: 4px 8px 4px 8px;
+        margin-bottom: 8px;
+
+        & > div:first-child {
+          display: flex;
+          align-items: center;
+
+          div {
+            border-radius: 2px;
+            background: rgb(11, 147, 198);
+            width: 12px;
+            height: 12px;
+            margin-right: 8px;
+          }
+
+          p {
+            color: rgb(38, 38, 38);
+            font-family: SB Sans Text;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 22px;
+            letter-spacing: -0.3px;
+          }
+        }
+
+        & > div:last-child {
+          display: flex;
+          align-items: center;
+
+          & > p {
+            color: rgb(38, 38, 38);
+            font-family: SB Sans Text;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 24px;
+            letter-spacing: -0.3px;
+          }
+        }
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}
+
+// .wrapperBudget::after {
+//   content: '';
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   background: rgb(255 253 253 / 70%);
+//   backdrop-filter: blur(1.2px);
+//   -webkit-backdrop-filter: blur(1.2px);
+//   border-radius: 10px;
+// }

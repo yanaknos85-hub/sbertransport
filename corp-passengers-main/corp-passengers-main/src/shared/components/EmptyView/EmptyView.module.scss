@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+
+  .image {
+    width: 280px;
+    height: auto;
+    min-width: 260px;
+  }
+
+  .textSide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 60%;
+    .title {
+      font-size: 16px;
+      line-height: 29px;
+      font-weight: 600;
+    }
+
+    .description {
+      width: 300px;
+      font-size: 14px;
+      line-height: 22px;
+      color: #a1a2a6;
+      font-weight: 400;
+    }
+  }
+}

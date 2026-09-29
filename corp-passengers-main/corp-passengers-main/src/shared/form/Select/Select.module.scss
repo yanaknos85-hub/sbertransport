@@ -1,0 +1,24 @@
+.select {
+  min-width: 212px;
+  width: 100%;
+  min-height: 48px;
+  position: relative;
+
+  &:global(.ant-select:not(.ant-select-customize-input) .ant-select-selector) {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    min-height: 48px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+  }
+
+  &:global(.ant-select-selection-search) {
+    display: none;
+  }
+
+  :global(.ant-select-selection-search-input) {
+    height: 100%!important;
+  }
+}

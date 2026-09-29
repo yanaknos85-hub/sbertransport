@@ -1,5 +1,0 @@
-1. Запустить сервис oto-cargo → дождаться, когда Liquibase накатит DDL и сервис станет Ready.
-2. Остановить сервис (scale replicas=0 / удалить под).
-3. Прокатить скрипт миграции данных:
-   _documents/scripts/D-05.011.000/after/migrate_oto_to_oto_cargo.sql
-4. Запустить сервис снова.

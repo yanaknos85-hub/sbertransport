@@ -1,0 +1,263 @@
+@import '~antd/dist/antd.less';
+@import './scrollbar.less';
+@import './sb-sans.css';
+
+:root {
+  --primary-color: @primary-color;
+  --link-color: @link-color;
+  --success-color: @success-color;
+  --green-color: #00b050;
+  --yellow-color: #ffff00;
+  --pure-white: #fff;
+  --red-color: #ff0000;
+  --warning-color: @warning-color;
+  --error-color: @error-color;
+  --font-size-base: @font-size-base;
+  --background-color-white: rgba(16, 191, 106, 0.02);
+  --gray-7: #909090;
+  --gray-10: #262626;
+  --cool-gray: #131618;
+  --cool-gray-9: #262c31;
+  // colors from iOS-app mockup
+  --font-green-color: #19b150;
+  --font-yellow-color: #ff9e3a;
+  --font-red-color: #fe5b3b;
+  --background-green-color: #ddf9e7;
+  --background-yellow-color: #fff4e8;
+  --background-red-color: #ffe7e2;
+  --button-primayr-hover: linear-gradient(0deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.12)), #10bf6a;
+  --button-primayr-active: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #10bf6a;
+
+  --button-secondary-hover: #e5e6e9;
+  --button-secondary-active: #e1e2e7;
+
+  --input-border-color: #e5e5e5;
+  --cool-gray1: #eff0f1;
+
+  --font-color-info-message: @font-color-info-message;
+  --background-color-info-message: @background-color-info-message;
+  --background-color-warning-message: @background-color-warning-message;
+  --background-color-error-message: @background-color-error-message;
+
+  --start-point-color: @start-point-color;
+  --way-station-point-color: @way-station-point-color;
+  --end-point-color: @end-point-color;
+
+  --heading-color: @heading-color;
+  --text-color: @text-color;
+  --text-color-secondary: @text-color-secondary;
+  --text-color-minor: #ddd;
+
+  --disabled-color: @disabled-color;
+  --border-radius-base: @border-radius-base;
+  --border-color-base: @border-color-base;
+  --box-shadow-base: @box-shadow-base;
+
+  --card-shadow: rgba(0, 0, 0, 0.4);
+
+  --indent-fourth: 4px;
+  --indent-half: 8px;
+  --indent-twelve: 12px;
+  --indent-base: 16px;
+  --indent-large: 24px;
+
+  --padding-fourth: var(--indent-fourth); // 4px
+  --padding-half: var(--indent-half); // 8px
+  --padding-twelve: var(--indent-twelve); // 12px
+  --padding-base: var(--indent-base); // 16px
+  --padding-large: var(--indent-large); // 24px
+
+  --margin-fourth: var(--indent-fourth); // 4px
+  --margin-half: var(--indent-half); // 8px
+  --margin-twelve: var(--indent-twelve); // 12px
+  --margin-base: var(--indent-base); // 16px
+  --margin-large: var(--indent-large); // 24px
+
+  --width-inner: 350px;
+}
+
+@font-face {
+  font-family: 'SBSansText-Regular';
+  src: url(fonts/SBSansText-Regular.otf) format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SBSansText-Bold';
+  src: url(fonts/SBSansText-Bold.otf) format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  background-color: #fff;
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f2f3f6;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #babac0;
+  border-radius: 16px;
+  border: 4px solid #f2f3f6;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #aeaeb1;
+}
+
+html,
+body,
+#root {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0;
+  width: 0;
+
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
+  font-family: 'SB Sans Interface', serif, sans-serif;
+  font-weight: 300;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  overflow: hidden;
+  //main-color
+  --jade: #10bf6a;
+  //graphic color
+  --blue-violet: #b230ff;
+  --storm-grey: #7a7a82;
+  --medium-slate-blue: #685eef;
+  --summer-sky: #32baff;
+  --cerulean-blue: #2f45c5;
+  --lavender-blue: #d1d8fe;
+  --royal-blue: #6072d7;
+  --perano: #b4bfff;
+  --dark-50: rgba(242, 243, 246, 0.5);
+
+  //text-color
+  --black-text: #262626;
+  --black-alpha: #000000 90%;
+  --black-shading-text: #909090;
+  --black-shading-text-2: #adadad;
+
+  --midnight-express: #161938;
+  --ship-cove: #8193b0;
+  --gray9: #4d4d4d;
+  //color-icons
+  --carrot-orange: #ff8b19;
+  --corn-flower-blue: #7488fa;
+  --shamrock: #37c3ab;
+  --dodger-blue: #0091ff;
+  --light-sea-green: #27bea4;
+  --matterhorn: #4c4c4c;
+  --neon-carrot: #ff9a32;
+  //color modal calendar and dropdown menu
+  --eclipse: #3f3f3f;
+  //background color button
+  --solitude: #f2f3f6;
+
+  //font-size
+  --fz-12: 12px;
+  --fz-14: 14px;
+  --fz-16: 16px;
+  --fz-20: 20px;
+  --fz-24: 24px;
+
+  //font-weight
+  --fw-600: 600;
+}
+
+.body {
+  .ant-notification {
+    top: 70px !important;
+    right: -6px !important;
+  }
+}
+
+.ant-form-vertical .ant-form-item-label {
+  padding-bottom: 0;
+}
+
+.ant-form-item {
+  margin-bottom: 16px;
+}
+
+.ant-message-notice-content {
+  max-width: 334px;
+  border-radius: var(--indent-large);
+}
+
+.ant-page-header {
+  padding-bottom: 0 !important;
+}
+
+.ant-page-header-heading-title,
+.custom-header {
+  width: 100%;
+  font-family: 'SB Sans Text Bold', serif;
+  text-align: center;
+}
+
+.custom-header .ant-page-header-heading {
+  justify-content: center;
+  align-items: center;
+}
+
+.ps__rail-y {
+  z-index: 10000;
+}
+
+.truncated {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mobile-wrapper .ant-modal {
+  max-width: var(--width-inner);
+}
+
+.ant-typography.ant-typography-secondary {
+  font-weight: 400;
+}
+
+.list-header {
+  color: var(--text-color-secondary);
+  font-size: calc(var(--font-size-base) * 1.3);
+  font-weight: 400;
+}
+
+.ant-notification-notice {
+  border-radius: var(--indent-half);
+}
+
+.ant-input-suffix {
+  margin-left: -26px;
+  z-index: 100;
+}
+
+.ant-input-affix-wrapper > input.ant-input {
+  padding: 4px 11px;
+}
+
+.ant-input-affix-wrapper {
+  padding: 0;
+  border-radius: calc(3 * var(--indent-fourth));
+}
+
+.ant-select-item-option-content {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.ant-select-item-option {
+  padding: var(--padding-half) var(--padding-base);
+}

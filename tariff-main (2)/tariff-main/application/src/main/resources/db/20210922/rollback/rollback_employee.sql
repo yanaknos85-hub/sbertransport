@@ -1,0 +1,1 @@
+drop table if exists tariff.message_employee;

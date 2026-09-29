@@ -1,0 +1,12 @@
+{
+  "id": " 3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "active": true,
+  "name": "Планшет",
+  "type": "FURNITURE",
+  "category": "OTHER",
+  "length": 7,
+  "width": 7,
+  "height": 7,
+  "volume": 20,
+  "weight": 20000
+}

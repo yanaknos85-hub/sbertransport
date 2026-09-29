@@ -1,0 +1,29 @@
+import React, { FC } from 'react';
+
+interface Arrow {
+  isRotate?: boolean;
+  styles?: React.CSSProperties;
+}
+
+const Arrow: FC<Arrow> = ({ isRotate = false, styles }) => (
+  <div
+    style={{
+      transition: 'transform 0.15s linear',
+      transform: `${isRotate ? 'rotate(180deg)' : 'rotate(0deg)'}`,
+      transformOrigin: '12px 12px',
+      ...styles,
+    }}
+  >
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      strokeWidth="0.1px"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M16.9 9.20002C16.5 8.80002 15.9 8.80002 15.5 9.20002L12 12.7L8.50005 9.20002C8.10005 8.80002 7.50005 8.80002 7.10005 9.20002C6.70005 9.60002 6.70005 10.2 7.10005 10.6L11.3 14.8C11.5 15 11.7 15.1 12 15.1C12.3 15.1 12.5 15 12.7 14.8L16.9 10.6C17.3 10.2 17.3 9.60002 16.9 9.202Z" />
+    </svg>
+  </div>
+);
+
+export default Arrow;

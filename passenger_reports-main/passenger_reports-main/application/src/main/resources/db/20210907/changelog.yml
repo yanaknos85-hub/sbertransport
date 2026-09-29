@@ -1,0 +1,75 @@
+databaseChangeLog:
+    -   changeSet:
+            id: reports/20210907
+            author: chuprin
+            dbms: postgresql
+            changes:
+                - sqlFile:
+                        path: changes/add_userid_employee.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;
+                - customChange:
+                    class: ru.sberbank.ditsib.transport.reports.migration.DropDepartmentsOffset
+                - customChange:
+                    class: ru.sberbank.ditsib.transport.reports.migration.DropEmployeeOffset
+                - customChange:
+                    class: ru.sberbank.ditsib.transport.reports.migration.DropPositionOffset
+    -   changeSet:
+            id: "20210907"
+            author: medvedev-ad
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        tableName: department
+                        schemaName: reports
+                        columns:
+                            -   column:
+                                    name: code
+                                    type: text
+                                    remarks: Код подразделения
+                -   createTable:
+                        schemaName: reports
+                        tableName: magenta_waypoint
+                        remarks: Путевые точки из Magenta
+                        columns:
+                            -   column:
+                                    name: id
+                                    type: uuid
+                                    remarks: Идентификатор точки
+                                    constraints:
+                                        primaryKeyName: magenta_waypoint_pk
+                            -   column:
+                                    name: ride_id
+                                    type: integer
+                                    remarks: Идентификатор поездки
+                            -   column:
+                                    name: order_id
+                                    type: integer
+                                    remarks: Идентификатор заявки
+                            -   column:
+                                    name: active
+                                    type: boolean
+                                    remarks: Флаг активности
+                            -   column:
+                                    name: event_type
+                                    type: text
+                                    remarks: Тип события BOARDING|UNBOARDING
+                            -   column:
+                                    name: start_time
+                                    type: timestamp
+                                    remarks: Время начала поездки
+                            -   column:
+                                    name: end_time
+                                    type: timestamp
+                                    remarks: Время окончания поездки
+                            -   column:
+                                    name: waypoint_id
+                                    type: uuid
+                                    remarks: Внутренний идентификатор точки
+                -   addColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    name: change_date
+                                    type: timestamp

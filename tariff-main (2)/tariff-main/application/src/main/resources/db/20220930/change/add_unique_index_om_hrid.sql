@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX tariff_message_department_human_readable_id_uk ON tariff.message_department (human_readable_id);

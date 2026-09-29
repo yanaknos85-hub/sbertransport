@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: authentication/20210727
+            author: aas
+            changes:
+                -   addColumn:
+                        schemaName: authentication
+                        tableName: account
+                        columns:
+                            -   column:
+                                    name: email
+                                    type: varchar(250)
+                                    remarks: email
+        

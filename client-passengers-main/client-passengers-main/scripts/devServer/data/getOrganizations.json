@@ -1,0 +1,24 @@
+[
+  {
+    "id": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "officialName": "Северо-Западный",
+    "address": "Красного Текстильщика, 2, Санкт-Петербург",
+    "contacts": [
+      {
+        "type": "PHONE",
+        "value": "+79888888888"
+      },
+      {
+        "type": "EMAIL",
+        "value": "some@sber.email"
+      },
+      {
+        "type": "SITE",
+        "value": "https://sb.sber.ru"
+      }
+    ],
+    "msrn": "0000000000",
+    "digitId": 3,
+    "status": "ACTIVE"
+  }
+]

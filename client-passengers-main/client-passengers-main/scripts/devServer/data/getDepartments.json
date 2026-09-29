@@ -1,0 +1,1573 @@
+[
+  {
+    "id": "6c8e61a9-d081-4245-ad2f-30f81b92b5c9",
+    "code": "581932",
+    "departmentName": "Программа по развитию бизнеса и человеконачала оокекку",
+    "parentId": "92cbceda-3315-43bf-97bf-c18c80da1c98",
+    "departmentHeadId": "bd408525-d4fd-49c2-8187-cd0d0f5e4a9b",
+    "fullStructurePath": "Северо-Западный банк Сбербанка/ПАО Сбербанк/Блок \"Сервисы\"/Департамент недвижимости и эксплуатации /Управление эффективности/Программа по развитию бизнеса и человеконачала оокекку",
+    "levelCode": 0,
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-118",
+    "children": [
+      {
+        "id": "aa3f4756-4fcc-456f-8472-04d8986a6478",
+        "departmentName": "НИКУЛИНТЕСТ",
+        "status": "ACTIVE"
+      }
+    ],
+    "employees": [
+      {
+        "id": "f6203adc-0405-46b5-8833-3dcf1bdd8b32",
+        "humanReadableId": "US-0003-289",
+        "firstName": "Сергей",
+        "lastName": "Никулин",
+        "personnelNumber": "1239853"
+      },
+      {
+        "id": "fe0bda0d-8b7e-4bab-804b-71fa99d6fa65",
+        "humanReadableId": "US-0003-299",
+        "firstName": "Анатолий6",
+        "lastName": "Медведев",
+        "personnelNumber": "00000002"
+      },
+      {
+        "id": "c85b9c81-4ff4-4022-a028-a987022de107",
+        "humanReadableId": "US-0003-300",
+        "firstName": "Анатолий7",
+        "lastName": "Медведев",
+        "personnelNumber": "00000003"
+      },
+      {
+        "id": "16b5eaf6-374b-444a-8fbc-50fceec959aa",
+        "humanReadableId": "US-0003-294",
+        "firstName": "Анатолий3",
+        "lastName": "Медведев",
+        "personnelNumber": "1234546"
+      },
+      {
+        "id": "6d12ff9f-9a8a-4059-a317-1aa6079e758e",
+        "humanReadableId": "US-0003-298",
+        "firstName": "Анатолий6",
+        "lastName": "Медведев",
+        "personnelNumber": "00000001"
+      },
+      {
+        "id": "ab3b4400-533f-4912-951f-42d143f6c358",
+        "humanReadableId": "US-0003-287",
+        "firstName": "Ivan",
+        "lastName": "Ivanov",
+        "personnelNumber": "23465789334"
+      },
+      {
+        "id": "648556b3-50c9-4a21-bc83-df7cfb93b0de",
+        "humanReadableId": "US-0003-301",
+        "firstName": "Анатолий8",
+        "lastName": "Медведев",
+        "personnelNumber": "00000004"
+      }
+    ]
+  },
+  {
+    "id": "672d50d2-9c93-4929-bb6d-1ce2f85c6e43",
+    "geozoneId": "c61fa394-3697-4fff-b706-8c2464e25aa9",
+    "code": "545",
+    "departmentName": "34",
+    "parentId": "e26c4eec-49da-4e12-8101-88295c53f105",
+    "departmentHeadId": "d3bdcd0f-71a1-4ee2-bea6-4a039b25d0b3",
+    "fullStructurePath": "Северо-Западный банк Сбербанка/ПАО Сбербанк/Блок \"Сервисы\"/Департамент недвижимости и эксплуатации /Управление развития инфраструктуры ТБ/34",
+    "levelCode": 0,
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-120",
+    "children": [
+      {
+        "id": "96097752-20c3-4b0c-8e13-4cfcb20ba230",
+        "departmentName": "Тест-4331",
+        "status": "INACTIVE"
+      }
+    ],
+    "employees": [
+      {
+        "id": "1b3797aa-5bfc-4318-a6ca-44bb3b85b653",
+        "humanReadableId": "US-0003-295",
+        "firstName": "Анатолий4",
+        "lastName": "Медведев",
+        "personnelNumber": "12345679"
+      }
+    ]
+  },
+  {
+    "id": "292e0a08-877c-46ba-b82e-98da41552735",
+    "code": "345372",
+    "departmentName": "Рабочее тест_2",
+    "parentId": "d4902e35-2b69-4fc6-a4d0-ba94ad553bbf",
+    "departmentHeadId": "244f62a1-9f59-42c8-ac6e-375db2266359",
+    "fullStructurePath": "Главный департамент (не удалять) \\ departmentName \\ Рабочее тест_2",
+    "location": "Москва",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-119",
+    "children": [],
+    "employees": [
+      {
+        "id": "9d8052fe-3d3a-4197-8490-0861f3a90a36",
+        "humanReadableId": "US-0003-297",
+        "firstName": "Анатолий5",
+        "lastName": "Медведев",
+        "personnelNumber": "1235478"
+      }
+    ]
+  },
+  {
+    "id": "aa3f4756-4fcc-456f-8472-04d8986a6478",
+    "geozoneId": "9a0e179f-6df6-4913-98bb-8ea2972ae2b0",
+    "code": "1",
+    "departmentName": "НИКУЛИНТЕСТ",
+    "parentId": "6c8e61a9-d081-4245-ad2f-30f81b92b5c9",
+    "departmentHeadId": "bd408525-d4fd-49c2-8187-cd0d0f5e4a9b",
+    "fullStructurePath": "Северо-Западный банк Сбербанка/ПАО Сбербанк/Блок \"Сервисы\"/Департамент недвижимости и эксплуатации /Управление эффективности/Программа по развитию бизнеса и человеконачала оокекку/НИКУЛИНТЕСТ",
+    "levelCode": 0,
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-122",
+    "children": [
+      {
+        "id": "b2d01ad9-60b0-4f91-93df-df922e7473ae",
+        "departmentName": "test-4754",
+        "status": "INACTIVE"
+      }
+    ],
+    "employees": []
+  },
+  {
+    "id": "95e6f664-0237-46ba-83b7-38a57294c88c",
+    "geozoneId": "9a0e179f-6df6-4913-98bb-8ea2972ae2b0",
+    "code": "007",
+    "departmentName": "Тест детального просмотра",
+    "parentId": "cd8b9cbe-6c0d-45d0-93a4-e40295402572",
+    "departmentHeadId": "c3fa1694-a791-4333-b2ae-7e0d28f0bcc3",
+    "fullStructurePath": "Северо-Западный банк Сбербанка/ПАО Сбербанк/Тест детального просмотра",
+    "levelCode": 0,
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-123",
+    "children": [],
+    "employees": [
+      {
+        "id": "abbc9597-c959-4723-b9c7-890fb97bd3be",
+        "humanReadableId": "US-0003-293",
+        "firstName": "Алексей",
+        "lastName": "Новенький",
+        "personnelNumber": "005893"
+      },
+      {
+        "id": "b0e677bc-2e18-4fd4-902a-9740ce8b0679",
+        "humanReadableId": "US-0003-290",
+        "firstName": "Тестовый",
+        "lastName": "Сотрудник",
+        "personnelNumber": "987"
+      },
+      {
+        "id": "bd48c15c-6c2e-44f8-885f-b332fdbba227",
+        "humanReadableId": "US-0003-291",
+        "firstName": "Ещё",
+        "lastName": "Один",
+        "personnelNumber": "888"
+      },
+      {
+        "id": "2f61daf0-723a-4f28-8467-818497f85d4d",
+        "humanReadableId": "US-0003-292",
+        "firstName": "Сотрудник",
+        "lastName": "Мадженты",
+        "personnelNumber": "963"
+      }
+    ]
+  },
+  {
+    "id": "e271f352-dcd1-4b9f-87fb-8f9c0e801e01",
+    "code": "1652",
+    "departmentName": "Управление Тест1",
+    "parentId": "670e944c-4df7-4368-88ce-f34ff8659704",
+    "departmentHeadId": "0a5530b9-1fcb-470e-abf2-d9b1c5e47fed",
+    "fullStructurePath": "ПАО Сбербанк \\ Блок ТЕСТ \\ Департамент ТЕСТ \\ Управление Тест1",
+    "location": "Москва",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-98",
+    "children": [
+      {
+        "id": "c242473f-05ae-4eb1-bded-c10c9c10190c",
+        "departmentName": "vika-retest1765",
+        "status": "ACTIVE"
+      }
+    ],
+    "employees": []
+  },
+  {
+    "id": "f19f962a-bda4-4490-b6d5-0db34ba86ce7",
+    "code": "11151",
+    "departmentName": "Управление транспортного обеспечения",
+    "parentId": "7e879420-0c5b-46a4-99e0-d9ff3faabac6",
+    "departmentHeadId": "28bca53a-4340-4d28-8f16-cefa09a5a5ae",
+    "fullStructurePath": "ПАО Сбербанк \\ Блок \"Сервисы\" \\ Департамент недвижимости и эксплуатации  \\ Управление транспортного обеспечения",
+    "location": "Москва",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-81",
+    "children": [
+      {
+        "id": "82533649-89b6-45a3-8b65-7824cac8f665",
+        "departmentName": "Тестирование popup",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "358b2237-5dba-4aad-8808-f81093cfb627",
+        "departmentName": "Тестирование popup-2",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "6254eb47-6764-4f7d-9b67-7c2f00ef39e0",
+        "departmentName": "Подразделение для тестирования редактирования заявок на ОТ",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "6d2bfcaa-f54f-44e6-97a1-736596655787",
+        "departmentName": "КнопкиЗапроситьИУведомить",
+        "status": "ACTIVE"
+      }
+    ],
+    "employees": [
+      {
+        "id": "6a2fca31-2c17-42cb-9988-576e12781406",
+        "humanReadableId": "US-0003-227",
+        "firstName": "Павел",
+        "lastName": "Хориков",
+        "personnelNumber": "007"
+      },
+      {
+        "id": "bb43434c-5943-4e59-87dc-59a06ddbbe38",
+        "humanReadableId": "US-0003-180",
+        "firstName": "Николай",
+        "lastName": "Вишняков",
+        "personnelNumber": "18198760"
+      },
+      {
+        "id": "d3bdcd0f-71a1-4ee2-bea6-4a039b25d0b3",
+        "humanReadableId": "US-0003-230",
+        "firstName": "Антон",
+        "lastName": "Сычев",
+        "personnelNumber": "01628975"
+      },
+      {
+        "id": "c3fa1694-a791-4333-b2ae-7e0d28f0bcc3",
+        "humanReadableId": "US-0003-281",
+        "firstName": "Илья",
+        "lastName": "Бабанов",
+        "personnelNumber": "09999156"
+      },
+      {
+        "id": "4fbc9c99-ab4c-4aff-88e7-c19e01db53a7",
+        "humanReadableId": "US-0003-181",
+        "firstName": "Николай",
+        "lastName": "Вишняков",
+        "personnelNumber": "10020031"
+      },
+      {
+        "id": "c0f9dc6d-050d-40ba-bf2d-fe61a88041c9",
+        "humanReadableId": "US-0003-247",
+        "firstName": "Андрей",
+        "lastName": "Втюрин",
+        "personnelNumber": "01733584"
+      },
+      {
+        "id": "8ebd08a0-60ee-4677-96ac-0326cf9622b2",
+        "humanReadableId": "US-0003-176",
+        "firstName": "Николай",
+        "lastName": "Вишняков",
+        "personnelNumber": "000000001"
+      },
+      {
+        "id": "2253b6de-3056-4c60-b5e0-ae6f68d885a4",
+        "humanReadableId": "US-0003-245",
+        "firstName": "Екатерина",
+        "lastName": "Коваленко",
+        "personnelNumber": "01782109"
+      },
+      {
+        "id": "d5bc072d-abef-4f52-b895-f5a9782a444b",
+        "humanReadableId": "US-0003-254",
+        "firstName": "Ольга",
+        "lastName": "Русская",
+        "personnelNumber": "01782108"
+      },
+      {
+        "id": "1c2a5a3d-7d51-49f9-8299-0de5db754a39",
+        "humanReadableId": "US-0003-279",
+        "firstName": "Антон",
+        "lastName": "Сычев",
+        "personnelNumber": "7854216"
+      },
+      {
+        "id": "a9308261-1038-4f10-8faa-007aa22b9958",
+        "humanReadableId": "US-0003-39",
+        "firstName": "Галина",
+        "lastName": "Климашова",
+        "personnelNumber": "00999978"
+      },
+      {
+        "id": "5783dbc8-b068-46b9-8336-79f7b99dcde1",
+        "humanReadableId": "US-0003-246",
+        "firstName": "Алексей",
+        "lastName": "Каргин",
+        "personnelNumber": "01795630"
+      }
+    ]
+  },
+  {
+    "id": "e26c4eec-49da-4e12-8101-88295c53f105",
+    "code": "1116",
+    "departmentName": "Управление развития инфраструктуры ТБ",
+    "parentId": "7e879420-0c5b-46a4-99e0-d9ff3faabac6",
+    "departmentHeadId": "35a519ed-3e8a-4acc-807e-42759feea3dc",
+    "fullStructurePath": "ПАО Сбербанк \\ Блок \"Сервисы\" \\ Департамент недвижимости и эксплуатации  \\ Управление развития инфраструктуры ТБ",
+    "location": "Москва",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-82",
+    "children": [
+      {
+        "id": "672d50d2-9c93-4929-bb6d-1ce2f85c6e43",
+        "departmentName": "34",
+        "status": "ACTIVE"
+      }
+    ],
+    "employees": []
+  },
+  {
+    "id": "b30badd0-9314-45d2-8c35-aec41d864f37",
+    "code": "12312344",
+    "departmentName": "vika-retest",
+    "parentId": "29bc3351-52a5-4833-add8-18beb8eec3f0",
+    "departmentHeadId": "b365d6c4-f9fb-489d-b256-9100b6b5c557",
+    "fullStructurePath": "ПАО Сбербанк \\ Сибирский банк \\ vika-retest",
+    "location": "string",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-109",
+    "children": [],
+    "employees": []
+  },
+  {
+    "id": "a2e03d1b-a41f-4807-80b1-e7211f430155",
+    "code": "444556",
+    "departmentName": "DeleteDep01",
+    "parentId": "cd8b9cbe-6c0d-45d0-93a4-e40295402572",
+    "departmentHeadId": "4cd4d62e-d954-4c2f-87f7-756905871cc4",
+    "fullStructurePath": "ПАО Сбербанк \\ DeleteDep01",
+    "location": "Москва",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-106",
+    "children": [],
+    "employees": []
+  },
+  {
+    "id": "b42a094c-ae94-4b8f-94f4-467fc9801a08",
+    "code": "777888999",
+    "departmentName": "Департамент ТЕСТ3",
+    "parentId": "8779952e-4c1d-4c12-8675-3af9be16e501",
+    "departmentHeadId": "5a0d6c57-84d3-4518-b5a3-c81ba56b8eb6",
+    "fullStructurePath": "Северо-Западный банк Сбербанка/ПАО Сбербанк/Блок ТЕСТ/Департамент ТЕСТ3",
+    "location": "Москва",
+    "levelCode": 0,
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-107",
+    "children": [
+      {
+        "id": "dcec51ec-6429-4074-9781-58716c784a5a",
+        "departmentName": "НикулинТест",
+        "status": "INACTIVE"
+      }
+    ],
+    "employees": [
+      {
+        "id": "5a0d6c57-84d3-4518-b5a3-c81ba56b8eb6",
+        "humanReadableId": "US-0003-256",
+        "firstName": "vsemogusch",
+        "lastName": "vsemogusch",
+        "personnelNumber": "9990009990"
+      },
+      {
+        "id": "cbc7a16d-53e6-4f3d-8000-8c5f334e6793",
+        "humanReadableId": "US-0003-284",
+        "firstName": "Test",
+        "lastName": "Testov",
+        "personnelNumber": "24574574588"
+      }
+    ]
+  },
+  {
+    "id": "cd8b9cbe-6c0d-45d0-93a4-e40295402572",
+    "code": "1111",
+    "departmentName": "ПАО Сбербанк",
+    "departmentHeadId": "29389cd0-05b0-4ac8-9764-c0190f2c9b00",
+    "fullStructurePath": "Северо-Западный банк Сбербанка/ПАО Сбербанк",
+    "location": "Москва",
+    "levelCode": 0,
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-77",
+    "children": [
+      {
+        "id": "d18a1727-e2c9-4928-8847-31a517ab3fb0",
+        "departmentName": "ТЕСТ БЛОК 2",
+        "status": "INACTIVE"
+      },
+      {
+        "id": "a2e03d1b-a41f-4807-80b1-e7211f430155",
+        "departmentName": "DeleteDep01",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "6b361d02-c6bd-439f-b5e4-1b94e37304c0",
+        "departmentName": "Блок \"Технологии\"",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "23e6e275-7f6f-433f-9351-6f01f02eba7d",
+        "departmentName": "Блок \"Сервисы\"",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "29bc3351-52a5-4833-add8-18beb8eec3f0",
+        "departmentName": "Сибирский банк",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "8779952e-4c1d-4c12-8675-3af9be16e501",
+        "departmentName": "Блок ТЕСТ",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "95e6f664-0237-46ba-83b7-38a57294c88c",
+        "departmentName": "Тест детального просмотра",
+        "status": "ACTIVE"
+      }
+    ],
+    "employees": [
+      {
+        "id": "d10b1c96-5907-4af2-990c-723e39de9f1a",
+        "humanReadableId": "US-0003-221",
+        "firstName": "Давид",
+        "lastName": "Рафаловский",
+        "personnelNumber": "01622067"
+      },
+      {
+        "id": "0196b36e-5648-4404-a660-8d2d4d7142ac",
+        "humanReadableId": "US-0003-285",
+        "firstName": "Ivan",
+        "lastName": "Testov",
+        "personnelNumber": "125451124"
+      },
+      {
+        "id": "2568698b-7e37-4fb1-b4b6-65f5c72b9eca",
+        "humanReadableId": "US-0003-257",
+        "firstName": "Семен",
+        "lastName": "Сидоров",
+        "personnelNumber": "7267235235235"
+      },
+      {
+        "id": "aaff75a1-8aee-4afa-b717-98acf0e73210",
+        "humanReadableId": "US-0003-228",
+        "firstName": "удалютебяя",
+        "lastName": "удалютебяя",
+        "personnelNumber": "88003535"
+      },
+      {
+        "id": "8b4af842-9cde-4eea-be2e-20d529daa305",
+        "humanReadableId": "US-0003-237",
+        "firstName": "Виктория",
+        "lastName": "Хорькова",
+        "personnelNumber": "29032021"
+      },
+      {
+        "id": "b7e7460a-02fc-420b-ac70-5520eef24a99",
+        "humanReadableId": "US-0003-241",
+        "firstName": "Иван",
+        "lastName": "Петров",
+        "personnelNumber": "1234567000"
+      },
+      {
+        "id": "29389cd0-05b0-4ac8-9764-c0190f2c9b00",
+        "humanReadableId": "US-0003-223",
+        "firstName": "Герман",
+        "lastName": "Греф",
+        "personnelNumber": "00006730"
+      },
+      {
+        "id": "4cd4d62e-d954-4c2f-87f7-756905871cc4",
+        "humanReadableId": "US-0003-255",
+        "firstName": "Del",
+        "lastName": "Ete",
+        "personnelNumber": "12320001"
+      },
+      {
+        "id": "7023dd56-bc99-44a4-843d-29099b557331",
+        "humanReadableId": "US-0003-219",
+        "firstName": "Станислав",
+        "lastName": "Кузнецов",
+        "personnelNumber": "00006732"
+      },
+      {
+        "id": "b7bca573-32e7-43a9-acd9-f7026d2af6a0",
+        "humanReadableId": "US-0003-136",
+        "firstName": "Николай",
+        "lastName": "Прокопов",
+        "personnelNumber": "11111"
+      },
+      {
+        "id": "c7da93d1-0ae8-4c3f-b727-9b53b9093dc4",
+        "humanReadableId": "US-0003-282",
+        "firstName": "Ivan",
+        "lastName": "Ivanov",
+        "personnelNumber": "1892749142"
+      },
+      {
+        "id": "05b40856-3fae-45bc-8bc4-adb203c99dbd",
+        "humanReadableId": "US-0003-20",
+        "firstName": "Сергей",
+        "lastName": "Уржумсков",
+        "personnelNumber": "65389234"
+      },
+      {
+        "id": "32cf262f-f8cb-48db-9db7-540ea1de7803",
+        "humanReadableId": "US-0003-269",
+        "firstName": "Ivan",
+        "lastName": "Ivanov",
+        "personnelNumber": "283765783"
+      }
+    ]
+  },
+  {
+    "id": "92cbceda-3315-43bf-97bf-c18c80da1c98",
+    "code": "1114",
+    "departmentName": "Управление эффективности",
+    "parentId": "7e879420-0c5b-46a4-99e0-d9ff3faabac6",
+    "departmentHeadId": "bd408525-d4fd-49c2-8187-cd0d0f5e4a9b",
+    "fullStructurePath": "ПАО Сбербанк \\ Блок \"Сервисы\" \\ Департамент недвижимости и эксплуатации  \\ Управление эффективности",
+    "location": "Москва",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-80",
+    "children": [
+      {
+        "id": "6c8e61a9-d081-4245-ad2f-30f81b92b5c9",
+        "departmentName": "Программа по развитию бизнеса и человеконачала оокекку",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "37c834ba-2847-4260-8bdb-d4499cee5b0c",
+        "departmentName": "32",
+        "status": "ACTIVE"
+      }
+    ],
+    "employees": [
+      {
+        "id": "5791f748-3ca9-4f13-b975-71ad5849c2f1",
+        "humanReadableId": "US-0003-267",
+        "firstName": "Ivan",
+        "lastName": "Ivanov",
+        "personnelNumber": "3452346346"
+      },
+      {
+        "id": "a105d3e0-e547-48e3-a611-778cacc0877d",
+        "humanReadableId": "US-0003-261",
+        "firstName": "Иван",
+        "lastName": "Иванов",
+        "personnelNumber": "56457447"
+      },
+      {
+        "id": "d55716b7-3b16-4931-9f75-5fce31a55b6e",
+        "humanReadableId": "US-0003-268",
+        "firstName": "Ivan",
+        "lastName": "Ivanov",
+        "personnelNumber": "16254614"
+      },
+      {
+        "id": "3973abc5-fe15-487d-aeb3-5c0af03b5a79",
+        "humanReadableId": "US-0003-270",
+        "firstName": "Ivan",
+        "lastName": "Ivanov",
+        "personnelNumber": "234564673"
+      }
+    ]
+  },
+  {
+    "id": "23e6e275-7f6f-433f-9351-6f01f02eba7d",
+    "code": "1112",
+    "departmentName": "Блок \"Сервисы\"",
+    "parentId": "cd8b9cbe-6c0d-45d0-93a4-e40295402572",
+    "departmentHeadId": "7023dd56-bc99-44a4-843d-29099b557331",
+    "fullStructurePath": "ПАО Сбербанк \\ Блок \"Сервисы\"",
+    "location": "Москва",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-78",
+    "children": [
+      {
+        "id": "7e879420-0c5b-46a4-99e0-d9ff3faabac6",
+        "departmentName": "Департамент недвижимости и эксплуатации ",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "f51df893-a68c-47d8-bda6-396bd04d0931",
+        "departmentName": "Банк",
+        "status": "INACTIVE"
+      },
+      {
+        "id": "5a65d755-bec2-430c-85d9-09de079d2e01",
+        "departmentName": "32",
+        "status": "INACTIVE"
+      },
+      {
+        "id": "b0635b00-4ef9-45d0-aa3d-e143a21e3864",
+        "departmentName": "в",
+        "status": "INACTIVE"
+      },
+      {
+        "id": "6f3653b5-4bb5-4e24-8a10-05c713a74aae",
+        "departmentName": "НТ головное",
+        "status": "ACTIVE"
+      }
+    ],
+    "employees": [
+      {
+        "id": "8160b932-4b12-4a65-b9eb-f5b443496b0f",
+        "humanReadableId": "US-0003-286",
+        "firstName": "Test",
+        "lastName": "Ivanov",
+        "personnelNumber": "34678324536"
+      },
+      {
+        "id": "9d69cb80-c656-48db-92c8-04f71824f8ce",
+        "humanReadableId": "US-0003-265",
+        "firstName": "Инга",
+        "lastName": "Овсянникова",
+        "personnelNumber": "12349597"
+      },
+      {
+        "id": "acedeb6c-7a19-4a59-b24b-512a4559379a",
+        "humanReadableId": "US-0003-258",
+        "firstName": "Петр",
+        "lastName": "Петров",
+        "personnelNumber": "3466625"
+      },
+      {
+        "id": "b05d761a-88c6-439e-80be-206e2e3a1c7b",
+        "humanReadableId": "US-0003-197",
+        "firstName": "Михаил",
+        "lastName": "Сусов",
+        "personnelNumber": "01273432"
+      }
+    ]
+  },
+  {
+    "id": "23cd17b5-1a3a-4e58-8b08-3bbeee765863",
+    "code": "32",
+    "departmentName": "32",
+    "parentId": "90a52d7b-e8ba-47df-95bb-6839ef053947",
+    "departmentHeadId": "d5378800-4eba-4322-88a6-464b98118679",
+    "fullStructurePath": "Северо-Западный банк Сбербанка/Департамент/32",
+    "location": "3223бтолр2лоло2лор32лор23ор3ол",
+    "levelCode": 0,
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-103",
+    "children": [],
+    "employees": []
+  },
+  {
+    "id": "7e879420-0c5b-46a4-99e0-d9ff3faabac6",
+    "code": "1113",
+    "departmentName": "Департамент недвижимости и эксплуатации ",
+    "parentId": "23e6e275-7f6f-433f-9351-6f01f02eba7d",
+    "departmentHeadId": "b05d761a-88c6-439e-80be-206e2e3a1c7b",
+    "fullStructurePath": "ПАО Сбербанк \\ Блок \"Сервисы\" \\ Департамент недвижимости и эксплуатации ",
+    "location": "Москва",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-79",
+    "children": [
+      {
+        "id": "e26c4eec-49da-4e12-8101-88295c53f105",
+        "departmentName": "Управление развития инфраструктуры ТБ",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "f19f962a-bda4-4490-b6d5-0db34ba86ce7",
+        "departmentName": "Управление транспортного обеспечения",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "92cbceda-3315-43bf-97bf-c18c80da1c98",
+        "departmentName": "Управление эффективности",
+        "status": "ACTIVE"
+      }
+    ],
+    "employees": [
+      {
+        "id": "a6544bf8-31e3-4e74-be88-0fa22215e755",
+        "humanReadableId": "US-0003-251",
+        "firstName": "Линус",
+        "lastName": "Торвальдс",
+        "personnelNumber": "2021"
+      },
+      {
+        "id": "dad3a827-5661-49a8-8d0b-f064a3c97421",
+        "humanReadableId": "US-0003-288",
+        "firstName": "Алексеfsadfsaй",
+        "lastName": "Фещенкоfsadfdsaf",
+        "personnelNumber": "370156"
+      },
+      {
+        "id": "c97dd6c9-5d8a-4ab3-aba3-5c4333df8d2b",
+        "humanReadableId": "US-0003-273",
+        "firstName": "Александр",
+        "lastName": "Кузьмин",
+        "personnelNumber": "2607003"
+      },
+      {
+        "id": "35a519ed-3e8a-4acc-807e-42759feea3dc",
+        "humanReadableId": "US-0003-217",
+        "firstName": "Светлана",
+        "lastName": "Соколова",
+        "personnelNumber": "00035007"
+      },
+      {
+        "id": "a06255b5-ae1d-4ae5-8448-8ead9fd37cd3",
+        "humanReadableId": "US-0003-157",
+        "firstName": "Гвидо",
+        "lastName": "ван Россум",
+        "personnelNumber": "404"
+      },
+      {
+        "id": "28bca53a-4340-4d28-8f16-cefa09a5a5ae",
+        "humanReadableId": "US-0003-2",
+        "firstName": "Антон",
+        "lastName": "Бутырский",
+        "personnelNumber": "12021988"
+      },
+      {
+        "id": "e8097ca2-7215-4e1a-94ee-4aece0a76fff",
+        "humanReadableId": "US-0003-274",
+        "firstName": "Александр",
+        "lastName": "Кузьмин",
+        "personnelNumber": "2607004"
+      },
+      {
+        "id": "a3fa88dd-9605-42d0-80d1-1a8efc1ccf6e",
+        "humanReadableId": "US-0003-280",
+        "firstName": "ALEXANDER",
+        "lastName": "KUKUSHKIN",
+        "personnelNumber": "12312313"
+      },
+      {
+        "id": "d4496af3-461a-4d61-82a8-c66dae6601c3",
+        "humanReadableId": "US-0003-271",
+        "firstName": " Lipetsk",
+        "lastName": "Vladikavkaz",
+        "personnelNumber": "143027"
+      },
+      {
+        "id": "bd408525-d4fd-49c2-8187-cd0d0f5e4a9b",
+        "humanReadableId": "US-0003-218",
+        "firstName": "Алексей",
+        "lastName": "Фещенко",
+        "personnelNumber": "00037015"
+      },
+      {
+        "id": "bafcbfdc-c2af-46b9-ae10-64d5e0a66302",
+        "humanReadableId": "US-0003-262",
+        "firstName": "Aleksandr",
+        "lastName": "Kirillov",
+        "personnelNumber": "143026"
+      }
+    ]
+  },
+  {
+    "id": "02ac1e3e-ce67-412f-a9f8-0fcd6431ace5",
+    "code": "1123",
+    "departmentName": "Управление развития технологий недвижимости и эксплуатации",
+    "parentId": "8110a23e-3890-49b0-bca8-4a8013bb725e",
+    "departmentHeadId": "6f4322af-a0b0-42bf-b267-919bf29b619c",
+    "fullStructurePath": "ПАО Сбербанк \\ Блок \"Технологии\" \\ Департамент ИТ блока \"Сервисы\" и безопасности \\ Управление развития технологий недвижимости и эксплуатации",
+    "location": "Москва",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-85",
+    "children": [],
+    "employees": [
+      {
+        "id": "69f3474d-2c6b-4aa1-ab19-87ee46417749",
+        "humanReadableId": "US-0003-179",
+        "firstName": "Максим",
+        "lastName": "Гурьянов",
+        "personnelNumber": "1654136"
+      },
+      {
+        "id": "d3551a27-c4da-42b0-b914-3fb997369f54",
+        "humanReadableId": "US-0003-260",
+        "firstName": "Андрей",
+        "lastName": "Панькин",
+        "personnelNumber": "01775115"
+      },
+      {
+        "id": "244f62a1-9f59-42c8-ac6e-375db2266359",
+        "humanReadableId": "US-0003-1",
+        "firstName": "Алла",
+        "lastName": "Исакова",
+        "personnelNumber": "923123323"
+      }
+    ]
+  },
+  {
+    "id": "6b361d02-c6bd-439f-b5e4-1b94e37304c0",
+    "code": "1121",
+    "departmentName": "Блок \"Технологии\"",
+    "parentId": "cd8b9cbe-6c0d-45d0-93a4-e40295402572",
+    "departmentHeadId": "d10b1c96-5907-4af2-990c-723e39de9f1a",
+    "fullStructurePath": "ПАО Сбербанк \\ Блок \"Технологии\"",
+    "location": "Москва",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-83",
+    "children": [
+      {
+        "id": "8110a23e-3890-49b0-bca8-4a8013bb725e",
+        "departmentName": "Департамент ИТ блока \"Сервисы\" и безопасности",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "834779a7-e0b5-4bde-bc7b-bdee28e167e1",
+        "departmentName": "БАС",
+        "status": "INACTIVE"
+      },
+      {
+        "id": "f9fd5f7d-c55d-44b0-b71b-ecc6df4bd296",
+        "departmentName": "БАС",
+        "status": "INACTIVE"
+      },
+      {
+        "id": "b243af2f-c717-44c3-b172-d1f870e13d97",
+        "departmentName": "БАС",
+        "status": "INACTIVE"
+      },
+      {
+        "id": "3cee3eab-174e-487b-8155-2c43e89a5ee8",
+        "departmentName": "БАС",
+        "status": "INACTIVE"
+      }
+    ],
+    "employees": [
+      {
+        "id": "9da18456-35de-4b2f-854a-7d760e1785dd",
+        "humanReadableId": "US-0003-222",
+        "firstName": "Андрей",
+        "lastName": "Карлов",
+        "personnelNumber": "00004017"
+      },
+      {
+        "id": "b74a8553-ecad-4209-b180-9e19fc044c50",
+        "humanReadableId": "US-0003-252",
+        "firstName": "Андрейв",
+        "lastName": "Столярчукв",
+        "personnelNumber": "57"
+      }
+    ]
+  },
+  {
+    "id": "8110a23e-3890-49b0-bca8-4a8013bb725e",
+    "code": "1122",
+    "departmentName": "Департамент ИТ блока \"Сервисы\" и безопасности",
+    "parentId": "6b361d02-c6bd-439f-b5e4-1b94e37304c0",
+    "departmentHeadId": "9da18456-35de-4b2f-854a-7d760e1785dd",
+    "fullStructurePath": "ПАО Сбербанк \\ Блок \"Технологии\" \\ Департамент ИТ блока \"Сервисы\" и безопасности",
+    "location": "Москва",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-84",
+    "children": [
+      {
+        "id": "02ac1e3e-ce67-412f-a9f8-0fcd6431ace5",
+        "departmentName": "Управление развития технологий недвижимости и эксплуатации",
+        "status": "ACTIVE"
+      }
+    ],
+    "employees": []
+  },
+  {
+    "id": "282ab00e-9df7-4426-9640-c76d84b97858",
+    "code": "2112",
+    "departmentName": "Региональный Сервисный Центр ",
+    "parentId": "29bc3351-52a5-4833-add8-18beb8eec3f0",
+    "departmentHeadId": "b365d6c4-f9fb-489d-b256-9100b6b5c557",
+    "fullStructurePath": "ПАО Сбербанк \\ Сибирский банк \\ Региональный Сервисный Центр ",
+    "location": "Новосибирск",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-87",
+    "children": [],
+    "employees": [
+      {
+        "id": "a2efac7d-f5b3-4a43-9a3a-acd84db1f404",
+        "humanReadableId": "US-0003-225",
+        "firstName": "Антон",
+        "lastName": "Сиволоб",
+        "personnelNumber": "00352781"
+      },
+      {
+        "id": "68e8bda4-19bb-47e1-902b-4eb8235468f7",
+        "humanReadableId": "US-0003-226",
+        "firstName": "Михаил",
+        "lastName": "Иночкин",
+        "personnelNumber": "01457511"
+      }
+    ]
+  },
+  {
+    "id": "29bc3351-52a5-4833-add8-18beb8eec3f0",
+    "code": "2111",
+    "departmentName": "Сибирский банк",
+    "parentId": "cd8b9cbe-6c0d-45d0-93a4-e40295402572",
+    "departmentHeadId": "b365d6c4-f9fb-489d-b256-9100b6b5c557",
+    "fullStructurePath": "ПАО Сбербанк \\ Сибирский банк",
+    "location": "Новосибирск",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-86",
+    "children": [
+      {
+        "id": "b30badd0-9314-45d2-8c35-aec41d864f37",
+        "departmentName": "vika-retest",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "282ab00e-9df7-4426-9640-c76d84b97858",
+        "departmentName": "Региональный Сервисный Центр ",
+        "status": "ACTIVE"
+      }
+    ],
+    "employees": [
+      {
+        "id": "4a7b9e11-de98-45ae-8518-98bc31f9baf3",
+        "humanReadableId": "US-0003-303",
+        "firstName": "Диспетчер",
+        "lastName": "Диспетчер",
+        "personnelNumber": "00049999"
+      },
+      {
+        "id": "508faf54-c1f9-4f35-9515-7ce550396246",
+        "humanReadableId": "US-0003-305",
+        "firstName": "Диспетчер",
+        "lastName": "Диспетчер",
+        "personnelNumber": "000499999"
+      },
+      {
+        "id": "35acb63a-e8fe-48ed-ad82-8861f66b130a",
+        "humanReadableId": "US-0003-306",
+        "firstName": "Диспетчер",
+        "lastName": "Диспетчер",
+        "personnelNumber": "0004999999"
+      },
+      {
+        "id": "85906668-c3f2-4b03-82c6-9e175ce26910",
+        "humanReadableId": "US-0003-307",
+        "firstName": "Диспетчер",
+        "lastName": "Диспетчер",
+        "personnelNumber": "21122101"
+      },
+      {
+        "id": "b365d6c4-f9fb-489d-b256-9100b6b5c557",
+        "humanReadableId": "US-0003-224",
+        "firstName": "Роман",
+        "lastName": "Костылев",
+        "personnelNumber": "00044024"
+      }
+    ]
+  },
+  {
+    "id": "8779952e-4c1d-4c12-8675-3af9be16e501",
+    "code": "09032021",
+    "departmentName": "Блок ТЕСТ",
+    "parentId": "cd8b9cbe-6c0d-45d0-93a4-e40295402572",
+    "departmentHeadId": "5d13393f-a16a-4091-be8f-ac1f87bf05e8",
+    "fullStructurePath": "ПАО Сбербанк \\ Блок ТЕСТ",
+    "location": "Москва",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-88",
+    "children": [
+      {
+        "id": "8f2d8603-11e6-402e-b312-4d11a5c7645a",
+        "departmentName": "БАС",
+        "status": "INACTIVE"
+      },
+      {
+        "id": "ef2de743-03bf-44d9-a993-0bd2aa42fd11",
+        "departmentName": "БАГ",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "670e944c-4df7-4368-88ce-f34ff8659704",
+        "departmentName": "Департамент ТЕСТ",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "4ec0efa5-af2f-40a0-9d4a-db813522fc41",
+        "departmentName": "БАС",
+        "status": "INACTIVE"
+      },
+      {
+        "id": "b42a094c-ae94-4b8f-94f4-467fc9801a08",
+        "departmentName": "Департамент ТЕСТ3",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "b233d6a9-e6d5-48f0-9605-a022cc688286",
+        "departmentName": "Департамент ТЕСТ2",
+        "status": "ACTIVE"
+      }
+    ],
+    "employees": [
+      {
+        "id": "7bb3390c-9a1f-417d-a332-ee40df887321",
+        "humanReadableId": "US-0003-266",
+        "firstName": "Ivan",
+        "lastName": "Ivanov",
+        "personnelNumber": "1832463"
+      },
+      {
+        "id": "fb661b03-de34-4cc9-82cb-a418e0d77ec3",
+        "humanReadableId": "US-0003-248",
+        "firstName": "Андрей",
+        "lastName": "Столярчук",
+        "personnelNumber": "19"
+      },
+      {
+        "id": "b5356e0d-06d0-4809-a097-ed07a913206d",
+        "humanReadableId": "US-0003-240",
+        "firstName": "sotr1234",
+        "lastName": "sotr1234",
+        "personnelNumber": "102938475610"
+      },
+      {
+        "id": "74887866-0342-4172-98cb-b8d9dfb9803c",
+        "humanReadableId": "US-0003-16",
+        "firstName": "Диана",
+        "lastName": "Лаврова",
+        "personnelNumber": "0123456789"
+      },
+      {
+        "id": "e940671b-0152-47b5-9609-aae3a758f143",
+        "humanReadableId": "US-0003-64",
+        "firstName": "Павел",
+        "lastName": "Зырянов",
+        "personnelNumber": "9988111"
+      },
+      {
+        "id": "5d13393f-a16a-4091-be8f-ac1f87bf05e8",
+        "humanReadableId": "US-0003-4",
+        "firstName": "Вадим",
+        "lastName": "Гордадзе",
+        "personnelNumber": "923123324"
+      },
+      {
+        "id": "e316d0f2-26f3-45cd-b0da-a69144d26519",
+        "humanReadableId": "US-0003-244",
+        "firstName": "Олеся",
+        "lastName": "Степанова",
+        "personnelNumber": "22443355"
+      }
+    ]
+  },
+  {
+    "id": "a17f54d3-bc58-4418-b9cb-026ac8c77506",
+    "code": "24032102",
+    "departmentName": "НТ дочернее",
+    "parentId": "6f3653b5-4bb5-4e24-8a10-05c713a74aae",
+    "departmentHeadId": "38ea9629-4f4f-4cb5-a7bc-9736c659ca0d",
+    "fullStructurePath": "ПАО Сбербанк \\ Блок \"Сервисы\" \\ НТ головное \\ НТ дочернее",
+    "location": "Москва",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-100",
+    "children": [],
+    "employees": [
+      {
+        "id": "5927a351-4b97-432e-8650-ec68ad63386a",
+        "humanReadableId": "US-0003-234",
+        "firstName": "N",
+        "lastName": "User2",
+        "personnelNumber": "1124"
+      },
+      {
+        "id": "87223819-62c5-43dc-b3ed-30b0871979a2",
+        "humanReadableId": "US-0003-259",
+        "firstName": "N",
+        "lastName": "User3",
+        "personnelNumber": "1125"
+      },
+      {
+        "id": "38ea9629-4f4f-4cb5-a7bc-9736c659ca0d",
+        "humanReadableId": "US-0003-235",
+        "firstName": "N",
+        "lastName": "RUKOVOD",
+        "personnelNumber": "22233"
+      },
+      {
+        "id": "7d83905a-2abf-4601-9d4e-7c5d08feb7bc",
+        "humanReadableId": "US-0003-233",
+        "firstName": "N",
+        "lastName": "User1",
+        "personnelNumber": "1123"
+      }
+    ]
+  },
+  {
+    "id": "670e944c-4df7-4368-88ce-f34ff8659704",
+    "code": "1123581321",
+    "departmentName": "Департамент ТЕСТ",
+    "parentId": "8779952e-4c1d-4c12-8675-3af9be16e501",
+    "departmentHeadId": "b8afed8b-4907-4d96-a3b9-013f8e047706",
+    "fullStructurePath": "ПАО Сбербанк \\ Блок ТЕСТ \\ Департамент ТЕСТ",
+    "location": "Москва",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-89",
+    "children": [
+      {
+        "id": "e271f352-dcd1-4b9f-87fb-8f9c0e801e01",
+        "departmentName": "Управление Тест1",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "8896936b-de34-45d5-83bf-59d94f5ce41d",
+        "departmentName": "test-4754",
+        "status": "INACTIVE"
+      },
+      {
+        "id": "de9ec68c-310c-4566-9159-2812ec5bb573",
+        "departmentName": "Тест",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "50a7f747-0a40-428f-bedc-ec7124a94d90",
+        "departmentName": "ФЫ",
+        "status": "ACTIVE"
+      }
+    ],
+    "employees": [
+      {
+        "id": "27317a41-51f8-4d83-9a90-9fe635a84a8c",
+        "humanReadableId": "US-0003-283",
+        "firstName": "Ivan",
+        "lastName": "Ivanov",
+        "personnelNumber": "72345723591"
+      },
+      {
+        "id": "c712c428-5434-4e75-a248-fbf39208f56b",
+        "humanReadableId": "US-0003-264",
+        "firstName": "Богдан",
+        "lastName": "Зимин",
+        "personnelNumber": "0001"
+      },
+      {
+        "id": "0007d6d2-93c9-42f7-a904-015e2e7dc2a1",
+        "humanReadableId": "US-0003-253",
+        "firstName": "Валера",
+        "lastName": "Как его",
+        "personnelNumber": "234"
+      },
+      {
+        "id": "f1015eb7-03fe-4f67-bc8a-37a759e2994f",
+        "humanReadableId": "US-0003-169",
+        "firstName": "Дарья",
+        "lastName": "Кузнецова",
+        "personnelNumber": "89203555396"
+      },
+      {
+        "id": "dfbbed64-a4c6-4023-aa83-fa3f659f2f49",
+        "humanReadableId": "US-0003-110",
+        "firstName": "Test",
+        "lastName": "Test",
+        "personnelNumber": "0099997856767676"
+      },
+      {
+        "id": "0479d98b-99c4-400d-a873-1889f39cbfaa",
+        "humanReadableId": "US-0003-170",
+        "firstName": "Руко",
+        "lastName": "Руководский",
+        "personnelNumber": "061218"
+      },
+      {
+        "id": "d348983b-a489-4970-8fe5-b6492ef65057",
+        "humanReadableId": "US-0003-229",
+        "firstName": "Слишком",
+        "lastName": "Волшебников",
+        "personnelNumber": "666"
+      },
+      {
+        "id": "4434b8bb-ac61-4491-9e81-79c86f927776",
+        "humanReadableId": "US-0003-263",
+        "firstName": "Оксана",
+        "lastName": "Тарун",
+        "personnelNumber": "123456"
+      },
+      {
+        "id": "0a5530b9-1fcb-470e-abf2-d9b1c5e47fed",
+        "humanReadableId": "US-0003-45",
+        "firstName": "for",
+        "lastName": "User",
+        "personnelNumber": "222"
+      },
+      {
+        "id": "af69d08c-3ce3-44f5-8fd7-144cccb153b3",
+        "humanReadableId": "US-0003-231",
+        "firstName": "Тестировщик",
+        "lastName": "Тестировщиков",
+        "personnelNumber": "8800353535"
+      },
+      {
+        "id": "0af91491-e0a9-4a9e-886c-6557ab637206",
+        "humanReadableId": "US-0003-232",
+        "firstName": "Самый",
+        "lastName": "Лучший",
+        "personnelNumber": "1029384756"
+      },
+      {
+        "id": "b8afed8b-4907-4d96-a3b9-013f8e047706",
+        "humanReadableId": "US-0003-173",
+        "firstName": "Александр",
+        "lastName": "Кузьмин",
+        "personnelNumber": "160692"
+      },
+      {
+        "id": "c1ba0767-9fd3-4987-a756-662aae7986e7",
+        "humanReadableId": "US-0003-177",
+        "firstName": "Ульяна",
+        "lastName": "Бадьянова",
+        "personnelNumber": "000000002"
+      }
+    ]
+  },
+  {
+    "id": "6f3653b5-4bb5-4e24-8a10-05c713a74aae",
+    "code": "24032101",
+    "departmentName": "НТ головное",
+    "parentId": "23e6e275-7f6f-433f-9351-6f01f02eba7d",
+    "departmentHeadId": "6e577329-372c-4d7e-a655-228336936777",
+    "fullStructurePath": "ПАО Сбербанк \\ Блок \"Сервисы\" \\ НТ головное",
+    "location": "Москва",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-99",
+    "children": [
+      {
+        "id": "a17f54d3-bc58-4418-b9cb-026ac8c77506",
+        "departmentName": "НТ дочернее",
+        "status": "ACTIVE"
+      }
+    ],
+    "employees": [
+      {
+        "id": "6e577329-372c-4d7e-a655-228336936777",
+        "humanReadableId": "US-0003-236",
+        "firstName": "N",
+        "lastName": "BOSS",
+        "personnelNumber": "222334"
+      }
+    ]
+  },
+  {
+    "id": "b233d6a9-e6d5-48f0-9605-a022cc688286",
+    "code": "911911911",
+    "departmentName": "Департамент ТЕСТ2",
+    "parentId": "8779952e-4c1d-4c12-8675-3af9be16e501",
+    "departmentHeadId": "f1015eb7-03fe-4f67-bc8a-37a759e2994f",
+    "fullStructurePath": "ПАО Сбербанк \\ Блок ТЕСТ \\ Департамент ТЕСТ2",
+    "location": "Москва",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-101",
+    "children": [],
+    "employees": [
+      {
+        "id": "f6ff1e78-a1f8-48c2-8219-2d60ec743ed0",
+        "humanReadableId": "US-0003-243",
+        "firstName": "Должность_для_удален",
+        "lastName": "Должность_для_удален",
+        "personnelNumber": "0987890"
+      },
+      {
+        "id": "e542602f-e67a-4054-9bc2-56fef90aa84a",
+        "humanReadableId": "US-0003-238",
+        "firstName": "сотрудничаем",
+        "lastName": "сотрудничаемс",
+        "personnelNumber": "007007007"
+      },
+      {
+        "id": "43d42d30-c2a4-4442-a274-ec87ae59eb47",
+        "humanReadableId": "US-0003-249",
+        "firstName": "сотрудник_13",
+        "lastName": "сотрудник_13",
+        "personnelNumber": "098778906543"
+      },
+      {
+        "id": "6d4e4b21-cf08-4b56-b789-31eaef4a93cd",
+        "humanReadableId": "US-0003-242",
+        "firstName": "sunday77",
+        "lastName": "sunday77",
+        "personnelNumber": "0987789009877890"
+      },
+      {
+        "id": "c0b11df0-68e2-4d6e-96d3-e01914b51d69",
+        "humanReadableId": "US-0003-250",
+        "firstName": "сотрудник_19",
+        "lastName": "сотрудник_19",
+        "personnelNumber": "123443211234"
+      },
+      {
+        "id": "df2eb8a3-5077-4061-b48c-b2984b848757",
+        "humanReadableId": "US-0003-239",
+        "firstName": "Сотрудник",
+        "lastName": "Сотрудников",
+        "personnelNumber": "010203040506070809"
+      }
+    ]
+  },
+  {
+    "id": "37c834ba-2847-4260-8bdb-d4499cee5b0c",
+    "code": "999",
+    "departmentName": "32",
+    "parentId": "92cbceda-3315-43bf-97bf-c18c80da1c98",
+    "departmentHeadId": "d5378800-4eba-4322-88a6-464b98118679",
+    "fullStructurePath": "ПАО Сбербанк \\ Блок \"Сервисы\" \\ Департамент недвижимости и эксплуатации  \\ Управление эффективности \\ 32",
+    "location": "3223бтолр2лоло2лор32лор23ор3ол",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-104",
+    "children": [],
+    "employees": []
+  },
+  {
+    "id": "6d2bfcaa-f54f-44e6-97a1-736596655787",
+    "code": "1111111111",
+    "departmentName": "КнопкиЗапроситьИУведомить",
+    "parentId": "f19f962a-bda4-4490-b6d5-0db34ba86ce7",
+    "departmentHeadId": "28bca53a-4340-4d28-8f16-cefa09a5a5ae",
+    "fullStructurePath": "Северо-Западный банк Сбербанка/ПАО Сбербанк/Блок \"Сервисы\"/Департамент недвижимости и эксплуатации /Управление транспортного обеспечения/КнопкиЗапроситьИУведомить",
+    "location": "Самара",
+    "levelCode": 0,
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-117",
+    "children": [],
+    "employees": []
+  },
+  {
+    "id": "c242473f-05ae-4eb1-bded-c10c9c10190c",
+    "code": "2904202101",
+    "departmentName": "vika-retest1765",
+    "parentId": "e271f352-dcd1-4b9f-87fb-8f9c0e801e01",
+    "departmentHeadId": "5d13393f-a16a-4091-be8f-ac1f87bf05e8",
+    "fullStructurePath": "ПАО Сбербанк \\ Блок ТЕСТ \\ Департамент ТЕСТ \\ Управление Тест1 \\ vika-retest1765",
+    "location": "111",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-110",
+    "children": [],
+    "employees": []
+  },
+  {
+    "id": "ef2de743-03bf-44d9-a993-0bd2aa42fd11",
+    "code": "1991",
+    "departmentName": "БАГ",
+    "parentId": "8779952e-4c1d-4c12-8675-3af9be16e501",
+    "departmentHeadId": "b8afed8b-4907-4d96-a3b9-013f8e047706",
+    "fullStructurePath": "ПАО Сбербанк \\ Блок ТЕСТ \\ БАГ",
+    "location": "Москва",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-111",
+    "children": [],
+    "employees": []
+  },
+  {
+    "id": "6254eb47-6764-4f7d-9b67-7c2f00ef39e0",
+    "code": "7777888777",
+    "departmentName": "Подразделение для тестирования редактирования заявок на ОТ",
+    "parentId": "f19f962a-bda4-4490-b6d5-0db34ba86ce7",
+    "departmentHeadId": "a9308261-1038-4f10-8faa-007aa22b9958",
+    "fullStructurePath": "ПАО Сбербанк \\ Блок \"Сервисы\" \\ Департамент недвижимости и эксплуатации  \\ Управление транспортного обеспечения \\ Подразделение для тестирования редактирования заявок на ОТ",
+    "location": "Республика Татарстан",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-112",
+    "children": [],
+    "employees": []
+  },
+  {
+    "id": "50a7f747-0a40-428f-bedc-ec7124a94d90",
+    "code": "33444",
+    "departmentName": "ФЫ",
+    "parentId": "670e944c-4df7-4368-88ce-f34ff8659704",
+    "departmentHeadId": "dfbbed64-a4c6-4023-aa83-fa3f659f2f49",
+    "fullStructurePath": "ПАО Сбербанк \\ Блок ТЕСТ \\ Департамент ТЕСТ \\ ФЫ",
+    "location": "Москва",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-113",
+    "children": [],
+    "employees": []
+  },
+  {
+    "id": "de9ec68c-310c-4566-9159-2812ec5bb573",
+    "code": "334454",
+    "departmentName": "Тест",
+    "parentId": "670e944c-4df7-4368-88ce-f34ff8659704",
+    "departmentHeadId": "dfbbed64-a4c6-4023-aa83-fa3f659f2f49",
+    "fullStructurePath": "ПАО Сбербанк \\ Блок ТЕСТ \\ Департамент ТЕСТ \\ Тест",
+    "location": "Москва",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-114",
+    "children": [
+      {
+        "id": "29238f94-9c9a-4e86-a8da-c5bc57b0fc51",
+        "departmentName": "test-4331",
+        "status": "INACTIVE"
+      }
+    ],
+    "employees": []
+  },
+  {
+    "id": "82533649-89b6-45a3-8b65-7824cac8f665",
+    "code": "5656565656",
+    "departmentName": "Тестирование popup",
+    "parentId": "f19f962a-bda4-4490-b6d5-0db34ba86ce7",
+    "departmentHeadId": "a9308261-1038-4f10-8faa-007aa22b9958",
+    "fullStructurePath": "ПАО Сбербанк \\ Блок \"Сервисы\" \\ Департамент недвижимости и эксплуатации  \\ Управление транспортного обеспечения \\ Тестирование popup",
+    "location": "Самара",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-115",
+    "children": [],
+    "employees": []
+  },
+  {
+    "id": "358b2237-5dba-4aad-8808-f81093cfb627",
+    "code": "8722345669",
+    "departmentName": "Тестирование popup-2",
+    "parentId": "f19f962a-bda4-4490-b6d5-0db34ba86ce7",
+    "departmentHeadId": "a9308261-1038-4f10-8faa-007aa22b9958",
+    "fullStructurePath": "ПАО Сбербанк \\ Блок \"Сервисы\" \\ Департамент недвижимости и эксплуатации  \\ Управление транспортного обеспечения \\ Тестирование popup-2",
+    "location": "Самара",
+    "levelCode": 0,
+    "levelName": "",
+    "typeLevelCode": 0,
+    "status": "ACTIVE",
+    "organizationId": "ab35770a-1d63-4b0e-a165-ea2c4f8c3adf",
+    "humanReadableId": "DT-0003-116",
+    "children": [],
+    "employees": []
+  }
+]

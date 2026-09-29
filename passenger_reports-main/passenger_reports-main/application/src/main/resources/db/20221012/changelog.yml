@@ -1,0 +1,43 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221012"
+            author: medvedev-ad
+            changes:
+                -   createIndex:
+                        schemaName: reports
+                        tableName: department
+                        columns:
+                            - column:
+                                  name: parent_id
+                        indexName: reports_department_parent_id_idx
+                -   createIndex:
+                        schemaName: reports
+                        tableName: limit
+                        columns:
+                            - column:
+                                  name: department_id
+                        indexName: reports_limit_department_id_idx
+                -   createIndex:
+                        schemaName: reports
+                        tableName: limit
+                        columns:
+                            - column:
+                                  name: year
+                        indexName: reports_limit_year_idx
+    -   changeSet:
+            id: "20221012-1"
+            author: medvedev-ad
+            preConditions:
+                - onFail: MARK_RAN
+                  onError: HALT
+                  tableExists:
+                      tableName: urls
+                      schemaName: reports
+            changes:
+            -   createIndex:
+                    schemaName: reports
+                    tableName: roles
+                    columns:
+                        -   column:
+                                name: url_id
+                    indexName: reports_roles_url_id_idx

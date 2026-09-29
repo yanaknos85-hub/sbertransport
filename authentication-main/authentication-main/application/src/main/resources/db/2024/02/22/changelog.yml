@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240222-0935"
+      author: ladeyshchikov-aa
+      changes:
+        - addColumn:
+            schemaName: authentication
+            tableName: account
+            columns:
+              - column:
+                  name: scope
+                  type: varchar(11)
+                  remarks: Область видимости пользователя.
+      rollback:
+        - dropColumn:
+            schemaName: authentication
+            tableName: account
+            columns:
+              - column:
+                  name: scope

@@ -1,0 +1,12 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221010-1"
+            author: blandin-ad
+            changes:
+                -   sqlFile:
+                        path: change/create_active_field.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_active_column.sql
+                        relativeToChangelogFile: true

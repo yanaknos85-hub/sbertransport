@@ -1,0 +1,11 @@
+databaseChangeLog:
+    -   changeSet:
+            id: request/20201117
+            tag: "20201117"
+            author: apa
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path:  change_column.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

@@ -1,0 +1,90 @@
+.filterSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 0 100%;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  &__item {
+    display: flex;
+    gap: 12px;
+
+    &_search {
+      flex-grow: 1;
+    }
+  }
+
+  &__search {
+    flex: 1 1 300px;
+    max-width: 408px;
+
+    .ant-input-wrapper {
+      position: relative;
+    }
+
+    .ant-input {
+      border: none;
+      border-radius: 8px 0 0 8px;
+      background: #f2f3f6;
+      height: 40px;
+      padding-right: 46px;
+    }
+
+    .ant-input-group-addon {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: inherit !important;
+      width: auto;
+      z-index: 1;
+    }
+
+    .ant-btn-primary {
+      border: none;
+      border-radius: 0 8px 8px 0 !important;
+      background-color: #f2f3f6;
+      box-shadow: none;
+
+      svg {
+        fill: #adadad;
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: #f2f3f6;
+
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__filterButton {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    stroke: #fff;
+  }
+
+  &__filterCounter {
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    background: #ff9a32;
+    width: 18px;
+    height: 18px;
+  }
+
+  &__actions {
+    width: 92px;
+    display: flex;
+    justify-content: space-between;
+  }
+}

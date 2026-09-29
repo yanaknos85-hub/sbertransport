@@ -1,0 +1,1 @@
+drop table tariff.trip_class;

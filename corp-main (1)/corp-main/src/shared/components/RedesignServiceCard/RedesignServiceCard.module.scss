@@ -1,0 +1,147 @@
+.container {
+  display: flex;
+  width: 265px;
+  height: 64px;
+  padding: 0px 4px 0px 8px;
+  border-radius: 12px;
+  background: rgb(244, 244, 244);
+  margin-top: 6px;
+  position: relative;
+  justify-content: space-between;
+
+  .buttonAddServices {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    background: rgb(16, 191, 106);
+    left: 116px;
+    top: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    border: 1px solid rgb(255, 255, 255);
+    box-shadow: 0px 4px 8px -2px rgba(0, 0, 0, 0.12),0px 0px 1px 0px rgba(0, 0, 0, 0.12);
+
+    img {
+      width: 12px;
+    }
+  }
+
+  .buttonAddServicesDisabled {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    background: rgb(16, 191, 106);
+    left: 116px;
+    top: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: not-allowed;
+
+    img {
+      width: 12px;
+    }
+  }
+}
+
+.cardDescriptions {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+
+  .cardTitle {
+    color: rgb(0, 0, 0);
+    font-family: SB Sans Text;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+    margin-bottom: 0px;
+  }
+
+  .countServicesAdd {
+    color: rgb(115, 115, 115);
+    font-family: SB Sans Interface;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    margin-bottom: 0px;
+  }
+}
+
+.wrapperImage {
+  display: flex;
+  align-items: center;
+
+  .statusConnectedServices {
+    width: 12px;
+    height: 12px;
+    box-sizing: border-box;
+    border: 1px solid rgb(255, 255, 255);
+    background: rgb(25, 177, 80);
+    border-radius: 50%;
+    position: absolute;
+    left: 5px;
+  }
+
+  .statusConnectedServicesZero {
+    width: 12px;
+    height: 12px;
+    box-sizing: border-box;
+    border: 1px solid rgb(255, 255, 255);
+    background: rgb(184, 184, 184);
+    border-radius: 50%;
+    position: absolute;
+    left: 5px;
+  }
+
+  .cardImage {
+    $size: 48px;
+  
+    width: $size;
+    height: $size;
+    flex: 0 0;
+  }
+}
+
+.containerAdd {
+  @extend .container;
+  justify-content: center;
+  background: none;
+  border: 1px dashed #e0e0e0;
+  color: #10bf6a;
+  cursor: pointer;
+
+  .cardTitle {
+    flex: none;
+  }
+}
+
+.add {
+  $size: 16px;
+  width: $size;
+  height: $size;
+  position: relative;
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: 100%;
+    background: #10bf6a;
+  }
+
+  &::before {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+}

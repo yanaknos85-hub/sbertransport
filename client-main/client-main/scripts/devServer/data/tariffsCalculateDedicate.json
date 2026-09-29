@@ -1,0 +1,16 @@
+[
+  {
+    "id": "6f566b36-301a-449a-9c55-310785678c31",
+    "transportType": {
+      "id": "c6ab83a2-0637-11ec-9a03-0242ac130003",
+      "name": "DEDICATED"
+    },
+    "cost": 28016,
+    "time": 1178972,
+    "priceDetails": {
+      "baseCost": 280,
+      "loaderCost": 120,
+      "expressCost": 600
+    }
+  }
+]

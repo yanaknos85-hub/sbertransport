@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>ic/plantime@1x</title>
+    <g id="ic/plantime" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic/backandforth">
+            <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+            <g id="Calendar,-Schedule,-Add" transform="translate(2.500000, 2.900000)" stroke-width="2">
+                <line x1="12" y1="0" x2="12" y2="2" id="Path" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></line>
+                <line x1="4" y1="0" x2="4" y2="2" id="Path" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></line>
+                <line x1="0" y1="6" x2="16" y2="6" id="Path" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></line>
+                <path d="M16,9.417 L16,3 C16,1.895 15.105,1 14,1 L2,1 C0.895,1 0,1.895 0,3 L0,14 C0,15.105 0.895,16 2,16 L9.417,16" id="Path" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M14,19.9999971 C11.239,19.9999971 9,17.762 9,14.9999971 C9,12.296 11.3,9.997 14.004,9.99999707 C16.764,10.002 19,12.24 19,14.9999971 C19,17.761 16.762,19.9999971 14,19.9999971 Z" id="Path" stroke="#FFFFFF" fill="#FFFFFF"></path>
+                <polyline id="Path" stroke="#19B150" stroke-linecap="round" stroke-linejoin="round" points="15.5436787 16.5922693 14 15.4710235 14 13"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,46 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20241202"
+            author: morgan-nm
+            changes:
+                -   tagDatabase:
+                        tag: "20241202"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    type: uuid
+                                    name: executor_group_id
+                                    remarks: Идентификатор группы исполнителей
+                -   addColumn:
+                      schemaName: reports
+                      tableName: request
+                      columns:
+                        -   column:
+                              type: varchar(255)
+                              name: executor_group_name
+                              remarks: Наименование группы исполнителей
+                -   createIndex:
+                      schemaName: reports
+                      tableName: request
+                      columns:
+                        - column:
+                            name: executor_group_id
+                      indexName: reports_request_executor_group_id_idx
+                -   createIndex:
+                      schemaName: reports
+                      tableName: request
+                      columns:
+                        - column:
+                            name: executor_group_name
+                      indexName: reports_request_executor_group_name_idx
+            rollback:
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: request
+                        columnName: executor_group_id
+                -   dropColumn:
+                      schemaName: reports
+                      tableName: request
+                      columnName: executor_group_name

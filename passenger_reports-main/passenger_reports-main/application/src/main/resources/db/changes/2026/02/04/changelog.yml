@@ -1,0 +1,22 @@
+databaseChangeLog:
+    -   changeSet:
+            id: reports/20260204-1
+            author: klyunkov-va
+            dbms: postgresql
+            context: "!test"
+            changes:
+                -   update:
+                        tableName: inbox_message
+                        schemaName: reports
+                        columns:
+                            -   column:
+                                    name: class_name
+                                    value: ru.sber.transport.request.messaging.RequestMessage
+            rollback:
+                -   update:
+                        tableName: inbox_message
+                        schemaName: reports
+                        columns:
+                            -   column:
+                                    name: class_name
+                                    value: ru.sberbank.ditsib.transport.reports.messaging.messages.RequestMessage

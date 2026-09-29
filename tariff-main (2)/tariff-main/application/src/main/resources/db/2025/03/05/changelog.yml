@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20250305-0929"
+            author: ladeyshchikov-aa
+            changes:
+                -   dropNotNullConstraint:
+                        schemaName: tariff
+                        tableName: contract
+                        columnName: contractor_id
+            rollback:
+                -   addNotNullConstraint:
+                        schemaName: tariff
+                        tableName: contract
+                        columnName: contractor_id

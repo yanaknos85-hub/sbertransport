@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230426"
+            author: asigalov
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/create_stats_table.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: rollback/create_stats_table.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

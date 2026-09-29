@@ -1,0 +1,23 @@
+{
+  "properties": [
+    {
+      "name": "spring.application.version",
+      "type": "java.lang.String",
+      "description": "Версия приложения."
+    },
+    {
+      "name": "spring.cloud.stream.kafka.default.consumer.enableDlq",
+      "type": "java.lang.String",
+      "description": "Флаг для включения очереди мертвых (ошибочных) сообщений."
+    },
+    {
+      "name": "jwt.kid",
+      "type": "java.lang.String",
+      "description": "Идентификатор ключа для формирования токена."
+    },
+    {
+      "name": "jwt.algo",
+      "type": "org.springframework.security.oauth2.jose.jws.SignatureAlgorithm",
+      "description": "Алгоритм ключа для формирования токена."
+    }
+  ] }

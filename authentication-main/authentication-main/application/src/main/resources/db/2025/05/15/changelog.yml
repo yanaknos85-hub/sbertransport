@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250515-0840"
+      author: blandin-ad
+      context: "20250515"
+      changes:
+        - tagDatabase:
+            tag: "D-04.009.000"
+        - renameColumn:
+            schemaName: authentication
+            tableName: reset_code
+            oldColumnName: email
+            newColumnName: sending_target
+        - addColumn:
+            schemaName: authentication
+            tableName: reset_code
+            columns:
+              - column:
+                  name: sending_channel
+                  type: text
+                  remarks: Канал отправки
+        - sql:
+            sql: update authentication.reset_code set sending_channel = 'EMAIL';
+        - addNotNullConstraint:
+            schemaName: authentication
+            tableName: reset_code
+            columnName: sending_channel
+            constraintName: authentication_reset_code_sending_channel_nnc
+      rollback:
+        - renameColumn:
+            schemaName: authentication
+            tableName: reset_code
+            oldColumnName: sending_target
+            newColumnName: email
+        - dropColumn:
+            schemaName: authentication
+            tableName: reset_code
+            columns:
+              - column:
+                  name: sending_channel

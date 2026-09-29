@@ -1,0 +1,91 @@
+server:
+    port: @server.port@
+    tomcat:
+        relaxed-query-chars:
+            - "["
+            - "]"
+grpc:
+    server:
+        port: 6565
+    client:
+        GLOBAL:
+            negotiation-type: plaintext
+        grpc-limits:
+            address: discovery:///${GRPC_LIMITS:grpc-limits}
+        grpc-geo:
+            address: discovery:///${GRPC_GEO:grpc-geo}
+        grpc-geo-zones:
+            address: discovery:///${GRPC_GEO_ADDRESS:grpc-geo-zones}
+spring:
+    config:
+        import: optional:configserver:${SPRING_CLOUD_CONFIG_URI}
+    servlet:
+        multipart:
+            max-file-size: 100MB
+            max-request-size: 100MB
+    jackson:
+        default-property-inclusion: non_null
+    application:
+        name: tariff
+        version: @project.version@
+    cloud:
+        vault:
+            enabled: false
+    datasource:
+        url: jdbc:postgresql://localhost:5432/transport
+        password: root
+        username: postgres
+        driver-class-name: org.postgresql.Driver
+        type: com.zaxxer.hikari.HikariDataSource
+        hikari:
+            connection-test-query: SELECT 1
+            schema: tariff
+    jpa:
+        properties:
+            hibernate:
+                jdbc:
+                    batch_size: 25
+                    lob:
+                        non_contextual_creation: true
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+        hibernate:
+            ddl-auto: validate
+        show-sql: false
+        open-in-view: false
+    liquibase:
+        enabled: true
+        change-log: classpath:db/changelog-master.yml
+        url: ${spring.datasource.url}
+        user: ${spring.datasource.username}
+        password: ${spring.datasource.password}
+        database-change-log-table: changelog_${spring.application.name}
+        database-change-log-lock-table: changelog_${spring.application.name}_lock
+        liquibase-schema: ${MIGRATIONS_SCHEMA:public}
+    profiles:
+        include: import
+logging:
+    level:
+        org.hibernate.sql: "${LOG_HIBERNATE_SQL:INFO}"
+        org.hibernate.type: "${LOG_HIBERNATE_TYPE:INFO}"
+management.endpoints.web.exposure.include: "*"
+sharedride:
+    service: ${SR_PROVIDER:magenta}
+ssl:
+    support: true
+    client:
+        enabled: ${CLIENT_ENABLED:false}
+        store:
+            path: ${CLIENT_CERTIFICATE:}
+            password: ${CLIENT_STORE_PASSWORD:}
+        password: ${CLIENT_CERT_PASSWORD:}
+    trust:
+        enabled: ${TRUST_ENABLED:false}
+        store:
+            path: ${TRUST_CERTIFICATE:}
+            password: ${TRUST_CERT_PASSWORD:}
+traffic.threshold: 7
+feign.url.geo-zones: ${FEIGN_URL_GEO_ZONES:http://localhost:8022}
+javamelody.enabled: false
+tariff.export.onlyActive: ${TARIFF_EXPORT_ONLYACTIVE:true}
+contractorClient:
+    url: ${CONTRACTOR_URL:contractor:8080}

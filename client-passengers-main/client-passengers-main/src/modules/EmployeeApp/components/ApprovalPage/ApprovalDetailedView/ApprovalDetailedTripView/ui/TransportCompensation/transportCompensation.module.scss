@@ -1,0 +1,46 @@
+.compensationInner {
+    margin: 0 calc((var(--margin-base) * -1) / 2);
+  }
+  
+  .compensationImage {
+    width: 100%;
+    height: 100%;
+  
+    &FullScreen {
+      width: 100%;
+      height: 100%;
+    }
+  
+    &Wrapper {
+      position: relative;
+      display: inline-block;
+      padding-top: 8px;
+    }
+  
+    &Button {
+      padding: 0;
+      border: unset;
+      background: transparent;
+      border-radius: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+  
+      span {
+        color: rgb(16, 191, 106);
+        font-family: SB Sans Interface;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 16px;
+        letter-spacing: 0.2px;
+        margin-left: 8px;
+      }
+    }
+  
+    &Spinner {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  

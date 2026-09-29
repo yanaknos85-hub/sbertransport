@@ -1,0 +1,16 @@
+databaseChangeLog:
+    -   changeSet:
+            id: 20230403
+            author: raygorodskiy-pa
+            dbms: postgresql
+            changes:
+              - modifyDataType:
+                    schemaName: reports
+                    tableName: request
+                    columnName: comment_for_driver
+                    newDataType: text
+              - modifyDataType:
+                    schemaName: reports
+                    tableName: request_for_cargo
+                    columnName: comment
+                    newDataType: text

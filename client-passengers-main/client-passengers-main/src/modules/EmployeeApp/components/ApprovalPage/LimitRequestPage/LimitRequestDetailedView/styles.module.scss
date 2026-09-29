@@ -1,0 +1,59 @@
+.detailsList :global .ant-descriptions-row > td {
+  padding-bottom: var(--padding-half);
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  justify-items: auto;
+}
+
+.limit_bar {
+  flex: 1;
+  align-items: center;
+  display: flex;
+}
+
+.infoBottom {
+  margin-bottom: 1%;
+}
+
+.infoTop {
+  margin-top: 1%;
+}
+
+.infoBold {
+  margin-bottom: 1%;
+  font-weight: 900;
+}
+
+.percentInfo {
+  display: block;
+  text-align: right;
+}
+
+.boldText {
+  font-weight: 900;
+}
+
+.mgTop {
+  margin-top: 5%;
+}
+
+.alignLeft {
+  text-align: left;
+}
+
+.alignRight {
+  text-align: right;
+}
+
+.alignCenter {
+  text-align: center;
+}
+
+.moneyInfo {
+  display: inline;
+  width: 30%;
+}

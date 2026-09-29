@@ -1,0 +1,37 @@
+package ru.sberbank.ditsib.transport.tariff.messaging.sender.impl;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+import ru.sber.transport.messaging.kafka.binding.OutputBridge;
+import ru.sberbank.ditsib.transport.tariff.database.model.CarSharingTariff;
+import ru.sberbank.ditsib.transport.tariff.mappers.TariffMapper;
+import ru.sberbank.ditsib.transport.tariff.messaging.sender.CarSharingTariffSender;
+
+/**
+ * Отправка данных о тарифах
+ */
+@Slf4j
+@RequiredArgsConstructor
+@Component
+public class CarSharingSenderImpl implements CarSharingTariffSender {
+
+    @Qualifier("carSharingTariffOutput")
+    private final ObjectProvider<OutputBridge> carSharingTariffOutput;
+    private final TariffMapper mapper;
+    
+    @Override
+    public void send(CarSharingTariff carSharingTariff) {
+        var message = mapper.toMessage(carSharingTariff, false);
+        log.info("CarSharingTariffSender: going to send tariff {}", message.getId());
+        carSharingTariffOutput.ifAvailable(it -> it.send(message));
+    }
+    
+    @Override
+    public void sendDeleted(CarSharingTariff carSharingTariff) {
+        var message = mapper.toMessage(carSharingTariff, true);
+        carSharingTariffOutput.ifAvailable(it -> it.send(message));
+    }
+}

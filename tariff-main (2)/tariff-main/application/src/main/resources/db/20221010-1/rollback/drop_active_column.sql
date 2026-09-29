@@ -1,0 +1,1 @@
+alter table tariff.contractor drop column active;

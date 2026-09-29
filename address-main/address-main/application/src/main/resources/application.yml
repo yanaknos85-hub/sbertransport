@@ -1,0 +1,60 @@
+server:
+  port: 8008
+
+spring:
+  config:
+    import: optional:configserver:${spring.cloud.config.uri}
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: ${file.max-size}
+      max-request-size: ${file.max-size}
+  security:
+    user:
+      name: anonymous
+      password: ${random.uuid}
+      roles: anonymous
+    oauth2:
+      resourceserver:
+        jwt:
+          jws-algorithms: RS512
+  jackson:
+    default-property-inclusion: non_null
+  application:
+    name: addresses
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 10
+      connection-test-query: SELECT 1
+  liquibase:
+    change-log: classpath:db/changelog-master.yml
+    drop-first: false
+    test-rollback-on-update: false
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    database-change-log-table: changelog_${spring.application.name}
+    database-change-log-lock-table: changelog_${spring.application.name}_lock
+    liquibase-schema: ${MIGRATIONS_SCHEMA:public}
+    default-schema: addresses
+  profiles:
+    active: prod,import
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+file:
+  max-size: ${FILE_MAX_SIZE_REQUEST:20971520}
+embedded.temp: ${WORKSPACE:..}/tmp
+openapi:
+  address:
+    base-path: /
+grpc:
+  client:
+    GLOBAL:
+      negotiation-type: plaintext
+    grpc-geo:
+      address: discovery:/grpc-geo

@@ -1,0 +1,19 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230628"
+            author: 21146167
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: tariff
+                        tableName: contract
+                        columns:
+                            -   column:
+                                    name: uvhd
+                                    type: text
+                                    remarks: Номер договора УВХД
+            rollback:
+                -   dropColumn:
+                        schemaName: tariff
+                        tableName: contract
+                        columnName: uvhd

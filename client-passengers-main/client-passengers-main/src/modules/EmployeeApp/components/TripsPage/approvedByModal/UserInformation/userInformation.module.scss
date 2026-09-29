@@ -1,0 +1,83 @@
+.informationinInitiatorWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+
+  .informationinInitiatorMain {
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 32px;
+      width: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .informationinInitiatorInfo {
+      display: flex;
+      flex-direction: column;
+      margin-left: 12px;
+
+      .informationinInitiatorInfoName {
+        color: rgb(0, 0, 0);
+        font-family: SB Sans Text;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: -0.32px;
+      }
+
+      .informationinInitiatorPosition {
+        color: rgb(168, 171, 179);
+        font-family: SB Sans Text;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18px;
+        letter-spacing: -0.15px;
+      }
+
+      .informationinInitiatorInfoPosition {
+        color: rgb(168, 171, 179);
+        font-family: "SB Sans Text";
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 15px;
+        letter-spacing: 0px;
+      }
+
+      .informationinInitiatorInfoNumber {
+        color: rgb(0, 0, 0);
+        font-family: "SB Sans Text";
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 18px;
+        letter-spacing: 0px;
+      }
+    }
+  }
+
+  .informationinInitiatorNumber {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    & span:first-child {
+      color: rgb(168, 171, 179);
+      font-family: "SB Sans Text";
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 15px;
+      letter-spacing: 0px;
+    }
+
+    & span:last-child {
+      color: rgb(0, 0, 0);
+      font-family: "SB Sans Text";
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 18px;
+      letter-spacing: -0.15px;
+    }
+  }
+}

@@ -1,0 +1,83 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: fit-content;
+  min-width: 270px;
+  max-width: 270px;
+  height: 76px;
+  padding: 16px;
+  box-sizing: border-box;
+  border: 1px solid rgb(213, 213, 213);
+  border-radius: 12px;
+  background: rgb(255, 255, 255);
+  gap: 8px;
+}
+
+.cardTitle {
+  color: rgb(0, 0, 0);
+  font-family: SB Sans Text;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.3px;
+  margin: 0;
+}
+
+.cardImage {
+  $size: 60px;
+
+  width: $size;
+  height: $size;
+  display: flex;
+  align-items: center;
+
+  svg {
+
+    rect {
+      fill: none;
+    }
+  }
+}
+
+.containerAdd {
+  @extend .container;
+  box-shadow: none;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  flex: 1 0 110px;
+  .cardTitle {
+    flex: 0 0 110px;
+    color: rgb(16, 191, 106);
+    font-family: SB Sans Text;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+  }
+}
+
+.add {
+  $size: 20px;
+  width: $size;
+  height: $size;
+  position: relative;
+  flex: 0 0 $size;
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: 100%;
+    background: rgb(16, 191, 106);
+  }
+
+  &::before {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+}

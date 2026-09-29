@@ -1,0 +1,19 @@
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.buttonsContainer {
+  text-align: right;
+  display: inline;
+  width: 70%;
+}
+
+.mgLeft {
+  margin-left: 1%;
+}
+
+.buttonWithCardContent {
+  border: none;
+  height: 100% !important;
+}

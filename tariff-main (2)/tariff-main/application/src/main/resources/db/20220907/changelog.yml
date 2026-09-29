@@ -1,0 +1,8 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220907"
+            author: blandin-ad
+            changes:
+                -   sqlFile:
+                        path: change/alter_column_dept_id.sql
+                        relativeToChangelogFile: true

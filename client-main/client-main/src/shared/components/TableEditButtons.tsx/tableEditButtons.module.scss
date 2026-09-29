@@ -1,0 +1,10 @@
+.table_edit_buttons {
+  display: flex;
+  justify-content: space-between;
+
+  &__delete {
+    cursor: pointer;
+    color: var(--error-color);
+    margin: 0 0 0 var(--margin-base);
+  }
+}

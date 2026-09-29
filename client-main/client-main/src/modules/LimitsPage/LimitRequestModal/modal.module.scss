@@ -1,0 +1,175 @@
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 26px 8px 8px;
+
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  font-family: "SB Sans Text", sans-serif;
+
+  :global(.ant-btn-primary) {
+    border-radius: 8px;
+    height: 40px;
+    padding: 0 20px;
+  }
+}
+
+.buttonsContainer {
+  button {
+    padding: 5px 16px;
+    border-radius: 8px;
+    border-color: #c2c2c2;
+    background-color: transparent;
+    outline: none;
+
+    > span {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+      font-family: SB Sans Text;
+      color: var(--black-text);
+    }
+
+    &:hover,
+    &:focus {
+      border-color: #0ba85d;
+    }
+
+    &:active {
+      border-color: #0d9954;
+    }
+  }
+}
+
+.buttonsContainerMainPage {
+  text-align: right;
+  display: inline;
+
+  button {
+    padding: 0;
+    background-color: inherit;
+    color: var(--jade);
+    border: none;
+    box-shadow: none;
+  }
+}
+
+.mgLeft {
+  margin-left: 1%;
+}
+
+.modal {
+  :global(.ant-modal-content) {
+    border-radius: 12px;
+
+    :global(.ant-modal-header) {
+      border-radius: 12px 12px 0 0;
+      padding: 20px 24px;
+      border: none;
+
+      :global(.ant-modal-title) {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 28px;
+        color: var(--black-text);
+        padding-right: 16px;
+
+        @media (min-width: 501px) {
+          font-size: 20px;
+        }
+      }
+    }
+
+    :global(.ant-modal-body) {
+      padding: 0 24px;
+
+      @media (max-width: 500px) {
+        :global(.ant-form-item) {
+          margin-bottom: 8px;
+        }
+      }
+
+      :global(.ant-form-item-label > label) {
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 16px;
+        color: var(--black-text);
+        margin-bottom: 8px;
+      }
+
+      :global(.ant-form-item-label > label::before) {
+        display: none;
+      }
+
+      :global(.ant-input) {
+        height: 48px;
+        border-radius: 8px;
+        padding: 0 16px;
+      }
+
+      :global(.ant-select-selector) {
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        border-color: #e0e0e0;
+        border-radius: 8px;
+        padding: 0 16px;
+
+        :global(.ant-select-selection-item) {
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 22px;
+          letter-spacing: -0.3px;
+          color: var(--black-text);
+        }
+      }
+
+      :global(.ant-select-selection-search) {
+        display: inline-flex;
+        align-items: center;
+      }
+
+      :global(textarea.ant-input) {
+        min-height: 92px;
+        border-radius: 8px;
+        border-color: #e0e0e0;
+        padding: 16px;
+        resize: none;
+      }
+
+      :global(.ant-input-textarea-show-count::after) {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+        letter-spacing: -1.3px;
+        color: var(--gray9);
+        margin-top: 8px;
+      }
+    }
+
+    :global(.ant-modal-footer) {
+      border: none;
+    }
+  }
+
+  :global(.ant-modal-close) {
+    top: 12px;
+    right: 20px;
+    display: block !important;
+
+    :global(.ant-modal-close-x) {
+      width: 24px;
+      height: 24px;
+      line-height: 0;
+    }
+  }
+}
+
+.periodSelect { 
+  text-transform: capitalize;
+
+  &Dropdown { 
+    text-transform: capitalize;
+  }
+}

@@ -1,0 +1,43 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230623-1321"
+            author: blandin-ad
+            changes:
+                -   tagDatabase:
+                        tag: "20230623"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: user_attributes
+                        columns:
+                            -   column:
+                                    name: taxi_deadline
+                                    type: boolean
+                                    defaultValueBoolean: true
+                                    constraints:
+                                        nullable: false
+                                    remarks: Видимость столбца Контрольный срок подачи ТС
+                            -   column:
+                                    name: taxi_driver_arrived_datetime
+                                    type: boolean
+                                    defaultValueBoolean: true
+                                    constraints:
+                                        nullable: false
+                                    remarks: Видимость столбца Фактическое время подачи ТС
+                            -   column:
+                                    name: taxi_deadline_violation
+                                    type: boolean
+                                    defaultValueBoolean: true
+                                    constraints:
+                                        nullable: false
+                                    remarks: Видимость столбца Нарушение КС (Да/Нет)
+                        rollback:
+                            -   dropColumn:
+                                    schemaName: reports
+                                    tableName: user_attributes
+                                    columns:
+                                        -   column:
+                                                name: taxi_deadline_violation
+                                        -   column:
+                                                name: taxi_driver_arrived_datetime
+                                        -   column:
+                                                name: taxi_deadline

@@ -1,0 +1,94 @@
+.table {
+  min-height: 100px;
+  padding: 0 !important;
+  overflow: inherit !important;
+  border-top: 1px solid #f2f2f2;
+
+  :global(.ant-table-sticky-scroll) {
+    display: none;
+  }
+
+  :global(.ant-table-footer) {
+    display: flex;
+    justify-content: center;
+  }
+
+  .cell {
+    font-family: "SB Sans Text", sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 500;
+    white-space: nowrap;
+    letter-spacing: -0.3px;
+  }
+
+  :global(thead.ant-table-thead) {
+    tr {
+      th {
+        background: #fff;
+        border: none;
+
+        &:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not(
+            [colspan]
+          )::before {
+          display: none;
+        }
+      }
+    }
+
+    :global(.ant-table-cell) {
+      color: var(--inactive-tab);
+      @extend .cell;
+    }
+  }
+
+  :global(.ant-table-tbody) {
+    tr {
+      td {
+        border: none;
+      }
+    }
+
+    :global(.ant-table-cell) {
+      white-space: nowrap;
+      color: var(--dark-grey);
+      @extend .cell;
+    }
+  }
+
+  :global {
+    .ant-table.ant-table-small .ant-table-title,
+    .ant-table.ant-table-small .ant-table-footer,
+    .ant-table.ant-table-small .ant-table-thead > tr > th,
+    .ant-table.ant-table-small .ant-table-tbody > tr > td,
+    .ant-table.ant-table-small tfoot > tr > th,
+    .ant-table.ant-table-small tfoot > tr > td {
+      padding: 11px 16px;
+    }
+  }
+
+  .link {
+    color: var(--dodger-blue);
+    transition: color 0.5s;
+
+    &:hover {
+      color: #0080e0;
+    }
+
+    &:active {
+      color: #006ec2;
+    }
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-width: 7px;
+  }
+}
+
+.rowDark {
+  background-color: #f6f7f9;
+
+  :global(.ant-table-cell) {
+    background-color: #f6f7f9;
+  }
+}

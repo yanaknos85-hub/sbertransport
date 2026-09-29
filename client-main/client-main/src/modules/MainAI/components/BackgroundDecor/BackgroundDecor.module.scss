@@ -1,0 +1,76 @@
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  background-image: url('../../../../shared/images/ai-bg-big.jpeg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center bottom -31vh;
+  position: relative;
+}
+
+.dimmed::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.decor {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  position: absolute;
+}
+
+.decorTopLeft {
+  top: -25px;
+  left: -400px;
+  z-index: 0;
+}
+
+.decorTopLeftFront {
+  top: -50px;
+  left: -330px;
+  z-index: 1;
+}
+
+.decorTopRight {
+  top: -140px;
+  right: 45px;
+  z-index: 0;
+}
+
+.decorTopRightFront {
+  top: -150px;
+  right: -130px;
+  z-index: 1;
+}
+
+.decorBottomLeft {
+  bottom: -60px;
+  left: -300px;
+  z-index: 0;
+}
+
+.decorBottomLeftFront {
+  bottom: -250px;
+  left: -350px;
+  z-index: 1;
+}
+
+.decorBottomRight {
+  bottom: 0;
+  right: 0;
+}

@@ -1,0 +1,225 @@
+.header {
+  font-weight: 600;
+}
+
+.tripType {
+  font-weight: 600;
+  text-align: center;
+  padding: calc(var(--padding-fourth) / 2) var(--padding-half);
+  font-size: 15px;
+  margin-bottom: var(--margin-fourth);
+}
+
+.economics {
+  border-radius: var(--indent-half);
+  padding: 2px 10px;
+  color: black;
+  font-weight: 900;
+  text-align: center;
+  margin: 0 0 0 var(--margin-half);
+}
+
+.cooperativeTripWrapper {
+  margin: 0 -8px 16px -8px !important;
+  background: rgb(242, 243, 246);
+  border-radius: 16px;
+}
+
+.containerSuitableTrips {
+  border: none;
+  background-color: #ffff;
+  border-radius: 10px;
+  cursor: pointer;
+
+  .suitableTrips {
+    display: flex;
+    flex-direction: row;
+    white-space: break-spaces;
+    border-radius: 8px;
+    margin: 8px 0;
+    padding: 12px;
+
+    .tripInfoMain {
+      width: 60%;
+
+      .tripInfo {
+        display: flex;
+        flex-direction: row;
+
+        .tripInfoTransportType {
+          margin: 2px 0 0 10px;
+
+          span {
+            color: rgb(0, 0, 0);
+            font-family: 'SB Sans Text';
+            font-size: 14px;
+            font-weight: 700;
+          }
+        }
+      }
+
+      .tripInfoDate {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+
+        img {
+          width: 16px;
+          margin-left: 5px;
+        }
+
+        .tripInfoTime {
+          color: rgb(0, 0, 0);
+          font-family: SB Sans Text;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1;
+        }
+
+        .tripInfoAdress {
+          display: flex;
+          flex-direction: row;
+
+          span {
+            color: rgb(16, 191, 106);
+            font-family: SB Sans Text;
+            font-size: 12px;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+
+    .button {
+      margin-top: var(--margin-fourth);
+    }
+
+    .tripInfoLogo {
+      //  цвет взят из макета
+    --gray: #a8abb3;
+    display: flex;
+    flex-direction: row;
+    border-radius: 50%;
+    width: 36px;
+    height: 24px;
+    overflow: hidden;
+
+      .transportLogo {
+        display: inline-block;
+        background: url(../../../../../../shared/components/Images/car_yellow.svg) no-repeat no-repeat center 0;
+        background-size: cover;
+        width: 36px;
+        height: 24px;
+        transform: translateX(7px);
+      }
+
+      .transportLogoPersonal {
+        display: inline-block;
+        background: url(../../../../../../shared/components/Images/pers.svg) no-repeat no-repeat center 0;
+        background-size: cover;
+        width: 36px;
+        height: 24px;
+        transform: translateX(7px);
+      }
+    }
+  }
+}
+
+.noSuitableTrips {
+  display: flex;
+  flex-direction: column;
+
+  .noSuitableTripsTitle {
+    color: rgb(0, 0, 0);
+    font-family: "SB Sans Text";
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .noSuitableTripsDescription {
+    color: rgb(144, 144, 144);
+    font-family: "SB Sans Text";
+    font-size: 12px;
+    font-weight: 400;
+  }
+  
+  .imgDefaultCar {
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 50px;
+      margin: 12px 0 0 0px;
+    }
+  }
+}
+
+.tripInfoCost {
+  display: flex;
+  align-items: center;
+  width: 40%;
+
+  .halfPart {
+    flex: 1;
+  }
+
+  .fullContent {
+    max-width: 100% !important;
+  }
+}
+
+.buttonShowAll {
+
+  span {
+    display: flex;
+    justify-content: center;
+    color: rgb(16, 191, 106);
+    font-family: 'SB Sans Text';
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+  }
+}
+
+.infoCols {
+  width: 100%;
+
+  .costContainer {
+    // justify-content: center;
+  }
+
+  .economyCost {
+    font-family: 'SB Sans Text';
+    font-size: 12px;
+    font-weight: 600;
+    color: black;
+    max-width: 50% !important;
+    margin-left: 5px;
+  }
+
+  .oldCost {
+    font-family: 'SB Sans Text';
+    font-size: 12px;
+    font-weight: 600;
+    color: rgb(168, 171, 179);
+    text-decoration: line-through;
+    max-width: 50% !important;
+  }
+
+  .infoDetailed {
+    color: rgb(27, 178, 80);
+    font-weight: 800;
+    text-align: center;
+    flex: 1;
+  }
+
+  .infoDetailedWarning {
+    color: var(--warning-color);
+    font-weight: 800;
+    text-align: left;
+    margin: 0 0 var(--margin-half);
+    padding: var(--padding-fourth) 0 ;
+    flex: 1;
+  }
+}

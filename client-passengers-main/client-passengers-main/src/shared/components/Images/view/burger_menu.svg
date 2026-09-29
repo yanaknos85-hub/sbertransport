@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>ic/burger_menu_noshadow</title>
+    <g id="ic/burger_menu_noshadow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic/burger_menu">
+            <circle id="Oval" fill="#FFFFFF" cx="24" cy="24" r="24"></circle>
+            <g id="list" transform="translate(13.714286, 16.000000)" stroke="#595959" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <line x1="0.541353383" y1="8.39097744" x2="20.0300752" y2="8.39097744" id="Path"></line>
+                <line x1="0.541353383" y1="14.887218" x2="20.0300752" y2="14.887218" id="Path"></line>
+                <line x1="0.541353383" y1="1.89473684" x2="20.0300752" y2="1.89473684" id="Path"></line>
+            </g>
+        </g>
+    </g>
+</svg>

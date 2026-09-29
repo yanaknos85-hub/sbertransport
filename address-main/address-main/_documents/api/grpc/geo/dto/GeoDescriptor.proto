@@ -1,0 +1,105 @@
+syntax = "proto3";
+
+package ru.sber.transport.geo.grpc.dto;
+
+import "google/protobuf/struct.proto";
+
+option java_package = "ru.sber.transport.geo.grpc.dto";
+
+message AddressResponse {
+  string id = 1;
+  string country = 2;
+  string region = 3;
+  string city = 4;
+  NullableString district = 5;
+  NullableString street = 6;
+  NullableString house = 7;
+  NullableString building = 8;
+  NullableString structure = 9;
+  double latitude = 10;
+  double longitude = 11;
+
+  NullableString settlement = 12;
+  NullableString livingArea = 13;
+  NullableString place = 14;
+  NullableString attributeGroups = 15;
+  NullableString nameEx = 16;
+  NullableBoolean isPaid = 17;
+  NullableString point = 18;
+  NullableString fullName = 19;
+  NullableString name = 20;
+  NullableString type = 21;
+  NullableString geometry = 22;
+  NullableString objectId = 23;
+  NullableString purposeName = 24;
+}
+
+message RouteAddress {
+  string country = 2;
+  string region = 3;
+  string city = 4;
+  NullableString district = 5;
+  NullableString street = 6;
+  NullableString house = 7;
+  NullableString building = 8;
+  NullableString structure = 9;
+  double latitude = 10;
+  double longitude = 11;
+}
+
+message RouteRequest {
+  repeated RouteAddress coordinates = 1;
+  string distanceUnit = 2;
+}
+
+message RouteResponse {
+  double distance = 1;
+  uint64 time = 2;
+  repeated Segment segments = 3;
+}
+
+message AddressRequestString {
+  string search = 1;
+  Viewport viewport = 2;
+  message Viewport {
+    double topLeftLat = 1;
+    double topLeftLng = 2;
+    double bottomRightLat = 3;
+    double bottomRightLng = 4;
+  }
+}
+
+message Segment {
+  double distance = 1;
+  uint64 time = 2;
+  repeated AddressRequestCoordinates coordinates = 3;
+}
+
+message AddressRequestCoordinates {
+  double latitude = 1;
+  double longitude = 2;
+}
+
+message NullableString {
+  oneof kind {
+    google.protobuf.NullValue null = 1;
+    string data = 2;
+  }
+}
+
+message NullableBoolean {
+  oneof kind {
+    google.protobuf.NullValue null = 1;
+    bool data = 2;
+  }
+}
+
+message RouteRecreationRequest {
+  repeated RouteRecreationPoint coordinates = 1;
+}
+
+message RouteRecreationPoint {
+  double latitude = 1;
+  double longitude = 2;
+  uint64 time = 3;
+}

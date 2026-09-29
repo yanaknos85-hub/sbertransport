@@ -1,0 +1,25 @@
+spring:
+  main:
+    web-application-type: none
+  config:
+    import: optional:configserver:${spring.cloud.config.uri}
+  application:
+    name: token_generator
+    version: @project.version@
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    enabled: true
+    change-log: db/changelog-master.yml
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    database-change-log-table: changelog_${spring.application.name}
+    database-change-log-lock-table: changelog_${spring.application.name}_lock
+    default-schema: ${spring.application.name}
+    liquibase-schema: ${MIGRATION_SCHEMA:public}
+jwt:
+  algo: RS512
+grpc:
+  server:
+    port: 6565

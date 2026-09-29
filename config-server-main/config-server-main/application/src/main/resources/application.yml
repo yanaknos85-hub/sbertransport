@@ -1,0 +1,17 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: jdbc
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  cloud:
+    config:
+      server:
+        jdbc:
+          sql: "SELECT \"key\", \"value\" from \"configs\".\"properties\" where \"application\"=? and \"profile\"=? and \"label\"=?"
+          sql-without-profile: "SELECT \"key\", \"value\" from \"configs\".\"properties\" where \"application\"=? and \"profile\" is null and \"label\"=?"
+    vault:
+      enabled: false

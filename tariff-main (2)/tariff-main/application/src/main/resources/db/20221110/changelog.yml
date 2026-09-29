@@ -1,0 +1,53 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221110"
+            author: medvedev-ad
+            changes:
+                -   tagDatabase:
+                        tag: "20221110"
+                -   createIndex:
+                        schemaName: tariff
+                        tableName: contract
+                        column:
+                            name: active
+                        indexName: tariff_contract_active_idx
+                -   createIndex:
+                        schemaName: tariff
+                        tableName: contract_organizations
+                        column:
+                            name: organization_id
+                        indexName: tariff_contract_organizations_organization_id_idx
+    -   changeSet:
+            id: "20221110-1"
+            author: medvedev-ad
+            preConditions:
+                - onFail: MARK_RAN
+                  onError: HALT
+                  tableExists:
+                      tableName: urls
+                      schemaName: tariff
+            changes:
+                -   tagDatabase:
+                        tag: "20221110"
+                -   addUniqueConstraint:
+                        schemaName: tariff
+                        tableName: urls
+                        columnNames: method,url
+                        constraintName: tariff_urls_method_url_uk
+                -   addUniqueConstraint:
+                        schemaName: tariff
+                        tableName: urls
+                        columnNames: method,pattern
+                        constraintName: tariff_method_pattern_url_uk
+    -   changeSet:
+            id: "20221110-2"
+            author: medvedev-ad
+            changes:
+                -   tagDatabase:
+                        tag: "20221110"
+                -   createIndex:
+                        schemaName: tariff
+                        tableName: tariff
+                        column:
+                            name: contract_id
+                        indexName: tariff_tariff_contract_id_idx

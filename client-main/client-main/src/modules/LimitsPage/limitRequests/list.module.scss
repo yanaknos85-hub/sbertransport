@@ -1,0 +1,47 @@
+.pageWrapper {
+  padding: 0 8px;
+
+  @media (min-width: 501px) {
+    margin-top: 16px;
+    padding: 0 16px 0 0;
+  }
+}
+
+.content {
+  width: 100%;
+
+  :global {
+    .ant-tabs-tab {
+      padding: 8px 0;
+
+      &-btn {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 24px;
+        font-family: SB Sans Interface;
+        color: #a8abb3;
+
+        &:hover {
+          color: currentColor;
+        }
+      }
+
+      &:hover {
+        color: currentColor;
+      }
+    }
+
+    .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+      color: var(--black-alpha);
+
+      &:hover {
+        color: currentColor;
+      }
+    }
+
+    .ant-tabs-top > .ant-tabs-nav::before,
+    .ant-tabs-ink-bar {
+      display: none;
+    }
+  }
+}

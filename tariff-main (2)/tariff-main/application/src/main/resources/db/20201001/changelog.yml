@@ -1,0 +1,15 @@
+databaseChangeLog:
+    -   changeSet:
+            id: request/20201001
+            tag: "20201001"
+            author: apa
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: add_service_type.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;
+                -   sqlFile:
+                        path: drop_transport_type.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

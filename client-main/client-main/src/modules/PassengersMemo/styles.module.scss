@@ -1,0 +1,73 @@
+.passengersMemo {
+  color: #262626;
+
+  &__title {
+    font-family: 'SB Sans Interface', 'sans-serif';
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 20px;
+  }
+
+  &__text {
+    font-family: 'SB Sans Text', 'sans-serif';
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: -0.3px;
+    line-height: 24px;
+    margin-bottom: 28px;
+
+    & > b {
+      font-weight: bold;
+    }
+  }
+
+  :global {
+    .ant-checkbox-wrapper {
+      font-size: 16px;
+      margin-bottom: 50px;
+    }
+
+    .ant-checkbox {
+      top: 3px;
+    }
+
+    .ant-checkbox-inner {
+      border-radius: 4px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__checkbox {
+    font-family: 'SB Sans Text', 'sans-serif';
+    font-weight: 400;
+    letter-spacing: -0.3px;
+    line-height: 24px;
+    width: 100%;
+  }
+
+  :global {
+    .ant-btn {
+      height: 48px;
+      font-family: 'SB Sans Text', 'sans-serif';
+      font-weight: 600;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+    }
+
+    .ant-btn-primary[disabled] {
+      color: #fff;
+      background-color: #87dfb4;
+
+      &:hover {
+        color: #fff;
+        background-color: #87dfb4;
+      }
+    }
+  }
+
+  &__button {
+    width: 100%;
+  }
+}

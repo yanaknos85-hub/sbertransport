@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220119"
+            author: bisenov-vb
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/change_deadline_column_type.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: rollback/change_deadline_column_type.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

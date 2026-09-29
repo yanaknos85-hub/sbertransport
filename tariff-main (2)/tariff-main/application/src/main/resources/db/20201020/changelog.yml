@@ -1,0 +1,11 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20201020
+            tag: "20201020"
+            author: aas
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: create_matrix.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

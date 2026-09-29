@@ -1,0 +1,16 @@
+<svg width="24.000000" height="24.000000" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip1648_147010">
+			<rect id="Property 1=library" width="24.000000" height="24.000000" fill="white"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip1648_147010)">
+		<path id="Path" d="M6.11719 21.0039C4.88379 21.0039 3.85156 20.0693 3.72852 18.8418L3.00781 11.6387C2.94043 10.9639 3.16211 10.292 3.61719 9.78906C4.07227 9.28613 4.71875 8.99902 5.39746 8.99902L18.6025 8.99902C19.2812 8.99902 19.9277 9.28613 20.3828 9.78906C20.8379 10.292 21.0596 10.9639 20.9912 11.6387L20.2715 18.8418C20.1484 20.0693 19.1152 21.0039 17.8818 21.0039L6.11719 21.0039Z" stroke="#737373" stroke-width="1.500000" stroke-linejoin="round"/>
+		<path id="Path" d="M5.99707 5.99805L18.002 5.99805" stroke="#737373" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M7.99805 2.99609L16.001 2.99609" stroke="#737373" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M9.49902 12.75L14.501 12.75" stroke="#737373" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+	</g>
+</svg>

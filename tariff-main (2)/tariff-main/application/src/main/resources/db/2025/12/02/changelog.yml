@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20251202-1001"
+      author: chizhov-nd
+      changes:
+        - addColumn:
+            schemaName: tariff
+            tableName: contract
+            columns:
+              - column:
+                  name: responsible_employee_id
+                  type: uuid
+                  remarks: Id ответственного за договор
+        - addForeignKeyConstraint:
+            constraintName: fk_contract_responsible_employee
+            baseTableSchemaName: tariff
+            baseTableName: contract
+            baseColumnNames: responsible_employee_id
+            referencedTableSchemaName: tariff
+            referencedTableName: message_employee
+            referencedColumnNames: id
+            onDelete: SET NULL
+            onUpdate: SET NULL
+      rollback:
+        - dropForeignKeyConstraint:
+            baseTableSchemaName: tariff
+            baseTableName: contract
+            constraintName: fk_contract_responsible_employee
+        - dropColumn:
+            schemaName: tariff
+            tableName: contract
+            columnName: responsible_employee_id

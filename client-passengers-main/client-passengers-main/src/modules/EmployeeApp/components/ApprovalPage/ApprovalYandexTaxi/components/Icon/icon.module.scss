@@ -1,0 +1,17 @@
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  &.withBorder {
+    border-radius: 50%;
+    border: solid 1px rgba(38, 38, 38, 0.08);
+  }
+}
+
+.image {
+  &.mirror {
+    transform: scaleX(-1);
+  }
+}

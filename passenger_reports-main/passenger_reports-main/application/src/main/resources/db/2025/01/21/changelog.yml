@@ -1,0 +1,22 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20250121"
+            author: rakhimov-di
+            changes:
+                -   tagDatabase:
+                        tag: "20250121"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    type: timestamp
+                                    name: trip_start_time
+                                    remarks: Дата и время начала поездки
+            rollback:
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            -   column:
+                                    name: trip_start_time

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>ic/waiting_time</title>
+    <g id="ic/waiting_time" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <circle id="Oval" stroke="#CCCCCC" stroke-width="1.5" opacity="0.3" cx="16" cy="16" r="15.25"></circle>
+            <g id="ic/time" transform="translate(6.000000, 6.000000)">
+                <rect id="Rectangle" x="0" y="0" width="20" height="20"></rect>
+                <g id="Alarm,-Clock,-Time.1" transform="translate(3.750000, 2.083333)" stroke="#595959" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path d="M10.0418382,5.49740686 C12.3390441,7.79458333 12.3390441,11.5191422 10.0418382,13.8162745 C7.74463235,16.1134804 4.02013971,16.1134804 1.72294118,13.8162745 C-0.574257353,11.5191422 -0.574257353,7.79458333 1.72294118,5.49740686 C4.02013971,3.20020833 7.74463235,3.20020833 10.0418382,5.49740686" id="Path"></path>
+                    <line x1="5.88235294" y1="6.71568627" x2="5.88235294" y2="9.65686275" id="Path"></line>
+                    <line x1="4.41176471" y1="0.735294118" x2="7.35294118" y2="0.735294118" id="Path"></line>
+                    <polyline id="Path" points="12.5 4.50980392 11.0294118 3.03921569 11.7647059 3.7745098 10.0419118 5.49730392"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

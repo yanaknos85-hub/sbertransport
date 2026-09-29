@@ -1,0 +1,58 @@
+.CheckIcon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  padding: 3px;
+  border-radius: 50%;
+  background-color: #19b150;
+  font-size: 10px;
+  color: #fff;
+}
+
+.address {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 10px;
+  padding-right: 30px;
+
+  &Icon {
+    margin-right: var(--margin-half);
+    color: var(--text-color-minor);
+  }
+
+  &AbsenceReason {
+    font-size: 0.9em;
+  }
+
+  &RemoveButton {
+    &Container {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+    overflow: hidden;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background: transparent;
+    color: var(--red-color);
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border: 1px solid var(--red-color);
+    }
+  }
+}
+
+.notActiveRoute {
+  text-decoration: line-through;
+}

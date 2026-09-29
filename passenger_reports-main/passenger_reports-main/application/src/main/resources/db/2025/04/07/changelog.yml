@@ -1,0 +1,62 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20250407"
+            author: burlakovsv
+            changes:
+                -   createTable:
+                        schemaName: reports
+                        tableName: inbox_message
+                        remarks: Входящие сообщения из кафки
+                        columns:
+                            -   column:
+                                    name: message_id
+                                    type: uuid
+                                    remarks: Идентификатор
+                                    constraints:
+                                        primaryKey: true
+                                        primaryKeyName: inbox_message_pk
+                            -   column:
+                                    name: entity_id
+                                    type: uuid
+                                    remarks: Идентификатор сущности
+                                    constraints:
+                                        nullable: false
+                            -   column:
+                                    name: class_name
+                                    type: varchar(150)
+                                    remarks: Тип входящего сообщения
+                                    constraints:
+                                        nullable: false
+                            -   column:
+                                    name: payload
+                                    type: jsonb
+                                    remarks: Тело сообщения
+                                    constraints:
+                                        nullable: false
+                            -   column:
+                                    name: received_at
+                                    type: timestamp
+                                    remarks: Время получения сообщения
+                                    constraints:
+                                        nullable: false
+                            -   column:
+                                    name: updated_at
+                                    type: timestamp
+                                    remarks: Время обработки сообщения
+                            -   column:
+                                    name: status
+                                    type: varchar(20)
+                                    remarks: Статус сообщения
+                                    constraints:
+                                        nullable: false
+                            -   column:
+                                    name: error_reason
+                                    type: varchar(255)
+                                    remarks: Причина ошибки при обработке сообщения
+                -   createIndex:
+                        schemaName: reports
+                        tableName: inbox_message
+                        indexName: inbox_message_status_idx
+                        columns:
+                            -   column:
+                                    name: status

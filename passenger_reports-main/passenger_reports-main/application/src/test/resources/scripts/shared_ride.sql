@@ -1,0 +1,8 @@
+INSERT INTO reports.tariff (id,organization_id,transport_type,humanreadableid,service_type,region,active,car_service_cost,ride_cost_per_km,ride_cost_per_min,taxi_class,wait_cost_per_min,wait_cost_per_min_intermediate,min_ride_distance_cost,min_ride_time_cost,contractor_max_diff_computed_distance_percent,contractor_max_diff_fact_distance_percent,contractor_max_diff_computed_cost_percent,contractor_max_diff_contractor_cost_percent,contractor_max_diff_computed_waiting_percent,contract_id,coef_traffic,coef_child_seat,coef_pet_transport,coef_casco,coef_work_day_morning,coef_work_day_noon,coef_work_day_evening,coef_work_day_night,coef_day_off,trust_idx,work_group,region_id) VALUES
+	 ('ed2b4146-432f-4263-b8c7-e7d582323227'::uuid,NULL,'TAXI','TF-5425-00000001','EMPLOYEE_TRANSPORTATION',NULL,true,NULL,NULL,NULL,NULL,NULL,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL,0.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.0,'Мониторинг/транспорт/Мурманская область/taxi-monitoring-mur',NULL);
+INSERT INTO reports.kpi (id,total_cost,total_distance_km,total_time_min) VALUES
+	 ('d92de3dd-6b82-4c86-aa96-224f4c9ada6b'::uuid,120.0,6.278565883636475,14);
+INSERT INTO reports.order_kpi (id,cost_share_part,order_distance_km,ride_time_min,savings,savings_pct,kpi_id,request_id) VALUES
+	 ('72a90eb7-4d3b-4cf8-b55f-814a7a0b04aa'::uuid,1.0,12,2654,1.0,1.0,'d92de3dd-6b82-4c86-aa96-224f4c9ada6b'::uuid,NULL);
+INSERT INTO reports.shared_ride (passengers,active,tariff_id,kpi,magenta_id) VALUES
+	 (1,true,'ed2b4146-432f-4263-b8c7-e7d582323227'::uuid,'d92de3dd-6b82-4c86-aa96-224f4c9ada6b'::uuid,'7fc0e474-d55a-4e9c-b5a8-7819aaf59c89'::uuid);

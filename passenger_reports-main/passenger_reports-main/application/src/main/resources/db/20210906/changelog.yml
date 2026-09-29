@@ -1,0 +1,12 @@
+databaseChangeLog:
+    -   changeSet:
+            id: reports/20210906
+            author: chuprin
+            dbms: postgresql
+            changes:
+                - sqlFile:
+                        path: changes/clear_request_payment.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;
+                - customChange:
+                    class: ru.sberbank.ditsib.transport.reports.migration.DropDepartmentsOffset

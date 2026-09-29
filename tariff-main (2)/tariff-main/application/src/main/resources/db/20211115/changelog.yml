@@ -1,0 +1,21 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211115"
+            author: alekseev-pa
+            dbms: postgresql
+            changes:
+                -   addColumn:
+                        schemaName: tariff
+                        tableName: tariff
+                        columns:
+                            -   column:
+                                    name: contractor_tariff_id
+                                    type: text
+                -   addColumn:
+                        schemaName: tariff
+                        tableName: tariff
+                        columns:
+                            -   column:
+                                    name: integration_type
+                                    type: text
+                                    defaultValue: EMAIL_XML_API

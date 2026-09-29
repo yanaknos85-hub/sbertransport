@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: stretch;
+  width: calc(100% - 2 * var(--margin-base));
+  margin: var(--margin-base);
+  height: calc(100% - 140px);
+  overflow: hidden;
+
+  & > div {
+    flex: 1;
+    position: relative;
+    overflow-y: auto;
+    padding-right: var(--padding-base);
+
+    &:first-child {
+      margin-right: var(--margin-base);
+    }
+  }
+}
+
+.pageHeader {
+  margin-bottom: var(--margin-base);
+}

@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20210301
+            tag: "20210301"
+            author: aas
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/contractorid_to_contractid.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: rollback/rolback_contractorid_to_contractid.sql
+                        relativeToChangelogFile: true

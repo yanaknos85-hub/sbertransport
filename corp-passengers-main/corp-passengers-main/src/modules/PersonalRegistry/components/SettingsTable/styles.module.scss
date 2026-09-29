@@ -1,0 +1,20 @@
+.menuSetting {
+  background: white;
+  border: 1px solid black;
+  & .listSetting {
+    max-height: 20vh;
+    overflow: scroll;
+  }
+  & .line {
+    margin: 0;
+  }
+  & .menuButtons {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+    width: 100%;
+    & :global(.ant-btn) {
+      margin: 10px 10px 0;
+    }
+  }
+}

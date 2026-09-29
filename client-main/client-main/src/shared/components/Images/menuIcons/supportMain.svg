@@ -1,0 +1,17 @@
+<svg width="24.000000" height="24.000000" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip1648_147126">
+			<rect id="Property 1=support" width="24.000000" height="24.000000" fill="white"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip1648_147126)">
+		<path id="Path" d="M18 16.875C17.4482 16.875 17 16.4268 17 15.875L17 10.875C17 10.3232 17.4482 9.875 18 9.875L19 9.875C20.1055 9.875 21 10.7695 21 11.875L21 14.875C21 15.9805 20.1055 16.875 19 16.875L18 16.875Z" stroke="#737373" stroke-width="1.500000" stroke-linejoin="round"/>
+		<path id="Path" d="M5 16.875C3.89453 16.875 3 15.9805 3 14.875L3 11.875C3 10.7695 3.89453 9.875 5 9.875L6 9.875C6.55176 9.875 7 10.3232 7 10.875L7 15.875C7 16.4268 6.55176 16.875 6 16.875L5 16.875Z" stroke="#737373" stroke-width="1.500000" stroke-linejoin="round"/>
+		<path id="Path" d="M18.5 9.875L18.5 9.375C18.5 5.78516 15.5898 2.875 12 2.875C8.41016 2.875 5.5 5.78516 5.5 9.375L5.5 9.875" stroke="#737373" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M11.375 21.125C10.6846 21.125 10.125 20.5654 10.125 19.875C10.125 19.1846 10.6846 18.625 11.375 18.625L12.625 18.625C13.3154 18.625 13.875 19.1846 13.875 19.875C13.875 20.5654 13.3154 21.125 12.625 21.125L11.375 21.125Z" stroke="#737373" stroke-width="1.500000" stroke-linejoin="round"/>
+		<path id="Path" d="M13.875 19.875L16 19.875C17.1055 19.875 18 18.9805 18 17.875L18 16.875" stroke="#737373" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+	</g>
+</svg>

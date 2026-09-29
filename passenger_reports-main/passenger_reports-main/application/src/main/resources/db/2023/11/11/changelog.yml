@@ -1,0 +1,22 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20231111"
+            author: delyukov-da
+            changes:
+                -   tagDatabase:
+                        tag: "20231111"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: tariff
+                        columns:
+                            -   column:
+                                    type: varchar
+                                    name: work_group
+                                    remarks: Рабочая группа
+            rollback:
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: tariff
+                        columns:
+                            -   column:
+                                    name: work_group

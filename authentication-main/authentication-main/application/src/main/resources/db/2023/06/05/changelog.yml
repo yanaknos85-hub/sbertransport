@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230605-1011"
+      author: blandin-ad
+      context: "20230605"
+      changes:
+        - tagDatabase:
+            tag: "20230605"
+        - addColumn:
+            schemaName: authentication
+            tableName: account
+            columns:
+              - column:
+                  name: phone
+                  type: text
+                  remarks: Мобильный телефон
+      rollback:
+        - dropColumn:
+            schemaName: authentication
+            tableName: account
+            columns:
+              - column:
+                  name: phone

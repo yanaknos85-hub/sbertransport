@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>ic/сall</title>
+    <g id="ic/сall" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic/route">
+            <circle id="Oval" stroke="#ECECEC" stroke-width="1.5" cx="24" cy="24" r="23.25"></circle>
+            <g id="Group-17" transform="translate(10.285714, 10.285714)">
+                <rect id="Rectangle" x="-3.90798505e-13" y="7.10542736e-15" width="27.4285714" height="27.4285714"></rect>
+                <g id="Phone,-Call.11" transform="translate(4.714286, 4.714286)" stroke="#595959" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path d="M7.856,10.144 C6.686,8.974 5.804,7.664 5.218,6.335 C5.094,6.054 5.167,5.725 5.384,5.508 L6.203,4.69 C6.874,4.019 6.874,3.07 6.288,2.484 L5.114,1.31 C4.333,0.529 3.067,0.529 2.286,1.31 L1.634,1.962 C0.893,2.703 0.584,3.772 0.784,4.832 C1.278,7.445 2.796,10.306 5.245,12.755 C7.694,15.204 10.555,16.722 13.168,17.216 C14.228,17.416 15.297,17.107 16.038,16.366 L16.689,15.715 C17.47,14.934 17.47,13.668 16.689,12.887 L15.516,11.714 C14.93,11.128 13.98,11.128 13.395,11.714 L12.492,12.618 C12.275,12.835 11.946,12.908 11.665,12.784 C10.336,12.197 9.026,11.314 7.856,10.144 L7.856,10.144 Z" id="Path"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

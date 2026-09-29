@@ -1,0 +1,56 @@
+<html lang="ru">
+<head>
+    <title>
+        Двухфакторная авторизация
+    </title>
+    <meta charset="utf-8">
+    <style>
+        .block {
+            justify-content: center;
+            display: flex;
+            flex: content;
+            left: 50%;
+            background-color: lightgray;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h3>Добро пожаловать в АС СберТранспорт!</h3>
+    <b>Уважаемый пользователь!</b><br/>
+    <p>
+        У Вас включена двухфакторная авторизация. Ваш код:
+        <p>
+            <div class="block">
+                <h2>{code}</h2>
+            </div>
+        </p>
+    </p>
+    <p>
+    Код действует до:
+        <p>
+            <div class="block">
+                {expiration}
+            </div>
+        </p>
+    </p>
+    <p>
+        Введите этот код в приложение или по адресу:
+        <p>
+            <div class="block">
+            <a href="{codeUrl}#accessToken={token}">{codeUrl}/code#accessToken={token}</a>
+        </div>
+        </p>
+        <p>
+            Мы всегда на связи для поддержки 24/7:<br>
+            <a href="tel:88007074882">8-800-707-48-82</a> (внешний)<br>
+            <a href="tel:855990047">8-559-90-047</a> (внутренний)<br>
+            Служба поддержки в <a href="https://sberchat.sberbank.ru/@SBERTRANSPORT">СберЧате</a><br>
+            Для жалоб и предложений напишите нам <a href="mailto:catransport@sberbank.ru">catransport@sberbank.ru</a>
+        </p>
+    </p>
+    <p>
+        С Уважением, Ваш Блок «Сервисы».
+    </p>
+</body>
+</html>

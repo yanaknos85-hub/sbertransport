@@ -1,0 +1,92 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221028"
+            author: medvedev-ad
+            tag: "20221028"
+            changes:
+                -   createIndex:
+                        schemaName: tariff
+                        tableName: organization
+                        columns:
+                            -   column:
+                                    name: name
+                        indexName: tariff_organization_name_idx
+                -   createIndex:
+                        schemaName: tariff
+                        tableName: contractor
+                        columns:
+                            -   column:
+                                    name: name
+                        indexName: tariff_contractor_name_idx
+                -   createIndex:
+                        schemaName: tariff
+                        tableName: contract
+                        columns:
+                            -   column:
+                                    name: contract_number
+                        indexName: tariff_contract_number_idx
+                -   createIndex:
+                        schemaName: tariff
+                        tableName: contract_region
+                        columns:
+                            -   column:
+                                    name: contract_id
+                        indexName: tariff_contract_region_contract_id_idx
+                -   createIndex:
+                        schemaName: tariff
+                        tableName: messages_geo_zone
+                        columns:
+                            -   column:
+                                    name: name
+                        indexName: tariff_messages_geo_zone_name_idx
+                -   createIndex:
+                        schemaName: tariff
+                        tableName: tariff
+                        columns:
+                            -   column:
+                                    name: taxi_class
+                        indexName: tariff_tariff_taxi_class_idx
+                -   createIndex:
+                        schemaName: tariff
+                        tableName: tariff
+                        columns:
+                            -   column:
+                                    name: transport_type
+                        indexName: tariff_tariff_transport_type_idx
+    -   changeSet:
+            id: "20221028-1"
+            author: medvedev-ad
+            tag: "20221028"
+            changes:
+                -   createIndex:
+                        schemaName: tariff
+                        tableName: message_employee
+                        columns:
+                            -   column:
+                                    name: user_id
+                        indexName: tariff_message_employee_user_id_idx
+                -   createIndex:
+                        schemaName: tariff
+                        tableName: tariff
+                        columns:
+                            -   column:
+                                    name: service_type
+                        indexName: tariff_tariff_service_type_idx
+    -   changeSet:
+            id: "20221028-2"
+            author: medvedev-ad
+            tag: "20221028"
+            preConditions:
+                - onFail: MARK_RAN
+                  onError: HALT
+                  tableExists:
+                      tableName: urls
+                      schemaName: tariff
+            changes:
+                -   createIndex:
+                        schemaName: tariff
+                        tableName: roles
+                        columns:
+                            -   column:
+                                    name: url_id
+                        indexName: tariff_roles_url_id_idx

@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20210125
+            tag: "20210125"
+            author: palekseev
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/remove_personal_discount.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: rollback/rolback_remove_personal_discount.sql
+                        relativeToChangelogFile: true

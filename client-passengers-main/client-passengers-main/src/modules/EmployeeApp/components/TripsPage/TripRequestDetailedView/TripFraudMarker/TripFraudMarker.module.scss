@@ -1,0 +1,78 @@
+.fraudAlert { 
+    border: 1px solid rgb(255, 87, 67);
+    border-radius: 12px;
+    background-color: rgb(255, 238, 236);
+    padding: 8px;
+    font-size: 16px;
+    font-weight: 600;
+
+    ul {
+        margin: 0;
+    }
+}
+
+.fraudContainer { 
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    border-radius: 12px;
+    background-color: rgb(255, 245, 235);
+    border: 1px solid rgb(255, 204, 152);
+    padding: 8px 10px;
+    margin-bottom: 16px;
+
+    @media screen and (max-width: 600px) {
+      width: auto;
+    }
+}
+
+.withApproverFraudContainer {
+    padding: 20px 24px 24px 24px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.04),0px 4px 20px 0px rgba(0, 0, 0, 0.08);
+    margin-top: 16px;
+    margin-bottom: 0;
+    border: none;
+
+    @media screen and (max-width: 600px) {
+      margin: 16px 24px 0 24px;
+    }
+}
+
+.fraudDescription { 
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.fraudTitle { 
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    gap: 5px;
+    font-size: 14px;
+    margin-bottom: 0;
+
+    svg { 
+        max-height: 17px;
+
+        path { 
+            fill: rgb(255, 154, 50);
+        }
+    }
+}
+
+.approverTitle { 
+    font-size: 20px;
+    margin-bottom: 24px;
+
+    svg { 
+        path { 
+            fill: rgb(255, 87, 67);
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+      font-size: 16px;
+    }
+}

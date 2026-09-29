@@ -1,0 +1,22 @@
+.container {
+  margin-top: var(--margin-base);
+  font-weight: 500;
+
+  @media (max-width: 500px) {
+    padding: 0 16px;
+
+    .email {
+      margin-left: 32px;
+    }
+  }
+
+  .icon {
+    margin-right: 10px;
+    font-size: 22px;
+    vertical-align: middle;
+  }
+
+  .link {
+    color: var(--jade);
+  }
+}

@@ -1,0 +1,14 @@
+.cards {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.buttonLinkService {
+  border-radius: 8px;
+  height: 35px;
+  background: rgb(16, 191, 106);
+  color: rgb(255, 255, 255);
+  border: none;
+}

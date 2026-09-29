@@ -1,0 +1,14 @@
+.notifications {
+  .ant-select.ant-select-single.ant-select-show-arrow {
+    position: relative;
+    margin: var(--margin-large) 0;
+  }
+
+  .ant-select {
+    width: 300px !important;
+  }
+
+  .ant-btn:not(:first-child) {
+    margin-left: var(--margin-base);
+  }
+}

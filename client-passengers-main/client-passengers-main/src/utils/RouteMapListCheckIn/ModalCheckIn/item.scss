@@ -1,0 +1,630 @@
+.cardWrapper {
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+  
+      .numberApplication {
+        color: rgb(38, 38, 38);
+        font-family: "SB Sans Interface";
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 28px;
+        letter-spacing: 0px;
+      }
+  
+      .cancel {
+        background-color: rgb(242, 243, 246);
+        width: 24px;
+        border-radius: 50%;
+        height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+    }
+  
+    .main {
+
+      .warning {
+        display: flex;
+        border: 1px solid rgb(255, 154, 50);
+        border-radius: 8px;
+        background: rgb(255, 245, 235);
+        padding: 8px 16px 8px 8px;
+        margin-top: 10px;
+
+        span {
+          color: rgb(0, 0, 0);
+          font-family: SB Sans Text;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 22px;
+          letter-spacing: -0.3px;
+          margin-left: 9px;
+        }
+      }
+
+      .inputWayPoint_error {
+        textarea {
+          border-color: #ff4d4f !important;
+        }
+      }
+
+      .errorMessage {
+        color: #ff4d4f;
+        font-family: "SB Sans Text";
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 18px;
+        margin-top: -12px;
+        margin-bottom: 12px;
+      }
+
+      .ant-input-textarea {
+        padding: 0 !important;
+        width: 100% !important;
+        margin: 10px 0px 20px 0px;
+      }
+  
+      .informationDate {
+        color: rgb(0, 0, 0);
+        font-family: "SB Sans Text";
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 18px;
+        letter-spacing: -0.15px;
+        margin-top: 24px;
+      }
+  
+      .informationRout {
+        margin-top: 24px;
+        padding: 12px;
+        border-radius: 12px;
+        background: rgb(242, 243, 246);
+  
+        .informationRoutTitle {
+          color: rgb(0, 0, 0);
+          font-family: "SB Sans Text";
+          font-size: 16px;
+          font-weight: 600;
+          line-height: 20px;
+          letter-spacing: -0.15px;
+        }
+  
+        .informationRoutMain {
+          display: flex;
+          flex-direction: row;
+          margin-top: 12px;
+  
+          .informationRoutImg {
+            margin-right: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0px;
+  
+            .informationRoutImgStart {
+              width: 18px;
+              height: 18px;
+              border-radius: 50%;
+              background-color: rgb(25, 177, 80);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+  
+              span {
+                color: rgb(255, 255, 255);
+                font-family: "SB Sans Text";
+                font-size: 10px;
+                font-weight: 700;
+                line-height: 13px;
+                letter-spacing: 0px;
+                margin-left: 1px;
+              }
+            }
+  
+            .informationRoutImgLine {
+              height: 25px;
+              width: 3px;
+              background-color: rgb(25, 177, 80);
+            }
+            
+            .informationRoutImgEnd {
+              width: 18px;
+              height: 18px;
+              border-radius: 50%;
+              background-color: rgb(105, 121, 247);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+  
+              span {
+                color: rgb(255, 255, 255);
+                font-family: "SB Sans Text";
+                font-size: 10px;
+                font-weight: 700;
+                line-height: 13px;
+                letter-spacing: 0px;
+                margin-left: 1px;
+              }
+            }
+          }
+  
+          .informationRoutPath {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+  
+            .informationRoutStart {
+              display: flex;
+              flex-direction: column;
+  
+              & span:first-child {
+                color: rgb(168, 171, 179);
+                font-family: "SB Sans Text";
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 15px;
+                letter-spacing: 0px;
+              }
+  
+              & span:last-child {
+                color: rgb(0, 0, 0);
+                font-family: "SB Sans Text";
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 18px;
+                letter-spacing: -0.15px;
+              }
+            }
+  
+            .informationRoutEnd {
+              display: flex;
+              flex-direction: column;
+  
+              & span:first-child {
+                color: rgb(168, 171, 179);
+                font-family: "SB Sans Text";
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 15px;
+                letter-spacing: 0px;
+              }
+  
+              & span:last-child {
+                color: rgb(0, 0, 0);
+                font-family: "SB Sans Text";
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 18px;
+                letter-spacing: -0.15px;
+              }
+            }
+          }
+        }
+      }
+  
+      .informationCar {
+        margin-top: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+  
+        .informationCarTitle { 
+          color: rgb(33, 33, 42);
+          font-family: "SB Sans Text";
+          font-size: 16px;
+          font-weight: 600;
+          line-height: 20px;
+          letter-spacing: -0.32px;
+          margin-bottom: 12px;
+        }
+  
+        .informationCarWrapper {
+          display: flex;
+          justify-content: space-between;
+          width: 75%;
+  
+          .informationCarMain {
+            display: flex;
+  
+            img {
+              width: 32px;
+            }
+    
+            .informationCarModel {
+              display: flex;
+              flex-direction: column;
+              margin-left: 12px;
+  
+              & span:first-child {
+                color: rgb(168, 171, 179);
+                font-family: "SB Sans Text";
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 15px;
+                letter-spacing: 0px;
+              }
+    
+              & span:last-child {
+                color: rgb(0, 0, 0);
+                font-family: "SB Sans Text";
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 18px;
+                letter-spacing: -0.15px;
+              }
+            }
+          }
+  
+          .informationCarNumber {
+            display: flex;
+            flex-direction: column;
+  
+            & span:first-child {
+              color: rgb(168, 171, 179);
+              font-family: "SB Sans Text";
+              font-size: 12px;
+              font-weight: 400;
+              line-height: 15px;
+              letter-spacing: 0px;
+            }
+  
+            & span:last-child {
+              color: rgb(0, 0, 0);
+              font-family: "SB Sans Text";
+              font-size: 14px;
+              font-weight: 400;
+              line-height: 18px;
+              letter-spacing: -0.15px;
+            }
+          }
+        }
+      }
+  
+      .informationDriver {
+        margin-top: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+  
+        .informationDriverTitle { 
+          color: rgb(33, 33, 42);
+          font-family: "SB Sans Text";
+          font-size: 16px;
+          font-weight: 600;
+          line-height: 20px;
+          letter-spacing: -0.32px;
+          margin-bottom: 12px;
+        }
+  
+        .informationDriverWrapper {
+          display: flex;
+          justify-content: space-between;
+          width: 82%;
+  
+          .informationDriverMain {
+            display: flex;
+            align-items: center;
+  
+            img {
+              height: 32px;
+              width: 32px;
+              border-radius: 50%;
+              object-fit: cover;
+            }
+    
+            .informationDriverInfo {
+              display: flex;
+              flex-direction: column;
+              margin-left: 12px;
+  
+              .informationDriverInfoName {
+  
+              }
+  
+              .informationDriverInfoPosition {
+                color: rgb(168, 171, 179);
+                font-family: "SB Sans Text";
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 15px;
+                letter-spacing: 0px;
+              }
+    
+              .informationDriverInfoNumber {
+                color: rgb(0, 0, 0);
+                font-family: "SB Sans Text";
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 18px;
+                letter-spacing: 0px;
+              }
+            }
+          }
+  
+          .informationDriverNumber {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+  
+            & span:first-child {
+              color: rgb(168, 171, 179);
+              font-family: "SB Sans Text";
+              font-size: 12px;
+              font-weight: 400;
+              line-height: 15px;
+              letter-spacing: 0px;
+            }
+  
+            & span:last-child {
+              color: rgb(0, 0, 0);
+              font-family: "SB Sans Text";
+              font-size: 14px;
+              font-weight: 400;
+              line-height: 18px;
+              letter-spacing: -0.15px;
+            }
+          }
+        }
+      }
+  
+      .informationPassengers {
+        margin-top: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+  
+        .informationPassengersList {
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: row;
+  
+          .informationPassengersWrapper {
+            display: flex;
+            justify-content: space-between;
+            width: 48%;
+    
+            .informationPassengersMain {
+              display: flex;
+              align-items: center;
+    
+              img {
+                height: 32px;
+                width: 32px;
+                border-radius: 50%;
+                object-fit: cover;
+              }
+      
+              .informationPassengersInfo {
+                display: flex;
+                flex-direction: column;
+                margin-left: 12px;
+    
+                .informationPassengersInfoName {
+    
+                }
+    
+                .informationPassengersInfoPosition {
+                  color: rgb(168, 171, 179);
+                  font-family: "SB Sans Text";
+                  font-size: 12px;
+                  font-weight: 400;
+                  line-height: 15px;
+                  letter-spacing: 0px;
+                }
+      
+                .informationPassengersInfoNumber {
+                  color: rgb(0, 0, 0);
+                  font-family: "SB Sans Text";
+                  font-size: 12px;
+                  font-weight: 400;
+                  line-height: 18px;
+                  letter-spacing: 0px;
+                }
+              }
+            }
+    
+            .informationPassengersNumber {
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-end;
+    
+              & span:first-child {
+                color: rgb(168, 171, 179);
+                font-family: "SB Sans Text";
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 15px;
+                letter-spacing: 0px;
+              }
+    
+              & span:last-child {
+                color: rgb(0, 0, 0);
+                font-family: "SB Sans Text";
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 18px;
+                letter-spacing: -0.15px;
+              }
+            }
+          }
+        }
+  
+        .informationPassengersTitle { 
+          color: rgb(33, 33, 42);
+          font-family: "SB Sans Text";
+          font-size: 16px;
+          font-weight: 600;
+          line-height: 20px;
+          letter-spacing: -0.32px;
+          margin-bottom: 12px;
+        }
+      }
+    }
+  }
+  
+  .ant-modal-content {
+  
+    & > button {
+      display: none !important;
+    }
+  }
+  
+  .footer {
+  
+    .footerButton {
+  
+      & button:last-child {
+        border-radius: 8px !important;
+      }
+    
+      & button:first-child {
+        color: rgb(38, 38, 38);
+        font-family: "SB Sans Text";
+        font-size: 14px;
+        font-weight: 600 !important;
+        line-height: 22px;
+        letter-spacing: -0.3px;
+      }
+    }
+  
+    .footerCost {
+      display: flex;
+      justify-content: space-between;
+      margin: 34px 0px 60px 0px;
+      align-items: flex-end;
+  
+      & > div {
+        width: 50% !important;
+      }
+  
+      & > div > div > div {
+        display: flex;
+        justify-content: flex-end;
+      }
+  
+      & > span {
+        color: rgb(0, 0, 0);
+        font-family: "SB Sans Text";
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+        letter-spacing: 0px;
+      }
+  
+      .tripInfoCost {
+  
+        & > div > div div:first-child {
+          font-size: 24px !important;
+        }
+  
+        & > div > div div:last-child {
+          font-size: 24px !important;
+          margin-left: 8px !important;
+        }
+      }
+    }
+  }
+  
+  .modal_checkIn {
+    width: 470px !important;
+  
+    & > div > button {
+      display: none !important;
+    }
+
+    .ant-modal-footer {
+        display: none !important;
+    }
+
+    .ant-modal-content {
+        border: 1px solid rgb(242, 243, 246);
+        box-shadow: 0px 12px 24px -6px rgba(0, 0, 0, 0.12),0px 0px 1px 0px rgba(0, 0, 0, 0.12);
+        border-radius: 12px;
+    }
+
+    .footer {
+        padding-top: 24px;
+
+        .footerButton {
+            display: flex;
+            justify-content: space-between;
+
+            .buttonStop {
+                padding: 9px 20px 9px 20px;
+                background: rgb(242, 243, 246);
+                border-radius: 8px;
+                cursor: pointer;
+                color: rgb(38, 38, 38);
+                font-family: SB Sans Text;
+                font-size: 14px;
+                font-weight: 600;
+                line-height: 22px;
+                letter-spacing: -0.3px;
+
+                @media screen and (max-width: 600px) {
+                  padding: 9px 6px 9px 6px;
+                }
+            }
+        }
+
+        .footerButtonNext {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+
+          .ant-btn[disabled] {
+            opacity: 0.5;
+            cursor: not-allowed !important;
+          }
+
+          .delete {
+            background: rgb(16, 191, 106);
+            border-radius: 8px;
+            padding: 9px 20px 9px 20px;
+            color: rgb(255, 255, 255);
+            font-family: SB Sans Text;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 22px;
+            letter-spacing: -0.3px;
+            cursor: pointer;
+          }
+
+          .approve {
+            background: rgb(16, 191, 106);
+            border-radius: 8px;
+            padding: 9px 20px 9px 20px;
+            color: rgb(255, 255, 255);
+            font-family: SB Sans Text;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 22px;
+            letter-spacing: -0.3px;
+            border: 1px solid #10bf6a;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+          }
+
+          .cancel {
+            padding: 9px 20px 9px 20px;
+            color: rgb(38, 38, 38);
+            font-family: SB Sans Text;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 22px;
+            letter-spacing: -0.3px;
+            cursor: pointer;
+          }
+        }
+    }
+  }
+
+  .modal_checkIn {
+    width: 592px !important;
+  }

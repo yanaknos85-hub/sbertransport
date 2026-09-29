@@ -1,0 +1,79 @@
+.container {
+  padding: 20px 24px 24px 24px;
+  border-radius: 12px;
+  background-color: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  .title {
+    padding-bottom: 12px;
+    display: flex;
+    gap: 4px;
+    position: relative;
+    width: 100%;
+
+    :hover {
+      cursor: pointer;
+    }
+
+    .text {
+      font-family: 'SB Sans Interface';
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 24px;
+      color: #262626;
+      margin: 0;
+      flex: 1;
+    }
+
+    .openMarker {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    .closed {
+      transform: rotate(180deg);
+    }
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .text {
+      font-family: 'SB Sans Text';
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+      color: #262626;
+      margin: 0;
+    }
+
+    .fraudContainer {
+      padding: 8px 16px;
+      border-radius: 8px;
+      background-color: #ffeeec;
+      border: 1px solid #ff5743;
+
+      .fraudList {
+        padding: 8px 16px;
+        margin: 0;
+
+        .fraudListItem {
+          font-family: 'SB Sans Text';
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 24px;
+          letter-spacing: -0.3px;
+          color: #262626;
+        }
+      }
+    }
+  }
+}

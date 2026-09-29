@@ -1,0 +1,14 @@
+<svg width="32.000000" height="32.000000" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip814_140697">
+			<rect id="Name=parking" rx="8.000000" width="32.000000" height="32.000000" fill="white"/>
+		</clipPath>
+	</defs>
+	<rect id="Name=parking" rx="8.000000" width="32.000000" height="32.000000" fill="#00CDDC" fill-opacity="0.08"/>
+	<g clip-path="url(#clip814_140697)">
+		<path id="Vector" d="M20.739 20.739L16.7058 24.7722C16.019 25.4589 14.9056 25.4589 14.2189 24.7722L10.1857 20.739C7.27148 17.8248 7.27148 13.0999 10.1857 10.1857C13.0999 7.27142 17.8247 7.27142 20.739 10.1857C23.6532 13.0999 23.6532 17.8248 20.739 20.739ZM14.402 18.7917L14.402 13.5395L15.9617 13.5395C16.7904 13.5395 17.4623 14.2114 17.4623 15.0401C17.4623 15.8689 16.7904 16.5408 15.9617 16.5408L14.402 16.5408" stroke="#0D939D" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+	</g>
+</svg>

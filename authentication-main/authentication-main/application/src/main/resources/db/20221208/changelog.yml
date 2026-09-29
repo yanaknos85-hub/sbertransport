@@ -1,0 +1,68 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20221208-1"
+            author: medvedev-ad
+            context: "20221208"
+            dbms: postgresql
+            preConditions:
+              - not:
+                  - columnExists:
+                      schemaName: authentication
+                      tableName: role
+                      columnName: default_for
+              - onFail: MARK_RAN
+            changes:
+                -   tagDatabase:
+                        tag: "20221208"
+                -   addColumn:
+                        schemaName: authentication
+                        tableName: role
+                        columns:
+                            -   column:
+                                    name: default_for
+                                    type: jsonb
+                                    remarks: Роль является умолчанием для указанных пространств
+                -   sqlFile:
+                        path: changes/fill_default_for.sql
+                        relativeToChangelogFile: true
+                -   dropColumn:
+                        schemaName: authentication
+                        tableName: role
+                        columnName: default
+            rollback:
+                -   dropColumn:
+                        schemaName: authentication
+                        tableName: role
+                        columnName: default_for
+                -   sqlFile:
+                        path: rollback/fill_default_for.sql
+                        relativeToChangelogFile: true
+                -   addColumn:
+                        schemaName: authentication
+                        tableName: role
+                        columns:
+                            -   column:
+                                    name: default
+                                    type: boolean
+                                    remarks: Роль является умолчанием
+                                    defaultValueBoolean: false
+                                    constraints:
+                                        nullable: false
+    -   changeSet:
+            id: "20221208-1"
+            author: medvedev-ad
+            context: "20221208"
+            dbms: h2
+            changes:
+                -   tagDatabase:
+                        tag: "20221208"
+                -   sql:
+                      sql: alter table authentication.role DROP COLUMN "default"
+                -   addColumn:
+                        schemaName: authentication
+                        tableName: role
+                        columns:
+                            -   column:
+                                    name: default_for
+                                    type: json
+                                    remarks: Роль является умолчанием для указанных пространств

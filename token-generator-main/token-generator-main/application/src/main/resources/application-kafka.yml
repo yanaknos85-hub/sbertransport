@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        rolesInput-in-0:
+          group: ${spring.application.name}
+          destination: service.roles
+          binder: kafka
+        accountsInput-in-0:
+          group: ${spring.application.name}
+          destination: service.sudir.account
+          binder: kafka

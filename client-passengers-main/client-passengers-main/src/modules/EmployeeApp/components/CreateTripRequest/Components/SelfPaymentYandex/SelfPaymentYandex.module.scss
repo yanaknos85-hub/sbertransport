@@ -1,0 +1,35 @@
+.selfContainer { 
+    border: 1px solid rgb(255, 225, 194);
+    background-color: rgb(255, 245, 235);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.selfTitleContainer { 
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.selfTitle { 
+    margin: 0;
+    line-height: normal;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.selfSubtitle {
+    margin: 0;
+    font-size: 14px;
+    color: rgb(77, 77, 77);
+    letter-spacing: -0.3px;
+}
+
+.selfIcon {
+    max-width: 24px;
+    max-height: 24px;
+    width: 100%;
+}

@@ -1,0 +1,103 @@
+.personalCarsContainer {
+  .title {
+    text-align: center;
+  }
+
+  :global(.ant-radio-group) {
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+
+    :global(.ant-radio) {
+      display: none;
+    }
+
+    :global(.personal-card-content) {
+      padding: 0;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+
+      .carIcon {
+        position: absolute;
+        width: calc(3 * var(--indent-large));
+        height: calc(2 * var(--indent-large));
+        top: var(--indent-half);
+        left: 25%;
+        background: url(../../../../../../shared/components/Images/black.png) no-repeat no-repeat center 0;
+        background-size: contain;
+      }
+
+      .motorcycleIcon {
+        position: absolute;
+        width: calc(3 * var(--indent-large));
+        height: calc(1.8 * var(--indent-large));
+        left: 25%;
+        background: url(../../../../../../shared/components/Images/motorcycle.jpg) no-repeat no-repeat center 0;
+        background-size: contain;
+      }
+
+      .carInfo {
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        .textOverflow {
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          max-width: calc(2.7 * var(--indent-large));
+        }
+
+        .firstCol {
+          margin-right: var(--margin-fourth);
+        }
+
+        .carBrand {
+          font-weight: 900;
+        }
+
+        .transportType {
+          color: #b6b8bf;
+          font-size: calc(3 * var(--indent-fourth));
+          margin-top: calc(-1 * var(--margin-fourth));
+        }
+
+        .regNumber {
+          font-size: calc(3.5 * var(--indent-fourth));
+          font-weight: 600;
+        }
+
+        .icon {
+          display: inline-block;
+          margin-left: calc(-2 * var(--margin-fourth));
+          width: calc(2 * var(--indent-large));
+          height: var(--indent-large);
+          background: url(../../../../../../shared/components/Images/view/icon-flag-russia.svg) no-repeat no-repeat
+            center 0;
+          background-size: contain;
+        }
+      }
+    }
+  }
+
+  .disabled {
+    border-radius: var(--indent-base);
+    overflow: auto;
+    color: rgba(0, 0, 0, 0.08);
+    transition: color 0.1s;
+    cursor: not-allowed !important;
+    // box-shadow: 0 0 var(--indent-base) calc(-1 * var(--indent-fourth)) rgba(0, 0, 0, 0.5);
+
+    .transportType {
+      color: rgba(0, 0, 0, 0.08);
+      font-size: inherit;
+    }
+
+    .carIcon {
+      opacity: 0.4;
+    }
+  }
+}

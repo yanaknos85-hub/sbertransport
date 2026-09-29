@@ -1,0 +1,42 @@
+.emptyWrapper {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .emptyContent {
+        max-width: 700px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+
+        > div {
+            padding: 0;
+        }
+
+        h3 {
+            font-size: 16px;
+            color: #000000;
+            line-height: 24px;
+            letter-spacing: -0.3px;
+        }
+
+        i {
+            max-width: 270px;
+            text-align: center;
+            font-size: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .addButton {
+            height: 40px;
+            font-weight: 600;
+            font-family: "SB Sans Text", sans-serif;
+            padding: 0 20px;
+            margin-top: 36px;
+        }
+    }
+}

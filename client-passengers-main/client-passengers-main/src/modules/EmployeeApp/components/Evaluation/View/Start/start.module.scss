@@ -1,0 +1,151 @@
+.rateContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: inherit;
+    gap: 24px;
+    font-family: SB Sans Interface;
+
+    &__title {
+        text-align: left;
+        vertical-align: top;
+        font-size: 16px;
+        letter-spacing: -0.3px;
+        line-height: 24px;
+        color: #909090;
+        font-family: SB Sans Text;
+        margin-bottom: 0px;
+    }
+
+    &__frame {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        width: 100%;
+    }
+}
+
+p {
+    margin-bottom: 0;
+}
+
+.badRate {
+    fill: #FF9A32;
+    filter: drop-shadow(0px 6px 12px rgba(255, 154, 50, 0.38));
+
+    path {
+        stroke: #FF9A32;
+    }
+}
+
+.goodRate {
+    fill: #10BF6A;
+    filter: drop-shadow(0px 6px 12px rgba(16, 191, 106, 0.38));
+
+    path {
+        stroke: #10BF6A;
+    }
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
+    border-radius: 10px;
+    padding: 16px;
+    background-color: rgba(242, 243, 246, 0.6000000238418579);
+}
+
+.info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .carContainer {
+        border: 1px solid #26262624;
+        border-radius: 20px;
+        display: flex;
+        font-size: 12px;
+        align-items: center;
+        padding: 7px 15px;
+        letter-spacing: -0.154px;
+    }
+
+    p {
+        text-align: right;
+        vertical-align: top;
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: -0.5px;
+
+        b {
+            font-size: 16px;
+            color: #909090;
+            letter-spacing: -0.3px;
+        }
+    }
+}
+
+.stars {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+
+    animation: stretch-bounce .5s ease-in-out;
+    -webkit-animation: stretch-bounce .5s ease-in-out;
+
+    p {
+        text-align: left;
+        vertical-align: top;
+        font-size: 14px;
+        font-family: SB Sans Text;
+        letter-spacing: -0.3px;
+        line-height: 22px;
+        color: #262626;
+        padding-top: 16px;
+    }
+
+    .startIconsContainer {
+        display: grid;
+        gap: 0 26px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    .startIconsContainerReadonly {
+        cursor: default;
+    }
+}
+
+.starsReadonly {
+    cursor: default;
+}
+
+.ratesList {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 24px;
+
+    svg {
+        cursor: pointer;
+    }
+}
+
+.bar {
+    height: 100px;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: -0.132px;
+    margin: 0 0 24px 0;
+}

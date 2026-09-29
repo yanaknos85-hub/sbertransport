@@ -1,0 +1,117 @@
+@import '../styles.module.scss';
+
+.sharedRideSettings {
+  padding: 0 var(--padding-large);
+
+  :global(.ant-table) {
+    margin-top: var(--margin-base);
+  }
+}
+
+.cellSelect {
+  width: 100%;
+
+  :global(.ant-select-selector) {
+    border-radius: 8px !important;
+  }
+}
+
+.cellDisplay {
+  border: 1px solid #e0e0e0;
+  background-color: #fbfbfc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+
+  min-height: 40px;
+}
+
+.sharedRideSettingsTable {
+  width: 100%;
+
+  :global {
+    .ant-table {
+      background-color: transparent;
+
+      tr,
+      td {
+        border: none;
+      }
+
+      tr {
+        td:first-child,
+        th:first-child {
+          border-radius: 10px 0 0 10px;
+          padding-right: 14px;
+          border: none;
+          background-color: transparent;
+        }
+
+        td:last-child,
+        th:last-child {
+          border-radius: 0 10px 10px 0;
+          border: none;
+        }
+
+        td {
+          padding: 14px 16px;
+
+          table {
+            border-spacing: 0;
+          }
+
+          td {
+            padding: 0;
+          }
+
+          &:first-child + td {
+            padding-left: 0;
+          }
+        }
+      }
+    }
+    .ant-table-cell-fix-right {
+      background-color: transparent;
+
+      .anticon-edit {
+        color: #4d4d4d;
+        background-color: #f2f3f6;
+        border-radius: 8px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+
+    .ant-table-thead {
+      box-shadow: 0px 4px 8px -2px rgba(0, 0, 0, 0.12), 0px 0px 1px 0px rgba(0, 0, 0, 0.12);
+      border-radius: 8px;
+      background-color: #fff;
+
+      tr,
+      th {
+        background-color: #fff;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 22px;
+        line-height: 16px;
+        letter-spacing: -0.3px;
+        color: #737373;
+        border: none;
+      }
+    }
+
+    .ant-table-body {
+      table {
+        border-spacing: 0 10px;
+      }
+    }
+  }
+}

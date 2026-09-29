@@ -1,0 +1,16 @@
+<svg width="16.000000" height="16.000000" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+		<clipPath id="clip134_24637">
+			<rect id="24 Linear / Notification - Exclamation" width="16.000000" height="15.999999" transform="translate(0.000000 0.666626)" fill="white" fill-opacity="0"/>
+		</clipPath>
+		<clipPath id="clip134_24634">
+			<rect id="24 Filled / Exclamation - Triangle" width="16.000000" height="16.000000" fill="white" fill-opacity="0"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip134_24634)">
+		<path id="Union" d="M9.73291 2.33368L15.1331 11.667C15.2664 11.9337 15.3997 12.267 15.333 12.667C15.333 13.7337 14.4663 14.667 13.333 14.667L2.59961 14.667C2.26636 14.667 1.93311 14.6003 1.59961 14.4004C0.66626 13.867 0.333008 12.6003 0.866455 11.667L6.26636 2.33368C6.39966 2.06702 6.66626 1.80035 6.99976 1.60037C7.93311 1.06702 9.19971 1.40036 9.73291 2.33368Z" clip-rule="evenodd" fill="#FF9A32" fill-opacity="1.000000" fill-rule="evenodd"/>
+		<g clip-path="url(#clip134_24637)">
+			<path id="Vector" d="M8 9.33C8.39 9.33 8.66 9.06 8.66 8.66L8.66 6C8.66 5.6 8.39 5.33 8 5.33C7.59 5.33 7.33 5.6 7.33 6L7.33 8.66C7.33 9.06 7.59 9.33 8 9.33ZM7.33 11.33C7.33 11.73 7.59 12 8 12C8.39 12 8.66 11.73 8.66 11.33C8.66 10.93 8.39 10.66 8 10.66C7.59 10.66 7.33 10.93 7.33 11.33Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="evenodd"/>
+		</g>
+	</g>
+</svg>

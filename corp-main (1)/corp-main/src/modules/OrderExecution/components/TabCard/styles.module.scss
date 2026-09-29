@@ -1,0 +1,109 @@
+.tabCardBlock {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  background: #ffffff;
+  min-height: 88px;
+  padding: 17px 0 20px 24px;
+  border-radius: 12px;
+  overflow: hidden;
+
+  &__infoColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; // TODO: вернуть space-between, когда появятся цифры на табах
+  }
+
+  &__name {
+    font-family: 'SB Sans Interface', sans-serif;
+    font-size: 15px; // TODO: вернуть 12 px, когда появятся цифры на табах
+    line-height: 16px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    color: #808b95;
+  }
+
+  &__all {
+    font-family: 'SB Sans Text', sans-serif;
+    font-size: 28px;
+    line-height: 22px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: #131618;
+  }
+
+  &__image {
+    position: absolute;
+    width: 144px;
+    height: 144px;
+
+    &.all {
+      right: -32px;
+      top: 0;
+    }
+
+    &.passengers {
+      right: -46px;
+      top: -29px;
+    }
+
+    &.cargo {
+      right: -34px;
+      top: -36px;
+    }
+
+    &.carService {
+      right: -34px;
+      top: -32px;
+    }
+
+    &.parking {
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  &_active {
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: calc((100% - 64px) / 2);
+      height: 64px;
+      width: 6px;
+      border-radius: 12px;
+    }
+
+    &.all {
+      &:before {
+        background-color: #0091ff;
+      }
+    }
+
+    &.passengers {
+      &:before {
+        background-color: #ffc914;
+      }
+    }
+
+    &.cargo {
+      &:before {
+        background-color: #ff9a32;
+      }
+    }
+
+    &.carService {
+      &:before {
+        background-color: #10bf6a;
+      }
+    }
+
+    &.parking {
+      &:before {
+        background-color: #10bf6a;
+      }
+    }
+  }
+}

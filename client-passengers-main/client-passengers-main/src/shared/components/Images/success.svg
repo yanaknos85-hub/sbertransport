@@ -1,0 +1,19 @@
+<svg width="72.000000" height="72.000000" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip2_2746">
+			<rect id="24 Filled / Check - Circle" width="72.000000" height="72.000000" fill="white"/>
+		</clipPath>
+		<clipPath id="clip2_2744">
+			<rect id="Icon" width="72.000000" height="72.000000" fill="white"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip2_2744)">
+		<ellipse id="Ellipse " rx="15.000000" ry="27.000000" transform="matrix(1 0 0 1 36 36)" fill="#FFFFFF"/>
+		<g clip-path="url(#clip2_2746)">
+			<path id="Union" d="M6 36C6 19.5 19.5 6 36 6C52.5 6 66 19.5 66 36C66 52.5 52.5 66 36 66C19.5 66 6 52.5 6 36ZM34.2002 45.2998L48.6001 30.9004C49.7998 29.7002 49.7998 27.9004 48.6001 26.7002C47.3999 25.5 45.6001 25.5 44.3999 26.7002L32.1001 39L27.6001 34.5C26.3999 33.2998 24.6001 33.2998 23.3999 34.5C22.2002 35.7002 22.2002 37.5 23.3999 38.7002L30 45.2998C31.2002 46.5 33 46.5 34.2002 45.2998Z" clip-rule="evenodd" fill-rule="evenodd" fill="#10BF6A" fill-opacity="1.000000"/>
+		</g>
+	</g>
+</svg>

@@ -1,0 +1,24 @@
+databaseChangeLog:
+    -   changeSet:
+            id: 20210622-1
+            author: medvedev-ad
+            preConditions:
+                -   not:
+                        -   columnExists:
+                                schemaName: authentication
+                                tableName: role
+                                columnName: description
+                - onFail: MARK_RAN
+            changes:
+                -   addColumn:
+                        schemaName: authentication
+                        tableName: role
+                        columns:
+                            -   column:
+                                    name: name
+                                    type: text
+                                    remarks: Название. Удалить после внедрения API Compound
+                            -   column:
+                                    name: description
+                                    type: text
+                                    remarks: Название. Удалить после внедрения API Compound

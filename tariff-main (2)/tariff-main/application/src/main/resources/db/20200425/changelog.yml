@@ -1,0 +1,11 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20200425
+            tag: "20200425"
+            author: mad
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: change_min_mileage_type.sql
+                        relativeToChangelogFile: true

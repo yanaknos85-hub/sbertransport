@@ -1,0 +1,27 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20210504
+            tag: "20210504"
+            author: medvedev-ad
+            preConditions:
+                -   tableExists:
+                        tableName: organization
+                        schemaName: tariff
+                    onFail: MARK_RAN
+            changes:
+                -   tagDatabase:
+                        tag: "20210504"
+                -   addColumn:
+                        tableName: organization
+                        schemaName: tariff
+                        columns:
+                            - column:
+                                  name: name
+                                  type: text
+            rollback:
+                -   dropColumn:
+                        tableName: organization
+                        schemaName: tariff
+                        columns:
+                            - column:
+                                  name: name

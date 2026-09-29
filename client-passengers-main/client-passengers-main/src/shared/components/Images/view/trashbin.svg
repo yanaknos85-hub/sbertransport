@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="56px" height="56px" viewBox="0 0 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>ic/trashbin</title>
+    <g id="ic/trashbin" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Plus-address">
+            <circle id="Oval" stroke="#CCCCCC" stroke-width="1.5" opacity="0.3" cx="28" cy="28" r="27.25"></circle>
+            <g id="Trash,-Delete,-Bin.2" transform="translate(11.684211, 11.473684)">
+                <rect id="Rectangle" x="0.315789474" y="0.526315789" width="32" height="32"></rect>
+                <line x1="6" y1="9.89473684" x2="26.6315789" y2="9.89473684" id="Path" stroke="#595959" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></line>
+                <path d="M25.1578947,9.89473684 L25.1578947,26.1052632 C25.1578947,27.7336842 23.8389474,29.0526316 22.2105263,29.0526316 L10.4210526,29.0526316 C8.79263158,29.0526316 7.47368421,27.7336842 7.47368421,26.1052632 L7.47368421,9.89473684" id="Path" stroke="#595959" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <line x1="20.7368421" y1="5.10526316" x2="11.8947368" y2="5.10526316" id="Path" stroke="#595959" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></line>
+                <line x1="13.3684211" y1="15.7894737" x2="13.3684211" y2="23.1578947" id="Path" stroke="#595959" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></line>
+                <line x1="19.2631579" y1="15.7894737" x2="19.2631579" y2="23.1578947" id="Path" stroke="#595959" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></line>
+            </g>
+        </g>
+    </g>
+</svg>

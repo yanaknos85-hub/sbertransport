@@ -1,0 +1,118 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20250123"
+      author: rakhimov-di
+      changes:
+        - createTable:
+            schemaName: reports
+            tableName: user_preferences
+            remarks: Настройки пользователя
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: user_preferences_pk
+              - column:
+                  name: user_id
+                  type: uuid
+                  remarks: Идентификатор пользователя
+                  constraints:
+                    nullable: false
+              - column:
+                  name: name_form
+                  type: text
+                  remarks: Наименование формы
+                  constraints:
+                    nullable: false
+        - createIndex:
+            schemaName: reports
+            tableName: user_preferences
+            indexName: user_preferences_user_id_idx
+            columns:
+              - column:
+                  name: user_id
+        - createTable:
+            schemaName: reports
+            tableName: user_controls
+            remarks: Настройки пользователя - перечисление пользовательских элементов
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: user_controls_pk
+              - column:
+                  name: user_preferences_id
+                  type: uuid
+                  remarks: Идентификатор настроек пользователя
+                  constraints:
+                    nullable: false
+                    foreignKeyName: user_preferences_fkey
+                    referencedTableSchemaName: reports
+                    referencedTableName: user_preferences
+                    referencedColumnNames: id
+              - column:
+                  name: type_control
+                  type: text
+                  remarks: Тип элемента управления
+                  constraints:
+                    nullable: false
+              - column:
+                  name: value
+                  type: text
+                  remarks: Наименование элемента управления
+        - createIndex:
+            schemaName: reports
+            tableName: user_controls
+            indexName: user_controls_user_preferences_id_idx
+            columns:
+              - column:
+                  name: user_preferences_id
+        - createTable:
+            schemaName: reports
+            tableName: user_property
+            remarks: Настройки пользователя - перечисление свойств элементов
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: user_property_pk
+              - column:
+                  name: user_controls_id
+                  type: uuid
+                  remarks: Идентификатор таблицы перечисления пользовательских элементов
+                  constraints:
+                    nullable: false
+                    foreignKeyName: user_controls_fkey
+                    referencedTableSchemaName: reports
+                    referencedTableName: user_controls
+                    referencedColumnNames: id
+              - column:
+                  name: name_setting
+                  type: text
+                  remarks: Наименование свойства
+                  constraints:
+                    nullable: false
+              - column:
+                  name: value_setting
+                  type: text
+                  remarks: Значение свойства элемента управления
+              - column:
+                  name: sort
+                  type: integer
+                  remarks: Порядок сортировки
+        - createIndex:
+            schemaName: reports
+            tableName: user_property
+            indexName: user_property_user_controls_id_idx
+            columns:
+              - column:
+                  name: user_controls_id

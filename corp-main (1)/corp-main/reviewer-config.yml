@@ -1,0 +1,42 @@
+branch:
+  ignore_regex: "^master$|^release/.*$|^hotfix/.*$" #регулярное выражение для игнорирования пр-ов из ветки такой-то
+
+review_mode: # режим ревью: можно выбрать либо использовать одновременно
+  - DETAILED # пофайловый анализ кода (производительность, безопасность, читаемость, отказоустойчивость и др.)
+  - FIRST_VIEW # общий анализ архитектуры и логической согласованности
+  - CUSTOM # анализ по пользовательским инструкциям (файл customer_instructions_file_name)
+
+review_format: # задаёт, в каком виде будут представлены результаты (можно выбрать несколько):
+  - SUGGESTIONS # инлайн-предложения прямо в коде
+  - REPORT # единый текстовый отчёт
+  #- HTML # подробный HTML-отчёт с описанием проблем и исправлений
+
+customer_instructions_file_name: "instructions.md" # имя файла с инструкциями
+
+# rules:
+#   - name: "Java Code Review Rule"
+#     content: "ОЧЕНЬ СТРОГО ПРОВЕРЯЙ JAVA КОД КАК БУДТО ТЫ НАДЗИРАТЕЛЬ"
+#     description: "Базовое правило для ревью Java кода"
+#   - name: "Architecture Rule"
+#     filepath: "arch-rules.md"
+#     description: "Проверка соблюдения архитектурных принципов"
+
+severity_type: # Фильтрация по серьезности дефектов
+  - "MAJOR"
+  - "MINOR"
+  - "INFO"
+
+  # filter:
+  #   extensions:
+  #     - ".js" # Будет игнорировать файлы с расширением js
+  #     - ".html" #Будет игнорировать html файлы
+  #   paths:
+  #     - "src/test/demo.cpp" # Игнорит конкретный путь
+  #     - "~src/test/js" # Игнорит пути которые содержат
+
+auto_approve: true
+
+description: APPEND #Либо NEW
+
+git:
+  update_strategy: MERGE # Либо REBASE

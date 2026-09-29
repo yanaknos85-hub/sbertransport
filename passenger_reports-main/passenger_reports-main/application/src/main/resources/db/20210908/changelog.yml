@@ -1,0 +1,18 @@
+databaseChangeLog:
+    -   changeSet:
+            id: reports/20210908
+            author: chuprin
+            dbms: postgresql
+            changes:
+                - sqlFile:
+                    path: changes/delete_request_with_empty_employee.sql
+                    relativeToChangelogFile: true
+                    endDelimiter: ;
+                - sqlFile:
+                        path: changes/delete_empty_request.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;
+                - sqlFile:
+                        path: changes/delete_empty_employee.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

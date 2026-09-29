@@ -1,0 +1,22 @@
+<svg width="24.000000" height="24.000000" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip1576_32426">
+			<rect id="Property 1=bid trip" width="24.000000" height="24.000000" fill="white"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip1576_32426)">
+		<path id="Path" d="M2.99609 9.49902L2.99609 6.49707C2.99609 4.83984 4.33984 3.49609 5.99707 3.49609L10.999 3.49609" stroke="#262626" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M21.0039 12.5L21.0039 18.5029C21.0039 20.1602 19.6602 21.5039 18.002 21.5039L17.002 21.5039" stroke="#262626" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+		<circle id="Oval" cx="18.002930" cy="6.498047" r="4.001667" stroke="#262626" stroke-width="1.500000" stroke-linejoin="round"/>
+		<path id="Path" d="M19.3369 5.83105L17.6699 7.49805L16.6689 6.49805" stroke="#262626" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M14.001 20.5039C14.001 21.0566 13.5527 21.5039 13.001 21.5039L12.0107 21.5039C11.458 21.5039 11.0098 21.0566 11.0098 20.5039L11.0098 19.8428L4.9873 19.8428L4.9873 20.5039C4.9873 21.0566 4.53906 21.5039 3.9873 21.5039L2.99609 21.5039C2.44434 21.5039 1.99609 21.0566 1.99609 20.5039L1.99609 17.3027C1.99609 16.1973 2.8916 15.3018 3.99707 15.3018L12 15.3018C13.1055 15.3018 14.001 16.1973 14.001 17.3027L14.001 20.5039Z" stroke="#262626" stroke-width="1.500000" stroke-linejoin="round"/>
+		<path id="Path" d="M5.99805 17.502L4.49707 17.502" stroke="#262626" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M11.5 17.502L9.99902 17.502" stroke="#262626" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M12.5049 15.2383L14.001 14.4912" stroke="#262626" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M3.49609 15.2383L1.99512 14.4912" stroke="#262626" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M12.5225 15.3662L11.8877 12.6553C11.7285 11.9795 11.126 11.502 10.4316 11.5L5.56543 11.5C4.87109 11.502 4.26855 11.9795 4.1084 12.6553L3.47461 15.3662L4.1084 12.6553M4.1084 12.6553C4.26855 11.9795 4.87109 11.502 5.56543 11.5" stroke="#262626" stroke-width="1.500000" stroke-linejoin="round"/>
+	</g>
+</svg>

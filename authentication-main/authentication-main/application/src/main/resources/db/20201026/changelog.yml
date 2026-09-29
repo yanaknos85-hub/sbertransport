@@ -1,0 +1,9 @@
+databaseChangeLog:
+    -   changeSet:
+            id: authentication/20201026
+            author: chuprin
+            changes:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: add_column_active.sql
+                        relativeToChangelogFile: true

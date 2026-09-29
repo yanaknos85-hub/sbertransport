@@ -1,0 +1,30 @@
+package ru.sberbank.ditsib.transport.tariff.messaging.sender.impl;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+import ru.sber.transport.messaging.kafka.binding.OutputBridge;
+import ru.sberbank.ditsib.transport.tariff.database.model.GroupTransferTariff;
+import ru.sberbank.ditsib.transport.tariff.mappers.TariffMapper;
+import ru.sberbank.ditsib.transport.tariff.messaging.sender.GroupTransferTariffSender;
+
+@Slf4j
+@RequiredArgsConstructor
+@Component
+public class GroupTransferTariffSenderImpl implements GroupTransferTariffSender {
+
+    @Qualifier("groupTransferTariffOutput")
+    private final ObjectProvider<OutputBridge> groupTransferTariffOutput;
+    
+    private final TariffMapper mapper;
+    
+    @Override
+    public void send(GroupTransferTariff tariff) {
+        var message = mapper.toMessage(tariff);
+        log.info("GroupTransferTariffSender: going to send tariff" + message.getId());
+        groupTransferTariffOutput.ifAvailable(it -> it.send(message));
+    }
+    
+}

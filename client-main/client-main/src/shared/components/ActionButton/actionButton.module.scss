@@ -1,0 +1,12 @@
+.actionButton {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: var(--solitude);
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}

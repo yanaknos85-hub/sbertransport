@@ -1,0 +1,74 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  :global {
+    div[class*='paginationContainer'] {
+      align-items: flex-end;
+
+      div[class*='sizeSelector'] {
+        width: 213px;
+        margin: 0;
+        border-radius: 8px;
+        border: 1px solid #d4d8e3;
+        column-gap: 0;
+        padding: 10px 8px 10px 16px;
+
+        span[class*='selectDescription'] {
+          display: block;
+          width: 117px;
+          border-right: 1px solid #26262614;
+          padding: 3px 0;
+
+          font-family: 'SB Sans Text';
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 22px;
+          letter-spacing: -0.3px;
+          color: #737373;
+        }
+
+        .ant-select-selector {
+          border-left: none !important;
+        }
+      }
+
+      .ant-pagination {
+        display: flex;
+        gap: 4px;
+        font-family: 'SB Sans Text';
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 22px;
+        letter-spacing: -0.3px;
+        color: #737373;
+
+        .ant-pagination-prev,
+        .ant-pagination-item,
+        .ant-pagination-next {
+          width: 32px;
+          height: 32px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 8px;
+        }
+
+        .ant-pagination-item-link {
+          background-color: inherit !important;
+        }
+
+        .ant-pagination-disabled button {
+          background-color: inherit;
+        }
+
+        .ant-pagination-item-active {
+          background-color: #10bf6a;
+          color: #ffffff;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

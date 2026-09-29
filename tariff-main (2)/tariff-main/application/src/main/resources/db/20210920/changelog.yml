@@ -1,0 +1,19 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20210920
+            tag: "20210920"
+            author: smirnova
+            dbms: postgresql
+            preConditions:
+                -   tableExists:
+                        schemaName: tariff
+                        tableName: tariff
+            changes:
+                -   sqlFile:
+                        path: change/add_column_cargo_tariff.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_column_cargo_tariff.sql
+                        relativeToChangelogFile: true

@@ -1,0 +1,254 @@
+.draft {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+/* ---- Header ---- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.headerTitle {
+  color: rgb(38, 38, 38);
+  font-family: 'SB Sans Interface', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 0;
+}
+
+/* ---- Left / Right columns ---- */
+.bodyRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.taxiLabel {
+  color: rgb(38, 38, 38);
+  font-family: 'SB Sans Text', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.3px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  img {
+    width: 32px;
+  }
+}
+
+.purposeBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 8px;
+  background: rgb(242, 243, 246);
+  padding: 3px 8px;
+
+  color: rgb(38, 38, 38);
+  font-family: 'SB Sans Interface', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+  text-align: left;
+}
+
+.rightCol {
+  flex-shrink: 0;
+  padding: 8px;
+  border-radius: 8px;
+  background: rgb(242, 243, 246);
+  min-width: 0;
+}
+
+.planTitle {
+  color: #262626;
+  font-family: 'SB Sans Text', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.3px;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.columns {
+  display: flex;
+  gap: 0;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 16px;
+}
+
+.column:first-child {
+  padding-left: 0;
+}
+
+.column:last-child {
+  padding-right: 0;
+}
+
+.colLabel {
+  color: rgb(144, 144, 144);
+  font-family: 'SB Sans Interface', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.colValue {
+  color: rgb(38, 38, 38);
+  font-family: 'SB Sans Text', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.3px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.divider {
+  width: 1px;
+  background: rgba(38, 38, 38, 0.08);
+  flex-shrink: 0;
+}
+
+/* ---- Route section ---- */
+.routeHeader {
+  color: rgb(38, 38, 38);
+  font-family: 'SB Sans Interface', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 0;
+  margin-bottom: 16px;
+}
+
+.routeBody {
+  display: flex;
+  gap: 10px;
+
+  >* {
+    flex: 1 1 50%;
+  }
+}
+
+.addresses {
+  position: relative;
+}
+
+.address {
+  display: flex;
+  gap: 17px;
+  align-items: stretch;
+  font-size: 16px;
+  position: relative;
+  padding-bottom: 16px;
+
+  &:not(:last-child) {
+    .line {
+      flex-grow: 1;
+      background: linear-gradient(180deg, #10BF6A 65%, rgb(105, 121, 247));
+      width: 3px;
+    }
+  }
+
+  .line {
+    position: absolute;
+    top: 10px;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .lineWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &.second {
+      .circle {
+        background: rgb(105, 121, 247);
+      }
+
+      .line {
+        background: linear-gradient(180deg, rgb(105, 121, 247) 65%, #10BF6A);
+      }
+    }
+  }
+
+  .circle {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #10BF6A;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    color: white;
+    z-index: 2;
+  }
+}
+
+.markerText {
+  color: rgb(115, 115, 115);
+  font-family: SB Sans Interface;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+}
+
+.addressText {
+  font-family: 'SB Sans Text', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.3px;
+  padding: 2px 0;
+}
+
+.mapPlaceholder {
+  width: 50%;
+  height: 219px;
+  border-radius: 8px;
+  background: rgb(242, 243, 246);
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+
+  .map {
+    width: 100%;
+    height: 100%;
+  }
+}

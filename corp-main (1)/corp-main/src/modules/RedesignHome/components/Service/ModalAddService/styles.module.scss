@@ -1,0 +1,316 @@
+.modalAddService {
+  z-index: 1;
+  min-width: 1000px;
+
+  &_footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    & > div:first-child {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      & > span {
+        color: rgb(0, 145, 255);
+        font-family: SB Sans Text;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 22px;
+        letter-spacing: -0.3px;
+        margin-left: 8px;
+      }
+    }
+
+    & > div:last-child {
+      display: flex;
+    }
+  }
+
+  :global {
+    .ant-modal-content {
+      border: 1px solid #f2f3f6;
+      border-radius: 12px;
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0.12), 0 12px 24px -6px rgba(0, 0, 0, 0.12);
+    }
+
+    .ant-modal-header {
+      border-bottom: none;
+    }
+
+    .ant-modal-close-x {
+      display: flex;
+      justify-content: center;
+
+      .ModalIcon {
+        width: 24px;
+      }
+    }
+
+    .ant-modal-title {
+      color: rgb(38, 38, 38);
+      font-family: SB Sans Interface;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+      letter-spacing: 0px;
+    }
+
+    .ant-modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      border-top: 0;
+    }
+
+    .ant-btn {
+      display: flex;
+      align-items: center;
+      border-radius: 8px;
+      font-weight: 600;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+      height: 40px;
+      padding: 0 20px;
+    }
+
+    .ant-btn-primary {
+      background: #10bf6a;
+    }
+
+    .ant-btn-text {
+      &:hover,
+      &:focus {
+        background-color: #fff;
+      }
+    }
+
+    .ant-checkbox-inner {
+      border-radius: 3px;
+    }
+
+    .ant-input {
+      height: 40px;
+    }
+
+    .ant-input::placeholder { 
+      color: rgb(144, 144, 144);
+      font-family: SB Sans Text;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+    }
+
+    .ant-form-item-label {
+
+      label {
+        margin-bottom: 8px;
+        color: rgb(38, 38, 38);
+        font-family: SB Sans Interface;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 16px;
+        letter-spacing: 0.2px;
+      }
+    }
+
+    .ant-select-selector:before {
+      content: "";
+      position: absolute;
+      right: 50px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: calc(100% - 15px);
+      border-radius: 2px;
+      background: rgba(38, 38, 38, 0.08);
+    }
+
+    .ant-select-selection-search-input {
+      height: 33px;
+      font-size: 14px;
+      color: rgb(38, 38, 38);
+      font-family: SB Sans Text;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+    }
+  
+    .ant-select-selection-placeholder {
+      font-family: SB Sans Text;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+    }
+
+    .ant-select-arrow {
+      right: 19px;
+      width: 15px;
+    }
+
+    .ant-modal-footer {
+      padding: 0 24px 24px 24px;
+    }
+  }
+
+  &__content {
+
+
+    .wrapper__title {
+      width: 100%;
+      border-radius: 12px;
+      background: rgb(241, 243, 244);
+      padding: 16px 0px 16px 16px;
+      display: flex;
+      justify-content: space-between;
+      
+      .content_title {
+        color: rgb(115, 115, 115);
+        font-family: SB Sans Text;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+        letter-spacing: -0.3px;
+      }
+
+      .content_img {
+        overflow: hidden;
+        
+        .passengers {
+          object-fit: cover;
+          width: 108px;
+          height: 55px;
+          transform: translateX(-12%);
+        }
+
+        .cargo {
+          object-fit: cover;
+          width: 92px;
+          height: 55px;
+          transform: translateX(28%);
+        }
+
+        .carService {
+          object-fit: cover;
+          width: 91px;
+          height: 55px;
+          transform: translateX(23%);
+        }
+
+        .parking {
+          object-fit: cover;
+          width: 93px;
+          height: 55px;
+          transform: translateX(39%);
+        }
+      }
+    }
+
+    .territoryUse {
+      display: flex;
+      flex-direction: column;
+      margin-top: 16px;
+
+      &_title {
+        color: rgb(38, 38, 38);
+        font-family: SB Sans Text;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+        letter-spacing: -0.3px;
+        margin-bottom: 16px;
+      }
+    }
+
+    .contactInformation {
+      display: flex;
+      flex-direction: column;
+      margin-top: 16px;
+
+      &_title {
+        color: rgb(38, 38, 38);
+        font-family: SB Sans Text;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+        letter-spacing: -0.3px;
+        margin-bottom: 16px;
+      }
+
+      .contactInformation_main {
+
+        & > div:first-child {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 16px;
+        }
+      }
+    }
+
+    .typesService {
+      display: flex;
+      flex-direction: column;
+      margin-top: 32px;
+
+      &_title {
+        color: rgb(38, 38, 38);
+        font-family: SB Sans Text;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+        letter-spacing: -0.3px;
+        margin-bottom: 16px;
+      }
+
+      &_choosing__wrapper {
+        display: flex;
+        flex-wrap: wrap;
+
+        .typesService_choosing {
+          box-sizing: border-box;
+          border: 1px solid rgb(213, 213, 213);
+          border-radius: 12px;
+          background: rgb(255, 255, 255);
+          padding: 16px;
+          width: 306px;
+          margin: 0 16px 16px 0;
+          display: flex;
+          align-items: center;
+
+          .activeCheck {
+
+            .ant-checkbox-disabled.ant-checkbox-checked .ant-checkbox-inner::after {
+                border-color: #fff;
+            }
+            
+            .ant-checkbox-inner {
+                background: rgb(16, 191, 106) !important;
+                border: 1px solid rgb(16, 191, 106) !important ;
+            }
+          }
+
+          .service_title {
+            color: rgb(0, 0, 0);
+            font-family: SB Sans Text;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 16px;
+            letter-spacing: -0.3px;
+            margin: 0px 8px;
+          }
+
+          img {
+            cursor: pointer;
+          }
+        }
+
+        .typesService_choosing:nth-child(3n) {
+          margin: 0 0 16px 0;
+        }
+      }
+    }
+  }
+}

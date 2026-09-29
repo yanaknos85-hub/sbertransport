@@ -1,0 +1,8 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220930"
+            author: blandin-ad
+            changes:
+                -   sqlFile:
+                        path: change/add_unique_index_om_hrid.sql
+                        relativeToChangelogFile: true

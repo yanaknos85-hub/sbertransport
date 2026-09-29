@@ -1,0 +1,22 @@
+.alert {
+  &:global(.ant-alert-warning) {
+    border-color: #FFE1C2;
+  }
+
+  :global {
+    .ant-alert-message {
+      font-family: 'SB Sans Text', 'sans-serif';
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .ant-alert-description {
+      font-family: 'SB Sans Interface', 'sans-serif';
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 16px;
+      letter-spacing: 0.2px;
+      color: #4D4D4D;
+    }
+  }
+}

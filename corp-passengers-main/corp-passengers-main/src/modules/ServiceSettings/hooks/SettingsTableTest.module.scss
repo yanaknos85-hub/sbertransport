@@ -1,0 +1,34 @@
+.tableLayout {
+  margin: 0 auto;
+  width: 100%;
+
+  :global(.ant-table-container table > thead) {
+    background: none;
+    height: 52px;
+
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.12), 0 4px 8px -2px rgba(0, 0, 0, 0.12);
+    margin: 0 2px;
+  }
+
+  :global(.ant-table-container table > thead > tr:first-child th) {
+    background: none;
+    height: 52px;
+  }
+
+  :global(.ant-table-tbody > tr > td:first-child) {
+    width: 15vw;
+  }
+
+  :global(.ant-table-tbody > tr > td:nth-child(2)) {
+    width: 30vw;
+  }
+}
+
+.tableWrapper {
+  margin: 0 20px 48px 20px;
+}
+
+.title {
+  text-align: start;
+  margin-bottom: 30px;
+}

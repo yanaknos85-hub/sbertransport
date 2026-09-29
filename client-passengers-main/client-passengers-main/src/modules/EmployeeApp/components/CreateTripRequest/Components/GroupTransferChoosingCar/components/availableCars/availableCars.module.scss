@@ -1,0 +1,93 @@
+.list_availableCars {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    height: 450px;
+
+    .wrapper_car:first-child {
+        margin: 8px 0px;
+    }
+
+    .wrapper_car {
+        box-sizing: border-box;
+        border: 1px solid rgb(224, 224, 224);
+        border-radius: 12px;
+        background: rgb(255, 255, 255);
+        margin-bottom: 8px;
+        padding: 8px 16px 8px 16px;
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+
+        .car_info {
+            display: flex;
+            flex-direction: column;
+
+            .car_title__brand {
+                color: rgb(38, 38, 38);
+                font-family: SB Sans Text;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 24px;
+                letter-spacing: -0.3px;
+            }
+
+            .car_title__stateNumber {
+                color: rgb(144, 144, 144);
+                font-family: SB Sans Text;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 22px;
+                letter-spacing: -0.3px;
+            }
+        }
+        
+        .car_cost {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+            .cost_title {
+                color: rgb(38, 38, 38);
+                font-family: SB Sans Text;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 24px;
+                letter-spacing: -0.3px;
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            .car_status {
+                display: flex;
+                align-items: center;
+
+                .car_status__active {
+                    background: rgb(16, 191, 106);
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    margin-right: 4px;
+                }
+
+                .car_status__busy {
+                    background: rgb(255, 87, 67);
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    margin-right: 4px;
+                }
+
+                .car_status__title {
+                    color: rgb(144, 144, 144);
+                    font-family: SB Sans Interface;
+                    font-size: 9px;
+                    font-weight: 600;
+                    line-height: 12px;
+                    letter-spacing: 0.2px;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}

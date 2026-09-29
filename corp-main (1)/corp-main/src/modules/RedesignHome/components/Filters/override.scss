@@ -1,0 +1,74 @@
+.home_wrapper_main {
+
+  .ant-form-item {
+    margin: 0 0 0 0;
+  }
+
+  .ant-select-selector:before {
+    content: "";
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: calc(100% - 15px);
+    border-radius: 2px;
+    background: rgba(38, 38, 38, 0.08);
+  }
+
+  .ant-select-selection-placeholder {
+    display: flex;
+    align-items: center;
+  }
+
+  .ant-select-selection-item {
+    top: 5px;
+  }
+
+  .ant-select-single {
+
+    .ant-select-selection-item {
+      padding-right: 45px !important;
+    }
+  }
+
+  .ant-select-selection-search-input {
+    height: 40px !important;
+    font-size: 14px;
+    color: rgb(38, 38, 38);
+    font-family: SB Sans Text;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+  }
+
+  .ant-select-selector {
+    height: 41px !important;
+  }
+
+  .ant-select-selection-placeholder {
+    font-family: SB Sans Text;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+  }
+
+  .ant-select-arrow {
+    right: 19px;
+    width: 15px;
+  }
+
+  .ant-picker-suffix {
+    margin: 0 18px 0 0;
+  }
+
+  .ant-select-selection-overflow {
+    bottom: 8px
+  }
+
+  .ant-select-clear {
+    right: 20px;
+  }
+}

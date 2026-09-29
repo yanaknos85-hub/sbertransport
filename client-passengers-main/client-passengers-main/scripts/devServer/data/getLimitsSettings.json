@@ -1,0 +1,58 @@
+[
+  {
+    "name": "DEP_LIMIT_REMAINS_TARGET",
+    "value": "TO_RESERVE"
+  },
+  {
+    "name": "EMP_LIMIT_REMAINS_TARGET",
+    "value": "TO_RESERVE"
+  },
+  {
+    "name": "EMP_LIMIT_GREEN_UNTIL",
+    "value": "100"
+  },
+  {
+    "name": "EMP_LIMIT_RED_FROM",
+    "value": "0"
+  },
+  {
+    "name": "DEP_LIMIT_GREEN_UNTIL",
+    "value": "100"
+  },
+  {
+    "name": "DEP_LIMIT_RED_FROM",
+    "value": "0"
+  },
+  {
+    "name": "DEP_LIMIT_YELLOW_FROM",
+    "value": "49"
+  },
+  {
+    "name": "DEP_LIMIT_RED_UNTIL",
+    "value": "49"
+  },
+  {
+    "name": "EMP_LIMIT_GREEN_FROM",
+    "value": "72"
+  },
+  {
+    "name": "EMP_LIMIT_YELLOW_FROM",
+    "value": "30"
+  },
+  {
+    "name": "EMP_LIMIT_YELLOW_UNTIL",
+    "value": "72"
+  },
+  {
+    "name": "EMP_LIMIT_RED_UNTIL",
+    "value": "30"
+  },
+  {
+    "name": "DEP_LIMIT_GREEN_FROM",
+    "value": "49"
+  },
+  {
+    "name": "DEP_LIMIT_YELLOW_UNTIL",
+    "value": "49"
+  }
+]

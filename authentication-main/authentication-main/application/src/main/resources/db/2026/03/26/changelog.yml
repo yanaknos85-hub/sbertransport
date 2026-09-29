@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20260326-1100"
+      author: zhirov-aa
+      preConditions:
+        - not:
+            columnExists:
+              schemaName: authentication
+              tableName: reset_code
+              columnName: number_of_login_attempts
+              onFail: MARK_RAN
+      changes:
+        - addColumn:
+            schemaName: authentication
+            tableName: reset_code
+            columns:
+              - column:
+                  name: number_of_login_attempts
+                  type: int
+                  remarks: Количество попыток входа
+                  constraints:
+                    defaultValueNumeric: 0
+      rollback:
+        - dropColumn:
+            schemaName: authentication
+            tableName: reset_code
+            columnName: number_of_login_attempts

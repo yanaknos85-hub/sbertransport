@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: reports/20250922-1
+            author: makarovm-d
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_column_tariff_region_id.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

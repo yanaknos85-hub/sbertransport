@@ -1,0 +1,43 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230623-1321"
+            author: blandin-ad
+            changes:
+                -   tagDatabase:
+                        tag: "20230623"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: user_attributes
+                        columns:
+                            -   column:
+                                    name: finished_time
+                                    type: boolean
+                                    defaultValueBoolean: true
+                                    constraints:
+                                        nullable: false
+                                    remarks: Видимость столбца finishedTime
+                            -   column:
+                                    name: public_payment_time
+                                    type: boolean
+                                    defaultValueBoolean: true
+                                    constraints:
+                                        nullable: false
+                                    remarks: Видимость столбца paymentTime
+                            -   column:
+                                    name: personal_payment_time
+                                    type: boolean
+                                    defaultValueBoolean: true
+                                    constraints:
+                                        nullable: false
+                                    remarks: Видимость столбца paymentTime
+                        rollback:
+                            -   dropColumn:
+                                    schemaName: reports
+                                    tableName: user_attributes
+                                    columns:
+                                        -   column:
+                                                name: finished_time
+                                        -   column:
+                                                name: public_payment_time
+                                        -   column:
+                                                name: personal_payment_time

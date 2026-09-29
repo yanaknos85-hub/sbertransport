@@ -1,0 +1,23 @@
+.Button {
+  &:global(.ant-btn) {
+    border-radius: 8px;
+  }
+
+  &.small {
+    &:global(.ant-btn) {
+      height: 30px;
+    }
+  }
+
+  &.middle {
+    &:global(.ant-btn) {
+      height: 40px;
+    }
+  }
+
+  &.large {
+    &:global(.ant-btn) {
+      height: 48px;
+    }
+  }
+}

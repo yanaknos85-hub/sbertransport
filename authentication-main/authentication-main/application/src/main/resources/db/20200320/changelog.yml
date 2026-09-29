@@ -1,0 +1,61 @@
+databaseChangeLog:
+    -   changeSet:
+            id: authentication/20200320
+            author: mad
+            changes:
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: create_schema.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        endDelimiter: ;
+                        path: add_accounts_table.sql
+                        relativeToChangelogFile: true
+                -   sqlFile:
+                        dbms: postgresql
+                        endDelimiter: ;
+                        path: add_sessions_table.sql
+                        relativeToChangelogFile: true
+    -   changeSet:
+          id: authentication/20200320-1
+          author: medvedev-ad
+          dbms: h2
+          changes:
+            - createTable:
+                schemaName: authentication
+                tableName: session
+                columns:
+                  - column:
+                      name: id
+                      type: uuid
+                      remarks: Идентификатор сессии
+                      constraints:
+                        primaryKey: true
+                        primaryKeyName: authentication_session_pk
+                  - column:
+                      name: token
+                      type: text
+                      remarks: Токен, на основании которого выдана сессия
+                      constraints:
+                        nullable: false
+                  - column:
+                      name: expire_in
+                      type: timestamp
+                      remarks: Время истечения
+                      constraints:
+                        nullable: false
+                  - column:
+                      name: created_at
+                      type: timestamp
+                      remarks: Время создания
+                      constraints:
+                        nullable: false
+                  - column:
+                      name: account_id
+                      type: uuid
+                      remarks: Закрепленный аккаунт
+                      constraints:
+                        foreignKeyName: session_account_fk
+                        referencedTableSchemaName: authentication
+                        referencedTableName: account
+                        referencedColumnNames: id

@@ -1,0 +1,48 @@
+.filterTitle {
+  font-family: "SB Sans Interface", sans-serif;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+  color: #262626;
+
+  margin-top: 8px;
+}
+
+.filterTabs {
+  margin-top: 8px !important;
+  :global {
+    .ant-tabs-nav {
+      margin-bottom: 0 !important;
+    }
+    .ant-tabs-nav:before {
+      display: none;
+    }
+    .ant-tabs-nav-list:after {
+      display: none;
+    }
+    .ant-tabs-tab {
+      background-color: #f2f3f6;
+      padding: 6px 16px;
+      border-radius: 8px;
+
+      font-family: "SB Sans Text", sans-serif;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 400;
+      color: #4d4d4d;
+      letter-spacing: -0.3px;
+    }
+    .ant-tabs-tab-active {
+      background-color: #262c31;
+      .ant-tabs-tab-btn {
+        color: #ffffff !important;
+        border: none !important;
+      }
+      border-bottom: none !important;
+    }
+
+    .ant-tabs-ink-bar {
+      display: none;
+    }
+  }
+}

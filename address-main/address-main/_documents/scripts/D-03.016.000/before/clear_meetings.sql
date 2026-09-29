@@ -1,0 +1,1 @@
+truncate addresses.meetings;

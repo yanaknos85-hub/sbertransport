@@ -1,0 +1,6 @@
+[
+  { "name": "Sber-sub", "parentId": 123, "key": 0, "id": "3", "isChildren": false },
+  { "name": "Alfa-sub", "parentId": 123, "key": 1, "id": "4", "isChildren": false },
+  { "name": "vtb-sub", "parentId": 123, "key": 0, "id": "3", "isChildren": false },
+  { "name": "ural-sub", "parentId": 123, "key": 1, "id": "4", "isChildren": false }
+]

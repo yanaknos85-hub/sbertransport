@@ -1,0 +1,6 @@
+javamelody:
+    management-endpoint-monitoring-enabled: true
+    enabled: true
+    spring-monitoring-enabled: true
+    init-parameters:
+        log: true

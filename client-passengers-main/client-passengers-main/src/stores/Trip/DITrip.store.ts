@@ -1,0 +1,793 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// @ts-nocheck
+import {
+  EmployeeModel, ILogger, IResponseService, ISelfEmployeeStore, PersonalCar
+} from '@sber-sbertransport/mf-core';
+import { inject, injectable } from 'inversify';
+import { Dictionary } from 'lodash';
+import mapKeys from 'lodash/mapKeys';
+import {
+  action, computed, IReactionDisposer, observable, reaction
+} from 'mobx';
+
+import { plainToNew, TRangePickerArg } from 'utils';
+
+import { SYSTEM_MESSAGES } from 'constants/constants.app';
+
+import { TYPES } from 'ioc/types';
+
+import { DelegateModel, IDelegatesService } from 'stores/Delegates/Delegates.interface';
+
+import { LimitSharing } from 'stores/Limits/Limit.interface';
+
+import { TransportTypeEnum } from 'stores/TransportTypes/TransportTypes.interface';
+
+import { isPrivilegedTaxiClass } from 'utils/trips';
+
+import { calculateTaxiClassCost } from '../../modules/EmployeeApp/components/CreateTripRequest/utils/utils';
+import { UUID } from '../../utils/io-ts';
+
+import { TripRequestModel } from './models';
+import { TariffPersonal } from './models/TariffPersonal.model';
+import { TariffTaxi } from './models/TariffTaxi.model';
+import { TripPaginationModel } from './models/TripPagination.model';
+import { TripPriceModel } from './models/TripPrice.model';
+import { TripSuitableModel } from './models/TripSuitable.model';
+import {
+  CityTripCompensation,
+  IContentDispatcherTransport,
+  IContractorDispatcherTransport,
+  IContractorDispatcherTransports,
+  IGroupTransferInformation,
+  InnerCityTransportRequestInfo,
+  IRequestRating,
+  ISearchDispatcherTransport,
+  ITripCalculateRequest,
+  ITripRequestData,
+  ITripService,
+  ITripStore,
+  ITripTariff,
+  PublicTripCompensation,
+  SavedFileInfo,
+  TaxiClassEnum,
+  TCoopTripsSettings,
+  TExternalPrices,
+  TripPurpose,
+  TripRequest,
+  TTariffPersonal,
+  TTariffPublic,
+  TTariffTaxi,
+  TTripRequestNew,
+  YandexTripRequest,
+  YandexTripResponse
+} from './Trip.interface';
+
+@injectable()
+export class DITripStore implements ITripStore {
+  @inject(TYPES.IDelegatesService)
+  private delegateService!: IDelegatesService;
+
+  @inject(TYPES.ITripService)
+  private service!: ITripService;
+
+  @inject(TYPES.IResponseService)
+  private process!: IResponseService;
+
+  @inject(TYPES.ILogger)
+  private logger!: ILogger;
+
+  @inject(TYPES.ISelfEmployeeStore)
+  private selfStore!: ISelfEmployeeStore;
+
+  @computed
+  get selfEmployee(): EmployeeModel {
+    return this.selfStore.selfEmployee;
+  }
+
+  @computed
+  get currentTripRequest(): TripRequestModel | undefined {
+    return this.tripRequestList.find(request => request.id === this.currentTripRequestId);
+  }
+
+  @observable classCosts: ITripTariff[] = [];
+
+  @computed
+  get busCosts(): ITripTariff[] {
+    return this.classCosts.filter(item => item.taxiClass?.endsWith('_BUS'));
+  }
+
+  @observable personalCarsCosts: ITripTariff[] = [];
+
+  @observable tripRequestList: TripRequestModel[] = [];
+
+  @observable responseRateTripRequest: TripRequestModel[] = [];
+
+  @observable nonTerminalTotalElements: number | null = null;
+
+  @observable pagination: TripPaginationModel = {
+    size: 10,
+    totalElements: -1,
+    totalPages: 0,
+    number: 0,
+  };
+
+  @observable savedTripRequest?: TripRequestModel;
+
+  @observable lastTipRequest?: TripRequestModel;
+
+  @observable currentTripRequestId?: string | null;
+
+  @observable purposes: TripPurpose[] = [];
+
+  @observable tariffsTaxi: TTariffTaxi[] = [];
+
+  @observable actualTariff?: TTariffPublic;
+
+  @observable suitableCooperativeTrips: TripSuitableModel[] = [];
+
+  @observable tripStatusChanged?: boolean;
+
+  @observable isSearchingSuitableTrip = false;
+
+  @observable isSearchedSuitableTrip = false;
+
+  @observable passengerLimitRemainder: LimitSharing[] = [];
+
+  @observable delegatesByEmployeeId: Record<string, DelegateModel[]> = {};
+
+  @observable coopTripsSettings: TCoopTripsSettings[] = [];
+
+  @observable externalPrices: TExternalPrices[] = [];
+
+  @observable progressApplicationCreationRequest = false;
+
+  @observable isSaveFile = false;
+
+  @observable isFromDetailedView = false;
+
+  @observable transportType: TransportTypeEnum | undefined;
+
+  @observable dateRange: TRangePickerArg = null;
+
+  @observable availableDispatcherTransport: IContentDispatcherTransport | null = null;
+
+  @observable availableChoosingBookingTransport: IContractorDispatcherTransport | null = null;
+
+  @observable rangeDispatcherTransportDate: any = null;
+
+  @observable groupTransferInformation: IGroupTransferInformation = null;
+
+  @observable groupTransferLoadWaypoint = false;
+
+  @observable personalCars: IOVehicle[] = [];
+
+  @observable yandexRedirectLink = '';
+
+  @observable fraud: string | null = null;
+
+  private disposeCurrentTripRequestReaction?: IReactionDisposer;
+
+  @computed
+  get purposesMapped(): Dictionary<TripPurpose> {
+    return mapKeys(this.purposes, 'id');
+  }
+
+  @computed
+  get savedSuccessfully(): boolean {
+    return !!this.savedTripRequest?.isExisting;
+  }
+
+  @action
+  async getCosts(data: ITripCalculateRequest): Promise<void> {
+    const classCostsResult = (await this.calculateTripCost(data)) ?? [];
+    // ToDo: временное решение пока бонусы считаются на фронте
+    const classCostsBonusCost = classCostsResult.find(
+      tripModel => tripModel.taxiClass === TaxiClassEnum.ECONOMY
+    )?.cost;
+    this.classCosts = classCostsResult.map(tripPriceModel => {
+      if (classCostsBonusCost && isPrivilegedTaxiClass(tripPriceModel.taxiClass)) {
+        // eslint-disable-next-line no-param-reassign
+        tripPriceModel.bonusCost = tripPriceModel.cost - classCostsBonusCost;
+      }
+      return tripPriceModel;
+    });
+  }
+
+  @action
+  async getPersonalCarCost(data: ITripCalculateRequest): Promise<TripPriceModel[] | undefined> {
+    return this.calculateCostForPersonalCarTrip(data);
+  }
+
+  @action.bound
+  async getExternalPrices(data: TTripRequestNew): Promise<void> {
+    this.externalPrices = (await this.calculateExternalPrices(data)) ?? [];
+  }
+
+  @action
+  async clearClassCosts(): Promise<void> {
+    this.classCosts = [];
+  }
+
+  @action
+  async toggleIsFromDetailedView(value: boolean): Promise<void> {
+    this.isFromDetailedView = value;
+  }
+
+  @action
+  async setPersonalCars(value: PersonalCar[]): Promise<void> {
+    this.personalCars = value;
+  }
+
+  @action
+  async setAvailableDispatcherTransport(value: IContentDispatcherTransport | null): Promise<void> {
+    this.availableDispatcherTransport = value;
+  }
+
+  @action
+  async setAvailableChoosingBookingTransport(value: IContractorDispatcherTransport | null): Promise<void> {
+    this.availableChoosingBookingTransport = value;
+  }
+
+  @action
+  async setRangeDispatcherTransportDate(value: any): Promise<void> {
+    this.rangeDispatcherTransportDate = value;
+  }
+
+  @action
+  async clearPersonalCarsCosts(): Promise<void> {
+    this.personalCarsCosts = [];
+  }
+
+  @action clearPagination(): Promise<void> {
+    this.pagination = {
+      size: 10,
+      totalElements: -1,
+      totalPages: 0,
+      number: 0,
+    };
+  }
+
+  @action
+  async loadRequestList(): Promise<void> {
+    this.tripRequestList = (await this.getTripRequestList(this.selfEmployee.id)) ?? [];
+  }
+
+  @action
+  async loadRequestListTerminal(data: ITripRequestData): Promise<void> {
+    [this.pagination, this.tripRequestList] = (await this.getTripRequestListTerminal(data)) ?? [{}, []];
+  }
+
+  @action
+  async loadRequestListNonTerminal(data: ITripRequestData): Promise<void> {
+    [this.pagination, this.tripRequestList, this.nonTerminalTotalElements] = (await this.getTripRequestListNonTerminal(
+      data
+    )) ?? [{}, []];
+  }
+
+  @action
+  clearRequestList(): void {
+    this.tripRequestList = [];
+  }
+
+  @action.bound
+  async searchCoopTrips(requestTrip: TripRequest): Promise<void> {
+    this.isSearchingSuitableTrip = true;
+    this.suitableCooperativeTrips = (await this.getSuitableCooperativeTrips(requestTrip)) ?? [];
+    this.isSearchingSuitableTrip = false;
+    this.isSearchedSuitableTrip = true;
+  }
+
+  @action.bound
+  setIsSearchedSuitableTrip(value: boolean) {
+    this.isSearchedSuitableTrip = value;
+  }
+
+  @action.bound
+  setGroupTransferInformation(value: any) {
+    this.groupTransferInformation = value;
+  }
+
+  @action.bound
+  setGroupTransferLoadWaypoint(value: boolean) {
+    this.groupTransferLoadWaypoint = value;
+  }
+
+  @action.bound
+  clearCoopTrips(): void {
+    this.suitableCooperativeTrips = [];
+    this.isSearchingSuitableTrip = false;
+  }
+
+  @action
+  updateTripStateById({ id, newState }: { id: string; newState: Partial<TripRequestModel> }): void {
+    const targetTrip = this.tripRequestList.find(request => request.id === id);
+    if (targetTrip) {
+      targetTrip.updateState(newState);
+    }
+  }
+
+  @action
+  async saveTripRequest(data: TTripRequestNew): Promise<void> {
+    this.setProgressApplicationCreationRequest(true);
+    if (this.currentTripRequest?.isExisting) {
+      this.updateTripRequest({ ...this.currentTripRequest, ...data });
+    } else {
+      this.createTripRequest(data);
+    }
+  }
+
+  @action.bound
+  async joinCoopTrip(sharedId: string, data: TTripRequestNew): Promise<void> {
+    this.setProgressApplicationCreationRequest(true);
+    if (data?.expected && data.expected.cost) {
+      // eslint-disable-next-line no-param-reassign
+      data.expected.cost = calculateTaxiClassCost(this.classCosts, data.transportType, data.taxiClass).cost;
+      // FIXME no-param-reassign
+    }
+    const trip = new TripRequestModel(await this.service.joinCoopTrip(sharedId, data));
+    this.savedTripRequest = trip;
+    this.lastTipRequest = trip;
+    this.tripRequestList = [...this.tripRequestList, trip];
+    this.logger.toMessage('success', SYSTEM_MESSAGES.suitableTripRequestAddSuccess);
+    this.setProgressApplicationCreationRequest(false);
+  }
+
+  @action
+  /**
+   * Метод сохраняет заявку с изменением состояния
+   * Неявная мутация cost обратите внимание
+   */
+  private async createTripRequest(data: TTripRequestNew): Promise<void> {
+    const requestData = data;
+    if (requestData.expected) {
+      switch (requestData.transportType) {
+        case TransportTypeEnum.PERSONAL:
+          break;
+
+        case TransportTypeEnum.CARSHARING:
+          requestData.expected.cost = (this.classCosts.find(item => item.id === data.tariffId) || {}).cost;
+          break;
+
+        case TransportTypeEnum.GROUP_TRANSFER:
+          break;
+
+        default:
+          requestData.expected.cost = calculateTaxiClassCost(
+            this.classCosts,
+            requestData.transportType,
+            requestData.taxiClass
+          )?.cost;
+          if (requestData.taxiClass?.endsWith('_BUS')) {
+            requestData.expected.cost *= requestData.busCount || 1;
+          }
+      }
+    }
+
+    const result = await this.service.saveTripRequest(requestData);
+
+    try {
+      if (typeof result !== 'string') {
+        const trip = new TripRequestModel(result);
+        this.savedTripRequest = trip;
+        this.lastTipRequest = trip;
+        this.tripRequestList = [...this.tripRequestList, trip];
+        // там и так редирект на success
+        // this.logger.toMessage('success', SYSTEM_MESSAGES.tripRequestSavedSuccessfully);
+      } else {
+        const formattedError = this.service.formatErrorWithRubles(result);
+        this.logger.toMessage('error', `${SYSTEM_MESSAGES.tripRequestSavedUnsuccessfullyBL}: ${formattedError}`);
+      }
+    } catch (err) {
+      this.fraud = result?.data;
+      // eslint-disable-next-line no-console
+      console.log(err);
+    }
+    this.setProgressApplicationCreationRequest(false);
+  }
+
+  @action.bound
+  addPersonalCost(tariff: ITripTariff): void {
+    this.personalCarsCosts.push(tariff);
+  }
+
+  @action.bound
+  setProgressApplicationCreationRequest(value: boolean) {
+    this.progressApplicationCreationRequest = value;
+  }
+
+  @action.bound
+  setIsSaveFile(value: boolean) {
+    this.isSaveFile = value;
+  }
+
+  @action.bound
+  public async saveYandexTrip(data: YandexTripRequest): Promise<void> {
+    this.setProgressApplicationCreationRequest(true);
+    const response = await this.createYandexTrip(data);
+
+    if (response?.link) {
+      this.yandexRedirectLink = response.link;
+    }
+  }
+
+  @action.bound
+  public async createYandexTrip(data: YandexTripRequest): Promise<YandexTripResponse> {
+    const response = await this.service.createYandexTrip(data);
+    this.setProgressApplicationCreationRequest(false);
+
+    return response;
+  }
+
+  @action
+  private async updateTripRequest(data: TripRequest): Promise<void> {
+    const requestData = data;
+
+    if (requestData.expected && requestData.transportType !== 'PERSONAL') {
+      requestData.expected.cost = calculateTaxiClassCost(
+        this.classCosts,
+        requestData.transportType,
+        requestData.taxiClass
+      ).cost;
+      if (requestData.taxiClass?.endsWith('_BUS')) {
+        requestData.expected.cost *= requestData.busCount || 1;
+      }
+    }
+
+    try {
+      const response = await this.service.editTripRequest(data, data.id);
+      const isSuccess = this.process.processStatus(response, SYSTEM_MESSAGES.tripRequestSavedSuccessfully);
+
+      if (isSuccess) {
+        this.logger.toMessage('success', SYSTEM_MESSAGES.tripRequestSavedSuccessfully);
+        const index = this.tripRequestList.findIndex(x => x.id === data.id);
+        const trip = new TripRequestModel(data);
+        this.tripRequestList[index] = trip;
+        this.tripRequestList = [...this.tripRequestList];
+        this.savedTripRequest = trip;
+        this.lastTipRequest = trip;
+      }
+    } catch (e) {
+      const errorMessage
+        = e.response && e.response.data ? e.response.data.message : SYSTEM_MESSAGES.tripRequestUpdatedUnsuccessfully;
+      this.logger.toMessage('error', errorMessage);
+    }
+    this.setProgressApplicationCreationRequest(false);
+  }
+
+  @action.bound
+  async rateTripRequest(data: IRequestRating, reqId: string): Promise<void> {
+    try {
+      this.responseRateTripRequest = await this.service.rateTripRequest(data, reqId);
+    } catch (e) {
+      this.logger.toMessage('error', 'Кажется, что сервис оценки сейчас не доступен');
+    }
+  }
+
+  @action.bound
+  async updateRateTripRequest() {
+    const index = this.tripRequestList.findIndex(x => x.id === this.responseRateTripRequest.id);
+    const trip = new TripRequestModel(this.responseRateTripRequest);
+    this.tripRequestList[index] = trip;
+    this.tripRequestList = [...this.tripRequestList];
+  }
+
+  @action.bound
+  async setCurrentTripRequest(requestId: string): Promise<void> {
+    this.currentTripRequestId = requestId;
+    const requestExistInList = Boolean(this.getTripRequestById(requestId));
+    if (this.tripStatusChanged || !requestExistInList) {
+      this.getTripRequest(requestId).then(
+        currentTripRequest => {
+          const index = this.tripRequestList.findIndex(req => req.id === requestId);
+          if (index !== -1) {
+            if (currentTripRequest) {
+              this.tripRequestList[index] = currentTripRequest;
+            } else {
+              this.tripRequestList.splice(index, 1);
+            }
+          } else if (currentTripRequest) {
+            this.tripRequestList.push(currentTripRequest);
+          }
+        },
+        () => {
+          // TODO: what to do if request failed?
+        }
+      );
+    }
+  }
+
+  @action.bound
+  async getTripRequestForTransport(
+    requestId: string,
+    transportType: TransportTypeEnum
+  ): Promise<TripRequestModel | undefined> {
+    const response = await this.service.getTripRequestForTransport(requestId, transportType);
+    return plainToNew(TripRequestModel, response);
+  }
+
+  @action
+  clearCurrentRequest(): void {
+    this.classCosts = [];
+    this.currentTripRequestId = undefined;
+    this.savedTripRequest = undefined;
+  }
+
+  @action
+  clearYandexRequest(): void {
+    this.yandexRedirectLink = '';
+  }
+
+  getTripRequestById(id: string): TripRequestModel | undefined {
+    return this.tripRequestList.find(request => request.id === id);
+  }
+
+  @action
+  async loadTariffs(): Promise<void> {
+    this.tariffsTaxi = (await this.getTariffsTaxi()) ?? [];
+
+    // this.tariffsPersonal = (await this.getTariffsPersonal()) ?? [];
+
+    // this.tariffsPublic = (await this.getAllTariffsPublic()) ?? [];
+  }
+
+  @action
+  async getContractorCarsharing(tariffId: string): Promise<IContractors> {
+    const tarrifCarsharing = await this.getTarrifCarsharing(tariffId);
+    const contractors = tarrifCarsharing && (await this.getContractors(tarrifCarsharing.contractorId));
+    return contractors;
+  }
+
+  @action
+  async loadActualTariff(transTypeId: string, tariffId: UUID): Promise<void> {
+    this.actualTariff = (await this.getTariffById(transTypeId, tariffId)) as any;
+  }
+
+  @action
+  async getUserAvatart(userId: string | undefined): Promise<string> {
+    // eslint-disable-next-line no-return-await
+    return await this.service.getUserAvatart(userId);
+  }
+
+  @action
+  async getTripRequestHistory(reqId: string): Promise<ITripHistory[]> {
+    // eslint-disable-next-line no-return-await
+    return await this.service.getTripRequestHistory(reqId);
+  }
+
+  @action
+  async getContractorDispatcherTransports(
+    data: ITripCalculateRequest,
+    searchParams: ISearchDispatcherTransport
+  ): Promise<IContractorDispatcherTransports> {
+    return await this.service.getContractorDispatcherTransports(data, searchParams);
+  }
+
+  @action
+  async getContractorDispatcherTransport(
+    transportId: string,
+    data: ITripCalculateRequest,
+    searchParams: ISearchDispatcherTransport
+  ): Promise<IContractorDispatcherTransport> {
+    return await this.service.getContractorDispatcherTransport(transportId, data, searchParams);
+  }
+
+  @action
+  async loadPurposesList(orgId: string): Promise<void> {
+    this.purposes = (await this.getPurposesList(orgId)) ?? [];
+  }
+
+  @action.bound
+  async finishTripRequest(reqId: string): Promise<void> {
+    const status = await this.service.finishTripRequest(reqId);
+    this.tripStatusChanged = this.process.processStatus(status, SYSTEM_MESSAGES.tripRequestFinish);
+  }
+
+  @action
+  async saveFile(file: File, folder: UUID | string): Promise<SavedFileInfo> {
+    this.setIsSaveFile(true);
+    return this.service.saveFile(file, folder);
+  }
+
+  @action
+  async saveConfirmSuburbTripFile(requestId: string | UUID, fileData: SavedFileInfo[]): Promise<number> {
+    return this.service.saveConfirmSuburbTripFile(requestId, fileData);
+  }
+
+  @action
+  async saveConfirmCardTripFile(requestId: string | UUID, fileData: SavedFileInfo[]): Promise<number> {
+    return this.service.saveConfirmCardTripFile(requestId, fileData);
+  }
+
+  @action
+  async saveTravelCardRequest(data: InnerCityTransportRequestInfo): Promise<number> {
+    return this.service.saveTravelCardRequest(data);
+  }
+
+  @action
+  async saveSuburbCompensation(data: InnerCityTransportRequestInfo): Promise<number> {
+    return this.service.saveSuburbCompensation(data);
+  }
+
+  @action
+  async saveCityTripCompensation(data: CityTripCompensation): Promise<number> {
+    return this.service.saveCityTripCompensation(data);
+  }
+
+  @action
+  async savePublicTripRequest(data: PublicTripCompensation): Promise<unknown> {
+    const responseCode = await this.service.savePublicTripRequest(data);
+
+    const trip = new TripRequestModel(responseCode);
+    this.savedTripRequest = trip;
+    this.lastTipRequest = trip;
+    this.tripRequestList = [...this.tripRequestList, trip];
+    return responseCode;
+  }
+
+  @action.bound
+  async loadCoopTripsSettings(organizationId: string): Promise<void> {
+    this.coopTripsSettings = await this.service.loadCoopTripsSettings(organizationId);
+  }
+
+  private async getPurposesList(orgId: string): Promise<TripPurpose[] | undefined> {
+    return this.service.getAllPurposesByEmployee(orgId);
+  }
+
+  private async getTariffsTaxi(): Promise<TTariffTaxi[] | undefined> {
+    const response = await this.service.getAllTariffsTaxi();
+    return plainToNew<TariffTaxi[]>(
+      TariffTaxi,
+      response.filter(t => t.active)
+    );
+  }
+
+  private async getTariffsPersonal(): Promise<TTariffPersonal[] | undefined> {
+    const response = await this.service.getAllTariffsPersonal();
+    return plainToNew<TariffPersonal[]>(TariffPersonal, response);
+  }
+
+  private async getAllTariffsPublic(): Promise<TTariffPublic | undefined> {
+    const response = await this.service.getAllTariffsPublic();
+    this.tariffsPublic = response;
+    return response;
+  }
+
+  private async getTariffById(transTypeId: string, tariffId: UUID): Promise<TTariffPublic | undefined> {
+    const response = await this.service.getTariffById(transTypeId, tariffId);
+    this.actualTariff = response as any;
+    return response;
+  }
+
+  private async getTarrifCarsharing(tariffId: UUID): Promise<ITarrifCarsharing | AxiosResponse<ITarrifCarsharing>> {
+    const response = await this.service.getTarrifCarsharing(tariffId);
+    return response;
+  }
+
+  private async getContractors(contractorid: UUID): Promise<IContractors> {
+    const response = await this.service.getContractors(contractorid);
+    return response;
+  }
+
+  private async getTripRequestList(passengerId = ''): Promise<TripRequestModel[] | undefined> {
+    const response = await this.service.getTripRequestList(passengerId);
+    return plainToNew(TripRequestModel, response);
+  }
+
+  private async getTripRequestListTerminal(data: ITripRequestData): Promise<[TripPaginationModel, TripRequestModel[]]> {
+    const response = await this.service.getTripRequestListTerminal(data);
+
+    const pagination = plainToNew<TripPaginationModel>(TripPaginationModel, response);
+    const list = plainToNew<TripRequestModel[]>(TripRequestModel, response.content);
+    return [pagination, list];
+  }
+
+  private async getTripRequestListNonTerminal(
+    data: ITripRequestData
+  ): Promise<[TripPaginationModel, TripRequestModel[], number]> {
+    const response = await this.service.getTripRequestListNonTerminal(data);
+
+    const pagination = plainToNew<TripPaginationModel>(TripPaginationModel, response);
+    const list = plainToNew<TripRequestModel[]>(TripRequestModel, response.content);
+    return [pagination, list, response.totalElements];
+  }
+
+  private async getTripRequest(requestId: string): Promise<TripRequestModel | undefined> {
+    const response = await this.service.getTripRequest(requestId);
+    return plainToNew(TripRequestModel, response);
+  }
+
+  private async getSuitableCooperativeTrips(tripRequest: TripRequest): Promise<TripSuitableModel[]> {
+    const response = await this.service.getAllCoopTrips(tripRequest);
+    const trips: TripSuitableModel[] = plainToNew(TripSuitableModel, response);
+    if (tripRequest.transportType === TransportTypeEnum.PERSONAL) {
+      trips.forEach(item => {
+        item.setIsPersonalTrue();
+      });
+    }
+    const tripsFullInfo = trips.map(trip => {
+      const tripsFullInfoRequest = response.find(item => item.id === trip.id);
+      return { ...trip, requests: tripsFullInfoRequest.requests };
+    });
+    return tripsFullInfo;
+  }
+
+  @action.bound
+  async searchNumberTrip(name): Promise<IOSearchNumberTrip> {
+    const { content } = await this.service.searchNumberTrip({ humanReadableId: name });
+    return content;
+  }
+
+  @action.bound
+  private async calculateTripCost(data: ITripCalculateRequest): Promise<TripPriceModel[] | undefined> {
+    const response = await this.service.calculateTripCost(data, this.loadActualTariff.bind(this));
+    return plainToNew(TripPriceModel, response);
+  }
+
+  private async calculateCostForPersonalCarTrip(data: ITripCalculateRequest): Promise<TripPriceModel[] | undefined> {
+    const response = await this.service.calculateCostForPersonalCarTrip(data);
+    return plainToNew(TripPriceModel, response);
+  }
+
+  private async calculateExternalPrices(data: TTripRequestNew): Promise<TExternalPrices[]> {
+    return this.service.calculateExternalPrices(data);
+  }
+
+  @action.bound
+  clearFraud() {
+    this.fraud = null;
+  }
+
+  initStore(): void {
+    const { orgId } = this.selfStore;
+
+    this.loadRequestListNonTerminal({
+      pageSetting: {
+        page: 0,
+        size: 1,
+      },
+    });
+    this.loadPurposesList(orgId);
+    // this.loadTariffs();
+    this.loadCoopTripsSettings(orgId);
+
+    // kill previous current trip request reaction
+    if (this.disposeCurrentTripRequestReaction) {
+      this.disposeCurrentTripRequestReaction();
+    }
+
+    this.disposeCurrentTripRequestReaction = reaction(
+      () => this.currentTripRequest,
+      async currentTripRequest => {
+        const { approvedBy } = currentTripRequest || {};
+        if (
+          approvedBy
+          && approvedBy.organizationId
+          && approvedBy.departmentId
+          && approvedBy.id
+          && !this.delegatesByEmployeeId[approvedBy.id]
+        ) {
+          // FIXME удалить этот запрос, сейчас можно использовать
+          // хук useGetDelegates
+          const delegates = await this.delegateService.getDelegates({
+            orgId: approvedBy.organizationId,
+            depId: approvedBy.departmentId,
+            supId: approvedBy.id,
+          });
+          this.delegatesByEmployeeId[approvedBy.id] = delegates;
+        }
+      },
+      { fireImmediately: true }
+    );
+
+    reaction(
+      () => ({ requests: [...this.tripRequestList], purposes: [...this.purposes] }),
+      ({ requests, purposes }) => {
+        requests.forEach(req => {
+          if (!purposes.some(purpose => purpose.id === req.purpose.id)) {
+            req.purpose.label = `${req.purpose.label} (Не активна)`;
+          }
+        });
+      }
+    );
+  }
+}

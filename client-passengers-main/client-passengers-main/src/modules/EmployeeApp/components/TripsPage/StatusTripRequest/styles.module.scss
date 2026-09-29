@@ -1,0 +1,72 @@
+.status {
+  border-radius: 8px;
+  padding: 4px 8px 4px 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  span {
+    color: #FFF;
+    font-family: SB Sans Text;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+  }
+
+  svg {
+    background: #FFFFFFB3;
+    border-radius: 50%;
+  }
+
+  &_change {
+    background-color: #FF9A32FF;
+
+    svg {
+      color: #FF9A32FF;
+    }
+  }
+
+  &_error {
+    background-color: #FE5B3BFF;
+
+    svg {
+      color: #FE5B3BFF;
+    }
+  }
+
+  &_positive {
+    background-color: #10BF6A;
+
+    svg {
+      color: #10BF6A;
+    }
+  }
+
+  &_tripStatus {
+    background-color: #6979F7FF;
+
+    svg {
+      color: #6979F7FF;
+    }
+  }
+}
+
+.overlay.overlay {
+  :global {
+    .ant-popover-content {
+      width: 324px;
+      box-shadow: 0 4px 12px 4px rgba(4, 0, 58, 0.04), 0 0 1px 0 rgba(3, 0, 27, 0.04);
+      border-radius: 8px;
+
+      .ant-popover-inner-content {
+        font-family: SB Sans Text;
+        line-height: 22px;
+        letter-spacing: -0.3px;
+        color: #737373;
+      }
+    }
+  }
+}
+

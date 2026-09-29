@@ -1,0 +1,15 @@
+databaseChangeLog:
+    -   changeSet:
+            id: reports/20210825
+            author: chuprin
+            dbms: postgresql
+            changes:
+                - sqlFile:
+                        path: changes/add_request_payment.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;
+            rollback:
+                -   sqlFile:
+                        path: rollback/drop_request_payment.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

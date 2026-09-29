@@ -1,0 +1,43 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230502"
+            author: blandin-ad
+            changes:
+                -   tagDatabase:
+                        tag: "20230502"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: user_attributes
+                        columns:
+                            -   column:
+                                    name: taxi_trip_fact_distance
+                                    type: boolean
+                                    defaultValueBoolean: true
+                                    constraints:
+                                        nullable: false
+                                    remarks: Видимость столбца Фактическая дистанция поездки
+                            -   column:
+                                    name: taxi_trip_fact_wait_time
+                                    type: boolean
+                                    defaultValueBoolean: true
+                                    constraints:
+                                        nullable: false
+                                    remarks: Видимость столбца Фактическая время ожидания водителя
+                            -   column:
+                                    name: taxi_trip_human_readable_id
+                                    type: boolean
+                                    defaultValueBoolean: true
+                                    constraints:
+                                        nullable: false
+                                    remarks: Видимость столбца HumanReadableID поездки
+            rollback:
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: user_attributes
+                        columns:
+                            -   column:
+                                    name: taxi_trip_fact_distance
+                            -   column:
+                                    name: taxi_trip_fact_wait_time
+                            -   column:
+                                    name: taxi_trip_human_readable_id

@@ -1,0 +1,5 @@
+.hiddenTabs {
+  :global(> .ant-tabs-nav) {
+    display: none;
+  }
+}

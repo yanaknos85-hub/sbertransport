@@ -1,0 +1,108 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240718-1342"
+      author: medvedev-ad
+      context: "TRANSPORT-24438"
+      dbms: postgresql
+      changes:
+        - tagDatabase:
+            tag: "D-03.014.000"
+        - addColumn:
+            schemaName: addresses
+            tableName: frequently
+            columns:
+              - column:
+                  name: document
+                  type: tsvector
+                  remarks: Документ для полнотекстного поиска
+        - addColumn:
+            schemaName: addresses
+            tableName: favorite
+            columns:
+              - column:
+                  name: document
+                  type: tsvector
+                  remarks: Документ для полнотекстного поиска
+  - changeSet:
+      id: "20240718-1342"
+      author: medvedev-ad
+      context: "TRANSPORT-24438"
+      dbms: h2
+      changes:
+        - tagDatabase:
+            tag: "D-03.014.000"
+        - addColumn:
+            schemaName: addresses
+            tableName: frequently
+            columns:
+              - column:
+                  name: document
+                  type: java_object
+                  remarks: Документ для полнотекстного поиска
+        - addColumn:
+            schemaName: addresses
+            tableName: favorite
+            columns:
+              - column:
+                  name: document
+                  type: java_object
+                  remarks: Документ для полнотекстного поиска
+  - changeSet:
+      id: "20240718-1355"
+      author: medvedev-ad
+      context: "TRANSPORT-24438"
+      dbms: postgresql
+      changes:
+        - tagDatabase:
+            tag: "D-03.014.000"
+        - update:
+            schemaName: addresses
+            tableName: frequently
+            columns:
+              - column:
+                  name: document
+                  valueComputed: to_tsvector(coalesce(country, '') || ' ' || coalesce(region, '') || ' ' || coalesce(city, '') || ' ' || coalesce(street, '') || ' ' || coalesce(house, '') || ' ' || coalesce(building, '') || ' ' || coalesce("structure", '') )
+        - update:
+            schemaName: addresses
+            tableName: favorite
+            columns:
+              - column:
+                  name: document
+                  valueComputed: to_tsvector(coalesce(country, '') || ' ' || coalesce(region, '') || ' ' || coalesce(city, '') || ' ' || coalesce(street, '') || ' ' || coalesce(house, '') || ' ' || coalesce(building, '') || ' ' || coalesce("structure", '') )
+      rollback:
+        - sql:
+            sql: select 1 #no need to rollback
+  - changeSet:
+      id: "20240718-1357"
+      author: medvedev-ad
+      context: "TRANSPORT-24438"
+      changes:
+        - tagDatabase:
+            tag: "D-03.014.000"
+        - addNotNullConstraint:
+            schemaName: addresses
+            tableName: frequently
+            columnName: document
+            constraintName: addresses_frequently_document_nn
+        - addNotNullConstraint:
+            schemaName: addresses
+            tableName: favorite
+            columnName: document
+            constraintName: addresses_frequently_document_nn
+  - changeSet:
+      id: "20240718-1400"
+      author: medvedev-ad
+      context: "TRANSPORT-24438"
+      dbms: postgresql
+      changes:
+        - tagDatabase:
+            tag: "D-03.014.000"
+        - sql:
+            sql: CREATE INDEX addresses_frequently_document_idx ON addresses.frequently USING gin("document");
+        - sql:
+            sql: CREATE INDEX addresses_favorite_document_idx ON addresses.favorite USING gin("document");
+      rollback:
+        - sql:
+            sql: DROP INDEX addresses_frequently_document_idx ;
+        - sql:
+            sql: DROP INDEX addresses_favorite_document_idx;

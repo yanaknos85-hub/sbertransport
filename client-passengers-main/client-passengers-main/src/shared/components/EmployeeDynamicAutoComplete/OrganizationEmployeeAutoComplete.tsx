@@ -1,0 +1,21 @@
+import React, { FC, useMemo } from 'react';
+
+import { StoreNames } from 'stores/StoreNames.enum';
+
+import { useAppStoreContext } from 'shared/hooks/useEmpContext';
+
+import { EmployeeAutoCompleteProps, EmployeeBaseAutoComplete } from './EmployeeBaseAutoComplete';
+import { paramsGetter } from './utils';
+
+export const OrganizationEmployeeAutoComplete: FC<EmployeeAutoCompleteProps> = props => {
+  const { [StoreNames.employeeStore]: employeeStore } = useAppStoreContext();
+  const requesterProps = useMemo(
+    () => ({
+      requester: employeeStore.searchOrganizationEmployees,
+      paramsGetter,
+    }),
+    [employeeStore.searchOrganizationEmployees]
+  );
+
+  return <EmployeeBaseAutoComplete {...props} {...requesterProps} />;
+};

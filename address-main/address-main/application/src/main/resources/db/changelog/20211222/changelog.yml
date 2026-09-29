@@ -1,0 +1,23 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20211222"
+            author: medvedev-ad
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_compacted_migration.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+              - sql:
+                  sql: select 1 #no need to rollback
+    -   changeSet:
+            id: "20211222-1"
+            author: medvedev-ad
+            changes:
+                -   sqlFile:
+                        path: changes/init_table.sql
+                        relativeToChangelogFile: true
+            rollback:
+              - sql:
+                  sql: drop schema addresses cascade;

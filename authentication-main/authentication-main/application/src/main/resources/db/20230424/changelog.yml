@@ -1,0 +1,60 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230424"
+      author: medvedev-ad
+      context: "20230424"
+      changes:
+        - tagDatabase:
+            tag: "20230424"
+        - createTable:
+            schemaName: authentication
+            tableName: two_factor
+            remarks: Таблица кодов второго фактора авторизации
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Идентификатор запроса на двухфакторную аутентификацию
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: authentication_two_factor_pk
+                    foreignKeyName: authentication_two_factor_account_id_account_fk
+                    referencedTableSchemaName: authentication
+                    referencedTableName: account
+                    referencedColumnNames: id
+              - column:
+                  name: token
+                  type: text
+                  remarks: Привязанный токен
+                  constraints:
+                    notNullConstraintName: authentication_two_factor_token_nn
+                    nullable: false
+              - column:
+                  name: code
+                  type: varchar(255)
+                  remarks: Код проверки
+                  constraints:
+                    notNullConstraintName: authentication_two_factor_code_nn
+                    nullable: false
+                    uniqueConstraintName: authentication_two_factor_code_uk
+                    unique: true
+              - column:
+                  name: expire
+                  type: timestamp
+                  remarks: Время экспирации
+                  constraints:
+                    notNullConstraintName: authentication_two_factor_expire_nn
+                    nullable: false
+  - changeSet:
+      id: "20230424-1"
+      author: medvedev-ad
+      context: "20230424"
+      dbms: postgresql
+      changes:
+        - tagDatabase:
+            tag: "20230424"
+        - addUniqueConstraint:
+            schemaName: authentication
+            tableName: two_factor
+            columnNames: token
+            constraintName: authentication_two_factor_token_uk

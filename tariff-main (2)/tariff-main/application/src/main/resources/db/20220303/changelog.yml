@@ -1,0 +1,15 @@
+databaseChangeLog:
+    -   changeSet:
+            id: 20220303
+            tag: "20220303"
+            author: palekseev
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/add_trigger_time.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/rollback_add_trigger_time.sql
+                        relativeToChangelogFile: true

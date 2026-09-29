@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20210119
+            tag: "20210119"
+            author: Nikolay Prokopov
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_contractor_deviation_columns.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: rollback/rolback_add_contractor_deviation_columns.sql
+                        relativeToChangelogFile: true

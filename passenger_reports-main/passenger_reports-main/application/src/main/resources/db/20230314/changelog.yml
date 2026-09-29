@@ -1,0 +1,15 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230314"
+            author: shabrov-ie
+            changes:
+                -   tagDatabase:
+                        tag: "20230314"
+                -   sqlFile:
+                        path: create_user_attributes_table.sql
+                        relativeToChangelogFile: true
+        
+            rollback:
+                -   dropTable:
+                        schemaName: reports
+                        tableName: user_attributes

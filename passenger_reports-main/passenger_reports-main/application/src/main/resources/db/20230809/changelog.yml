@@ -1,0 +1,34 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20230809"
+            author: delyukov-da
+            changes:
+                -   tagDatabase:
+                        tag: "20230809"
+                -   addColumn:
+                        schemaName: reports
+                        tableName: user_attributes
+                        columns:
+                            -   column:
+                                    type: boolean
+                                    defaultValueBoolean: true
+                                    constraints:
+                                        nullable: false
+                                    name: personal_payment_cost_visible
+                                    remarks: Видимость столбца paymentCost
+                            -   column:
+                                    type: boolean
+                                    defaultValueBoolean: true
+                                    constraints:
+                                        nullable: false
+                                    name: personal_shared_ride_owner_visible
+                                    remarks: Видимость столбца sharedRideOwner
+            rollback:
+                -   dropColumn:
+                        schemaName: reports
+                        tableName: user_attributes
+                        columns:
+                            -   column:
+                                    name: personal_shared_ride_owner_visible
+                            -   column:
+                                    name: personal_payment_cost_visible

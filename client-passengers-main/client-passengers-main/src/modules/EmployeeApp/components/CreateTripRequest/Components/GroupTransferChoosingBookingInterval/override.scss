@@ -1,0 +1,17 @@
+.wrapper_bookingInterval {
+  margin-bottom: 8px;
+
+  .bookingInterval_title {
+      margin-bottom: 8px;
+      color: rgb(0, 0, 0);
+      font-family: SB Sans Text;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      letter-spacing: -0.15px;
+  }
+
+  .ant-picker {
+      height: 40px;
+  }
+}

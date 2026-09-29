@@ -1,0 +1,48 @@
+.orderExecution {
+  margin-top: 20px;
+
+  :global {
+    .ant-tabs-tab-disabled {
+      opacity: 0.4;
+    }
+
+    .ant-tabs-nav {
+      margin-bottom: 20px;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    .ant-tabs-nav-operations {
+      display: none !important;
+    }
+
+    .ant-tabs-nav-list {
+      flex-grow: 1;
+      gap: 32px;
+    }
+
+    .ant-tabs-tab {
+      flex: 1 1 100%;
+      padding: 0;
+      margin: 0;
+      min-width: 295px;
+
+      .ant-tabs-tab-btn {
+        width: 100%;
+      }
+
+      &-active {
+        .ant-tabs-tab-btn {
+          font-weight: inherit;
+          color: inherit;
+        }
+      }
+    }
+
+    .ant-tabs-ink-bar {
+      display: none;
+    }
+  }
+}

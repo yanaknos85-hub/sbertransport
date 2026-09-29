@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: 20220909
+            author: dudyrev
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/alter_personal_tariff_table.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false
+            rollback:
+                -   sqlFile:
+                        path: rollback/rollback_personal_tariff_table.sql
+                        relativeToChangelogFile: true

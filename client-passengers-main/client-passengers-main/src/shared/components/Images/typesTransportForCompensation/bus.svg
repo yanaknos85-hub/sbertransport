@@ -1,0 +1,20 @@
+<svg width="32.000000" height="32.000000" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip424_124819">
+			<rect id="Property 1=bus" rx="8.000000" width="32.000000" height="32.000000" fill="white"/>
+		</clipPath>
+	</defs>
+	<rect id="Property 1=bus" rx="8.000000" width="32.000000" height="32.000000" fill="#008D3F" fill-opacity="0.08"/>
+	<g clip-path="url(#clip424_124819)">
+		<path id="Path" d="M10.4977 22.7528C9.39227 22.7528 8.49689 21.8575 8.49689 20.752L8.49689 8.74698C8.49689 7.64154 9.39227 6.74615 10.4977 6.74615L21.5023 6.74615C22.6078 6.74615 23.5031 7.64154 23.5031 8.74698L23.5031 20.752C23.5031 21.8575 22.6078 22.7528 21.5023 22.7528L10.4977 22.7528Z" stroke="#008D3F" stroke-width="1.500000" stroke-linejoin="round"/>
+		<path id="Path" d="M11.4982 19.7516L12.4986 19.7516" stroke="#008D3F" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M19.5015 19.7516L20.5019 19.7516" stroke="#008D3F" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M8.49689 16.7503L23.5031 16.7503" stroke="#008D3F" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M26.0042 14.7495L26.0042 11.7483C26.0042 11.196 25.556 10.7478 25.0038 10.7478L6.99628 10.7478C6.44403 10.7478 5.99585 11.196 5.99585 11.7483L5.99585 14.7495" stroke="#008D3F" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M12.2344 22.7528L12.2344 24.2534C12.2344 24.8057 11.7863 25.2539 11.2341 25.2539L10.2336 25.2539C9.6814 25.2539 9.23322 24.8057 9.23322 24.2534L9.23322 22.2966" stroke="#008D3F" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Path" d="M22.7668 22.2966L22.7668 24.2534C22.7668 24.8057 22.3186 25.2539 21.7664 25.2539L20.766 25.2539C20.2137 25.2539 19.7656 24.8057 19.7656 24.2534L19.7656 22.7528" stroke="#008D3F" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+	</g>
+</svg>

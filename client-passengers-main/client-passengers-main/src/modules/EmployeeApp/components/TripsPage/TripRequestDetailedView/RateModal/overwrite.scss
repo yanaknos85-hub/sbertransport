@@ -1,0 +1,415 @@
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+
+  .rateButton {
+    display: flex;
+    justify-content: flex-end;
+
+    .ant-btn-primary[disabled] {
+      opacity: 0.4;
+    }
+
+    .ant-btn-block {
+      width: auto !important;
+      border-radius: 8px;
+      background: rgb(16, 191, 106);
+      border: 1px solid rgb(16, 191, 106);
+      color: #fff;
+    }
+
+    @media screen and (max-width: 600px) {
+      padding-top: 4px;
+    } 
+  }
+
+  .rate {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .ratePositiveValue {
+
+      .ant-rate-star-full {
+
+        .anticon-star {
+          color: rgb(16, 191, 106) !important;
+        }
+      }
+    }
+
+    .rateNegativeValue {
+
+      .ant-rate-star-full {
+        
+        .anticon-star {
+          color: rgb(255, 154, 50) !important;
+        }
+      }
+    }
+
+    .ant-rate {
+      font-size: 50px !important;
+    }
+
+    .rateTitle {
+      color: rgb(38, 38, 38);
+      font-family: SB Sans Text;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+      margin-bottom: 16px;
+    }
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+
+    .numberApplication {
+      color: rgb(38, 38, 38);
+      font-family: "SB Sans Interface";
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 28px;
+      letter-spacing: 0px;
+    }
+
+    .cancel {
+      background-color: rgb(242, 243, 246);
+      width: 24px;
+      border-radius: 50%;
+      height: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+
+  .titleRate {
+    color: rgb(144, 144, 144);
+    font-family: SB Sans Text;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.3px;
+  }
+
+  .routePoints {
+    padding: 16px 16px 1px 16px;
+    margin: 24px 0px 32px 0px;
+    background: rgba(242, 243, 246, 0.6);
+    border-radius: 10px;
+
+    .rout {
+      width: 100%;
+      min-width: 400px;
+
+      .routTitle {
+        color: rgb(38, 38, 38);
+        font-family: SB Sans Interface;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 28px;
+        letter-spacing: 0px;
+      }
+
+      & > div {
+        margin-top: 16px !important;
+      }
+
+      @media screen and (max-width: 600px) {
+        min-width: unset;
+      } 
+    }
+
+    .routePointsHeader {
+      display: flex;
+      justify-content: space-between;
+
+      .routePointsDate {
+
+        .routePointsDateWrapper {
+          font-family: SB Sans Interface;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 18px;
+          letter-spacing: 0px;
+          color: rgb(77, 77, 77);
+
+          .routePointsDateTitle {
+            color: rgb(144, 144, 144);
+          }
+        }
+      }
+
+      .routePointsTypeTransport {
+        display: flex;
+        align-items: center;
+        border: 1px solid rgba(38, 38, 38, 0.08);
+        border-radius: 20px;
+        padding: 4px 12px 4px 12px;
+
+        .TransportPictureWrapper {
+          display: flex;
+          flex-direction: row;
+          margin-right: 12px;
+
+          .TAXI {
+            background-image: url(../../../../../../shared/components/Images/cars/taxi.svg);
+            display: inline-block;
+            width: 20px;
+            height: 13px;
+          }
+        
+          .PERSONAL {
+            background-image: url(../../../../../../shared/components/Images/cars/pers.svg);
+            display: inline-block;
+            width: 20px;
+            height: 13px;
+          }
+          
+          .CARSHARING {
+            background-image: url(../../../../../../shared/components/Images/orders/carsh.png);
+            display: inline-block;
+            width: 20px;
+            height: 13px;
+          }
+          
+          .DEDICATED {
+            background-image: url(../../../../../../shared/components/Images/cars/truck.svg);
+            display: inline-block;
+            width: 20px;
+            height: 13px;
+          }
+          
+          .PUBLIC {
+            background-image: url(../../../../../../shared/components/Images/cars/public.svg);
+            display: inline-block;
+            width: 20px;
+            height: 13px;
+          }
+        }
+
+        span {
+          color: rgb(0, 0, 0);
+          font-family: SB Sans Text;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 20px;
+          letter-spacing: -0.15px;
+        }
+      }
+    }
+  }
+}
+
+.ant-modal-content {
+
+  & > button {
+    display: none !important;
+  }
+}
+
+.modalRate {
+  width: auto !important;
+
+  .successWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+
+    .successTitle {
+      font-size: 20px;
+      font-family: SB Sans Text;
+      font-weight: 600;
+      color: rgb(38, 38, 38);
+      margin-top: 30px;
+    }
+
+    .successText {
+      font-size: 14px;
+      font-family: SB Sans Text;
+      font-weight: 400;
+      color: rgb(144, 144, 144);
+      margin-bottom: 32px;
+    }
+  }
+
+  .ant-modal-content {
+    border-radius: 12px;
+  }
+
+  & > div > button {
+    display: none !important;
+  }
+
+  .ant-modal-footer {
+    padding: 0;
+  }
+
+  .ant-modal-body {
+    padding: 24px 24px 0px 24px !important;
+  }
+
+  .header {
+    margin-bottom: 8px !important;
+  }
+}
+
+.negativeRate {
+
+  & > span:last-child {
+    display: inline-flex;
+    flex-flow: column nowrap;
+    margin: 5px 0px 5px 23px;
+    padding: var(--margin-base) var(--margin-half) var(--margin-base);
+    min-height: 125px;
+    width: 105px;
+    overflow: hidden;
+    border: 1px solid rgb(237, 237, 237);
+    border-radius: 10px;
+
+    @media screen and (max-width: 600px) {
+      margin: 0;
+    } 
+  }
+
+  .ant-checkbox-checked ~ span {
+    outline: 2px solid rgb(255, 154, 50);
+  }
+}
+
+.positiveRate {
+
+  & > span:last-child {
+    display: inline-flex;
+    flex-flow: column nowrap;
+    margin: 5px 0px 5px 23px;
+    padding: var(--margin-base) var(--margin-half) var(--margin-base);
+    min-height: 125px;
+    width: 105px;
+    overflow: hidden;
+    border: 1px solid rgb(237, 237, 237);
+    border-radius: 10px;
+
+    @media screen and (max-width: 600px) {
+      margin: 0;
+    } 
+  }
+
+  .ant-checkbox-checked ~ span {
+    outline: 2px solid rgb(25, 177, 80);
+  }
+}
+
+.no-input-checkbox .ant-checkbox {
+  display: none !important;
+  height: 0;
+  box-sizing: border-box;
+}
+
+.no-input-checkbox-group.ant-checkbox-group {
+  width: 100%;
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin: 8px 0;
+  justify-content: center;
+
+  & > label:first-child {
+
+    & > span:last-child {
+      margin: 5px 0 0 2px;
+
+      @media screen and (max-width: 600px) {
+        margin: 0;
+      } 
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    flex-wrap: wrap;
+  } 
+}
+
+.no-input-form.ant-form {
+  width: 100%;
+}
+
+.rate {
+  .ant-modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .ant-form label {
+    font-size: 12px;
+  }
+
+  .ant-checkbox-wrapper + .ant-checkbox-wrapper {
+    margin: 0;
+  }
+}
+
+.card__wrapper {
+  width: 100%;
+
+  .ant-checkbox-group {
+    overflow-x: hidden;
+  }
+}
+
+.additionalWrapper {
+  width: 100%;
+
+  & > div {
+    margin-top: 8px;
+  }
+}
+
+.card {
+  padding-right: var(--padding-fourth) !important;
+  display: flex;
+
+  &__label {
+    height: auto;
+    padding: var(--padding-half) var(--padding-half) 0;
+  }
+
+  & > span {
+    display: flex !important;
+    padding: 0 var(--padding-half) !important;
+  }
+
+  border: none !important;
+}
+
+.emotion {
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  white-space: normal;
+
+  .anticon{
+    flex: 0 !important;
+    margin-top: 10px !important;
+  }
+
+  .emotion__text {
+    margin: 10px 0;
+    text-align: center;
+  }
+}
+
+.emotion__icon {
+  font-size: 42px;
+  text-align: center;
+}

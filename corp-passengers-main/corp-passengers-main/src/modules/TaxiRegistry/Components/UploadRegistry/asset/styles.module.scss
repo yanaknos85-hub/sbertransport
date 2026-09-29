@@ -1,0 +1,14 @@
+:root {
+  --contractor-margin: 3%;
+  --offset-submenu: 25px;
+}
+
+.subMenu {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  padding-left: var(--offset-submenu);
+}
+.btnContract {
+  margin-left: var(--contractor-margin);
+}

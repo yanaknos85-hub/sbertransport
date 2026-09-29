@@ -1,0 +1,239 @@
+{
+  "id": "b90be8c7-6b81-fccf-6063-80dbf7e67eef",
+  "humanReadableId": "0092225b-16a9-becb-ce02-1ec32b3b11e1",
+  "author": {
+    "id": "de739d60-83b5-d0e7-329d-4dc3d5a44721",
+    "firstName": "Мусор",
+    "lastName": "Удаляемый",
+    "patronymic": "Мусорович",
+    "personnelNumber": "9ab3b33c-2ea1-a882-f651-2b8bc8f552f8",
+    "departmentId": "c0b88c56-5c4e-03e6-5af8-f59472555237",
+    "userId": "378cc66b-e6b9-4650-6773-8a8e695a24e3",
+    "positionId": "8b7bf8a6-04ee-4e6b-b30f-afd9ea79a1f5",
+    "positionName": "Разнорабочий",
+    "organizationId": "00c724c5-c116-4edf-a228-7a68cbe5b19b",
+    "departmentName": "Потомок_удаляемый_5",
+    "humanReadableId": "2c420ad5-fc55-347e-66bf-bc92398b779c",
+    "mobilePhone": null
+  },
+  "transportType": "SPECIAL",
+  "tariffId": "71b49fbb-ee0c-4b9d-9121-f9f8c392e979",
+  "pickupTime": null,
+  "comment": null,
+  "approvedBy": null,
+  "approvalState": "AWAITING_APPROVAL",
+  "approvalDate": null,
+  "status": "REPAIR_REGISTRATION_AT_THE_SERVICE_STATION",
+  "creationTime": 1681108295149,
+  "vehicle": {
+    "stateNumber": "Т904НК526",
+    "brand": "Lada",
+    "model": "2101",
+    "vin": "111",
+    "year": 2010,
+    "mileage": 240000
+  },
+  "address": {
+    "latitude": 53.720644,
+    "longitude": 91.44247,
+    "country": "Россия",
+    "region": "Республика Хакасия",
+    "city": "Абакан",
+    "street": null,
+    "house": null,
+    "building": null,
+    "structure": null
+  },
+  "problems": [
+    {
+      "problemName": "DOORS_AND_WINDOWS",
+      "defects": ["DOOR_CLOSING_SENSOR", "DOOR_LOCK"]
+    }
+  ],
+  "expediency": "NONE",
+  "finishedTime": null,
+  "takeToWorkTime": null,
+  "order": {
+    "number": "1000102269",
+    "name": "4476c450-f70c-41cb-fbc8-b3f10a4b3b8d",
+    "s3Id": "74ed2d1b-01b7-cd2e-1e4d-a384b9f9b9a9",
+    "vehicle": {
+      "vin": null,
+      "stateNumber": {
+        "value": "Не определено-c6e7f970-e0ff-0d8b-bc28-6e45ceab0cd2",
+        "comment": null
+      },
+      "year": null,
+      "brand": "Не определено",
+      "model": "Не определено",
+      "mileage": null
+    },
+    "works": [
+      {
+        "nameNormalized": {
+          "value": "куча проблем – снятие и установка (все)",
+          "comment": null
+        },
+        "hourNormalized": null,
+        "amount": 4,
+        "hourPrice": 2000.0,
+        "totalPrice": {
+          "value": 300.0,
+          "comment": null
+        },
+        "ordinal": null
+      },
+      {
+        "nameNormalized": {
+          "value": "трос переключения передач – снятие и установка (все)",
+          "comment": null
+        },
+        "hourNormalized": null,
+        "amount": 3,
+        "hourPrice": 1000.0,
+        "totalPrice": {
+          "value": 3000.0,
+          "comment": null
+        },
+        "ordinal": null
+      },
+      {
+        "nameNormalized": {
+          "value": "диагностика систем двигателя (расширенная) включает диагностику систем abs, srs, перепрограммирование режима работы топливных форсунок1",
+          "comment": null
+        },
+        "hourNormalized": null,
+        "amount": 1,
+        "hourPrice": 1000.0,
+        "totalPrice": {
+          "value": 1000.0,
+          "comment": null
+        },
+        "ordinal": null
+      },
+      {
+        "nameNormalized": {
+          "value": "лампа – задний фонарь – замена",
+          "comment": null
+        },
+        "hourNormalized": null,
+        "amount": 0,
+        "hourPrice": 1000.0,
+        "totalPrice": {
+          "value": 200.0,
+          "comment": null
+        },
+        "ordinal": null
+      }
+    ],
+    "details": [
+      {
+        "nameNormalized": {
+          "value": "трос ручного тормоза",
+          "comment": null
+        },
+        "unit": "шт",
+        "amount": 1,
+        "unitPrice": 10250.0,
+        "totalPrice": {
+          "value": 9737.5,
+          "comment": null
+        },
+        "ordinal": null
+      },
+      {
+        "nameNormalized": {
+          "value": "омывающая жидкость",
+          "comment": null
+        },
+        "unit": "шт",
+        "amount": 200,
+        "unitPrice": 350.0,
+        "totalPrice": {
+          "value": 66500.0,
+          "comment": null
+        },
+        "ordinal": null
+      },
+      {
+        "nameNormalized": {
+          "value": "антифриз",
+          "comment": null
+        },
+        "unit": "шт",
+        "amount": 0,
+        "unitPrice": 550.0,
+        "totalPrice": {
+          "value": 261.25,
+          "comment": null
+        },
+        "ordinal": null
+      },
+      {
+        "nameNormalized": {
+          "value": "антигель",
+          "comment": null
+        },
+        "unit": "шт",
+        "amount": 40,
+        "unitPrice": 1100.0,
+        "totalPrice": {
+          "value": 41800.0,
+          "comment": null
+        },
+        "ordinal": null
+      },
+      {
+        "nameNormalized": {
+          "value": "лампа",
+          "comment": null
+        },
+        "unit": "шт",
+        "amount": 1,
+        "unitPrice": 350.0,
+        "totalPrice": {
+          "value": 332.5,
+          "comment": null
+        },
+        "ordinal": null
+      },
+      {
+        "nameNormalized": {
+          "value": "жидкость тормозная",
+          "comment": null
+        },
+        "unit": "шт",
+        "amount": 1,
+        "unitPrice": 1100.0,
+        "totalPrice": {
+          "value": 1045.0,
+          "comment": null
+        },
+        "ordinal": null
+      }
+    ],
+    "totalWorkPrice": {
+      "value": 15000.0,
+      "comment": null
+    },
+    "totalDetailPrice": {
+      "value": 125975.0,
+      "comment": null
+    },
+    "totalPrice": {
+      "value": 134676.25,
+      "comment": null
+    },
+    "haveComments": false
+  },
+  "transferToRepairTime": 1681108295149,
+  "deadlineTime": 1662854400000,
+  "deadlineTimeChanger": null,
+  "deadlineTimeChange": null,
+  "evaluation": {
+    "requestId": null,
+    "rating": 3,
+    "comment": "все хорошо",
+    "receivingTime": 1681108295149
+  }
+}

@@ -1,0 +1,11 @@
+databaseChangeLog:
+    -   changeSet:
+            id: tariff/20210921
+            tag: "20210921"
+            author: palekseev
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: change/deactivate_non_unique.sql
+                        relativeToChangelogFile: true
+                        splitStatements: false

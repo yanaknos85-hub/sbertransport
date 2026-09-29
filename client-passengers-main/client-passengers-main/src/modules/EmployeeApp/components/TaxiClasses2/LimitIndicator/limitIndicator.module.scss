@@ -1,0 +1,30 @@
+.container { 
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.indicatorCircle { 
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.warning { 
+    background-color: rgb(255, 154, 50);
+}
+
+.fatal { 
+    background-color: rgb(255, 87, 67);
+}
+
+.success { 
+    background-color: rgb(16, 191, 106);
+}
+
+.title { 
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+    color: rgb(168, 171, 179);
+}

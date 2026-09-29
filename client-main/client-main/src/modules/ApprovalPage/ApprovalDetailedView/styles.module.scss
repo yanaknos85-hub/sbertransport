@@ -1,0 +1,68 @@
+.info {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row nowrap;
+
+  padding-bottom: var(--padding-half);
+  color: var(--text-color-secondary);
+
+  div {
+    margin-right: var(--margin-base);
+    flex-grow: 1;
+  }
+}
+
+.CheckIcon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  padding: 3px;
+  border-radius: 50%;
+  background-color: #19b150;
+  font-size: 10px;
+  color: #fff;
+}
+
+.address {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 10px;
+  padding-right: 30px;
+
+  &Icon {
+    margin-right: var(--margin-half);
+    color: var(--text-color-minor);
+  }
+
+  &Similar {
+    color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.map {
+  height: 300px;
+  margin-bottom: var(--margin-base);
+  border-radius: calc(var(--border-radius-base) * 2);
+}
+
+.detailsList :global .ant-descriptions-row > td {
+  padding-bottom: var(--padding-half);
+}
+
+.buttonBlock {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: var(--margin-base);
+}
+
+.buttonEdit {
+  margin-top: 20px;
+  margin-bottom: 8px;
+}

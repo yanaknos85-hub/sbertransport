@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20230803-0746"
+      author: medvedev-ad
+      context: TRANSPORT-15823
+      changes:
+        - tagDatabase:
+            tag: D-02.026.000
+        - sql:
+            sql: create schema token_generator;
+        - sql:
+            dbms: postgresql
+            sql: comment on schema token_generator is 'Данные, необходимые для генерации токена';
+      rollback:
+        - sql:
+            sql: drop schema token_generator cascade;
+  - changeSet:
+      id: "20230803-0749"
+      author: medvedev-ad
+      context: TRANSPORT-15823
+      changes:
+        - tagDatabase:
+            tag: D-02.026.000
+        - createTable:
+            schemaName: token_generator
+            tableName: roles
+            remarks: Список ролей
+            columns:
+              - column:
+                  name: code
+                  type: varchar(255)
+                  remarks: Код роли
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: token_generator_token_generator_pk
+              - column:
+                  name: data_master
+                  type: boolean
+                  remarks: Признак аднима мастер данных
+                  defaultValueBoolean: false
+                  defaultOnNull: true
+                  constraints:
+                    nullable: false
+                    notNullConstraintName: token_generator_roles_data_master_nn

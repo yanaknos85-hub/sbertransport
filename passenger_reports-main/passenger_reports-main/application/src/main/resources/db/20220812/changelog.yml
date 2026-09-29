@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220812"
+            author: asigalov
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/change_types1.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: rollback/change_types1.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

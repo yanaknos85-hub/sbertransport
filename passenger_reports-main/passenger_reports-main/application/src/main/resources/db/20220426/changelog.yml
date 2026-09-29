@@ -1,0 +1,14 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220426"
+            author: smirnova
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/request_for_cargo.sql
+                        relativeToChangelogFile: true
+            rollback:
+                -   sqlFile:
+                        path: rollback/request_for_cargo.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

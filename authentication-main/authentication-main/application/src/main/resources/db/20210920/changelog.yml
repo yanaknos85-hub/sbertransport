@@ -1,0 +1,15 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20210920"
+            author: medvedev-ad
+            changes:
+                -   addColumn:
+                        schemaName: authentication_aud
+                        tableName: account_aud
+                        columns:
+                            -   column:
+                                    name: personnel_number
+                                    type: text
+                            -   column:
+                                    name: personnel_number_mod
+                                    type: boolean

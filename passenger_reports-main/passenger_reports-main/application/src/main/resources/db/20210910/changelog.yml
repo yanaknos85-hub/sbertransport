@@ -1,0 +1,10 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20210910"
+            author: goloshchapov-as
+            dbms: postgresql
+            changes:
+                -   sqlFile:
+                        path: changes/add_last_xml_received_param.sql
+                        relativeToChangelogFile: true
+                        endDelimiter: ;

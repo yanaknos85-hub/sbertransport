@@ -1,0 +1,13 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.editBtn {
+  background: var(--solitude) !important;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

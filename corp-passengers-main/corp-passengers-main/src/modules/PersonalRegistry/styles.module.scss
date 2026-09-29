@@ -1,0 +1,70 @@
+.settings {
+  margin: var(--margin-large) var(--margin-large) 0 var(--margin-large);
+  display: flex;
+  justify-content: space-between;
+}
+
+.inlineButtonsWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftSideButtons {
+  display: flex;
+  justify-content: flex-start;
+}
+
+:global(.ant-input-affix-wrapper) {
+  border-radius: 2px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-bottom: 10px;
+  margin-right: 10px;
+}
+
+.checkbox {
+  padding-right: 5px;
+}
+
+.dataRange,
+.numberRange {
+  :global(.ant-input-group) {
+    display: flex;
+
+    & > div {
+      flex: 1;
+    }
+    & > .dash {
+      padding: 0 10px;
+    }
+  }
+  :global(.ant-input-number),
+  :global(.ant-picker) {
+    width: 100%;
+  }
+  label:after {
+    content: none;
+  }
+}
+
+.block {
+  display: block !important;
+}
+
+.formItem {
+  grid-column: 1/-1;
+  width: 100%;
+  justify-self: start;
+  max-width: none !important;
+}
+
+.input {
+  &:global(.ant-input-affix-wrapper) {
+    border-radius: 2px;
+  }
+}

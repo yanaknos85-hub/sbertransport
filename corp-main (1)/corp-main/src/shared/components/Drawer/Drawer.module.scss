@@ -1,0 +1,18 @@
+.drawer {
+  :global(.ant-drawer-header) {
+    border-bottom: none;
+    padding-bottom: 5px;
+  }
+
+  :global(.ant-drawer-title) {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  :global(.ant-drawer-close) {
+    padding: 0;
+    line-height: 0;
+    margin-top: 16px;
+    margin-right: 24px;
+  }
+}

@@ -1,0 +1,69 @@
+databaseChangeLog:
+  - changeSet:
+      id: "20240808-1414"
+      author: medvedev-ad
+      context: "TRANSPORT-25118"
+      changes:
+        - tagDatabase:
+            tag: "D-03.014.000"
+        - modifyDataType:
+            schemaName: addresses
+            tableName: meetings
+            columnName: latitude
+            newDataType: numeric(9, 6)
+        - modifyDataType:
+            schemaName: addresses
+            tableName: meetings
+            columnName: longitude
+            newDataType: numeric(9, 6)
+        - modifyDataType:
+            schemaName: addresses
+            tableName: frequently
+            columnName: latitude
+            newDataType: numeric(9, 6)
+        - modifyDataType:
+            schemaName: addresses
+            tableName: frequently
+            columnName: longitude
+            newDataType: numeric(9, 6)
+        - modifyDataType:
+            schemaName: addresses
+            tableName: favorite
+            columnName: latitude
+            newDataType: numeric(9, 6)
+        - modifyDataType:
+            schemaName: addresses
+            tableName: favorite
+            columnName: longitude
+            newDataType: numeric(9, 6)
+      rollback:
+        - modifyDataType:
+            schemaName: addresses
+            tableName: meetings
+            columnName: latitude
+            newDataType: double precision
+        - modifyDataType:
+            schemaName: addresses
+            tableName: meetings
+            columnName: longitude
+            newDataType: double precision
+        - modifyDataType:
+            schemaName: addresses
+            tableName: frequently
+            columnName: latitude
+            newDataType: double precision
+        - modifyDataType:
+            schemaName: addresses
+            tableName: frequently
+            columnName: longitude
+            newDataType: double precision
+        - modifyDataType:
+            schemaName: addresses
+            tableName: favorite
+            columnName: latitude
+            newDataType: double precision
+        - modifyDataType:
+            schemaName: addresses
+            tableName: favorite
+            columnName: longitude
+            newDataType: double precision

@@ -1,0 +1,116 @@
+{
+  "content": [
+    {
+      "id": "b4cc5f5f-7c46-47d8-830f-a633e9f12f2e",
+      "humanReadableId": "OT-0002-38",
+      "author": {
+        "id": "e002f10b-05fb-485b-9316-1e9d5e9713bd",
+        "humanReadableId": "US-0002-1",
+        "userId": "68676981-2796-4f3a-9b08-82e1f4172e04",
+        "firstName": "ТестР",
+        "lastName": "ТестовР",
+        "patronymic": "ТестовичР",
+        "personnelNumber": "string",
+        "positionId": "ba33b757-6238-49a8-9569-6ce3daaf4431",
+        "organizationId": "742c72c4-bc53-44d2-9b4c-58c2639292fe",
+        "departmentId": "8e0d377d-5f64-4afc-abbe-ee80678587fc",
+        "departmentName": "Подразделение1",
+        "mobilePhone": "+79991112233"
+      },
+      "transportType": "DEDICATED",
+      "tariffId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "express": false,
+      "desiredDate": 1638230522207,
+      "expected": {
+        "segments": [],
+        "waypoints": [
+          {
+            "country": "Россия",
+            "region": "Москва",
+            "city": "Москва",
+            "street": "Тихорецкий бульвар",
+            "house": "1 ст6",
+            "latitude": 55.67233378775058,
+            "longitude": 37.78228295897074,
+            "existInVspGosbTbRegistry": false,
+            "waitTime": 0,
+            "checkinAutomatic": false,
+            "checkinManual": false,
+            "checkinOnlyManual": false,
+            "active": true
+          },
+          {
+            "country": "Россия",
+            "region": "Москва",
+            "city": "Москва",
+            "street": "проспект Мира (ВДНХ)",
+            "house": "119 ст23",
+            "latitude": 55.83340891591467,
+            "longitude": 37.61863246191779,
+            "existInVspGosbTbRegistry": false,
+            "waitTime": 0,
+            "checkinAutomatic": false,
+            "checkinManual": false,
+            "checkinOnlyManual": false,
+            "active": true
+          }
+        ],
+        "cost": 0.0,
+        "distance": 0.0
+      },
+      "totalSizes": {
+        "length": 40.0,
+        "width": 40.0,
+        "height": 40.0,
+        "volume": 28000.0,
+        "weight": 15.0,
+        "occupiedPlacesCount": 5
+      },
+      "comment": "",
+      "approvedBy": {
+        "id": "e002f10b-05fb-485b-9316-1e9d5e9713bd",
+        "humanReadableId": "US-0002-1",
+        "userId": "68676981-2796-4f3a-9b08-82e1f4172e04",
+        "firstName": "ТестовР",
+        "lastName": "ТестР",
+        "patronymic": "ТестовичР",
+        "personnelNumber": "string",
+        "positionId": "ba33b757-6238-49a8-9569-6ce3daaf4431",
+        "organizationId": "742c72c4-bc53-44d2-9b4c-58c2639292fe",
+        "departmentId": "8e0d377d-5f64-4afc-abbe-ee80678587fc",
+        "departmentName": "Подразделение1",
+        "mobilePhone": "+79991112233"
+      },
+      "approvalState": "APPROVED",
+      "approvalDate": "2022-04-25",
+      "status": "CARGO_DELIVERY_CONFIRMATION_FINISHED",
+      "creationTime": 1650902709673,
+      "nextDelivery": 1655931600000
+    }
+  ],
+  "pageable": {
+    "sort": {
+      "empty": false,
+      "sorted": true,
+      "unsorted": false
+    },
+    "offset": 0,
+    "pageNumber": 0,
+    "pageSize": 7,
+    "paged": true,
+    "unpaged": false
+  },
+  "last": true,
+  "totalElements": 1,
+  "totalPages": 1,
+  "size": 7,
+  "number": 0,
+  "sort": {
+    "empty": false,
+    "sorted": true,
+    "unsorted": false
+  },
+  "first": true,
+  "numberOfElements": 1,
+  "empty": false
+}

@@ -1,0 +1,100 @@
+.formItem {
+  margin-top: 5px;
+  padding-right: 10px;
+  flex-direction: column;
+
+  :global {
+    .ant-form-item-label {
+      text-align: left;
+    }
+  }
+}
+
+.footerContainer {
+  display: flex;
+  justify-content: space-between;
+} 
+
+.newTariffForm { 
+  :global { 
+    .ant-modal-header { 
+      border-bottom: none !important;
+    }
+
+    .ant-modal-footer { 
+      border-top: none;
+    }
+
+    .ant-modal-title { 
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+    }
+  }
+}
+
+.tariffsFooter { 
+  :global { 
+    .ant-modal-footer { 
+      border: none;
+    }
+  }
+}
+
+.stepContainer { 
+  color: rgb(115, 115, 115);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.buttonBlock { 
+  margin-left: auto;
+
+  .actionButton { 
+    text-shadow: none;
+    padding: 9px 20px;
+    height: auto;
+    line-height: 22px;
+    font-weight: 600;
+  }
+  
+  .cancelButton { 
+    text-shadow: none;
+    border-color: transparent;
+  }
+}
+
+
+.nightTariffItem {
+  font-size: 14px;
+  margin-top: 20px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+
+  &__subTitle {
+    color: var(--text-color-minor);
+  }
+}
+
+.vipCheckbox {
+  font-size: 14;
+  margin-top: 20;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.groupTransferWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+:global(.publicTabPaneFormWrapper) {
+
+  :global(.ant-form-item-explain-error) {
+    margin-left: 100px;
+  }
+}

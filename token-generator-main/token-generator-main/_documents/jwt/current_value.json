@@ -1,0 +1,18 @@
+{
+  "roles": [
+    "ROLE_EMPLOYEE_CORP_CLIENT",
+    "ROLE_ENGINEER_CORP_CLIENT",
+    "ROLE_ADMIN_DATA_MASTER",
+    "ROLE_ADMIN_CORP_CLIENT"
+  ],
+  "random": "0b3de5f1-1c72-4a11-baf5-811ee660bb48",
+  "factor": "BASIC",
+  "requestId": "c7f494611572c210",
+  "exp": 1690991399,
+  "iss": "SberTransport",
+  "iat": 1690990499,
+  "sub": "ZamladchenkoI-K",
+  "jti": "bd15426f-c5ce-4c2e-9214-82c8c108a826",
+  "transport": false,
+  "data_master": true
+}

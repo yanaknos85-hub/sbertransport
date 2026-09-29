@@ -1,0 +1,8 @@
+[
+  { "name": "Sber", "parentId": 123, "key": 0, "id": "0", "isChildren": false },
+  { "name": "Alfa", "parentId": 123, "key": 1, "id": "1", "isChildren": true },
+  { "name": "Sber-tech", "parentId": 123, "key": 2, "id": "2", "isChildren": false },
+  { "name": "Ural", "parentId": 123, "key": 3, "id": "3", "isChildren": true },
+  { "name": "VTB", "parentId": 123, "key": 4, "id": "4", "isChildren": false },
+  { "name": "Some", "parentId": 123, "key": 5, "id": "5", "isChildren": true }
+]

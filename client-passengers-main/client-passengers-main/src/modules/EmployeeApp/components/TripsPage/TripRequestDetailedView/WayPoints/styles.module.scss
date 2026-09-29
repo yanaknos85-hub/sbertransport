@@ -1,0 +1,121 @@
+.wayPoints {
+  &Info {
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: row nowrap;
+    font-style: italic;
+
+    span {
+      padding: 0 10px;
+    }
+  }
+
+  &Container {
+    position: relative;
+  }
+
+  &Loader {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.5);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    z-index: 5;
+    pointer-events: none;
+  }
+
+  &AddNew:global(.ant-btn) {
+    color: black;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+
+  &Buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.drag {
+  &Item {
+    position: relative;
+  }
+
+  &Handle {
+    position: absolute;
+    top: 0;
+    left: 16px;
+    z-index: 1;
+    color: rgba(0, 0, 0, 0.25);
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+.timelineItem {
+  position: relative;
+
+  &Last {
+    :global(.ant-timeline-item-tail) {
+      display: none;
+    }
+  }
+
+  :global(.ant-timeline-item-content) {
+    min-height: 12px !important;
+    margin-right: 30px;
+    margin-left: 45px;
+  }
+}
+
+.checkIcon {
+  width: 16px;
+  height: 16px;
+  padding: 3px;
+  border-radius: 50%;
+  background-color: #19b150;
+  font-size: 10px;
+  color: #fff;
+}
+
+.submitButton {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.address {
+  &RemoveButton {
+    &Container {
+      position: absolute;
+      right: -30px;
+      top: 25px;
+    }
+
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+    overflow: hidden;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background: transparent;
+    color: var(--red-color) !important;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border: 1px solid var(--red-color);
+    }
+  }
+
+  &AutoComplete {
+    margin-bottom: 10px;
+  }
+}

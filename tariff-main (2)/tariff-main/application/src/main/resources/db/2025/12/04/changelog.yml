@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20251204-1
+      author: klyunkov-va
+      dbms: postgresql
+      changes:
+        - sqlFile:
+            path: change/add_data_type.sql
+            relativeToChangelogFile: true
+            splitStatements: false

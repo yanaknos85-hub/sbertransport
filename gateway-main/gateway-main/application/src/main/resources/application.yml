@@ -1,0 +1,233 @@
+server:
+    port: 8000
+    tomcat:
+        max-swallow-size: ${file.max-size}
+        max-http-form-post-size: ${file.max-size}
+spring:
+    main:
+        banner-mode: off
+    application:
+        name: gateway
+    cloud:
+        gateway:
+            routes:
+                -   id: authentication
+                    uri: lb://authentication
+                    predicates:
+                    - Path=/api/auth/**
+                    filters:
+                    - RewritePath=/api/auth/(?<segment>.*), /$\{segment}
+                -   id: addresses
+                    uri: lb://addresses
+                    predicates:
+                    - Path=/api/addresses/**
+                    filters:
+                    - RewritePath=/api/addresses/(?<segment>.*), /$\{segment}
+                -   id: reports
+                    uri: lb://reports
+                    predicates:
+                    - Path=/api/reports/**
+                    filters:
+                    - RewritePath=/api/reports/(?<segment>.*), /$\{segment}
+                -   id: constants
+                    uri: lb://constants
+                    predicates:
+                    - Path=/api/constants/**
+                    filters:
+                    - RewritePath=/api/constants/(?<segment>.*), /$\{segment}
+                -   id: deadline
+                    uri: lb://deadline
+                    predicates:
+                    - Path=/api/deadline/**
+                    filters:
+                    - RewritePath=/api/deadline/(?<segment>.*), /$\{segment}
+                -   id: approvals
+                    uri: lb://approvals
+                    predicates:
+                    - Path=/api/approvals/**
+                    filters:
+                    - RewritePath=/api/approvals/(?<segment>.*), /$\{segment}
+                -   id: approvals-settings
+                    uri: lb://approvals-settings
+                    predicates:
+                    - Path=/api/approvals/settings/**
+                    filters:
+                    - RewritePath=/api/approvals/settings/(?<segment>.*), /$\{segment}
+                -   id: users
+                    uri: lb://users
+                    predicates:
+                    - Path=/api/users/**
+                    filters:
+                    - RewritePath=/api/users/(?<segment>.*), /$\{segment}
+                -   id: roles
+                    uri: lb://roles
+                    predicates:
+                    - Path=/api/roles/**
+                    filters:
+                    - RewritePath=/api/roles/(?<segment>.*), /$\{segment}
+                -   id: contractor
+                    uri: lb://contractor
+                    predicates:
+                    - Path=/api/contractors/**
+                    filters:
+                    - RewritePath=/api/contractors/(?<segment>.*), /$\{segment}
+                -   id: tariff
+                    uri: lb://tariff
+                    predicates:
+                    - Path=/api/tariffs/**
+                    filters:
+                    - RewritePath=/api/tariffs/(?<segment>.*), /$\{segment}
+                -   id: geo
+                    uri: lb://geo
+                    predicates:
+                    - Path=/api/geo/**
+                    filters:
+                    - RewritePath=/api/geo/(?<segment>.*), /$\{segment}
+                -   id: limits
+                    uri: lb://limits
+                    predicates:
+                    - Path=/api/limits/**
+                    filters:
+                    - RewritePath=/api/limits/(?<segment>.*), /$\{segment}
+                -   id: corporate-service
+                    uri: lb://corporate-service
+                    predicates:
+                    - Path=/api/organizations/**
+                    filters:
+                    - RewritePath=/api/organizations/(?<segment>.*), /$\{segment}
+                -   id: service-class
+                    uri: lb://service-class
+                    predicates:
+                    - Path=/api/serviceClass/**
+                    filters:
+                    - RewritePath=/api/serviceClass/(?<segment>.*), /$\{segment}
+                -   id: calculate
+                    uri: lb://calculate
+                    predicates:
+                    - Path=/api/calculate/**
+                    filters:
+                    - RewritePath=/api/calculate/(?<segment>.*), /$\{segment}
+                -   id: request
+                    uri: lb://request
+                    predicates:
+                    - Path=/api/requests/**
+                    filters:
+                    - RewritePath=/api/requests/(?<segment>.*), /$\{segment}
+                -   id: documentation
+                    uri: lb://documentation
+                    predicates:
+                    - Path=/api/documentation/**
+                    filters:
+                    - RewritePath=/api/documentation/(?<segment>.*), /$\{segment}
+                -   id: transport-type
+                    uri: lb://transport-type
+                    predicates:
+                    - Path=/api/transportType/**
+                    filters:
+                    - RewritePath=/api/transportType/(?<segment>.*), /$\{segment}
+                -   id: sudir
+                    uri: lb://sudir
+                    predicates:
+                    - Path=/api/sudir/**
+                    filters:
+                    - RewritePath=/api/sudir/(?<segment>.*), /$\{segment}
+                -   id: sudir-alfa
+                    uri: lb://sudir-alfa
+                    predicates:
+                        - Path=/api/sudir-alfa/**
+                    filters:
+                        - RewritePath=/api/sudir-alfa/(?<segment>.*), /$\{segment}
+                -   id: geo-zones
+                    uri: lb://geo-zones
+                    predicates:
+                    - Path=/api/geo-zones/**
+                    filters:
+                    - RewritePath=/api/geo-zones/(?<segment>.*), /$\{segment}
+                -   id: notifications
+                    uri: lb://notifications
+                    predicates:
+                    - Path=/api/notifications/**
+                    filters:
+                    - RewritePath=/api/notifications/(?<segment>.*), /$\{segment}
+                -   id: ui-info-service
+                    uri: lb://ui-info-service
+                    predicates:
+                    - Path=/api/uiinfoservice/**
+                    filters:
+                    - RewritePath=/api/uiinfoservice/(?<segment>.*), /$\{segment}
+                -   id: search
+                    uri: lb://search
+                    predicates:
+                    - Path=/api/search/**
+                    filters:
+                    - RewritePath=/api/search/(?<segment>.*), /$\{segment}
+                -   id: oto
+                    uri: lb://oto
+                    predicates:
+                    - Path=/api/oto/**
+                    filters:
+                    - RewritePath=/api/oto/(?<segment>.*), /$\{segment}
+                -   id: parking
+                    uri: lb://parking
+                    predicates:
+                    - Path=/api/parking/**
+                    filters:
+                    - RewritePath=/api/parking/(?<segment>.*), /$\{segment}
+                -   id: ws-events
+                    uri: lb:ws://events
+                    predicates:
+                    - Path=/ws/events/**
+                    filters:
+                    - RewritePath=/ws/events/(?<segment>.*), /$\{segment}
+                -   id: srm
+                    uri: lb://srm
+                    predicates:
+                    - Path=/api/srm/**
+                    filters:
+                    - RewritePath=/api/srm/(?<segment>.*), /$\{segment}
+                -   id: repair
+                    uri: lb://repair
+                    predicates:
+                        - Path=/api/repair/**
+                    filters:
+                        - RewritePath=/api/repair/(?<segment>.*), /$\{segment}
+                -   id: request-cargo
+                    uri: lb://request-cargo
+                    predicates:
+                        - Path=/api/request-cargo/**
+                    filters:
+                        - RewritePath=/api/request-cargo/(?<segment>.*), /$\{segment}
+                -   id: tariff-cargo
+                    uri: lb://tariff-cargo
+                    predicates:
+                        - Path=/api/tariff-cargo/**
+                    filters:
+                        - RewritePath=/api/tariff-cargo/(?<segment>.*), /$\{segment}
+        kubernetes.enabled: false
+        consul.enabled: true
+        consul:
+            host: ${DISCOVERY_HOST:localhost}
+            port: ${DISCOVERY_PORT:8500}
+            discovery:
+                tags:
+                    - version=@project.version@
+                    - platform=java @java.version@
+                    - source=java @maven.compiler.target@
+                    - release=v@project.release@
+                    - description=Шлюз
+    servlet:
+        multipart:
+            max-file-size: ${file.max-size}
+            max-request-size: ${file.max-size}
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 120000
+ribbon:
+    ConnectTimeout: 60000
+    ReadTimeout: 60000
+file.max-size: ${FILE_MAX_SIZE_GATEWAY:20971520}
+https:
+    enabled: ${HTTPS_ENABLED:false}
+management:
+    endpoints:
+        web:
+            exposure:
+                include: health,gateway

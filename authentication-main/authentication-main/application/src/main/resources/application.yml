@@ -1,0 +1,62 @@
+server:
+  port: @server.port@
+
+grpc:
+  client:
+    GLOBAL:
+      negotiation-type: plaintext
+    notifications:
+      address: discovery:///${grpc.notifications:grpc-notifications}
+
+spring:
+  config:
+    import: optional:configserver:${spring.cloud.config.uri}
+  threads:
+    virtual:
+      enabled: false
+  jackson:
+    default-property-inclusion: non_null
+  cloud:
+    vault:
+      enabled: false
+  application:
+    name: authentication
+    version: @project.version@
+  datasource:
+    url: jdbc:postgresql://localhost:5432/transport
+    password: root
+    username: postgres
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    change-log: classpath:db/changelog-master.yml
+    drop-first: false
+    test-rollback-on-update: false
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    database-change-log-table: changelog_${spring.application.name}
+    database-change-log-lock-table: changelog_${spring.application.name}_lock
+    liquibase-schema: ${MIGRATIONS_SCHEMA:public}
+jwt:
+  issuer: SberTransport
+  expire:
+    minutes: 15
+two-factor:
+  issuer: SberTransport 2FA
+  expire:
+    minutes: 1
+rt:
+  expire:
+    days: 1
+initial:
+  password:
+users:
+  sendEmail: ${SEND_EMAIL:true}
+  max-number-of-attempts: ${MAX_NUMBER_OF_ATTEMPTS:5}
+reset-code:
+  max-number-of-attempts: ${MAX_NUMBER_OF_ATTEMPTS_REST_CODE:3}
+cache:
+  lifeTimeSeconds: ${CACHE_LIFE_TIME_SECONDS:5}
+openapi:
+  authentication:
+    base-path: /

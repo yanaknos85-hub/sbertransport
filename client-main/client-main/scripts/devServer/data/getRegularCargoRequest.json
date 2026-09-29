@@ -1,0 +1,288 @@
+{
+  "id": "97d85c8f-b882-4080-bf86-23dc9bc49185",
+  "humanReadableId": "OT-0025-109",
+  "author": {
+    "id": "779f8565-f588-496c-b567-62b1fff3d738",
+    "humanReadableId": "US-0025-35",
+    "userId": "779f8565-f588-496c-b567-62b1fff3d738",
+    "firstName": "ТестовыйР",
+    "lastName": "СотрудникТестовое1",
+    "patronymic": "",
+    "personnelNumber": "1898931",
+    "positionId": "fcbc517f-f516-4aa6-b1de-b23e83dce849",
+    "organizationId": "ac1d7c0e-6ebd-40b4-9595-086dbed05c22",
+    "departmentId": "a3ff65d8-91d1-46ac-a4c5-24905f3bdc01",
+    "departmentName": "Тестовое 01",
+    "mobilePhone": "+78000000001"
+  },
+  "sender": {
+    "id": "779f8565-f588-496c-b567-62b1fff3d738",
+    "humanReadableId": "US-0025-35",
+    "userId": "779f8565-f588-496c-b567-62b1fff3d738",
+    "firstName": "ТестовыйР",
+    "lastName": "СотрудникТестовое1",
+    "patronymic": "",
+    "personnelNumber": "1898931",
+    "positionId": "fcbc517f-f516-4aa6-b1de-b23e83dce849",
+    "organizationId": "ac1d7c0e-6ebd-40b4-9595-086dbed05c22",
+    "departmentId": "a3ff65d8-91d1-46ac-a4c5-24905f3bdc01",
+    "departmentName": "Тестовое 01",
+    "mobilePhone": "+78000000001"
+  },
+  "recipient": {
+    "id": "cafe1f2d-292f-4f24-9f88-6d68ad6021c7",
+    "humanReadableId": "US-0025-34",
+    "userId": "cafe1f2d-292f-4f24-9f88-6d68ad6021c7",
+    "firstName": "Наталия",
+    "lastName": "Воловик",
+    "patronymic": "Викторовна",
+    "personnelNumber": "1598246",
+    "positionId": "fcbc517f-f516-4aa6-b1de-b23e83dce849",
+    "organizationId": "ac1d7c0e-6ebd-40b4-9595-086dbed05c22",
+    "departmentId": "0c020c14-0ca8-400a-9765-7527a1e1f44c",
+    "departmentName": "ИФТ подразделение 00",
+    "mobilePhone": "+79777777777"
+  },
+  "senderOrganization": "Сбер",
+  "recipientOrganization": "Сбер",
+  "transportType": "DEDICATED",
+  "tariffId": "45661317-ee24-4375-8189-bab4493b4db6",
+  "express": false,
+  "desiredDate": 1651154462391,
+  "expected": {
+    "segments": [
+      {
+        "cost": 0,
+        "distance": 0.038,
+        "time": 12000,
+        "coordinates": [
+          {
+            "latitude": 55.790797,
+            "longitude": 37.483207
+          },
+          {
+            "latitude": 55.790735,
+            "longitude": 37.483109
+          },
+          {
+            "latitude": 55.79054,
+            "longitude": 37.482802
+          }
+        ]
+      },
+      {
+        "cost": 0,
+        "distance": 0.033,
+        "time": 10000,
+        "coordinates": [
+          {
+            "latitude": 55.79054,
+            "longitude": 37.482802
+          },
+          {
+            "latitude": 55.79074,
+            "longitude": 37.482403
+          }
+        ]
+      },
+      {
+        "cost": 0,
+        "distance": 0.039,
+        "time": 12000,
+        "coordinates": [
+          {
+            "latitude": 55.79074,
+            "longitude": 37.482403
+          },
+          {
+            "latitude": 55.791003,
+            "longitude": 37.482819
+          }
+        ]
+      },
+      {
+        "cost": 0,
+        "distance": 0.038,
+        "time": 12000,
+        "coordinates": [
+          {
+            "latitude": 55.791003,
+            "longitude": 37.482819
+          },
+          {
+            "latitude": 55.791141,
+            "longitude": 37.482543
+          },
+          {
+            "latitude": 55.791234,
+            "longitude": 37.482357
+          }
+        ]
+      },
+      {
+        "cost": 0,
+        "distance": 0.089,
+        "time": 22000,
+        "coordinates": [
+          {
+            "latitude": 55.791234,
+            "longitude": 37.482357
+          },
+          {
+            "latitude": 55.791307,
+            "longitude": 37.482473
+          },
+          {
+            "latitude": 55.791675,
+            "longitude": 37.483055
+          },
+          {
+            "latitude": 55.791727,
+            "longitude": 37.483137
+          },
+          {
+            "latitude": 55.791768,
+            "longitude": 37.483202
+          },
+          {
+            "latitude": 55.791814,
+            "longitude": 37.483244
+          },
+          {
+            "latitude": 55.791865,
+            "longitude": 37.483258
+          }
+        ]
+      },
+      {
+        "cost": 0,
+        "distance": 0.186,
+        "time": 24000,
+        "coordinates": [
+          {
+            "latitude": 55.791865,
+            "longitude": 37.483258
+          },
+          {
+            "latitude": 55.791866,
+            "longitude": 37.483638
+          },
+          {
+            "latitude": 55.791867,
+            "longitude": 37.48448
+          },
+          {
+            "latitude": 55.791869,
+            "longitude": 37.486097
+          }
+        ]
+      },
+      {
+        "cost": 0,
+        "distance": 0.036,
+        "time": 11000,
+        "coordinates": [
+          {
+            "latitude": 55.791869,
+            "longitude": 37.486291
+          }
+        ]
+      },
+      {
+        "cost": 0,
+        "distance": 0.08,
+        "time": 25000,
+        "coordinates": [
+          {
+            "latitude": 55.79154,
+            "longitude": 37.486291
+          }
+        ]
+      },
+      {
+        "cost": 0,
+        "distance": 0,
+        "time": 0,
+        "coordinates": []
+      }
+    ],
+    "waypoints": [
+      {
+        "country": "Россия",
+        "region": "Москва",
+        "city": "Москва",
+        "street": "Расплетина",
+        "house": "10 к1",
+        "latitude": 55.79079760621197,
+        "longitude": 37.48320739041799,
+        "waitTime": 0,
+        "checkinAutomatic": false,
+        "checkinManual": false,
+        "checkinOnlyManual": false,
+        "active": true
+      },
+      {
+        "country": "Россия",
+        "region": "Москва",
+        "city": "Москва",
+        "street": "Маршала Вершинина",
+        "house": "3 к1",
+        "latitude": 55.79154087739979,
+        "longitude": 37.48757122640519,
+        "waitTime": 0,
+        "checkinAutomatic": false,
+        "checkinManual": false,
+        "checkinOnlyManual": false,
+        "active": true
+      }
+    ],
+    "cost": 1107,
+    "distance": 0.539,
+    "time": 126000
+  },
+  "listCargo": [
+    {
+      "position": 0,
+      "cargoName": "Сейф",
+      "cargoType": "FURNITURE",
+      "cargoCategory": "OTHER",
+      "length": 60,
+      "width": 60,
+      "height": 150,
+      "volume": 540000,
+      "weight": 50,
+      "occupiedPlacesCount": 1,
+      "fragile": false,
+      "needPackage": false,
+      "packageCount": 1
+    }
+  ],
+  "totalSizes": {
+    "length": 60,
+    "width": 60,
+    "height": 150,
+    "volume": 540000,
+    "weight": 50,
+    "occupiedPlacesCount": 1
+  },
+  "comment": "",
+  "approvedBy": {
+    "id": "2c9e8d8e-c4fe-4832-b805-43cfe0e408c0",
+    "humanReadableId": "US-0025-33",
+    "userId": "2c9e8d8e-c4fe-4832-b805-43cfe0e408c0",
+    "firstName": "Евгений",
+    "lastName": "Рассохин",
+    "patronymic": "Викторович",
+    "personnelNumber": "111898931",
+    "positionId": "fcbc517f-f516-4aa6-b1de-b23e83dce849",
+    "organizationId": "ac1d7c0e-6ebd-40b4-9595-086dbed05c22",
+    "departmentId": "0c020c14-0ca8-400a-9765-7527a1e1f44c",
+    "departmentName": "ИФТ подразделение 00",
+    "mobilePhone": "+79819519519"
+  },
+  "approvalState": "APPROVED",
+  "approvalDate": "2022-04-28",
+  "status": "CARGO_APPROVED",
+  "creationTime": 1651154505699,
+  "nextDelivery": 1655931600000
+}

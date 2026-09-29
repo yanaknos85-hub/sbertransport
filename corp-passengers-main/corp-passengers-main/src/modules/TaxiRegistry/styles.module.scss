@@ -1,0 +1,66 @@
+.dataRange,
+.numberRange {
+  :global(.ant-input-group) {
+    display: flex;
+
+    & > div {
+      flex: 1;
+    }
+    & > .dash {
+      padding: 0 10px;
+    }
+  }
+  :global(.ant-input-number),
+  :global(.ant-picker) {
+    width: 100%;
+  }
+  label:after {
+    content: none;
+  }
+}
+.numberRange {
+  :global(.ant-input-group) {
+    :global(.ant-form-item-explain) {
+      position: absolute;
+      width: 200px;
+      top: 31px;
+    }
+  }
+}
+.settings {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--margin-base);
+  > div {
+    display: flex;
+    padding-right: 10px;
+  }
+}
+
+.menuSetting {
+  background: white;
+  border: 1px solid black;
+  .listSetting {
+    max-height: 20vh;
+    overflow-y: auto;
+  }
+
+  .line {
+    margin: 0;
+  }
+  .menuButtons {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+    width: 100%;
+    & :global(.ant-btn) {
+      margin: 10px 10px 0;
+    }
+  }
+}
+
+.styledPagination {
+  display: flex;
+  justify-content: flex-end;
+  margin: 16px 0;
+}

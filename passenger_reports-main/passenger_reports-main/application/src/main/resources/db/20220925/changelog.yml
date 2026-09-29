@@ -1,0 +1,71 @@
+databaseChangeLog:
+    -   changeSet:
+            id: "20220925"
+            author: medvedev-ad
+            changes:
+                -   createIndex:
+                        schemaName: reports
+                        tableName: taxi_trip
+                        columns:
+                            - column:
+                                  name: trip_type
+                        indexName: reports_taxi_trip_trip_type_idx
+                -   createIndex:
+                        schemaName: reports
+                        tableName: taxi_trip
+                        columns:
+                            - column:
+                                  name: request_id
+                        indexName: reports_taxi_trip_request_id_idx
+    -   changeSet:
+            id: "20220925-1"
+            author: medvedev-ad
+            changes:
+                -   createIndex:
+                        schemaName: reports
+                        tableName: employee
+                        columns:
+                            - column:
+                                  name: user_id
+                        indexName: reports_employee_user_id_idx
+                -   createIndex:
+                        schemaName: reports
+                        tableName: order_kpi
+                        columns:
+                            - column:
+                                  name: kpi_id
+                        indexName: reports_order_kpi_kpi_id_idx
+                -   createIndex:
+                        schemaName: reports
+                        tableName: request
+                        columns:
+                            - column:
+                                  name: ride_id
+                        indexName: reports_request_kpi_ride_id_idx
+    -   changeSet:
+            id: "20220925-2"
+            author: medvedev-ad
+            changes:
+                -   createIndex:
+                        schemaName: reports
+                        tableName: transport_compensation
+                        columns:
+                            - column:
+                                  name: request_id
+                        indexName: reports_transport_compensation_request_id_idx
+                -   createIndex:
+                        schemaName: reports
+                        tableName: taxi_trip
+                        columns:
+                            - column:
+                                  name: tariff_id
+                        indexName: reports_taxi_trip_tariff_id_idx
+                -   createIndex:
+                        schemaName: reports
+                        tableName: taxi_trip
+                        columns:
+                            - column:
+                                  name: shared_ride_id
+                            - column:
+                                  name: trip_type
+                        indexName: reports_taxi_trip_shared_ride_id_trip_type_idx
